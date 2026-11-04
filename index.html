@@ -3,10 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14101f" />
+    <meta
+      name="description"
+      content="Drumline Radio plays full songs, arranged and composed by Claude, through four synth styles."
+    />
     <title>Drumline Radio</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="radio">
+      <header class="faceplate">
+        <div class="brand">Drumline <span>Radio</span></div>
+        <div class="readout" aria-live="polite">
+          <div id="title" class="readout-title">Drumline Radio</div>
+          <div id="subtitle" class="readout-sub">Press play</div>
+        </div>
+        <canvas id="meters" class="meters" width="120" height="48" aria-hidden="true"></canvas>
+      </header>
+      <main class="stage">
+        <canvas id="score" class="score" aria-label="Scrolling score of the current song"></canvas>
+        <div id="style-banner" class="style-banner"></div>
+      </main>
+      <section class="tuner" aria-label="Stations">
+        <div class="dial-wrap">
+          <div
+            id="dial"
+            class="dial"
+            tabindex="0"
+            aria-label="Tuner dial. Use left and right arrows to change station."
+          ></div>
+          <div class="needle" aria-hidden="true"></div>
+        </div>
+        <div class="transport">
+          <button id="prev" class="knob" type="button" aria-label="Previous song">⏮</button>
+          <button id="play" class="knob knob-main" type="button" aria-label="Play">▶</button>
+          <button id="next" class="knob" type="button" aria-label="Next song">⏭</button>
+          <span id="elapsed" class="time">0:00</span>
+          <input
+            id="seek"
+            class="seek"
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            step="1"
+            aria-label="Seek"
+          />
+          <span id="total" class="time">0:00</span>
+        </div>
+        <div id="bands" class="bands" role="radiogroup" aria-label="Style"></div>
+      </section>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

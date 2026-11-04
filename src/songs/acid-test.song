@@ -1,0 +1,41 @@
+# Test piece for the Techno style.
+title: Acid Test
+composer: Claude
+year: 2026
+source: original
+style: techno
+key: A minor
+tempo: 128
+time: 4/4
+
+track acid role=lead vol=0.7
+| R*4 |
+{ A3/16 A3 A4 A3 C4 A3 E4 A3 G3 A3 A4 A3 C4 E4 D4 C4 }*4 |
+{ F3/16 F3 F4 F3 A3 F3 C4 F3 E3 F3 F4 F3 A3 C4 A3 G3 }*2 |
+{ G3/16 G3 G4 G3 B3 G3 D4 G3 D3 G3 G4 G3 B3 D4 C4 B3 }*2 |
+{ A3/16 A3 A4 A3 C4 A3 E4 A3 G3 A3 A4 A3 C4 E4 D4 C4 }*3 |
+| A3/2 r/2 |
+
+track stab role=chords vol=0.6
+| R*8 |
+{ r/4 r/8 [F3 A3 C4]/8 r/4 [F3 A3 C4]/4 }*2 |
+{ r/4 r/8 [G3 B3 D4]/8 r/4 [G3 B3 D4]/4 }*2 |
+{ r/4 r/8 [A3 C4 E4]/8 r/4 [A3 C4 E4]/4 }*3 |
+| [A3 C4 E4]/2 r/2 |
+
+track pad role=pad vol=0.45
+{ [A2 E3 C4]/1 }*8 | { [F2 C3 A3]/1 }*2 | { [G2 D3 B3]/1 }*2 | { [A2 E3 C4]/1 }*4 |
+
+track bass role=bass
+| R*4 |
+{ r/8 A1 r A1 r A1 r A1 }*4 |
+{ r/8 F1 r F1 r F1 r F1 }*2 |
+{ r/8 G1 r G1 r G1 r G1 }*2 |
+{ r/8 A1 r A1 r A1 r A1 }*3 |
+| A1/1 |
+
+track drums role=drums
+{ k/8 oh k oh k oh k oh }*4 |
+| [k cr]/8 oh [k cl] oh k oh [k cl] oh |
+{ k/8 oh [k cl] oh k oh [k cl] oh }*10 |
+| [k cr]/1 |

@@ -1,0 +1,101 @@
+import type { Song } from './song';
+
+/** Formats song seconds as `m:ss`, flooring and clamping negatives to zero. */
+export function formatTime(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+  const total = Math.floor(seconds);
+  const minutes = Math.floor(total / 60);
+  const rest = total % 60;
+  return `${minutes}:${String(rest).padStart(2, '0')}`;
+}
+
+/** The tuner frequency shown for a station, from 88.1 in 2.2 steps. */
+export function stationLabel(index: number): string {
+  return (88.1 + index * 2.2).toFixed(1);
+}
+
+/** Previous either restarts a song that is under way or moves to the previous station. */
+export function prevAction(position: number): 'restart' | 'previous' {
+  return position > 3 ? 'restart' : 'previous';
+}
+
+export interface Lane {
+  track: number;
+  top: number;
+  height: number;
+  low: number;
+  high: number;
+  rows: number[] | null;
+}
+
+/** Stacks one lane per track, ordered top to bottom in track order. */
+export function laneLayout(song: Song, height: number): Lane[] {
+  const count = song.tracks.length;
+  return song.tracks.map((track, index) => {
+    const laneHeight = count > 0 ? height / count : height;
+    const top = (index * height) / Math.max(1, count);
+    const lanebase = { track: index, top, height: laneHeight };
+
+    if (track.role === 'drums') {
+      const pitches = new Set<number>();
+      for (const note of track.notes) for (const pitch of note.pitches) pitches.add(pitch);
+      const rows = Array.from(pitches).sort((a, b) => b - a);
+      const low = rows.length > 0 ? rows[rows.length - 1] : 0;
+      const high = rows.length > 0 ? rows[0] : 0;
+      return { ...lanebase, low, high, rows };
+    }
+
+    let low = 58;
+    let high = 62;
+    if (track.notes.length > 0) {
+      let min = Number.POSITIVE_INFINITY;
+      let max = Number.NEGATIVE_INFINITY;
+      for (const note of track.notes) {
+        for (const pitch of note.pitches) {
+          if (pitch < min) min = pitch;
+          if (pitch > max) max = pitch;
+        }
+      }
+      low = min - 2;
+      high = max + 2;
+    }
+    return { ...lanebase, low, high, rows: null };
+  });
+}
+
+export function noteHeight(lane: Lane): number {
+  if (lane.rows !== null) {
+    if (lane.rows.length === 0) return 3;
+    return Math.max(3, (lane.height - 8) / lane.rows.length - 2);
+  }
+  return Math.max(3, Math.min(10, (lane.height - 8) / (lane.high - lane.low + 1)));
+}
+
+/** The y of the top of a note bar for a pitch inside its lane. */
+export function noteY(lane: Lane, pitch: number): number {
+  if (lane.rows !== null) {
+    if (lane.rows.length === 0) return lane.top + 4;
+    const row = Math.max(0, lane.rows.indexOf(pitch));
+    return lane.top + 4 + (row * (lane.height - 8)) / lane.rows.length;
+  }
+  const barHeight = noteHeight(lane);
+  const top = lane.top + 4;
+  const bottom = lane.top + lane.height - 4 - barHeight;
+  const range = lane.high - lane.low;
+  if (range <= 0) return top;
+  return top + ((lane.high - pitch) * (bottom - top)) / range;
+}
+
+/** Index of the centre closest to x; ties go to the lower index, empty is -1. */
+export function nearestStation(centers: number[], x: number): number {
+  let best = -1;
+  let bestDistance = Number.POSITIVE_INFINITY;
+  for (let i = 0; i < centers.length; i += 1) {
+    const distance = Math.abs(centers[i] - x);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      best = i;
+    }
+  }
+  return best;
+}

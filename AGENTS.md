@@ -11,11 +11,17 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 ## Read before changing
 
 - Song files, the parser, or timing: [docs/song-format.md](docs/song-format.md)
+- Sound, styles, or patches: [docs/sound.md](docs/sound.md)
 
 ## Rules
 
-- Keep `src/song.ts`, `src/roles.ts`, `src/pitch.ts`, and `src/timing.ts` free of the DOM and
-  audio, so Vitest can test them.
+- Keep `src/song.ts`, `src/roles.ts`, `src/pitch.ts`, `src/timing.ts`, `src/library.ts`,
+  `src/styles.ts`, `src/curves.ts`, and `src/view.ts` free of the DOM and audio, so Vitest can test
+  them.
+- `src/engine.ts` and `src/voices.ts` don't touch the DOM.
+- Every voice connects to its track's channel in `engine.ts`, never straight to the master chain,
+  so track volume, pan, and sends cover everything.
+- Every song in `src/songs/` must parse with no errors; `tests/library.test.ts` checks this.
 - Songs are public-domain melodies (composer long dead and published before 1930, or traditional)
   arranged by Claude, or Claude's own originals. Never add copyrighted songs. Credit every
   public-domain piece in `README.md`.

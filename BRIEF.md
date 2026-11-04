@@ -39,8 +39,12 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
 - Handoff 1 is done: project setup, the song format parser and checker (`src/song.ts`), timing
   (`src/timing.ts`), tests, `docs/song-format.md`, and the Pages deploy workflow. The page is a
   placeholder. The Vite `base` is `/drumline-radio/`.
-- Next is handoff 2: the sound engine, the 4 styles, and the player UI. The user has dropped the
-  8-bit look as a requirement; the UI direction is still being chosen.
+- Handoff 2 is done: the sound engine (`src/engine.ts`, `src/voices.ts`), 4 styles
+  (`src/styles.ts`), and the player UI: a radio-tuner look with a song dial, a living score canvas,
+  VU meters, and per-style page colours; band buttons remix. 4 short Claude test songs, one per style.
+  The user dropped the 8-bit look, so it no longer copies Drumline Studio's style.
+- Next is pass 2: the real songs (Valkyries in 9/8, Greensleeves, Mountain King, 3 originals). The
+  test songs may be replaced.
 
 ## How we work (user preferences)
 

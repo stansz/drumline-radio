@@ -4,8 +4,36 @@ A browser jukebox for full songs written as text scores: public-domain melodies 
 Claude, and Claude's own originals. It is the sibling of
 [Drumline Studio](https://stansz.github.io/drumline-studio/).
 
-So far the song format and its parser are built. The player and the sound engine are not, so the
-page only shows a placeholder.
+**Play it:** https://stansz.github.io/drumline-radio/
+
+![Neon Test Pattern playing in the Synthwave style](docs/images/synthwave.png)
+
+It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
+
+- A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
+- A living score that scrolls each track's notes past a playhead.
+- VU meters and a glowing readout.
+- Four styles (Synthwave, Chiptune, Orchestral, Techno) with remix by band button: switch the band
+  and the same notes play with that style's instruments.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–4 styles.
+
+| Orchestral | Phone |
+|---|---|
+| ![Ninefold in the Orchestral style](docs/images/orchestral.png) | <img src="docs/images/phone.png" alt="Pixel Postcard in the Chiptune style on a phone" width="260"> |
+
+The sound engine, and how to add a patch or a style, are described in
+[docs/sound.md](docs/sound.md).
+
+## Songs
+
+Four Claude originals ship with the player:
+
+- **Acid Test** (Techno)
+- **Neon Test Pattern** (Synthwave)
+- **Ninefold** (Orchestral)
+- **Pixel Postcard** (Chiptune)
+
+Public-domain songs will be listed and credited here when they are added.
 
 ## Song format
 

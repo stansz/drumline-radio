@@ -1,0 +1,502 @@
+@font-face {
+  font-family: 'VT323';
+  src: url('./fonts/vt323-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #12002b;
+  --panel: rgba(20, 6, 40, 0.82);
+  --text: #fbe9ff;
+  --muted: #b59ac9;
+  --accent: #ff4fa3;
+  --accent-2: #2de2e6;
+  --glow: #ff4fa3;
+  --flash: 0;
+  --ui-font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --readout-font: 'VT323', monospace;
+}
+
+:root[data-style='synthwave'] {
+  --bg: #12002b;
+  --panel: rgba(20, 6, 40, 0.82);
+  --text: #fbe9ff;
+  --muted: #b59ac9;
+  --accent: #ff4fa3;
+  --accent-2: #2de2e6;
+  --glow: #ff4fa3;
+}
+
+:root[data-style='chiptune'] {
+  --bg: #0b0f14;
+  --panel: rgba(10, 16, 12, 0.9);
+  --text: #d8ffd0;
+  --muted: #7fa07a;
+  --accent: #7cff4f;
+  --accent-2: #4fd1ff;
+  --glow: #7cff4f;
+}
+
+:root[data-style='orchestral'] {
+  --bg: #1a120b;
+  --panel: rgba(38, 26, 16, 0.88);
+  --text: #f3e6cc;
+  --muted: #b29f80;
+  --accent: #e8c27a;
+  --accent-2: #c97b4a;
+  --glow: #e8c27a;
+}
+
+:root[data-style='techno'] {
+  --bg: #050505;
+  --panel: rgba(14, 14, 14, 0.92);
+  --text: #f0f0f0;
+  --muted: #8a8a8a;
+  --accent: #c6ff00;
+  --accent-2: #ff2a2a;
+  --glow: #c6ff00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ui-font);
+  overflow-x: hidden;
+  transition: background 0.6s;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+:root[data-style='synthwave'] body {
+  background:
+    radial-gradient(circle at 50% 66%, #ffb347 0 9%, transparent 9.2%) fixed,
+    linear-gradient(#12002b 0%, #2a0750 45%, #6b1a6e 62%, #ff4fa3 72%, #12002b 72.2%) fixed;
+}
+
+:root[data-style='synthwave'] body::after {
+  inset: auto 0 0 0;
+  height: 28%;
+  background:
+    repeating-linear-gradient(90deg, rgba(45, 226, 230, 0.35) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(0deg, rgba(45, 226, 230, 0.35) 0 1px, transparent 1px 40px);
+  transform: perspective(300px) rotateX(60deg);
+  transform-origin: top;
+}
+
+:root[data-style='chiptune'] body::after {
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0 1px, transparent 1px 3px);
+}
+
+:root[data-style='orchestral'] body {
+  background: radial-gradient(ellipse at 50% 30%, #3a2716, #1a120b 70%) fixed;
+}
+
+:root[data-style='techno'] body {
+  background: var(--bg);
+}
+
+:root[data-style='techno'] body::after {
+  background: var(--accent);
+  opacity: var(--flash, 0);
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.faceplate,
+.tuner {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.faceplate {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 18px;
+}
+
+.brand {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.readout {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #05030a;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.9);
+}
+
+.readout-title {
+  font-family: var(--readout-font);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.readout-sub {
+  font-family: var(--readout-font);
+  font-size: 18px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meters {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 48px;
+}
+
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 240px;
+}
+
+/* Absolute, so the canvas's own pixel size never feeds back into the stage height. */
+.score {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.style-banner {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.style-banner.show {
+  opacity: 1;
+}
+
+.banner-name {
+  font-family: var(--readout-font);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+}
+
+.banner-blurb {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.tuner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 18px;
+}
+
+.dial-wrap {
+  position: relative;
+  height: 96px;
+  border-radius: 8px;
+  background: #05030a;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+.dial {
+  position: relative;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.dial::-webkit-scrollbar {
+  display: none;
+}
+
+.dial:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: -2px;
+}
+
+.dial-track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  box-sizing: content-box;
+  width: max-content;
+  height: 100%;
+  padding: 0 calc(50% - 80px);
+}
+
+.dial-scale {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 15px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px);
+  background-position: left bottom;
+  background-size: 100% 8px, 100% 4px;
+  background-repeat: repeat-x;
+}
+
+.station {
+  position: relative;
+  flex: 0 0 160px;
+  width: 160px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-family: var(--readout-font);
+  cursor: pointer;
+}
+
+.station-freq {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.station-title {
+  max-width: 140px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.station.active {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.station-caption {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  font-family: var(--ui-font);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.needle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: var(--accent-2);
+  box-shadow: 0 0 10px var(--accent-2);
+  pointer-events: none;
+}
+
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.knob {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #3a3a44, #15151b 70%);
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.knob-main {
+  width: 56px;
+  height: 56px;
+  font-size: 18px;
+  color: var(--accent);
+}
+
+.time {
+  min-width: 44px;
+  font-family: var(--readout-font);
+  font-size: 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.seek {
+  flex: 1;
+  min-width: 80px;
+  accent-color: var(--accent);
+}
+
+.bands {
+  display: flex;
+  gap: 8px;
+}
+
+.band {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.band[aria-checked='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  /* The seek bar gets its own line under the knobs and times. */
+  .transport {
+    flex-wrap: wrap;
+  }
+
+  .transport .time:last-of-type {
+    margin-left: auto;
+  }
+
+  .seek {
+    order: 1;
+    flex-basis: 100%;
+  }
+
+  .faceplate {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .meters {
+    align-self: center;
+  }
+
+  .readout-title {
+    font-size: 24px;
+  }
+
+  .dial-track {
+    padding: 0 calc(50% - 65px);
+  }
+
+  .station {
+    flex-basis: 130px;
+    width: 130px;
+  }
+
+  .station-title {
+    max-width: 118px;
+  }
+
+  .bands {
+    flex-wrap: wrap;
+  }
+
+  .band {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .knob {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-style='techno'] body::after {
+    opacity: 0 !important;
+  }
+
+  .style-banner {
+    transition: none;
+  }
+}

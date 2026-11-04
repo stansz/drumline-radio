@@ -1,0 +1,29 @@
+# Test piece for the Chiptune style. Speeds up over the last four bars.
+title: Pixel Postcard
+composer: Claude
+year: 2026
+source: original
+style: chiptune
+key: C major
+tempo: 140
+time: 4/4
+
+@bars 9-12 tempo=140..170
+
+track lead role=lead
+| E5/8 G5 C6 G5 E5/4 G5/4 | D5/8 G5 B5 G5 D5/4 B4/4 | C5/8 E5 A5 E5 C5/4 E5/4 | F5/4 A5/8 G5 F5/4 C5/4 |
+| E5/8 E5 G5 E5 C6/4 G5/4 | B5/8 A5 G5 F5 D5/2 | A5/8 G5 F5 E5 F5/4 A5/4 | G5/2 B4/4 D5/4 |
+| C6/8 B5 C6 G5 E5/4 C5/4 | F5/8 E5 F5 A5 C6/4 A5/4 | B5/8 A5 G5 D5 G5/4 B5/4 | C6/2. r/4 |
+
+track harmony role=lead2 vol=0.55
+| G4/2 C5/2 | G4/2 B4/2 | A4/2 C5/2 | A4/2 F4/2 |
+| G4/2 E4/2 | B4/2 G4/2 | C5/2 A4/2 | D5/2 G4/2 |
+| E5/2 G4/2 | C5/2 F4/2 | D5/2 B4/2 | E5/2. r/4 |
+
+track bass role=bass
+| C3/4 G2 C3 G2 | G2 D2 G2 D2 | A2 E2 A2 E2 | F2 C2 F2 C2 |
+| C3 G2 C3 G2 | G2 D2 G2 D2 | F2 C2 F2 C2 | G2 D2 G2 D2 |
+| C3 G2 C3 G2 | F2 C2 F2 C2 | G2 D2 G2 D2 | C2/2. r/4 |
+
+track drums role=drums
+{ k/8 h s h k k s h }*11 | [k cr]/2. r/4 |
