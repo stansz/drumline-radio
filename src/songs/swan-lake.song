@@ -1,6 +1,7 @@
-# Swan Lake, arranged by Claude. The swan theme, rising each time.
+# Swan Lake, arranged by Claude and SZ. Bells preview the swan theme, which then rises each time.
 title: Swan Lake
 composer: Pyotr Ilyich Tchaikovsky
+arranger: Claude & SZ
 year: 1876
 source: public-domain
 category: classics
@@ -47,9 +48,9 @@ track harmony role=lead2 vol=0.45
 # Ending
 | R |
 
-track arp role=arp vol=0.35
+track arp role=arp vol=0.4
 # Intro
-| R | R |
+| F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -67,7 +68,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [G3 B3 D4]/1 | [B3 D4 F#4]/2 [F#3 A#3 C#4]/2 |
+| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 |
 # The tune
 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [G3 B3 D4]/1 |
 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 |
@@ -85,7 +86,7 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| G2/1 | B2/2 F#2/2 |
+| R | R |
 # The tune
 | B2/1 | B2/1 | B2/1 | G2/1 |
 | B2/1 | B2/1 | B2/1 | B2/1 |
@@ -103,7 +104,7 @@ track bass role=bass vol=0.75
 
 track drums role=drums vol=0.8
 # Intro
-| k/2 r/2 | k/2 r/2 |
+| R | R |
 # The tune
 | k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
 | k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |

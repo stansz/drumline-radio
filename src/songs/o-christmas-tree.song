@@ -1,6 +1,7 @@
-# O Christmas Tree, arranged by Claude. Woodwinds and strings, three verses.
+# O Christmas Tree, arranged by Claude and SZ. A soft string chord, then woodwinds over a gentle waltz bass.
 title: O Christmas Tree
 composer: Traditional (German)
+arranger: Claude & SZ
 year: traditional
 source: public-domain
 category: carols
@@ -97,28 +98,28 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| D2/2. | G2/2. |
+| R | R |
 # The tune
-| G2/2. | G2/2. | D2/2. | G2/2. |
-| G2/2. | G2/2. | D2/2. | G2/2. |
-| G2/4. C2/4. | D2/2. | D2/2. | G2/2. |
-| G2/2. | G2/2. | D2/2. | G2/2. |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4. C2/4. | D2/4 r/4 A2/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
 # Pass 2, fuller
-| G2/2. | G2/2. | D2/2. | G2/2. |
-| G2/2. | G2/2. | D2/2. | G2/2. |
-| G2/4. C2/4. | D2/2. | D2/2. | G2/2. |
-| G2/2. | G2/2. | D2/2. | G2/2. |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4. C2/4. | D2/4 r/4 A2/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
 # Pass 3, fuller
-| G2/2. | G2/2. | D2/2. | G2/2. |
-| G2/2. | G2/2. | D2/2. | G2/2. |
-| G2/4. C2/4. | D2/2. | D2/2. | G2/2. |
-| G2/2. | G2/2. | D2/2. | G2/2. |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4. C2/4. | D2/4 r/4 A2/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
+| G2/4 r/4 D3/4 | G2/4 r/4 D3/4 | D2/4 r/4 A2/4 | G2/4 r/4 D3/4 |
 # Ending
 | G2/2. |
 
 track drums role=drums vol=0.8
 # Intro
-| k/4 r/2 | k/4 r/2 |
+| R | R |
 # The tune
 | k/4 r/2 | k/4 r/2 | k/4 r/2 | k/4 r/2 |
 | k/4 r/2 | k/4 r/2 | k/4 r/2 | k/4 r/2 |

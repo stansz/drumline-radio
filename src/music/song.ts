@@ -11,6 +11,7 @@ export type Category = (typeof CATEGORIES)[number];
 export interface SongMeta {
   title: string;
   composer: string;
+  arranger: string | null;
   year: string;
   source: 'public-domain' | 'original';
   category: Category;
@@ -67,7 +68,7 @@ const REQUIRED_HEADER_KEYS = [
   'time',
 ] as const;
 
-const KNOWN_HEADER_KEYS = new Set<string>([...REQUIRED_HEADER_KEYS, 'pickup']);
+const KNOWN_HEADER_KEYS = new Set<string>([...REQUIRED_HEADER_KEYS, 'pickup', 'arranger']);
 const TIME_DENOMINATORS = [1, 2, 4, 8, 16];
 const DURATION_NUMBERS = [1, 2, 4, 8, 16, 32, 64];
 
@@ -511,6 +512,7 @@ export function parseSong(text: string): ParseResult {
   const meta: SongMeta = {
     title: '',
     composer: '',
+    arranger: null,
     year: '',
     source: 'original',
     category: 'classics',
@@ -529,6 +531,12 @@ export function parseSong(text: string): ParseResult {
     const entry = headerValues.get(key);
     if (entry && entry.value === '') err(entry.line, `${key} must not be empty`);
     else if (entry) meta[key] = entry.value;
+  }
+
+  const arrangerEntry = headerValues.get('arranger');
+  if (arrangerEntry) {
+    if (arrangerEntry.value === '') err(arrangerEntry.line, 'arranger must not be empty');
+    else meta.arranger = arrangerEntry.value;
   }
 
   const sourceEntry = headerValues.get('source');

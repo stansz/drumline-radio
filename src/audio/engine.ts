@@ -1,4 +1,4 @@
-import { crushCurve, noteGain, softClipCurve } from './curves';
+import { crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
 import type { StyleId } from '../music/roles';
 import type { Song, Track } from '../music/song';
 import { resolvePatch, STYLE_DEFS } from './styles';
@@ -40,6 +40,8 @@ export class Engine {
   private readonly reverb: ConvolverNode;
   private readonly delay: DelayNode;
   private readonly delayFeedback: GainNode;
+  private readonly crackleBuffer: AudioBuffer;
+  private readonly crackleGain: GainNode;
   private readonly reverbImpulses = new Map<number, AudioBuffer>();
 
   private songValue: Song | null = null;
@@ -53,6 +55,7 @@ export class Engine {
   private startPos = 0;
   private scheduledUntil = 0;
   private timer: ReturnType<typeof setInterval> | null = null;
+  private crackleSource: AudioBufferSourceNode | null = null;
   private readonly voices = new Set<Voice>();
 
   onEnded: (() => void) | null = null;
@@ -60,6 +63,14 @@ export class Engine {
   constructor(ctx: AudioContext) {
     this.ctx = ctx;
     this.voiceKit = createVoiceKit(ctx);
+
+    const crackleLength = Math.round(4 * ctx.sampleRate);
+    this.crackleBuffer = ctx.createBuffer(2, crackleLength, ctx.sampleRate);
+    for (let channel = 0; channel < 2; channel += 1) {
+      this.crackleBuffer
+        .getChannelData(channel)
+        .set(crackleSamples(crackleLength, ctx.sampleRate, Math.random));
+    }
 
     this.mix = ctx.createGain();
     this.mix.gain.value = 1;
@@ -99,6 +110,10 @@ export class Engine {
     this.clip = ctx.createWaveShaper();
     this.clip.curve = softClipCurve();
     this.clip.oversample = '4x';
+
+    this.crackleGain = ctx.createGain();
+    this.crackleGain.gain.value = 0;
+    this.crackleGain.connect(this.clip);
 
     this.volume = ctx.createGain();
     this.volume.gain.value = this.volumeValue;
@@ -196,6 +211,12 @@ export class Engine {
       if (!this.playingValue || this.timer !== null) return;
       this.startCtx = this.ctx.currentTime;
       this.scheduledUntil = this.startPos;
+      const crackle = this.ctx.createBufferSource();
+      crackle.buffer = this.crackleBuffer;
+      crackle.loop = true;
+      crackle.connect(this.crackleGain);
+      crackle.start();
+      this.crackleSource = crackle;
       this.timer = setInterval(() => this.tick(), TICK_MS);
       this.tick();
     };
@@ -285,6 +306,7 @@ export class Engine {
     this.dryGain.gain.setTargetAtTime(1 - fx.crush, now, 0.05);
     this.wetGain.gain.setTargetAtTime(fx.crush, now, 0.05);
     this.lowpass.frequency.setTargetAtTime(fx.lowpassHz, now, 0.05);
+    this.crackleGain.gain.setTargetAtTime(fx.crackle, now, 0.05);
 
     for (const channel of this.channels) {
       const patch = resolvePatch(def, channel.track);
@@ -357,6 +379,11 @@ export class Engine {
     if (this.timer !== null) {
       clearInterval(this.timer);
       this.timer = null;
+    }
+    if (this.crackleSource !== null) {
+      this.crackleSource.stop();
+      this.crackleSource.disconnect();
+      this.crackleSource = null;
     }
     const now = this.ctx.currentTime;
     for (const voice of this.voices) voice.stop(now);

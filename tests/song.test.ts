@@ -322,3 +322,26 @@ describe('the parser', () => {
     expect(notes[0].ticks).toBe(3840);
   });
 });
+
+describe('the arranger header', () => {
+  it('reads an optional arranger', () => {
+    const result = parseSong(`${HEADER}\narranger: Claude & SZ\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.meta.arranger).toBe('Claude & SZ');
+  });
+
+  it('defaults to null without the line', () => {
+    const result = parseSong(`${HEADER}\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.meta.arranger).toBeNull();
+  });
+
+  it('rejects an empty arranger', () => {
+    const result = parseSong(`${HEADER}\narranger:\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.some((e) => e.includes('arranger must not be empty'))).toBe(true);
+  });
+});

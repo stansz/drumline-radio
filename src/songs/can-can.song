@@ -1,6 +1,7 @@
-# Can-Can, arranged by Claude. The galop four times, the last up a step.
+# Can-Can, arranged by Claude and SZ. A snare roll-in, a galloping bass, four times round.
 title: Can-Can
 composer: Jacques Offenbach
+arranger: Claude & SZ
 year: 1858
 source: public-domain
 category: classics
@@ -11,7 +12,7 @@ time: 2/4
 
 track melody role=lead vol=0.8
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | C5/4 C5/4 | D5/8 F5/8 E5/8 D5/8 | G5/4 G5/4 | G5/8 A5/8 E5/8 F5/8 |
 | D5/4 D5/4 | D5/8 F5/8 E5/8 D5/8 | C5/8 C6/8 B5/8 A5/8 | G5/8 F5/8 E5/8 D5/8 |
@@ -37,7 +38,7 @@ track melody role=lead vol=0.8
 
 track harmony role=lead2 vol=0.45
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -63,7 +64,7 @@ track harmony role=lead2 vol=0.45
 
 track arp role=arp vol=0.35
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -89,7 +90,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [G3 B3 D4]/2 | [G3 B3 D4]/2 | [C3 E3 G3]/4 [G3 B3 D4]/4 | [C3 E3 G3]/2 |
+| R | R |
 # The tune
 | [C3 E3 G3]/2 | [G3 B3 D4]/2 | [C3 E3 G3]/2 | [C3 E3 G3]/2 |
 | [G3 B3 D4]/2 | [G3 B3 D4]/2 | [C3 E3 G3]/2 | [G3 B3 D4]/2 |
@@ -115,59 +116,59 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G3/4 | C3/4 G2/4 |
+| R | R |
 # The tune
-| C3/4 G2/4 | G3/4 D3/4 | C3/4 G2/4 | C3/4 G2/4 |
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G2/4 | G3/4 D3/4 |
-| C3/4 G2/4 | G3/4 D3/4 | C3/4 G2/4 | C3/4 G2/4 |
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G3/4 | C3/4 G2/4 |
+| C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
+| G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 |
+| C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
+| G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
 # Pass 2, fuller
-| C3/4 G2/4 | G3/4 D3/4 | C3/4 G2/4 | C3/4 G2/4 |
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G2/4 | G3/4 D3/4 |
-| C3/4 G2/4 | G3/4 D3/4 | C3/4 G2/4 | C3/4 G2/4 |
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G3/4 | C3/4 G2/4 |
+| C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
+| G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 |
+| C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
+| G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
 # Pass 3, fuller
-| C3/4 G2/4 | G3/4 D3/4 | C3/4 G2/4 | C3/4 G2/4 |
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G2/4 | G3/4 D3/4 |
-| C3/4 G2/4 | G3/4 D3/4 | C3/4 G2/4 | C3/4 G2/4 |
-| G3/4 D3/4 | G3/4 D3/4 | C3/4 G3/4 | C3/4 G2/4 |
+| C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
+| G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 |
+| C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
+| G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | G2/8 G2/16 G3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 G2/8 G2/16 G3/16 | C2/8 C2/16 C3/16 C2/8 C2/16 C3/16 |
 # Up a key (pass 4)
-| D3/4 A2/4 | A3/4 E3/4 | D3/4 A2/4 | D3/4 A2/4 |
-| A3/4 E3/4 | A3/4 E3/4 | D3/4 A2/4 | A3/4 E3/4 |
-| D3/4 A2/4 | A3/4 E3/4 | D3/4 A2/4 | D3/4 A2/4 |
-| A3/4 E3/4 | A3/4 E3/4 | D3/4 A3/4 | D3/4 A2/4 |
+| D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 | A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 | D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 | D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 |
+| A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 | A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 | D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 | A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 |
+| D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 | A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 | D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 | D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 |
+| A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 | A2/8 A2/16 A3/16 A2/8 A2/16 A3/16 | D2/8 D2/16 D3/16 A2/8 A2/16 A3/16 | D2/8 D2/16 D3/16 D2/8 D2/16 D3/16 |
 # Ending
 | D2/2 |
 
 track drums role=drums vol=0.8
 # Intro
-| k/4 h/4 | k/4 h/4 | k/4 h/4 | k/4 h/4 |
+| k/4 s/8 s/8 | k/4 s/8 s/8 |
 # The tune
-| k/4 h/4 | k/4 h/4 | k/4 h/4 | k/4 h/4 |
-| k/4 h/4 | k/4 h/4 | k/4 h/4 | k/4 h/4 |
-| k/4 h/4 | k/4 h/4 | k/4 h/4 | k/4 h/4 |
-| k/4 h/4 | k/4 h/4 | k/4 h/4 | k/4 h/4 |
+| k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 |
+| k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 |
+| k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 |
+| k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 | k/4 s/8 s/8 |
 # Pass 2, fuller
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
 # Pass 3, fuller
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
 # Up a key (pass 4)
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
+| [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 | [k s]/8 s/16 s/16 s/8 s/8 |
 # Ending
 | k/2 |
 
 track cymbals role=drums vol=0.5
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |

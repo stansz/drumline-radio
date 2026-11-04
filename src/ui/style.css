@@ -60,6 +60,16 @@
   --glow: #c6ff00;
 }
 
+:root[data-style='lofi'] {
+  --bg: #1a1418;
+  --panel: rgba(34, 24, 30, 0.88);
+  --text: #f5e6dc;
+  --muted: #b39a94;
+  --accent: #ffb37a;
+  --accent-2: #7fd1c7;
+  --glow: #ffb37a;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -118,6 +128,14 @@ body::after {
 :root[data-style='techno'] body::after {
   background: var(--accent);
   opacity: var(--flash, 0);
+}
+
+:root[data-style='lofi'] body {
+  background: radial-gradient(ellipse at 50% 0%, #3a2530 0%, #1a1418 65%) fixed;
+}
+
+:root[data-style='lofi'] body::after {
+  background: repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
 }
 
 #app {
@@ -915,9 +933,9 @@ body::after {
   }
 
   .band {
-    padding: 9px 2px;
-    font-size: 10px;
-    letter-spacing: 0.04em;
+    padding: 9px 1px;
+    font-size: 9px;
+    letter-spacing: 0.02em;
     white-space: nowrap;
   }
 }

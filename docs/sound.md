@@ -21,7 +21,7 @@ pan, and effects cover all of its notes.
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
 (oscillators, envelope, filter, vibrato, FM, and send levels) or a drum kit (kick, snare, hats,
-cymbals, and toms). `src/audio/styles.ts` holds the four styles as data.
+cymbals, and toms). `src/audio/styles.ts` holds the five styles as data.
 
 A track picks its patch in this order:
 
@@ -84,6 +84,12 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 | bass | Sub bass |
 | arp | Acid arp |
 | drums | 909 kit |
+
+### Lo-fi
+
+The Lo-fi style is mellow keys, a round bass, and a dusty swung kit. Its tape wobble comes from the
+slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
+`fx.crackle`.
 
 ## Master chain
 

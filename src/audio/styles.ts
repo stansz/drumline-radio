@@ -68,6 +68,7 @@ export interface StyleDef {
     delayFeedback: number;
     crush: number;
     lowpassHz: number;
+    crackle: number;
   };
   lanes: string[];
 }
@@ -183,6 +184,7 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       delayFeedback: 0.35,
       crush: 0,
       lowpassHz: 18000,
+      crackle: 0,
     },
     lanes: ['#ff4fa3', '#2de2e6', '#ffb347', '#b967ff', '#f9f871', '#ff6b6b'],
   },
@@ -258,6 +260,7 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       delayFeedback: 0.25,
       crush: 0.2,
       lowpassHz: 12000,
+      crackle: 0,
     },
     lanes: ['#7cff4f', '#4fd1ff', '#ffd84f', '#ff6f91', '#c792ff', '#ffffff'],
   },
@@ -353,6 +356,7 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       delayFeedback: 0.2,
       crush: 0,
       lowpassHz: 14000,
+      crackle: 0,
     },
     lanes: ['#e8c27a', '#c97b4a', '#8fb8a8', '#d9d2c3', '#a77fb0', '#7f9fd1'],
   },
@@ -443,8 +447,43 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       delayFeedback: 0.4,
       crush: 0,
       lowpassHz: 20000,
+      crackle: 0,
     },
     lanes: ['#c6ff00', '#ff2a2a', '#00e5ff', '#ff9100', '#f5f5f5', '#d500f9'],
+  },
+
+  lofi: {
+    id: 'lofi',
+    name: 'Lo-fi',
+    blurb: 'Mellow keys, a dusty swung kit, tape wobble, and vinyl crackle.',
+    roles: { lead: 'soft-lead', lead2: 'tine-keys', counter: 'soft-flute', pad: 'tape-pad', chords: 'tine-keys', bass: 'round-bass', arp: 'muted-pluck', drums: 'dusty-kit' },
+    patches: {
+      'soft-lead': synth({ name: 'Soft lead', oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
+        env: env(0.02, 0.4, 0.6, 0.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
+        vibrato: { rate: 0.7, cents: 9, delay: 0 }, gain: 0.3, sends: { reverb: 1, delay: 0.8 } }),
+      'tine-keys': synth({ name: 'Tine keys', oscs: [osc('sine', 0, 0, 1)], fm: { ratio: 1, index: 1.2, decay: 0.8 },
+        env: env(0.005, 1.2, 0.25, 0.5), filter: { type: 'lowpass', hz: 2200, q: 0.5, envAmount: 1, envDecay: 0.3 },
+        vibrato: { rate: 0.6, cents: 7, delay: 0 }, gain: 0.26, sends: { reverb: 1, delay: 0.5 } }),
+      'soft-flute': synth({ name: 'Soft flute', oscs: [osc('sine', 0, 0, 0.7), osc('triangle', 0, 3, 0.3)],
+        env: env(0.05, 0.3, 0.7, 0.3), filter: { type: 'lowpass', hz: 2000, q: 0.5, envAmount: 1, envDecay: 0.2 },
+        vibrato: { rate: 0.7, cents: 10, delay: 0 }, gain: 0.22 }),
+      'tape-pad': synth({ name: 'Tape pad', oscs: [osc('sawtooth', 0, -10, 0.3), osc('sawtooth', 0, 10, 0.3), osc('triangle', -1, 0, 0.4)],
+        env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 1, envDecay: 1 },
+        vibrato: { rate: 0.5, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1.4, delay: 0.3 } }),
+      'round-bass': synth({ name: 'Round bass', oscs: [osc('sine', 0, 0, 0.75), osc('triangle', 0, 0, 0.25)],
+        env: env(0.01, 0.3, 0.7, 0.12), filter: { type: 'lowpass', hz: 600, q: 0.7, envAmount: 1.5, envDecay: 0.1 },
+        gain: 0.5, sends: { reverb: 0.1, delay: 0 } }),
+      'muted-pluck': synth({ name: 'Muted pluck', oscs: [osc('triangle', 0, 0, 1)],
+        env: env(0.003, 0.25, 0, 0.2), filter: { type: 'lowpass', hz: 1600, q: 1, envAmount: 2, envDecay: 0.12 },
+        vibrato: { rate: 0.6, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1, delay: 1.2 } }),
+      'dusty-kit': drums({ name: 'Dusty kit',
+        kick: { wave: 'sine', hz: 50, sweep: 2, sweepTime: 0.08, decay: 0.35, click: 0.1 },
+        snare: { noise: 'white', filter: 'bandpass', hz: 1400, toneHz: 0, decay: 0.18 },
+        hat: { noise: 'white', hz: 6000, decay: 0.03 },
+        crashDecay: 1.2, gain: 0.75, sends: { reverb: 0.6, delay: 0 } }),
+    },
+    fx: { reverbSeconds: 2.2, reverbSend: 0.25, delayBeats: 0.75, delaySend: 0.15, delayFeedback: 0.3, crush: 0.08, lowpassHz: 4200, crackle: 0.08 },
+    lanes: ['#ffb37a', '#7fd1c7', '#e8a0bf', '#c3b1e1', '#f6d186', '#9ad0ec'],
   },
 };
 

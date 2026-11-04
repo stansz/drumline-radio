@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   attackTime,
+  crackleSamples,
   CRUSH_POINTS,
   crushCurve,
   noteGain,
@@ -66,5 +67,24 @@ describe('attackTime', () => {
 
   it('keeps a patch attack that is already longer', () => {
     expect(attackTime(0.4, 55)).toBe(0.4);
+  });
+});
+
+describe('crackleSamples', () => {
+  it('builds a full second of clamped hiss and clicks', () => {
+    let state = 12345;
+    const seeded = (): number => {
+      state = (state * 1664525 + 1013904223) % 4294967296;
+      return state / 4294967296;
+    };
+    const samples = crackleSamples(48000, 48000, seeded);
+    expect(samples.length).toBe(48000);
+    let loudest = 0;
+    for (const value of samples) {
+      expect(value).toBeGreaterThanOrEqual(-1);
+      expect(value).toBeLessThanOrEqual(1);
+      loudest = Math.max(loudest, Math.abs(value));
+    }
+    expect(loudest).toBeGreaterThan(0.2);
   });
 });

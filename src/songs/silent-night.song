@@ -1,6 +1,7 @@
-# Silent Night, arranged by Claude. Two gentle verses over a warm pad.
+# Silent Night, arranged by Claude and SZ. Two gentle verses over a warm pad and a soft rim.
 title: Silent Night
 composer: Franz Xaver Gruber
+arranger: Claude & SZ
 year: 1818
 source: public-domain
 category: carols
@@ -93,41 +94,41 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
+| R | R |
 # The tune
-| C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
+| C2/2. | C2/2. | C2/2. | C2/2. |
+| G2/2. | G2/2. | C2/2. | C2/2. |
+| F2/2. | F2/2. | C2/2. | C2/2. |
+| F2/2. | F2/2. | C2/2. | C2/2. |
+| G2/2. | G2/2. | C2/2. | C2/2. |
+| C2/2. | G2/2. | C2/2. | C2/2. |
 # Pass 2, fuller
-| C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
-| C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 | C2/8 C3/8 C2/8 C3/8 C2/8 C3/8 |
+| C2/2. | C2/2. | C2/2. | C2/2. |
+| G2/2. | G2/2. | C2/2. | C2/2. |
+| F2/2. | F2/2. | C2/2. | C2/2. |
+| F2/2. | F2/2. | C2/2. | C2/2. |
+| G2/2. | G2/2. | C2/2. | C2/2. |
+| C2/2. | G2/2. | C2/2. | C2/2. |
 # Ending
 | C2/2. |
 
 track drums role=drums vol=0.8
 # Intro
-| k/4. h/4. | k/4. h/4. |
+| R | R |
 # The tune
-| k/4. h/4. | k/4. h/4. | k/4. h/4. | k/4. h/4. |
-| k/4. h/4. | k/4. h/4. | k/4. h/4. | k/4. h/4. |
-| k/4. h/4. | k/4. h/4. | k/4. h/4. | k/4. h/4. |
-| k/4. h/4. | k/4. h/4. | k/4. h/4. | k/4. h/4. |
-| k/4. h/4. | k/4. h/4. | k/4. h/4. | k/4. h/4. |
-| k/4. h/4. | k/4. h/4. | k/4. h/4. | k/4. h/4. |
+| k/4. rim/4. | k/4. rim/4. | k/4. rim/4. | k/4. rim/4. |
+| k/4. rim/4. | k/4. rim/4. | k/4. rim/4. | k/4. rim/4. |
+| k/4. rim/4. | k/4. rim/4. | k/4. rim/4. | k/4. rim/4. |
+| k/4. rim/4. | k/4. rim/4. | k/4. rim/4. | k/4. rim/4. |
+| k/4. rim/4. | k/4. rim/4. | k/4. rim/4. | k/4. rim/4. |
+| k/4. rim/4. | k/4. rim/4. | k/4. rim/4. | k/4. rim/4. |
 # Pass 2, fuller
-| [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 |
-| [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 |
-| [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 |
-| [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 |
-| [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 |
-| [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 | [k h]/8 h/8 h/8 [s h]/8 h/8 h/8 |
+| k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 |
+| k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 |
+| k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 |
+| k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 |
+| k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 |
+| k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 | k/8 h/8 h/8 [s h]/8 h/8 h/8 |
 # Ending
 | k/2. |
 

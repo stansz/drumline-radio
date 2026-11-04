@@ -1,6 +1,7 @@
-# Eine kleine Nachtmusik, arranged by Claude. Mozart over a four-on-the-floor kit.
+# Eine kleine Nachtmusik, arranged by Claude and SZ. Four bars of open hats, then Mozart over a pulsing bass.
 title: Eine kleine Nachtmusik
 composer: Wolfgang Amadeus Mozart
+arranger: Claude & SZ
 year: 1787
 source: public-domain
 category: classics
@@ -56,7 +57,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [G3 B3 D4]/1 | [D3 F#3 A3]/1 | [G3 B3 D4]/1 | [D3 F#3 A3]/2 [G3 B3 D4]/2 |
+| R | R | R | R |
 # The tune
 | [G3 B3 D4]/1 | [G3 B3 D4]/1 | [D3 F#3 A3]/1 | [D3 F#3 A3]/1 |
 | [G3 B3 D4]/1 | [D3 F#3 A3]/1 | [G3 B3 D4]/1 | [D3 F#3 A3]/2 [G3 B3 D4]/2 |
@@ -71,31 +72,31 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 G2/8 r/8 G2/8 |
+| R | R | R | R |
 # The tune
-| r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 |
-| r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 G2/8 r/8 G2/8 |
+| G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 |
+| G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 | G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 |
 # Pass 2, fuller
-| r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 |
-| r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 D2/8 r/8 D2/8 r/8 G2/8 r/8 G2/8 |
+| G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 |
+| G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 | G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 | D2/16 D2/16 D2/16 D3/16 D2/16 D2/16 D2/16 D3/16 G2/16 G2/16 G2/16 G3/16 G2/16 G2/16 G2/16 G3/16 |
 # Up a key (pass 3)
-| r/8 A2/8 r/8 A2/8 r/8 A2/8 r/8 A2/8 | r/8 A2/8 r/8 A2/8 r/8 A2/8 r/8 A2/8 | r/8 E2/8 r/8 E2/8 r/8 E2/8 r/8 E2/8 | r/8 E2/8 r/8 E2/8 r/8 E2/8 r/8 E2/8 |
-| r/8 A2/8 r/8 A2/8 r/8 A2/8 r/8 A2/8 | r/8 E2/8 r/8 E2/8 r/8 E2/8 r/8 E2/8 | r/8 A2/8 r/8 A2/8 r/8 A2/8 r/8 A2/8 | r/8 E2/8 r/8 E2/8 r/8 A2/8 r/8 A2/8 |
+| A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 | A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 | E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 | E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 |
+| A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 | E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 | A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 | E2/16 E2/16 E2/16 E3/16 E2/16 E2/16 E2/16 E3/16 A2/16 A2/16 A2/16 A3/16 A2/16 A2/16 A2/16 A3/16 |
 # Ending
 | A2/1 |
 
 track drums role=drums vol=0.8
 # Intro
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
+| k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 |
 # The tune
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
+| k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 |
+| k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 | k/8 oh/8 k/8 oh/8 k/8 oh/8 k/8 oh/8 |
 # Pass 2, fuller
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
+| [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 |
+| [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 |
 # Up a key (pass 3)
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
+| [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 |
+| [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 | [k h]/8 oh/8 [k cl]/8 oh/8 [k h]/8 oh/8 [k cl]/8 oh/8 |
 # Ending
 | k/1 |
 

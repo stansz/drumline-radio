@@ -1,6 +1,7 @@
-# Korobeiniki (Tetris tune), arranged by Claude. Two verses and the slow middle, three times.
+# Korobeiniki (Tetris tune), arranged by Claude and SZ. A folk-dance oom-pah under the tune, teased on the arp first.
 title: Korobeiniki (Tetris tune)
 composer: Traditional (Russian)
+arranger: Claude & SZ
 year: 1861
 source: public-domain
 category: classics
@@ -11,7 +12,7 @@ time: 4/4
 
 track melody role=lead vol=0.8
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | E5/4 B4/8 C5/8 D5/4 C5/8 B4/8 | A4/4 A4/8 C5/8 E5/4 D5/8 C5/8 | B4/4. C5/8 D5/4 E5/4 | C5/4 A4/4 A4/2 |
 | r/8 D5/4 F5/8 A5/4 G5/8 F5/8 | E5/4. C5/8 E5/4 D5/8 C5/8 | B4/4 B4/8 C5/8 D5/4 E5/4 | C5/4 A4/4 A4/2 |
@@ -38,7 +39,7 @@ track melody role=lead vol=0.8
 
 track harmony role=lead2 vol=0.45
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -63,9 +64,9 @@ track harmony role=lead2 vol=0.45
 # Ending
 | R |
 
-track arp role=arp vol=0.35
+track arp role=arp vol=0.4
 # Intro
-| R | R | R | R |
+| E5/4 B4/8 C5/8 D5/4 C5/8 B4/8 | A4/4 A4/8 C5/8 E5/4 D5/8 C5/8 |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -92,7 +93,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [A3 C4 E4]/1 | [E3 G#3 B3]/1 | [A3 C4 E4]/1 | [E3 G#3 B3]/1 |
+| [E3 G#3 B3]/2 [A3 C4 E4]/2 | [A3 C4 E4]/1 |
 # The tune
 | [E3 G#3 B3]/2 [A3 C4 E4]/2 | [A3 C4 E4]/1 | [E3 G#3 B3]/1 | [A3 C4 E4]/1 |
 | [D3 F3 A3]/1 | [C3 E3 G3]/1 | [E3 G#3 B3]/1 | [A3 C4 E4]/1 |
@@ -119,61 +120,61 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 |
+| R | R |
 # The tune
-| E3/4 B2/4 A3/4 E3/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| D3/4 A2/4 D3/4 A2/4 | C3/4 G2/4 C3/4 G2/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| E3/4 B2/4 A3/4 E3/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| D3/4 A2/4 D3/4 A2/4 | C3/4 G2/4 C3/4 G2/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 |
-| A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 |
+| E2/4 r/4 A2/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| D2/4 r/4 A1/4 r/4 | C2/4 r/4 G1/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| E2/4 r/4 A2/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| D2/4 r/4 A1/4 r/4 | C2/4 r/4 G1/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 |
+| A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 |
 # Pass 2, fuller
-| E3/4 B2/4 A3/4 E3/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| D3/4 A2/4 D3/4 A2/4 | C3/4 G2/4 C3/4 G2/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| E3/4 B2/4 A3/4 E3/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| D3/4 A2/4 D3/4 A2/4 | C3/4 G2/4 C3/4 G2/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 |
-| A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 |
-| A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 | A3/4 E3/4 A3/4 E3/4 | E3/4 B2/4 E3/4 B2/4 |
+| E2/4 r/4 A2/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| D2/4 r/4 A1/4 r/4 | C2/4 r/4 G1/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| E2/4 r/4 A2/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| D2/4 r/4 A1/4 r/4 | C2/4 r/4 G1/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 |
+| A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 |
+| A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 | A2/4 r/4 E2/4 r/4 | E2/4 r/4 B1/4 r/4 |
 # Up a key (pass 3)
-| F3/4 C3/4 A#3/4 F3/4 | A#3/4 F3/4 A#3/4 F3/4 | F3/4 C3/4 F3/4 C3/4 | A#3/4 F3/4 A#3/4 F3/4 |
-| D#3/4 A#2/4 D#3/4 A#2/4 | C#3/4 G#2/4 C#3/4 G#2/4 | F3/4 C3/4 F3/4 C3/4 | A#3/4 F3/4 A#3/4 F3/4 |
-| F3/4 C3/4 A#3/4 F3/4 | A#3/4 F3/4 A#3/4 F3/4 | F3/4 C3/4 F3/4 C3/4 | A#3/4 F3/4 A#3/4 F3/4 |
-| D#3/4 A#2/4 D#3/4 A#2/4 | C#3/4 G#2/4 C#3/4 G#2/4 | F3/4 C3/4 F3/4 C3/4 | A#3/4 F3/4 A#3/4 F3/4 |
-| A#3/4 F3/4 A#3/4 F3/4 | F3/4 C3/4 F3/4 C3/4 | A#3/4 F3/4 A#3/4 F3/4 | F3/4 C3/4 F3/4 C3/4 |
-| A#3/4 F3/4 A#3/4 F3/4 | F3/4 C3/4 F3/4 C3/4 | A#3/4 F3/4 A#3/4 F3/4 | A#3/4 F3/4 A#3/4 F3/4 |
+| F2/4 r/4 A#2/4 r/4 | A#2/4 r/4 F2/4 r/4 | F2/4 r/4 C2/4 r/4 | A#2/4 r/4 F2/4 r/4 |
+| D#2/4 r/4 A#1/4 r/4 | C#2/4 r/4 G#1/4 r/4 | F2/4 r/4 C2/4 r/4 | A#2/4 r/4 F2/4 r/4 |
+| F2/4 r/4 A#2/4 r/4 | A#2/4 r/4 F2/4 r/4 | F2/4 r/4 C2/4 r/4 | A#2/4 r/4 F2/4 r/4 |
+| D#2/4 r/4 A#1/4 r/4 | C#2/4 r/4 G#1/4 r/4 | F2/4 r/4 C2/4 r/4 | A#2/4 r/4 F2/4 r/4 |
+| A#2/4 r/4 F2/4 r/4 | F2/4 r/4 C2/4 r/4 | A#2/4 r/4 F2/4 r/4 | F2/4 r/4 C2/4 r/4 |
+| A#2/4 r/4 F2/4 r/4 | F2/4 r/4 C2/4 r/4 | A#2/4 r/4 F2/4 r/4 | A#2/4 r/4 F2/4 r/4 |
 # Ending
 | A#2/1 |
 
 track drums role=drums vol=0.8
 # Intro
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
+| R | R |
 # The tune
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
+| k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 |
+| k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 |
+| k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 |
+| k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 |
+| k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 |
+| k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 | k/4 s/4 k/4 s/4 |
 # Pass 2, fuller
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
 # Up a key (pass 3)
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
+| k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 h/8 s/8 h/8 |
 # Ending
 | k/1 |
 
 track cymbals role=drums vol=0.5
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |

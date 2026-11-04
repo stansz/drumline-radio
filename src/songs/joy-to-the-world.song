@@ -1,6 +1,7 @@
-# Joy to the World, arranged by Claude. Strings, then brass, then up a key.
+# Joy to the World, arranged by Claude and SZ. Straight in with the falling scale; brass joins, then up a key.
 title: Joy to the World
 composer: Traditional, arr. Lowell Mason
+arranger: Claude & SZ
 year: 1839
 source: public-domain
 category: carols
@@ -10,8 +11,6 @@ tempo: 100
 time: 4/4
 
 track melody role=lead vol=0.8
-# Intro
-| R | R |
 # The tune
 | D5/2 C#5/4. B4/8 | A4/2. G4/4 | F#4/2 E4/2 | D4/2. A4/4 |
 | B4/2. B4/4 | C#5/2. C#5/4 | D5/2. D5/4 | D5/4 C#5/4 B4/4 A4/4 |
@@ -34,8 +33,6 @@ track melody role=lead vol=0.8
 | R |
 
 track harmony role=lead2 vol=0.45
-# Intro
-| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -58,8 +55,6 @@ track harmony role=lead2 vol=0.45
 | R |
 
 track arp role=arp vol=0.35
-# Intro
-| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -82,8 +77,6 @@ track arp role=arp vol=0.35
 | R |
 
 track pad role=pad vol=0.45
-# Intro
-| [D3 F#3 A3]/2 [A3 C#4 E4]/2 | [D3 F#3 A3]/1 |
 # The tune
 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 | [A3 C#4 E4]/1 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 | [D3 F#3 A3]/1 |
 | [G3 B3 D4]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 |
@@ -106,8 +99,6 @@ track pad role=pad vol=0.45
 | [D#3 G3 A#3]/1 |
 
 track bass role=bass vol=0.75
-# Intro
-| D2/2 A2/2 | D2/1 |
 # The tune
 | D2/2 A2/2 | A2/1 | D2/2 A2/2 | D2/1 |
 | G2/1 | A2/1 | D2/1 | D2/2 A2/2 |
@@ -130,8 +121,6 @@ track bass role=bass vol=0.75
 | D#2/1 |
 
 track drums role=drums vol=0.8
-# Intro
-| k/2 r/2 | k/2 r/2 |
 # The tune
 | k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
 | k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
@@ -154,8 +143,6 @@ track drums role=drums vol=0.8
 | k/1 |
 
 track cymbals role=drums vol=0.5
-# Intro
-| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |

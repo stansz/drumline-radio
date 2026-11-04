@@ -1,6 +1,7 @@
-# Jingle Bells, arranged by Claude. Verse and chorus, three times.
+# Jingle Bells, arranged by Claude and SZ. The chorus hook first, then a swung sleigh-ride beat.
 title: Jingle Bells
 composer: James Lord Pierpont
+arranger: Claude & SZ
 year: 1857
 source: public-domain
 category: carols
@@ -11,7 +12,7 @@ time: 4/4
 
 track melody role=lead vol=0.8
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | G4/4 E5/4 D5/4 C5/4 | G4/2. G4/8 G4/8 | G4/4 E5/4 D5/4 C5/4 | A4/1 |
 | A4/4 F5/4 E5/4 D5/4 | B4/1 | G5/4 G5/4 F5/4 D5/4 | E5/1 |
@@ -44,7 +45,7 @@ track melody role=lead vol=0.8
 
 track harmony role=lead2 vol=0.45
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -75,9 +76,9 @@ track harmony role=lead2 vol=0.45
 # Ending
 | R |
 
-track arp role=arp vol=0.35
+track arp role=arp vol=0.4
 # Intro
-| R | R | R | R |
+| E5/4 E5/4 E5/2 | E5/4 E5/4 E5/2 |
 # The tune
 | R | R | R | R |
 | R | R | R | R |
@@ -110,7 +111,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [F3 A3 C4]/1 | [C3 E3 G3]/1 | [G3 B3 D4]/1 | [C3 E3 G3]/1 |
+| [C3 E3 G3]/1 | [C3 E3 G3]/1 |
 # The tune
 | [C3 E3 G3]/1 | [C3 E3 G3]/1 | [C3 E3 G3]/1 | [F3 A3 C4]/1 |
 | [D3 F3 A3]/1 | [G3 B3 D4]/1 | [G3 B3 D4]/1 | [C3 E3 G3]/1 |
@@ -143,7 +144,7 @@ track pad role=pad vol=0.45
 
 track bass role=bass vol=0.75
 # Intro
-| F3/4 C3/4 F3/4 C3/4 | C3/4 G2/4 C3/4 G2/4 | G3/4 D3/4 G3/4 D3/4 | C3/4 G2/4 C3/4 G2/4 |
+| R | R |
 # The tune
 | C3/4 G2/4 C3/4 G2/4 | C3/4 G2/4 C3/4 G2/4 | C3/4 G2/4 C3/4 G2/4 | F3/4 C3/4 F3/4 C3/4 |
 | D3/4 A2/4 D3/4 A2/4 | G3/4 D3/4 G3/4 D3/4 | G3/4 D3/4 G3/4 D3/4 | C3/4 G2/4 C3/4 G2/4 |
@@ -176,40 +177,40 @@ track bass role=bass vol=0.75
 
 track drums role=drums vol=0.8
 # Intro
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
+| R | R |
 # The tune
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
-| k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 | k/4 h/4 k/4 h/4 |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
+| k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t | k/4t h/8t h/4t h/8t k/4t h/8t h/4t h/8t |
 # Pass 2, fuller
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
 # Up a key (pass 3)
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
-| k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 | k/8 h/8 s/8 h/8 k/8 k/8 s/8 h/8 |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
+| k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t | k/4t h/8t s/4t h/8t k/4t h/8t s/4t h/8t |
 # Ending
 | k/1 |
 
 track cymbals role=drums vol=0.5
 # Intro
-| R | R | R | R |
+| R | R |
 # The tune
 | R | R | R | R |
 | R | R | R | R |

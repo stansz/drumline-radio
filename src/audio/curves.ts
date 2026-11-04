@@ -62,3 +62,31 @@ export function attackTime(patchAttack: number, freq: number): number {
   const halfCycle = 0.5 / freq;
   return Math.max(patchAttack, Math.min(MAX_LOW_ATTACK, Math.max(MIN_ATTACK, halfCycle)));
 }
+
+/** A loopable vinyl bed: faint hiss plus sparse clicks of random size. */
+export function crackleSamples(
+  length: number,
+  sampleRate: number,
+  random: () => number,
+): Float32Array<ArrayBuffer> {
+  const samples = new Float32Array(length);
+  for (let i = 0; i < length; i += 1) samples[i] = (random() * 2 - 1) * 0.015;
+
+  const clickCount = Math.round((7 * length) / sampleRate);
+  const burstLength = Math.round(sampleRate * 0.002);
+  for (let click = 0; click < clickCount; click += 1) {
+    const start = Math.floor(random() * length);
+    const amplitude = 0.25 + random() * 0.75;
+    const sign = random() < 0.5 ? -1 : 1;
+    for (let offset = 0; offset < burstLength; offset += 1) {
+      const index = start + offset;
+      if (index >= length) break;
+      samples[index] += sign * amplitude * (1 - offset / burstLength);
+    }
+  }
+
+  for (let i = 0; i < length; i += 1) {
+    samples[i] = Math.max(-1, Math.min(1, samples[i]));
+  }
+  return samples;
+}

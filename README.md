@@ -1,7 +1,7 @@
 # Drumline Radio
 
 A browser jukebox for full songs written as text scores: public-domain melodies arranged by
-Claude, and Claude's own originals. It is the sibling of
+Claude and SZ, and their own originals. It is the sibling of
 [Drumline Studio](https://stansz.github.io/drumline-studio/).
 
 **Play it:** https://radio.ogsapps.cc/ (mirror: https://stansz.github.io/drumline-radio/)
@@ -17,9 +17,9 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - VU meters, a glowing readout, and a volume slider with mute (remembered between visits).
 - A repeat button that loops the current song (remembered between visits).
 - An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5 minutes without a touch) that keep the screen awake while music plays. Phones pause the live synth when the app is minimized, so keep it open.
-- Four styles (Synthwave, Chiptune, Orchestral, Techno) with remix by band button: switch the band
+- Five styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi) with remix by band button: switch the band
   and the same notes play with that style's instruments.
-- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–4 styles, C category, M mute, R repeat, S screensaver.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–5 styles, C category, M mute, R repeat, S screensaver.
 
 | Orchestral | Phone |
 |---|---|
@@ -30,7 +30,7 @@ The sound engine, and how to add a patch or a style, are described in
 
 ## Songs
 
-Christmas carols, arranged by Claude:
+Christmas carols, arranged by Claude and SZ:
 
 - **Deck the Halls** (traditional Welsh). Synthwave.
 - **God Rest Ye Merry Gentlemen** (traditional English). Techno.
@@ -42,7 +42,7 @@ Christmas carols, arranged by Claude:
 - **Silent Night** (Franz Xaver Gruber, 1818). Synthwave.
 - **We Wish You a Merry Christmas** (traditional English). Synthwave.
 
-Other public-domain melodies, arranged by Claude:
+Other public-domain melodies, arranged by Claude and SZ:
 
 - **Greensleeves**, traditional English ballad (16th century). Orchestral.
 - **In the Hall of the Mountain King**, from Edvard Grieg's *Peer Gynt* (1875). Chiptune. It speeds
@@ -57,8 +57,9 @@ Other public-domain melodies, arranged by Claude:
 - **Swan Lake** (Pyotr Ilyich Tchaikovsky, 1876). Orchestral.
 - **When the Saints Go Marching In** (traditional). Synthwave.
 
-Claude originals:
+Originals by Claude and SZ:
 
+- **Late Bus Home** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
 - **Save Point** (Chiptune)

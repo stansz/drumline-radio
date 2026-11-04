@@ -1,6 +1,7 @@
-# Canon in D, arranged by Claude. The ground bass with the canon lines building over it.
+# Canon in D, arranged by Claude and SZ. The ground bass alone, then the canon lines build over it.
 title: Canon in D
 composer: Johann Pachelbel
+arranger: Claude & SZ
 year: around 1680
 source: public-domain
 category: classics
@@ -79,7 +80,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [D3 F#3 A3]/2 [A3 C#4 E4]/2 | [B3 D4 F#4]/2 [F#3 A3 C#4]/2 | [G3 B3 D4]/2 [D3 F#3 A3]/2 | [G3 B3 D4]/2 [A3 C#4 E4]/2 |
+| R | R | R | R |
 # The tune
 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 | [B3 D4 F#4]/2 [F#3 A3 C#4]/2 | [G3 B3 D4]/2 [D3 F#3 A3]/2 | [G3 B3 D4]/2 [A3 C#4 E4]/2 |
 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 | [B3 D4 F#4]/2 [F#3 A3 C#4]/2 | [G3 B3 D4]/2 [D3 F#3 A3]/2 | [G3 B3 D4]/2 [A3 C#4 E4]/2 |
@@ -123,23 +124,23 @@ track bass role=bass vol=0.75
 
 track drums role=drums vol=0.8
 # Intro
-| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| R | R | R | R |
 # The tune
-| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
-| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
-| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
 # Pass 2, fuller
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
 # Pass 3, fuller
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
 # Pass 4, fuller
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
 # Ending
 | k/1 |
 

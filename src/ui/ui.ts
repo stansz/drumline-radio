@@ -169,7 +169,11 @@ export function startUi(): void {
     titleEl.textContent = song.meta.title;
     const name = STYLE_DEFS[style].name;
     const remix = style !== song.meta.style ? ' (remix)' : '';
-    subtitleEl.textContent = `${song.meta.composer} · ${song.meta.year} · ${name}${remix}`;
+    const byline =
+      song.meta.arranger === null
+        ? song.meta.composer
+        : `${song.meta.composer}, arr. ${song.meta.arranger}`;
+    subtitleEl.textContent = `${byline} · ${song.meta.year} · ${name}${remix}`;
   }
 
   function updateBands(style: StyleId): void {
@@ -524,7 +528,7 @@ export function startUi(): void {
       next();
       return;
     }
-    if (/^[1-4]$/.test(event.key)) {
+    if (/^[1-5]$/.test(event.key)) {
       event.preventDefault();
       selectBand(Number(event.key) - 1);
     }

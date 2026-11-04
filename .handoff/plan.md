@@ -1,161 +1,154 @@
 ## Goal
 
-Add an ⓘ info panel with a short note on why playback stops in the background, plus two
-battery-friendly ways to keep listening with the app open:
+Ship four changes together:
 
-- **Dim view:** a dark overlay over the player; the player stays visible and usable.
-- **Black screensaver:** a full-screen black overlay with a faint, slowly drifting title and time;
-  tap anywhere to exit. It can auto-start after 1 or 5 minutes without a touch while music plays.
-
-While music plays with dim or the screensaver on, a Screen Wake Lock keeps the phone from locking.
-Settings are remembered.
+1. A fifth style, **Lo-fi**: mellow keys, a round bass, a dusty swung kit, slow tape wobble, a dark
+   lowpass, and a vinyl-crackle bed.
+2. An optional `arranger:` song header, shown in the readout.
+3. Every song file replaced from `.handoff/songs4/`. That covers 23 re-arranged or re-credited songs
+   plus the new Lo-fi original `late-bus-home.song`, which uses `style: lofi` and makes 24 songs.
+4. The UI, docs, and tests updated for five styles and the new credits.
 
 ## Files to touch
 
-- `index.html`
-- `src/ui/style.css`
-- `src/ui/ui.ts`
-- `src/ui/view.ts`
-- `src/ui/saver.ts` (new)
-- `src/ui/wake.ts` (new)
-- `tests/view.test.ts`
-- `README.md`, `docs/how-it-works.md`
+- `src/music/roles.ts`, `src/music/song.ts`
+- `src/audio/styles.ts`, `src/audio/curves.ts`, `src/audio/engine.ts`
+- `src/ui/ui.ts`, `src/ui/style.css`, `index.html`
+- `src/songs/*.song` (copied from `.handoff/songs4/`, 24 files)
+- `tests/song.test.ts`, `tests/library.test.ts`, `tests/curves.test.ts`, `tests/styles.test.ts` (only if
+  it hard-codes four styles)
+- `README.md`, `docs/song-format.md`, `docs/how-it-works.md`, `docs/sound.md`
 
 ## Steps
 
-1. `src/ui/view.ts`. Add pure helpers (no DOM):
-   - `export type SaverMinutes = 0 | 1 | 5;` and `export const SAVER_OPTIONS: SaverMinutes[] = [0, 1, 5];`
-   - `export function parseSaverMinutes(stored: string | null): SaverMinutes` returns `0`, `1`, or `5`
-     when `stored` is `'0'`, `'1'`, or `'5'`; anything else gives `5`.
-   - `export function shouldStartSaver(idleMs: number, minutes: SaverMinutes, playing: boolean, blocked: boolean): boolean`
-     returns `playing && !blocked && minutes > 0 && idleMs >= minutes * 60000`.
-   - `export function driftPosition(rx: number, ry: number, areaW: number, areaH: number, boxW: number, boxH: number): { x: number; y: number }`.
-     `rx` and `ry` are in [0, 1). It returns `x = Math.round(rx * Math.max(0, areaW - boxW))`, and `y`
-     the same with `ry`, `areaH`, and `boxH`.
+1. **Songs.** Copy every file in `.handoff/songs4/` to `src/songs/` byte for byte, overwriting the files
+   that exist. Do not edit any song file.
 
-2. `index.html`:
-   - In `.brand`, after the install button, add
-     `<button id="info" class="info-btn" type="button" aria-label="Info and screensaver" title="Info and screensaver">ⓘ</button>`.
-   - Directly inside `<body>`, right after the closing `</div>` of `#app`, add:
-   ```html
-   <div id="dim" class="dim-overlay" hidden></div>
-   <div id="screensaver" class="screensaver" hidden>
-     <div id="saver-box" class="saver-box">
-       <div id="saver-title" class="saver-title"></div>
-       <div id="saver-time" class="saver-time"></div>
-     </div>
-   </div>
-   <dialog id="info-panel" class="info-panel" aria-labelledby="info-heading">
-     <h2 id="info-heading">Drumline Radio</h2>
-     <p>Every note is built live by your browser's synth: there are no recordings. Phones pause live
-       synths when an app is minimized or the screen locks, so keep Drumline Radio open while you
-       listen.</p>
-     <p>To save battery while it plays, dim the player or start the black screensaver. While music
-       plays with either one on, your screen stays awake.</p>
-     <div class="info-row">
-       <button id="dim-toggle" class="info-action" type="button" aria-pressed="false">Dim view</button>
-       <button id="saver-start" class="info-action" type="button">Start screensaver</button>
-     </div>
-     <div class="info-label" id="saver-auto-label">Screensaver starts after no touches for</div>
-     <div id="saver-auto" class="info-row" role="radiogroup" aria-labelledby="saver-auto-label"></div>
-     <div class="info-label">Keyboard</div>
-     <p class="info-keys">Space play/pause · ←/→ station · 1–4 style · C category · M mute · R repeat ·
-       S screensaver</p>
-     <button id="info-close" class="info-action info-close" type="button">Close</button>
-   </dialog>
+2. **`src/music/roles.ts`:** set `STYLES = ['synthwave', 'chiptune', 'orchestral', 'techno', 'lofi'] as const`.
+
+3. **`src/music/song.ts`:**
+   - Add `arranger: string | null;` to `SongMeta`, after `composer`, defaulting to `null`.
+   - Add `'arranger'` to `KNOWN_HEADER_KEYS` only. It is optional, not required.
+   - When present it must be non-empty, otherwise `err(line, 'arranger must not be empty')`. Store the
+     trimmed value.
+
+4. **`src/audio/curves.ts`.** Add a pure function:
+   ```ts
+   /** A loopable vinyl bed: faint hiss plus sparse clicks of random size. */
+   export function crackleSamples(length: number, sampleRate: number, random: () => number): Float32Array<ArrayBuffer>
    ```
+   - Hiss: every sample gets `(random() * 2 - 1) * 0.015`.
+   - Clicks: about 7 per second at random positions. Each adds a burst of `Math.round(sampleRate * 0.002)`
+     samples with amplitude `0.25 + random() * 0.75`, a random sign, and a linear decay to 0.
+   - Clamp every sample to [-1, 1].
 
-3. `src/ui/wake.ts` (new): `export function createWakeLock(): { set(wanted: boolean): void }`.
-   - It keeps a `wanted` flag and a held `WakeLockSentinel | null`.
-   - `set(true)` requests `navigator.wakeLock.request('screen')` when it is supported, the page is
-     visible, and no lock is held. On release, clear the held lock.
-   - `set(false)` releases the held lock.
-   - On `document` `visibilitychange` to visible, if `wanted` and no lock is held, request again.
-   - Wrap every call in `try`/`catch` or `.catch(() => {})`. When `'wakeLock' in navigator` is false,
-     everything does nothing.
+5. **`src/audio/styles.ts`:**
+   - Add `crackle: number;` to `StyleDef['fx']`, and set `crackle: 0` in the four existing styles.
+   - Add the `lofi` style after `techno`:
+   ```ts
+   lofi: {
+     id: 'lofi',
+     name: 'Lo-fi',
+     blurb: 'Mellow keys, a dusty swung kit, tape wobble, and vinyl crackle.',
+     roles: { lead: 'soft-lead', lead2: 'tine-keys', counter: 'soft-flute', pad: 'tape-pad', chords: 'tine-keys', bass: 'round-bass', arp: 'muted-pluck', drums: 'dusty-kit' },
+     patches: {
+       'soft-lead': synth({ name: 'Soft lead', oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
+         env: env(0.02, 0.4, 0.6, 0.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
+         vibrato: { rate: 0.7, cents: 9, delay: 0 }, gain: 0.3, sends: { reverb: 1, delay: 0.8 } }),
+       'tine-keys': synth({ name: 'Tine keys', oscs: [osc('sine', 0, 0, 1)], fm: { ratio: 1, index: 1.2, decay: 0.8 },
+         env: env(0.005, 1.2, 0.25, 0.5), filter: { type: 'lowpass', hz: 2200, q: 0.5, envAmount: 1, envDecay: 0.3 },
+         vibrato: { rate: 0.6, cents: 7, delay: 0 }, gain: 0.26, sends: { reverb: 1, delay: 0.5 } }),
+       'soft-flute': synth({ name: 'Soft flute', oscs: [osc('sine', 0, 0, 0.7), osc('triangle', 0, 3, 0.3)],
+         env: env(0.05, 0.3, 0.7, 0.3), filter: { type: 'lowpass', hz: 2000, q: 0.5, envAmount: 1, envDecay: 0.2 },
+         vibrato: { rate: 0.7, cents: 10, delay: 0 }, gain: 0.22 }),
+       'tape-pad': synth({ name: 'Tape pad', oscs: [osc('sawtooth', 0, -10, 0.3), osc('sawtooth', 0, 10, 0.3), osc('triangle', -1, 0, 0.4)],
+         env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 1, envDecay: 1 },
+         vibrato: { rate: 0.5, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1.4, delay: 0.3 } }),
+       'round-bass': synth({ name: 'Round bass', oscs: [osc('sine', 0, 0, 0.75), osc('triangle', 0, 0, 0.25)],
+         env: env(0.01, 0.3, 0.7, 0.12), filter: { type: 'lowpass', hz: 600, q: 0.7, envAmount: 1.5, envDecay: 0.1 },
+         gain: 0.5, sends: { reverb: 0.1, delay: 0 } }),
+       'muted-pluck': synth({ name: 'Muted pluck', oscs: [osc('triangle', 0, 0, 1)],
+         env: env(0.003, 0.25, 0, 0.2), filter: { type: 'lowpass', hz: 1600, q: 1, envAmount: 2, envDecay: 0.12 },
+         vibrato: { rate: 0.6, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1, delay: 1.2 } }),
+       'dusty-kit': drums({ name: 'Dusty kit',
+         kick: { wave: 'sine', hz: 50, sweep: 2, sweepTime: 0.08, decay: 0.35, click: 0.1 },
+         snare: { noise: 'white', filter: 'bandpass', hz: 1400, toneHz: 0, decay: 0.18 },
+         hat: { noise: 'white', hz: 6000, decay: 0.03 },
+         crashDecay: 1.2, gain: 0.75, sends: { reverb: 0.6, delay: 0 } }),
+     },
+     fx: { reverbSeconds: 2.2, reverbSend: 0.25, delayBeats: 0.75, delaySend: 0.15, delayFeedback: 0.3, crush: 0.08, lowpassHz: 4200, crackle: 0.08 },
+     lanes: ['#ffb37a', '#7fd1c7', '#e8a0bf', '#c3b1e1', '#f6d186', '#9ad0ec'],
+   },
+   ```
+   If a field name differs from the existing `SynthPatch`/`DrumKit` types, match the types and say so in
+   the report. Do not change the types beyond adding `fx.crackle`.
 
-4. `src/ui/saver.ts` (new):
-   `export function createSaver(overlay: HTMLElement, box: HTMLElement, titleEl: HTMLElement, timeEl: HTMLElement, onExit: () => void)`
-   returns `{ show(): void; hide(): void; readonly visible: boolean; update(title: string, time: string): void }`.
-   - `show()` sets `overlay.hidden = false`, moves the box straight away, and starts a 20 s
-     `setInterval` that moves the box to `driftPosition(Math.random(), Math.random(), innerWidth, innerHeight, box.offsetWidth, box.offsetHeight)`
-     with `box.style.transform = translate(xpx, ypx)`.
-   - `hide()` sets `overlay.hidden = true` and clears the interval.
-   - `pointerdown` and `click` on the overlay call `hide()` then `onExit()`. Call `event.preventDefault()`
-     on `pointerdown`, so the tap does not reach the player underneath.
-   - `update(title, time)` sets the two texts only when they changed.
+6. **`src/audio/engine.ts`.** Add the crackle bed. The engine must still not touch the DOM.
+   - In the constructor, build one stereo 4-second `AudioBuffer`. Fill each channel with
+     `crackleSamples(4 * sampleRate, sampleRate, Math.random)`.
+   - Create `crackleGain` (a GainNode with gain 0) connected to `this.clip`, so it passes through
+     volume and the meters but not the compressor.
+   - `applyStyleFx()` sets `crackleGain.gain.setTargetAtTime(fx.crackle, now, 0.05)`.
+   - When playback begins (inside `begin`, where the timer starts), create a looping
+     `AudioBufferSourceNode` on that buffer, connect it to `crackleGain`, and start it.
+   - In `stopAll()`, stop and disconnect it, then clear the reference.
 
-5. `src/ui/ui.ts`:
-   - Keys `drumline-radio-dim` (`'1'`/`'0'`) and `drumline-radio-saver` (`'0'`/`'1'`/`'5'`), read and
-     written with the existing `load`/`save`, using `parseSaverMinutes`.
-   - Wire `#info` to `infoPanel.showModal()`, and `#info-close` to `infoPanel.close()`.
-   - `#dim-toggle` toggles `dim`, saves it, sets `#dim`'s `hidden = !dim`, and sets `aria-pressed`.
-     Apply the stored value on startup.
-   - `#saver-start` closes the panel and calls `saver.show()`.
-   - Build three radio buttons in `#saver-auto`, one per `SAVER_OPTIONS` entry, labelled `Off`,
-     `1 min`, and `5 min`, with class `info-choice`, `role="radio"`, and `aria-checked`. A click sets and
-     saves the choice.
-   - Idle tracking: `let lastInteraction = performance.now()`, updated on `document` `pointerdown` and
-     `keydown` (capture phase).
-   - In `frame()`, if
-     `shouldStartSaver(performance.now() - lastInteraction, saverMinutes, engine?.playing ?? false, saver.visible || infoPanel.open)`
-     returns true, call `saver.show()`.
-   - While `saver.visible`: skip `score.draw` and `meters.draw` in `frame()`, to save power. Call
-     `saver.update(currentTitle, formatTime(position))` instead. Keep everything else, such as the
-     seek bar and times, as now.
-   - The `onExit` of `createSaver` sets `lastInteraction = performance.now()`.
-   - Keyboard, in the existing global handler:
-     - when `saver.visible`, any key hides it and does nothing else, so return early;
-     - `s`/`S` shows the screensaver;
-     - while `infoPanel.open`, ignore all shortcuts except the dialog's own Escape, so return early.
-   - Wake lock: `const wake = createWakeLock()`. At the end of `updatePlayButton()`, call
-     `wake.set((engine?.playing ?? false) && (dim || saver.visible))`. Also call `updatePlayButton()`
-     right after changing dim and after the screensaver shows or hides.
+7. **`src/ui/ui.ts`:**
+   - The style keys become `/^[1-5]$/`. Band buttons already come from `STYLES`.
+   - Subtitle: when `song.meta.arranger` is set, use
+     `` `${composer}, arr. ${arranger} · ${year} · ${name}${remix}` ``; otherwise keep the current format.
 
-6. `src/ui/style.css`:
-   - `.info-btn`: a round 22px button in the brand line: `margin-left: 8px; width: 22px; height: 22px;
-     border-radius: 50%; border: 1px solid var(--muted); background: transparent; color: var(--muted);
-     font: inherit; font-size: 13px; line-height: 1; cursor: pointer; vertical-align: middle;`
-   - `.dim-overlay`: `position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); pointer-events: none;
-     z-index: 50;` and `.dim-overlay[hidden] { display: none; }`
-   - `.screensaver`: `position: fixed; inset: 0; background: #000; z-index: 100; cursor: none;` and
-     `.screensaver[hidden] { display: none; }`
-   - `.saver-box`: `position: absolute; top: 0; left: 0; padding: 16px; color: var(--accent); opacity:
-     0.35; font-family: var(--readout-font); transition: transform 2s ease;` `.saver-title { font-size: 22px; }` `.saver-time { font-size: 16px;
-     margin-top: 4px; }`
-   - `.info-panel`: `max-width: min(92vw, 420px); padding: 20px; border: 1px solid var(--accent);
-     border-radius: 12px; background: #0b0812; color: inherit; font: inherit; font-size: 14px;
-     line-height: 1.45;` and `.info-panel::backdrop { background: rgba(0, 0, 0, 0.6); }`. `h2` uses
-     `font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
-     margin: 0 0 10px;`
-   - `.info-row { display: flex; gap: 8px; margin: 10px 0; }`. `.info-action` and `.info-choice` reuse
-     the `.band` look (dark inset button, muted text, uppercase, 11px), with `flex: 1; padding: 8px;`.
-     `.info-action[aria-pressed='true']` and `.info-choice[aria-checked='true']` use the same accent
-     border, colour, and glow as `.band[aria-checked='true']`.
-   - `.info-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }`,
-     `.info-keys { font-size: 12px; color: var(--muted); }`, `.info-close { width: 100%; margin-top: 12px; }`
+8. **`index.html`:** in the info panel's keyboard line, change `1–4 style` to `1–5 style`.
 
-7. `tests/view.test.ts`. Add tests:
-   - `parseSaverMinutes`: `'0'`→0, `'1'`→1, `'5'`→5, `null`→5, `'7'`→5.
-   - `shouldStartSaver`: `(60000, 1, true, false)` → true; `(59999, 1, true, false)` → false;
-     `(600000, 0, true, false)` → false; `(600000, 5, false, false)` → false; `(600000, 5, true, true)` →
-     false.
-   - `driftPosition`: `(0.5, 0.5, 400, 800, 100, 200)` → `{ x: 150, y: 300 }`; `(0.9, 0.9, 50, 50, 100, 100)`
-     → `{ x: 0, y: 0 }`.
+9. **`src/ui/style.css`:**
+   - Add a `:root[data-style='lofi']` token block with the same variables as the others:
+     `--bg: #1a1418; --panel: rgba(34, 24, 30, 0.88); --text: #f5e6dc; --muted: #b39a94; --accent: #ffb37a;
+     --accent-2: #7fd1c7; --glow: #ffb37a;`
+   - `:root[data-style='lofi'] body { background: radial-gradient(ellipse at 50% 0%, #3a2530 0%, #1a1418 65%) fixed; }`
+   - `:root[data-style='lofi'] body::after { background: repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px); }`
+     This is a faint grain.
+   - Inside the existing `@media (max-width: 640px)` block, change the `.band` rule so five fit on one row
+     at 360 px: `padding: 9px 1px; font-size: 9px; letter-spacing: 0.02em;`.
 
-8. Docs:
-   - `README.md`:
-     - a feature bullet: `- An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5
-       minutes without a touch) that keep the screen awake while music plays. Phones pause the live
-       synth when the app is minimized, so keep it open.`
-     - add `S screensaver` to the keyboard shortcuts bullet.
-   - `docs/how-it-works.md`: under `src/ui/`, add one line: `saver.ts` is the dim and black screensaver
-     overlays, and `wake.ts` keeps the screen awake while they're on.
+10. **Tests:**
+    - `tests/library.test.ts`:
+      - the count becomes 24;
+      - in the order test, insert `'late-bus-home'` immediately before `'midnight-arcade'` (the
+        originals sort by title);
+      - the per-category counts become carols 9, classics 11, originals 4.
+    - `tests/song.test.ts`: a header with `arranger: Claude & SZ` parses, and `meta.arranger` is
+      `'Claude & SZ'`; without the line it is `null`; `arranger:` with an empty value gives an error
+      containing `arranger must not be empty`.
+    - `tests/curves.test.ts`: `crackleSamples(48000, 48000, seeded)` has length 48000, every value is in
+      [-1, 1], and at least one absolute value is > 0.2. For `seeded`, use a simple LCG so the test is
+      deterministic.
+    - If `tests/styles.test.ts` hard-codes four styles, update it to cover `STYLES` (five).
+
+11. **Docs:**
+    - `docs/song-format.md`:
+      - add the header row `` | `arranger` | no | Any non-empty text. Shown after the composer as "arr. …". | ``
+        after `composer`;
+      - add `lofi` to the `style` row;
+      - add an empty `arranger` to the list of header errors.
+    - `README.md`:
+      - "Four styles (Synthwave, Chiptune, Orchestral, Techno)" becomes "Five styles (Synthwave,
+        Chiptune, Orchestral, Techno, Lo-fi)";
+      - shortcuts `1–4 styles` becomes `1–5 styles`;
+      - `Christmas carols, arranged by Claude:` becomes `Christmas carols, arranged by Claude and SZ:`;
+      - `Other public-domain melodies, arranged by Claude:` becomes `..., arranged by Claude and SZ:`;
+      - `Claude originals:` becomes `Originals by Claude and SZ:`, and add `- **Late Bus Home** (Lo-fi)` as the
+        first item in that list.
+    - `docs/how-it-works.md` and `docs/sound.md`: "four styles" becomes "five styles". In `docs/sound.md`,
+      add one short paragraph on Lo-fi: tape wobble comes from slow vibrato on its patches, and the vinyl
+      bed is a looping crackle buffer whose level is the style's `fx.crackle`.
 
 ## Acceptance
 
 - `npm run typecheck` exits 0.
-- `npm run test:sandbox` exits 0, including the new tests.
+- `npm run test:sandbox` exits 0.
+- `git diff --no-index --quiet .handoff/songs4/late-bus-home.song src/songs/late-bus-home.song` exits 0, and the
+  same holds for `valkyries.song` and `korobeiniki.song`.
+- `grep -c "document\|window" src/audio/engine.ts` prints `0`.
 
 Verifier only:
 
@@ -170,16 +163,15 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- No new dependencies. Keep `src/ui/view.ts` pure.
-- Wrap all localStorage access with the existing `load`/`save` helpers, and wrap Wake Lock calls in
-  `try`/`catch`.
+- Do not edit song data. If a song fails to parse, stop and report the error.
+- No new dependencies. Keep `src/music/`, `src/audio/styles.ts`, `src/audio/curves.ts`, and `src/ui/view.ts`
+  free of DOM and audio APIs.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and report it.
   Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past it.
 
 ## Out of scope
 
-- Background playback, Media Session, and service worker changes.
-- Changes to tuning, presets, styles, or audio.
+- Other UI changes, the service worker, and background playback.
 
 ## If blocked
 

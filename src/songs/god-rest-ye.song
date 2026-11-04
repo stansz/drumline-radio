@@ -1,6 +1,7 @@
-# God Rest Ye Merry Gentlemen, arranged by Claude. The minor-key carol over a techno kit.
+# God Rest Ye Merry Gentlemen, arranged by Claude and SZ. An off-beat bass alone, then a broken beat under the minor-key carol.
 title: God Rest Ye Merry Gentlemen
 composer: Traditional (English)
+arranger: Claude & SZ
 year: traditional
 source: public-domain
 category: carols
@@ -83,7 +84,7 @@ track arp role=arp vol=0.35
 
 track pad role=pad vol=0.45
 # Intro
-| [D3 F#3 A3]/1 | [G3 B3 D4]/1 | [B3 D#4 F#4]/1 | [E3 G3 B3]/1 |
+| R | R | R | R |
 # The tune
 | [E3 G3 B3]/1 | [E3 G3 B3]/2 [D3 F#3 A3]/2 | [E3 G3 B3]/1 | [B3 D#4 F#4]/1 |
 | [E3 G3 B3]/1 | [E3 G3 B3]/2 [D3 F#3 A3]/2 | [E3 G3 B3]/1 | [B3 D#4 F#4]/1 |
@@ -131,25 +132,25 @@ track bass role=bass vol=0.75
 
 track drums role=drums vol=0.8
 # Intro
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
+| R | R | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 |
 # The tune
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
+| k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 |
+| k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 |
+| k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 |
+| k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 |
+| k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 | k/4 h/4 k/8 k/8 h/4 |
 # Pass 2, fuller
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
 # Pass 3, fuller
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
-| k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 | k/8 oh/8 [k cl]/8 oh/8 k/8 oh/8 [k cl]/8 oh/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
+| k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 | k/8 h/8 s/8 k/8 h/8 k/8 s/8 h/8 |
 # Ending
 | k/1 |
 
