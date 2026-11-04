@@ -1,4 +1,4 @@
-# Jukebox: project brief
+# Drumline Radio: project brief
 
 Start-here notes for a new Claude session. This is a sibling project to
 [Drumline Studio](https://stansz.github.io/drumline-studio/) (repo `stansz/drumline-studio`, local clone
@@ -33,11 +33,11 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
 
 ## Status
 
-- Name: **not decided yet**. Candidates: Pixel Jukebox, Drumline Radio, Chip Jukebox. Ask the user if
-  they haven't said.
-- The user is creating the GitHub repo under `stansz` (public, GitHub Pages). Clone it to
-  `C:\Users\sz\Documents\Code\<repo>`. Never under `AppData\Local`, because the dsh sandbox can't
-  reach it.
+- Name: **Drumline Radio**. Repo `stansz/drumline-radio` (public), cloned at
+  `C:\Users\sz\Documents\Code\drumline-radio`. Keep it out of `AppData\Local`, because the dsh
+  sandbox can't reach it.
+- The repo holds only this brief so far. GitHub Pages still needs turning on, with GitHub Actions as
+  the source, once the deploy workflow exists. The Vite `base` is `/drumline-radio/`.
 
 ## How we work (user preferences)
 
@@ -70,7 +70,7 @@ Copy these, then let the two codebases diverge.
 
 - **Setup:** Vite, TypeScript, Vitest, and no runtime dependencies.
   - Take the `package.json` scripts, `tsconfig`, `vitest.sandbox.config.mjs`, and
-    `.github/workflows/deploy.yml` (GitHub Pages). Set the Vite `base` to the new repo name.
+    `.github/workflows/deploy.yml` (GitHub Pages). Set the Vite `base` to `/drumline-radio/`.
   - Copy `AGENTS.md` too, with `CLAUDE.md` importing it, and adapt the rules.
 - **Sound** (`src/audio.ts` and `src/themes.ts`):
   - Take the synth voice recipes: pulse/chip leads, FM-ish bells, noise drums, kick/snare/hat synthesis,
