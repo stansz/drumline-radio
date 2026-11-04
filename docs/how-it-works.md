@@ -97,7 +97,8 @@ track lead role=lead
 
 Every deploy changes the cache version, so installed copies update on their next launch.
 
-Live sites: https://stansz.github.io/drumline-radio/ and https://drumline-radio.pages.dev/
+Live sites: https://radio.ogsapps.cc/ (Cloudflare Pages, also at https://drumline-radio.pages.dev/) and
+https://stansz.github.io/drumline-radio/
 
 The build serves from `/drumline-radio/` for GitHub Pages and from `/` on Cloudflare Pages, which sets
 `CF_PAGES`. Set `BASE_PATH` to override it for any other host.

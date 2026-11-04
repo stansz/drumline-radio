@@ -4,7 +4,7 @@ A browser jukebox for full songs written as text scores: public-domain melodies 
 Claude, and Claude's own originals. It is the sibling of
 [Drumline Studio](https://stansz.github.io/drumline-studio/).
 
-**Play it:** https://stansz.github.io/drumline-radio/
+**Play it:** https://radio.ogsapps.cc/ (mirror: https://stansz.github.io/drumline-radio/)
 
 ![Midnight Arcade playing in the Synthwave style](docs/images/synthwave.png)
 
