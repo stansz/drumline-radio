@@ -10,6 +10,7 @@ import { buildTimeline, notesBetween } from '../music/timing';
 import { createSaver } from './saver';
 import { createWakeLock } from './wake';
 import {
+  flashStep,
   formatTime,
   nextAfterEnd,
   parseSaverMinutes,
@@ -36,6 +37,7 @@ const MUTED_KEY = 'drumline-radio-muted';
 const REPEAT_KEY = 'drumline-radio-repeat';
 const CATEGORY_KEY = 'drumline-radio-category';
 const DIM_KEY = 'drumline-radio-dim';
+const FLASH_KEY = 'drumline-radio-flash';
 const SAVER_KEY = 'drumline-radio-saver';
 
 function load(key: string): string | null {
@@ -91,6 +93,7 @@ export function startUi(): void {
   const cardAbout = required<HTMLElement>('#card-about');
   const cardClose = required<HTMLButtonElement>('#card-close');
   const dimToggle = required<HTMLButtonElement>('#dim-toggle');
+  const flashToggle = required<HTMLButtonElement>('#flash-toggle');
   const saverStart = required<HTMLButtonElement>('#saver-start');
   const saverAutoEl = required<HTMLElement>('#saver-auto');
   const dimOverlay = required<HTMLElement>('#dim');
@@ -126,6 +129,8 @@ export function startUi(): void {
   let category: CategoryFilter = parseCategory(load(CATEGORY_KEY));
 
   let dim = load(DIM_KEY) === '1';
+  let flashOn = load(FLASH_KEY) !== '0';
+  let flashStart = Number.NEGATIVE_INFINITY;
   let saverMinutes: SaverMinutes = parseSaverMinutes(load(SAVER_KEY));
   let lastInteraction = performance.now();
 
@@ -275,6 +280,12 @@ export function startUi(): void {
     dim = !dim;
     save(DIM_KEY, dim ? '1' : '0');
     applyDim();
+  }
+
+  function toggleFlash(): void {
+    flashOn = !flashOn;
+    save(FLASH_KEY, flashOn ? '1' : '0');
+    flashToggle.setAttribute('aria-pressed', String(flashOn));
   }
 
   function applySaverMinutes(): void {
@@ -456,6 +467,8 @@ export function startUi(): void {
   infoButton.addEventListener('click', () => infoPanel.showModal());
   infoClose.addEventListener('click', () => infoPanel.close());
   dimToggle.addEventListener('click', toggleDim);
+  flashToggle.setAttribute('aria-pressed', String(flashOn));
+  flashToggle.addEventListener('click', toggleFlash);
   saverStart.addEventListener('click', () => {
     infoPanel.close();
     saver.show();
@@ -596,18 +609,21 @@ export function startUi(): void {
   });
 
   function updateFlash(active: Engine): void {
-    let flash = 0;
-    if (active.style === 'techno' && active.playing && active.timeline && active.song) {
+    let kick = false;
+    if (flashOn && active.style === 'techno' && active.playing && active.timeline && active.song) {
       const position = active.position;
       for (const note of notesBetween(active.timeline, position - 0.06, position + 0.0001)) {
         const track = active.song.tracks[note.track];
         if (track && track.role === 'drums' && note.pitches.includes(36)) {
-          flash = 0.12;
+          kick = true;
           break;
         }
       }
     }
-    root.style.setProperty('--flash', String(flash));
+    const step = flashStep(flashStart, performance.now() / 1000, kick);
+    flashStart = step.start;
+    const level = flashOn ? step.level : 0;
+    root.style.setProperty('--flash', level.toFixed(3));
   }
 
   function frame(): void {

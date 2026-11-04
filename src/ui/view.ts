@@ -218,6 +218,19 @@ export function noteY(lane: Lane, pitch: number): number {
   return top + ((lane.high - pitch) * (bottom - top)) / range;
 }
 
+// The Techno beat flash stays inside the WCAG flash limits: at most 3 flashes a second, a peak well
+// under a 10% change in brightness, and a fade instead of a hard on/off.
+export const FLASH_PEAK = 0.06;
+export const FLASH_FADE = 0.25;
+export const FLASH_MIN_GAP = 1 / 3;
+
+/** Advances the beat flash: a kick starts a new flash only after the minimum gap. Times in seconds. */
+export function flashStep(lastStart: number, now: number, kick: boolean): { start: number; level: number } {
+  const start = kick && now - lastStart >= FLASH_MIN_GAP ? now : lastStart;
+  const level = FLASH_PEAK * Math.max(0, Math.min(1, 1 - (now - start) / FLASH_FADE));
+  return { start, level };
+}
+
 /** Index of the centre closest to x; ties go to the lower index, empty is -1. */
 export function nearestStation(centers: number[], x: number): number {
   let best = -1;

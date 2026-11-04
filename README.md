@@ -20,6 +20,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5 minutes without a touch) that keep the screen awake while music plays (also whenever auto-start is on, so the screensaver can start before the phone locks). Phones pause the live synth when the app is minimized, so keep it open.
 - Six styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi, Cinematic) with remix by band button: switch the band
   and the same notes play with that style's instruments.
+- Techno flashes the screen gently on the kick, within the WCAG flash limits (at most 3 a second, a soft fade). It is off with reduced motion, and the ⓘ panel has a switch to turn it off.
 - Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–6 styles, C category, M mute, R repeat, S screensaver.
 
 | Orchestral | Phone |

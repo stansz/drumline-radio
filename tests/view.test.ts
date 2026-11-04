@@ -3,6 +3,10 @@ import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
 import type { Category, Song } from '../src/music/song';
 import {
+  flashStep,
+  FLASH_FADE,
+  FLASH_MIN_GAP,
+  FLASH_PEAK,
   driftPosition,
   formatTime,
   laneLayout,
@@ -197,5 +201,25 @@ describe('songFacts', () => {
       ['Time', '4/4'],
       ['Length', '1:49'],
     ]);
+  });
+});
+
+describe('flashStep', () => {
+  it('starts a flash on a kick and fades it out', () => {
+    const first = flashStep(Number.NEGATIVE_INFINITY, 10, true);
+    expect(first).toEqual({ start: 10, level: FLASH_PEAK });
+    expect(flashStep(10, 10 + FLASH_FADE / 2, false).level).toBeCloseTo(FLASH_PEAK / 2);
+    expect(flashStep(10, 10 + FLASH_FADE, false).level).toBe(0);
+  });
+
+  it('allows at most three flashes a second', () => {
+    expect(flashStep(10, 10.2, true).start).toBe(10);
+    expect(flashStep(10, 10 + FLASH_MIN_GAP, true).start).toBe(10 + FLASH_MIN_GAP);
+    expect(FLASH_MIN_GAP).toBeGreaterThanOrEqual(1 / 3);
+  });
+
+  it('stays dim enough to stay under the WCAG flash threshold', () => {
+    expect(FLASH_PEAK).toBeLessThanOrEqual(0.06);
+    expect(flashStep(Number.NEGATIVE_INFINITY, 5, false).level).toBe(0);
   });
 });
