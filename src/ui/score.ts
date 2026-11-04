@@ -1,7 +1,7 @@
-import type { StyleDef } from './styles';
-import { resolvePatch } from './styles';
-import { tickToSeconds, notesBetween } from './timing';
-import type { Timeline } from './timing';
+import type { StyleDef } from '../audio/styles';
+import { resolvePatch } from '../audio/styles';
+import { tickToSeconds, notesBetween } from '../music/timing';
+import type { Timeline } from '../music/timing';
 import { laneLayout, noteHeight, noteY } from './view';
 
 export interface Score {

@@ -1,4 +1,4 @@
-import type { LibraryEntry } from './library';
+import type { LibraryEntry } from '../music/library';
 import { nearestStation, stationLabel } from './view';
 
 export interface Dial {

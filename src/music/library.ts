@@ -1,7 +1,7 @@
 import { parseSong } from './song';
 import type { Song } from './song';
 
-const FILES = import.meta.glob('./songs/*.song', {
+const FILES = import.meta.glob('../songs/*.song', {
   query: '?raw',
   import: 'default',
   eager: true,

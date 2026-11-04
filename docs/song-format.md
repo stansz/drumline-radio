@@ -1,7 +1,7 @@
 # Song format
 
 A song is one plain-text file. It has a header, optional tempo and time changes, and one or more
-tracks of notes. `parseSong` in `src/song.ts` turns the file into a `Song`. Every problem it finds
+tracks of notes. `parseSong` in `src/music/song.ts` turns the file into a `Song`. Every problem it finds
 becomes an error string that starts with `line <n>: `, and it keeps going so you see all of them at
 once.
 

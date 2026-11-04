@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ROLES, STYLES } from '../src/roles';
-import { resolvePatch, STYLE_DEFS } from '../src/styles';
+import { ROLES, STYLES } from '../src/music/roles';
+import { resolvePatch, STYLE_DEFS } from '../src/audio/styles';
 
 describe('styles', () => {
   it('has a definition for every style', () => {

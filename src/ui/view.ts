@@ -1,4 +1,4 @@
-import type { Song } from './song';
+import type { Song } from '../music/song';
 
 /** Formats song seconds as `m:ss`, flooring and clamping negatives to zero. */
 /** Maps the 0–100 volume slider to a gain, squared so the slider feels even to the ear. */

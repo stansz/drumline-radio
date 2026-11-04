@@ -1,5 +1,5 @@
 import { pulseCoefficients } from './curves';
-import { midiToFreq } from './pitch';
+import { midiToFreq } from '../music/pitch';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
 
 export interface Voice {

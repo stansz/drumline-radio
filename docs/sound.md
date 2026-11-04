@@ -6,8 +6,8 @@ nodes.
 
 ## Scheduling
 
-The audio clock is the master clock. `src/engine.ts` turns the parsed score into a timeline of
-seconds (`buildTimeline` in `src/timing.ts`), then every 25 ms it looks 120 ms ahead and schedules
+The audio clock is the master clock. `src/audio/engine.ts` turns the parsed score into a timeline of
+seconds (`buildTimeline` in `src/music/timing.ts`), then every 25 ms it looks 120 ms ahead and schedules
 the notes that start in that window on the `AudioContext` clock. Scheduled notes are never touched
 again: the Web Audio engine plays them at the exact time they were given. Pausing, seeking, or
 loading another song stops every live voice, so the next `play()` starts a fresh schedule from the
@@ -21,7 +21,7 @@ pan, and effects cover all of its notes.
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
 (oscillators, envelope, filter, vibrato, FM, and send levels) or a drum kit (kick, snare, hats,
-cymbals, and toms). `src/styles.ts` holds the four styles as data.
+cymbals, and toms). `src/audio/styles.ts` holds the four styles as data.
 
 A track picks its patch in this order:
 
@@ -106,11 +106,11 @@ their levels.
 
 ## Adding a patch or a style
 
-- Add a synth patch with `synth({...})` or a drum kit with `drums({...})` in `src/styles.ts`, then
+- Add a synth patch with `synth({...})` or a drum kit with `drums({...})` in `src/audio/styles.ts`, then
   point a role at it in that style's `roles` map. A song can also reach an extra patch by name with
   `inst=` in its track header.
 - Add a style by adding a `StyleDef` to `STYLE_DEFS`, a colour token block for
-  `:root[data-style='<id>']` in `src/style.css`, and the id to `STYLES` in `src/roles.ts`.
+  `:root[data-style='<id>']` in `src/ui/style.css`, and the id to `STYLES` in `src/music/roles.ts`.
   `tests/styles.test.ts` checks that every style covers every role.
-- Voice recipes live in `src/voices.ts`. The scheduling and mix graph live in `src/engine.ts`. Both
+- Voice recipes live in `src/audio/voices.ts`. The scheduling and mix graph live in `src/audio/engine.ts`. Both
   stay free of the DOM so the rest of the app can be tested without Web Audio.

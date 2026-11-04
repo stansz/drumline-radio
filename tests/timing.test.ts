@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
-import { parseSong } from '../src/song';
-import type { Song } from '../src/song';
-import { barAt, buildTimeline, notesBetween, secondsToTick, tickToSeconds } from '../src/timing';
+import { parseSong } from '../src/music/song';
+import type { Song } from '../src/music/song';
+import { barAt, buildTimeline, notesBetween, secondsToTick, tickToSeconds } from '../src/music/timing';
 
 function fixtureSong(): Song {
   const result = parseSong(fixture);

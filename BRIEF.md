@@ -36,11 +36,11 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
 - Name: **Drumline Radio**. Repo `stansz/drumline-radio` (public), cloned at
   `C:\Users\sz\Documents\Code\drumline-radio`. Keep it out of `AppData\Local`, because the dsh
   sandbox can't reach it.
-- Handoff 1 is done: project setup, the song format parser and checker (`src/song.ts`), timing
-  (`src/timing.ts`), tests, `docs/song-format.md`, and the Pages deploy workflow. The page is a
+- Handoff 1 is done: project setup, the song format parser and checker (`src/music/song.ts`), timing
+  (`src/music/timing.ts`), tests, `docs/song-format.md`, and the Pages deploy workflow. The page is a
   placeholder. The Vite `base` is `/drumline-radio/`.
-- Handoff 2 is done: the sound engine (`src/engine.ts`, `src/voices.ts`), 4 styles
-  (`src/styles.ts`), and the player UI: a radio-tuner look with a song dial, a living score canvas,
+- Handoff 2 is done: the sound engine (`src/audio/engine.ts`, `src/audio/voices.ts`), 4 styles
+  (`src/audio/styles.ts`), and the player UI: a radio-tuner look with a song dial, a living score canvas,
   VU meters, and per-style page colours; band buttons remix. It shipped with 4 short test songs, since removed.
   The user dropped the 8-bit look, so it no longer copies Drumline Studio's style.
 - Pass 2 is done: Ride of the Valkyries (9/8, about 1:40, the main theme in brass, then woodwinds,

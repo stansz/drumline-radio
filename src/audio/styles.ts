@@ -1,5 +1,5 @@
-import type { Role, StyleId } from './roles';
-import type { Track } from './song';
+import type { Role, StyleId } from '../music/roles';
+import type { Track } from '../music/song';
 
 export type Wave = 'sine' | 'square' | 'sawtooth' | 'triangle' | 'pulse12' | 'pulse25';
 

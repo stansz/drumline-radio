@@ -7,7 +7,7 @@ import {
   SOFT_CLIP_POINTS,
   softClipCurve,
   velocityGain,
-} from '../src/curves';
+} from '../src/audio/curves';
 
 describe('softClipCurve', () => {
   it('is a long symmetric curve capped below one', () => {

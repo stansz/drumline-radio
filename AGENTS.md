@@ -10,15 +10,18 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 
 ## Read before changing
 
+- The big picture: [docs/how-it-works.md](docs/how-it-works.md)
 - Song files, the parser, or timing: [docs/song-format.md](docs/song-format.md)
 - Sound, styles, or patches: [docs/sound.md](docs/sound.md)
 
 ## Rules
 
-- Keep `src/song.ts`, `src/roles.ts`, `src/pitch.ts`, `src/timing.ts`, `src/library.ts`,
-  `src/styles.ts`, `src/curves.ts`, and `src/view.ts` free of the DOM and audio, so Vitest can test
-  them.
-- `src/engine.ts` and `src/voices.ts` don't touch the DOM.
+- Code is grouped by layer: `src/music/` (song format, timing, pitch, library), `src/audio/`
+  (engine, voices, styles, curves), and `src/ui/` (page, dial, score, meters, CSS). Songs live in
+  `src/songs/`. [docs/how-it-works.md](docs/how-it-works.md) is the short overview.
+- Keep everything in `src/music/`, plus `src/audio/styles.ts`, `src/audio/curves.ts`, and
+  `src/ui/view.ts`, free of the DOM and audio, so Vitest can test them.
+- `src/audio/engine.ts` and `src/audio/voices.ts` don't touch the DOM.
 - Every voice connects to its track's channel in `engine.ts`, never straight to the master chain,
   so track volume, pan, and sends cover everything.
 - Every song in `src/songs/` must parse with no errors; `tests/library.test.ts` checks this.

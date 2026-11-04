@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LIBRARY, LIBRARY_ERRORS } from '../src/library';
+import { LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 
 describe('library', () => {
   it('parses every song', () => {

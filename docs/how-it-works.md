@@ -1,0 +1,95 @@
+# How Drumline Radio works
+
+The short version. Details live in [song-format.md](song-format.md) and [sound.md](sound.md).
+
+## The big idea
+
+There are no recordings. Each song is a small text score, and the browser's built-in synthesizer
+(Web Audio) plays it live. That's why the app is tiny and why any song can switch styles instantly.
+
+```
+.song text file ──► parser ──► timeline of notes ──► engine ──► synth voices ──► mixer ──► speakers
+                                        │
+                                        └──► score view, meters, dial (the screen)
+```
+
+## The pieces
+
+| Folder | What's in it |
+|---|---|
+| `src/songs/` | One `.song` file per song. Plain text: header, then tracks of notes |
+| `src/music/` | Reads songs and does the timing math. No sound, no screen, so it's easy to test |
+| `src/audio/` | The synth: engine, instrument recipes, the four styles |
+| `src/ui/` | Everything on screen: the dial, the score view, meters, buttons, CSS |
+| `tests/` | Vitest tests for the parts that don't need a browser |
+| `docs/` | This file, the song format, and the sound engine |
+
+### `src/music/`: the score side
+
+- `song.ts` parses a `.song` file into a `Song` and rejects mistakes (bars that don't add up,
+  notes out of range, broken ties) with line numbers.
+- `timing.ts` turns bars, tempos, and time signatures into seconds: `buildTimeline` lists every note
+  with its start time and length.
+- `pitch.ts` has note names and frequencies (`A4` = 440 Hz). `roles.ts` has the roles, styles, and
+  drum names.
+- `library.ts` loads every file in `src/songs/` automatically: drop a file in and it's on the dial.
+
+### `src/audio/`: the sound side
+
+- `engine.ts` is the player. It looks about 0.1 s ahead on the audio clock and books the notes due
+  in that window, so timing is exact. It also runs the mixer: per-track volume and pan, reverb, delay,
+  then a compressor, a limiter, and volume.
+- `voices.ts` builds each note from scratch (oscillators, filters, envelopes, and noise for drums).
+- `styles.ts` holds the four styles. Each one maps a **role** to an instrument patch.
+- `curves.ts` has small sound-shaping helpers (soft clip, bit-crush, velocity to loudness).
+
+### `src/ui/`: the screen
+
+- `ui.ts` wires it all together: buttons, keyboard, volume, repeat, saved settings.
+- `dial.ts` is the tuner strip of stations. `score.ts` draws the scrolling notes. `meters.ts`
+  draws the L/R meters. `view.ts` has the screen math, kept pure so it can be tested.
+
+## Roles: why remix works
+
+A track never names a specific instrument. It names a role:
+
+```
+track melody role=lead
+track bass   role=bass
+```
+
+Each style picks its own instrument for each role (lead = Saw lead in Synthwave, Strings in
+Orchestral, Acid in Techno...). Pressing a style button swaps the whole set, and since notes are
+booked only 0.1 s ahead, the change is almost instant.
+
+## Writing a song (one-minute version)
+
+```
+title: Example
+composer: Claude
+year: 2026
+source: original
+style: synthwave
+key: C major
+tempo: 120
+time: 4/4
+
+track lead role=lead
+| C5/4 E5/4 G5/2 | [C4 E4 G4]/1 |
+```
+
+- `C5/4` is C in octave 5 for a quarter note. `/8` is an eighth, `/4.` a dotted quarter, `/8t` a
+  triplet.
+- `[C4 E4 G4]` is a chord. `r/4` is a rest. `~` ties a note into the next one.
+- `|` separates bars, and every bar must add up to the time signature.
+- Every track needs the same number of bars. Run `npm test` and the checker shows any mistakes.
+
+## Day to day
+
+| Task | Command |
+|---|---|
+| Run it locally | `npm run dev` |
+| Check everything | `npm test` and `npm run typecheck` |
+| Publish | push to `main`. GitHub Pages rebuilds, and a failing test blocks it |
+
+Live site: https://stansz.github.io/drumline-radio/

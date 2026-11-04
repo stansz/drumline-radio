@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
-import { parseSong } from '../src/song';
-import type { Song } from '../src/song';
+import { parseSong } from '../src/music/song';
+import type { Song } from '../src/music/song';
 import {
   formatTime,
   laneLayout,
@@ -13,7 +13,7 @@ import {
   scrubTarget,
   stationLabel,
   volumeGain,
-} from '../src/view';
+} from '../src/ui/view';
 
 function fixtureSong(): Song {
   const result = parseSong(fixture);

@@ -1,9 +1,9 @@
 import { crushCurve, noteGain, softClipCurve } from './curves';
-import type { StyleId } from './roles';
-import type { Song, Track } from './song';
+import type { StyleId } from '../music/roles';
+import type { Song, Track } from '../music/song';
 import { resolvePatch, STYLE_DEFS } from './styles';
-import { buildTimeline, notesBetween } from './timing';
-import type { ScheduledNote, Timeline } from './timing';
+import { buildTimeline, notesBetween } from '../music/timing';
+import type { ScheduledNote, Timeline } from '../music/timing';
 import { createVoiceKit, playDrum, playSynth } from './voices';
 import type { Voice, VoiceKit } from './voices';
 

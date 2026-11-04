@@ -1,12 +1,12 @@
 import { createDial } from './dial';
-import { Engine } from './engine';
-import { LIBRARY, LIBRARY_ERRORS } from './library';
+import { Engine } from '../audio/engine';
+import { LIBRARY, LIBRARY_ERRORS } from '../music/library';
 import { createMeters, SEGMENTS } from './meters';
-import { STYLES } from './roles';
-import type { StyleId } from './roles';
+import { STYLES } from '../music/roles';
+import type { StyleId } from '../music/roles';
 import { createScore } from './score';
-import { STYLE_DEFS } from './styles';
-import { notesBetween } from './timing';
+import { STYLE_DEFS } from '../audio/styles';
+import { notesBetween } from '../music/timing';
 import { formatTime, nextAfterEnd, parseVolume, prevAction, scrubTarget, volumeGain } from './view';
 
 const VOLUME_KEY = 'drumline-radio-volume';

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { midiName, midiToFreq, parsePitch } from '../src/pitch';
+import { midiName, midiToFreq, parsePitch } from '../src/music/pitch';
 
 describe('parsePitch', () => {
   it('parses natural notes', () => {

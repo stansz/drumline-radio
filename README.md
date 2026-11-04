@@ -60,6 +60,10 @@ Claude originals:
 - **Night Shift** (Techno)
 - **Save Point** (Chiptune)
 
+## How it works
+
+The one-page overview: [docs/how-it-works.md](docs/how-it-works.md).
+
 ## Song format
 
 Each song is one plain-text file. See [docs/song-format.md](docs/song-format.md).
