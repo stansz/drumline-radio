@@ -3,7 +3,14 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 // @ts-ignore -- same reason as above.
 import { join, relative, sep } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
-import { cacheVersion, precacheList } from './src/pwa/precache';
+import { cacheVersion, precacheList } from './src/pwa/precache.ts';
+
+// Node's process, declared here because @types/node is not a dependency.
+declare const process: { env: Record<string, string | undefined> };
+
+// GitHub Pages serves the site under /drumline-radio/. Cloudflare Pages (which sets CF_PAGES) and
+// other hosts at a domain root use /. BASE_PATH overrides both.
+const base = process.env.BASE_PATH ?? (process.env.CF_PAGES ? '/' : '/drumline-radio/');
 
 function filesUnder(dir: string, base: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap(
@@ -44,6 +51,6 @@ function serviceWorker(): Plugin {
 }
 
 export default defineConfig({
-  base: '/drumline-radio/',
+  base,
   plugins: [serviceWorker()],
 });

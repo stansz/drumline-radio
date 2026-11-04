@@ -93,8 +93,11 @@ track lead role=lead
 |---|---|
 | Run it locally | `npm run dev` |
 | Check everything | `npm test` and `npm run typecheck` |
-| Publish | push to `main`. GitHub Pages rebuilds, and a failing test blocks it |
+| Publish | push to `main`. GitHub Pages and Cloudflare Pages both rebuild; a failing test blocks the GitHub deploy |
 
 Every deploy changes the cache version, so installed copies update on their next launch.
 
-Live site: https://stansz.github.io/drumline-radio/
+Live sites: https://stansz.github.io/drumline-radio/ and https://drumline-radio.pages.dev/
+
+The build serves from `/drumline-radio/` for GitHub Pages and from `/` on Cloudflare Pages, which sets
+`CF_PAGES`. Set `BASE_PATH` to override it for any other host.
