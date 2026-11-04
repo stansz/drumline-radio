@@ -180,18 +180,22 @@ body::after {
 }
 
 .info-btn {
+  display: inline-grid;
+  place-items: center;
   margin-left: 8px;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
-  border: 1px solid var(--muted);
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 13px;
-  line-height: 1;
+  background: radial-gradient(circle at 35% 30%, #3a3a44, #15151b 70%);
+  color: var(--accent);
   cursor: pointer;
   vertical-align: middle;
+}
+
+.info-btn:hover {
+  box-shadow: 0 0 8px var(--glow);
 }
 
 .readout {
