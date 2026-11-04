@@ -53,7 +53,7 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
 - Later on 2026-11-04:
   - category presets, a PWA (also on Cloudflare at radio.ogsapps.cc), and an ⓘ panel with dim view
     and a screensaver;
-  - a 5th style, Lo-fi, with the original Late Bus Home;
+  - a 5th style, Lo-fi, with the original Late Bus Home (later replaced by Last Stop);
   - "Claude & SZ" credits, and song stories (`about:`) shown on a song card;
   - every arranged song re-done with its own intro and groove. The arranger, the song checker, and
     the browser checks were saved in `tools/`.

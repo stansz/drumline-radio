@@ -56,7 +56,7 @@ The first command builds all 16 songs into `tmp/songs`, the second builds just o
 checks the output. To keep the output, copy it over the file in `src/songs/`. The script's output
 matches the files in `src/songs/`, so re-running it is safe.
 
-Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the four older originals are
+Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the three older originals are
 hand-written. Edit their `.song` files directly.
 
 ### Form-based recipes (more shape)
@@ -108,8 +108,9 @@ The arranger is a starting point, not a rule. A good first draft comes from pick
 grooves, and textures to suit the song's genre and mood. From there:
 
 - **Change the recipe** when an arranged song needs a different feel.
-- **Hand-write or hand-edit** a song when the arranger can't express it. Late Bus Home is
-  hand-written because the arranger made it too busy.
+- **Hand-write or hand-edit** a song when the arranger can't express it.
+- **Rewrite with `arrangeForm()`** when a simple arrangement feels flat. Last Stop replaced the
+  hand-written Late Bus Home this way.
 - **Extend the arranger** with a new groove, bass line, texture, or option when it keeps falling
   short. Add new options as opt-in so existing recipes rebuild unchanged.
 

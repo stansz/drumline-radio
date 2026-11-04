@@ -1,6 +1,6 @@
 // Originals built with arrangeForm(). Writes .song files to <outDir> (default: src/songs).
 //   node tools/arranger/originals.mjs [outDir] [song-id ...]
-// The other originals (Midnight Arcade, Night Shift, Save Point, Late Bus Home) are hand-written.
+// The other originals (Midnight Arcade, Night Shift, Save Point) are hand-written.
 import { mkdirSync } from 'node:fs';
 import { arrangeForm } from './arranger.mjs';
 
@@ -13,12 +13,12 @@ const F = (spec) => {
   written += 1;
 };
 
-// Last Stop: Late Bus Home's sequel. Lo-fi kept calm: Rhodes stabs instead of a pad wash, slow
-// quarter-note plucks, a minor-iv bridge with only keys and melody, and the flute counter-line
-// saved for the one big chorus.
+// Last Stop replaced the hand-written Late Bus Home. Lo-fi kept calm: Rhodes stabs instead of a
+// pad wash, slow quarter-note plucks, a minor-iv bridge with only keys and melody, and the flute
+// counter-line saved for the one big chorus.
 F({
   file: 'last-stop.song',
-  head: `# Last Stop, by Claude and SZ. Late Bus Home's sequel, arranged with arrangeForm(): verse, hook, a keys-only bridge, and a hook that fades out.
+  head: `# Last Stop, by Claude and SZ. Slow lo-fi, arranged with arrangeForm(): verse, hook, a keys-only bridge, and a hook that fades out.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
