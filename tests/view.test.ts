@@ -6,6 +6,7 @@ import {
   driftPosition,
   formatTime,
   laneLayout,
+  marqueeTiming,
   nearestStation,
   nextAfterEnd,
   noteY,
@@ -15,6 +16,7 @@ import {
   prevAction,
   scrubTarget,
   shouldStartSaver,
+  songFacts,
   stationLabel,
   stationsIn,
   stepStation,
@@ -172,5 +174,28 @@ describe('driftPosition', () => {
   it('places the box inside the area', () => {
     expect(driftPosition(0.5, 0.5, 400, 800, 100, 200)).toEqual({ x: 150, y: 300 });
     expect(driftPosition(0.9, 0.9, 50, 50, 100, 100)).toEqual({ x: 0, y: 0 });
+  });
+});
+
+describe('marqueeTiming', () => {
+  it('shifts past the overflow with a margin and never runs too fast', () => {
+    expect(marqueeTiming(100)).toEqual({ shift: -108, seconds: 8 });
+    expect(marqueeTiming(10)).toEqual({ shift: -18, seconds: 6 });
+  });
+});
+
+describe('songFacts', () => {
+  it('lists the card facts in order', () => {
+    expect(
+      songFacts({ year: '1824', key: 'D major', tempo: 112, time: [4, 4] }, 'Classics', 'Orchestral', 109.4),
+    ).toEqual([
+      ['Year', '1824'],
+      ['Category', 'Classics'],
+      ['Style', 'Orchestral'],
+      ['Key', 'D major'],
+      ['Tempo', '112 BPM'],
+      ['Time', '4/4'],
+      ['Length', '1:49'],
+    ]);
   });
 });

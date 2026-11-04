@@ -70,6 +70,32 @@ export function formatTime(seconds: number): string {
   return `${minutes}:${String(rest).padStart(2, '0')}`;
 }
 
+/** How far and how long a too-long readout line scrolls back and forth. */
+export function marqueeTiming(overflowPx: number): { shift: number; seconds: number } {
+  return {
+    shift: -Math.ceil(overflowPx) - 8,
+    seconds: Math.max(6, Math.round(4 + overflowPx / 25)),
+  };
+}
+
+/** The label/value rows on a song card, in display order. */
+export function songFacts(
+  meta: { year: string; key: string; tempo: number; time: [number, number] },
+  categoryName: string,
+  styleName: string,
+  durationSec: number,
+): [string, string][] {
+  return [
+    ['Year', meta.year],
+    ['Category', categoryName],
+    ['Style', styleName],
+    ['Key', meta.key],
+    ['Tempo', `${Math.round(meta.tempo)} BPM`],
+    ['Time', `${meta.time[0]}/${meta.time[1]}`],
+    ['Length', formatTime(durationSec)],
+  ];
+}
+
 /** The tuner frequency shown for a station, from 88.1 in 2.2 steps. */
 export function stationLabel(index: number): string {
   return (88.1 + index * 2.2).toFixed(1);

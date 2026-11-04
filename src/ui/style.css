@@ -223,6 +223,7 @@ body::after {
   border-radius: 8px;
   background: #05030a;
   box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
 }
 
 .readout-title {
@@ -243,6 +244,41 @@ body::after {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Long readout lines scroll gently back and forth instead of clipping. */
+.marquee-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.scrolling {
+  text-overflow: clip;
+}
+
+.scrolling .marquee-inner {
+  animation: marquee var(--marquee-time, 8s) ease-in-out infinite alternate;
+}
+
+@keyframes marquee {
+  0%,
+  15% {
+    transform: translateX(0);
+  }
+  85%,
+  100% {
+    transform: translateX(var(--marquee-shift, 0));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrolling .marquee-inner {
+    animation: none;
+  }
+
+  .scrolling {
+    text-overflow: ellipsis;
+  }
 }
 
 /* L, R, and volume are three matching LED rows: 16 segments, same width, labels in one column. */
@@ -759,6 +795,37 @@ body::after {
 .info-close {
   width: 100%;
   margin-top: 12px;
+}
+
+.card-byline {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.card-facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 0 0 12px;
+}
+
+.card-facts dt {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.card-facts dd {
+  margin: 0;
+  font-family: var(--readout-font);
+  font-size: 18px;
+  color: var(--accent);
+}
+
+.card-about {
+  margin: 0 0 4px;
 }
 
 :focus-visible {

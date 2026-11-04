@@ -345,3 +345,26 @@ describe('the arranger header', () => {
     expect(result.errors.some((e) => e.includes('arranger must not be empty'))).toBe(true);
   });
 });
+
+describe('the about header', () => {
+  it('reads an optional about', () => {
+    const result = parseSong(`${HEADER}\nabout: Some story.\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.meta.about).toBe('Some story.');
+  });
+
+  it('defaults to null without the line', () => {
+    const result = parseSong(`${HEADER}\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.meta.about).toBeNull();
+  });
+
+  it('rejects an empty about', () => {
+    const result = parseSong(`${HEADER}\nabout:\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.some((e) => e.includes('about must not be empty'))).toBe(true);
+  });
+});

@@ -18,6 +18,7 @@ Every key may appear once, and no other keys are allowed.
 | `title`    | yes      | Any non-empty text.                              |
 | `composer` | yes      | Any non-empty text.                              |
 | `arranger` | no       | Any non-empty text. Shown after the composer as "arr. …". |
+| `about`    | no       | One line of plain text: the song's story, shown on its song card. |
 | `year`     | yes      | Any non-empty text, e.g. `1856` or `traditional`. |
 | `source`   | yes      | `public-domain` or `original`.                   |
 | `category` | yes      | `carols`, `classics`, or `originals`. Picks the preset group in the player. |
@@ -200,7 +201,7 @@ Every track must have the same number of bars.
 ## What the checker rejects
 
 - Headers with an unknown key, a repeated key, or a missing required key.
-- An empty `arranger`.
+- An empty `arranger` or `about`.
 - An unknown `source`, an unknown `category`, an unknown `style`, or a bad `tempo`, `time`, or `pickup`.
 - A directive that names a bar past the end of the song, or a ramp whose end bar is not after its
   start bar.

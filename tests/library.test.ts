@@ -84,6 +84,12 @@ describe('library', () => {
     expect(valkyries?.song.bars.every((bar) => bar.time[0] === 9 && bar.time[1] === 8)).toBe(true);
   });
 
+  it('gives every public-domain song an about story', () => {
+    const publicDomain = LIBRARY.filter((entry) => entry.song.meta.source === 'public-domain');
+    expect(publicDomain.length).toBeGreaterThan(0);
+    expect(publicDomain.every((entry) => entry.song.meta.about !== null)).toBe(true);
+  });
+
   it('gives Fur Elise an eighth-note pickup and 3/8 bars', () => {
     const furElise = LIBRARY.find((entry) => entry.id === 'fur-elise');
     expect(furElise?.song.meta.pickupTicks).toBe(480);

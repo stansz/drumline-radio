@@ -6,7 +6,7 @@ import { STYLES } from '../music/roles';
 import type { StyleId } from '../music/roles';
 import { createScore } from './score';
 import { STYLE_DEFS } from '../audio/styles';
-import { notesBetween } from '../music/timing';
+import { buildTimeline, notesBetween } from '../music/timing';
 import { createSaver } from './saver';
 import { createWakeLock } from './wake';
 import {
@@ -18,8 +18,10 @@ import {
   SAVER_OPTIONS,
   scrubTarget,
   shouldStartSaver,
+  songFacts,
   volumeGain,
 } from './view';
+import { createMarquee } from './marquee';
 import {
   categoryLabel,
   CATEGORY_FILTERS,
@@ -63,6 +65,7 @@ export function startUi(): void {
 
   const titleEl = required<HTMLElement>('#title');
   const subtitleEl = required<HTMLElement>('#subtitle');
+  const readoutEl = required<HTMLElement>('.readout');
   const metersCanvas = required<HTMLCanvasElement>('#meters');
   const muteButton = required<HTMLButtonElement>('#mute');
   const volumeEl = required<HTMLInputElement>('#volume');
@@ -81,6 +84,12 @@ export function startUi(): void {
   const infoButton = required<HTMLButtonElement>('#info');
   const infoPanel = required<HTMLDialogElement>('#info-panel');
   const infoClose = required<HTMLButtonElement>('#info-close');
+  const songCard = required<HTMLDialogElement>('#song-card');
+  const cardTitle = required<HTMLElement>('#card-title');
+  const cardByline = required<HTMLElement>('#card-byline');
+  const cardFacts = required<HTMLElement>('#card-facts');
+  const cardAbout = required<HTMLElement>('#card-about');
+  const cardClose = required<HTMLButtonElement>('#card-close');
   const dimToggle = required<HTMLButtonElement>('#dim-toggle');
   const saverStart = required<HTMLButtonElement>('#saver-start');
   const saverAutoEl = required<HTMLElement>('#saver-auto');
@@ -90,6 +99,18 @@ export function startUi(): void {
   const saverTitle = required<HTMLElement>('#saver-title');
   const saverTime = required<HTMLElement>('#saver-time');
   const root = document.documentElement;
+
+  const titleMarquee = createMarquee(titleEl);
+  const subtitleMarquee = createMarquee(subtitleEl);
+  new ResizeObserver(() => {
+    titleMarquee.refit();
+    subtitleMarquee.refit();
+  }).observe(readoutEl);
+  // The readout font loads after the first measurement, so measure again once it's in.
+  void document.fonts.ready.then(() => {
+    titleMarquee.refit();
+    subtitleMarquee.refit();
+  });
 
   const score = createScore(scoreCanvas);
   const meters = createMeters(metersCanvas);
@@ -166,14 +187,14 @@ export function startUi(): void {
     const entry = LIBRARY[current];
     if (!entry) return;
     const song = entry.song;
-    titleEl.textContent = song.meta.title;
+    titleMarquee.set(song.meta.title);
     const name = STYLE_DEFS[style].name;
     const remix = style !== song.meta.style ? ' (remix)' : '';
     const byline =
       song.meta.arranger === null
         ? song.meta.composer
         : `${song.meta.composer}, arr. ${song.meta.arranger}`;
-    subtitleEl.textContent = `${byline} · ${song.meta.year} · ${name}${remix}`;
+    subtitleMarquee.set(`${byline} · ${song.meta.year} · ${name}${remix}`);
   }
 
   function updateBands(style: StyleId): void {
@@ -297,8 +318,8 @@ export function startUi(): void {
     const entry = LIBRARY[current];
 
     if (!engine) {
-      titleEl.textContent = entry.song.meta.title;
-      subtitleEl.textContent = 'Press play';
+      titleMarquee.set(entry.song.meta.title);
+      subtitleMarquee.set('Press play');
       updateBands(entry.song.meta.style);
       root.dataset.style = entry.song.meta.style;
       dial.select(current, false);
@@ -388,6 +409,44 @@ export function startUi(): void {
     loadSong(index);
     updatePlayButton();
   });
+
+  function openSongCard(): void {
+    const entry = LIBRARY[current];
+    if (!entry) return;
+    const { meta } = entry.song;
+    cardTitle.textContent = meta.title;
+    cardByline.textContent =
+      meta.arranger === null ? meta.composer : `${meta.composer} · arr. ${meta.arranger}`;
+    cardFacts.textContent = '';
+    const facts = songFacts(
+      meta,
+      categoryLabel(meta.category),
+      STYLE_DEFS[meta.style].name,
+      buildTimeline(entry.song).duration,
+    );
+    for (const [label, value] of facts) {
+      const dt = document.createElement('dt');
+      dt.textContent = label;
+      const dd = document.createElement('dd');
+      dd.textContent = value;
+      cardFacts.append(dt, dd);
+    }
+    if (meta.about === null) {
+      cardAbout.hidden = true;
+    } else {
+      cardAbout.hidden = false;
+      cardAbout.textContent = meta.about;
+    }
+    songCard.showModal();
+  }
+
+  readoutEl.addEventListener('click', () => openSongCard());
+  readoutEl.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    openSongCard();
+  });
+  cardClose.addEventListener('click', () => songCard.close());
 
   playButton.addEventListener('click', togglePlay);
   prevButton.addEventListener('click', previous);
@@ -495,7 +554,7 @@ export function startUi(): void {
       updatePlayButton();
       return;
     }
-    if (infoPanel.open) return;
+    if (infoPanel.open || songCard.open) return;
     if (document.activeElement === seekEl || document.activeElement === volumeEl) return;
     if (event.key === 'm' || event.key === 'M') {
       toggleMute();
@@ -557,7 +616,7 @@ export function startUi(): void {
         performance.now() - lastInteraction,
         saverMinutes,
         engine?.playing ?? false,
-        saver.visible || infoPanel.open,
+        saver.visible || infoPanel.open || songCard.open,
       )
     ) {
       saver.show();
@@ -591,16 +650,16 @@ export function startUi(): void {
   }
 
   if (LIBRARY.length === 0) {
-    titleEl.textContent = 'Drumline Radio';
-    subtitleEl.textContent = 'No songs found';
+    titleMarquee.set('Drumline Radio');
+    subtitleMarquee.set('No songs found');
     return;
   }
 
   dial.filter(visible());
   current = visible()[0] ?? 0;
   const first = LIBRARY[current];
-  titleEl.textContent = first.song.meta.title;
-  subtitleEl.textContent = 'Press play';
+  titleMarquee.set(first.song.meta.title);
+  subtitleMarquee.set('Press play');
   root.dataset.style = first.song.meta.style;
   updateBands(first.song.meta.style);
   dial.select(current, false);

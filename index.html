@@ -21,8 +21,8 @@
     <div id="app" class="radio">
       <header class="faceplate">
         <div class="brand">Drumline <span>Radio</span> <button id="install" class="install" type="button" hidden>Install</button><button id="info" class="info-btn" type="button" aria-label="Info and screensaver" title="Info and screensaver"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="8" cy="3.2" r="1.5" fill="currentColor"/><rect x="6.7" y="6" width="2.6" height="7.5" rx="1.1" fill="currentColor"/></svg></button></div>
-        <div class="readout" aria-live="polite">
-          <div id="title" class="readout-title">Drumline Radio</div>
+        <div class="readout" role="button" tabindex="0" aria-label="Song details" title="Song details">
+          <div id="title" class="readout-title" aria-live="polite">Drumline Radio</div>
           <div id="subtitle" class="readout-sub">Press play</div>
         </div>
         <div class="levels">
@@ -99,6 +99,13 @@
       <p class="info-keys">Space play/pause · ←/→ station · 1–5 style · C category · M mute · R repeat ·
         S screensaver</p>
       <button id="info-close" class="info-action info-close" type="button">Close</button>
+    </dialog>
+    <dialog id="song-card" class="info-panel song-card" aria-labelledby="card-title">
+      <h2 id="card-title"></h2>
+      <p id="card-byline" class="card-byline"></p>
+      <dl id="card-facts" class="card-facts"></dl>
+      <p id="card-about" class="card-about" hidden></p>
+      <button id="card-close" class="info-action info-close" type="button">Close</button>
     </dialog>
     <script type="module" src="/src/main.ts"></script>
   </body>
