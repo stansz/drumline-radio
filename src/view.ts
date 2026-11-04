@@ -14,6 +14,16 @@ export function parseVolume(stored: string | null): number {
   return Number.isFinite(value) ? Math.min(Math.max(Math.round(value), 0), 100) : 100;
 }
 
+/**
+ * Where a drag on the score lands: dragging left moves forward in time, at the score's scale
+ * (6 s of future across 75% of the width, as drawn in score.ts). Clamped to the song.
+ */
+export function scrubTarget(start: number, dx: number, width: number, duration: number): number {
+  if (width <= 0) return start;
+  const pxPerSecond = (width * 0.75) / 6;
+  return Math.min(Math.max(start - dx / pxPerSecond, 0), duration);
+}
+
 export function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
   const total = Math.floor(seconds);

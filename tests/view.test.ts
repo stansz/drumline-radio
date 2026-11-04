@@ -9,6 +9,7 @@ import {
   noteY,
   parseVolume,
   prevAction,
+  scrubTarget,
   stationLabel,
   volumeGain,
 } from '../src/view';
@@ -82,5 +83,19 @@ describe('volume', () => {
     expect(parseVolume('40')).toBe(40);
     expect(parseVolume('140')).toBe(100);
     expect(parseVolume('-3')).toBe(0);
+  });
+});
+
+describe('scrubTarget', () => {
+  it('moves forward when dragging left, at the score scale', () => {
+    // 800 px wide: 100 px per second.
+    expect(scrubTarget(10, -200, 800, 60)).toBe(12);
+    expect(scrubTarget(10, 300, 800, 60)).toBe(7);
+  });
+
+  it('clamps to the song', () => {
+    expect(scrubTarget(1, 500, 800, 60)).toBe(0);
+    expect(scrubTarget(59, -500, 800, 60)).toBe(60);
+    expect(scrubTarget(5, 100, 0, 60)).toBe(5);
   });
 });

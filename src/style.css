@@ -313,6 +313,8 @@ body::after {
 
 /* Absolute, so the canvas's own pixel size never feeds back into the stage height. */
 .score {
+  cursor: grab;
+  touch-action: none;
   position: absolute;
   inset: 0;
   display: block;
@@ -640,8 +642,10 @@ body::after {
     font-size: 16px;
   }
 
+  /* A taller hit area so the seek bar is easy to grab with a thumb. */
   .seek {
     min-width: 40px;
+    height: 32px;
   }
 
   /* All four bands on one row. */

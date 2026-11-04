@@ -7,7 +7,7 @@ import type { StyleId } from './roles';
 import { createScore } from './score';
 import { STYLE_DEFS } from './styles';
 import { notesBetween } from './timing';
-import { formatTime, parseVolume, prevAction, volumeGain } from './view';
+import { formatTime, parseVolume, prevAction, scrubTarget, volumeGain } from './view';
 
 const VOLUME_KEY = 'drumline-radio-volume';
 const MUTED_KEY = 'drumline-radio-muted';
@@ -62,6 +62,8 @@ export function startUi(): void {
   let lastStyle: StyleId | null = null;
   let bannerTimer = 0;
   let draggingSeek = false;
+  // Dragging the score scrubs: the score follows the finger and the song seeks on release.
+  let scrub: { pointer: number; x: number; start: number; target: number; moved: boolean } | null = null;
 
   const bandButtons: HTMLButtonElement[] = [];
   for (let index = 0; index < STYLES.length; index += 1) {
@@ -273,6 +275,28 @@ export function startUi(): void {
     applyVolume();
   });
 
+  scoreCanvas.addEventListener('pointerdown', (event) => {
+    if (!engine || engine.duration <= 0) return;
+    scrub = { pointer: event.pointerId, x: event.clientX, start: engine.position, target: engine.position, moved: false };
+    scoreCanvas.setPointerCapture(event.pointerId);
+  });
+  scoreCanvas.addEventListener('pointermove', (event) => {
+    if (!scrub || !engine || event.pointerId !== scrub.pointer) return;
+    const dx = event.clientX - scrub.x;
+    if (Math.abs(dx) > 4) scrub.moved = true;
+    scrub.target = scrubTarget(scrub.start, dx, scoreCanvas.clientWidth, engine.duration);
+  });
+  const endScrub = (event: PointerEvent): void => {
+    if (!scrub || event.pointerId !== scrub.pointer) return;
+    if (scrub.moved && engine) {
+      engine.seek(scrub.target);
+      updatePlayButton();
+    }
+    scrub = null;
+  };
+  scoreCanvas.addEventListener('pointerup', endScrub);
+  scoreCanvas.addEventListener('pointercancel', endScrub);
+
   seekEl.addEventListener('pointerdown', () => {
     draggingSeek = true;
   });
@@ -334,13 +358,14 @@ export function startUi(): void {
     const fallback = STYLE_DEFS[songStyle()];
     if (active) {
       const style = STYLE_DEFS[active.style];
-      score.draw(active.timeline, active.position, style, dial.tuning());
+      const position = scrub?.moved ? scrub.target : active.position;
+      score.draw(active.timeline, position, style, dial.tuning());
       meters.draw(active.levels(), style.lanes[0] ?? '#ffffff');
       const duration = active.duration;
       if (!draggingSeek && duration > 0) {
-        seekEl.value = String(Math.round((active.position / duration) * 1000));
+        seekEl.value = String(Math.round((position / duration) * 1000));
       }
-      elapsedEl.textContent = formatTime(active.position);
+      elapsedEl.textContent = formatTime(position);
       totalEl.textContent = formatTime(duration);
       updateFlash(active);
       updatePlayButton();
