@@ -1,17 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
-import type { Song } from '../src/music/song';
+import type { Category, Song } from '../src/music/song';
 import {
   formatTime,
   laneLayout,
   nearestStation,
   nextAfterEnd,
   noteY,
+  parseCategory,
   parseVolume,
   prevAction,
   scrubTarget,
   stationLabel,
+  stationsIn,
+  stepStation,
   volumeGain,
 } from '../src/ui/view';
 
@@ -46,11 +49,43 @@ describe('prevAction', () => {
 });
 
 describe('nextAfterEnd', () => {
-  it('loops the current song when repeating, otherwise advances', () => {
-    expect(nextAfterEnd(2, 5, true)).toBe(2);
-    expect(nextAfterEnd(2, 5, false)).toBe(3);
-    expect(nextAfterEnd(4, 5, false)).toBe(0);
-    expect(nextAfterEnd(0, 1, false)).toBe(0);
+  it('loops the current song when repeating, otherwise advances through the visible stations', () => {
+    expect(nextAfterEnd(2, [0, 1, 2, 3, 4], true)).toBe(2);
+    expect(nextAfterEnd(2, [0, 2, 4], false)).toBe(4);
+    expect(nextAfterEnd(4, [0, 2, 4], false)).toBe(0);
+  });
+});
+
+describe('stepStation', () => {
+  it('steps forward and backward, wrapping around', () => {
+    expect(stepStation([0, 2, 4], 0, 1)).toBe(2);
+    expect(stepStation([0, 2, 4], 0, -1)).toBe(4);
+    expect(stepStation([0, 1, 2], 2, 1)).toBe(0);
+  });
+
+  it('falls back to the first visible station when the current one is hidden', () => {
+    expect(stepStation([1, 3], 2, 1)).toBe(1);
+  });
+
+  it('keeps the current station when nothing is visible', () => {
+    expect(stepStation([], 5, 1)).toBe(5);
+  });
+});
+
+describe('stationsIn', () => {
+  const categories: Category[] = ['carols', 'classics', 'carols', 'originals'];
+
+  it('lists library indices for the chosen preset', () => {
+    expect(stationsIn(categories, 'all')).toEqual([0, 1, 2, 3]);
+    expect(stationsIn(categories, 'carols')).toEqual([0, 2]);
+  });
+});
+
+describe('parseCategory', () => {
+  it('reads a stored preset and falls back to All', () => {
+    expect(parseCategory('carols')).toBe('carols');
+    expect(parseCategory(null)).toBe('all');
+    expect(parseCategory('jazz')).toBe('all');
   });
 });
 

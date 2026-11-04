@@ -19,6 +19,7 @@ Every key may appear once, and no other keys are allowed.
 | `composer` | yes      | Any non-empty text.                              |
 | `year`     | yes      | Any non-empty text, e.g. `1856` or `traditional`. |
 | `source`   | yes      | `public-domain` or `original`.                   |
+| `category` | yes      | `carols`, `classics`, or `originals`. Picks the preset group in the player. |
 | `style`    | yes      | One of `synthwave`, `chiptune`, `orchestral`, `techno`. |
 | `key`      | yes      | Any non-empty text, e.g. `C major`.              |
 | `tempo`    | yes      | Number from 20 to 400, quarter notes per minute; decimals allowed. |
@@ -198,7 +199,7 @@ Every track must have the same number of bars.
 ## What the checker rejects
 
 - Headers with an unknown key, a repeated key, or a missing required key.
-- An unknown `source`, an unknown `style`, or a bad `tempo`, `time`, or `pickup`.
+- An unknown `source`, an unknown `category`, an unknown `style`, or a bad `tempo`, `time`, or `pickup`.
 - A directive that names a bar past the end of the song, or a ramp whose end bar is not after its
   start bar.
 - A track with an unknown role, an id or instrument that does not match `^[a-z0-9-]+$`, a bad
@@ -235,6 +236,7 @@ title: Fixture
 composer: original
 year: 2026
 source: original
+category: originals
 style: synthwave
 key: C major
 tempo: 120

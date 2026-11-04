@@ -5,11 +5,15 @@ import type { PitchedRole, Role, StyleId } from './roles';
 export const TICKS_PER_QUARTER = 960;
 export const TICKS_PER_WHOLE = 3840;
 
+export const CATEGORIES = ['carols', 'classics', 'originals'] as const;
+export type Category = (typeof CATEGORIES)[number];
+
 export interface SongMeta {
   title: string;
   composer: string;
   year: string;
   source: 'public-domain' | 'original';
+  category: Category;
   style: StyleId;
   key: string;
   tempo: number;
@@ -56,6 +60,7 @@ const REQUIRED_HEADER_KEYS = [
   'composer',
   'year',
   'source',
+  'category',
   'style',
   'key',
   'tempo',
@@ -508,6 +513,7 @@ export function parseSong(text: string): ParseResult {
     composer: '',
     year: '',
     source: 'original',
+    category: 'classics',
     style: 'synthwave',
     key: '',
     tempo: 120,
@@ -531,6 +537,15 @@ export function parseSong(text: string): ParseResult {
       meta.source = sourceEntry.value;
     } else {
       err(sourceEntry.line, `unknown source '${sourceEntry.value}'`);
+    }
+  }
+
+  const categoryEntry = headerValues.get('category');
+  if (categoryEntry) {
+    if ((CATEGORIES as readonly string[]).includes(categoryEntry.value)) {
+      meta.category = categoryEntry.value as Category;
+    } else {
+      err(categoryEntry.line, `unknown category '${categoryEntry.value}'`);
     }
   }
 

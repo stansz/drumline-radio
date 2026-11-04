@@ -8,6 +8,7 @@ const HEADER = [
   'composer: original',
   'year: 2026',
   'source: original',
+  'category: originals',
   'style: chiptune',
   'key: C major',
   'tempo: 120',
@@ -142,7 +143,7 @@ describe('the format fixture', () => {
 describe('the checker', () => {
   it('reports a bar that is too long', () => {
     const errors = errorsFor('track a role=lead\n| C4/4 C4 C4 C4 C4 |');
-    expect(errors).toContain('line 10: track a bar 1 is 4800 ticks, expected 3840');
+    expect(errors).toContain('line 11: track a bar 1 is 4800 ticks, expected 3840');
   });
 
   it('collects several bar errors', () => {
@@ -180,6 +181,24 @@ describe('the checker', () => {
     expect(result.ok).toBe(false);
     if (result.ok) return;
     expect(result.errors.some((e) => e.includes('missing title'))).toBe(true);
+  });
+
+  it('reports a missing category', () => {
+    const withoutCategory = HEADER.split('\n')
+      .filter((line) => !line.startsWith('category:'))
+      .join('\n');
+    const result = parseSong(`${withoutCategory}\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.some((e) => e.includes('missing category'))).toBe(true);
+  });
+
+  it('rejects an unknown category', () => {
+    const jazz = `${HEADER.replace('category: originals', 'category: jazz')}\ntrack a role=lead\n| C4/1 |`;
+    const result = parseSong(jazz);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.some((e) => e.includes("unknown category 'jazz'"))).toBe(true);
   });
 
   it('rejects an unknown style', () => {

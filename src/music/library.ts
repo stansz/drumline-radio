@@ -1,4 +1,4 @@
-import { parseSong } from './song';
+import { CATEGORIES, parseSong } from './song';
 import type { Song } from './song';
 
 const FILES = import.meta.glob('../songs/*.song', {
@@ -17,7 +17,7 @@ function idFor(path: string): string {
 }
 
 function sortedEntries(entries: LibraryEntry[]): LibraryEntry[] {
-  const rank = (entry: LibraryEntry) => (entry.song.meta.source === 'public-domain' ? 0 : 1);
+  const rank = (entry: LibraryEntry) => CATEGORIES.indexOf(entry.song.meta.category);
   return entries.sort((a, b) => rank(a) - rank(b) || a.song.meta.title.localeCompare(b.song.meta.title));
 }
 

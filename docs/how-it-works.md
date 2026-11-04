@@ -33,6 +33,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 - `pitch.ts` has note names and frequencies (`A4` = 440 Hz). `roles.ts` has the roles, styles, and
   drum names.
 - `library.ts` loads every file in `src/songs/` automatically: drop a file in and it's on the dial.
+  Songs are sorted by category, then title.
 
 ### `src/audio/`: the sound side
 
@@ -69,6 +70,7 @@ title: Example
 composer: Claude
 year: 2026
 source: original
+category: originals
 style: synthwave
 key: C major
 tempo: 120

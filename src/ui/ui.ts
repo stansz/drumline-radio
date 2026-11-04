@@ -8,10 +8,19 @@ import { createScore } from './score';
 import { STYLE_DEFS } from '../audio/styles';
 import { notesBetween } from '../music/timing';
 import { formatTime, nextAfterEnd, parseVolume, prevAction, scrubTarget, volumeGain } from './view';
+import {
+  categoryLabel,
+  CATEGORY_FILTERS,
+  parseCategory,
+  stationsIn,
+  stepStation,
+} from './view';
+import type { CategoryFilter } from './view';
 
 const VOLUME_KEY = 'drumline-radio-volume';
 const MUTED_KEY = 'drumline-radio-muted';
 const REPEAT_KEY = 'drumline-radio-repeat';
+const CATEGORY_KEY = 'drumline-radio-category';
 
 function load(key: string): string | null {
   try {
@@ -54,6 +63,7 @@ export function startUi(): void {
   const totalEl = required<HTMLElement>('#total');
   const seekEl = required<HTMLInputElement>('#seek');
   const bandsEl = required<HTMLElement>('#bands');
+  const presetsEl = required<HTMLElement>('#presets');
   const root = document.documentElement;
 
   const score = createScore(scoreCanvas);
@@ -67,6 +77,8 @@ export function startUi(): void {
   // Dragging the score scrubs: the score follows the finger and the song seeks on release.
   let scrub: { pointer: number; x: number; start: number; target: number; moved: boolean } | null = null;
 
+  let category: CategoryFilter = parseCategory(load(CATEGORY_KEY));
+
   const bandButtons: HTMLButtonElement[] = [];
   for (let index = 0; index < STYLES.length; index += 1) {
     const id = STYLES[index];
@@ -79,6 +91,25 @@ export function startUi(): void {
     bandsEl.append(button);
     bandButtons.push(button);
   }
+
+  const presetButtons: HTMLButtonElement[] = [];
+  for (const filter of CATEGORY_FILTERS) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'preset';
+    button.setAttribute('role', 'radio');
+    button.textContent = categoryLabel(filter);
+    button.setAttribute('aria-checked', String(filter === category));
+    button.addEventListener('click', () => selectCategory(filter));
+    presetsEl.append(button);
+    presetButtons.push(button);
+  }
+
+  const visible = (): number[] =>
+    stationsIn(
+      LIBRARY.map((entry) => entry.song.meta.category),
+      category,
+    );
 
   function songStyle(): StyleId {
     return LIBRARY[current]?.song.meta.style ?? 'synthwave';
@@ -209,7 +240,7 @@ export function startUi(): void {
   }
 
   function handleEnded(): void {
-    loadSong(nextAfterEnd(current, LIBRARY.length, repeat));
+    loadSong(nextAfterEnd(current, visible(), repeat));
     engine?.play();
     updatePlayButton();
   }
@@ -225,6 +256,26 @@ export function startUi(): void {
     updateReadout(id);
     updateBands(id);
     showBanner(id);
+  }
+
+  function selectCategory(filter: CategoryFilter): void {
+    category = filter;
+    save(CATEGORY_KEY, filter);
+    for (let index = 0; index < CATEGORY_FILTERS.length; index += 1) {
+      presetButtons[index].setAttribute(
+        'aria-checked',
+        String(CATEGORY_FILTERS[index] === filter),
+      );
+    }
+    const shown = visible();
+    dial.filter(shown);
+    if (shown.includes(current)) {
+      dial.select(current, false);
+      return;
+    }
+    const target = shown[0];
+    if (target === undefined) return;
+    loadSong(target);
   }
 
   function togglePlay(): void {
@@ -243,12 +294,12 @@ export function startUi(): void {
       updatePlayButton();
       return;
     }
-    loadSong(current - 1);
+    loadSong(stepStation(visible(), current, -1));
   }
 
   function next(): void {
     if (!ensureEngine()) return;
-    loadSong(current + 1);
+    loadSong(stepStation(visible(), current, 1));
   }
 
   // Tuning to a station always plays it, like a radio.
@@ -276,6 +327,20 @@ export function startUi(): void {
     const nextIndex = (start + delta + STYLES.length) % STYLES.length;
     selectBand(nextIndex);
     bandButtons[nextIndex].focus();
+  });
+
+  presetsEl.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    event.stopPropagation();
+    const activeIndex = presetButtons.findIndex(
+      (button) => button.getAttribute('aria-checked') === 'true',
+    );
+    const delta = event.key === 'ArrowRight' ? 1 : -1;
+    const start = activeIndex < 0 ? 0 : activeIndex;
+    const nextIndex = (start + delta + CATEGORY_FILTERS.length) % CATEGORY_FILTERS.length;
+    selectCategory(CATEGORY_FILTERS[nextIndex]);
+    presetButtons[nextIndex].focus();
   });
 
   applyVolume();
@@ -335,6 +400,11 @@ export function startUi(): void {
     }
     if (event.key === 'r' || event.key === 'R') {
       toggleRepeat();
+      return;
+    }
+    if (event.key === 'c' || event.key === 'C') {
+      const index = CATEGORY_FILTERS.indexOf(category);
+      selectCategory(CATEGORY_FILTERS[(index + 1) % CATEGORY_FILTERS.length]);
       return;
     }
     if (event.key === ' ' || event.code === 'Space') {
@@ -403,12 +473,14 @@ export function startUi(): void {
     return;
   }
 
-  const first = LIBRARY[0];
+  dial.filter(visible());
+  current = visible()[0] ?? 0;
+  const first = LIBRARY[current];
   titleEl.textContent = first.song.meta.title;
   subtitleEl.textContent = 'Press play';
   root.dataset.style = first.song.meta.style;
   updateBands(first.song.meta.style);
-  dial.select(0, false);
+  dial.select(current, false);
   totalEl.textContent = formatTime(0);
   updatePlayButton();
   requestAnimationFrame(frame);

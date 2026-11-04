@@ -1,4 +1,5 @@
-import type { Song } from '../music/song';
+import { CATEGORIES } from '../music/song';
+import type { Category, Song } from '../music/song';
 
 /** Formats song seconds as `m:ss`, flooring and clamping negatives to zero. */
 /** Maps the 0–100 volume slider to a gain, squared so the slider feels even to the ear. */
@@ -37,15 +38,54 @@ export function stationLabel(index: number): string {
   return (88.1 + index * 2.2).toFixed(1);
 }
 
+export type CategoryFilter = Category | 'all';
+
+export const CATEGORY_FILTERS: CategoryFilter[] = ['all', ...CATEGORIES];
+
+const CATEGORY_LABELS: Record<CategoryFilter, string> = {
+  all: 'All',
+  carols: 'Carols',
+  classics: 'Classics',
+  originals: 'Originals',
+};
+
+export function categoryLabel(filter: CategoryFilter): string {
+  return CATEGORY_LABELS[filter];
+}
+
+/** Reads a stored preset; anything missing or unknown gives All. */
+export function parseCategory(stored: string | null): CategoryFilter {
+  return CATEGORY_FILTERS.includes(stored as CategoryFilter)
+    ? (stored as CategoryFilter)
+    : 'all';
+}
+
+/** The library indices a preset shows, in library order. */
+export function stationsIn(categories: Category[], filter: CategoryFilter): number[] {
+  const indices: number[] = [];
+  for (let index = 0; index < categories.length; index += 1) {
+    if (filter === 'all' || categories[index] === filter) indices.push(index);
+  }
+  return indices;
+}
+
+/** The station `delta` places from `current` among the visible stations, wrapping around. */
+export function stepStation(visible: number[], current: number, delta: number): number {
+  if (visible.length === 0) return current;
+  const at = visible.indexOf(current);
+  if (at < 0) return visible[0];
+  return visible[(at + delta + visible.length) % visible.length];
+}
+
 /** Previous either restarts a song that is under way or moves to the previous station. */
 export function prevAction(position: number): 'restart' | 'previous' {
   return position > 3 ? 'restart' : 'previous';
 }
 
-/** What to play when a song ends: the same song when repeating, otherwise the next one. */
-export function nextAfterEnd(current: number, count: number, repeatOne: boolean): number {
+/** What to play when a song ends: the same song when repeating, otherwise the next visible one. */
+export function nextAfterEnd(current: number, visible: number[], repeatOne: boolean): number {
   if (repeatOne) return current;
-  return (current + 1) % count;
+  return stepStation(visible, current, 1);
 }
 
 export interface Lane {

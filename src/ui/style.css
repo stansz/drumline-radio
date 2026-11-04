@@ -447,6 +447,10 @@ body::after {
   text-shadow: 0 0 8px var(--glow);
 }
 
+.station.hidden {
+  display: none;
+}
+
 .station-caption {
   position: absolute;
   top: 5px;
@@ -547,6 +551,34 @@ body::after {
 }
 
 .band[aria-checked='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.presets {
+  display: flex;
+  gap: 6px;
+}
+
+.preset {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  color: var(--muted);
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.preset[aria-checked='true'] {
   border-color: var(--accent);
   color: var(--accent);
   box-shadow:
@@ -716,6 +748,13 @@ body::after {
   /* All four bands on one row. */
   .bands {
     gap: 6px;
+  }
+
+  /* All four presets on one row at 360 px wide. */
+  .preset {
+    padding: 4px 4px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
   }
 
   .band {

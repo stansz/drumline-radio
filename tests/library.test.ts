@@ -7,27 +7,27 @@ describe('library', () => {
     expect(LIBRARY.length).toBe(23);
   });
 
-  it('orders by source then title', () => {
+  it('orders by category then title', () => {
     expect(LIBRARY.map((entry) => entry.id)).toEqual([
-      'can-can',
-      'canon-in-d',
       'deck-the-halls',
-      'eine-kleine-nachtmusik',
-      'fur-elise',
       'god-rest-ye',
       'good-king-wenceslas',
-      'greensleeves',
       'hark-the-herald',
-      'mountain-king',
       'jingle-bells',
       'joy-to-the-world',
-      'korobeiniki',
       'o-christmas-tree',
+      'silent-night',
+      'we-wish-you',
+      'can-can',
+      'canon-in-d',
+      'eine-kleine-nachtmusik',
+      'fur-elise',
+      'greensleeves',
+      'mountain-king',
+      'korobeiniki',
       'ode-to-joy',
       'valkyries',
-      'silent-night',
       'swan-lake',
-      'we-wish-you',
       'when-the-saints',
       'midnight-arcade',
       'night-shift',
@@ -35,27 +35,35 @@ describe('library', () => {
     ]);
   });
 
+  it('counts the songs in each category', () => {
+    const count = (category: string) =>
+      LIBRARY.filter((entry) => entry.song.meta.category === category).length;
+    expect(count('carols')).toBe(9);
+    expect(count('classics')).toBe(11);
+    expect(count('originals')).toBe(3);
+  });
+
   it('keeps each song in its own style', () => {
     expect(LIBRARY.map((entry) => entry.song.meta.style)).toEqual([
-      'chiptune',
-      'orchestral',
-      'synthwave',
-      'techno',
       'synthwave',
       'techno',
       'chiptune',
       'orchestral',
-      'orchestral',
       'chiptune',
-      'chiptune',
-      'orchestral',
-      'chiptune',
-      'orchestral',
       'orchestral',
       'orchestral',
       'synthwave',
-      'orchestral',
       'synthwave',
+      'chiptune',
+      'orchestral',
+      'techno',
+      'synthwave',
+      'orchestral',
+      'chiptune',
+      'chiptune',
+      'orchestral',
+      'orchestral',
+      'orchestral',
       'synthwave',
       'synthwave',
       'techno',
