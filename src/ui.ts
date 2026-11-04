@@ -365,6 +365,7 @@ export function startUi(): void {
       if (!draggingSeek && duration > 0) {
         seekEl.value = String(Math.round((position / duration) * 1000));
       }
+      seekEl.style.setProperty('--progress', `${(Number(seekEl.value) / 10).toFixed(1)}%`);
       elapsedEl.textContent = formatTime(position);
       totalEl.textContent = formatTime(duration);
       updateFlash(active);
