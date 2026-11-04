@@ -1,0 +1,24 @@
+# Format fixture for the tests. Uses every feature at least once.
+title: Fixture
+composer: original
+year: 2026
+source: original
+style: synthwave
+key: C major
+tempo: 120
+time: 4/4
+pickup: /4
+
+@bars 2-4 tempo=100..140
+@bar 4 time=3/4
+
+track mel role=lead inst=saw-lead vol=0.7 pan=-0.25
+| G4/4
+| C5/4 E5 G5 C6 | [C4 E4 G4]/2. r/4 | v=70 D5/8 D5 E5/4' F5/2~
+| F5/4 G5/2:120 |
+
+track bass role=bass
+| r/4 | C2/1 | R | r/2 G2/2~ | G2/4 r/2 |
+
+track beat role=drums
+| h/4 | { [k h]/8 h [s h] h [k h] h [s h] h }*2 | % | k/4 s/4 [k cr]/4 |

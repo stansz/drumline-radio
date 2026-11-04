@@ -36,8 +36,11 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
 - Name: **Drumline Radio**. Repo `stansz/drumline-radio` (public), cloned at
   `C:\Users\sz\Documents\Code\drumline-radio`. Keep it out of `AppData\Local`, because the dsh
   sandbox can't reach it.
-- The repo holds only this brief so far. GitHub Pages still needs turning on, with GitHub Actions as
-  the source, once the deploy workflow exists. The Vite `base` is `/drumline-radio/`.
+- Handoff 1 is done: project setup, the song format parser and checker (`src/song.ts`), timing
+  (`src/timing.ts`), tests, `docs/song-format.md`, and the Pages deploy workflow. The page is a
+  placeholder. The Vite `base` is `/drumline-radio/`.
+- Next is handoff 2: the sound engine, the 4 styles, and the player UI. The user has dropped the
+  8-bit look as a requirement; the UI direction is still being chosen.
 
 ## How we work (user preferences)
 
