@@ -50,6 +50,13 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
 - Pass 3 (2026-11-04): 17 more public-domain songs (9 carols plus Korobeiniki, Ode to Joy, Für Elise, Can-Can,
   Canon in D, Swan Lake, Eine kleine Nachtmusik, When the Saints), made by an arranger script from
   melody plus chords (intro, 2-4 passes, the last often up a key, ending), and a repeat-song button.
+- Later on 2026-11-04:
+  - category presets, a PWA (also on Cloudflare at radio.ogsapps.cc), and an ⓘ panel with dim view
+    and a screensaver;
+  - a 5th style, Lo-fi, with the original Late Bus Home;
+  - "Claude & SZ" credits, and song stories (`about:`) shown on a song card;
+  - every arranged song re-done with its own intro and groove. The arranger, the song checker, and
+    the browser checks were saved in `tools/`.
 
 ## How we work (user preferences)
 
@@ -66,8 +73,8 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
   - **Always add `--mute-audio`.** The VM's speakers are live and the user works on it.
   - Node 24 has a built-in `WebSocket`. Playwright and Puppeteer are not installed.
   - The app's built-in browser pane does not animate on this headless VM, so don't use it.
-  - Example test scripts are in the drumline-studio session scratchpad. Patterns: `len48.mjs`,
-    `peak.mjs`.
+  - Reusable check scripts are in `tools/browser/` (layout, loudness, offline, screenshots); see
+    `tools/README.md`.
 - On Windows, `npm test` and `npm run build` fail with `spawn EPERM` inside the dsh sandbox.
   - In plans, dsh runs `npm run test:sandbox` and Claude runs the `Verifier only:` commands.
   - Copy `vitest.sandbox.config.mjs` and the `test:sandbox` script from drumline-studio.

@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:sandbox": "node node_modules/vitest/vitest.mjs run --config vitest.sandbox.config.mjs",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && vite build"
+    "build": "tsc --noEmit && vite build",
+    "check:songs": "vitest run --config tools/check/vitest.config.mjs"
   },
   "devDependencies": {
     "typescript": "7.0.2",

@@ -25,6 +25,10 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - Every voice connects to its track's channel in `engine.ts`, never straight to the master chain,
   so track volume, pan, and sends cover everything.
 - Every song in `src/songs/` must parse with no errors; `tests/library.test.ts` checks this.
+- Dev scripts live in `tools/` (see `tools/README.md`): the arranger that builds the arranged
+  songs, `npm run check:songs`, and headless-Edge checks. When an arranged song changes, change its
+  recipe in `tools/arranger/songs.mjs` too, so a rebuild keeps the change. Browser checks run Edge
+  muted.
 - Songs are public-domain melodies (composer long dead and published before 1930, or traditional)
   arranged by Claude, or Claude's own originals. Never add copyrighted songs. Credit every
   public-domain piece in `README.md`.

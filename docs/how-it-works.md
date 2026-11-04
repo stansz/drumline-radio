@@ -23,6 +23,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 | `src/ui/` | Everything on screen: the dial, the score view, meters, buttons, CSS |
 | `src/pwa/` | Offline support: the service worker template and the build step that lists every file to cache |
 | `tests/` | Vitest tests for the parts that don't need a browser |
+| `tools/` | Dev scripts: the song arranger, the song checker, browser checks, the icon maker. See [tools/README.md](../tools/README.md) |
 | `docs/` | This file, the song format, and the sound engine |
 
 ### `src/music/`: the score side
@@ -95,6 +96,7 @@ track lead role=lead
 |---|---|
 | Run it locally | `npm run dev` |
 | Check everything | `npm test` and `npm run typecheck` |
+| Check the songs | `npm run check:songs` |
 | Publish | push to `main`. GitHub Pages and Cloudflare Pages both rebuild; a failing test blocks the GitHub deploy |
 
 Every deploy changes the cache version, so installed copies update on their next launch.

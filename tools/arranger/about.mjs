@@ -1,0 +1,24 @@
+// The story shown on each public-domain song's card, keyed by song id. songs.mjs adds these as
+// `about:` lines. Keep them short, plain, and factual.
+export const ABOUT = {
+  'valkyries': "It opens Act 3 of Wagner's opera Die Walküre, part of his four-opera Ring cycle: the warrior maidens of Norse myth ride through the sky to gather fallen heroes. Its galloping 9/8 rhythm made it one of the most borrowed pieces in film.",
+  'greensleeves': "An English ballad from the 1500s. Legend says Henry VIII wrote it for Anne Boleyn, but its style points to a later, unknown composer. The same tune carries the carol What Child Is This?",
+  'mountain-king': "From Grieg's music for Ibsen's play Peer Gynt (1875). Peer sneaks into the troll king's hall, and the same short theme repeats over and over, faster and louder, as the trolls close in.",
+  'korobeiniki': "It began as an 1861 poem by Nikolay Nekrasov about korobeiniki, travelling peddlers who sold goods from boxes on their backs, and became a Russian folk song. Over a century later it became world famous as the Tetris theme.",
+  'ode-to-joy': "The finale of Beethoven's Ninth Symphony (1824), which sets Friedrich Schiller's poem about joy and brotherhood. Beethoven was almost completely deaf when he wrote it. Today it is the anthem of Europe.",
+  'fur-elise': "A short piano piece Beethoven wrote around 1810. It was only published in 1867, forty years after he died, and nobody knows for sure who Elise was. One theory is that the title was misread and was meant for his friend Therese.",
+  'can-can': "This is the Galop infernal from Offenbach's comic operetta Orpheus in the Underworld (1858), in which the gods throw a wild party in the underworld. It became the tune of the high-kicking can-can dance.",
+  'canon-in-d': "Pachelbel wrote it for three violins over a bass line of just eight notes that repeats again and again. The violins enter one after another, each playing the same part, like a round. Forgotten for centuries, it was rediscovered in the 1900s and became a wedding favourite.",
+  'swan-lake': "Tchaikovsky's first ballet, about a princess cursed to be a swan by day. Its 1877 premiere at the Bolshoi was not a success, and it only became famous after a new staging in 1895, two years after he died. This is the swan theme.",
+  'eine-kleine-nachtmusik': "The title means \"a little serenade\". Mozart finished it in August 1787 while he was also writing the opera Don Giovanni, but it was not published until about forty years later, long after his death.",
+  'when-the-saints': "A Black American spiritual that became a New Orleans jazz standard. Brass bands play it on the way back from funerals, slow at first and then joyful. Louis Armstrong's 1938 recording made it famous worldwide.",
+  'jingle-bells': "James Lord Pierpont published it in 1857 as One Horse Open Sleigh. It never mentions Christmas. In December 1965 it became the first song played in space: the Gemini 6 astronauts played it on a harmonica and bells they had smuggled aboard.",
+  'deck-the-halls': "The melody is a Welsh New Year's Eve tune, Nos Galan, from the 1500s. The English words, including the fa-la-las, came in the 1800s.",
+  'joy-to-the-world': "Isaac Watts wrote the words in 1719 as a version of Psalm 98, about the coming of the Lord rather than the nativity. Lowell Mason set them to this tune in 1839, borrowing phrases that sound like Handel.",
+  'god-rest-ye': "One of the oldest English carols. \"God rest ye merry\" meant \"God keep you happy\", so the comma belongs after merry. In A Christmas Carol, a boy starts singing it at Scrooge's keyhole and Scrooge chases him away.",
+  'hark-the-herald': "Charles Wesley wrote the words in 1739. The tune comes from a cantata Mendelssohn wrote in 1840 to celebrate Gutenberg's printing press. Mendelssohn said it would never suit sacred words, but in 1855 it was paired with Wesley's hymn anyway.",
+  'good-king-wenceslas': "The tune is from Piae Cantiones, a 1582 songbook from Finland, where it was a spring song. John Mason Neale added the Christmas story in 1853. Wenceslas was a real duke of Bohemia in the 900s, and is now the patron saint of the Czech Republic.",
+  'we-wish-you': "A carol from the West Country of England, sung by carollers going door to door. That is why they ask for figgy pudding and won't go until they get some.",
+  'o-christmas-tree': "The German O Tannenbaum. Ernst Anschütz wrote the best-known words in 1824 from an older folk song praising the fir tree for staying green all winter. Only later did it become a Christmas song.",
+  'silent-night': "First sung on Christmas Eve 1818 in the village church of Oberndorf, Austria. Joseph Mohr wrote the words and Franz Xaver Gruber the melody, for two voices and a guitar. Soldiers sang it across the trenches during the 1914 Christmas truce.",
+};

@@ -81,7 +81,10 @@ npm run dev
 npm test
 npm run typecheck
 npm run build
+npm run check:songs
 ```
+
+Dev tools (the song arranger and browser checks) are described in [tools/README.md](tools/README.md).
 
 ## License
 
