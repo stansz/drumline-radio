@@ -36,8 +36,9 @@ that get fuller each time, and a held ending.
   first pass and a busier one after.
 - **Chords:** major, `m`, `7`, `m7`, `maj7`, and `dim`, for example `C`, `Am`, `G7`, `Bbmaj7`.
 
-`arranger/songs.mjs` holds the recipes for the 16 arranged carols and classics. `arranger/about.mjs`
-holds the story line for each public-domain song.
+The simple `arrange()` covers most carols and classics. `arranger/songs.mjs` holds the recipes for
+the 16 arranged carols and classics, and `arranger/about.mjs` holds the story for each public-domain
+song.
 
 ```bash
 node tools/arranger/songs.mjs tmp/songs
@@ -57,6 +58,55 @@ matches the files in `src/songs/`, so re-running it is safe.
 
 Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the four originals are
 hand-written. Edit their `.song` files directly.
+
+### Form-based recipes (more shape)
+
+`arrangeForm()` is for songs that need more than "the tune N times". A recipe names its
+**sections**, such as verse, chorus, and bridge, each with its own melody and chords. The **form**
+then lists the order to play them in, with a level for each:
+
+| Level | What plays |
+|---|---|
+| 0 | breakdown: pad and melody only |
+| 1 | light: pad, bass, and the light groove |
+| 2 | full: adds the arp and the busier groove |
+| 3 | biggest: adds the harmony part and a crash |
+
+Each form entry can also set:
+
+- `shift`: a key change, in semitones;
+- `melody: false`: an instrumental pass;
+- `dyn: 'build'` or `'drop'`: velocity rising or falling through the section;
+- `last`: a different last melody bar;
+- `fill`: whether to play a drum fill on the last bar. Fills happen anyway before a louder section,
+  breakdowns included.
+
+Song-wide options:
+
+- `harm`: `counter` (default; a counter-line of long chord tones under the melody), `octave` (the
+  melody doubled up an octave), or `off`.
+- `arp`: `updown`, `up`, `broken`, or `off`.
+- `pad`: `hold`, `stabs`, or `offbeat`.
+
+The full worked example is `arranger/examples/form-demo.mjs`: verse, chorus, a bridge breakdown,
+and a last chorus up a step.
+
+```bash
+node tools/arranger/examples/form-demo.mjs tmp/demo
+```
+
+### Always room to change
+
+The arranger is a starting point, not a rule. A good first draft comes from picking the form,
+grooves, and textures to suit the song's genre and mood. From there:
+
+- **Change the recipe** when an arranged song needs a different feel.
+- **Hand-write or hand-edit** a song when the arranger can't express it. Late Bus Home is
+  hand-written because the arranger made it too busy.
+- **Extend the arranger** with a new groove, bass line, texture, or option when it keeps falling
+  short. Add new options as opt-in so existing recipes rebuild unchanged.
+
+Listening wins over the script: if it sounds wrong, change it.
 
 ## Song check
 

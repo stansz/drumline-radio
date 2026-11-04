@@ -237,3 +237,181 @@ year: ${year}
 source: public-domain
 category: ${category}
 key: ${key}`;
+
+// ======================================================================
+// Form-based arranging (opt-in). arrange() above is the simple pass-based version that the
+// existing recipes use. arrangeForm() adds sections, intensity levels, textures, a counter-melody,
+// drum fills, and dynamics, for songs that need more shape than "the tune N times".
+// ======================================================================
+
+const FILLS = {
+  '4/4': 'k/4 s/8 s/8 tm/8 tm/8 tl/16 tl/16 tl/16 tl/16',
+  '3/4': 'k/4 s/8 s/8 tl/16 tl/16 tl/16 tl/16',
+  '6/8': 'k/8 s/8 s/8 tm/8 tl/8 tl/8',
+  '2/4': 's/8 s/8 tl/16 tl/16 tl/16 tl/16',
+};
+const ARP_SHAPES = { updown: [0, 1, 2, 3, 2, 1], up: [0, 1, 2, 3], broken: [0, 2, 1, 3] };
+const LEVEL_VELOCITY = [60, 78, 92, 105];
+
+function arpShaped(shape, unitTicks, c, ticks) {
+  const tones = [...c.iv.slice(0, 3).map((i) => 60 + c.pc + i), 72 + c.pc];
+  const order = ARP_SHAPES[shape];
+  return fill(ticks, unitTicks, (i, u) => `${nm(tones[order[i % order.length]])}${dur(u)}`);
+}
+
+function padTextured(texture, c, ticks, voices) {
+  const ch = `[${c.iv.slice(0, voices).map((i) => nm(48 + c.pc + i)).join(' ')}]`;
+  if (texture === 'stabs' && ticks === 3840) return `${ch}/8 r/8 r/8 ${ch}/8 r/2`;
+  if (texture === 'offbeat') return fill(ticks, 480, (i, u) => (i % 2 ? `${ch}${dur(u)}` : `r${dur(u)}`));
+  return `${ch}${dur(ticks)}`;
+}
+
+// A counter-line of long chord tones under the melody, moving as little as possible between chords.
+function counterNote(c, below, previous) {
+  const candidates = [];
+  for (let n = 55; n <= 76; n += 1) if (c.iv.includes((((n - c.pc) % 12) + 12) % 12)) candidates.push(n);
+  const under = candidates.filter((n) => n <= below - 3);
+  const pool = under.length ? under : candidates;
+  return pool.reduce((best, n) => (Math.abs(n - previous) < Math.abs(best - previous) ? n : best), pool[0]);
+}
+
+/**
+ * spec: { file, head, style, time, tempo, bass, drums, voices, arpUnit,
+ *   sections: { name: { melody: [bars], chords: [bar chord strings] } },
+ *   intro: { type, section, bars, tease } (optional; the types are the same as in arrange()),
+ *   form: [{ section, name, level: 0-3, shift, melody (default true), fill, dyn: 'build' | 'drop', last }],
+ *   harm: 'counter' | 'octave' | 'off', arp: 'updown' | 'up' | 'broken' | 'off',
+ *   pad: 'hold' | 'stabs' | 'offbeat', finalChord, ramp, parts }
+ * Levels: 0 = breakdown (pad and melody only), 1 = light (pad, bass, light drums), 2 = full (adds
+ * the arp and busier drums), 3 = biggest (adds the harmony part and a crash).
+ * A section gets a drum fill on its last bar when the next one is louder (a breakdown included), or
+ * when fill is true.
+ */
+export function arrangeForm(out, spec) {
+  const { style, time } = spec;
+  const ts = `${time[0]}/${time[1]}`;
+  const BT = barTicks(time);
+  const voices = spec.voices ?? 3;
+  const arpUnit = spec.arpUnit ?? (style === 'orchestral' ? 480 : 240);
+  const harmMode = spec.harm ?? 'counter';
+  const arpShape = spec.arp ?? 'updown';
+  const padMode = spec.pad ?? 'hold';
+  for (const [name, s] of Object.entries(spec.sections)) {
+    if (s.melody.length !== s.chords.length) {
+      throw new Error(`${spec.file}: section ${name} has ${s.melody.length} melody bars, ${s.chords.length} chord bars`);
+    }
+  }
+
+  const T = { lead: [], harm: [], arp: [], pad: [], bass: [], drums: [], cym: [] };
+  const comment = { lead: [], harm: [], arp: [], pad: [], bass: [], drums: [], cym: [] };
+  const mark = (name) => { for (const k in T) comment[k].push([T[k].length, name]); };
+  const spans = (chordBar, shift) => {
+    const cs = chordBar.split(' ').map((s) => chord(s, shift));
+    return { cs, span: BT / cs.length };
+  };
+  let counterPrev = 64;
+
+  const intro = spec.intro;
+  if (intro && intro.type !== 'none') {
+    mark('Intro');
+    const sec = spec.sections[intro.section ?? spec.form[0].section];
+    const idx = intro.type === 'tease' ? intro.tease : Array.from({ length: intro.bars }, (_, i) => i);
+    idx.forEach((b, i) => {
+      const { cs, span } = spans(sec.chords[b], 0);
+      const t = intro.type;
+      const half = i >= idx.length / 2;
+      T.pad.push(t === 'drums' || t === 'bassriff' ? 'R' : 'v=70 ' + cs.map((c) => padTextured('hold', c, span, voices)).join(' '));
+      T.bass.push(t === 'vamp' || t === 'bassriff' ? 'v=80 ' + cs.map((c) => bassSpan(spec.bass, c, span)).join(' ') : 'R');
+      T.drums.push(t === 'vamp' || t === 'drums' || (t === 'bassriff' && half) ? 'v=80 ' + groove(spec.drums, ts, 1) : 'R');
+      T.arp.push(t === 'tease' ? 'v=80 ' + sec.melody[b] : 'R');
+      T.lead.push('R');
+      T.harm.push('R');
+      T.cym.push('R');
+    });
+  }
+
+  spec.form.forEach((entry, e) => {
+    const sec = spec.sections[entry.section];
+    if (!sec) throw new Error(`${spec.file}: no section ${entry.section}`);
+    const level = entry.level ?? 1;
+    const shift = entry.shift ?? 0;
+    const next = spec.form[e + 1];
+    const prev = spec.form[e - 1];
+    const fillLast = entry.fill ?? (next !== undefined && (next.level ?? 1) > level);
+    const crashFirst = level >= 2 && (!prev || (prev.level ?? 1) < level || prev.section !== entry.section);
+    mark(entry.name ?? `${entry.section[0].toUpperCase()}${entry.section.slice(1)}`);
+    const n = sec.melody.length;
+    for (let b = 0; b < n; b++) {
+      const base = LEVEL_VELOCITY[level];
+      const t = n > 1 ? b / (n - 1) : 1;
+      const v = Math.round(entry.dyn === 'build' ? base - 15 + 25 * t : entry.dyn === 'drop' ? base + 10 - 25 * t : base);
+      const vel = `v=${Math.max(1, Math.min(127, v))} `;
+      const { cs, span } = spans(sec.chords[b], shift);
+
+      const mel = tr(b === n - 1 && entry.last ? entry.last : sec.melody[b], shift);
+      const playMelody = entry.melody ?? true;
+      T.lead.push(playMelody ? vel + mel : 'R');
+
+      if (level === 3 && harmMode !== 'off' && playMelody) {
+        if (harmMode === 'octave') {
+          const ns = notesIn(mel);
+          T.harm.push(ns.length > 0 && ns.every((x) => x + 12 <= 96) ? vel + tr(mel, 12) : 'R');
+        } else {
+          const lowest = Math.min(...notesIn(mel), 96);
+          T.harm.push(vel + cs.map((c) => {
+            counterPrev = counterNote(c, lowest, counterPrev);
+            return `${nm(counterPrev)}${dur(span)}`;
+          }).join(' '));
+        }
+      } else T.harm.push('R');
+
+      T.pad.push(vel + cs.map((c) => padTextured(level === 0 ? 'hold' : padMode, c, span, voices)).join(' '));
+      T.bass.push(level === 0 ? 'R' : vel + cs.map((c) => bassSpan(spec.bass, c, span)).join(' '));
+      T.arp.push(level >= 2 && arpShape !== 'off' ? vel + cs.map((c) => arpShaped(arpShape, arpUnit, c, span)).join(' ') : 'R');
+      const isFill = b === n - 1 && fillLast && FILLS[ts];
+      const drumBar = isFill ? FILLS[ts] : level === 0 ? 'R' : groove(spec.drums, ts, level >= 2 ? 2 : 1);
+      T.drums.push(drumBar === 'R' ? 'R' : vel + drumBar);
+      T.cym.push(b === 0 && crashFirst ? `cr${dur(BT)}` : 'R');
+    }
+  });
+
+  mark('Ending');
+  const lastEntry = spec.form[spec.form.length - 1];
+  const lastSec = spec.sections[lastEntry.section];
+  const endChord = chord(spec.finalChord ?? lastSec.chords[lastSec.chords.length - 1].split(' ').pop(), lastEntry.shift ?? 0);
+  T.lead.push('R');
+  T.harm.push('R');
+  T.arp.push('R');
+  T.pad.push(padTextured('hold', endChord, BT, voices));
+  T.bass.push(`${nm(36 + endChord.pc)}${dur(BT)}`);
+  T.drums.push(`k${dur(BT)}`);
+  T.cym.push(`cr${dur(BT)}`);
+
+  const P = spec.parts;
+  const block = (key) => {
+    const lines = [];
+    const marks = new Map(comment[key].map(([i, c]) => [i, c]));
+    let row = [];
+    const flush = () => { if (row.length) lines.push('| ' + row.join(' | ') + ' |'); row = []; };
+    T[key].forEach((bar, i) => {
+      if (marks.has(i)) { flush(); lines.push(`# ${marks.get(i)}`); }
+      row.push(bar);
+      if (row.length === 4) flush();
+    });
+    flush();
+    return lines.join('\n');
+  };
+  const tracks = [
+    [`track melody role=${P?.lead ?? 'lead'} vol=0.8`, 'lead'],
+    [`track harmony role=${P?.harm ?? (harmMode === 'counter' ? 'counter' : 'lead2')} vol=0.4`, 'harm'],
+    [`track arp role=arp vol=0.35`, 'arp'],
+    [`track pad role=${P?.pad ?? 'pad'} vol=0.45`, 'pad'],
+    [`track bass role=bass vol=0.75`, 'bass'],
+    [`track drums role=drums vol=0.8`, 'drums'],
+    [`track cymbals role=drums vol=0.5`, 'cym'],
+  ];
+  const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
+  const text = `${spec.head.trim()}\nstyle: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +
+    tracks.map(([h, k]) => `${h}\n${block(k)}`).join('\n\n') + '\n';
+  writeFileSync(join(out, spec.file), text);
+}

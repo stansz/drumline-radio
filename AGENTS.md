@@ -29,6 +29,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   songs, `npm run check:songs`, and headless-Edge checks. When an arranged song changes, change its
   recipe in `tools/arranger/songs.mjs` too, so a rebuild keeps the change. Browser checks run Edge
   muted.
+- The arranger is a starting point, not a rule. Fit each song's form, grooves, and textures to its
+  genre and mood (`arrangeForm()` for verse/chorus/breakdown shape). Hand-write a song when the
+  arranger can't express it, and extend the arranger with opt-in options when it falls short.
 - Songs are public-domain melodies (composer long dead and published before 1930, or traditional)
   arranged by Claude, or Claude's own originals. Never add copyrighted songs. Credit every
   public-domain piece in `README.md`.
