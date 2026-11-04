@@ -323,6 +323,115 @@ describe('the parser', () => {
   });
 });
 
+describe('bends', () => {
+  function leadNotes(body: string) {
+    const result = parseSong(`${HEADER}\n${body}`);
+    if (!result.ok) throw new Error(`failed to parse: ${result.errors.join('; ')}`);
+    return result.song.tracks[0].notes;
+  }
+
+  it('merges a bend into one note', () => {
+    const notes = leadNotes('track a role=lead\n| G4/2^ A4/2 |');
+    expect(notes.length).toBe(1);
+    expect(notes[0].tick).toBe(0);
+    expect(notes[0].ticks).toBe(3840);
+    expect(notes[0].pitches).toEqual([67]);
+    expect(notes[0].bends).toEqual([{ at: 1920, pitch: 69 }]);
+  });
+
+  it('chains bends up and back', () => {
+    const notes = leadNotes('track a role=lead\n| G4/8^ A4/8^ G4/4 r/2 |');
+    expect(notes.length).toBe(1);
+    expect(notes[0].ticks).toBe(1920);
+    expect(notes[0].bends).toEqual([
+      { at: 480, pitch: 69 },
+      { at: 960, pitch: 67 },
+    ]);
+  });
+
+  it('holds a tie and then bends it', () => {
+    const notes = leadNotes('track a role=lead\n| G4/4~ G4/4^ A4/2 |');
+    expect(notes.length).toBe(1);
+    expect(notes[0].ticks).toBe(3840);
+    expect(notes[0].bends).toEqual([{ at: 1920, pitch: 69 }]);
+  });
+
+  it('bends and then holds a tie', () => {
+    const notes = leadNotes('track a role=lead\n| G4/8^ A4/8~ A4/2 r/4 |');
+    expect(notes.length).toBe(1);
+    expect(notes[0].ticks).toBe(2880);
+    expect(notes[0].bends).toEqual([{ at: 480, pitch: 69 }]);
+  });
+
+  it('bends across a bar line', () => {
+    const notes = leadNotes('track a role=lead\n| G4/1^ |\n| A4/1 |');
+    expect(notes.length).toBe(1);
+    expect(notes[0].ticks).toBe(7680);
+    expect(notes[0].bends).toEqual([{ at: 3840, pitch: 69 }]);
+  });
+
+  it('leaves notes without bends without a bends key', () => {
+    const notes = leadNotes('track a role=lead\n| G4/1 |');
+    expect(notes[0]).toEqual({
+      tick: 0,
+      ticks: 3840,
+      pitches: [67],
+      velocity: 100,
+      staccato: false,
+    });
+    expect('bends' in notes[0]).toBe(false);
+  });
+
+  it('keeps the first note velocity and staccato', () => {
+    const notes = leadNotes("track a role=lead\n| G4/4':80^ A4/4 r/2 |");
+    expect(notes[0].velocity).toBe(80);
+    expect(notes[0].staccato).toBe(true);
+  });
+
+  it('rejects a bend from a chord', () => {
+    const errors = errorsFor('track a role=lead\n| [C4 E4]/2^ A4/2 |');
+    expect(errors).toContain('line 11: bend from a chord in track a');
+  });
+
+  it('rejects a bend to a chord', () => {
+    const errors = errorsFor('track a role=lead\n| C4/2^ [E4 G4]/2 |');
+    expect(errors).toContain('line 11: bend to a chord in track a');
+  });
+
+  it('rejects a bend into a rest', () => {
+    expect(errorsFor('track a role=lead\n| C4/2^ r/2 |')).toContain(
+      'line 11: bend into a rest in track a',
+    );
+    expect(errorsFor('track a role=lead\n| C4/1^ | R |')).toContain(
+      'line 11: bend into a rest in track a',
+    );
+    expect(errorsFor('track a role=lead\n| C4/1^ | R*2 |')).toContain(
+      'line 11: bend into a rest in track a',
+    );
+  });
+
+  it('rejects a bend with no following note', () => {
+    expect(errorsFor('track a role=lead\n| C4/1^ |')).toContain(
+      'line 11: bend has no following note in track a',
+    );
+  });
+
+  it('rejects a bend in a drums track', () => {
+    expect(errorsFor('track a role=drums\n| k/4^ s/4 k s |')).toContain(
+      'line 11: bend in a drums track a',
+    );
+  });
+
+  it('rejects a tie and a bend on the same note', () => {
+    expect(errorsFor('track a role=lead\n| G4/8~^ A4/1 |').some((e) => e.includes('G4/8~^'))).toBe(
+      true,
+    );
+    expect(errorsFor('track a role=lead\n| G4/8^~ A4/1 |').some((e) => e.includes('G4/8^~'))).toBe(
+      true,
+    );
+  });
+});
+
 describe('the arranger header', () => {
   it('reads an optional arranger', () => {
     const result = parseSong(`${HEADER}\narranger: Claude & SZ\ntrack a role=lead\n| C4/1 |`);

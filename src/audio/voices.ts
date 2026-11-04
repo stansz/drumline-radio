@@ -1,4 +1,4 @@
-import { attackTime, pulseCoefficients } from './curves';
+import { attackTime, bendGlide, driveCurve, pulseCoefficients } from './curves';
 import { midiToFreq } from '../music/pitch';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
 
@@ -12,6 +12,8 @@ export interface VoiceKit {
   noise: { white: AudioBuffer; chip: AudioBuffer; metal: AudioBuffer };
   pulse12: PeriodicWave;
   pulse25: PeriodicWave;
+  /** Drive curves built per amount, so a patch's curve is only made once. */
+  driveCurves: Map<number, Float32Array<ArrayBuffer>>;
 }
 
 const CHIP_NOISE_HOLD = 14;
@@ -60,6 +62,7 @@ export function createVoiceKit(ctx: AudioContext): VoiceKit {
     noise: { white, chip, metal },
     pulse12: ctx.createPeriodicWave(first.real, first.imag),
     pulse25: ctx.createPeriodicWave(second.real, second.imag),
+    driveCurves: new Map(),
   };
 }
 
@@ -135,10 +138,27 @@ export function playSynth(
   duration: number,
   gain: number,
   out: AudioNode,
+  bends: { time: number; pitch: number }[] = [],
 ): Voice {
   const { ctx } = kit;
   const freq = midiToFreq(midi);
   const collected = part();
+
+  // Glide the detune from one bend point to the next; the vibrato LFO adds on top.
+  const scheduleBends = (param: AudioParam, baseDetune: number): void => {
+    param.setValueAtTime(baseDetune, time);
+    let previous = baseDetune;
+    for (let index = 0; index < bends.length; index += 1) {
+      const bend = bends[index];
+      const next = bends[index + 1];
+      const segment = (next ? next.time : duration) - bend.time;
+      const glide = bendGlide(segment);
+      const cents = (bend.pitch - midi) * 100;
+      param.setValueAtTime(previous, time + bend.time);
+      param.linearRampToValueAtTime(cents + baseDetune, time + bend.time + glide);
+      previous = cents + baseDetune;
+    }
+  };
 
   const env = ctx.createGain();
   const { decay, sustain, release } = patch.env;
@@ -165,16 +185,33 @@ export function playSynth(
     destination = filter;
   }
 
+  let oscTarget: AudioNode = destination;
+  const drive = patch.drive ?? 0;
+  if (drive > 0) {
+    const shaper = ctx.createWaveShaper();
+    shaper.oversample = '2x';
+    let curve = kit.driveCurves.get(drive);
+    if (!curve) {
+      curve = driveCurve(drive);
+      kit.driveCurves.set(drive, curve);
+    }
+    shaper.curve = curve;
+    shaper.connect(destination);
+    collected.nodes.push(shaper);
+    oscTarget = shaper;
+  }
+
   const oscillators: OscillatorNode[] = [];
   for (const spec of patch.oscs) {
     const osc = ctx.createOscillator();
     setWave(kit, osc, spec.wave);
     osc.frequency.value = freq * 2 ** spec.octave;
-    osc.detune.value = spec.detune;
+    if (bends.length > 0) scheduleBends(osc.detune, spec.detune);
+    else osc.detune.value = spec.detune;
     const level = ctx.createGain();
     level.gain.value = spec.level;
     osc.connect(level);
-    level.connect(destination);
+    level.connect(oscTarget);
     collected.nodes.push(osc, level);
     collected.sources.push({ node: osc });
     oscillators.push(osc);
@@ -197,6 +234,7 @@ export function playSynth(
     const modulator = ctx.createOscillator();
     modulator.type = 'sine';
     modulator.frequency.value = freq * patch.fm.ratio;
+    if (bends.length > 0) scheduleBends(modulator.detune, 0);
     const depth = ctx.createGain();
     depth.gain.setValueAtTime(freq * patch.fm.index, time);
     depth.gain.setTargetAtTime(freq * patch.fm.index * 0.05, time, Math.max(0.001, patch.fm.decay / 3));

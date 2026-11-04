@@ -5,6 +5,7 @@ export const SOFT_CLIP_CEILING = 0.95;
 export const SOFT_CLIP_POINTS = 4097;
 export const CRUSH_STEPS = 24;
 export const CRUSH_POINTS = 4097;
+export const BEND_GLIDE = 0.1;
 
 // Linear below the knee, then eases toward the ceiling. A WaveShaper holds the last curve value
 // for any louder input, so this caps the output however much the limiter lets through.
@@ -28,6 +29,25 @@ export function crushCurve(): Float32Array<ArrayBuffer> {
   for (let i = 0; i < curve.length; i += 1) {
     const input = (i / (curve.length - 1)) * 2 - 1;
     curve[i] = Math.round(input * CRUSH_STEPS) / CRUSH_STEPS;
+  }
+  return curve;
+}
+
+// A bend glides for at most BEND_GLIDE seconds, and for half the time to the next bend point so two
+// close bends still arrive in order. The floor keeps a ramp audible instead of a step.
+export function bendGlide(segment: number): number {
+  return Math.max(0.005, Math.min(BEND_GLIDE, segment / 2));
+}
+
+/** A tanh drive curve, harder as `amount` rises. Odd-symmetric and normalised to -1..1. */
+export function driveCurve(amount: number, samples = 1024): Float32Array<ArrayBuffer> {
+  const clamped = Math.max(0, Math.min(1, amount));
+  const k = 1 + clamped * 20;
+  const curve = new Float32Array(samples);
+  const normal = Math.tanh(k);
+  for (let i = 0; i < samples; i += 1) {
+    const input = (i / (samples - 1)) * 2 - 1;
+    curve[i] = Math.tanh(k * input) / normal;
   }
   return curve;
 }

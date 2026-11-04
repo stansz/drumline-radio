@@ -44,4 +44,18 @@ describe('styles', () => {
     expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'brass' }).name).toBe('Acid');
     expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: null }).name).toBe('Acid');
   });
+
+  it('drives the cinematic guitar and keeps every drive in range', () => {
+    const guitar = STYLE_DEFS.cinematic.patches.guitar;
+    expect(guitar.kind).toBe('synth');
+    if (guitar.kind !== 'synth') return;
+    expect(guitar.drive).toBe(0.6);
+    for (const id of STYLES) {
+      for (const patch of Object.values(STYLE_DEFS[id].patches)) {
+        if (patch.kind !== 'synth' || patch.drive === undefined) continue;
+        expect(patch.drive, `${id} ${patch.name}`).toBeGreaterThanOrEqual(0);
+        expect(patch.drive, `${id} ${patch.name}`).toBeLessThanOrEqual(1);
+      }
+    }
+  });
 });

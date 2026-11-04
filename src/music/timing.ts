@@ -7,6 +7,7 @@ export interface ScheduledNote {
   velocity: number;
   start: number;
   duration: number;
+  bends?: { time: number; pitch: number }[];
 }
 
 export interface Timeline {
@@ -87,13 +88,20 @@ export function buildTimeline(song: Song): Timeline {
       const end = tickToSeconds(song, note.tick + note.ticks);
       let duration = end - start;
       if (note.staccato) duration /= 2;
-      notes.push({
+      const scheduled: ScheduledNote = {
         track: trackIndex,
         pitches: note.pitches,
         velocity: note.velocity,
         start,
         duration,
-      });
+      };
+      if (note.bends && note.bends.length > 0) {
+        scheduled.bends = note.bends.map((bend) => ({
+          time: tickToSeconds(song, note.tick + bend.at) - start,
+          pitch: bend.pitch,
+        }));
+      }
+      notes.push(scheduled);
     }
   }
 

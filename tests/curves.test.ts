@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import {
   attackTime,
+  BEND_GLIDE,
+  bendGlide,
   crackleSamples,
   CRUSH_POINTS,
   crushCurve,
+  driveCurve,
   noteGain,
   pulseCoefficients,
   SOFT_CLIP_POINTS,
@@ -67,6 +70,35 @@ describe('attackTime', () => {
 
   it('keeps a patch attack that is already longer', () => {
     expect(attackTime(0.4, 55)).toBe(0.4);
+  });
+});
+
+describe('bendGlide', () => {
+  it('caps the glide, halves a short segment, and keeps a floor', () => {
+    expect(BEND_GLIDE).toBe(0.1);
+    expect(bendGlide(1)).toBe(0.1);
+    expect(bendGlide(0.05)).toBeCloseTo(0.025, 6);
+    expect(bendGlide(0)).toBe(0.005);
+    expect(bendGlide(0.004)).toBe(0.005);
+  });
+});
+
+describe('driveCurve', () => {
+  it('is a normalised odd-symmetric tanh curve', () => {
+    const curve = driveCurve(0.5);
+    expect(curve.length).toBe(1024);
+    expect(curve[0]).toBe(-1);
+    expect(curve[curve.length - 1]).toBe(1);
+    expect(Math.abs(curve[511])).toBeLessThan(0.02);
+    for (let i = 0; i < curve.length; i += 1) {
+      expect(curve[i]).toBeCloseTo(-curve[curve.length - 1 - i], 6);
+    }
+  });
+
+  it('takes a sample count and clamps the amount', () => {
+    expect(driveCurve(0.5, 17).length).toBe(17);
+    expect(Array.from(driveCurve(-1))).toEqual(Array.from(driveCurve(0)));
+    expect(Array.from(driveCurve(2))).toEqual(Array.from(driveCurve(1)));
   });
 });
 

@@ -90,3 +90,37 @@ describe('notesBetween', () => {
     expect(notesBetween(timeline, 8.2, 9)).toEqual([]);
   });
 });
+
+describe('bend times', () => {
+  const HEADER = [
+    'title: T',
+    'composer: original',
+    'year: 2026',
+    'source: original',
+    'category: originals',
+    'style: chiptune',
+    'key: C major',
+    'tempo: 120',
+    'time: 4/4',
+  ].join('\n');
+
+  function timelineFor(body: string) {
+    const result = parseSong(`${HEADER}\n${body}`);
+    if (!result.ok) throw new Error(`failed to parse: ${result.errors.join('; ')}`);
+    return buildTimeline(result.song);
+  }
+
+  it('measures a bend from the note start in seconds', () => {
+    const timeline = timelineFor('track a role=lead\n| G4/2^ A4/2 |');
+    const bent = timeline.notes.find((note) => note.track === 0);
+    expect(bent?.bends).toEqual([{ time: 1, pitch: 69 }]);
+  });
+
+  it('leaves unbent notes without a bends key', () => {
+    const timeline = timelineFor('track a role=lead\n| G4/1 |');
+    const plain = timeline.notes.find((note) => note.track === 0);
+    expect(plain).toBeDefined();
+    expect(plain?.bends).toBeUndefined();
+    expect('bends' in (plain as object)).toBe(false);
+  });
+});

@@ -22,7 +22,7 @@ Every key may appear once, and no other keys are allowed.
 | `year`     | yes      | Any non-empty text, e.g. `1856` or `traditional`. |
 | `source`   | yes      | `public-domain` or `original`.                   |
 | `category` | yes      | `carols`, `classics`, or `originals`. Picks the preset group in the player. |
-| `style`    | yes      | One of `synthwave`, `chiptune`, `orchestral`, `techno`, `lofi`. |
+| `style`    | yes      | One of `synthwave`, `chiptune`, `orchestral`, `techno`, `lofi`, `cinematic`. |
 | `key`      | yes      | Any non-empty text, e.g. `C major`.              |
 | `tempo`    | yes      | Number from 20 to 400, quarter notes per minute; decimals allowed. |
 | `time`     | yes      | `N/D`, N an integer 1 to 32, D one of 1, 2, 4, 8, 16. |
@@ -113,7 +113,7 @@ A note name in a drums track, or a drum name in a pitched track, is an error.
 ## Notes and durations
 
 A single note is a pitch, an optional duration, an optional staccato mark, an optional velocity, and
-an optional tie, in that order:
+an optional tie or bend, in that order:
 
 ```
 C4/4      F#5/8'      G5/2:120      F5/2~      E5
@@ -160,8 +160,8 @@ note token with several pitches is one note.
 
 ## Rests
 
-`r` is a rest. It takes a duration like a note and has no staccato mark, velocity, or tie: `r/4`,
-`r/2`.
+`r` is a rest. It takes a duration like a note and has no staccato mark, velocity, tie, or bend:
+`r/4`, `r/2`.
 
 ## Ties
 
@@ -171,6 +171,20 @@ lasts the sum of both written lengths, and keeps the first note's velocity and s
 
 `C4/4~ C4/4~ C4/2` is one note of 3840 ticks. A tie may reach across a bar line. A tie with nothing
 after it, or one followed by a rest or by different pitches, is an error.
+
+## Bends
+
+A `^` after a note bends it to the next note. That next token must be a single note, not a chord or a
+rest. The two merge into one note that starts where the first one starts, lasts the sum of both
+written lengths, and keeps the first note's velocity and staccato flag; the second note becomes a
+bend to its pitch, which the voice glides to.
+
+`G4/8^ A4/4` is a G that bends up to A. Bends chain: `G4/8^ A4/8^ G4/4` is one note that bends to A4
+at 480 ticks and back to G4 at 960. A tie and a bend combine in either order and the pending note
+keeps growing, so `G4/4~ G4/4^ A4/2` holds G and then bends to A. A bend may reach across a bar line.
+
+Each bend glides over 0.1 seconds, or over half the time to the next bend point when that is closer.
+Staccato does not change the bend times.
 
 ## Whole-bar shortcuts
 
@@ -211,6 +225,8 @@ Every track must have the same number of bars.
 - A pitch outside the role's range.
 - A bad velocity, either in `:VEL` or in `v=`.
 - A bad duration, an unrecognised token, a broken tie, or a misplaced whole-bar shortcut.
+- A bend from or to a chord, a bend into a rest, a bend in a drums track, or a bend with no
+  following note.
 - A bar with the wrong number of ticks, tracks with different bar counts.
 - A header or directive line after the first track, and a song with no tracks.
 

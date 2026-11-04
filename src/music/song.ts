@@ -37,6 +37,7 @@ export interface Note {
   pitches: number[];
   velocity: number;
   staccato: boolean;
+  bends?: { at: number; pitch: number }[];
 }
 
 export interface Track {
@@ -141,6 +142,7 @@ type ParsedToken =
       velocity: number | null;
       staccato: boolean;
       tie: boolean;
+      bend: boolean;
     }
   | { kind: 'error'; message: string };
 
@@ -187,15 +189,28 @@ function parseSuffixWithPitches(
   }
 
   let tie = false;
+  let bend = false;
   if (rest.startsWith('~')) {
     tie = true;
+    rest = rest.slice(1);
+  } else if (rest.startsWith('^')) {
+    bend = true;
     rest = rest.slice(1);
   }
 
   if (rest !== '') return unrecognised(fullText);
 
   const unique = Array.from(new Set(pitches)).sort((a, b) => a - b);
-  return { kind: 'note', pitches: unique, ticks: tickCount, durationWritten, velocity, staccato, tie };
+  return {
+    kind: 'note',
+    pitches: unique,
+    ticks: tickCount,
+    durationWritten,
+    velocity,
+    staccato,
+    tie,
+    bend,
+  };
 }
 
 function parseNoteToken(text: string, role: Role, lastDuration: number): ParsedToken {
@@ -787,13 +802,35 @@ export function parseSong(text: string): ParseResult {
     const notes: Note[] = [];
     let stickyDuration = TICKS_PER_QUARTER;
     let stickyVelocity = 100;
-    let pendingTie: { note: Note; line: number } | null = null;
+    let pending: {
+      note: Note;
+      line: number;
+      mode: 'tie' | 'bend';
+      /** The pitches the next tie must match; a bend target changes them. */
+      tiePitches: number[];
+    } | null = null;
 
-    const flushTie = () => {
-      if (pendingTie) {
-        notes.push(pendingTie.note);
-        pendingTie = null;
+    const flushPending = (): void => {
+      if (pending) {
+        notes.push(pending.note);
+        pending = null;
       }
+    };
+
+    const restError = (line: number): void => {
+      if (!pending) return;
+      err(
+        line,
+        pending.mode === 'tie'
+          ? `tie into a rest in track ${raw.id}`
+          : `bend into a rest in track ${raw.id}`,
+      );
+      flushPending();
+    };
+
+    const addBend = (target: Note, at: number, pitch: number): void => {
+      if (!target.bends) target.bends = [];
+      target.bends.push({ at, pitch });
     };
 
     for (let index = 0; index < trackBars.length; index++) {
@@ -802,10 +839,7 @@ export function parseSong(text: string): ParseResult {
       if (!barInfo) continue;
 
       if (assembledBar.fill) {
-        if (pendingTie) {
-          err(assembledBar.line, `tie into a rest in track ${raw.id}`);
-          flushTie();
-        }
+        restError(assembledBar.line);
         continue;
       }
 
@@ -823,10 +857,7 @@ export function parseSong(text: string): ParseResult {
         }
         if (parsed.durationWritten !== null) stickyDuration = parsed.durationWritten;
         if (parsed.kind === 'rest') {
-          if (pendingTie) {
-            err(token.line, `tie into a rest in track ${raw.id}`);
-            flushTie();
-          }
+          restError(token.line);
           barTicks += parsed.ticks;
           continue;
         }
@@ -853,21 +884,63 @@ export function parseSong(text: string): ParseResult {
           }
         }
 
-        if (pendingTie) {
-          if (pitchesEqual(pendingTie.note.pitches, note.pitches)) {
-            pendingTie.note.ticks += parsed.ticks;
-            if (!parsed.tie) {
-              notes.push(pendingTie.note);
-              pendingTie = null;
+        let bend = parsed.bend;
+        if (bend) {
+          if (raw.role === 'drums') {
+            err(token.line, `bend in a drums track ${raw.id}`);
+            bend = false;
+          } else if (parsed.pitches.length > 1) {
+            err(token.line, `bend from a chord in track ${raw.id}`);
+            bend = false;
+          }
+        }
+
+        if (pending && pending.mode === 'tie') {
+          if (pitchesEqual(pending.tiePitches, note.pitches)) {
+            pending.note.ticks += parsed.ticks;
+            if (parsed.tie) {
+              // Still waiting for the next note of the tie.
+            } else if (bend) {
+              pending.mode = 'bend';
+              pending.line = token.line;
+            } else {
+              notes.push(pending.note);
+              pending = null;
             }
             continue;
           }
           err(token.line, `tie to different pitches in track ${raw.id}`);
-          flushTie();
+          flushPending();
         }
 
-        if (parsed.tie) pendingTie = { note, line: token.line };
-        else notes.push(note);
+        if (pending && pending.mode === 'bend') {
+          if (note.pitches.length > 1) {
+            err(token.line, `bend to a chord in track ${raw.id}`);
+            flushPending();
+          } else {
+            addBend(pending.note, noteTick - pending.note.tick, note.pitches[0]);
+            pending.note.ticks += parsed.ticks;
+            if (parsed.tie) {
+              pending.mode = 'tie';
+              pending.line = token.line;
+              pending.tiePitches = note.pitches;
+            } else if (!bend) {
+              notes.push(pending.note);
+              pending = null;
+            } else {
+              pending.line = token.line;
+            }
+            continue;
+          }
+        }
+
+        if (bend) {
+          pending = { note, line: token.line, mode: 'bend', tiePitches: note.pitches };
+        } else if (parsed.tie) {
+          pending = { note, line: token.line, mode: 'tie', tiePitches: note.pitches };
+        } else {
+          notes.push(note);
+        }
       }
 
       if (barTicks !== barInfo.ticks) {
@@ -878,9 +951,15 @@ export function parseSong(text: string): ParseResult {
       }
     }
 
-    if (pendingTie) {
-      err(pendingTie.line, `tie has no following note in track ${raw.id}`);
-      flushTie();
+    if (pending) {
+      const broken = pending;
+      err(
+        broken.line,
+        broken.mode === 'tie'
+          ? `tie has no following note in track ${raw.id}`
+          : `bend has no following note in track ${raw.id}`,
+      );
+      notes.push(broken.note);
     }
 
     notes.sort((a, b) => a.tick - b.tick);

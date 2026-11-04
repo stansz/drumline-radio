@@ -20,8 +20,8 @@ pan, and effects cover all of its notes.
 ## Patches and styles
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
-(oscillators, envelope, filter, vibrato, FM, and send levels) or a drum kit (kick, snare, hats,
-cymbals, and toms). `src/audio/styles.ts` holds the five styles as data.
+(oscillators, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit (kick, snare,
+hats, cymbals, and toms). `src/audio/styles.ts` holds the six styles as data.
 
 A track picks its patch in this order:
 
@@ -32,6 +32,14 @@ A track picks its patch in this order:
 That is what makes remixes work. The score stores roles, not instruments, so switching the style
 (by pressing a band button) re-reads the same notes with the new style's patches. The readout adds
 `(remix)` when the style differs from the one named in the song file.
+
+A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between the oscillators and
+the filter, so the patch distorts; only the Cinematic lead guitar uses it.
+
+A bent note in the score (`^`, see [song-format.md](song-format.md)) automates each oscillator's
+detune, and the FM modulator's when the patch has FM. The pitch glides to each bend target over
+`BEND_GLIDE` (0.1 s), or less when the next bend is close. The vibrato LFO stays connected and adds
+on top.
 
 ### Synthwave
 
@@ -90,6 +98,13 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 The Lo-fi style is mellow keys, a round bass, and a dusty swung kit. Its tape wobble comes from the
 slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
 `fx.crackle`.
+
+### Cinematic
+
+The Cinematic style is a grand piano, an overdriven lead guitar, a solo cello, a warm bass, a string
+section, an analog synth, and an organic studio kit. The guitar's `drive` gives it the distortion,
+and its long delay send and the style's 3.2 s reverb give it a big hall. Songs can reach the extra
+`Analog pad` patch with `inst=synth-pad`; no role maps to it.
 
 ## Master chain
 

@@ -102,6 +102,14 @@ Originals made with `arrangeForm()` live in `arranger/originals.mjs`; Last Stop 
 node tools/arranger/originals.mjs tmp/orig last-stop
 ```
 
+Ivory and Ash has its own script, `arranger/ivory-and-ash.mjs`: its piano and guitar melodies are
+written out by hand (with bends), and the script fills in the arpeggios, strings, bass, and drums
+from each section's chords.
+
+```bash
+node tools/arranger/ivory-and-ash.mjs tmp/cine
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,

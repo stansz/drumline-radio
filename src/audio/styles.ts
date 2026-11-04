@@ -24,6 +24,8 @@ export interface SynthPatch {
   };
   vibrato?: { rate: number; cents: number; delay: number };
   fm?: { ratio: number; index: number; decay: number };
+  /** Distortion amount, 0 to 1. A wave shaper with this much tanh drive. */
+  drive?: number;
   gain: number;
   sends: { reverb: number; delay: number };
 }
@@ -484,6 +486,43 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
     },
     fx: { reverbSeconds: 2.2, reverbSend: 0.25, delayBeats: 0.75, delaySend: 0.15, delayFeedback: 0.3, crush: 0.08, lowpassHz: 4200, crackle: 0.08 },
     lanes: ['#ffb37a', '#7fd1c7', '#e8a0bf', '#c3b1e1', '#f6d186', '#9ad0ec'],
+  },
+
+  cinematic: {
+    id: 'cinematic',
+    name: 'Cinematic',
+    blurb: 'Grand piano, a soaring overdriven guitar, strings, and a big hall.',
+    roles: { lead: 'guitar', lead2: 'grand-piano', counter: 'cello', pad: 'strings', chords: 'grand-piano', bass: 'warm-bass', arp: 'analog-synth', drums: 'studio-kit' },
+    patches: {
+      guitar: synth({ name: 'Lead guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 4, 0.25), osc('sine', -1, 0, 0.15)],
+        env: env(0.008, 0.8, 0.7, 0.6), filter: { type: 'lowpass', hz: 2600, q: 1.2, envAmount: 1.6, envDecay: 0.25 },
+        vibrato: { rate: 5.2, cents: 22, delay: 0.45 }, drive: 0.6, gain: 0.2, sends: { reverb: 1, delay: 1.5 } }),
+      'grand-piano': synth({ name: 'Grand piano', oscs: [osc('triangle', 0, 0, 0.6), osc('sine', 1, 0, 0.25), osc('sawtooth', 0, 3, 0.15)],
+        env: env(0.002, 2.6, 0, 0.45), filter: { type: 'lowpass', hz: 1500, q: 0.6, envAmount: 3.5, envDecay: 0.5 },
+        gain: 0.32, sends: { reverb: 1.1, delay: 0.2 } }),
+      cello: synth({ name: 'Solo strings', oscs: [osc('sawtooth', 0, -4, 0.5), osc('sawtooth', 0, 4, 0.5)],
+        env: env(0.18, 0.5, 0.85, 0.6), filter: { type: 'lowpass', hz: 1900, q: 0.6, envAmount: 1, envDecay: 0.3 },
+        vibrato: { rate: 5, cents: 14, delay: 0.3 }, gain: 0.22, sends: { reverb: 1.2, delay: 0 } }),
+      strings: synth({ name: 'String section', oscs: [osc('sawtooth', 0, -9, 0.34), osc('sawtooth', 0, 0, 0.33), osc('sawtooth', 0, 9, 0.33)],
+        env: env(0.6, 1, 0.85, 1.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1, envDecay: 1 },
+        vibrato: { rate: 4.5, cents: 10, delay: 0.4 }, gain: 0.19, sends: { reverb: 1.4, delay: 0 } }),
+      'warm-bass': synth({ name: 'Warm bass', oscs: [osc('sine', 0, 0, 0.6), osc('sawtooth', 0, 0, 0.4)],
+        env: env(0.01, 0.4, 0.75, 0.2), filter: { type: 'lowpass', hz: 650, q: 0.8, envAmount: 1.8, envDecay: 0.12 },
+        gain: 0.45, sends: { reverb: 0.15, delay: 0 } }),
+      'analog-synth': synth({ name: 'Analog synth', oscs: [osc('sawtooth', 0, -6, 0.5), osc('pulse25', 0, 6, 0.5)],
+        env: env(0.005, 0.35, 0.2, 0.3), filter: { type: 'lowpass', hz: 1400, q: 3, envAmount: 3, envDecay: 0.18 },
+        gain: 0.16, sends: { reverb: 1, delay: 1.2 } }),
+      'synth-pad': synth({ name: 'Analog pad', oscs: [osc('sawtooth', 0, -12, 0.5), osc('sawtooth', 0, 12, 0.5)],
+        env: env(1.2, 1.5, 0.8, 2), filter: { type: 'lowpass', hz: 1100, q: 1, envAmount: 1.5, envDecay: 2 },
+        vibrato: { rate: 0.4, cents: 6, delay: 0 }, gain: 0.16, sends: { reverb: 1.5, delay: 0.4 } }),
+      'studio-kit': drums({ name: 'Studio kit',
+        kick: { wave: 'sine', hz: 55, sweep: 2.2, sweepTime: 0.06, decay: 0.5, click: 0.25 },
+        snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 180, decay: 0.22 },
+        hat: { noise: 'white', hz: 7000, decay: 0.05 },
+        crashDecay: 2.4, gain: 0.8, sends: { reverb: 0.9, delay: 0 } }),
+    },
+    fx: { reverbSeconds: 3.2, reverbSend: 0.35, delayBeats: 0.75, delaySend: 0.22, delayFeedback: 0.38, crush: 0, lowpassHz: 15000, crackle: 0 },
+    lanes: ['#f2b55a', '#9ec3ff', '#e86a5c', '#c9d6df', '#8f7ad8', '#6fd3b5'],
   },
 };
 

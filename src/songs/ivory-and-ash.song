@@ -1,0 +1,273 @@
+# Ivory and Ash, by Claude and SZ. A cinematic prog-rock piece: a Romantic piano and a soaring
+# blues guitar trade phrases, building through two crescendos to a fragile piano reprise.
+title: Ivory and Ash
+composer: Claude & SZ
+year: 2026
+source: original
+category: originals
+key: C minor
+style: cinematic
+tempo: 66
+time: 4/4
+
+@bars 53-58 tempo=66..52
+
+track guitar role=lead vol=0.7 pan=0.15
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| R | R | v=84 r/2 Eb5/8^ F5/4. | F5/8^ G5/8~ G5/4 D5/2 |
+| R | R | v=84 Ab5/4^ Bb5/4^ Ab5/4 G5/4 | G5/1 |
+# The build
+| v=92 C5/2. Eb5/4 | G5/8^ Ab5/8~ Ab5/4 G5/2 | F5/2. D5/4 | Eb5/4 D5/4 C5/2 |
+| C6/2. Bb5/8 Ab5/8 | G5/1 | Ab5/4. G5/8 F5/4 Eb5/4 | D5/8^ Eb5/8^ D5/2. |
+# First crescendo
+| v=104 Ab5/4 C6/4 Eb6/2 | D6/2. C6/8 Bb5/8 | Bb5/2 G5/2 | C6/8^ Db6/8^ C6/2. |
+| Ab5/4 F5/4 D5/4 Ab5/4 | G5/8^ A5/8^ B5/2. | C6/1 | r/2 B5/4 D6/4 |
+# Quiet: piano and cello
+| R | R | R | R |
+# Piano and guitar trade
+| R | v=96 G5/8^ Ab5/8^ G5/4 F5/4 Eb5/4 | R | v=96 F5/4^ G5/4 D5/4 B4/4 |
+| R | v=96 Bb5/8^ C6/8~ C6/2 G5/4 | R | v=96 C6/2. Bb5/8 G5/8 |
+# Final crescendo
+| v=112 C6/4^ Db6/4^ C6/4 Ab5/4 | Bb5/8 C6/8 D6/4^ Eb6/4^ D6/4 | G6/2. F6/8 Eb6/8 | Eb6/4^ F6/4^ Eb6/4 C6/4 |
+| F6/4. Eb6/8 D6/4 Ab5/4 | B5/8^ C6/8^ B5/4 D6/4 F6/4 | Eb6/8^ F6/8^ G6/2.~ | G6/2. r/4 |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| v=80 C5/1~ | C5/1 |
+
+track piano role=lead2 vol=0.75 pan=-0.15
+# Intro: piano alone, strings join
+| v=64 r/4 G4/4 C5/4 Eb5/4 | D5/2. C5/4 | C5/4 Bb4/4 Ab4/4 G4/4 | B4/2 D5/4 F5/4 |
+| Ab5/2. G5/8 F5/8 | Eb5/2 G4/2 | F5/4 Eb5/4 D5/4 B4/4 | C5/1 |
+# The guitar answers
+| v=70 r/4 G4/4 C5/4 Eb5/4 | D5/2. C5/4 | R | R |
+| v=70 Ab5/2. G5/8 F5/8 | Eb5/2 G4/2 | R | R |
+# The build
+| R | R | R | R |
+| R | R | R | R |
+# First crescendo
+| R | R | R | R |
+| R | R | R | R |
+# Quiet: piano and cello
+| v=56 r/4 G4/4 C5/4 Eb5/4 | D5/2. C5/4 | C5/4 Bb4/4 Ab4/4 G4/4 | B4/2 D5/4 F5/4 |
+# Piano and guitar trade
+| v=80 r/8 G4/8 C5/8 Eb5/8 G5/4 F5/4 | R | v=80 r/8 Ab4/8 C5/8 Eb5/8 G5/4 Eb5/4 | R |
+| v=80 r/8 F4/8 Ab4/8 C5/8 F5/4 Ab5/4 | R | v=80 D5/8 F5/8 Ab5/8 B5/8 D6/4 B5/4 | R |
+# Final crescendo
+| R | R | R | R |
+| R | R | R | R |
+# Piano reprise
+| v=46 r/4 G4/4 C5/4 Eb5/4 | D5/2. C5/4 | C5/4 Bb4/4 Ab4/4 G4/4 | B4/2 D5/4 F5/4 |
+# One last note
+| R | R |
+
+track keys role=chords vol=0.55 pan=-0.2
+# Intro: piano alone, strings join
+| v=48 [C2 C3]/2 [C3 Eb3 G3]/2 | [Bb2 Bb3]/2 [C3 Eb3 G3]/2 | [Ab2 Ab3]/2 [Ab3 C4 Eb4]/2 | [G2 G3]/2 [G3 B3 D4]/2 |
+| [F2 F3]/2 [F3 Ab3 C4]/2 | [Eb2 Eb3]/2 [C3 Eb3 G3]/2 | [D2 D3]/4 [D3 F3 Ab3]/4 [G2 G3]/4 [G3 B3 D4]/4 | [C2 C3]/2 [C3 Eb3 G3]/2 |
+# The guitar answers
+| v=52 [C2 C3]/2 [C3 Eb3 G3]/2 | [Bb2 Bb3]/2 [C3 Eb3 G3]/2 | [Ab2 Ab3]/2 [Ab3 C4 Eb4]/2 | [G2 G3]/2 [G3 B3 D4]/2 |
+| [F2 F3]/2 [F3 Ab3 C4]/2 | [Eb2 Eb3]/2 [C3 Eb3 G3]/2 | [D2 D3]/4 [D3 F3 Ab3]/4 [G2 G3]/4 [G3 B3 D4]/4 | [C2 C3]/2 [C3 Eb3 G3]/2 |
+# The build
+| v=66 Ab2/8 Eb3/8 Ab3/8 C4/8 Eb4/8 C4/8 Ab3/8 Eb3/8 | Eb3/8 Bb3/8 Eb4/8 G4/8 Bb4/8 G4/8 Eb4/8 Bb3/8 | Bb2/8 F3/8 Bb3/8 D4/8 F4/8 D4/8 Bb3/8 F3/8 | C3/8 G3/8 C4/8 Eb4/8 G4/8 Eb4/8 C4/8 G3/8 |
+| Ab2/8 Eb3/8 Ab3/8 C4/8 Eb4/8 C4/8 Ab3/8 Eb3/8 | Eb3/8 Bb3/8 Eb4/8 G4/8 Bb4/8 G4/8 Eb4/8 Bb3/8 | F3/8 C4/8 F4/8 Ab4/8 C5/8 Ab4/8 F4/8 C4/8 | G2/8 D3/8 G3/8 B3/8 D4/8 B3/8 G3/8 D3/8 |
+# First crescendo
+| v=82 F3/8 C4/8 F4/8 Ab4/8 C5/8 Ab4/8 F4/8 C4/8 | Bb2/8 F3/8 Bb3/8 D4/8 F4/8 D4/8 Bb3/8 F3/8 | Eb3/8 Bb3/8 Eb4/8 G4/8 Bb4/8 G4/8 Eb4/8 Bb3/8 | Ab2/8 Eb3/8 Ab3/8 C4/8 Eb4/8 C4/8 Ab3/8 Eb3/8 |
+| D3/8 A3/8 D4/8 F4/8 A4/8 F4/8 D4/8 A3/8 | G2/8 D3/8 G3/8 B3/8 D4/8 B3/8 G3/8 D3/8 | C3/8 G3/8 C4/8 Eb4/8 G4/8 Eb4/8 C4/8 G3/8 | C3/8 G3/8 C4/8 Eb4/8 G2/8 D3/8 G3/8 B3/8 |
+# Quiet: piano and cello
+| v=42 [C2 C3]/2 [C3 Eb3 G3]/2 | [Bb2 Bb3]/2 [C3 Eb3 G3]/2 | [Ab2 Ab3]/2 [Ab3 C4 Eb4]/2 | [G2 G3]/2 [G3 B3 D4]/2 |
+# Piano and guitar trade
+| v=58 [C2 C3]/2 [C3 Eb3 G3]/2 | [Bb2 Bb3]/2 [C3 Eb3 G3]/2 | [Ab2 Ab3]/2 [Ab3 C4 Eb4]/2 | [G2 G3]/2 [G3 B3 D4]/2 |
+| [F2 F3]/2 [F3 Ab3 C4]/2 | [Eb2 Eb3]/2 [C3 Eb3 G3]/2 | [D2 D3]/4 [D3 F3 Ab3]/4 [G2 G3]/4 [G3 B3 D4]/4 | [C2 C3]/2 [C3 Eb3 G3]/2 |
+# Final crescendo
+| v=90 F3/16 C4/16 F4/16 Ab4/16 C5/16 F5/16 Ab5/16 C6/16 C6/16 Ab5/16 F5/16 C5/16 Ab4/16 F4/16 C4/16 F3/16 | Bb2/16 F3/16 Bb3/16 D4/16 F4/16 Bb4/16 D5/16 F5/16 F5/16 D5/16 Bb4/16 F4/16 D4/16 Bb3/16 F3/16 Bb2/16 | Eb3/16 Bb3/16 Eb4/16 G4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Bb5/16 G5/16 Eb5/16 Bb4/16 G4/16 Eb4/16 Bb3/16 Eb3/16 | Ab2/16 Eb3/16 Ab3/16 C4/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Eb5/16 C5/16 Ab4/16 Eb4/16 C4/16 Ab3/16 Eb3/16 Ab2/16 |
+| D3/16 A3/16 D4/16 F4/16 A4/16 D5/16 F5/16 A5/16 A5/16 F5/16 D5/16 A4/16 F4/16 D4/16 A3/16 D3/16 | G2/16 D3/16 G3/16 B3/16 D4/16 G4/16 B4/16 D5/16 D5/16 B4/16 G4/16 D4/16 B3/16 G3/16 D3/16 G2/16 | C3/16 G3/16 C4/16 Eb4/16 G4/16 C5/16 Eb5/16 G5/16 G5/16 Eb5/16 C5/16 G4/16 Eb4/16 C4/16 G3/16 C3/16 | [C2 C3 Eb3 G3]/1 |
+# Piano reprise
+| v=36 [C2 C3]/2 [C3 Eb3 G3]/2 | [Bb2 Bb3]/2 [C3 Eb3 G3]/2 | [Ab2 Ab3]/2 [Ab3 C4 Eb4]/2 | [G2 G3]/2 [G3 B3 D4]/2 |
+# One last note
+| v=40 [C3 G3 C4 Eb4 G4]/1 | R |
+
+track cello role=counter vol=0.5 pan=0.3
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| R | R | R | R |
+| R | R | R | R |
+# The build
+| R | R | R | R |
+| R | R | R | R |
+# First crescendo
+| v=78 Ab3/1 | Bb3/1 | Bb3/1 | Ab3/1 |
+| Ab3/1 | G3/1 | G3/1 | G3/2 G3/2 |
+# Quiet: piano and cello
+| v=58 Eb3/1 | Eb3/1 | Eb3/1 | D3/1 |
+# Piano and guitar trade
+| R | R | R | R |
+| R | R | R | R |
+# Final crescendo
+| v=90 Ab3/1 | Bb3/1 | Bb3/1 | Ab3/1 |
+| Ab3/1 | G3/1 | G3/1 | G3/2 G3/2 |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| R | R |
+
+track strings role=pad vol=0.5
+# Intro: piano alone, strings join
+| R | R | R | R |
+| v=44 [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [D3 F3 Ab3]/2 [G3 B3 D4 F4]/2 | [C3 Eb3 G3]/1 |
+# The guitar answers
+| v=52 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [D3 F3 Ab3]/2 [G3 B3 D4 F4]/2 | [C3 Eb3 G3]/1 |
+# The build
+| v=62 [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Bb2 D3 F3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [F3 Ab3 C4]/1 | [G3 B3 D4]/1 |
+# First crescendo
+| v=84 [F3 Ab3 C4]/1 | [Bb2 D3 F3]/1 | [Eb3 G3 Bb3]/1 | [Ab2 C3 Eb3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/2 [G3 B3 D4 F4]/2 |
+# Quiet: piano and cello
+| v=36 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 |
+# Piano and guitar trade
+| v=60 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [D3 F3 Ab3]/2 [G3 B3 D4 F4]/2 | [C3 Eb3 G3]/1 |
+# Final crescendo
+| v=98 [F3 Ab3 C4]/1 | [Bb2 D3 F3]/1 | [Eb3 G3 Bb3]/1 | [Ab2 C3 Eb3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+# Piano reprise
+| v=32 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | R | R |
+# One last note
+| v=34 [C4 Eb4 G4]/1 | [C4 Eb4 G4]/1 |
+
+track synth role=pad inst=synth-pad vol=0.35 pan=-0.3
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| R | R | R | R |
+| R | R | R | R |
+# The build
+| v=50 [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Bb2 D3 F3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [F3 Ab3 C4]/1 | [G3 B3 D4]/1 |
+# First crescendo
+| v=66 [F3 Ab3 C4]/1 | [Bb2 D3 F3]/1 | [Eb3 G3 Bb3]/1 | [Ab2 C3 Eb3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/2 [G3 B3 D4 F4]/2 |
+# Quiet: piano and cello
+| R | R | R | R |
+# Piano and guitar trade
+| v=52 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [D3 F3 Ab3]/2 [G3 B3 D4 F4]/2 | [C3 Eb3 G3]/1 |
+# Final crescendo
+| v=80 [F3 Ab3 C4]/1 | [Bb2 D3 F3]/1 | [Eb3 G3 Bb3]/1 | [Ab2 C3 Eb3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| R | R |
+
+track arp role=arp vol=0.3 pan=0.35
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| R | R | R | R |
+| R | R | R | R |
+# The build
+| R | R | R | R |
+| R | R | R | R |
+# First crescendo
+| v=58 F4/16 C5/16 Ab4/16 F5/16 F4/16 C5/16 Ab4/16 F5/16 F4/16 C5/16 Ab4/16 F5/16 F4/16 C5/16 Ab4/16 F5/16 | Bb4/16 F5/16 D5/16 Bb5/16 Bb4/16 F5/16 D5/16 Bb5/16 Bb4/16 F5/16 D5/16 Bb5/16 Bb4/16 F5/16 D5/16 Bb5/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Bb4/16 G4/16 Eb5/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Eb5/16 C5/16 Ab5/16 |
+| D4/16 Ab4/16 F4/16 D5/16 D4/16 Ab4/16 F4/16 D5/16 D4/16 Ab4/16 F4/16 D5/16 D4/16 Ab4/16 F4/16 D5/16 | G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 | C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 | C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 |
+# Quiet: piano and cello
+| R | R | R | R |
+# Piano and guitar trade
+| R | R | R | R |
+| R | R | R | R |
+# Final crescendo
+| v=66 F4/16 C5/16 Ab4/16 F5/16 F4/16 C5/16 Ab4/16 F5/16 F4/16 C5/16 Ab4/16 F5/16 F4/16 C5/16 Ab4/16 F5/16 | Bb4/16 F5/16 D5/16 Bb5/16 Bb4/16 F5/16 D5/16 Bb5/16 Bb4/16 F5/16 D5/16 Bb5/16 Bb4/16 F5/16 D5/16 Bb5/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Bb4/16 G4/16 Eb5/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Eb5/16 C5/16 Ab5/16 |
+| D4/16 Ab4/16 F4/16 D5/16 D4/16 Ab4/16 F4/16 D5/16 D4/16 Ab4/16 F4/16 D5/16 D4/16 Ab4/16 F4/16 D5/16 | G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 G4/16 D5/16 B4/16 G5/16 | C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 C4/16 G4/16 Eb4/16 C5/16 | R |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| R | R |
+
+track bass role=bass vol=0.7
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| v=62 C2/1 | Bb1/1 | Ab1/1 | G2/1 |
+| F2/1 | Eb2/1 | D2/2 G2/2 | C2/1 |
+# The build
+| v=78 Ab1/2 Ab1/4 Eb2/4 | Eb2/2 Eb2/4 Bb2/4 | Bb1/2 Bb1/4 F2/4 | C2/2 C2/4 G2/4 |
+| Ab1/2 Ab1/4 Eb2/4 | Eb2/2 Eb2/4 Bb2/4 | F2/2 F2/4 C3/4 | G2/2 G2/4 D3/4 |
+# First crescendo
+| v=96 F2/4. F2/8 F3/4 C3/4 | Bb1/4. Bb1/8 Bb2/4 F2/4 | Eb2/4. Eb2/8 Eb3/4 Bb2/4 | Ab1/4. Ab1/8 Ab2/4 Eb2/4 |
+| D2/4. D2/8 D3/4 A2/4 | G2/4. G2/8 G3/4 D3/4 | C2/4. C2/8 C3/4 G2/4 | C2/4. C2/8 G2/4. G2/8 |
+# Quiet: piano and cello
+| R | R | R | R |
+# Piano and guitar trade
+| v=84 C2/2 C2/4 G2/4 | Bb1/2 Bb1/4 F2/4 | Ab1/2 Ab1/4 Eb2/4 | G2/2 G2/4 D3/4 |
+| F2/2 F2/4 C3/4 | Eb2/2 Eb2/4 Bb2/4 | D2/2 G2/2 | C2/2 C2/4 G2/4 |
+# Final crescendo
+| v=104 F2/4. F2/8 F3/4 C3/4 | Bb1/4. Bb1/8 Bb2/4 F2/4 | Eb2/4. Eb2/8 Eb3/4 Bb2/4 | Ab1/4. Ab1/8 Ab2/4 Eb2/4 |
+| D2/4. D2/8 D3/4 A2/4 | G2/4. G2/8 G3/4 D3/4 | C2/4. C2/8 C3/4 G2/4 | C2/1 |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| R | R |
+
+track drums role=drums vol=0.75
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| R | R | R | R |
+| R | R | R | R |
+# The build
+| v=72 [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 |
+| [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8 | k/8 s/8 s/8 tm/8 tm/16 tm/16 tl/16 tl/16 tl/8 [k s]/8 |
+# First crescendo
+| v=96 [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 |
+| [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 h/8 [s h]/8 r/8 r/4 |
+# Quiet: piano and cello
+| R | R | R | R |
+# Piano and guitar trade
+| v=82 [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 | [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 | [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 | [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 |
+| [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 | [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 | [k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8 | k/8 s/8 s/8 tm/8 tm/16 tm/16 tl/16 tl/16 tl/8 [k s]/8 |
+# Final crescendo
+| v=106 [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 |
+| [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | [k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8 | k/8 s/8 s/8 tm/8 tm/16 tm/16 tl/16 tl/16 tl/8 [k s]/8 | [k s]/2. r/4 |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| R | R |
+
+track cymbals role=drums vol=0.45
+# Intro: piano alone, strings join
+| R | R | R | R |
+| R | R | R | R |
+# The guitar answers
+| R | R | R | R |
+| R | R | R | R |
+# The build
+| R | R | R | R |
+| R | R | R | R |
+# First crescendo
+| v=90 cr/1 | R | R | R |
+| cr/1 | R | R | R |
+# Quiet: piano and cello
+| R | R | R | R |
+# Piano and guitar trade
+| v=80 cr/1 | R | R | R |
+| R | R | R | R |
+# Final crescendo
+| v=100 cr/1 | R | R | R |
+| cr/1 | R | R | cr/1 |
+# Piano reprise
+| R | R | R | R |
+# One last note
+| R | R |

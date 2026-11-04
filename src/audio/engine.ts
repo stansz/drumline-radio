@@ -370,7 +370,16 @@ export class Engine {
       const voice =
         patch.kind === 'drums'
           ? playDrum(this.voiceKit, patch, pitch, when, gain, channel.gain)
-          : playSynth(this.voiceKit, patch, pitch, when, note.duration, gain, channel.gain);
+          : playSynth(
+              this.voiceKit,
+              patch,
+              pitch,
+              when,
+              note.duration,
+              gain,
+              channel.gain,
+              note.bends ?? [],
+            );
       this.voices.add(voice);
     }
   }

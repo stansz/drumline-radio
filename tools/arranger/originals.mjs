@@ -1,6 +1,6 @@
 // Originals built with arrangeForm(). Writes .song files to <outDir> (default: src/songs).
 //   node tools/arranger/originals.mjs [outDir] [song-id ...]
-// The other originals (Midnight Arcade, Night Shift, Save Point) are hand-written.
+// Midnight Arcade, Night Shift, and Save Point are hand-written; Ivory and Ash has its own script.
 import { mkdirSync } from 'node:fs';
 import { arrangeForm } from './arranger.mjs';
 
