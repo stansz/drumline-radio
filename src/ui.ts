@@ -1,7 +1,7 @@
 import { createDial } from './dial';
 import { Engine } from './engine';
 import { LIBRARY, LIBRARY_ERRORS } from './library';
-import { createMeters } from './meters';
+import { createMeters, SEGMENTS } from './meters';
 import { STYLES } from './roles';
 import type { StyleId } from './roles';
 import { createScore } from './score';
@@ -129,6 +129,8 @@ export function startUi(): void {
 
   function applyVolume(): void {
     volumeEl.value = String(volume);
+    const lit = Math.round((volume / 100) * SEGMENTS);
+    volumeEl.style.setProperty('--fill', `${(lit / SEGMENTS) * 100}%`);
     muteButton.setAttribute('aria-pressed', String(muted));
     muteButton.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
     muteButton.classList.toggle('muted', muted || volume === 0);

@@ -189,34 +189,52 @@ body::after {
   text-overflow: ellipsis;
 }
 
-.meters {
-  flex: 0 0 auto;
-  width: 120px;
-  height: 48px;
-}
-
+/* L, R, and volume are three matching LED rows: 16 segments, same width, labels in one column. */
 .levels {
+  --seg-h: 10px;
+  --seg-gap: 6px;
+  --bars-w: 168px;
   flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: 16px var(--bars-w);
+  grid-template-rows: repeat(3, var(--seg-h));
+  gap: var(--seg-gap) 6px;
+  align-items: center;
 }
 
-.volume {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.level-label {
+  grid-column: 1;
+  font-family: var(--readout-font);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--accent);
+  text-align: center;
+}
+
+.level-l {
+  grid-row: 1;
+}
+
+.level-r {
+  grid-row: 2;
+}
+
+.meters {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 100%;
+  height: 100%;
 }
 
 .mute {
-  flex: 0 0 auto;
+  grid-column: 1;
+  grid-row: 3;
   display: grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   padding: 0;
   border: 0;
-  border-radius: 4px;
   background: transparent;
   color: var(--accent);
   cursor: pointer;
@@ -235,12 +253,56 @@ body::after {
   color: var(--muted);
 }
 
+/* A real range input (touch and keyboard work), drawn as lit segments like the meters. */
 .volume-slider {
-  flex: 1;
-  min-width: 0;
-  width: 90px;
+  grid-column: 2;
+  grid-row: 3;
+  width: 100%;
+  height: var(--seg-h);
   margin: 0;
-  accent-color: var(--accent);
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0 var(--fill, 100%),
+    color-mix(in srgb, var(--accent) 15%, transparent) var(--fill, 100%) 100%
+  );
+  mask: repeating-linear-gradient(90deg, #000 0 calc(6.25% - 2px), transparent calc(6.25% - 2px) 6.25%);
+  -webkit-mask: repeating-linear-gradient(90deg, #000 0 calc(6.25% - 2px), transparent calc(6.25% - 2px) 6.25%);
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  width: 2px;
+  height: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.volume-slider::-moz-range-track {
+  height: 100%;
+  background: transparent;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 2px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* The mask hides an outline on the slider itself, so show focus on the whole block. */
+.levels:has(.volume-slider:focus-visible) {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .stage {
@@ -517,22 +579,10 @@ body::after {
   }
 
   .levels {
+    --seg-h: 8px;
+    --seg-gap: 5px;
+    --bars-w: 104px;
     align-self: center;
-    gap: 2px;
-  }
-
-  .meters {
-    width: 84px;
-    height: 30px;
-  }
-
-  .mute {
-    width: 22px;
-    height: 22px;
-  }
-
-  .volume-slider {
-    width: 56px;
   }
 
   .stage {
