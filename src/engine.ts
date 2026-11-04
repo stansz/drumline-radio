@@ -17,6 +17,7 @@ interface TrackChannel {
 
 const TICK_MS = 25;
 const LOOKAHEAD = 0.12;
+const MAKEUP_GAIN = 1.4;
 
 export class Engine {
   private readonly ctx: AudioContext;
@@ -27,6 +28,7 @@ export class Engine {
   private readonly crush: WaveShaperNode;
   private readonly lowpass: BiquadFilterNode;
   private readonly compressor: DynamicsCompressorNode;
+  private readonly makeup: GainNode;
   private readonly limiter: DynamicsCompressorNode;
   private readonly clip: WaveShaperNode;
   private readonly volume: GainNode;
@@ -46,7 +48,7 @@ export class Engine {
   private styleValue: StyleId = 'synthwave';
   private playingValue = false;
   private positionValue = 0;
-  private volumeValue = 0.8;
+  private volumeValue = 1;
   private startCtx = 0;
   private startPos = 0;
   private scheduledUntil = 0;
@@ -60,12 +62,14 @@ export class Engine {
     this.voiceKit = createVoiceKit(ctx);
 
     this.mix = ctx.createGain();
-    this.mix.gain.value = 0.7;
+    this.mix.gain.value = 1;
 
     this.dryGain = ctx.createGain();
     this.dryGain.gain.value = 1;
     this.wetGain = ctx.createGain();
     this.wetGain.gain.value = 0;
+    // The wet level is applied after the crusher. Turning the signal down before it would leave
+    // quiet music on only a few of its fixed steps, which buzzes.
     this.crush = ctx.createWaveShaper();
     this.crush.curve = crushCurve();
 
@@ -75,11 +79,15 @@ export class Engine {
     this.lowpass.Q.value = 0.7;
 
     this.compressor = ctx.createDynamicsCompressor();
-    this.compressor.threshold.value = -18;
+    this.compressor.threshold.value = -20;
     this.compressor.knee.value = 6;
     this.compressor.ratio.value = 3;
     this.compressor.attack.value = 0.01;
     this.compressor.release.value = 0.25;
+
+    // Makeup gain after the compressor brings songs up to normal music loudness.
+    this.makeup = ctx.createGain();
+    this.makeup.gain.value = MAKEUP_GAIN;
 
     this.limiter = ctx.createDynamicsCompressor();
     this.limiter.threshold.value = -3;
@@ -105,11 +113,12 @@ export class Engine {
 
     this.mix.connect(this.dryGain);
     this.dryGain.connect(this.lowpass);
-    this.mix.connect(this.wetGain);
-    this.wetGain.connect(this.crush);
-    this.crush.connect(this.lowpass);
+    this.mix.connect(this.crush);
+    this.crush.connect(this.wetGain);
+    this.wetGain.connect(this.lowpass);
     this.lowpass.connect(this.compressor);
-    this.compressor.connect(this.limiter);
+    this.compressor.connect(this.makeup);
+    this.makeup.connect(this.limiter);
     this.limiter.connect(this.clip);
     this.clip.connect(this.volume);
     this.volume.connect(ctx.destination);

@@ -146,7 +146,9 @@ export function playSynth(
   env.gain.linearRampToValueAtTime(gain, time + attack);
   env.gain.setTargetAtTime(gain * sustain, time + attack, Math.max(0.001, decay / 3));
   const relStart = time + Math.max(duration, attack);
-  env.gain.setTargetAtTime(0, relStart, Math.max(0.001, release / 3));
+  // A time constant of release/4 and a stop at 2 × release leave the voice at about 0.03% of its
+  // level when it is cut, so notes end without a click.
+  env.gain.setTargetAtTime(0, relStart, Math.max(0.001, release / 4));
   env.connect(out);
   collected.nodes.push(env);
 
@@ -203,7 +205,7 @@ export function playSynth(
     collected.sources.push({ node: modulator });
   }
 
-  const end = relStart + release + 0.1;
+  const end = relStart + release * 2 + 0.05;
   return makeVoice(end, env, collected, time);
 }
 

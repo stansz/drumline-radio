@@ -191,8 +191,11 @@ export function startUi(): void {
     loadSong(current + 1);
   }
 
+  // Tuning to a station always plays it, like a radio.
   const dial = createDial(dialEl, LIBRARY, (index) => {
+    const active = ensureEngine();
     loadSong(index);
+    if (active && !active.playing) active.play();
     updatePlayButton();
   });
 

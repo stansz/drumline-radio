@@ -168,6 +168,9 @@ export function createDial(
     onTune(next);
   });
 
+  // Station spacing changes with the screen width, so keep the current station under the needle.
+  new ResizeObserver(() => select(current, false)).observe(el);
+
   return {
     select,
     tuning(): boolean {

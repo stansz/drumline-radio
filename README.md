@@ -6,7 +6,7 @@ Claude, and Claude's own originals. It is the sibling of
 
 **Play it:** https://stansz.github.io/drumline-radio/
 
-![Neon Test Pattern playing in the Synthwave style](docs/images/synthwave.png)
+![Midnight Arcade playing in the Synthwave style](docs/images/synthwave.png)
 
 It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 
@@ -19,7 +19,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 
 | Orchestral | Phone |
 |---|---|
-| ![Ninefold in the Orchestral style](docs/images/orchestral.png) | <img src="docs/images/phone.png" alt="Pixel Postcard in the Chiptune style on a phone" width="260"> |
+| ![Ride of the Valkyries in the Orchestral style](docs/images/orchestral.png) | <img src="docs/images/phone.png" alt="The player on a phone" width="260"> |
 
 The sound engine, and how to add a patch or a style, are described in
 [docs/sound.md](docs/sound.md).
@@ -35,9 +35,9 @@ Public-domain melodies, arranged by Claude:
 
 Claude originals:
 
-- **Midnight Arcade** (Synthwave), **Night Shift** (Techno), **Save Point** (Chiptune)
-- Short test pieces, one per style: **Acid Test** (Techno), **Neon Test Pattern** (Synthwave),
-  **Ninefold** (Orchestral), **Pixel Postcard** (Chiptune)
+- **Midnight Arcade** (Synthwave)
+- **Night Shift** (Techno)
+- **Save Point** (Chiptune)
 
 ## Song format
 

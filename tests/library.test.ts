@@ -4,7 +4,7 @@ import { LIBRARY, LIBRARY_ERRORS } from '../src/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(10);
+    expect(LIBRARY.length).toBe(6);
   });
 
   it('orders by source then title', () => {
@@ -12,12 +12,8 @@ describe('library', () => {
       'greensleeves',
       'mountain-king',
       'valkyries',
-      'acid-test',
       'midnight-arcade',
-      'neon-test-pattern',
       'night-shift',
-      'ninefold',
-      'pixel-postcard',
       'save-point',
     ]);
   });
@@ -27,22 +23,15 @@ describe('library', () => {
       'orchestral',
       'chiptune',
       'orchestral',
-      'techno',
-      'synthwave',
       'synthwave',
       'techno',
-      'orchestral',
-      'chiptune',
       'chiptune',
     ]);
   });
 
-  it('parses the time signatures in ninefold', () => {
-    const ninefold = LIBRARY.find((entry) => entry.id === 'ninefold');
-    expect(ninefold).toBeDefined();
-    expect(ninefold?.song.bars[0].time).toEqual([9, 8]);
-    const bar9 = ninefold?.song.bars.find((bar) => bar.number === 9);
-    expect(bar9?.time).toEqual([6, 8]);
+  it('parses the time signatures in Greensleeves', () => {
+    const greensleeves = LIBRARY.find((entry) => entry.id === 'greensleeves');
+    expect(greensleeves?.song.bars.every((bar) => bar.time[0] === 3 && bar.time[1] === 4)).toBe(true);
   });
 
   it('puts the Valkyries in real 9/8', () => {

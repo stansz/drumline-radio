@@ -89,13 +89,16 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 
 All tracks meet at the mix bus and pass through:
 
-mix -> crush crossfade -> lowpass -> compressor -> limiter -> soft clip -> volume -> speakers
+mix -> crush crossfade -> lowpass -> compressor -> makeup gain -> limiter -> soft clip -> volume -> speakers
 
-- **Crush** is a dry/wet crossfade into a bit-crush wave shaper. Only Chiptune uses it.
+- **Crush** is a dry/wet crossfade with a bit-crush wave shaper. The wet level is applied after the
+  shaper, so quiet music still uses enough of its steps not to buzz. Only Chiptune uses it.
 - **Lowpass** is the style's ceiling for the whole mix.
-- **Compressor** and **limiter** keep the songs at a similar loudness.
-- **Soft clip** is a final safety net; it never lets the output exceed 0.95.
-- **Volume** follows the player's volume level (0 to 1, default 0.8).
+- **Compressor** (threshold -20 dB, ratio 3) evens out loudness between songs, the **makeup gain**
+  (×1.4) brings them up to normal music loudness, and the **limiter** (threshold -3 dB) catches peaks.
+- **Soft clip** is a final safety net: it leaves the signal untouched below 0.85 and never lets the
+  output exceed 0.95.
+- **Volume** follows the player's volume level (0 to 1, default 1).
 
 The soft clip output also feeds two analysers, one per channel, which is where the VU meters get
 their levels.

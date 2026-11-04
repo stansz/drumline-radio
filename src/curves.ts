@@ -1,6 +1,6 @@
 // Wave-shaping curves and gain helpers. Pure: no DOM, no audio.
 
-export const SOFT_CLIP_KNEE = 0.7;
+export const SOFT_CLIP_KNEE = 0.85;
 export const SOFT_CLIP_CEILING = 0.95;
 export const SOFT_CLIP_POINTS = 4097;
 export const CRUSH_STEPS = 24;
