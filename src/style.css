@@ -489,7 +489,7 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #3a3a44, #15151b 70%);
-  color: var(--text);
+  color: var(--muted);
   font-size: 15px;
   cursor: pointer;
 }
@@ -499,6 +499,17 @@ body::after {
   height: 56px;
   font-size: 18px;
   color: var(--accent);
+}
+
+.knob-small {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.knob.on {
+  color: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
 }
 
 .time {
@@ -637,6 +648,12 @@ body::after {
     width: 42px;
     height: 42px;
     font-size: 15px;
+  }
+
+  .knob-small {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
 
   .time {

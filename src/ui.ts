@@ -7,10 +7,11 @@ import type { StyleId } from './roles';
 import { createScore } from './score';
 import { STYLE_DEFS } from './styles';
 import { notesBetween } from './timing';
-import { formatTime, parseVolume, prevAction, scrubTarget, volumeGain } from './view';
+import { formatTime, nextAfterEnd, parseVolume, prevAction, scrubTarget, volumeGain } from './view';
 
 const VOLUME_KEY = 'drumline-radio-volume';
 const MUTED_KEY = 'drumline-radio-muted';
+const REPEAT_KEY = 'drumline-radio-repeat';
 
 function load(key: string): string | null {
   try {
@@ -48,6 +49,7 @@ export function startUi(): void {
   const prevButton = required<HTMLButtonElement>('#prev');
   const playButton = required<HTMLButtonElement>('#play');
   const nextButton = required<HTMLButtonElement>('#next');
+  const repeatButton = required<HTMLButtonElement>('#repeat');
   const elapsedEl = required<HTMLElement>('#elapsed');
   const totalEl = required<HTMLElement>('#total');
   const seekEl = required<HTMLInputElement>('#seek');
@@ -124,6 +126,7 @@ export function startUi(): void {
 
   let volume = parseVolume(load(VOLUME_KEY));
   let muted = load(MUTED_KEY) === '1';
+  let repeat = load(REPEAT_KEY) === '1';
 
   function outputGain(): number {
     return muted ? 0 : volumeGain(volume);
@@ -143,6 +146,17 @@ export function startUi(): void {
     muted = !muted;
     save(MUTED_KEY, muted ? '1' : '0');
     applyVolume();
+  }
+
+  function applyRepeat(): void {
+    repeatButton.setAttribute('aria-pressed', String(repeat));
+    repeatButton.classList.toggle('on', repeat);
+  }
+
+  function toggleRepeat(): void {
+    repeat = !repeat;
+    save(REPEAT_KEY, repeat ? '1' : '0');
+    applyRepeat();
   }
 
   function ensureEngine(): Engine | null {
@@ -195,7 +209,7 @@ export function startUi(): void {
   }
 
   function handleEnded(): void {
-    loadSong(current + 1);
+    loadSong(nextAfterEnd(current, LIBRARY.length, repeat));
     engine?.play();
     updatePlayButton();
   }
@@ -248,6 +262,7 @@ export function startUi(): void {
   playButton.addEventListener('click', togglePlay);
   prevButton.addEventListener('click', previous);
   nextButton.addEventListener('click', next);
+  repeatButton.addEventListener('click', toggleRepeat);
 
   bandsEl.addEventListener('keydown', (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -264,6 +279,7 @@ export function startUi(): void {
   });
 
   applyVolume();
+  applyRepeat();
   muteButton.addEventListener('click', toggleMute);
   volumeEl.addEventListener('input', () => {
     volume = Number(volumeEl.value);
@@ -315,6 +331,10 @@ export function startUi(): void {
     if (document.activeElement === seekEl || document.activeElement === volumeEl) return;
     if (event.key === 'm' || event.key === 'M') {
       toggleMute();
+      return;
+    }
+    if (event.key === 'r' || event.key === 'R') {
+      toggleRepeat();
       return;
     }
     if (event.key === ' ' || event.code === 'Space') {

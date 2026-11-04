@@ -1,0 +1,156 @@
+# Ode to Joy, arranged by Claude. Strings, then brass joins, then up a step.
+title: Ode to Joy
+composer: Ludwig van Beethoven
+year: 1824
+source: public-domain
+key: D major
+style: orchestral
+tempo: 112
+time: 4/4
+
+track melody role=lead vol=0.8
+# Intro
+| R | R |
+# The tune
+| F#5/4 F#5/4 G5/4 A5/4 | A5/4 G5/4 F#5/4 E5/4 | D5/4 D5/4 E5/4 F#5/4 | F#5/4. E5/8 E5/2 |
+| F#5/4 F#5/4 G5/4 A5/4 | A5/4 G5/4 F#5/4 E5/4 | D5/4 D5/4 E5/4 F#5/4 | E5/4. D5/8 D5/2 |
+| E5/4 E5/4 F#5/4 D5/4 | E5/4 F#5/8 G5/8 F#5/4 D5/4 | E5/4 F#5/8 G5/8 F#5/4 E5/4 | D5/4 E5/4 A4/2 |
+| F#5/4 F#5/4 G5/4 A5/4 | A5/4 G5/4 F#5/4 E5/4 | D5/4 D5/4 E5/4 F#5/4 | E5/4. D5/8 D5/2 |
+# Pass 2, fuller
+| F#5/4 F#5/4 G5/4 A5/4 | A5/4 G5/4 F#5/4 E5/4 | D5/4 D5/4 E5/4 F#5/4 | F#5/4. E5/8 E5/2 |
+| F#5/4 F#5/4 G5/4 A5/4 | A5/4 G5/4 F#5/4 E5/4 | D5/4 D5/4 E5/4 F#5/4 | E5/4. D5/8 D5/2 |
+| E5/4 E5/4 F#5/4 D5/4 | E5/4 F#5/8 G5/8 F#5/4 D5/4 | E5/4 F#5/8 G5/8 F#5/4 E5/4 | D5/4 E5/4 A4/2 |
+| F#5/4 F#5/4 G5/4 A5/4 | A5/4 G5/4 F#5/4 E5/4 | D5/4 D5/4 E5/4 F#5/4 | E5/4. D5/8 D5/2 |
+# Up a key (pass 3)
+| G#5/4 G#5/4 A5/4 B5/4 | B5/4 A5/4 G#5/4 F#5/4 | E5/4 E5/4 F#5/4 G#5/4 | G#5/4. F#5/8 F#5/2 |
+| G#5/4 G#5/4 A5/4 B5/4 | B5/4 A5/4 G#5/4 F#5/4 | E5/4 E5/4 F#5/4 G#5/4 | F#5/4. E5/8 E5/2 |
+| F#5/4 F#5/4 G#5/4 E5/4 | F#5/4 G#5/8 A5/8 G#5/4 E5/4 | F#5/4 G#5/8 A5/8 G#5/4 F#5/4 | E5/4 F#5/4 B4/2 |
+| G#5/4 G#5/4 A5/4 B5/4 | B5/4 A5/4 G#5/4 F#5/4 | E5/4 E5/4 F#5/4 G#5/4 | F#5/4. E5/8 E5/2 |
+# Ending
+| R |
+
+track harmony role=lead2 vol=0.45
+# Intro
+| R | R |
+# The tune
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 2, fuller
+| F#6/4 F#6/4 G6/4 A6/4 | A6/4 G6/4 F#6/4 E6/4 | D6/4 D6/4 E6/4 F#6/4 | F#6/4. E6/8 E6/2 |
+| F#6/4 F#6/4 G6/4 A6/4 | A6/4 G6/4 F#6/4 E6/4 | D6/4 D6/4 E6/4 F#6/4 | E6/4. D6/8 D6/2 |
+| E6/4 E6/4 F#6/4 D6/4 | E6/4 F#6/8 G6/8 F#6/4 D6/4 | E6/4 F#6/8 G6/8 F#6/4 E6/4 | D6/4 E6/4 A5/2 |
+| F#6/4 F#6/4 G6/4 A6/4 | A6/4 G6/4 F#6/4 E6/4 | D6/4 D6/4 E6/4 F#6/4 | E6/4. D6/8 D6/2 |
+# Up a key (pass 3)
+| G#6/4 G#6/4 A6/4 B6/4 | B6/4 A6/4 G#6/4 F#6/4 | E6/4 E6/4 F#6/4 G#6/4 | G#6/4. F#6/8 F#6/2 |
+| G#6/4 G#6/4 A6/4 B6/4 | B6/4 A6/4 G#6/4 F#6/4 | E6/4 E6/4 F#6/4 G#6/4 | F#6/4. E6/8 E6/2 |
+| F#6/4 F#6/4 G#6/4 E6/4 | F#6/4 G#6/8 A6/8 G#6/4 E6/4 | F#6/4 G#6/8 A6/8 G#6/4 F#6/4 | E6/4 F#6/4 B5/2 |
+| G#6/4 G#6/4 A6/4 B6/4 | B6/4 A6/4 G#6/4 F#6/4 | E6/4 E6/4 F#6/4 G#6/4 | F#6/4. E6/8 E6/2 |
+# Ending
+| R |
+
+track arp role=arp vol=0.35
+# Intro
+| R | R |
+# The tune
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 2, fuller
+| D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 E5/8 C#5/8 A4/8 C#5/8 | D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 E5/8 C#5/8 A4/8 C#5/8 |
+| D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 E5/8 C#5/8 A4/8 C#5/8 | D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 D4/8 F#4/8 A4/8 D5/8 |
+| A4/8 C#5/8 E5/8 A5/8 E5/8 C#5/8 A4/8 C#5/8 | D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 E5/8 C#5/8 A4/8 C#5/8 | D4/8 F#4/8 A4/8 D5/8 A4/8 C#5/8 E5/8 A5/8 |
+| D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 E5/8 C#5/8 A4/8 C#5/8 | D4/8 F#4/8 A4/8 D5/8 A4/8 F#4/8 D4/8 F#4/8 | A4/8 C#5/8 E5/8 A5/8 D4/8 F#4/8 A4/8 D5/8 |
+# Up a key (pass 3)
+| E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 F#5/8 D#5/8 B4/8 D#5/8 | E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 F#5/8 D#5/8 B4/8 D#5/8 |
+| E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 F#5/8 D#5/8 B4/8 D#5/8 | E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 E4/8 G#4/8 B4/8 E5/8 |
+| B4/8 D#5/8 F#5/8 B5/8 F#5/8 D#5/8 B4/8 D#5/8 | E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 F#5/8 D#5/8 B4/8 D#5/8 | E4/8 G#4/8 B4/8 E5/8 B4/8 D#5/8 F#5/8 B5/8 |
+| E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 F#5/8 D#5/8 B4/8 D#5/8 | E4/8 G#4/8 B4/8 E5/8 B4/8 G#4/8 E4/8 G#4/8 | B4/8 D#5/8 F#5/8 B5/8 E4/8 G#4/8 B4/8 E5/8 |
+# Ending
+| R |
+
+track pad role=pad vol=0.45
+# Intro
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/2 [D3 F#3 A3]/2 |
+# The tune
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/1 |
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/2 [D3 F#3 A3]/2 |
+| [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 |
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/2 [D3 F#3 A3]/2 |
+# Pass 2, fuller
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/1 |
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/2 [D3 F#3 A3]/2 |
+| [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/2 [A3 C#4 E4]/2 |
+| [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [D3 F#3 A3]/1 | [A3 C#4 E4]/2 [D3 F#3 A3]/2 |
+# Up a key (pass 3)
+| [E3 G#3 B3]/1 | [B3 D#4 F#4]/1 | [E3 G#3 B3]/1 | [B3 D#4 F#4]/1 |
+| [E3 G#3 B3]/1 | [B3 D#4 F#4]/1 | [E3 G#3 B3]/1 | [B3 D#4 F#4]/2 [E3 G#3 B3]/2 |
+| [B3 D#4 F#4]/1 | [E3 G#3 B3]/1 | [B3 D#4 F#4]/1 | [E3 G#3 B3]/2 [B3 D#4 F#4]/2 |
+| [E3 G#3 B3]/1 | [B3 D#4 F#4]/1 | [E3 G#3 B3]/1 | [B3 D#4 F#4]/2 [E3 G#3 B3]/2 |
+# Ending
+| [E3 G#3 B3]/1 |
+
+track bass role=bass vol=0.75
+# Intro
+| D2/1 | A2/2 D2/2 |
+# The tune
+| D2/1 | A2/1 | D2/1 | A2/1 |
+| D2/1 | A2/1 | D2/1 | A2/2 D2/2 |
+| A2/1 | D2/1 | A2/1 | D2/2 A2/2 |
+| D2/1 | A2/1 | D2/1 | A2/2 D2/2 |
+# Pass 2, fuller
+| D2/1 | A2/1 | D2/1 | A2/1 |
+| D2/1 | A2/1 | D2/1 | A2/2 D2/2 |
+| A2/1 | D2/1 | A2/1 | D2/2 A2/2 |
+| D2/1 | A2/1 | D2/1 | A2/2 D2/2 |
+# Up a key (pass 3)
+| E2/1 | B2/1 | E2/1 | B2/1 |
+| E2/1 | B2/1 | E2/1 | B2/2 E2/2 |
+| B2/1 | E2/1 | B2/1 | E2/2 B2/2 |
+| E2/1 | B2/1 | E2/1 | B2/2 E2/2 |
+# Ending
+| E2/1 |
+
+track drums role=drums vol=0.8
+# Intro
+| k/2 r/2 | k/2 r/2 |
+# The tune
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
+# Pass 2, fuller
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+# Up a key (pass 3)
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
+# Ending
+| k/1 |
+
+track cymbals role=drums vol=0.5
+# Intro
+| R | R |
+# The tune
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 2, fuller
+| cr/1 | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Up a key (pass 3)
+| cr/1 | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Ending
+| cr/1 |

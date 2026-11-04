@@ -6,6 +6,7 @@ import {
   formatTime,
   laneLayout,
   nearestStation,
+  nextAfterEnd,
   noteY,
   parseVolume,
   prevAction,
@@ -41,6 +42,15 @@ describe('prevAction', () => {
     expect(prevAction(4)).toBe('restart');
     expect(prevAction(3)).toBe('previous');
     expect(prevAction(0)).toBe('previous');
+  });
+});
+
+describe('nextAfterEnd', () => {
+  it('loops the current song when repeating, otherwise advances', () => {
+    expect(nextAfterEnd(2, 5, true)).toBe(2);
+    expect(nextAfterEnd(2, 5, false)).toBe(3);
+    expect(nextAfterEnd(4, 5, false)).toBe(0);
+    expect(nextAfterEnd(0, 1, false)).toBe(0);
   });
 });
 

@@ -42,6 +42,12 @@ export function prevAction(position: number): 'restart' | 'previous' {
   return position > 3 ? 'restart' : 'previous';
 }
 
+/** What to play when a song ends: the same song when repeating, otherwise the next one. */
+export function nextAfterEnd(current: number, count: number, repeatOne: boolean): number {
+  if (repeatOne) return current;
+  return (current + 1) % count;
+}
+
 export interface Lane {
   track: number;
   top: number;
