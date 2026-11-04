@@ -25,21 +25,6 @@ export function scrubTarget(start: number, dx: number, width: number, duration: 
   return Math.min(Math.max(start - dx / pxPerSecond, 0), duration);
 }
 
-/**
- * Whether a position reported by the OS at `reportedAt` has drifted from where playback should be
- * now: more than 1.5 s away. All times are in seconds.
- */
-export function positionDrifted(
-  reported: number,
-  reportedAt: number,
-  now: number,
-  position: number,
-  playing: boolean,
-): boolean {
-  const expected = playing ? reported + (now - reportedAt) : reported;
-  return Math.abs(expected - position) > 1.5;
-}
-
 export function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
   const total = Math.floor(seconds);

@@ -17,7 +17,6 @@ interface TrackChannel {
 
 const TICK_MS = 25;
 const LOOKAHEAD = 0.12;
-const BACKGROUND_LOOKAHEAD = 2;
 const MAKEUP_GAIN = 1.4;
 
 export class Engine {
@@ -33,7 +32,6 @@ export class Engine {
   private readonly limiter: DynamicsCompressorNode;
   private readonly clip: WaveShaperNode;
   private readonly volume: GainNode;
-  private readonly streamOut: MediaStreamAudioDestinationNode | null;
   private readonly splitter: ChannelSplitterNode;
   private readonly leftAnalyser: AnalyserNode;
   private readonly rightAnalyser: AnalyserNode;
@@ -54,7 +52,6 @@ export class Engine {
   private startCtx = 0;
   private startPos = 0;
   private scheduledUntil = 0;
-  private lookahead = LOOKAHEAD;
   private timer: ReturnType<typeof setInterval> | null = null;
   private readonly voices = new Set<Voice>();
 
@@ -106,13 +103,6 @@ export class Engine {
     this.volume = ctx.createGain();
     this.volume.gain.value = this.volumeValue;
 
-    // A media stream played by a hidden <audio> element keeps phones playing in the background.
-    if (typeof ctx.createMediaStreamDestination === 'function') {
-      this.streamOut = ctx.createMediaStreamDestination();
-    } else {
-      this.streamOut = null;
-    }
-
     this.splitter = ctx.createChannelSplitter(2);
     this.leftAnalyser = ctx.createAnalyser();
     this.leftAnalyser.fftSize = 1024;
@@ -131,8 +121,7 @@ export class Engine {
     this.makeup.connect(this.limiter);
     this.limiter.connect(this.clip);
     this.clip.connect(this.volume);
-    if (this.streamOut) this.volume.connect(this.streamOut);
-    else this.volume.connect(ctx.destination);
+    this.volume.connect(ctx.destination);
     this.clip.connect(this.splitter);
     this.splitter.connect(this.leftAnalyser, 0);
     this.splitter.connect(this.rightAnalyser, 1);
@@ -173,10 +162,6 @@ export class Engine {
 
   get duration(): number {
     return this.timelineValue?.duration ?? 0;
-  }
-
-  get stream(): MediaStream | null {
-    return this.streamOut?.stream ?? null;
   }
 
   load(song: Song): void {
@@ -225,15 +210,6 @@ export class Engine {
     this.playingValue = false;
     this.scheduledUntil = this.positionValue;
     this.stopAll();
-  }
-
-  resume(): void {
-    if (this.ctx.state !== 'running') void this.ctx.resume();
-  }
-
-  setBackground(hidden: boolean): void {
-    this.lookahead = hidden ? BACKGROUND_LOOKAHEAD : LOOKAHEAD;
-    if (this.playingValue) this.tick();
   }
 
   seek(seconds: number): void {
@@ -338,10 +314,10 @@ export class Engine {
     const position = this.position;
     const now = this.ctx.currentTime;
 
-    if (position + this.lookahead > this.scheduledUntil) {
-      const notes = notesBetween(this.timelineValue, this.scheduledUntil, position + this.lookahead);
+    if (position + LOOKAHEAD > this.scheduledUntil) {
+      const notes = notesBetween(this.timelineValue, this.scheduledUntil, position + LOOKAHEAD);
       for (const note of notes) this.scheduleNote(note);
-      this.scheduledUntil = position + this.lookahead;
+      this.scheduledUntil = position + LOOKAHEAD;
     }
 
     for (const voice of this.voices) {

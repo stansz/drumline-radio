@@ -40,9 +40,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 
 - `engine.ts` is the player. It looks about 0.1 s ahead on the audio clock and books the notes due
   in that window, so timing is exact. It also runs the mixer: per-track volume and pan, reverb, delay,
-  then a compressor, a limiter, and volume. Its output goes through a media stream into a hidden
-  audio element, so phones keep it playing in the background, and the lookahead grows to 2 s while
-  the app is hidden.
+  then a compressor, a limiter, and volume.
 - `voices.ts` builds each note from scratch (oscillators, filters, envelopes, and noise for drums).
 - `styles.ts` holds the four styles. Each one maps a **role** to an instrument patch.
 - `curves.ts` has small sound-shaping helpers (soft clip, bit-crush, velocity to loudness).
@@ -50,7 +48,6 @@ There are no recordings. Each song is a small text score, and the browser's buil
 ### `src/ui/`: the screen
 
 - `ui.ts` wires it all together: buttons, keyboard, volume, repeat, saved settings.
-- `media.ts` shows the song in the phone's media controls and lock screen.
 - `dial.ts` is the tuner strip of stations. `score.ts` draws the scrolling notes. `meters.ts`
   draws the L/R meters. `view.ts` has the screen math, kept pure so it can be tested.
 
