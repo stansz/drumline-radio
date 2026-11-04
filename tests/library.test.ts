@@ -4,7 +4,7 @@ import { LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(24);
+    expect(LIBRARY.length).toBe(25);
   });
 
   it('orders by category then title', () => {
@@ -29,6 +29,7 @@ describe('library', () => {
       'valkyries',
       'swan-lake',
       'when-the-saints',
+      'last-stop',
       'late-bus-home',
       'midnight-arcade',
       'night-shift',
@@ -41,7 +42,7 @@ describe('library', () => {
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
     expect(count('classics')).toBe(11);
-    expect(count('originals')).toBe(4);
+    expect(count('originals')).toBe(5);
   });
 
   it('keeps each song in its own style', () => {
@@ -66,6 +67,7 @@ describe('library', () => {
       'orchestral',
       'orchestral',
       'synthwave',
+      'lofi',
       'lofi',
       'synthwave',
       'techno',

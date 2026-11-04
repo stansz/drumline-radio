@@ -57,6 +57,8 @@ one voice per cell, fixed instrument slots, and loudness rules tuned for the gri
   - "Claude & SZ" credits, and song stories (`about:`) shown on a song card;
   - every arranged song re-done with its own intro and groove. The arranger, the song checker, and
     the browser checks were saved in `tools/`.
+  - `arrangeForm()` (sections, levels, fills, dynamics) and its first song, the lo-fi original Last
+    Stop (`tools/arranger/originals.mjs`).
 
 ## How we work (user preferences)
 

@@ -1,0 +1,173 @@
+# Last Stop, by Claude and SZ. Late Bus Home's sequel, arranged with arrangeForm(): verse, hook, a keys-only bridge, and a hook that fades out.
+title: Last Stop
+composer: Claude & SZ
+year: 2026
+source: original
+category: originals
+key: F major
+style: lofi
+tempo: 72
+time: 4/4
+
+@bars 44-47 tempo=72..60
+
+track melody role=lead vol=0.8
+# Intro
+| R | R |
+# Verse
+| v=78 r/4 D5/8 C5/8 A4/2 | v=78 r/8 G4/8 A4/4 C5/2 | v=78 Bb4/4. A4/8 G4/4 F4/4 | v=78 G4/2 E4/4 r/4 |
+| v=78 r/4 F5/8 D5/8 C5/2 | v=78 r/8 E5/8 D5/4 C5/2 | v=78 Bb4/4 A4/4 G4/4 Bb4/4 | v=78 A4/1 |
+# Hook
+| v=92 r/8 F5/8 E5/8 D5/8 C5/2 | v=92 r/8 F5/8 E5/8 D5/8 Bb4/2 | v=92 r/8 E5/8 D5/8 C5/8 Bb4/4 G4/4 | v=92 A4/2. r/4 |
+| v=92 r/8 F5/8 E5/8 D5/8 C5/2 | v=92 r/8 G5/8 F5/8 D5/8 F5/2 | v=92 D5/4 C5/4 Bb4/4 G4/4 | v=92 A4/1 |
+# Verse 2
+| v=78 r/4 D5/8 C5/8 A4/2 | v=78 r/8 G4/8 A4/4 C5/2 | v=78 Bb4/4. A4/8 G4/4 F4/4 | v=78 G4/2 E4/4 r/4 |
+| v=78 r/4 F5/8 D5/8 C5/2 | v=78 r/8 E5/8 D5/4 C5/2 | v=78 Bb4/4 A4/4 G4/4 Bb4/4 | v=78 A4/1 |
+# Bridge (keys only)
+| v=45 F5/2 D5/2 | v=53 Db5/2 F4/2 | v=62 E5/2 C5/2 | v=70 D5/2 Bb4/2 |
+# Big hook
+| v=105 r/8 F5/8 E5/8 D5/8 C5/2 | v=105 r/8 F5/8 E5/8 D5/8 Bb4/2 | v=105 r/8 E5/8 D5/8 C5/8 Bb4/4 G4/4 | v=105 A4/2. r/4 |
+| v=105 r/8 F5/8 E5/8 D5/8 C5/2 | v=105 r/8 G5/8 F5/8 D5/8 F5/2 | v=105 D5/4 C5/4 Bb4/4 G4/4 | v=105 A4/1 |
+# Last hook, fading
+| v=102 r/8 F5/8 E5/8 D5/8 C5/2 | v=98 r/8 F5/8 E5/8 D5/8 Bb4/2 | v=95 r/8 E5/8 D5/8 C5/8 Bb4/4 G4/4 | v=91 A4/2. r/4 |
+| v=88 r/8 F5/8 E5/8 D5/8 C5/2 | v=84 r/8 G5/8 F5/8 D5/8 F5/2 | v=81 D5/4 C5/4 Bb4/4 G4/4 | v=77 F4/1 |
+# Ending
+| R |
+
+track harmony role=counter vol=0.4
+# Intro
+| R | R |
+# Verse
+| R | R | R | R |
+| R | R | R | R |
+# Hook
+| R | R | R | R |
+| R | R | R | R |
+# Verse 2
+| R | R | R | R |
+| R | R | R | R |
+# Bridge (keys only)
+| R | R | R | R |
+# Big hook
+| v=105 F4/1 | v=105 F4/1 | v=105 E4/1 | v=105 E4/1 |
+| v=105 F4/1 | v=105 F4/1 | v=105 D4/2 C4/2 | v=105 C4/1 |
+# Last hook, fading
+| R | R | R | R |
+| R | R | R | R |
+# Ending
+| R |
+
+track arp role=arp vol=0.35
+# Intro
+| R | R |
+# Verse
+| R | R | R | R |
+| R | R | R | R |
+# Hook
+| v=92 D4/4 A4/4 F4/4 D5/4 | v=92 G4/4 D5/4 A#4/4 G5/4 | v=92 C4/4 G4/4 E4/4 C5/4 | v=92 F4/4 C5/4 A4/4 F5/4 |
+| v=92 D4/4 A4/4 F4/4 D5/4 | v=92 G4/4 D5/4 A#4/4 G5/4 | v=92 A#4/4 F5/4 C4/4 G4/4 | v=92 F4/4 C5/4 A4/4 F5/4 |
+# Verse 2
+| R | R | R | R |
+| R | R | R | R |
+# Bridge (keys only)
+| R | R | R | R |
+# Big hook
+| v=105 D4/4 A4/4 F4/4 D5/4 | v=105 G4/4 D5/4 A#4/4 G5/4 | v=105 C4/4 G4/4 E4/4 C5/4 | v=105 F4/4 C5/4 A4/4 F5/4 |
+| v=105 D4/4 A4/4 F4/4 D5/4 | v=105 G4/4 D5/4 A#4/4 G5/4 | v=105 A#4/4 F5/4 C4/4 G4/4 | v=105 F4/4 C5/4 A4/4 F5/4 |
+# Last hook, fading
+| v=102 D4/4 A4/4 F4/4 D5/4 | v=98 G4/4 D5/4 A#4/4 G5/4 | v=95 C4/4 G4/4 E4/4 C5/4 | v=91 F4/4 C5/4 A4/4 F5/4 |
+| v=88 D4/4 A4/4 F4/4 D5/4 | v=84 G4/4 D5/4 A#4/4 G5/4 | v=81 A#4/4 F5/4 C4/4 G4/4 | v=77 F4/4 C5/4 A4/4 F5/4 |
+# Ending
+| R |
+
+track pad role=chords vol=0.45
+# Intro
+| v=70 [A#3 D4 F4 A4]/1 | v=70 [A3 C4 E4 G4]/1 |
+# Verse
+| v=78 [A#3 D4 F4 A4]/8 r/8 r/8 [A#3 D4 F4 A4]/8 r/2 | v=78 [A3 C4 E4 G4]/8 r/8 r/8 [A3 C4 E4 G4]/8 r/2 | v=78 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=78 [C3 E3 G3 A#3]/8 r/8 r/8 [C3 E3 G3 A#3]/8 r/2 |
+| v=78 [A#3 D4 F4 A4]/8 r/8 r/8 [A#3 D4 F4 A4]/8 r/2 | v=78 [A3 C4 E4 G4]/8 r/8 r/8 [A3 C4 E4 G4]/8 r/2 | v=78 [G3 A#3 D4 F4]/2 [C3 E3 G3 A#3]/2 | v=78 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+# Hook
+| v=92 [D3 F3 A3 C4]/8 r/8 r/8 [D3 F3 A3 C4]/8 r/2 | v=92 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=92 [C3 E3 G3 A#3]/8 r/8 r/8 [C3 E3 G3 A#3]/8 r/2 | v=92 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+| v=92 [D3 F3 A3 C4]/8 r/8 r/8 [D3 F3 A3 C4]/8 r/2 | v=92 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=92 [A#3 D4 F4 A4]/2 [C3 E3 G3 A#3]/2 | v=92 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+# Verse 2
+| v=78 [A#3 D4 F4 A4]/8 r/8 r/8 [A#3 D4 F4 A4]/8 r/2 | v=78 [A3 C4 E4 G4]/8 r/8 r/8 [A3 C4 E4 G4]/8 r/2 | v=78 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=78 [C3 E3 G3 A#3]/8 r/8 r/8 [C3 E3 G3 A#3]/8 r/2 |
+| v=78 [A#3 D4 F4 A4]/8 r/8 r/8 [A#3 D4 F4 A4]/8 r/2 | v=78 [A3 C4 E4 G4]/8 r/8 r/8 [A3 C4 E4 G4]/8 r/2 | v=78 [G3 A#3 D4 F4]/2 [C3 E3 G3 A#3]/2 | v=78 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+# Bridge (keys only)
+| v=45 [A#3 D4 F4 A4]/1 | v=53 [A#3 C#4 F4 G#4]/1 | v=62 [A3 C4 E4 G4]/1 | v=70 [G3 A#3 D4 F4]/2 [C3 E3 G3 A#3]/2 |
+# Big hook
+| v=105 [D3 F3 A3 C4]/8 r/8 r/8 [D3 F3 A3 C4]/8 r/2 | v=105 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=105 [C3 E3 G3 A#3]/8 r/8 r/8 [C3 E3 G3 A#3]/8 r/2 | v=105 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+| v=105 [D3 F3 A3 C4]/8 r/8 r/8 [D3 F3 A3 C4]/8 r/2 | v=105 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=105 [A#3 D4 F4 A4]/2 [C3 E3 G3 A#3]/2 | v=105 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+# Last hook, fading
+| v=102 [D3 F3 A3 C4]/8 r/8 r/8 [D3 F3 A3 C4]/8 r/2 | v=98 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=95 [C3 E3 G3 A#3]/8 r/8 r/8 [C3 E3 G3 A#3]/8 r/2 | v=91 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+| v=88 [D3 F3 A3 C4]/8 r/8 r/8 [D3 F3 A3 C4]/8 r/2 | v=84 [G3 A#3 D4 F4]/8 r/8 r/8 [G3 A#3 D4 F4]/8 r/2 | v=81 [A#3 D4 F4 A4]/2 [C3 E3 G3 A#3]/2 | v=77 [F3 A3 C4 E4]/8 r/8 r/8 [F3 A3 C4 E4]/8 r/2 |
+# Ending
+| [F3 A3 C4 E4]/1 |
+
+track bass role=bass vol=0.75
+# Intro
+| R | R |
+# Verse
+| v=78 A#2/4. A#2/8 r/4 F3/8 A#3/8 | v=78 A2/4. A2/8 r/4 E3/8 A3/8 | v=78 G2/4. G2/8 r/4 D3/8 G3/8 | v=78 C2/4. C2/8 r/4 G2/8 C3/8 |
+| v=78 A#2/4. A#2/8 r/4 F3/8 A#3/8 | v=78 A2/4. A2/8 r/4 E3/8 A3/8 | v=78 G2/4. D3/8 C2/4. G2/8 | v=78 F2/4. F2/8 r/4 C3/8 F3/8 |
+# Hook
+| v=92 D2/4. D2/8 r/4 A2/8 D3/8 | v=92 G2/4. G2/8 r/4 D3/8 G3/8 | v=92 C2/4. C2/8 r/4 G2/8 C3/8 | v=92 F2/4. F2/8 r/4 C3/8 F3/8 |
+| v=92 D2/4. D2/8 r/4 A2/8 D3/8 | v=92 G2/4. G2/8 r/4 D3/8 G3/8 | v=92 A#2/4. F3/8 C2/4. G2/8 | v=92 F2/4. F2/8 r/4 C3/8 F3/8 |
+# Verse 2
+| v=78 A#2/4. A#2/8 r/4 F3/8 A#3/8 | v=78 A2/4. A2/8 r/4 E3/8 A3/8 | v=78 G2/4. G2/8 r/4 D3/8 G3/8 | v=78 C2/4. C2/8 r/4 G2/8 C3/8 |
+| v=78 A#2/4. A#2/8 r/4 F3/8 A#3/8 | v=78 A2/4. A2/8 r/4 E3/8 A3/8 | v=78 G2/4. D3/8 C2/4. G2/8 | v=78 F2/4. F2/8 r/4 C3/8 F3/8 |
+# Bridge (keys only)
+| R | R | R | R |
+# Big hook
+| v=105 D2/4. D2/8 r/4 A2/8 D3/8 | v=105 G2/4. G2/8 r/4 D3/8 G3/8 | v=105 C2/4. C2/8 r/4 G2/8 C3/8 | v=105 F2/4. F2/8 r/4 C3/8 F3/8 |
+| v=105 D2/4. D2/8 r/4 A2/8 D3/8 | v=105 G2/4. G2/8 r/4 D3/8 G3/8 | v=105 A#2/4. F3/8 C2/4. G2/8 | v=105 F2/4. F2/8 r/4 C3/8 F3/8 |
+# Last hook, fading
+| v=102 D2/4. D2/8 r/4 A2/8 D3/8 | v=98 G2/4. G2/8 r/4 D3/8 G3/8 | v=95 C2/4. C2/8 r/4 G2/8 C3/8 | v=91 F2/4. F2/8 r/4 C3/8 F3/8 |
+| v=88 D2/4. D2/8 r/4 A2/8 D3/8 | v=84 G2/4. G2/8 r/4 D3/8 G3/8 | v=81 A#2/4. F3/8 C2/4. G2/8 | v=77 F2/4. F2/8 r/4 C3/8 F3/8 |
+# Ending
+| F2/1 |
+
+track drums role=drums vol=0.8
+# Intro
+| R | R |
+# Verse
+| v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t |
+| v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4 s/8 s/8 tm/8 tm/8 tl/16 tl/16 tl/16 tl/16 |
+# Hook
+| v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t |
+| v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=92 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t |
+# Verse 2
+| v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t |
+| v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t | v=78 k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t |
+# Bridge (keys only)
+| R | R | R | v=70 k/4 s/8 s/8 tm/8 tm/8 tl/16 tl/16 tl/16 tl/16 |
+# Big hook
+| v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t |
+| v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=105 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t |
+# Last hook, fading
+| v=102 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=98 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=95 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=91 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t |
+| v=88 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=84 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=81 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t | v=77 k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t |
+# Ending
+| k/1 |
+
+track cymbals role=drums vol=0.5
+# Intro
+| R | R |
+# Verse
+| R | R | R | R |
+| R | R | R | R |
+# Hook
+| cr/1 | R | R | R |
+| R | R | R | R |
+# Verse 2
+| R | R | R | R |
+| R | R | R | R |
+# Bridge (keys only)
+| R | R | R | R |
+# Big hook
+| cr/1 | R | R | R |
+| R | R | R | R |
+# Last hook, fading
+| R | R | R | R |
+| R | R | R | R |
+# Ending
+| cr/1 |

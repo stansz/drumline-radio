@@ -60,6 +60,7 @@ Other public-domain melodies, arranged by Claude and SZ:
 
 Originals by Claude and SZ:
 
+- **Last Stop** (Lo-fi)
 - **Late Bus Home** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)

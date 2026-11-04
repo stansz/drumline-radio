@@ -56,7 +56,7 @@ The first command builds all 16 songs into `tmp/songs`, the second builds just o
 checks the output. To keep the output, copy it over the file in `src/songs/`. The script's output
 matches the files in `src/songs/`, so re-running it is safe.
 
-Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the four originals are
+Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the four older originals are
 hand-written. Edit their `.song` files directly.
 
 ### Form-based recipes (more shape)
@@ -93,6 +93,13 @@ and a last chorus up a step.
 
 ```bash
 node tools/arranger/examples/form-demo.mjs tmp/demo
+```
+
+Originals made with `arrangeForm()` live in `arranger/originals.mjs`; Last Stop is the first. Like
+`songs.mjs`, it writes to `src/songs` by default and takes an output folder and song ids:
+
+```bash
+node tools/arranger/originals.mjs tmp/orig last-stop
 ```
 
 ### Always room to change
