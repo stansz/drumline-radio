@@ -302,11 +302,9 @@ export function startUi(): void {
     loadSong(stepStation(visible(), current, 1));
   }
 
-  // Tuning to a station always plays it, like a radio.
+  // Tuning to a station keeps the play state: it plays on if music was playing, stays stopped if not.
   const dial = createDial(dialEl, LIBRARY, (index) => {
-    const active = ensureEngine();
     loadSong(index);
-    if (active && !active.playing) active.play();
     updatePlayButton();
   });
 
