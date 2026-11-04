@@ -100,6 +100,9 @@ mix -> crush crossfade -> lowpass -> compressor -> makeup gain -> limiter -> sof
   output exceed 0.95.
 - **Volume** follows the volume slider: the slider's 0–100 is squared into a gain of 0 to 1, so
   it feels even to the ear, and mute sets it to 0. The default is 100.
+- **Output** leaves the volume knob as a media stream: a `MediaStreamAudioDestinationNode` played
+  by a hidden `<audio>` element, so phones keep playing in the background and on the lock screen.
+  Where that node is unsupported, the volume connects straight to `ctx.destination`.
 
 The soft clip output also feeds two analysers, one per channel, which is where the VU meters get
 their levels.

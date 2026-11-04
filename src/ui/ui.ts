@@ -2,6 +2,7 @@ import { createDial } from './dial';
 import { Engine } from '../audio/engine';
 import { LIBRARY, LIBRARY_ERRORS } from '../music/library';
 import { createMeters, SEGMENTS } from './meters';
+import { createMediaSession } from './media';
 import { STYLES } from '../music/roles';
 import type { StyleId } from '../music/roles';
 import { createScore } from './score';
@@ -65,6 +66,11 @@ export function startUi(): void {
   const bandsEl = required<HTMLElement>('#bands');
   const presetsEl = required<HTMLElement>('#presets');
   const root = document.documentElement;
+
+  // A hidden <audio> element fed by the engine's media stream, so phones keep playing in the
+  // background and on the lock screen.
+  const sink = new Audio();
+  sink.setAttribute('playsinline', '');
 
   const score = createScore(scoreCanvas);
   const meters = createMeters(metersCanvas);
@@ -139,6 +145,29 @@ export function startUi(): void {
     const playing = engine?.playing ?? false;
     playButton.textContent = playing ? '❚❚' : '▶';
     playButton.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    syncOutput();
+    updateMedia();
+  }
+
+  function syncOutput(): void {
+    if (!engine || !engine.stream) return;
+    if (engine.playing && sink.paused) {
+      void sink.play().catch(() => {});
+    } else if (!engine.playing && !sink.paused) {
+      sink.pause();
+    }
+  }
+
+  function updateMedia(): void {
+    const entry = LIBRARY[current];
+    const style = engine?.style ?? entry?.song.meta.style ?? 'synthwave';
+    media.update({
+      title: entry?.song.meta.title ?? '',
+      artist: `${entry?.song.meta.composer ?? ''} · ${STYLE_DEFS[style].name}`,
+      playing: engine?.playing ?? false,
+      position: engine?.position ?? 0,
+      duration: engine?.duration ?? 0,
+    });
   }
 
   function showBanner(style: StyleId): void {
@@ -197,9 +226,11 @@ export function startUi(): void {
 
     const ctx = new AudioContext();
     const created = new Engine(ctx);
+    created.setBackground(document.hidden);
     created.onEnded = handleEnded;
     created.setVolume(outputGain());
     created.load(entry.song);
+    if (created.stream) sink.srcObject = created.stream;
     engine = created;
 
     root.dataset.style = created.style;
@@ -302,6 +333,21 @@ export function startUi(): void {
     loadSong(stepStation(visible(), current, 1));
   }
 
+  const media = createMediaSession({
+    play: () => {
+      if (!engine?.playing) togglePlay();
+    },
+    pause: () => {
+      if (engine?.playing) togglePlay();
+    },
+    next,
+    previous,
+    seek: (seconds) => {
+      ensureEngine()?.seek(seconds);
+      updatePlayButton();
+    },
+  });
+
   // Tuning to a station keeps the play state: it plays on if music was playing, stays stopped if not.
   const dial = createDial(dialEl, LIBRARY, (index) => {
     loadSong(index);
@@ -388,6 +434,14 @@ export function startUi(): void {
     if (!engine) return;
     engine.seek((Number(seekEl.value) / 1000) * engine.duration);
     updatePlayButton();
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    engine?.setBackground(document.hidden);
+    if (!document.hidden && engine?.playing) {
+      engine.resume();
+      syncOutput();
+    }
   });
 
   document.addEventListener('keydown', (event) => {

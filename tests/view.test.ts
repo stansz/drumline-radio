@@ -10,6 +10,7 @@ import {
   noteY,
   parseCategory,
   parseVolume,
+  positionDrifted,
   prevAction,
   scrubTarget,
   stationLabel,
@@ -128,6 +129,15 @@ describe('volume', () => {
     expect(parseVolume('40')).toBe(40);
     expect(parseVolume('140')).toBe(100);
     expect(parseVolume('-3')).toBe(0);
+  });
+});
+
+describe('positionDrifted', () => {
+  it('allows for time passing while playing, and no drift while paused', () => {
+    expect(positionDrifted(10, 100, 101, 11, true)).toBe(false);
+    expect(positionDrifted(10, 100, 101, 14, true)).toBe(true);
+    expect(positionDrifted(10, 100, 105, 10, false)).toBe(false);
+    expect(positionDrifted(10, 100, 105, 12, false)).toBe(true);
   });
 });
 
