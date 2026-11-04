@@ -16,7 +16,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - A living score that scrolls each track's notes past a playhead. Drag it sideways to scrub through the song.
 - VU meters, a glowing readout, and a volume slider with mute (remembered between visits).
 - A repeat button that loops the current song (remembered between visits).
-- An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5 minutes without a touch) that keep the screen awake while music plays. Phones pause the live synth when the app is minimized, so keep it open.
+- An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5 minutes without a touch) that keep the screen awake while music plays (also whenever auto-start is on, so the screensaver can start before the phone locks). Phones pause the live synth when the app is minimized, so keep it open.
 - Five styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi) with remix by band button: switch the band
   and the same notes play with that style's instruments.
 - Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–5 styles, C category, M mute, R repeat, S screensaver.

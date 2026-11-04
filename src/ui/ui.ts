@@ -190,7 +190,9 @@ export function startUi(): void {
     const playing = engine?.playing ?? false;
     playButton.textContent = playing ? '❚❚' : '▶';
     playButton.setAttribute('aria-label', playing ? 'Pause' : 'Play');
-    wake.set(playing && (dim || saver.visible));
+    // With auto-start on, keep the screen awake while playing so the screensaver gets to start
+    // before the phone's own timeout locks it.
+    wake.set(playing && (dim || saver.visible || saverMinutes > 0));
   }
 
   function showBanner(style: StyleId): void {
