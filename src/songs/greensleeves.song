@@ -1,0 +1,115 @@
+# Greensleeves, arranged for the Orchestral style.
+# Flute and harp first, then violins and strings; the flute returns an octave up.
+title: Greensleeves
+composer: Traditional (English)
+year: traditional
+source: public-domain
+style: orchestral
+key: A minor
+tempo: 90
+time: 3/4
+
+@bars 66-69 tempo=90..64
+
+track flute role=counter vol=0.75
+# Intro: harp alone, then the pickup
+| R*3 | r/2 A4/4 |
+# Verse 1
+| C5/2 D5/4 | E5/4. F5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/2 A4/4 | A4/4. G#4/8 A4/4 | B4/2 G#4/4 | E4/2 A4/4 |
+| C5/2 D5/4 | E5/4. F5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/4. B4/8 A4/4 | G#4/4. F#4/8 G#4/4 | A4/2.~ | A4/2. |
+# Chorus 1
+| G5/2. | G5/4. F#5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/2 A4/4 | A4/4. G#4/8 A4/4 | B4/2 G#4/4 | E4/2. |
+| G5/2. | G5/4. F#5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/4. B4/8 A4/4 | G#4/4. F#4/8 G#4/4 | A4/2.~ | A4/2 r/4 |
+# Verse 2: the violins take the tune
+| R*16 |
+# Chorus 2: an octave above the violins
+| G6/2. | G6/4. F#6/8 E6/4 | D6/2 B5/4 | G5/4. A5/8 B5/4 |
+| C6/2 A5/4 | A5/4. G#5/8 A5/4 | B5/2 G#5/4 | E5/2. |
+| G6/2. | G6/4. F#6/8 E6/4 | D6/2 B5/4 | G5/4. A5/8 B5/4 |
+| C6/4. B5/8 A5/4 | G#5/4. F#5/8 G#5/4 | A5/2.~ | A5/2. |
+# Coda
+| R |
+
+track violins role=lead vol=0.6
+# Intro, verse 1, chorus 1
+| R*35 | r/2 A4/4 |
+# Verse 2
+| C5/2 D5/4 | E5/4. F5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/2 A4/4 | A4/4. G#4/8 A4/4 | B4/2 G#4/4 | E4/2 A4/4 |
+| C5/2 D5/4 | E5/4. F5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/4. B4/8 A4/4 | G#4/4. F#4/8 G#4/4 | A4/2.~ | A4/2. |
+# Chorus 2
+| G5/2. | G5/4. F#5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/2 A4/4 | A4/4. G#4/8 A4/4 | B4/2 G#4/4 | E4/2. |
+| G5/2. | G5/4. F#5/8 E5/4 | D5/2 B4/4 | G4/4. A4/8 B4/4 |
+| C5/4. B4/8 A4/4 | G#4/4. F#4/8 G#4/4 | A4/2.~ | A4/2.~ |
+# Coda
+| A4/2. |
+
+track harp role=chords vol=0.7
+# Intro
+| A2/8 E3 A3 C4 E4 C4 | A2/8 E3 A3 C4 E4 C4 | E2/8 B2 E3 G#3 B3 G#3 | E2/8 B2 E3 G#3 B3 G#3 |
+# Verse 1
+| A2/8 E3 A3 C4 E4 C4 | C3/8 G3 C4 E4 G4 E4 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | F2/8 C3 F3 A3 C4 A3 | E2/8 B2 E3 G#3 B3 G#3 | E2/8 B2 E3 G#3 B3 G#3 |
+| A2/8 E3 A3 C4 E4 C4 | C3/8 G3 C4 E4 G4 E4 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | E2/8 B2 E3 G#3 B3 G#3 | A2/8 E3 A3 C4 E4 C4 | A2/8 E3 A3 C4 E4 C4 |
+# Chorus 1
+| C3/8 G3 C4 E4 G4 E4 | E2/8 B2 E3 G3 B3 G3 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | F2/8 C3 F3 A3 C4 A3 | E2/8 B2 E3 G#3 B3 G#3 | E2/8 B2 E3 G#3 B3 G#3 |
+| C3/8 G3 C4 E4 G4 E4 | E2/8 B2 E3 G3 B3 G3 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | E2/8 B2 E3 G#3 B3 G#3 | A2/8 E3 A3 C4 E4 C4 | A2/8 E3 A3 C4 E4 C4 |
+# Verse 2
+| A2/8 E3 A3 C4 E4 C4 | C3/8 G3 C4 E4 G4 E4 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | F2/8 C3 F3 A3 C4 A3 | E2/8 B2 E3 G#3 B3 G#3 | E2/8 B2 E3 G#3 B3 G#3 |
+| A2/8 E3 A3 C4 E4 C4 | C3/8 G3 C4 E4 G4 E4 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | E2/8 B2 E3 G#3 B3 G#3 | A2/8 E3 A3 C4 E4 C4 | A2/8 E3 A3 C4 E4 C4 |
+# Chorus 2
+| C3/8 G3 C4 E4 G4 E4 | E2/8 B2 E3 G3 B3 G3 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | F2/8 C3 F3 A3 C4 A3 | E2/8 B2 E3 G#3 B3 G#3 | E2/8 B2 E3 G#3 B3 G#3 |
+| C3/8 G3 C4 E4 G4 E4 | E2/8 B2 E3 G3 B3 G3 | G2/8 D3 G3 B3 D4 B3 | E2/8 B2 E3 G3 B3 G3 |
+| A2/8 E3 A3 C4 E4 C4 | E2/8 B2 E3 G#3 B3 G#3 | A2/8 E3 A3 C4 E4 C4 | A2/8 E3 A3 C4 E4 C4 |
+# Coda
+| [A2 E3 A3 C4 E4]/2. |
+
+track cellos role=bass vol=0.6
+# Whole song
+| A2/2. | A2/2. | E2/2. | E2/2. |
+| A2/2. | C3/2. | G2/2. | E2/2. |
+| A2/2. | F2/2. | E2/2. | E2/2. |
+| A2/2. | C3/2. | G2/2. | E2/2. |
+| A2/2. | E2/2. | A2/2. | A2/2. |
+| C3/2. | E2/2. | G2/2. | E2/2. |
+| A2/2. | F2/2. | E2/2. | E2/2. |
+| C3/2. | E2/2. | G2/2. | E2/2. |
+| A2/2. | E2/2. | A2/2. | A2/2. |
+| A2/2. | C3/2. | G2/2. | E2/2. |
+| A2/2. | F2/2. | E2/2. | E2/2. |
+| A2/2. | C3/2. | G2/2. | E2/2. |
+| A2/2. | E2/2. | A2/2. | A2/2. |
+| C3/2. | E2/2. | G2/2. | E2/2. |
+| A2/2. | F2/2. | E2/2. | E2/2. |
+| C3/2. | E2/2. | G2/2. | E2/2. |
+| A2/2. | E2/2. | A2/2. | A2/2. |
+# Coda
+| A2/2. |
+
+track strings role=pad vol=0.4
+# Intro, verse 1, chorus 1
+| R*36 |
+# Verse 2
+| [A3 C4 E4]/2. | [G3 C4 E4]/2. | [G3 B3 D4]/2. | [G3 B3 E4]/2. |
+| [A3 C4 E4]/2. | [A3 C4 F4]/2. | [G#3 B3 E4]/2. | [G#3 B3 E4]/2. |
+| [A3 C4 E4]/2. | [G3 C4 E4]/2. | [G3 B3 D4]/2. | [G3 B3 E4]/2. |
+| [A3 C4 E4]/2. | [G#3 B3 E4]/2. | [A3 C4 E4]/2. | [A3 C4 E4]/2. |
+# Chorus 2
+| [G3 C4 E4]/2. | [G3 B3 E4]/2. | [G3 B3 D4]/2. | [G3 B3 E4]/2. |
+| [A3 C4 E4]/2. | [A3 C4 F4]/2. | [G#3 B3 E4]/2. | [G#3 B3 E4]/2. |
+| [G3 C4 E4]/2. | [G3 B3 E4]/2. | [G3 B3 D4]/2. | [G3 B3 E4]/2. |
+| [A3 C4 E4]/2. | [G#3 B3 E4]/2. | [A3 C4 E4]/2. | [A3 C4 E4]/2. |
+# Coda
+| [A3 C4 E4]/2. |

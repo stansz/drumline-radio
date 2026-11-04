@@ -1,0 +1,132 @@
+# Ride of the Valkyries, arranged for the Orchestral style.
+# The main theme in real 9/8: brass first, then woodwinds, then everyone.
+title: Ride of the Valkyries
+composer: Richard Wagner
+year: 1856
+source: public-domain
+style: orchestral
+key: B minor
+tempo: 120
+time: 9/8
+
+@bars 41-44 tempo=120..96
+
+track strings role=lead vol=0.5
+# Intro: the strings swirl
+| B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. |
+# Theme in B minor, then D major
+| B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. |
+| D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. |
+| C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. | C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. |
+# Theme again, then the woodwind statement
+| B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. |
+| D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. |
+| B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. |
+| D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. |
+# Build
+| C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. | C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. |
+# Finale
+| B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | B4/16 C#5 B4 C#5 B4 C#5 D5/8 F#5 B5 F#5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. |
+| D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | D5/16 E5 D5 E5 D5 E5 F#5/8 A5 D6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. | C#5/16 D5 C#5 D5 C#5 D5 F#5/8 A5 C#6 A5/4. |
+# Coda
+| C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. | C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. | C#5/16 D#5 C#5 D#5 C#5 D#5 F#5/8 A#5 C#6 A#5/4. | [B4 D#5 F#5 B5]/2. r/4. |
+
+track brass role=lead2 vol=0.85
+# Intro
+| R*4 |
+# The Valkyrie theme
+| B3/8. F#3/16 B3/8 D4/4. B3/4. | D4/8. B3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. A3/4. | D4/8. A3/16 D4/8 F#4/2. |
+| D4/8. A3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. F#4/4. | A4/8. F#4/16 A4/8 C#5/4. C#4/4. | F#4/8. C#4/16 F#4/8 A4/2. |
+| C#4/2.~ C#4/4. | C#4/4. E4/4. F#4/4. |
+# Theme again
+| B3/8. F#3/16 B3/8 D4/4. B3/4. | D4/8. B3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. A3/4. | D4/8. A3/16 D4/8 F#4/2. |
+| D4/8. A3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. F#4/4. | A4/8. F#4/16 A4/8 C#5/4. C#4/4. | F#4/8. C#4/16 F#4/8 A4/2. |
+# Brass rest while the woodwinds take the theme
+| R*8 |
+# Build
+| F#4/4. A#4/4. C#5/4. | E5/4. C#5/4. A#4/4. |
+# Finale
+| B3/8. F#3/16 B3/8 D4/4. B3/4. | D4/8. B3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. A3/4. | D4/8. A3/16 D4/8 F#4/2. |
+| D4/8. A3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. F#4/4. | A4/8. F#4/16 A4/8 C#5/4. C#4/4. | F#4/8. C#4/16 F#4/8 A4/2. |
+# Coda
+| F#4/2.~ F#4/4. | F#4/4. A#4/4. C#5/4. | C#5/4. E5/4. A#4/4. | B4/2. r/4. |
+
+track winds role=counter vol=0.6
+# Intro and first theme
+| R*12 |
+# Trill
+| F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 | F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 |
+# Theme an octave above the brass
+| B4/8. F#4/16 B4/8 D5/4. B4/4. | D5/8. B4/16 D5/8 F#5/4. D5/4. | F#5/8. D5/16 F#5/8 A5/4. A4/4. | D5/8. A4/16 D5/8 F#5/2. |
+| D5/8. A4/16 D5/8 F#5/4. D5/4. | F#5/8. D5/16 F#5/8 A5/4. F#5/4. | A5/8. F#5/16 A5/8 C#6/4. C#5/4. | F#5/8. C#5/16 F#5/8 A5/2. |
+# The woodwinds take the theme alone
+| B3/8. F#3/16 B3/8 D4/4. B3/4. | D4/8. B3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. A3/4. | D4/8. A3/16 D4/8 F#4/2. |
+| D4/8. A3/16 D4/8 F#4/4. D4/4. | F#4/8. D4/16 F#4/8 A4/4. F#4/4. | A4/8. F#4/16 A4/8 C#5/4. C#4/4. | F#4/8. C#4/16 F#4/8 A4/2. |
+# Trill
+| F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 | F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 |
+# Finale
+| B4/8. F#4/16 B4/8 D5/4. B4/4. | D5/8. B4/16 D5/8 F#5/4. D5/4. | F#5/8. D5/16 F#5/8 A5/4. A4/4. | D5/8. A4/16 D5/8 F#5/2. |
+| D5/8. A4/16 D5/8 F#5/4. D5/4. | F#5/8. D5/16 F#5/8 A5/4. F#5/4. | A5/8. F#5/16 A5/8 C#6/4. C#5/4. | F#5/8. C#5/16 F#5/8 A5/2. |
+# Coda
+| F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 | F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 | F#5/16 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 F#5 G#5 | B5/2. r/4. |
+
+track pad role=pad vol=0.45
+# Intro
+| [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. |
+# Theme
+| [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. |
+| [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. |
+| [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. | [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. |
+# Theme, woodwinds
+| [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. |
+| [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. |
+| [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. |
+| [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. |
+# Build
+| [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. | [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. |
+# Finale
+| [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [B2 F#3 B3 D4]/2.~ [B2 F#3 B3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. |
+| [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 D4]/2.~ [A2 F#3 A3 D4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. | [A2 F#3 A3 C#4]/2.~ [A2 F#3 A3 C#4]/4. |
+# Coda
+| [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. | [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. | [A#2 F#3 A#3 C#4]/2.~ [A#2 F#3 A#3 C#4]/4. | [B2 F#3 B3 D#4]/2. r/4. |
+
+track bass role=bass vol=0.8
+# Intro
+| B1/4. B1/8. B1/16 B1/8 F#2/4. | B1/4. B1/8. B1/16 B1/8 F#2/4. | B1/4. B1/8. B1/16 B1/8 F#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. |
+# Theme
+| B1/4. B1/8. B1/16 B1/8 F#2/4. | B1/4. B1/8. B1/16 B1/8 F#2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. |
+| D2/4. D2/8. D2/16 D2/8 A2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. |
+| F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. |
+# Theme, woodwinds
+| B1/4. B1/8. B1/16 B1/8 F#2/4. | B1/4. B1/8. B1/16 B1/8 F#2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. |
+| D2/4. D2/8. D2/16 D2/8 A2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. |
+| B1/4. B1/8. B1/16 B1/8 F#2/4. | B1/4. B1/8. B1/16 B1/8 F#2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. |
+| D2/4. D2/8. D2/16 D2/8 A2/4. | D2/4. D2/8. D2/16 D2/8 A2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. |
+# Build
+| F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. |
+# Finale: the basses join the theme
+| B1/8. F#1/16 B1/8 D2/4. B1/4. | D2/8. B1/16 D2/8 F#2/4. D2/4. | F#2/8. D2/16 F#2/8 A2/4. A1/4. | D2/8. A1/16 D2/8 F#2/2. |
+| D2/8. A1/16 D2/8 F#2/4. D2/4. | F#2/8. D2/16 F#2/8 A2/4. F#2/4. | A2/8. F#2/16 A2/8 C#3/4. C#2/4. | F#2/8. C#2/16 F#2/8 A2/2. |
+# Coda
+| F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | F#1/4. F#1/8. F#1/16 F#1/8 C#2/4. | B1/2. r/4. |
+
+track timpani role=drums vol=0.7
+# Intro
+| k/4. r/4. r/4. | k/4. r/4. r/4. | k/4. r/4. r/4. | k/16 k k k k k k k k k k k k k k k k k |
+# Theme
+| [k cr]/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. |
+| k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. |
+| k/16 k k k k k k k k k k k k k k k k k | k/16 k k k k k k k k k k k k k k k k k |
+# Theme again
+| [k cr]/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. |
+| k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. |
+# Woodwinds
+| k/4. r/4. r/4. | k/4. r/4. r/4. | k/4. r/4. r/4. | k/4. r/4. r/4. |
+| k/4. r/4. r/4. | k/4. r/4. r/4. | k/4. r/4. r/4. | k/4. r/4. r/4. |
+# Build
+| k/16 k k k k k k k k k k k k k k k k k | k/16 k k k k k k k k k k k k k k k k k |
+# Finale
+| [k cr]/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. |
+| k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. | k/4. k/8. k/16 k/8 k/4. |
+# Coda
+| k/16 k k k k k k k k k k k k k k k k k | k/16 k k k k k k k k k k k k k k k k k | k/16 k k k k k k k k k k k k k k k k k | [k cr]/2. r/4. |

@@ -26,14 +26,18 @@ The sound engine, and how to add a patch or a style, are described in
 
 ## Songs
 
-Four Claude originals ship with the player:
+Public-domain melodies, arranged by Claude:
 
-- **Acid Test** (Techno)
-- **Neon Test Pattern** (Synthwave)
-- **Ninefold** (Orchestral)
-- **Pixel Postcard** (Chiptune)
+- **Greensleeves**, traditional English ballad (16th century). Orchestral.
+- **In the Hall of the Mountain King**, from Edvard Grieg's *Peer Gynt* (1875). Chiptune. It speeds
+  up from start to finish.
+- **Ride of the Valkyries**, from Richard Wagner's *Die Walküre* (1856). Orchestral, in real 9/8.
 
-Public-domain songs will be listed and credited here when they are added.
+Claude originals:
+
+- **Midnight Arcade** (Synthwave), **Night Shift** (Techno), **Save Point** (Chiptune)
+- Short test pieces, one per style: **Acid Test** (Techno), **Neon Test Pattern** (Synthwave),
+  **Ninefold** (Orchestral), **Pixel Postcard** (Chiptune)
 
 ## Song format
 
