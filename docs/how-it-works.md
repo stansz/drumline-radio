@@ -21,6 +21,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 | `src/music/` | Reads songs and does the timing math. No sound, no screen, so it's easy to test |
 | `src/audio/` | The synth: engine, instrument recipes, the four styles |
 | `src/ui/` | Everything on screen: the dial, the score view, meters, buttons, CSS |
+| `src/pwa/` | Offline support: the service worker template and the build step that lists every file to cache |
 | `tests/` | Vitest tests for the parts that don't need a browser |
 | `docs/` | This file, the song format, and the sound engine |
 
@@ -93,5 +94,7 @@ track lead role=lead
 | Run it locally | `npm run dev` |
 | Check everything | `npm test` and `npm run typecheck` |
 | Publish | push to `main`. GitHub Pages rebuilds, and a failing test blocks it |
+
+Every deploy changes the cache version, so installed copies update on their next launch.
 
 Live site: https://stansz.github.io/drumline-radio/

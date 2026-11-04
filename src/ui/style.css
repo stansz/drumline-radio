@@ -160,6 +160,25 @@ body::after {
   color: var(--accent);
 }
 
+.install {
+  margin-left: 10px;
+  padding: 2px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.install[hidden] {
+  display: none;
+}
+
 .readout {
   flex: 1;
   min-width: 0;
