@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  attackTime,
   CRUSH_POINTS,
   crushCurve,
   noteGain,
@@ -53,5 +54,17 @@ describe('gain helpers', () => {
 
   it('divides a chord across its pitches', () => {
     expect(noteGain(0.5, 127, 4)).toBeCloseTo(0.25, 6);
+  });
+});
+
+describe('attackTime', () => {
+  it('stretches short attacks on low notes to half a cycle', () => {
+    expect(attackTime(0.002, 1000)).toBeCloseTo(0.003, 6);
+    expect(attackTime(0.002, 100)).toBeCloseTo(0.005, 6);
+    expect(attackTime(0.002, 30)).toBeCloseTo(0.012, 6);
+  });
+
+  it('keeps a patch attack that is already longer', () => {
+    expect(attackTime(0.4, 55)).toBe(0.4);
   });
 });

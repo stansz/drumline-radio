@@ -1,4 +1,4 @@
-import { pulseCoefficients } from './curves';
+import { attackTime, pulseCoefficients } from './curves';
 import { midiToFreq } from '../music/pitch';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
 
@@ -141,7 +141,8 @@ export function playSynth(
   const collected = part();
 
   const env = ctx.createGain();
-  const { attack, decay, sustain, release } = patch.env;
+  const { decay, sustain, release } = patch.env;
+  const attack = attackTime(patch.env.attack, freq);
   env.gain.setValueAtTime(0, time);
   env.gain.linearRampToValueAtTime(gain, time + attack);
   env.gain.setTargetAtTime(gain * sustain, time + attack, Math.max(0.001, decay / 3));

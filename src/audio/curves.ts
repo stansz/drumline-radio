@@ -52,3 +52,13 @@ export function velocityGain(velocity: number): number {
 export function noteGain(patchGain: number, velocity: number, chordSize: number): number {
   return (patchGain * velocityGain(velocity)) / Math.sqrt(Math.max(1, chordSize));
 }
+
+export const MIN_ATTACK = 0.003;
+export const MAX_LOW_ATTACK = 0.012;
+
+// A fade-in much shorter than one wave cycle clicks, and low notes have long cycles. So the attack
+// is at least half a cycle (3 ms to 12 ms), and a patch's own longer attack is kept.
+export function attackTime(patchAttack: number, freq: number): number {
+  const halfCycle = 0.5 / freq;
+  return Math.max(patchAttack, Math.min(MAX_LOW_ATTACK, Math.max(MIN_ATTACK, halfCycle)));
+}
