@@ -3,15 +3,18 @@ import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
 import type { Category, Song } from '../src/music/song';
 import {
+  driftPosition,
   formatTime,
   laneLayout,
   nearestStation,
   nextAfterEnd,
   noteY,
   parseCategory,
+  parseSaverMinutes,
   parseVolume,
   prevAction,
   scrubTarget,
+  shouldStartSaver,
   stationLabel,
   stationsIn,
   stepStation,
@@ -142,5 +145,32 @@ describe('scrubTarget', () => {
     expect(scrubTarget(1, 500, 800, 60)).toBe(0);
     expect(scrubTarget(59, -500, 800, 60)).toBe(60);
     expect(scrubTarget(5, 100, 0, 60)).toBe(5);
+  });
+});
+
+describe('parseSaverMinutes', () => {
+  it('reads a stored screensaver delay and falls back to 5 minutes', () => {
+    expect(parseSaverMinutes('0')).toBe(0);
+    expect(parseSaverMinutes('1')).toBe(1);
+    expect(parseSaverMinutes('5')).toBe(5);
+    expect(parseSaverMinutes(null)).toBe(5);
+    expect(parseSaverMinutes('7')).toBe(5);
+  });
+});
+
+describe('shouldStartSaver', () => {
+  it('starts after the chosen idle time while music plays and nothing blocks it', () => {
+    expect(shouldStartSaver(60000, 1, true, false)).toBe(true);
+    expect(shouldStartSaver(59999, 1, true, false)).toBe(false);
+    expect(shouldStartSaver(600000, 0, true, false)).toBe(false);
+    expect(shouldStartSaver(600000, 5, false, false)).toBe(false);
+    expect(shouldStartSaver(600000, 5, true, true)).toBe(false);
+  });
+});
+
+describe('driftPosition', () => {
+  it('places the box inside the area', () => {
+    expect(driftPosition(0.5, 0.5, 400, 800, 100, 200)).toEqual({ x: 150, y: 300 });
+    expect(driftPosition(0.9, 0.9, 50, 50, 100, 100)).toEqual({ x: 0, y: 0 });
   });
 });

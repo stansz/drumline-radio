@@ -7,7 +7,19 @@ import type { StyleId } from '../music/roles';
 import { createScore } from './score';
 import { STYLE_DEFS } from '../audio/styles';
 import { notesBetween } from '../music/timing';
-import { formatTime, nextAfterEnd, parseVolume, prevAction, scrubTarget, volumeGain } from './view';
+import { createSaver } from './saver';
+import { createWakeLock } from './wake';
+import {
+  formatTime,
+  nextAfterEnd,
+  parseSaverMinutes,
+  parseVolume,
+  prevAction,
+  SAVER_OPTIONS,
+  scrubTarget,
+  shouldStartSaver,
+  volumeGain,
+} from './view';
 import {
   categoryLabel,
   CATEGORY_FILTERS,
@@ -15,12 +27,14 @@ import {
   stationsIn,
   stepStation,
 } from './view';
-import type { CategoryFilter } from './view';
+import type { CategoryFilter, SaverMinutes } from './view';
 
 const VOLUME_KEY = 'drumline-radio-volume';
 const MUTED_KEY = 'drumline-radio-muted';
 const REPEAT_KEY = 'drumline-radio-repeat';
 const CATEGORY_KEY = 'drumline-radio-category';
+const DIM_KEY = 'drumline-radio-dim';
+const SAVER_KEY = 'drumline-radio-saver';
 
 function load(key: string): string | null {
   try {
@@ -64,6 +78,17 @@ export function startUi(): void {
   const seekEl = required<HTMLInputElement>('#seek');
   const bandsEl = required<HTMLElement>('#bands');
   const presetsEl = required<HTMLElement>('#presets');
+  const infoButton = required<HTMLButtonElement>('#info');
+  const infoPanel = required<HTMLDialogElement>('#info-panel');
+  const infoClose = required<HTMLButtonElement>('#info-close');
+  const dimToggle = required<HTMLButtonElement>('#dim-toggle');
+  const saverStart = required<HTMLButtonElement>('#saver-start');
+  const saverAutoEl = required<HTMLElement>('#saver-auto');
+  const dimOverlay = required<HTMLElement>('#dim');
+  const saverOverlay = required<HTMLElement>('#screensaver');
+  const saverBox = required<HTMLElement>('#saver-box');
+  const saverTitle = required<HTMLElement>('#saver-title');
+  const saverTime = required<HTMLElement>('#saver-time');
   const root = document.documentElement;
 
   const score = createScore(scoreCanvas);
@@ -78,6 +103,16 @@ export function startUi(): void {
   let scrub: { pointer: number; x: number; start: number; target: number; moved: boolean } | null = null;
 
   let category: CategoryFilter = parseCategory(load(CATEGORY_KEY));
+
+  let dim = load(DIM_KEY) === '1';
+  let saverMinutes: SaverMinutes = parseSaverMinutes(load(SAVER_KEY));
+  let lastInteraction = performance.now();
+
+  const wake = createWakeLock();
+  const saver = createSaver(saverOverlay, saverBox, saverTitle, saverTime, () => {
+    lastInteraction = performance.now();
+    updatePlayButton();
+  });
 
   const bandButtons: HTMLButtonElement[] = [];
   for (let index = 0; index < STYLES.length; index += 1) {
@@ -103,6 +138,18 @@ export function startUi(): void {
     button.addEventListener('click', () => selectCategory(filter));
     presetsEl.append(button);
     presetButtons.push(button);
+  }
+
+  const saverButtons: HTMLButtonElement[] = [];
+  for (const minutes of SAVER_OPTIONS) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'info-choice';
+    button.setAttribute('role', 'radio');
+    button.textContent = minutes === 0 ? 'Off' : `${minutes} min`;
+    button.addEventListener('click', () => selectSaverMinutes(minutes));
+    saverAutoEl.append(button);
+    saverButtons.push(button);
   }
 
   const visible = (): number[] =>
@@ -139,6 +186,7 @@ export function startUi(): void {
     const playing = engine?.playing ?? false;
     playButton.textContent = playing ? '❚❚' : '▶';
     playButton.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    wake.set(playing && (dim || saver.visible));
   }
 
   function showBanner(style: StyleId): void {
@@ -188,6 +236,33 @@ export function startUi(): void {
     repeat = !repeat;
     save(REPEAT_KEY, repeat ? '1' : '0');
     applyRepeat();
+  }
+
+  function applyDim(): void {
+    dimOverlay.hidden = !dim;
+    dimToggle.setAttribute('aria-pressed', String(dim));
+    updatePlayButton();
+  }
+
+  function toggleDim(): void {
+    dim = !dim;
+    save(DIM_KEY, dim ? '1' : '0');
+    applyDim();
+  }
+
+  function applySaverMinutes(): void {
+    for (let index = 0; index < SAVER_OPTIONS.length; index += 1) {
+      saverButtons[index].setAttribute(
+        'aria-checked',
+        String(SAVER_OPTIONS[index] === saverMinutes),
+      );
+    }
+  }
+
+  function selectSaverMinutes(minutes: SaverMinutes): void {
+    saverMinutes = minutes;
+    save(SAVER_KEY, String(minutes));
+    applySaverMinutes();
   }
 
   function ensureEngine(): Engine | null {
@@ -313,6 +388,21 @@ export function startUi(): void {
   nextButton.addEventListener('click', next);
   repeatButton.addEventListener('click', toggleRepeat);
 
+  infoButton.addEventListener('click', () => infoPanel.showModal());
+  infoClose.addEventListener('click', () => infoPanel.close());
+  dimToggle.addEventListener('click', toggleDim);
+  saverStart.addEventListener('click', () => {
+    infoPanel.close();
+    saver.show();
+    updatePlayButton();
+  });
+
+  const noteInteraction = (): void => {
+    lastInteraction = performance.now();
+  };
+  document.addEventListener('pointerdown', noteInteraction, true);
+  document.addEventListener('keydown', noteInteraction, true);
+
   bandsEl.addEventListener('keydown', (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
@@ -343,6 +433,8 @@ export function startUi(): void {
 
   applyVolume();
   applyRepeat();
+  applyDim();
+  applySaverMinutes();
   muteButton.addEventListener('click', toggleMute);
   volumeEl.addEventListener('input', () => {
     volume = Number(volumeEl.value);
@@ -391,6 +483,13 @@ export function startUi(): void {
   });
 
   document.addEventListener('keydown', (event) => {
+    // A key while the screensaver is up only dismisses it.
+    if (saver.visible) {
+      saver.hide();
+      updatePlayButton();
+      return;
+    }
+    if (infoPanel.open) return;
     if (document.activeElement === seekEl || document.activeElement === volumeEl) return;
     if (event.key === 'm' || event.key === 'M') {
       toggleMute();
@@ -398,6 +497,11 @@ export function startUi(): void {
     }
     if (event.key === 'r' || event.key === 'R') {
       toggleRepeat();
+      return;
+    }
+    if (event.key === 's' || event.key === 'S') {
+      saver.show();
+      updatePlayButton();
       return;
     }
     if (event.key === 'c' || event.key === 'C') {
@@ -442,13 +546,28 @@ export function startUi(): void {
   }
 
   function frame(): void {
+    if (
+      shouldStartSaver(
+        performance.now() - lastInteraction,
+        saverMinutes,
+        engine?.playing ?? false,
+        saver.visible || infoPanel.open,
+      )
+    ) {
+      saver.show();
+      updatePlayButton();
+    }
     const active = engine;
     const fallback = STYLE_DEFS[songStyle()];
     if (active) {
       const style = STYLE_DEFS[active.style];
       const position = scrub?.moved ? scrub.target : active.position;
-      score.draw(active.timeline, position, style, dial.tuning());
-      meters.draw(active.levels(), style.lanes[0] ?? '#ffffff');
+      if (saver.visible) {
+        saver.update(LIBRARY[current]?.song.meta.title ?? 'Drumline Radio', formatTime(position));
+      } else {
+        score.draw(active.timeline, position, style, dial.tuning());
+        meters.draw(active.levels(), style.lanes[0] ?? '#ffffff');
+      }
       const duration = active.duration;
       if (!draggingSeek && duration > 0) {
         seekEl.value = String(Math.round((position / duration) * 1000));
@@ -458,7 +577,7 @@ export function startUi(): void {
       totalEl.textContent = formatTime(duration);
       updateFlash(active);
       updatePlayButton();
-    } else {
+    } else if (!saver.visible) {
       score.draw(null, 0, fallback, dial.tuning());
       meters.draw([0, 0], fallback.lanes[0] ?? '#ffffff');
     }

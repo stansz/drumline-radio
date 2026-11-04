@@ -1,156 +1,166 @@
 ## Goal
 
-Make Drumline Radio an installable, offline-capable PWA with no new dependencies:
+Add an ⓘ info panel with a short note on why playback stops in the background, plus two
+battery-friendly ways to keep listening with the app open:
 
-- a web app manifest and icons;
-- a hand-written service worker that precaches every built file (its file list is generated at
-  build time) and serves cache-first;
-- silent updates: a new version takes over the next time the app is opened;
-- an Install button that appears only when the browser fires `beforeinstallprompt`.
+- **Dim view:** a dark overlay over the player; the player stays visible and usable.
+- **Black screensaver:** a full-screen black overlay with a faint, slowly drifting title and time;
+  tap anywhere to exit. It can auto-start after 1 or 5 minutes without a touch while music plays.
+
+While music plays with dim or the screensaver on, a Screen Wake Lock keeps the phone from locking.
+Settings are remembered.
 
 ## Files to touch
 
-- `public/favicon.svg`, `public/icons/icon-192.png`, `public/icons/icon-512.png`,
-  `public/icons/icon-maskable-512.png`, `public/icons/apple-touch-icon.png` (copied, new)
-- `public/manifest.webmanifest` (new)
-- `src/pwa/precache.ts` (new)
-- `src/pwa/sw.js` (new)
-- `src/pwa/register.ts` (new)
-- `src/ui/install.ts` (new)
-- `src/main.ts`
-- `vite.config.ts`
 - `index.html`
 - `src/ui/style.css`
-- `tests/pwa.test.ts` (new)
-- `README.md`, `docs/how-it-works.md`, `AGENTS.md`
+- `src/ui/ui.ts`
+- `src/ui/view.ts`
+- `src/ui/saver.ts` (new)
+- `src/ui/wake.ts` (new)
+- `tests/view.test.ts`
+- `README.md`, `docs/how-it-works.md`
 
 ## Steps
 
-1. Copy the icons byte for byte (do not regenerate or edit them):
-   - `.handoff/icons/favicon.svg` to `public/favicon.svg`
-   - `.handoff/icons/icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, and `apple-touch-icon.png` to
-     `public/icons/` with the same names.
+1. `src/ui/view.ts`. Add pure helpers (no DOM):
+   - `export type SaverMinutes = 0 | 1 | 5;` and `export const SAVER_OPTIONS: SaverMinutes[] = [0, 1, 5];`
+   - `export function parseSaverMinutes(stored: string | null): SaverMinutes` returns `0`, `1`, or `5`
+     when `stored` is `'0'`, `'1'`, or `'5'`; anything else gives `5`.
+   - `export function shouldStartSaver(idleMs: number, minutes: SaverMinutes, playing: boolean, blocked: boolean): boolean`
+     returns `playing && !blocked && minutes > 0 && idleMs >= minutes * 60000`.
+   - `export function driftPosition(rx: number, ry: number, areaW: number, areaH: number, boxW: number, boxH: number): { x: number; y: number }`.
+     `rx` and `ry` are in [0, 1). It returns `x = Math.round(rx * Math.max(0, areaW - boxW))`, and `y`
+     the same with `ry`, `areaH`, and `boxH`.
 
-2. `public/manifest.webmanifest` (JSON):
-   ```json
-   {
-     "name": "Drumline Radio",
-     "short_name": "Drumline Radio",
-     "description": "Full songs, arranged and composed by Claude, played live by a browser synth.",
-     "id": "./",
-     "start_url": "./",
-     "scope": "./",
-     "display": "standalone",
-     "orientation": "any",
-     "background_color": "#12002b",
-     "theme_color": "#14101f",
-     "icons": [
-       { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-       { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-       { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-     ]
-   }
-   ```
-
-3. `src/pwa/precache.ts`. Pure, with no DOM and no Node APIs:
-   - `export const CACHE_PREFIX = 'drumline-radio-';`
-   - `export function precacheList(bundleFiles: string[], publicFiles: string[]): string[]`. It returns
-     `'./'` followed by every file name from both inputs, sorted and de-duplicated. It drops `sw.js`,
-     anything ending in `.map`, and anything starting with `.`. Backslashes become `/`. No leading `/`
-     or `./` on file names.
-   - `export function cacheVersion(list: string[]): string` returns an 8-character lowercase hex
-     FNV-1a 32-bit hash of `list.join('\n')`.
-
-4. `src/pwa/sw.js`, plain JavaScript (not TypeScript). It is a template: the build replaces the two
-   placeholders `__PRECACHE__` (a JSON array literal) and `__VERSION__` (a JSON string literal).
-   - `const PRECACHE = __PRECACHE__; const CACHE = 'drumline-radio-' + __VERSION__;`
-   - `install`: `event.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)))`. Do **not** call
-     `skipWaiting`.
-   - `activate`: delete every cache whose name starts with `drumline-radio-` and is not `CACHE`.
-   - `fetch`: handle only same-origin `GET` requests.
-     - For navigation requests (`request.mode === 'navigate'`), respond with
-       `caches.match('./', { cacheName: CACHE })`, falling back to `fetch(request)`.
-     - Otherwise respond with `caches.match(request, { ignoreSearch: true })`, falling back to
-       `fetch(request)`.
-
-5. `vite.config.ts`: add an inline plugin named `drumline-radio-sw` with `apply: 'build'`. In
-   `generateBundle(_, bundle)`:
-   - read `src/pwa/sw.js` as text;
-   - collect `[...Object.keys(bundle), 'index.html']` as the bundle files (Vite 8 has not added
-     `index.html` to the bundle at this point), and every file under `public/`, recursively, relative to
-     `public/`, as the public files;
-   - build `list = precacheList(bundleFiles, publicFiles)` and `version = cacheVersion(list)` (import
-     them from `./src/pwa/precache`);
-   - replace `__PRECACHE__` with `JSON.stringify(list)` and `__VERSION__` with
-     `JSON.stringify(version)`;
-   - `this.emitFile({ type: 'asset', fileName: 'sw.js', source })`.
-
-   Keep `base: '/drumline-radio/'`. Use `node:fs` and `node:path` only.
-
-6. `src/pwa/register.ts`: `export function registerServiceWorker(): void`. If
-   `import.meta.env.PROD && 'serviceWorker' in navigator`, then on `window` `load`, call
-   `navigator.serviceWorker.register(\`${import.meta.env.BASE_URL}sw.js\`)` and swallow rejections with
-   `.catch(() => {})`.
-
-7. `src/ui/install.ts`: `export function setupInstall(button: HTMLButtonElement): void`.
-   - On `window` `beforeinstallprompt`: call `preventDefault()`, keep the event, and set
-     `button.hidden = false`.
-   - On button click: if there is a kept event, call its `prompt()`, await `userChoice`, clear it, and set
-     `button.hidden = true`.
-   - On `window` `appinstalled`: clear the kept event and set `button.hidden = true`.
-   - Type the event locally:
-     `interface InstallPromptEvent extends Event { prompt(): Promise<void>; userChoice: Promise<{ outcome: string }>; }`.
-
-8. `src/main.ts`: after `startUi()`, call `registerServiceWorker()` and
-   `setupInstall(document.querySelector<HTMLButtonElement>('#install')!)`. Guard with an `if`, not `!`,
-   if lint or typecheck objects.
-
-9. `index.html`, inside `<head>` after the description meta:
+2. `index.html`:
+   - In `.brand`, after the install button, add
+     `<button id="info" class="info-btn" type="button" aria-label="Info and screensaver" title="Info and screensaver">ⓘ</button>`.
+   - Directly inside `<body>`, right after the closing `</div>` of `#app`, add:
    ```html
-   <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
-   <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
-   <link rel="apple-touch-icon" href="%BASE_URL%icons/apple-touch-icon.png" />
-   <meta name="apple-mobile-web-app-title" content="Drumline Radio" />
-   <meta name="mobile-web-app-capable" content="yes" />
-   <meta name="apple-mobile-web-app-capable" content="yes" />
-   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+   <div id="dim" class="dim-overlay" hidden></div>
+   <div id="screensaver" class="screensaver" hidden>
+     <div id="saver-box" class="saver-box">
+       <div id="saver-title" class="saver-title"></div>
+       <div id="saver-time" class="saver-time"></div>
+     </div>
+   </div>
+   <dialog id="info-panel" class="info-panel" aria-labelledby="info-heading">
+     <h2 id="info-heading">Drumline Radio</h2>
+     <p>Every note is built live by your browser's synth: there are no recordings. Phones pause live
+       synths when an app is minimized or the screen locks, so keep Drumline Radio open while you
+       listen.</p>
+     <p>To save battery while it plays, dim the player or start the black screensaver. While music
+       plays with either one on, your screen stays awake.</p>
+     <div class="info-row">
+       <button id="dim-toggle" class="info-action" type="button" aria-pressed="false">Dim view</button>
+       <button id="saver-start" class="info-action" type="button">Start screensaver</button>
+     </div>
+     <div class="info-label" id="saver-auto-label">Screensaver starts after no touches for</div>
+     <div id="saver-auto" class="info-row" role="radiogroup" aria-labelledby="saver-auto-label"></div>
+     <div class="info-label">Keyboard</div>
+     <p class="info-keys">Space play/pause · ←/→ station · 1–4 style · C category · M mute · R repeat ·
+       S screensaver</p>
+     <button id="info-close" class="info-action info-close" type="button">Close</button>
+   </dialog>
    ```
-   Change `<div class="brand">Drumline <span>Radio</span></div>` to
-   `<div class="brand">Drumline <span>Radio</span> <button id="install" class="install" type="button" hidden>Install</button></div>`.
 
-10. `src/ui/style.css`:
-    - `.install`: `margin-left: 10px; padding: 2px 8px; border: 1px solid var(--accent); border-radius: 999px; background: transparent; color: var(--accent); font: inherit; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; vertical-align: middle;`
-    - `.install[hidden] { display: none; }`
+3. `src/ui/wake.ts` (new): `export function createWakeLock(): { set(wanted: boolean): void }`.
+   - It keeps a `wanted` flag and a held `WakeLockSentinel | null`.
+   - `set(true)` requests `navigator.wakeLock.request('screen')` when it is supported, the page is
+     visible, and no lock is held. On release, clear the held lock.
+   - `set(false)` releases the held lock.
+   - On `document` `visibilitychange` to visible, if `wanted` and no lock is held, request again.
+   - Wrap every call in `try`/`catch` or `.catch(() => {})`. When `'wakeLock' in navigator` is false,
+     everything does nothing.
 
-11. `tests/pwa.test.ts`:
-    - `precacheList(['assets/a.js', 'index.html', 'assets/a.js.map'], ['icons/x.png', 'sw.js', '.DS_Store', 'icons\\y.png'])`
-      equals `['./', 'assets/a.js', 'icons/x.png', 'icons/y.png', 'index.html']`.
-    - `cacheVersion` returns the same 8-character hex string for the same list and a different one when
-      an entry changes; it matches `/^[0-9a-f]{8}$/`.
+4. `src/ui/saver.ts` (new):
+   `export function createSaver(overlay: HTMLElement, box: HTMLElement, titleEl: HTMLElement, timeEl: HTMLElement, onExit: () => void)`
+   returns `{ show(): void; hide(): void; readonly visible: boolean; update(title: string, time: string): void }`.
+   - `show()` sets `overlay.hidden = false`, moves the box straight away, and starts a 20 s
+     `setInterval` that moves the box to `driftPosition(Math.random(), Math.random(), innerWidth, innerHeight, box.offsetWidth, box.offsetHeight)`
+     with `box.style.transform = translate(xpx, ypx)`.
+   - `hide()` sets `overlay.hidden = true` and clears the interval.
+   - `pointerdown` and `click` on the overlay call `hide()` then `onExit()`. Call `event.preventDefault()`
+     on `pointerdown`, so the tap does not reach the player underneath.
+   - `update(title, time)` sets the two texts only when they changed.
 
-12. Docs:
-    - `README.md`: a feature bullet `- Installable and works offline: install it from the browser (or the
-      Install button where offered; on iPhone, Share → Add to Home Screen). Updates download quietly and
-      apply the next time it opens.`
-    - `docs/how-it-works.md`: a row in the pieces table, `` | `src/pwa/` | Offline support: the service
-      worker template and the build step that lists every file to cache | ``, plus one sentence in "Day to
-      day": every deploy changes the cache version, so installed copies update on their next launch.
-    - `AGENTS.md`: a rule, `- The service worker (src/pwa/sw.js) precaches every built file, and its list is
-      generated in vite.config.ts. Don't hand-edit cache lists. Files in public/ are cached too.`
+5. `src/ui/ui.ts`:
+   - Keys `drumline-radio-dim` (`'1'`/`'0'`) and `drumline-radio-saver` (`'0'`/`'1'`/`'5'`), read and
+     written with the existing `load`/`save`, using `parseSaverMinutes`.
+   - Wire `#info` to `infoPanel.showModal()`, and `#info-close` to `infoPanel.close()`.
+   - `#dim-toggle` toggles `dim`, saves it, sets `#dim`'s `hidden = !dim`, and sets `aria-pressed`.
+     Apply the stored value on startup.
+   - `#saver-start` closes the panel and calls `saver.show()`.
+   - Build three radio buttons in `#saver-auto`, one per `SAVER_OPTIONS` entry, labelled `Off`,
+     `1 min`, and `5 min`, with class `info-choice`, `role="radio"`, and `aria-checked`. A click sets and
+     saves the choice.
+   - Idle tracking: `let lastInteraction = performance.now()`, updated on `document` `pointerdown` and
+     `keydown` (capture phase).
+   - In `frame()`, if
+     `shouldStartSaver(performance.now() - lastInteraction, saverMinutes, engine?.playing ?? false, saver.visible || infoPanel.open)`
+     returns true, call `saver.show()`.
+   - While `saver.visible`: skip `score.draw` and `meters.draw` in `frame()`, to save power. Call
+     `saver.update(currentTitle, formatTime(position))` instead. Keep everything else, such as the
+     seek bar and times, as now.
+   - The `onExit` of `createSaver` sets `lastInteraction = performance.now()`.
+   - Keyboard, in the existing global handler:
+     - when `saver.visible`, any key hides it and does nothing else, so return early;
+     - `s`/`S` shows the screensaver;
+     - while `infoPanel.open`, ignore all shortcuts except the dialog's own Escape, so return early.
+   - Wake lock: `const wake = createWakeLock()`. At the end of `updatePlayButton()`, call
+     `wake.set((engine?.playing ?? false) && (dim || saver.visible))`. Also call `updatePlayButton()`
+     right after changing dim and after the screensaver shows or hides.
+
+6. `src/ui/style.css`:
+   - `.info-btn`: a round 22px button in the brand line: `margin-left: 8px; width: 22px; height: 22px;
+     border-radius: 50%; border: 1px solid var(--muted); background: transparent; color: var(--muted);
+     font: inherit; font-size: 13px; line-height: 1; cursor: pointer; vertical-align: middle;`
+   - `.dim-overlay`: `position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); pointer-events: none;
+     z-index: 50;` and `.dim-overlay[hidden] { display: none; }`
+   - `.screensaver`: `position: fixed; inset: 0; background: #000; z-index: 100; cursor: none;` and
+     `.screensaver[hidden] { display: none; }`
+   - `.saver-box`: `position: absolute; top: 0; left: 0; padding: 16px; color: var(--accent); opacity:
+     0.35; font-family: var(--readout-font); transition: transform 2s ease;` `.saver-title { font-size: 22px; }` `.saver-time { font-size: 16px;
+     margin-top: 4px; }`
+   - `.info-panel`: `max-width: min(92vw, 420px); padding: 20px; border: 1px solid var(--accent);
+     border-radius: 12px; background: #0b0812; color: inherit; font: inherit; font-size: 14px;
+     line-height: 1.45;` and `.info-panel::backdrop { background: rgba(0, 0, 0, 0.6); }`. `h2` uses
+     `font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+     margin: 0 0 10px;`
+   - `.info-row { display: flex; gap: 8px; margin: 10px 0; }`. `.info-action` and `.info-choice` reuse
+     the `.band` look (dark inset button, muted text, uppercase, 11px), with `flex: 1; padding: 8px;`.
+     `.info-action[aria-pressed='true']` and `.info-choice[aria-checked='true']` use the same accent
+     border, colour, and glow as `.band[aria-checked='true']`.
+   - `.info-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }`,
+     `.info-keys { font-size: 12px; color: var(--muted); }`, `.info-close { width: 100%; margin-top: 12px; }`
+
+7. `tests/view.test.ts`. Add tests:
+   - `parseSaverMinutes`: `'0'`→0, `'1'`→1, `'5'`→5, `null`→5, `'7'`→5.
+   - `shouldStartSaver`: `(60000, 1, true, false)` → true; `(59999, 1, true, false)` → false;
+     `(600000, 0, true, false)` → false; `(600000, 5, false, false)` → false; `(600000, 5, true, true)` →
+     false.
+   - `driftPosition`: `(0.5, 0.5, 400, 800, 100, 200)` → `{ x: 150, y: 300 }`; `(0.9, 0.9, 50, 50, 100, 100)`
+     → `{ x: 0, y: 0 }`.
+
+8. Docs:
+   - `README.md`:
+     - a feature bullet: `- An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5
+       minutes without a touch) that keep the screen awake while music plays. Phones pause the live
+       synth when the app is minimized, so keep it open.`
+     - add `S screensaver` to the keyboard shortcuts bullet.
+   - `docs/how-it-works.md`: under `src/ui/`, add one line: `saver.ts` is the dim and black screensaver
+     overlays, and `wake.ts` keeps the screen awake while they're on.
 
 ## Acceptance
 
 - `npm run typecheck` exits 0.
-- `npm run test:sandbox` exits 0, including `tests/pwa.test.ts`.
-- `node -e "JSON.parse(require('fs').readFileSync('public/manifest.webmanifest','utf8'))"` exits 0.
-- `git diff --no-index --quiet .handoff/icons/icon-512.png public/icons/icon-512.png` exits 0 (repeat for
-  the other three PNGs and `favicon.svg`).
+- `npm run test:sandbox` exits 0, including the new tests.
 
 Verifier only:
 
 - `npm test` exits 0.
-- `npm run build` exits 0, and `dist/sw.js` contains no `__PRECACHE__` or `__VERSION__` and does contain
-  `index.html` and `icons/icon-512.png`.
+- `npm run build` exits 0.
 
 ## Parallel work
 
@@ -160,16 +170,16 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- No new dependencies (no vite-plugin-pwa or workbox).
-- Keep `src/pwa/precache.ts` free of DOM and Node APIs.
+- No new dependencies. Keep `src/ui/view.ts` pure.
+- Wrap all localStorage access with the existing `load`/`save` helpers, and wrap Wake Lock calls in
+  `try`/`catch`.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and report it.
   Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past it.
 
 ## Out of scope
 
-- Any "update available" prompt, `skipWaiting`, or `clients.claim`.
-- Other UI changes.
-- Changing songs, audio, or styles.
+- Background playback, Media Session, and service worker changes.
+- Changes to tuning, presets, styles, or audio.
 
 ## If blocked
 

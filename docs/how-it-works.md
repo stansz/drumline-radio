@@ -48,6 +48,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 ### `src/ui/`: the screen
 
 - `ui.ts` wires it all together: buttons, keyboard, volume, repeat, saved settings.
+- `saver.ts` is the dim and black screensaver overlays, and `wake.ts` keeps the screen awake while they're on.
 - `dial.ts` is the tuner strip of stations. `score.ts` draws the scrolling notes. `meters.ts`
   draws the L/R meters. `view.ts` has the screen math, kept pure so it can be tested.
 

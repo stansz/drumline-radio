@@ -25,6 +25,43 @@ export function scrubTarget(start: number, dx: number, width: number, duration: 
   return Math.min(Math.max(start - dx / pxPerSecond, 0), duration);
 }
 
+/** How long the screensaver waits without a touch: off, 1 minute, or 5 minutes. */
+export type SaverMinutes = 0 | 1 | 5;
+
+export const SAVER_OPTIONS: SaverMinutes[] = [0, 1, 5];
+
+/** Reads a stored screensaver delay; anything missing or unknown gives 5 minutes. */
+export function parseSaverMinutes(stored: string | null): SaverMinutes {
+  if (stored === '0') return 0;
+  if (stored === '1') return 1;
+  return 5;
+}
+
+/** Whether idle time and the play state say the screensaver should start. */
+export function shouldStartSaver(
+  idleMs: number,
+  minutes: SaverMinutes,
+  playing: boolean,
+  blocked: boolean,
+): boolean {
+  return playing && !blocked && minutes > 0 && idleMs >= minutes * 60000;
+}
+
+/** Where the drifting screensaver box lands, from two rolls in [0, 1). */
+export function driftPosition(
+  rx: number,
+  ry: number,
+  areaW: number,
+  areaH: number,
+  boxW: number,
+  boxH: number,
+): { x: number; y: number } {
+  return {
+    x: Math.round(rx * Math.max(0, areaW - boxW)),
+    y: Math.round(ry * Math.max(0, areaH - boxH)),
+  };
+}
+
 export function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
   const total = Math.floor(seconds);

@@ -20,7 +20,7 @@
   <body>
     <div id="app" class="radio">
       <header class="faceplate">
-        <div class="brand">Drumline <span>Radio</span> <button id="install" class="install" type="button" hidden>Install</button></div>
+        <div class="brand">Drumline <span>Radio</span> <button id="install" class="install" type="button" hidden>Install</button><button id="info" class="info-btn" type="button" aria-label="Info and screensaver" title="Info and screensaver">ⓘ</button></div>
         <div class="readout" aria-live="polite">
           <div id="title" class="readout-title">Drumline Radio</div>
           <div id="subtitle" class="readout-sub">Press play</div>
@@ -75,6 +75,31 @@
         <div id="bands" class="bands" role="radiogroup" aria-label="Style"></div>
       </section>
     </div>
+    <div id="dim" class="dim-overlay" hidden></div>
+    <div id="screensaver" class="screensaver" hidden>
+      <div id="saver-box" class="saver-box">
+        <div id="saver-title" class="saver-title"></div>
+        <div id="saver-time" class="saver-time"></div>
+      </div>
+    </div>
+    <dialog id="info-panel" class="info-panel" aria-labelledby="info-heading">
+      <h2 id="info-heading">Drumline Radio</h2>
+      <p>Every note is built live by your browser's synth: there are no recordings. Phones pause live
+        synths when an app is minimized or the screen locks, so keep Drumline Radio open while you
+        listen.</p>
+      <p>To save battery while it plays, dim the player or start the black screensaver. While music
+        plays with either one on, your screen stays awake.</p>
+      <div class="info-row">
+        <button id="dim-toggle" class="info-action" type="button" aria-pressed="false">Dim view</button>
+        <button id="saver-start" class="info-action" type="button">Start screensaver</button>
+      </div>
+      <div class="info-label" id="saver-auto-label">Screensaver starts after no touches for</div>
+      <div id="saver-auto" class="info-row" role="radiogroup" aria-labelledby="saver-auto-label"></div>
+      <div class="info-label">Keyboard</div>
+      <p class="info-keys">Space play/pause · ←/→ station · 1–4 style · C category · M mute · R repeat ·
+        S screensaver</p>
+      <button id="info-close" class="info-action info-close" type="button">Close</button>
+    </dialog>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
