@@ -2,7 +2,16 @@ import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/song';
 import type { Song } from '../src/song';
-import { formatTime, laneLayout, nearestStation, noteY, prevAction, stationLabel } from '../src/view';
+import {
+  formatTime,
+  laneLayout,
+  nearestStation,
+  noteY,
+  parseVolume,
+  prevAction,
+  stationLabel,
+  volumeGain,
+} from '../src/view';
 
 function fixtureSong(): Song {
   const result = parseSong(fixture);
@@ -54,5 +63,24 @@ describe('laneLayout', () => {
     expect(lanes[2].rows).toEqual([49, 42, 38, 36]);
     expect(noteY(lanes[0], 86)).toBeCloseTo(4, 6);
     expect(noteY(lanes[2], 38)).toBeCloseTo(200 + 4 + 2 * (92 / 4), 6);
+  });
+});
+
+describe('volume', () => {
+  it('maps the slider to a squared gain', () => {
+    expect(volumeGain(100)).toBe(1);
+    expect(volumeGain(50)).toBe(0.25);
+    expect(volumeGain(0)).toBe(0);
+    expect(volumeGain(150)).toBe(1);
+    expect(volumeGain(-5)).toBe(0);
+  });
+
+  it('reads a stored volume, defaulting to 100', () => {
+    expect(parseVolume(null)).toBe(100);
+    expect(parseVolume('')).toBe(100);
+    expect(parseVolume('abc')).toBe(100);
+    expect(parseVolume('40')).toBe(40);
+    expect(parseVolume('140')).toBe(100);
+    expect(parseVolume('-3')).toBe(0);
   });
 });

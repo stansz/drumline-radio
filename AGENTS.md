@@ -27,6 +27,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   public-domain piece in `README.md`.
 - Song data is written by Claude and pasted verbatim. Don't change notes in a song file to make a
   test pass; report the failing check instead.
+- Wrap every `localStorage` call in `try`/`catch`, and make the app work without it. Keys start
+  with `drumline-radio-`.
 - Vitest has no Web Audio or DOM, so test audio logic through exported pure functions. Check UI
   and audio changes in a browser.
 - On Windows, `npm test` and `npm run build` fail with `spawn EPERM` inside the

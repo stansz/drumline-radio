@@ -7,7 +7,26 @@ import type { StyleId } from './roles';
 import { createScore } from './score';
 import { STYLE_DEFS } from './styles';
 import { notesBetween } from './timing';
-import { formatTime, prevAction } from './view';
+import { formatTime, parseVolume, prevAction, volumeGain } from './view';
+
+const VOLUME_KEY = 'drumline-radio-volume';
+const MUTED_KEY = 'drumline-radio-muted';
+
+function load(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function save(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Settings just aren't remembered without storage.
+  }
+}
 
 function required<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -21,6 +40,8 @@ export function startUi(): void {
   const titleEl = required<HTMLElement>('#title');
   const subtitleEl = required<HTMLElement>('#subtitle');
   const metersCanvas = required<HTMLCanvasElement>('#meters');
+  const muteButton = required<HTMLButtonElement>('#mute');
+  const volumeEl = required<HTMLInputElement>('#volume');
   const scoreCanvas = required<HTMLCanvasElement>('#score');
   const banner = required<HTMLElement>('#style-banner');
   const dialEl = required<HTMLElement>('#dial');
@@ -99,6 +120,27 @@ export function startUi(): void {
     bannerTimer = window.setTimeout(() => banner.classList.remove('show'), 2500);
   }
 
+  let volume = parseVolume(load(VOLUME_KEY));
+  let muted = load(MUTED_KEY) === '1';
+
+  function outputGain(): number {
+    return muted ? 0 : volumeGain(volume);
+  }
+
+  function applyVolume(): void {
+    volumeEl.value = String(volume);
+    muteButton.setAttribute('aria-pressed', String(muted));
+    muteButton.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
+    muteButton.classList.toggle('muted', muted || volume === 0);
+    engine?.setVolume(outputGain());
+  }
+
+  function toggleMute(): void {
+    muted = !muted;
+    save(MUTED_KEY, muted ? '1' : '0');
+    applyVolume();
+  }
+
   function ensureEngine(): Engine | null {
     const entry = LIBRARY[current];
     if (!entry) return null;
@@ -107,7 +149,7 @@ export function startUi(): void {
     const ctx = new AudioContext();
     const created = new Engine(ctx);
     created.onEnded = handleEnded;
-    created.setVolume(0.8);
+    created.setVolume(outputGain());
     created.load(entry.song);
     engine = created;
 
@@ -217,6 +259,18 @@ export function startUi(): void {
     bandButtons[nextIndex].focus();
   });
 
+  applyVolume();
+  muteButton.addEventListener('click', toggleMute);
+  volumeEl.addEventListener('input', () => {
+    volume = Number(volumeEl.value);
+    if (muted && volume > 0) {
+      muted = false;
+      save(MUTED_KEY, '0');
+    }
+    save(VOLUME_KEY, String(volume));
+    applyVolume();
+  });
+
   seekEl.addEventListener('pointerdown', () => {
     draggingSeek = true;
   });
@@ -232,7 +286,11 @@ export function startUi(): void {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (document.activeElement === seekEl) return;
+    if (document.activeElement === seekEl || document.activeElement === volumeEl) return;
+    if (event.key === 'm' || event.key === 'M') {
+      toggleMute();
+      return;
+    }
     if (event.key === ' ' || event.code === 'Space') {
       event.preventDefault();
       togglePlay();

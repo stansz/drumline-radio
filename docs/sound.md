@@ -98,7 +98,8 @@ mix -> crush crossfade -> lowpass -> compressor -> makeup gain -> limiter -> sof
   (×1.4) brings them up to normal music loudness, and the **limiter** (threshold -3 dB) catches peaks.
 - **Soft clip** is a final safety net: it leaves the signal untouched below 0.85 and never lets the
   output exceed 0.95.
-- **Volume** follows the player's volume level (0 to 1, default 1).
+- **Volume** follows the volume slider: the slider's 0–100 is squared into a gain of 0 to 1, so
+  it feels even to the ear, and mute sets it to 0. The default is 100.
 
 The soft clip output also feeds two analysers, one per channel, which is where the VU meters get
 their levels.

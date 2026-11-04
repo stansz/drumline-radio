@@ -195,6 +195,54 @@ body::after {
   height: 48px;
 }
 
+.levels {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mute {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.mute .slash,
+.mute.muted .waves {
+  display: none;
+}
+
+.mute.muted .slash {
+  display: inline;
+}
+
+.mute.muted {
+  color: var(--muted);
+}
+
+.volume-slider {
+  flex: 1;
+  min-width: 0;
+  width: 90px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
 .stage {
   position: relative;
   flex: 1;
@@ -468,10 +516,23 @@ body::after {
     font-size: 15px;
   }
 
-  .meters {
+  .levels {
     align-self: center;
-    width: 72px;
-    height: 29px;
+    gap: 2px;
+  }
+
+  .meters {
+    width: 84px;
+    height: 30px;
+  }
+
+  .mute {
+    width: 22px;
+    height: 22px;
+  }
+
+  .volume-slider {
+    width: 56px;
   }
 
   .stage {

@@ -1,6 +1,19 @@
 import type { Song } from './song';
 
 /** Formats song seconds as `m:ss`, flooring and clamping negatives to zero. */
+/** Maps the 0–100 volume slider to a gain, squared so the slider feels even to the ear. */
+export function volumeGain(percent: number): number {
+  const clamped = Math.min(Math.max(percent, 0), 100);
+  return (clamped / 100) ** 2;
+}
+
+/** Reads a stored volume percentage; anything missing or invalid gives 100. */
+export function parseVolume(stored: string | null): number {
+  if (stored === null || stored.trim() === '') return 100;
+  const value = Number(stored);
+  return Number.isFinite(value) ? Math.min(Math.max(Math.round(value), 0), 100) : 100;
+}
+
 export function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
   const total = Math.floor(seconds);

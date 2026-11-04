@@ -12,10 +12,10 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 
 - A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
 - A living score that scrolls each track's notes past a playhead.
-- VU meters and a glowing readout.
+- VU meters, a glowing readout, and a volume slider with mute (remembered between visits).
 - Four styles (Synthwave, Chiptune, Orchestral, Techno) with remix by band button: switch the band
   and the same notes play with that style's instruments.
-- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–4 styles.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–4 styles, M mute.
 
 | Orchestral | Phone |
 |---|---|
