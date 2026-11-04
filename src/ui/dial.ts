@@ -149,13 +149,15 @@ export function createDial(
     dragStartX = event.clientX;
     dragStartScroll = el.scrollLeft;
     suppressUntil = 0;
-    el.setPointerCapture(event.pointerId);
   });
 
   el.addEventListener('pointermove', (event) => {
     if (!dragging) return;
     const delta = event.clientX - dragStartX;
     draggedDistance = Math.max(draggedDistance, Math.abs(delta));
+    // Capture only once it is a real drag: capturing on press would retarget the click to the
+    // dial, so clicking a station would do nothing.
+    if (draggedDistance > 4 && !el.hasPointerCapture(event.pointerId)) el.setPointerCapture(event.pointerId);
     el.scrollLeft = dragStartScroll - delta;
   });
 
