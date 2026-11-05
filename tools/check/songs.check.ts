@@ -24,14 +24,17 @@ it(`songs in ${DIR} parse; clash report`, () => {
     }
     const song = result.song;
     const timeline = buildTimeline(song);
-    const melody = song.tracks.findIndex((t) => t.id === 'melody');
+    // Every melody-carrying track: the `melody` track, or any lead or lead2 role.
+    const melody = new Set(
+      song.tracks.flatMap((t, i) => (t.id === 'melody' || t.role === 'lead' || t.role === 'lead2' ? [i] : [])),
+    );
     const under = new Set(
       song.tracks.flatMap((t, i) => (t.role === 'pad' || t.role === 'bass' ? [i] : [])),
     );
     const where: string[] = [];
     let clashes = 0;
     for (const note of timeline.notes) {
-      if (note.track !== melody || note.duration < MIN_SECONDS) continue;
+      if (!melody.has(note.track) || note.duration < MIN_SECONDS) continue;
       for (const other of timeline.notes) {
         if (!under.has(other.track)) continue;
         if (other.start > note.start + 1e-6 || other.start + other.duration <= note.start + 1e-6) continue;

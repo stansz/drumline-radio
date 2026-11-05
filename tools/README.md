@@ -110,6 +110,14 @@ from each section's chords.
 node tools/arranger/ivory-and-ash.mjs tmp/cine
 ```
 
+The club tracks have their own script too, `arranger/club.mjs`: Underpass (rolling sub bass, acid
+bass riff, stab hook) and Ivory and Ash (128 Mix), which reuses the Ivory and Ash melodies with every
+note doubled in length so the tune keeps its pace at 128 BPM.
+
+```bash
+node tools/arranger/club.mjs tmp/club
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,
@@ -131,7 +139,7 @@ npm run check:songs
 ```
 
 It parses every song in `src/songs/`, or in `CHECK_DIR` if set, and fails on any parse error. It
-also lists each song's length and any long melody notes a semitone away from the pad or bass under
+also lists each song's length and any long melody notes (from the `melody` track and every `lead` or `lead2` track) a semitone away from the pad or bass under
 them. That count is a report, not a failure: passing notes and a maj7 against its root are fine,
 but a new spike is worth a listen.
 
@@ -158,6 +166,10 @@ node tools/browser/loudness.mjs http://localhost:4173/drumline-radio/ 3 lofi
 ```
 
 ```bash
+node tools/browser/loudness.mjs "" 3 "" "underpass|night shift"
+```
+
+```bash
 node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/phone.png
 ```
 
@@ -166,7 +178,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **offline:** checks that the app can be installed, that it is cached, and that it plays with the
   network off.
 - **loudness:** measures every song, here remixed into Lo-fi. Healthy songs sit around −10 to −16 dB
-  RMS.
+  RMS. A full run takes several minutes, so after changing one song pass a title filter (a
+  case-insensitive regex; `""` keeps the default URL and each song's own style) and a reference song,
+  as in the second command.
 - **shot:** takes a screenshot, for example for the README.
 
 `browser/cdp.mjs` is the shared helper. It launches headless Edge (set `EDGE_PATH` to use another

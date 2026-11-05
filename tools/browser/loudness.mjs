@@ -1,11 +1,14 @@
 // Loudness check: plays every song at 20%, 50%, and 85% of the way through and measures the
 // output (peak, RMS, how hard the compressor and limiter work, and the share of energy above 4 kHz).
 // Healthy songs sit around -10 to -16 dB RMS with almost nothing over 0.9 into the limiter.
-//   node tools/browser/loudness.mjs [url] [secondsPerWindow] [style]
-// Pass a style (e.g. lofi) to remix every song into it first.
+//   node tools/browser/loudness.mjs [url] [secondsPerWindow] [style] [titleFilter]
+// Pass a style (e.g. lofi) to remix every song into it first ('' keeps each song's own style).
+// Pass a title filter (case-insensitive regex, e.g. 'underpass|night shift') to check only those songs.
 import { DEFAULT_URL, openEdge, sleep } from './cdp.mjs';
 
-const [url = DEFAULT_URL, secondsArg = '3', style = ''] = process.argv.slice(2);
+const [urlArg = '', secondsArg = '3', style = '', filterArg = ''] = process.argv.slice(2);
+const url = urlArg || DEFAULT_URL;
+const only = filterArg ? new RegExp(filterArg, 'i') : null;
 const windowSec = Number(secondsArg);
 
 // Taps the master output and the limiter with analysers as the app builds its audio graph.
@@ -46,6 +49,7 @@ const titles = await page.ev(`[...document.querySelectorAll('.station .station-t
 const db = (x) => (20 * Math.log10(Math.max(x, 1e-9))).toFixed(1).padStart(6);
 console.log('song'.padEnd(34), ' at   peak    rms  >0.9%  comp   lim  hf>4k%');
 for (let i = 0; i < titles.length; i += 1) {
+  if (only && !only.test(titles[i])) continue;
   await page.ev(`document.querySelectorAll('.station')[${i}].click()`);
   await sleep(600);
   await page.ev(`(() => { const p = document.querySelector('#play'); if (p.getAttribute('aria-label') === 'Play') p.click(); })()`);
