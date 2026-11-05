@@ -4,7 +4,7 @@ import { LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(25);
+    expect(LIBRARY.length).toBe(27);
   });
 
   it('orders by category then title', () => {
@@ -30,10 +30,12 @@ describe('library', () => {
       'swan-lake',
       'when-the-saints',
       'ivory-and-ash',
+      'ivory-and-ash-128',
       'last-stop',
       'midnight-arcade',
       'night-shift',
       'save-point',
+      'underpass',
     ]);
   });
 
@@ -42,7 +44,7 @@ describe('library', () => {
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
     expect(count('classics')).toBe(11);
-    expect(count('originals')).toBe(5);
+    expect(count('originals')).toBe(7);
   });
 
   it('keeps each song in its own style', () => {
@@ -68,10 +70,12 @@ describe('library', () => {
       'orchestral',
       'synthwave',
       'cinematic',
+      'techno',
       'lofi',
       'synthwave',
       'techno',
       'chiptune',
+      'techno',
     ]);
   });
 

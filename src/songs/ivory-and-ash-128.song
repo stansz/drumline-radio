@@ -1,0 +1,345 @@
+# Ivory and Ash (128 Mix), by Claude and SZ. The Ivory and Ash melodies at 128 BPM: every note is
+# twice as long, so the tune keeps its pace while a four-on-the-floor beat and a rolling bass run
+# underneath. The acid lead takes the guitar part and the stabs take the piano; try it in Cinematic too.
+title: Ivory and Ash (128 Mix)
+composer: Claude & SZ
+year: 2026
+source: original
+category: originals
+key: C minor
+style: techno
+tempo: 128
+time: 4/4
+
+track guitar role=lead vol=0.6 pan=0.15
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# The piano theme, the guitar answers
+| R | R | R | R |
+| v=90 r/1 | Eb5/4^ F5/2. | F5/4^ G5/4~ G5/2 | D5/1 |
+| R | R | R | R |
+| v=90 Ab5/2^ Bb5/2^ | Ab5/2 G5/2 | G5/1~ | G5/1 |
+# The build, snare roll
+| v=96 C5/1~ | C5/2 Eb5/2 | G5/4^ Ab5/4~ Ab5/2 | G5/1 |
+| F5/1~ | F5/2 D5/2 | Eb5/2 D5/2 | C5/1 |
+| C6/1~ | C6/2 Bb5/4 Ab5/4 | G5/1~ | G5/1 |
+| Ab5/2. G5/4 | F5/2 Eb5/2 | D5/4^ Eb5/4^ D5/2~ | D5/1 |
+# Drop: the guitar rises
+| v=108 Ab5/2 C6/2 | Eb6/1 | D6/1~ | D6/2 C6/4 Bb5/4 |
+| Bb5/1 | G5/1 | C6/4^ Db6/4^ C6/2~ | C6/1 |
+| Ab5/2 F5/2 | D5/2 Ab5/2 | G5/4^ A5/4^ B5/2~ | B5/1 |
+| C6/1~ | C6/1 | r/1 | B5/2 D6/2 |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: the guitar solo
+| v=114 C6/2^ Db6/2^ | C6/2 Ab5/2 | Bb5/4 C6/4 D6/2^ | Eb6/2^ D6/2 |
+| G6/1~ | G6/2 F6/4 Eb6/4 | Eb6/2^ F6/2^ | Eb6/2 C6/2 |
+| F6/2. Eb6/4 | D6/2 Ab5/2 | B5/4^ C6/4^ B5/2 | D6/2 F6/2 |
+| Eb6/4^ F6/4^ G6/2~ | G6/1~ | G6/1~ | G6/2 r/2 |
+# Outro: piano and guitar trade
+| R | R | v=94 G5/4^ Ab5/4^ G5/2 | F5/2 Eb5/2 |
+| R | R | v=94 F5/2^ G5/2 | D5/2 B4/2 |
+| R | R | v=94 Bb5/4^ C6/4~ C6/2~ | C6/2 G5/2 |
+| R | R | v=94 C6/1~ | C6/1 |
+
+track piano role=lead2 vol=0.6 pan=-0.15
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# The piano theme, the guitar answers
+| v=84 r/2 G4/2 | C5/2 Eb5/2 | D5/1~ | D5/2 C5/2 |
+| R | R | R | R |
+| v=84 Ab5/1~ | Ab5/2 G5/4 F5/4 | Eb5/1 | G4/1 |
+| R | R | R | R |
+# The build, snare roll
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Drop: the guitar rises
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown: the piano alone with the pad
+| v=80 r/2 G4/2 | C5/2 Eb5/2 | D5/1~ | D5/2 C5/2 |
+| C5/2 Bb4/2 | Ab4/2 G4/2 | B4/1 | D5/2 F5/2 |
+| Ab5/1~ | Ab5/2 G5/4 F5/4 | Eb5/1 | G4/1 |
+| F5/2 Eb5/2 | D5/2 B4/2 | C5/1~ | C5/1 |
+# Second drop: the guitar solo
+| v=70 F3/16 C4/16 F4/16 Ab4/16 C5/16 F5/16 Ab5/16 C6/16 C6/16 Ab5/16 F5/16 C5/16 Ab4/16 F4/16 C4/16 F3/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F5/16 Ab5/16 C6/16 C6/16 Ab5/16 F5/16 C5/16 Ab4/16 F4/16 C4/16 F3/16 | Bb3/16 F4/16 Bb4/16 D5/16 F5/16 Bb5/16 D6/16 F6/16 F6/16 D6/16 Bb5/16 F5/16 D5/16 Bb4/16 F4/16 Bb3/16 | Bb3/16 F4/16 Bb4/16 D5/16 F5/16 Bb5/16 D6/16 F6/16 F6/16 D6/16 Bb5/16 F5/16 D5/16 Bb4/16 F4/16 Bb3/16 |
+| Eb3/16 Bb3/16 Eb4/16 G4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Bb5/16 G5/16 Eb5/16 Bb4/16 G4/16 Eb4/16 Bb3/16 Eb3/16 | Eb3/16 Bb3/16 Eb4/16 G4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Bb5/16 G5/16 Eb5/16 Bb4/16 G4/16 Eb4/16 Bb3/16 Eb3/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab5/16 C6/16 Eb6/16 Eb6/16 C6/16 Ab5/16 Eb5/16 C5/16 Ab4/16 Eb4/16 Ab3/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab5/16 C6/16 Eb6/16 Eb6/16 C6/16 Ab5/16 Eb5/16 C5/16 Ab4/16 Eb4/16 Ab3/16 |
+| D3/16 A3/16 D4/16 F4/16 A4/16 D5/16 F5/16 A5/16 A5/16 F5/16 D5/16 A4/16 F4/16 D4/16 A3/16 D3/16 | D3/16 A3/16 D4/16 F4/16 A4/16 D5/16 F5/16 A5/16 A5/16 F5/16 D5/16 A4/16 F4/16 D4/16 A3/16 D3/16 | G3/16 D4/16 G4/16 B4/16 D5/16 G5/16 B5/16 D6/16 D6/16 B5/16 G5/16 D5/16 B4/16 G4/16 D4/16 G3/16 | G3/16 D4/16 G4/16 B4/16 D5/16 G5/16 B5/16 D6/16 D6/16 B5/16 G5/16 D5/16 B4/16 G4/16 D4/16 G3/16 |
+| C3/16 G3/16 C4/16 Eb4/16 G4/16 C5/16 Eb5/16 G5/16 G5/16 Eb5/16 C5/16 G4/16 Eb4/16 C4/16 G3/16 C3/16 | C3/16 G3/16 C4/16 Eb4/16 G4/16 C5/16 Eb5/16 G5/16 G5/16 Eb5/16 C5/16 G4/16 Eb4/16 C4/16 G3/16 C3/16 | C3/16 G3/16 C4/16 Eb4/16 G4/16 C5/16 Eb5/16 G5/16 G5/16 Eb5/16 C5/16 G4/16 Eb4/16 C4/16 G3/16 C3/16 | G3/16 D4/16 G4/16 B4/16 D5/16 G5/16 B5/16 D6/16 D6/16 B5/16 G5/16 D5/16 B4/16 G4/16 D4/16 G3/16 |
+# Outro: piano and guitar trade
+| v=80 r/4 G4/4 C5/4 Eb5/4 | G5/2 F5/2 | R | R |
+| v=80 r/4 Ab4/4 C5/4 Eb5/4 | G5/2 Eb5/2 | R | R |
+| v=80 r/4 F4/4 Ab4/4 C5/4 | F5/2 Ab5/2 | R | R |
+| v=80 D5/4 F5/4 Ab5/4 B5/4 | D6/2 B5/2 | R | R |
+
+track arp role=arp vol=0.3 pan=0.3
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| R | R | R | R |
+| v=44 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 |
+| D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 |
+# The piano theme, the guitar answers
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# The build, snare roll
+| v=56 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
+| Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 | Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 |
+| Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
+| F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 |
+# Drop: the guitar rises
+| v=64 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 | Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 |
+| Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 |
+| D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 | D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 |
+| C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| v=46 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 |
+| D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 |
+# Second drop: the guitar solo
+| v=62 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 | Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 D5/16 Bb5/16 F5/16 D5/16 Bb5/16 Bb4/16 |
+| Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 | Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 Ab4/16 Eb5/16 C5/16 Ab5/16 Eb5/16 C5/16 Ab5/16 Ab4/16 |
+| D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 | D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 D4/16 Ab4/16 F4/16 D5/16 Ab4/16 F4/16 D5/16 D4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 |
+| C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 C4/16 G4/16 Eb4/16 C5/16 G4/16 Eb4/16 C5/16 C4/16 | G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 G4/16 D5/16 B4/16 G5/16 D5/16 B4/16 G5/16 G4/16 |
+# Outro: piano and guitar trade
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+
+track stabs role=chords vol=0.45 pan=-0.25
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# The piano theme, the guitar answers
+| v=62 r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+| r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+| r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+# The build, snare roll
+| v=66 r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+| r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+# Drop: the guitar rises
+| v=78 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 |
+| r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 |
+| r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+| r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: the guitar solo
+| v=80 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 |
+| r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 |
+| r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+| r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+# Outro: piano and guitar trade
+| v=64 r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+| r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
+| R | R | R | R |
+| R | R | R | R |
+
+track pad role=pad vol=0.4
+# Intro: the beat and the theme chords
+| v=54 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4 F4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+# The piano theme, the guitar answers
+| v=50 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4 F4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+# The build, snare roll
+| v=56 [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+| [Bb2 D3 F3]/1 | [Bb2 D3 F3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [G3 B3 D4]/1 | [G3 B3 D4]/1 |
+# Drop: the guitar rises
+| v=60 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [Bb2 D3 F3]/1 | [Bb2 D3 F3]/1 |
+| [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 | [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 |
+| [D3 F3 Ab3]/1 | [D3 F3 Ab3]/1 | [G3 B3 D4]/1 | [G3 B3 D4]/1 |
+| [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 |
+# Breakdown: the piano alone with the pad
+| v=60 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4 F4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+# Second drop: the guitar solo
+| v=62 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [Bb2 D3 F3]/1 | [Bb2 D3 F3]/1 |
+| [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 | [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 |
+| [D3 F3 Ab3]/1 | [D3 F3 Ab3]/1 | [G3 B3 D4]/1 | [G3 B3 D4]/1 |
+| [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 |
+# Outro: piano and guitar trade
+| v=54 [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [Ab2 C3 Eb3 G3]/1 | [Ab2 C3 Eb3 G3]/1 | [G3 B3 D4 F4]/1 | [G3 B3 D4 F4]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+| [D3 F3 Ab3]/1 | [G3 B3 D4 F4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
+
+track bass role=bass vol=0.75
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| R | R | R | R |
+| v=90 r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 |
+| r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 G2/8 r/8 G2/8 r/8 G2/8 r/8 G2/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 |
+# The piano theme, the guitar answers
+| v=102 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 |
+| r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 | r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 |
+| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
+| r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 | r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 |
+# The build, snare roll
+| v=104 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
+| r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 |
+| r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
+| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 | R |
+# Drop: the guitar rises
+| v=114 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 |
+| r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 | r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 | r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 | r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 |
+| r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| v=84 F2/1 | F2/1 | Eb2/1 | Eb2/1 |
+| D2/1 | G2/1 | C2/1 | C2/1 |
+# Second drop: the guitar solo
+| v=116 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 |
+| r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 | r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 | r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 r/16 Ab1/16 Ab2/16 Ab1/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 | r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 |
+| r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 r/16 G2/16 G3/16 G2/16 |
+# Outro: piano and guitar trade
+| v=104 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 |
+| r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 r/16 Ab1/16 Ab1/16 Ab1/16 | r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 | r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 r/16 G2/16 G2/16 G2/16 |
+| v=90 r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 |
+| v=84 D2/1 | G2/1 | C2/1 | R |
+
+track drums role=drums vol=0.75
+# Intro: the beat and the theme chords
+| v=100 k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
+| [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+# The piano theme, the guitar answers
+| v=106 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+# The build, snare roll
+| v=106 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | R |
+# Drop: the guitar rises
+| v=114 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: the guitar solo
+| v=116 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+# Outro: piano and guitar trade
+| v=104 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
+| [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
+| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | [k cr]/4 r/2. |
+
+track perc role=drums vol=0.5 pan=0.2
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| v=70 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# The piano theme, the guitar answers
+| v=74 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# The build, snare roll
+| v=74 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
+# Drop: the guitar rises
+| v=82 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
+# Second drop: the guitar solo
+| v=84 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# Outro: piano and guitar trade
+| v=74 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| R | R | R | R |
+
+track cymbals role=drums vol=0.45
+# Intro: the beat and the theme chords
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# The piano theme, the guitar answers
+| v=90 cr/1 | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# The build, snare roll
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Drop: the guitar rises
+| v=100 cr/1 | R | R | R |
+| R | R | R | R |
+| cr/1 | R | R | R |
+| R | R | R | R |
+# Breakdown: the piano alone with the pad
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: the guitar solo
+| v=104 cr/1 | R | R | R |
+| R | R | R | R |
+| cr/1 | R | R | R |
+| R | R | R | R |
+# Outro: piano and guitar trade
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |

@@ -63,10 +63,12 @@ Other public-domain melodies, arranged by Claude and SZ:
 Originals by Claude and SZ:
 
 - **Ivory and Ash** (Cinematic)
+- **Ivory and Ash (128 Mix)** (Techno)
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
 - **Save Point** (Chiptune)
+- **Underpass** (Techno)
 
 ## How it works
 
