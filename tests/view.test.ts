@@ -44,9 +44,16 @@ describe('formatTime', () => {
 });
 
 describe('stationLabel', () => {
-  it('walks the tuner frequency', () => {
-    expect(stationLabel(0)).toBe('88.1');
-    expect(stationLabel(3)).toBe('94.7');
+  it('spreads the stations across the FM band on odd tenths', () => {
+    expect(stationLabel(0, 27)).toBe('88.1');
+    expect(stationLabel(26, 27)).toBe('107.9');
+    const labels = Array.from({ length: 27 }, (_, i) => stationLabel(i, 27));
+    expect(new Set(labels).size).toBe(27);
+    for (const label of labels) expect(Math.round(Number(label) * 10) % 2).toBe(1);
+  });
+
+  it('gives a single station the bottom of the band', () => {
+    expect(stationLabel(0, 1)).toBe('88.1');
   });
 });
 

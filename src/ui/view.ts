@@ -96,9 +96,18 @@ export function songFacts(
   ];
 }
 
-/** The tuner frequency shown for a station, from 88.1 in 2.2 steps. */
-export function stationLabel(index: number): string {
-  return (88.1 + index * 2.2).toFixed(1);
+const FM_LOW = 88.1;
+const FM_HIGH = 107.9;
+
+/**
+ * The tuner frequency shown for a station: the stations spread evenly across the real FM band
+ * (88.1 to 107.9), each on an odd tenth like a US station.
+ */
+export function stationLabel(index: number, count: number): string {
+  if (count <= 1) return FM_LOW.toFixed(1);
+  const steps = Math.round((FM_HIGH - FM_LOW) / 0.2); // 0.2 MHz channels between the ends
+  const channel = Math.round((index * steps) / (count - 1));
+  return (FM_LOW + channel * 0.2).toFixed(1);
 }
 
 export type CategoryFilter = Category | 'all';

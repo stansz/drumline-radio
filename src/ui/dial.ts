@@ -32,7 +32,7 @@ export function createDial(
     const station = document.createElement('button');
     station.type = 'button';
     station.className = 'station';
-    station.setAttribute('aria-label', `${entry.song.meta.title}, station ${stationLabel(index)}`);
+    station.setAttribute('aria-label', `${entry.song.meta.title}, station ${stationLabel(index, songs.length)}`);
 
     if (entry.song.meta.category !== previousCategory) {
       const caption = document.createElement('span');
@@ -44,7 +44,7 @@ export function createDial(
 
     const frequency = document.createElement('span');
     frequency.className = 'station-freq';
-    frequency.textContent = stationLabel(index);
+    frequency.textContent = stationLabel(index, songs.length);
     const title = document.createElement('span');
     title.className = 'station-title';
     title.textContent = entry.song.meta.title;
