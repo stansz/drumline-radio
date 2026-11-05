@@ -1,4 +1,5 @@
-# Save Point: an original for the Chiptune style. It moves up a step near the end.
+# Save Point, by Claude and SZ. An original for the Chiptune style: two themes, a quiet save-room
+# interlude, an adventure section, and everything again up a step.
 title: Save Point
 composer: Claude & SZ
 year: 2026
@@ -9,111 +10,197 @@ key: C major
 tempo: 150
 time: 4/4
 
-track lead role=lead vol=0.8
+track lead role=lead vol=0.85
 # Intro
-| R*4 |
+| R | R | R | R |
 # A
-| E5/8 G5 C6 G5 E5/4 D5/8 C5/8 | A4/4 C5/4 E5/4 A5/4 | F5/8 E5 F5 A5 C6/4 A5/4 | G5/4. F5/8 E5/4 D5/4 |
-| E5/8 G5 C6 G5 E5/4 G5/4 | A5/8 G5 E5 C5 A4/4 C5/4 | F5/8 A5 C6 A5 G5 F5 E5 D5 | D5/2 G5/4 r/4 |
-# A again
-| E5/8 G5 C6 G5 E5/4 D5/8 C5/8 | A4/4 C5/4 E5/4 A5/4 | F5/8 E5 F5 A5 C6/4 A5/4 | G5/4. F5/8 E5/4 D5/4 |
-| E5/8 G5 C6 G5 E5/4 G5/4 | A5/8 G5 E5 C5 A4/4 C5/4 | F5/8 A5 C6 A5 G5 F5 E5 D5 | D5/2 G5/4 r/4 |
+| v=100 E5/8 G5/8 C6/8 G5/8 E5/4 D5/8 C5/8 | A4/4 C5/4 E5/4 A5/4 | F5/8 E5/8 F5/8 A5/8 C6/4 A5/4 | G5/4. F5/8 E5/4 D5/4 |
+| E5/8 G5/8 C6/8 G5/8 E5/4 G5/4 | A5/8 G5/8 E5/8 C5/8 A4/4 C5/4 | F5/8 A5/8 C6/8 A5/8 G5/8 F5/8 E5/8 D5/8 | D5/2 G5/4 r/4 |
+# A again, the harmony joins
+| v=100 E5/8 G5/8 C6/8 G5/8 E5/4 D5/8 C5/8 | A4/4 C5/4 E5/4 A5/4 | F5/8 E5/8 F5/8 A5/8 C6/4 A5/4 | G5/4. F5/8 E5/4 D5/4 |
+| E5/8 G5/8 C6/8 G5/8 E5/4 G5/4 | A5/8 G5/8 E5/8 C5/8 A4/4 C5/4 | F5/8 A5/8 C6/8 A5/8 G5/8 F5/8 E5/8 D5/8 | D5/2 G5/4 r/4 |
 # B
-| C6/4. B5/8 A5/4 E5/4 | F5/4. G5/8 A5/4 C6/4 | G5/4. E5/8 C5/4 E5/4 | D5/2. r/4 |
-| C6/4. B5/8 A5/4 C6/4 | A5/4. G5/8 F5/4 A5/4 | G5/8 A5 B5 C6 D6/4 B5/4 | G5/2 D5/4 B4/4 |
+| v=100 C6/4. B5/8 A5/4 E5/4 | F5/4. G5/8 A5/4 C6/4 | G5/4. E5/8 C5/4 E5/4 | D5/2. r/4 |
+| C6/4. B5/8 A5/4 C6/4 | A5/4. G5/8 F5/4 A5/4 | G5/8 A5/8 B5/8 C6/8 D6/4 B5/4 | G5/2 D5/4 B4/4 |
+# The save room: a quiet interlude
+| v=84 A5/2 G5/4 F5/4 | G5/2. D5/4 | E5/2 G5/4 B5/4 | A5/1 |
+| C6/2 A5/4 F5/4 | D6/2 B5/4 G5/4 | E5/2 G5/4 C6/4 | C6/2. r/4 |
 # A
-| E5/8 G5 C6 G5 E5/4 D5/8 C5/8 | A4/4 C5/4 E5/4 A5/4 | F5/8 E5 F5 A5 C6/4 A5/4 | G5/4. F5/8 E5/4 D5/4 |
-| E5/8 G5 C6 G5 E5/4 G5/4 | A5/8 G5 E5 C5 A4/4 C5/4 | F5/8 A5 C6 A5 G5 F5 E5 D5 | D5/2 G5/4 r/4 |
+| v=100 E5/8 G5/8 C6/8 G5/8 E5/4 D5/8 C5/8 | A4/4 C5/4 E5/4 A5/4 | F5/8 E5/8 F5/8 A5/8 C6/4 A5/4 | G5/4. F5/8 E5/4 D5/4 |
+| E5/8 G5/8 C6/8 G5/8 E5/4 G5/4 | A5/8 G5/8 E5/8 C5/8 A4/4 C5/4 | F5/8 A5/8 C6/8 A5/8 G5/8 F5/8 E5/8 D5/8 | D5/2 G5/4 r/4 |
+# Adventure
+| v=104 A4/8 C5/8 E5/8 A5/4 G5/8 E5/8 C5/8 | D5/8 E5/8 r/8 C5/8 B4/4 A4/4 | A4/8 C5/8 F5/8 A5/4 G5/8 F5/8 C5/8 | E5/8 F5/8 r/8 C5/8 A4/2 |
+| B4/8 D5/8 G5/8 B5/4 A5/8 G5/8 D5/8 | F5/8 G5/8 r/8 D5/8 B4/2 | G5/8 E5/8 B4/8 E5/8 G5/8 B5/8 G5/8 E5/8 | G#5/4 E5/4 B4/4 G#4/4 |
+# B
+| v=104 C6/4. B5/8 A5/4 E5/4 | F5/4. G5/8 A5/4 C6/4 | G5/4. E5/8 C5/4 E5/4 | D5/2. r/4 |
+| C6/4. B5/8 A5/4 C6/4 | A5/4. G5/8 F5/4 A5/4 | G5/8 A5/8 B5/8 C6/8 D6/4 B5/4 | G5/2 D5/4 B4/4 |
 # Up a step: A
-| F#5/8 A5 D6 A5 F#5/4 E5/8 D5/8 | B4/4 D5/4 F#5/4 B5/4 | G5/8 F#5 G5 B5 D6/4 B5/4 | A5/4. G5/8 F#5/4 E5/4 |
-| F#5/8 A5 D6 A5 F#5/4 A5/4 | B5/8 A5 F#5 D5 B4/4 D5/4 | G5/8 B5 D6 B5 A5 G5 F#5 E5 | E5/2 A5/4 r/4 |
-# B
-| D6/4. C#6/8 B5/4 F#5/4 | G5/4. A5/8 B5/4 D6/4 | A5/4. F#5/8 D5/4 F#5/4 | E5/2. r/4 |
-| D6/4. C#6/8 B5/4 D6/4 | B5/4. A5/8 G5/4 B5/4 | A5/8 B5 C#6 D6 E6/4 C#6/4 | A5/2 E5/4 C#5/4 |
+| v=106 F#5/8 A5/8 D6/8 A5/8 F#5/4 E5/8 D5/8 | B4/4 D5/4 F#5/4 B5/4 | G5/8 F#5/8 G5/8 B5/8 D6/4 B5/4 | A5/4. G5/8 F#5/4 E5/4 |
+| F#5/8 A5/8 D6/8 A5/8 F#5/4 A5/4 | B5/8 A5/8 F#5/8 D5/8 B4/4 D5/4 | G5/8 B5/8 D6/8 B5/8 A5/8 G5/8 F#5/8 E5/8 | E5/2 A5/4 r/4 |
+# The save room, up a step
+| v=90 B5/2 A5/4 G5/4 | A5/2. E5/4 | F#5/2 A5/4 C#6/4 | B5/1 |
+| D6/2 B5/4 G5/4 | E6/2 C#6/4 A5/4 | F#5/2 A5/4 D6/4 | D6/2. r/4 |
+# Adventure, up a step
+| v=108 B4/8 D5/8 F#5/8 B5/4 A5/8 F#5/8 D5/8 | E5/8 F#5/8 r/8 D5/8 C#5/4 B4/4 | B4/8 D5/8 G5/8 B5/4 A5/8 G5/8 D5/8 | F#5/8 G5/8 r/8 D5/8 B4/2 |
+| C#5/8 E5/8 A5/8 C#6/4 B5/8 A5/8 E5/8 | G5/8 A5/8 r/8 E5/8 C#5/2 | A5/8 F#5/8 C#5/8 F#5/8 A5/8 C#6/8 A5/8 F#5/8 | A#5/4 F#5/4 C#5/4 A#4/4 |
+# B, up a step
+| v=108 D6/4. C#6/8 B5/4 F#5/4 | G5/4. A5/8 B5/4 D6/4 | A5/4. F#5/8 D5/4 F#5/4 | E5/2. r/4 |
+| D6/4. C#6/8 B5/4 D6/4 | B5/4. A5/8 G5/4 B5/4 | A5/8 B5/8 C#6/8 D6/8 E6/4 C#6/4 | A5/2 E5/4 C#5/4 |
 # Outro
-| F#5/8 A5 D6 A5 F#5/4 E5/8 D5/8 | B4/4 D5/4 G5/4 B5/4 | A5/8 G5 F#5 E5 C#5/4 E5/4 | D5/2. r/4 |
+| v=100 F#5/8 A5/8 D6/8 A5/8 F#5/4 E5/8 D5/8 | B4/4 D5/4 G5/4 B5/4 | A5/8 G5/8 F#5/8 E5/8 C#5/4 E5/4 | D5/2. r/4 |
 
 track duo role=lead2 vol=0.5
 # Intro
-| R*4 |
+| R | R | R | R |
 # A
-| R*8 |
-# A again: harmony joins
-| G4/2 E4/2 | A4/2 E4/2 | A4/2 C5/2 | B4/2 D5/2 |
-| G4/2 E4/2 | A4/2 E4/2 | A4/2 C5/2 | B4/2 D5/2 |
+| R | R | R | R |
+| R | R | R | R |
+# A again, the harmony joins
+| v=80 G4/2 E4/2 | A4/2 E4/2 | A4/2 F4/2 | B4/2 G4/2 |
+| G4/2 E4/2 | A4/2 E4/2 | A4/2 F4/2 | B4/2 G4/2 |
 # B
-| A4/2 E4/2 | A4/2 C5/2 | G4/2 E4/2 | B4/2 D5/2 |
-| A4/2 E4/2 | A4/2 C5/2 | B4/2 D5/2 | B4/2 D5/2 |
+| v=78 A4/2 E4/2 | A4/2 F4/2 | G4/2 E4/2 | B4/2 G4/2 |
+| A4/2 E4/2 | A4/2 F4/2 | B4/2 G4/2 | B4/2 G4/2 |
+# The save room: a quiet interlude
+| R | R | R | R |
+| R | R | R | R |
 # A
-| G4/2 E4/2 | A4/2 E4/2 | A4/2 C5/2 | B4/2 D5/2 |
-| G4/2 E4/2 | A4/2 E4/2 | A4/2 C5/2 | B4/2 D5/2 |
-# Up a step
-| A4/2 F#4/2 | B4/2 F#4/2 | B4/2 D5/2 | C#5/2 E5/2 |
-| A4/2 F#4/2 | B4/2 F#4/2 | B4/2 D5/2 | C#5/2 E5/2 |
-| B4/2 F#4/2 | B4/2 D5/2 | A4/2 F#4/2 | C#5/2 E5/2 |
-| B4/2 F#4/2 | B4/2 D5/2 | C#5/2 E5/2 | C#5/2 E5/2 |
+| v=80 G4/2 E4/2 | A4/2 E4/2 | A4/2 F4/2 | B4/2 G4/2 |
+| G4/2 E4/2 | A4/2 E4/2 | A4/2 F4/2 | B4/2 G4/2 |
+# Adventure
+| v=76 A4/2 E4/2 | A4/2 E4/2 | A4/2 F4/2 | A4/2 F4/2 |
+| B4/2 G4/2 | B4/2 G4/2 | G4/2 E4/2 | G#4/2 E4/2 |
+# B
+| v=80 A4/2 E4/2 | A4/2 F4/2 | G4/2 E4/2 | B4/2 G4/2 |
+| A4/2 E4/2 | A4/2 F4/2 | B4/2 G4/2 | B4/2 G4/2 |
+# Up a step: A
+| v=82 A4/2 F#4/2 | B4/2 F#4/2 | B4/2 G4/2 | C#5/2 A4/2 |
+| A4/2 F#4/2 | B4/2 F#4/2 | B4/2 G4/2 | C#5/2 A4/2 |
+# The save room, up a step
+| v=70 B4/2 G4/2 | C#5/2 A4/2 | A4/2 F#4/2 | B4/2 F#4/2 |
+| B4/2 G4/2 | C#5/2 A4/2 | A4/2 F#4/2 | A4/2 F#4/2 |
+# Adventure, up a step
+| v=80 B4/2 F#4/2 | B4/2 F#4/2 | B4/2 G4/2 | B4/2 G4/2 |
+| C#5/2 A4/2 | C#5/2 A4/2 | A4/2 F#4/2 | A#4/2 F#4/2 |
+# B, up a step
+| v=84 B4/2 F#4/2 | B4/2 G4/2 | A4/2 F#4/2 | C#5/2 A4/2 |
+| B4/2 F#4/2 | B4/2 G4/2 | C#5/2 A4/2 | C#5/2 A4/2 |
 # Outro
-| A4/2 F#4/2 | B4/2 G4/2 | C#5/2 E5/2 | F#4/2. r/4 |
+| v=78 A4/2 F#4/2 | B4/2 G4/2 | C#5/2 E5/2 | F#4/2. r/4 |
 
-track arp role=arp vol=0.35
+track arp role=arp vol=0.4
 # Intro
-| C5/16 E5 G5 C6 G5 E5 C5 E5 C5 E5 G5 C6 G5 E5 C5 E5 | A4/16 C5 E5 A5 E5 C5 A4 C5 A4 C5 E5 A5 E5 C5 A4 C5 | A4/16 C5 F5 A5 F5 C5 A4 C5 A4 C5 F5 A5 F5 C5 A4 C5 | B4/16 D5 G5 B5 G5 D5 B4 D5 B4 D5 G5 B5 G5 D5 B4 D5 |
-# A, A
-| R*16 |
-# B
-| A4/16 C5 E5 A5 E5 C5 A4 C5 A4 C5 E5 A5 E5 C5 A4 C5 | A4/16 C5 F5 A5 F5 C5 A4 C5 A4 C5 F5 A5 F5 C5 A4 C5 | C5/16 E5 G5 C6 G5 E5 C5 E5 C5 E5 G5 C6 G5 E5 C5 E5 | B4/16 D5 G5 B5 G5 D5 B4 D5 B4 D5 G5 B5 G5 D5 B4 D5 |
-| A4/16 C5 E5 A5 E5 C5 A4 C5 A4 C5 E5 A5 E5 C5 A4 C5 | A4/16 C5 F5 A5 F5 C5 A4 C5 A4 C5 F5 A5 F5 C5 A4 C5 | B4/16 D5 G5 B5 G5 D5 B4 D5 B4 D5 G5 B5 G5 D5 B4 D5 | B4/16 D5 G5 B5 G5 D5 B4 D5 B4 D5 G5 B5 G5 D5 B4 D5 |
+| v=70 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 | A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 |
 # A
-| R*8 |
-# Up a step
-| R*8 |
-| B4/16 D5 F#5 B5 F#5 D5 B4 D5 B4 D5 F#5 B5 F#5 D5 B4 D5 | B4/16 D5 G5 B5 G5 D5 B4 D5 B4 D5 G5 B5 G5 D5 B4 D5 | D5/16 F#5 A5 D6 A5 F#5 D5 F#5 D5 F#5 A5 D6 A5 F#5 D5 F#5 | C#5/16 E5 A5 C#6 A5 E5 C#5 E5 C#5 E5 A5 C#6 A5 E5 C#5 E5 |
-| B4/16 D5 F#5 B5 F#5 D5 B4 D5 B4 D5 F#5 B5 F#5 D5 B4 D5 | B4/16 D5 G5 B5 G5 D5 B4 D5 B4 D5 G5 B5 G5 D5 B4 D5 | C#5/16 E5 A5 C#6 A5 E5 C#5 E5 C#5 E5 A5 C#6 A5 E5 C#5 E5 | C#5/16 E5 A5 C#6 A5 E5 C#5 E5 C#5 E5 A5 C#6 A5 E5 C#5 E5 |
+| R | R | R | R |
+| R | R | R | R |
+# A again, the harmony joins
+| R | R | R | R |
+| R | R | R | R |
+# B
+| v=66 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 |
+| A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 |
+# The save room: a quiet interlude
+| v=58 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | E4/16 G4/16 B4/16 E5/16 B4/16 G4/16 E4/16 G4/16 E4/16 G4/16 B4/16 E5/16 B4/16 G4/16 E4/16 G4/16 | A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 |
+| F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 |
+# A
+| R | R | R | R |
+| R | R | R | R |
+# Adventure
+| R | R | R | R |
+| R | R | R | R |
+# B
+| v=68 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 |
+| A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 A3/16 C4/16 E4/16 A4/16 E4/16 C4/16 A3/16 C4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 |
+# Up a step: A
+| R | R | R | R |
+| R | R | R | R |
+# The save room, up a step
+| v=62 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 | F#4/16 A4/16 C#5/16 F#5/16 C#5/16 A4/16 F#4/16 A4/16 F#4/16 A4/16 C#5/16 F#5/16 C#5/16 A4/16 F#4/16 A4/16 | B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 |
+| G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 | D4/16 F#4/16 A4/16 D5/16 A4/16 F#4/16 D4/16 F#4/16 D4/16 F#4/16 A4/16 D5/16 A4/16 F#4/16 D4/16 F#4/16 | D4/16 F#4/16 A4/16 D5/16 A4/16 F#4/16 D4/16 F#4/16 D4/16 F#4/16 A4/16 D5/16 A4/16 F#4/16 D4/16 F#4/16 |
+# Adventure, up a step
+| v=64 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 | B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 |
+| A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 | A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 | F#4/16 A4/16 C#5/16 F#5/16 C#5/16 A4/16 F#4/16 A4/16 F#4/16 A4/16 C#5/16 F#5/16 C#5/16 A4/16 F#4/16 A4/16 | F#4/16 A#4/16 C#5/16 F#5/16 C#5/16 A#4/16 F#4/16 A#4/16 F#4/16 A#4/16 C#5/16 F#5/16 C#5/16 A#4/16 F#4/16 A#4/16 |
+# B, up a step
+| v=70 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | D4/16 F#4/16 A4/16 D5/16 A4/16 F#4/16 D4/16 F#4/16 D4/16 F#4/16 A4/16 D5/16 A4/16 F#4/16 D4/16 F#4/16 | A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 |
+| B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 B3/16 D4/16 F#4/16 B4/16 F#4/16 D4/16 B3/16 D4/16 | G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 G4/16 B4/16 D5/16 G5/16 D5/16 B4/16 G4/16 B4/16 | A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 | A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 A4/16 C#5/16 E5/16 A5/16 E5/16 C#5/16 A4/16 C#5/16 |
 # Outro
-| R*4 |
+| R | R | R | R |
 
 track bass role=bass vol=0.5
 # Intro
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
+| v=90 C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
 # A
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
-# A again
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
+| v=96 C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
+| C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
+# A again, the harmony joins
+| v=96 C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
+| C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
 # B
-| A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | C3/4 G2 C3 G2 | G2/4 D2 G2 D2 |
-| A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 | G2/4 D2 G2 D2 |
+| v=96 A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | C3/4 G2/4 C3/4 G2/4 | G2/4 D2/4 G2/4 D2/4 |
+| A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 | G2/4 D2/4 G2/4 D2/4 |
+# The save room: a quiet interlude
+| v=84 F2/1 | G2/1 | E2/1 | A2/1 |
+| F2/1 | G2/1 | C3/1 | C3/1 |
 # A
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
-| C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
-# Up a step
-| D3/4 A2 D3 A2 | B2/4 F#2 B2 F#2 | G2/4 D3 G2 D3 | A2/4 E2 A2 E2 |
-| D3/4 A2 D3 A2 | B2/4 F#2 B2 F#2 | G2/4 D3 G2 D3 | A2/4 E2 A2 E2 |
-| B2/4 F#2 B2 F#2 | G2/4 D3 G2 D3 | D3/4 A2 D3 A2 | A2/4 E2 A2 E2 |
-| B2/4 F#2 B2 F#2 | G2/4 D3 G2 D3 | A2/4 E2 A2 E2 | A2/4 E2 A2 E2 |
+| v=96 C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
+| C3/4 G2/4 C3/4 G2/4 | A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 |
+# Adventure
+| v=100 A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 | A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 | F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 | F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 F2/8 F3/8 |
+| G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | E2/8 E3/8 E2/8 E3/8 E2/8 E3/8 E2/8 E3/8 | E2/8 E3/8 E2/8 E3/8 E2/8 E3/8 E2/8 E3/8 |
+# B
+| v=98 A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | C3/4 G2/4 C3/4 G2/4 | G2/4 D2/4 G2/4 D2/4 |
+| A2/4 E2/4 A2/4 E2/4 | F2/4 C3/4 F2/4 C3/4 | G2/4 D2/4 G2/4 D2/4 | G2/4 D2/4 G2/4 D2/4 |
+# Up a step: A
+| v=100 D3/4 A2/4 D3/4 A2/4 | B2/4 F#2/4 B2/4 F#2/4 | G2/4 D3/4 G2/4 D3/4 | A2/4 E2/4 A2/4 E2/4 |
+| D3/4 A2/4 D3/4 A2/4 | B2/4 F#2/4 B2/4 F#2/4 | G2/4 D3/4 G2/4 D3/4 | A2/4 E2/4 A2/4 E2/4 |
+# The save room, up a step
+| v=88 G2/1 | A2/1 | F#2/1 | B2/1 |
+| G2/1 | A2/1 | D3/1 | D3/1 |
+# Adventure, up a step
+| v=104 B2/8 B3/8 B2/8 B3/8 B2/8 B3/8 B2/8 B3/8 | B2/8 B3/8 B2/8 B3/8 B2/8 B3/8 B2/8 B3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 | G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 G2/8 G3/8 |
+| A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 | A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 A2/8 A3/8 | F#2/8 F#3/8 F#2/8 F#3/8 F#2/8 F#3/8 F#2/8 F#3/8 | F#2/8 F#3/8 F#2/8 F#3/8 F#2/8 F#3/8 F#2/8 F#3/8 |
+# B, up a step
+| v=102 B2/4 F#2/4 B2/4 F#2/4 | G2/4 D3/4 G2/4 D3/4 | D3/4 A2/4 D3/4 A2/4 | A2/4 E2/4 A2/4 E2/4 |
+| B2/4 F#2/4 B2/4 F#2/4 | G2/4 D3/4 G2/4 D3/4 | A2/4 E2/4 A2/4 E2/4 | A2/4 E2/4 A2/4 E2/4 |
 # Outro
-| D3/4 A2 D3 A2 | G2/4 D2 G2 D2 | A2/4 E2 A2 E2 | D2/2. r/4 |
+| v=96 D3/4 A2/4 D3/4 A2/4 | G2/4 D3/4 G2/4 D3/4 | A2/4 E2/4 A2/4 E2/4 | D3/2. r/4 |
 
 track drums role=drums
 # Intro
-| k/4 r/4 k/4 r/4 | k/4 r/4 k/4 r/4 | k/8 h s h k h s h | k/8 h s h s/16 s s s s/8 s |
+| v=90 k/4 r/4 k/4 r/4 | k/4 r/4 k/4 r/4 | k/8 h s h k h s s | k/8 h s h s/16 s s s s/8 s |
 # A
-| [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
+| v=100 [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
 | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h s/16 s s s s/8 s |
-# A again
-| k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
+# A again, the harmony joins
+| v=100 [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
 | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h s/16 s s s s/8 s |
 # B
-| [k cr]/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s |
+| v=100 [k cr]/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s |
 | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h s/16 s s s s/8 s |
+# The save room: a quiet interlude
+| v=84 k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 |
+| k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/8 h s h s/16 s s s s/8 s |
 # A
-| [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
+| v=100 [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
 | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h s/16 s s s s/8 s |
-# Up a step
-| [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
+# Adventure
+| v=104 [k cr]/8 k s h k k s s | k/8 k s h k k s s | k/8 k s h k k s s | k/8 k s h k k s s |
+| k/8 k s h k k s s | k/8 k s h k k s s | k/8 k s h k k s s | k/8 h s h s/16 s s s s/8 s |
+# B
+| v=104 [k cr]/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s |
+| k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h s/16 s s s s/8 s |
+# Up a step: A
+| v=106 [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h |
 | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h s/16 s s s s/8 s |
-| [k cr]/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s |
+# The save room, up a step
+| v=88 k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 |
+| k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/4 h/4 s/4 h/4 | k/8 h s h s/16 s s s s/8 s |
+# Adventure, up a step
+| v=108 [k cr]/8 k s h k k s s | k/8 k s h k k s s | k/8 k s h k k s s | k/8 k s h k k s s |
+| k/8 k s h k k s s | k/8 k s h k k s s | k/8 k s h k k s s | k/8 h s h s/16 s s s s/8 s |
+# B, up a step
+| v=108 [k cr]/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s |
 | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h k h s s | k/8 h s h s/16 s s s s/8 s |
 # Outro
-| [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h s/16 s s s s/8 s | [k cr]/2. r/4 |
+| v=100 [k cr]/8 h s h k k s h | k/8 h s h k k s h | k/8 h s h s/16 s s s s/8 s | [k cr]/2. r/4 |

@@ -66,7 +66,7 @@ generated song by hand.
 it. A recipe with `hidden: true` gets a `hidden: true` header, which keeps its song out of the
 library while it is still parsed and checked.
 
-Ride of the Valkyries and two older originals (Midnight Arcade, Save Point) are hand-written. Edit their `.song` files directly.
+Ride of the Valkyries and Midnight Arcade are hand-written. Edit their `.song` files directly.
 
 ### Form-based recipes (more shape)
 
@@ -145,7 +145,8 @@ The club tracks have their own script too, `arranger/club.mjs`: Underpass (Synth
 of a synth film score: octave-pulse bass, step sequencer, brass chords, a heroic theme) and Ivory and
 Ash (128 Mix), which reuses the Ivory and Ash melodies with every note doubled in length so the tune
 keeps its pace at 128 BPM. Night Shift has its own, `arranger/night-shift.mjs`, laying its acid line
-and hook out over two drops.
+and hook out over two drops, and so does Save Point (`arranger/save-point.mjs`: its two themes, a
+save-room interlude, an adventure section, all again up a step).
 
 ```bash
 node tools/arranger/club.mjs tmp/club
