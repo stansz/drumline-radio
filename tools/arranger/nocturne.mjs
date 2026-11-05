@@ -3,6 +3,7 @@
 // edition): the violins play the right hand, the cellos the left hand's bass notes, and the harp its
 // chords. A soft string pad holds each chord, and the cadenza runs up and down before the last chords.
 // The bass sits an octave low where Chopin's is high, so it also hits hard when remixed into Techno.
+// The tempo is an eighth at 108 (quarter 54), slower than Chopin's marked 132, like most recordings.
 //   node tools/arranger/nocturne.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -201,13 +202,13 @@ source: public-domain
 category: classics
 key: Eb major
 style: orchestral
-tempo: 66
+tempo: 54
 time: 12/8
 pickup: /8
 
-@bar 32 tempo=44
-@bars 33-35 tempo=150..100
-@bars 36-37 tempo=58..40
+@bar 32 tempo=38
+@bars 33-35 tempo=136..92
+@bars 36-37 tempo=48..34
 
 track violins role=lead vol=0.9
 ${block('v=80 Bb4/8', violins)}

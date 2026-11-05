@@ -9,13 +9,13 @@ source: public-domain
 category: classics
 key: Eb major
 style: orchestral
-tempo: 66
+tempo: 54
 time: 12/8
 pickup: /8
 
-@bar 32 tempo=44
-@bars 33-35 tempo=150..100
-@bars 36-37 tempo=58..40
+@bar 32 tempo=38
+@bars 33-35 tempo=136..92
+@bars 36-37 tempo=48..34
 
 track violins role=lead vol=0.9
 | v=80 Bb4/8 |
