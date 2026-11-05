@@ -66,7 +66,7 @@ describe('library', () => {
       'synthwave',
       'techno',
       'chiptune',
-      'techno',
+      'synthwave',
       'synthwave',
       'techno',
       'chiptune',

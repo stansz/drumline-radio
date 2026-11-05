@@ -66,8 +66,7 @@ generated song by hand.
 it. A recipe with `hidden: true` gets a `hidden: true` header, which keeps its song out of the
 library while it is still parsed and checked.
 
-Ride of the Valkyries and the three older originals (Midnight Arcade, Night Shift, Save Point) are
-hand-written. Edit their `.song` files directly.
+Ride of the Valkyries and two older originals (Midnight Arcade, Save Point) are hand-written. Edit their `.song` files directly.
 
 ### Form-based recipes (more shape)
 
@@ -142,9 +141,11 @@ node tools/midi/midi2song.mjs score.mid --time 3/8 --pickup 480 --grid 40 --json
 and triplets), and prints each voice's range and how many notes moved. For a famous public-domain
 piece, start from a score like this rather than from memory.
 
-The club tracks have their own script too, `arranger/club.mjs`: Underpass (rolling sub bass, acid
-bass riff, stab hook) and Ivory and Ash (128 Mix), which reuses the Ivory and Ash melodies with every
-note doubled in length so the tune keeps its pace at 128 BPM.
+The club tracks have their own script too, `arranger/club.mjs`: Underpass (Synthwave, in the manner
+of a synth film score: octave-pulse bass, step sequencer, brass chords, a heroic theme) and Ivory and
+Ash (128 Mix), which reuses the Ivory and Ash melodies with every note doubled in length so the tune
+keeps its pace at 128 BPM. Night Shift has its own, `arranger/night-shift.mjs`, laying its acid line
+and hook out over two drops.
 
 ```bash
 node tools/arranger/club.mjs tmp/club
@@ -220,7 +221,7 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   `node tools/browser/late.mjs`.
 - **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
-  hook,pluck,arp,stabs,pad,acid,sub,drums,perc,cymbals` (track names in the song file's order). Add a style id at the end to remix the song into it first.
+  lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order). Add a style id at the end to remix the song into it first.
 
 `browser/cdp.mjs` is the shared helper. It launches headless Edge (set `EDGE_PATH` to use another
 Chromium) and talks to it over the DevTools protocol with Node's built-in WebSocket.

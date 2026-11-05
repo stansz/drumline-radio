@@ -1,391 +1,291 @@
-# Underpass, by Claude and SZ. Club techno built on a rolling sub bass: an acid bass riff and a
-# stab hook come in over the groove, then a kickless breakdown and a long second drop.
+# Underpass, by Claude and SZ. Synthwave in the manner of a synth film score: an octave-pulse bass,
+# a step sequencer, brass chords, and a heroic theme that goes from half-time to four on the floor.
 title: Underpass
 composer: Claude & SZ
 year: 2026
 source: original
 category: originals
 key: F minor
-style: techno
-tempo: 126
+style: synthwave
+tempo: 124
 time: 4/4
 
-track hook role=lead2 vol=0.5 pan=-0.15
-# Intro: kick, then hats
+track lead role=lead vol=0.7
+# The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
-# Intro: the sub comes in
+# The sequencer starts, half-time drums
 | R | R | R | R |
 | R | R | R | R |
-# Groove: the bass rolls
+# The theme, half-time
+| v=96 F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+| F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+# Build
+| R | R | R | R |
+| R | R | R | R |
+# Drop: four on the floor, the theme up high
+| v=108 F5/2 C6/2 | Ab6/2. G6/8 F6/8 | F6/2 C#6/2 | Ab5/1 |
+| Eb6/2 Ab6/2 | C7/2. Bb6/8 Ab6/8 | G6/2 Bb6/2 | G6/1 |
+| F5/2 C6/2 | Ab6/2. G6/8 F6/8 | F6/2 C#6/2 | Ab5/1 |
+| Eb6/2 Ab6/2 | C7/2. Bb6/8 Ab6/8 | G6/2 Bb6/2 | G6/1 |
+# Breakdown: the old stab hook over the brass
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
-| R | R | R | R |
-# Build: acid riff and hook, snare roll
-| v=70 C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-# Drop
-| v=88 C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-# Breakdown: no kick
-| R | R | R | R |
-| R | R | R | R |
-| v=84 F5/4. Eb5/8 Db5/4 C5/4 | Bb4/2. r/4 | C5/4. Ab4/8 F4/4 Ab4/4 | C5/2. r/4 |
-| Db5/4. C5/8 Bb4/4 Db5/4 | E5/2 G5/2 | F5/1~ | F5/2 r/2 |
-# Second drop: everything
-| v=92 C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
-# Outro: stripping down
-| R | R | R | R |
-| R | R | R | R |
+# Final: everything, the theme in two voices
+| v=112 F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+| F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+| F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+# Outro: the pulse fades
 | R | R | R | R |
 | R | R | R | R |
 
-track pluck role=counter vol=0.6 pan=0.2
-# Intro: kick, then hats
+track harmony role=lead2 vol=0.45 pan=0.2
+# The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
-# Intro: the sub comes in
+# The sequencer starts, half-time drums
 | R | R | R | R |
 | R | R | R | R |
-# Groove: the bass rolls
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Build: acid riff and hook, snare roll
-| R | R | R | R |
-| R | R | R | R |
-# Drop
+# The theme, half-time
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
-# Breakdown: no kick
-| v=92 F5/4. Eb5/8 Db5/4 C5/4 | Bb4/2. r/4 | C5/4. Ab4/8 F4/4 Ab4/4 | C5/2. r/4 |
-| Db5/4. C5/8 Bb4/4 Db5/4 | E5/2 G5/2 | F5/1~ | F5/2 r/2 |
+# Build
 | R | R | R | R |
 | R | R | R | R |
-# Second drop: everything
+# Drop: four on the floor, the theme up high
+| v=84 F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+| F4/2 C5/2 | Ab5/2. G5/8 F5/8 | F5/2 Db5/2 | Ab4/1 |
+| Eb5/2 Ab5/2 | C6/2. Bb5/8 Ab5/8 | G5/2 Bb5/2 | G5/1 |
+# Breakdown: the old stab hook over the brass
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Outro: stripping down
-| R | R | R | R |
-| R | R | R | R |
+# Final: everything, the theme in two voices
+| v=88 C4/2 Ab4/2 | F5/2. C5/8 C5/8 | C#5/2 Ab4/2 | F4/1 |
+| C5/2 Eb5/2 | Ab5/2. Eb5/8 Eb5/8 | Eb5/2 G5/2 | Eb5/1 |
+| C4/2 Ab4/2 | F5/2. C5/8 C5/8 | C#5/2 Ab4/2 | F4/1 |
+| C5/2 Eb5/2 | Ab5/2. Eb5/8 Eb5/8 | Eb5/2 G5/2 | Eb5/1 |
+| C4/2 Ab4/2 | F5/2. C5/8 C5/8 | C#5/2 Ab4/2 | F4/1 |
+| C5/2 Eb5/2 | Ab5/2. Eb5/8 Eb5/8 | Eb5/2 G5/2 | Eb5/1 |
+# Outro: the pulse fades
 | R | R | R | R |
 | R | R | R | R |
 
-track arp role=arp vol=0.3 pan=0.3
-# Intro: kick, then hats
+track hook role=counter vol=0.5 pan=-0.2
+# The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
-# Intro: the sub comes in
+# The sequencer starts, half-time drums
 | R | R | R | R |
 | R | R | R | R |
-# Groove: the bass rolls
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Build: acid riff and hook, snare roll
-| R | R | R | R |
-| R | R | R | R |
-# Drop
+# The theme, half-time
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
-# Breakdown: no kick
+# Build
 | R | R | R | R |
 | R | R | R | R |
-| v=54 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 |
-| Bb4/16 F5/16 C#5/16 Bb5/16 F5/16 C#5/16 Bb5/16 Bb4/16 Bb4/16 F5/16 C#5/16 Bb5/16 F5/16 C#5/16 Bb5/16 Bb4/16 | C4/16 G4/16 E4/16 C5/16 G4/16 E4/16 C5/16 C4/16 C4/16 G4/16 E4/16 C5/16 G4/16 E4/16 C5/16 C4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 |
-# Second drop: everything
-| v=62 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
-| F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
-| F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
-| F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
-| F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
-| F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 F4/16 C5/16 Ab4/16 F5/16 C5/16 Ab4/16 F5/16 F4/16 | C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 C#4/16 Ab4/16 F4/16 C#5/16 Ab4/16 F4/16 C#5/16 C#4/16 | Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 Eb4/16 Bb4/16 G4/16 Eb5/16 Bb4/16 G4/16 Eb5/16 Eb4/16 |
-# Outro: stripping down
+# Drop: four on the floor, the theme up high
 | R | R | R | R |
 | R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown: the old stab hook over the brass
+| R | R | R | R |
+| v=84 C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
+| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
+# Final: everything, the theme in two voices
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| v=80 C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
+| C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8 | C5/8. Bb4/16 Ab4/4 r/2 | C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8 | Eb5/8. Db5/16 Bb4/4 G4/4 r/4 |
+# Outro: the pulse fades
 | R | R | R | R |
 | R | R | R | R |
 
-track stabs role=chords vol=0.75 pan=-0.25
-# Intro: kick, then hats
+track sequencer role=arp vol=0.55 pan=0.3
+# The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
-# Intro: the sub comes in
+# The sequencer starts, half-time drums
+| v=70 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+# The theme, half-time
+| v=66 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+| F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+# Build
+| v=74 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+# Drop: four on the floor, the theme up high
+| v=70 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+| F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+# Breakdown: the old stab hook over the brass
+| v=58 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+| F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+| C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+# Final: everything, the theme in two voices
+| v=74 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+| F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+| F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 Ab3/16 Eb4/16 Ab4/16 C5/16 Eb5/16 Ab4/16 Eb4/16 C5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 | Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 Eb4/16 Bb4/16 Eb5/16 G5/16 Bb5/16 Eb5/16 Bb4/16 G5/16 |
+# Outro: the pulse fades
+| v=60 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 F3/16 C4/16 F4/16 Ab4/16 C5/16 F4/16 C4/16 Ab4/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 | C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 C#4/16 Ab4/16 C#5/16 F5/16 Ab5/16 C#5/16 Ab4/16 F5/16 |
+| R | R | R | R |
+
+track ostinato role=chords vol=0.45 pan=-0.3
+# The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
-# Groove: the bass rolls
+# The sequencer starts, half-time drums
 | R | R | R | R |
 | R | R | R | R |
-| v=96 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-# Build: acid riff and hook, snare roll
-| v=92 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-# Drop
-| v=104 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-# Breakdown: no kick
+# The theme, half-time
+| R | R | R | R |
+| R | R | R | R |
+| v=70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+# Build
+| v=76 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+# Drop: four on the floor, the theme up high
+| v=80 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+| [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+# Breakdown: the old stab hook over the brass
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
-| R | R | R | R |
-# Second drop: everything
-| v=106 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-# Outro: stripping down
-| v=94 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
-| r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+# Final: everything, the theme in two voices
+| v=84 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+| [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+| [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 [F4 Ab4 C5]/8 [F4 Ab4 C5]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 | [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 [C#4 F4 Ab4]/8 [C#4 F4 Ab4]/8:70 |
+| [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 | [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 [Eb4 G4 Bb4]/8 [Eb4 G4 Bb4]/8:70 |
+# Outro: the pulse fades
 | R | R | R | R |
 | R | R | R | R |
 
-track pad role=pad vol=0.4
-# Intro: kick, then hats
+track brass role=pad vol=0.5
+# The grid wakes: the pulse alone, low hits
 | R | R | R | R |
-| R | R | R | R |
-# Intro: the sub comes in
-| R | R | R | R |
-| R | R | R | R |
-# Groove: the bass rolls
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Build: acid riff and hook, snare roll
-| R | R | R | R |
-| R | R | R | R |
-# Drop
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Breakdown: no kick
-| v=84 [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 | [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 |
-| [Bb2 C#3 F3]/1 | [C3 E3 G3]/1 | [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 |
-| [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 | [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 |
-| [Bb2 C#3 F3]/1 | [C3 E3 G3]/1 | [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 |
-# Second drop: everything
-| v=54 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 |
+| v=50 [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# The sequencer starts, half-time drums
+| v=56 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# The theme, half-time
+| v=62 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# Build
+| v=66 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# Drop: four on the floor, the theme up high
+| v=70 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# Breakdown: the old stab hook over the brass
+| v=66 [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
 | [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 |
-| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 |
-| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 |
-| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 |
-| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 |
-# Outro: stripping down
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
+| [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# Final: everything, the theme in two voices
+| v=74 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+| [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
+# Outro: the pulse fades
+| v=60 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
+| [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
 
-track acid role=bass inst=acid vol=0.4 pan=0.1
-# Intro: kick, then hats
-| R | R | R | R |
-| R | R | R | R |
-# Intro: the sub comes in
-| R | R | R | R |
-| R | R | R | R |
-# Groove: the bass rolls
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Build: acid riff and hook, snare roll
-| v=80 F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-# Drop
-| v=94 F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-# Breakdown: no kick
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Second drop: everything
-| v=96 F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-# Outro: stripping down
-| v=80 F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | F3/16 r/16 F3/16 Ab3/16 r/16 F3/16 C4/16 r/16 F3/16 r/16 Eb3/16 r/16 F3/16 Ab3/16 r/8 | C#3/16 r/16 C#3/16 F3/16 r/16 C#3/16 Ab3/16 r/16 C#3/16 r/16 B3/16 r/16 C#3/16 F3/16 r/8 | Eb3/16 r/16 Eb3/16 G3/16 r/16 Eb3/16 Bb3/16 r/16 Eb3/16 r/16 C#3/16 r/16 Eb3/16 G3/16 r/8 |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
+track bass role=bass vol=0.7
+# The grid wakes: the pulse alone, low hits
+| v=92 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+# The sequencer starts, half-time drums
+| v=96 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+# The theme, half-time
+| v=100 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+| F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+# Build
+| v=104 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | R |
+# Drop: four on the floor, the theme up high
+| v=112 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+| F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+# Breakdown: the old stab hook over the brass
+| v=90 C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 | C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 | Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 | Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 |
+| F1/8 F2/8 F1/8 F2/8 F1/8 F2/8 F1/8 F2/8 | F1/8 F2/8 F1/8 F2/8 F1/8 F2/8 F1/8 F2/8 | C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 | Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 |
+| C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 | C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 C#1/8 C#2/8 | Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 | Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 Eb1/8 Eb2/8 |
+# Final: everything, the theme in two voices
+| v=116 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+| F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+| F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
+# Outro: the pulse fades
+| v=100 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
+| Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | F1/8 F2/8 F1/8 F2/8 F1/8 F2/8 F1/8 F2/8 | R |
 
-track sub role=bass vol=0.62
-# Intro: kick, then hats
-| R | R | R | R |
-| R | R | R | R |
-# Intro: the sub comes in
-| v=90 r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 C#2/8 r/8 C#2/8 r/8 C#2/8 r/8 C#2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 |
-| r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 C#2/8 r/8 C#2/8 r/8 C#2/8 r/8 C#2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 |
-# Groove: the bass rolls
-| v=100 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-# Build: acid riff and hook, snare roll
-| v=100 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | R |
-# Drop
-| v=112 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-# Breakdown: no kick
-| v=84 C#2/1 | Eb2/1 | F2/1 | F2/1 |
-| Bb1/1 | C2/1 | F2/1 | F2/1 |
-| C#2/1 | Eb2/1 | F2/1 | F2/1 |
-| Bb1/1 | C2/1 | F2/1 | F2/1 |
-# Second drop: everything
-| v=114 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-| r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 r/16 F2/16 F3/16 F2/16 | r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 r/16 C#2/16 C#3/16 C#2/16 | r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 r/16 Eb2/16 Eb3/16 Eb2/16 |
-# Outro: stripping down
-| v=104 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-| r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 r/16 F2/16 F2/16 F2/16 | r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 r/16 C#2/16 C#2/16 C#2/16 | r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 r/16 Eb2/16 Eb2/16 Eb2/16 |
-| v=90 r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 F2/8 r/8 F2/8 r/8 F2/8 r/8 F2/8 | r/8 C#2/8 r/8 C#2/8 r/8 C#2/8 r/8 C#2/8 | r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 r/8 Eb2/8 |
-| R | R | R | R |
-
-track drums role=drums vol=0.75
-# Intro: kick, then hats
-| v=100 k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 |
-| [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
-# Intro: the sub comes in
-| v=100 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
-# Groove: the bass rolls
-| v=104 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-# Build: acid riff and hook, snare roll
-| v=104 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | R |
-# Drop
-| v=112 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-# Breakdown: no kick
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Second drop: everything
-| v=114 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-# Outro: stripping down
-| v=104 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k cl h]/16 h/16 oh/16 h/16 |
-| [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 | [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 [k h]/16 h/16 oh/16 h/16 |
-| k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | k/4 k/4 k/4 k/4 | [k cr]/4 r/2. |
-
-track perc role=drums vol=0.5 pan=0.2
-# Intro: kick, then hats
-| R | R | R | R |
-| v=70 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-# Intro: the sub comes in
-| v=70 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-# Groove: the bass rolls
-| v=74 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-# Build: acid riff and hook, snare roll
-| v=74 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+track drums role=drums vol=0.8
+# The grid wakes: the pulse alone, low hits
+| v=96 [k cr]/1 | R | v=96 [k cr]/1 | R |
+| v=96 [k cr]/1 | R | v=96 [k cr]/1 | R |
+# The sequencer starts, half-time drums
+| v=100 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
+| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16 |
+# The theme, half-time
+| v=104 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
+| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16 |
+| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
+| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16 |
+# Build
+| v=104 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
 | v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
-# Drop
-| v=80 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-# Breakdown: no kick
-| v=56 r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 |
-| r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 |
-| r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 | r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8 |
-| v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
-# Second drop: everything
-| v=82 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-# Outro: stripping down
-| v=74 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
-| R | R | R | R |
-
-track cymbals role=drums vol=0.45
-# Intro: kick, then hats
-| R | R | R | R |
-| R | R | R | R |
-# Intro: the sub comes in
-| R | R | R | R |
-| R | R | R | R |
-# Groove: the bass rolls
-| v=90 cr/1 | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Build: acid riff and hook, snare roll
-| R | R | R | R |
-| R | R | R | R |
-# Drop
-| v=100 cr/1 | R | R | R |
-| R | R | R | R |
-| cr/1 | R | R | R |
-| R | R | R | R |
-# Breakdown: no kick
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-# Second drop: everything
-| v=104 cr/1 | R | R | R |
-| R | R | R | R |
-| cr/1 | R | R | R |
-| R | R | R | R |
-| cr/1 | R | R | R |
-| R | R | R | R |
-# Outro: stripping down
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
-| R | R | R | R |
+# Drop: four on the floor, the theme up high
+| v=112 [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
+| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
+| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+# Breakdown: the old stab hook over the brass
+| v=90 [k cr]/1 | R | R | R |
+| v=90 [k cr]/1 | R | R | R |
+| v=90 v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
+# Final: everything, the theme in two voices
+| v=116 [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
+| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
+| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
+| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+# Outro: the pulse fades
+| v=100 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
+| [k cr]/1 | R | R | v=100 [k cr]/1 |

@@ -1,5 +1,5 @@
-// Club tracks for the Techno style, built section by section like ivory-and-ash.mjs:
-//   underpass.song           an original: rolling sub bass, an acid bass riff, stabs and a hook
+// Club tracks, built section by section like ivory-and-ash.mjs:
+//   underpass.song           an original in the manner of a synth film score (Synthwave)
 //   ivory-and-ash-128.song   Ivory and Ash at 128 BPM: the same melodies with every note doubled in
 //                            length, so the tune keeps its pace over a four-on-the-floor beat
 //   node tools/arranger/club.mjs [outDir]
@@ -13,6 +13,10 @@ const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const PC = { C: 0, 'C#': 1, Db: 1, D: 2, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
 const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
 const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const midi = (n) => {
+  const m = /^([A-G](?:#|b)?)(\d)$/.exec(n);
+  return (Number(m[2]) + 1) * 12 + PC[m[1]];
+};
 const DUR = { 3840: '/1', 2880: '/2.', 1920: '/2', 1440: '/4.', 960: '/4', 720: '/8.', 480: '/8', 240: '/16' };
 const BAR = 3840;
 
@@ -118,105 +122,138 @@ const write = (file, head, song, header) => {
 };
 
 // ---------------------------------------------------------------------------------------------
-// Underpass: F minor, 126 BPM.
+// Underpass: F minor, 124 BPM, for the Synthwave style, in the manner of a synth film score: an
+// octave-pulse bass in sixteenths, a step-sequencer arpeggio, brass-like held chords, an eighth-note
+// string ostinato, a heroic lead in long notes, and cinematic hits that switch between half-time and
+// four-on-the-floor. The stab hook from the first version comes back in the breakdown.
 
 {
-  const LOOP = ['Fm', 'Fm', 'Db', 'Eb'];
-  const BREAK = ['Db', 'Eb', 'Fm', 'Fm', 'Bbm', 'C', 'Fm', 'Fm'];
+  const LOOP = ['Fm', 'Fm', 'Db', 'Db', 'Ab', 'Ab', 'Eb', 'Eb'];
+  const BREAK = ['Db', 'Db', 'Eb', 'Eb', 'Fm', 'Fm', 'Db', 'Eb'];
+  const THEME = [
+    'F4/2 C5/2', 'Ab5/2. G5/8 F5/8', 'F5/2 Db5/2', 'Ab4/1',
+    'Eb5/2 Ab5/2', 'C6/2. Bb5/8 Ab5/8', 'G5/2 Bb5/2', 'G5/1',
+  ];
   const HOOK = [
     'C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 C5/8 Eb5/8', 'C5/8. Bb4/16 Ab4/4 r/2',
     'C5/8 r/16 C5/16 Ab4/8 F4/8 r/8 Ab4/8 Db5/8 F5/8', 'Eb5/8. Db5/16 Bb4/4 G4/4 r/4',
   ];
-  // The hook stretched out over the breakdown chords.
-  const BREAK_HOOK = [
-    'F5/4. Eb5/8 Db5/4 C5/4', 'Bb4/2. r/4', 'C5/4. Ab4/8 F4/4 Ab4/4', 'C5/2. r/4',
-    'Db5/4. C5/8 Bb4/4 Db5/4', 'E5/2 G5/2', 'F5/1~', 'F5/2 r/2',
-  ];
-  const keys = ['hook', 'pluck', 'arp', 'stabs', 'pad', 'acid', 'sub', 'drums', 'perc', 'cym'];
+  // A second voice under the melody: the nearest chord tone at least a minor third below each note.
+  const under = (bar, sym) => {
+    const c = chord(sym);
+    return bar.replace(/\b([A-G](?:#|b)?)(\d)\b/g, (n) => {
+      let m = midi(n) - 3;
+      while (!c.iv.includes((((m - c.pc) % 12) + 12) % 12)) m -= 1;
+      return nm(m);
+    });
+  };
+  const lowRoot = (c) => 24 + ((c.pc - 0 + 12) % 12) + (c.pc < 1 ? 12 : 0); // C#1 .. C2
+  const T2 = {
+    // the octave pulse: low root, root an octave up, every sixteenth
+    pulse: (c) => Array(8).fill(`${nm(lowRoot(c))}/16 ${nm(lowRoot(c) + 12)}/16`).join(' '),
+    pulseHalf: (c) => Array(4).fill(`${nm(lowRoot(c))}/8 ${nm(lowRoot(c) + 12)}/8`).join(' '),
+    // the step sequencer: chord tones in a fixed 8-step pattern
+    seq: (c) => {
+      const t = [0, 7, 12, 12 + c.iv[1], 19, 12, 7, 12 + c.iv[1]].map((i) => 53 + ((c.pc - 5 + 12) % 12) + i);
+      return [...t, ...t].map((n) => `${nm(n)}/16`).join(' ');
+    },
+    // the string ostinato: the chord on every eighth, accent on the beat
+    ost: (c) => { const s = stabChord(c); return Array(4).fill(`${s}/8 ${s}/8:70`).join(' '); },
+    brass: (c) => `[${c.iv.map((i) => nm(48 + c.pc + i - (c.pc >= 8 ? 12 : 0))).join(' ')}]/1`,
+  };
+  const D2 = {
+    hit: '[k cr]/1',
+    half: 'k/4 h/8 h/8 [s cl]/4 h/8 k/8',
+    halfFill: 'k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16',
+    four: 'k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8',
+    fourCrash: '[k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8',
+    toms: 'th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8',
+    end: '[k cr]/1',
+  };
+  const fourBars = (n) => Array.from({ length: n }, (_, i) => (i % 8 === 0 ? D2.fourCrash : i % 8 === 7 ? D2.toms : D2.four));
+  const halfBars = (n) => Array.from({ length: n }, (_, i) => (i % 8 === 7 ? D2.halfFill : D2.half));
+  const keys = ['lead', 'harmony', 'hook', 'seq', 'ostinato', 'brass', 'bass', 'drums'];
   const s = songBuilder(keys);
   const loop = (n) => cyc(LOOP, n);
 
-  s.section('Intro: kick, then hats', 8, {
-    drums: v(100, [...rep(DRUMS.four, 4), ...rep(DRUMS.hats, 4)]),
-    perc: [null, null, null, null, ...v(70, rep(PERC.groove, 4))],
+  s.section('The grid wakes: the pulse alone, low hits', 8, {
+    bass: v(92, each(loop(8), T2.pulse)),
+    brass: [...rep(null, 4), ...v(50, each(loop(8).slice(4), T2.brass))],
+    drums: v(96, [D2.hit, null, D2.hit, null, D2.hit, null, D2.hit, null]),
   });
-  s.section('Intro: the sub comes in', 8, {
-    sub: v(90, each(loop(8), T.off8)),
-    drums: v(100, rep(DRUMS.hats, 8)),
-    perc: v(70, rep(PERC.groove, 8)),
+  s.section('The sequencer starts, half-time drums', 8, {
+    seq: v(70, each(loop(8), T2.seq)),
+    bass: v(96, each(loop(8), T2.pulse)),
+    brass: v(56, each(loop(8), T2.brass)),
+    drums: v(100, halfBars(8)),
   });
-  s.section('Groove: the bass rolls', 16, {
-    sub: v(100, each(loop(16), T.roll)),
-    stabs: [...rep(null, 8), ...v(96, each(loop(8), T.stabs))],
-    drums: v(104, rep(DRUMS.clap, 16)),
-    perc: v(74, rep(PERC.groove, 16)),
-    cym: ['v=90 cr/1'],
+  s.section('The theme, half-time', 16, {
+    lead: v(96, cyc(THEME, 16)),
+    seq: v(66, each(loop(16), T2.seq)),
+    ostinato: [...rep(null, 8), ...v(70, each(loop(8), T2.ost))],
+    brass: v(62, each(loop(16), T2.brass)),
+    bass: v(100, each(loop(16), T2.pulse)),
+    drums: v(104, halfBars(16)),
   });
-  s.section('Build: acid riff and hook, snare roll', 8, {
-    hook: v(70, cyc(HOOK, 8)),
-    acid: v(80, each(loop(8), T.riff)),
-    stabs: v(92, each(loop(8), T.stabs)),
-    sub: v(100, [...each(loop(7), T.roll), null]),
-    drums: v(104, [...rep(DRUMS.clap, 4), ...rep(DRUMS.four, 3), null]),
-    perc: [...v(74, rep(PERC.groove, 4)), ...PERC.roll],
+  s.section('Build', 8, {
+    seq: v(74, each(loop(8), T2.seq)),
+    ostinato: v(76, each(loop(8), T2.ost)),
+    brass: v(66, each(loop(8), T2.brass)),
+    bass: v(104, [...each(loop(7), T2.pulse), null]),
+    drums: v(104, [...halfBars(4), ...PERC.roll]),
   });
-  s.section('Drop', 16, {
-    hook: v(88, cyc(HOOK, 16)),
-    acid: v(94, each(loop(16), T.riff)),
-    stabs: v(104, each(loop(16), T.stabs)),
-    sub: v(112, each(loop(16), T.rollPop)),
-    drums: v(112, rep(DRUMS.clap, 16)),
-    perc: v(80, rep(PERC.groove, 16)),
-    cym: ['v=100 cr/1', ...rep(null, 7), 'cr/1'],
+  s.section('Drop: four on the floor, the theme up high', 16, {
+    lead: v(108, cyc(THEME, 16).map((b) => b.replace(/\b([A-G](?:#|b)?)(\d)\b/g, (n) => (midi(n) + 12 <= 96 ? nm(midi(n) + 12) : n)))),
+    harmony: v(84, cyc(THEME, 16)),
+    seq: v(70, each(loop(16), T2.seq)),
+    ostinato: v(80, each(loop(16), T2.ost)),
+    brass: v(70, each(loop(16), T2.brass)),
+    bass: v(112, each(loop(16), T2.pulse)),
+    drums: v(112, fourBars(16)),
   });
-  s.section('Breakdown: no kick', 16, {
-    pluck: v(92, [...BREAK_HOOK, ...rep(null, 8)]),
-    hook: [...rep(null, 8), ...v(84, BREAK_HOOK)],
-    pad: v(84, each([...BREAK, ...BREAK], T.pad)),
-    sub: v(84, each([...BREAK, ...BREAK], T.hold)),
-    arp: [...rep(null, 8), ...v(54, each(BREAK, T.arp16))],
-    perc: [...v(56, rep(PERC.tick, 12)), ...PERC.roll],
+  s.section('Breakdown: the old stab hook over the brass', 12, {
+    hook: [...rep(null, 4), ...v(84, cyc(HOOK, 8))],
+    seq: v(58, each(cyc(BREAK, 12), T2.seq)),
+    brass: v(66, each(cyc(BREAK, 12), T2.brass)),
+    bass: v(90, each(cyc(BREAK, 12), T2.pulseHalf)),
+    drums: v(90, [D2.hit, null, null, null, D2.hit, null, null, null, ...PERC.roll]),
   });
-  s.section('Second drop: everything', 24, {
-    hook: v(92, cyc(HOOK, 24)),
-    acid: v(96, each(loop(24), T.riff)),
-    arp: v(62, each(loop(24), T.arp16)),
-    stabs: v(106, each(loop(24), T.stabs)),
-    pad: v(54, each(loop(24), T.pad)),
-    sub: v(114, each(loop(24), T.rollPop)),
-    drums: v(114, rep(DRUMS.clap, 24)),
-    perc: v(82, rep(PERC.groove, 24)),
-    cym: ['v=104 cr/1', ...rep(null, 7), 'cr/1', ...rep(null, 7), 'cr/1'],
+  s.section('Final: everything, the theme in two voices', 24, {
+    lead: v(112, cyc(THEME, 24)),
+    harmony: v(88, cyc(THEME, 24).map((bar, i) => under(bar, LOOP[i % 8]))),
+    hook: [...rep(null, 16), ...v(80, cyc(HOOK, 8))],
+    seq: v(74, each(loop(24), T2.seq)),
+    ostinato: v(84, each(loop(24), T2.ost)),
+    brass: v(74, each(loop(24), T2.brass)),
+    bass: v(116, each(loop(24), T2.pulse)),
+    drums: v(116, fourBars(24)),
   });
-  s.section('Outro: stripping down', 16, {
-    stabs: v(94, each(loop(8), T.stabs)),
-    acid: v(80, each(loop(4), T.riff)),
-    sub: [...v(104, each(loop(8), T.roll)), ...v(90, each(loop(4), T.off8))],
-    drums: v(104, [...rep(DRUMS.clap, 8), ...rep(DRUMS.hats, 4), ...rep(DRUMS.four, 3), DRUMS.end]),
-    perc: v(74, rep(PERC.groove, 12)),
+  s.section('Outro: the pulse fades', 8, {
+    seq: v(60, each(loop(4), T2.seq)),
+    brass: v(60, each(loop(8), T2.brass)),
+    bass: v(100, [...each(loop(6), T2.pulse), ...each(loop(1), T2.pulseHalf)]),
+    drums: v(100, [...halfBars(4), D2.hit, null, null, D2.end]),
   });
 
-  write('underpass.song', `# Underpass, by Claude and SZ. Club techno built on a rolling sub bass: an acid bass riff and a
-# stab hook come in over the groove, then a kickless breakdown and a long second drop.
+  write('underpass.song', `# Underpass, by Claude and SZ. Synthwave in the manner of a synth film score: an octave-pulse bass,
+# a step sequencer, brass chords, and a heroic theme that goes from half-time to four on the floor.
 title: Underpass
 composer: Claude & SZ
 year: 2026
 source: original
 category: originals
 key: F minor
-style: techno
-tempo: 126
+style: synthwave
+tempo: 124
 time: 4/4`, s, [
-    ['hook', 'track hook role=lead2 vol=0.5 pan=-0.15'],
-    ['pluck', 'track pluck role=counter vol=0.6 pan=0.2'],
-    ['arp', 'track arp role=arp vol=0.3 pan=0.3'],
-    ['stabs', 'track stabs role=chords vol=0.75 pan=-0.25'],
-    ['pad', 'track pad role=pad vol=0.4'],
-    ['acid', 'track acid role=bass inst=acid vol=0.4 pan=0.1'],
-    ['sub', 'track sub role=bass vol=0.62'],
-    ['drums', 'track drums role=drums vol=0.75'],
-    ['perc', 'track perc role=drums vol=0.5 pan=0.2'],
-    ['cym', 'track cymbals role=drums vol=0.45'],
+    ['lead', 'track lead role=lead vol=0.7'],
+    ['harmony', 'track harmony role=lead2 vol=0.45 pan=0.2'],
+    ['hook', 'track hook role=counter vol=0.5 pan=-0.2'],
+    ['seq', 'track sequencer role=arp vol=0.55 pan=0.3'],
+    ['ostinato', 'track ostinato role=chords vol=0.45 pan=-0.3'],
+    ['brass', 'track brass role=pad vol=0.5'],
+    ['bass', 'track bass role=bass vol=0.7'],
+    ['drums', 'track drums role=drums vol=0.8'],
   ]);
 }
 

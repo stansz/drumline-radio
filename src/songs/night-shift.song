@@ -1,4 +1,5 @@
-# Night Shift: an original for the Techno style.
+# Night Shift, by Claude and SZ. An original for the Techno style: an acid line, a hook that arrives
+# in the breakdown, an answering hook, and two drops.
 title: Night Shift
 composer: Claude & SZ
 year: 2026
@@ -10,119 +11,352 @@ tempo: 130
 time: 4/4
 
 track acid role=lead vol=0.65
-# Intro
-| R*8 |
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| R | R | R | R |
+| R | R | R | R |
 # The acid line
-| D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+| v=96 D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 |
-# Breakdown
-| R*8 |
-# Drop
+# Breakdown: the hook appears
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Drop: the hook over everything
+| v=100 D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+| D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+| D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+# Stripped: acid, pad, and an answering hook
+| v=80 D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+| D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+# Build: the kick returns, the arp joins
+| v=92 D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+| D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+# Second drop: everything
+| v=104 D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | Bb3/16 Bb3 Bb4:120 Bb3 D4 Bb3 F4 Bb3 A3:120 Bb3 Bb4 Bb3 D4 F4 D4 C4 | C4/16 C4 C5:120 C4 E4 C4 G4 C4 Bb3:120 C4 C5 C4 E4 G4 E4 D4 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
 # Outro
-| R*8 |
+| v=84 D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 | D3/16 D3 D4:120 D3 F3 D3 A3 D3 C4:120 D3 D4 D3 F3 A3 G3 F3 |
+| R | R | R | R |
 
 track hook role=counter vol=0.7
-# Intro and acid section
-| R*24 |
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| R | R | R | R |
+| R | R | R | R |
+# The acid line
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
 # Breakdown: the hook appears
+| v=88 D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
+| D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 # Drop: the hook over everything
+| v=96 D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
+# Stripped: acid, pad, and an answering hook
+| R | R | R | R |
+| R | R | R | R |
+# Build: the kick returns, the arp joins
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: everything
+| v=98 D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
-| D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
+| R | R | R | R |
+| R | R | R | R |
+| v=98 D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 | D5/8. A4/16 r/8 F5/8 r/8 E5/8 D5/4 | D5/8. Bb4/16 r/8 F5/8 r/8 D5/8 C5/4 | E5/8. C5/16 r/8 G5/8 r/8 F5/8 E5/4 | D5/2 r/2 |
 # Outro
-| R*8 |
+| R | R | R | R |
+| R | R | R | R |
 
-track stabs role=chords vol=0.85
-# Intro and acid section
-| R*24 |
-# Breakdown
+track answer role=lead2 vol=0.55 pan=0.2
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| R | R | R | R |
+| R | R | R | R |
+# The acid line
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown: the hook appears
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Drop: the hook over everything
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Stripped: acid, pad, and an answering hook
+| v=86 A5/8. F5/16 r/8 D5/8 r/8 E5/8 F5/4 | F5/8. D5/16 r/8 Bb4/8 r/8 C5/8 D5/4 | G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4 | F5/4 E5/4 D5/2 |
+| A5/8. F5/16 r/8 D5/8 r/8 E5/8 F5/4 | F5/8. D5/16 r/8 Bb4/8 r/8 C5/8 D5/4 | G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4 | F5/4 E5/4 D5/2 |
+# Build: the kick returns, the arp joins
+| v=90 A5/8. F5/16 r/8 D5/8 r/8 E5/8 F5/4 | F5/8. D5/16 r/8 Bb4/8 r/8 C5/8 D5/4 | G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4 | F5/4 E5/4 D5/2 |
+| A5/8. F5/16 r/8 D5/8 r/8 E5/8 F5/4 | F5/8. D5/16 r/8 Bb4/8 r/8 C5/8 D5/4 | G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4 | F5/4 E5/4 D5/2 |
+# Second drop: everything
+| R | R | R | R |
+| R | R | R | R |
+| v=94 A5/8. F5/16 r/8 D5/8 r/8 E5/8 F5/4 | F5/8. D5/16 r/8 Bb4/8 r/8 C5/8 D5/4 | G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4 | F5/4 E5/4 D5/2 |
+| A5/8. F5/16 r/8 D5/8 r/8 E5/8 F5/4 | F5/8. D5/16 r/8 Bb4/8 r/8 C5/8 D5/4 | G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4 | F5/4 E5/4 D5/2 |
+| R | R | R | R |
+| R | R | R | R |
+# Outro
+| R | R | R | R |
+| R | R | R | R |
+
+track arp role=arp vol=0.45 pan=-0.3
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| R | R | R | R |
+| R | R | R | R |
+# The acid line
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown: the hook appears
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Drop: the hook over everything
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Stripped: acid, pad, and an answering hook
+| R | R | R | R |
+| R | R | R | R |
+# Build: the kick returns, the arp joins
+| v=56 D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+| D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+# Second drop: everything
+| v=62 D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+| D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+| D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+| D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+| D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+| D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 | D4/16 Bb4/16 F4/16 D5/16 D4/16 Bb4/16 F4/16 D5/16 D5/16 Bb5/16 F5/16 D6/16 D5/16 Bb5/16 F5/16 D6/16 | E4/16 C5/16 G4/16 E5/16 E4/16 C5/16 G4/16 E5/16 E5/16 C6/16 G5/16 E6/16 E5/16 C6/16 G5/16 E6/16 | D4/16 A4/16 F4/16 D5/16 D4/16 A4/16 F4/16 D5/16 D5/16 A5/16 F5/16 D6/16 D5/16 A5/16 F5/16 D6/16 |
+# Outro
+| R | R | R | R |
+| R | R | R | R |
+
+track stabs role=chords vol=0.85 pan=-0.15
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| R | R | R | R |
+| R | R | R | R |
+# The acid line
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown: the hook appears
+| v=92 r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
-# Drop
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
+# Drop: the hook over everything
+| v=100 r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
+| r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
+| r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
+| r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
+# Stripped: acid, pad, and an answering hook
+| R | R | R | R |
+| R | R | R | R |
+# Build: the kick returns, the arp joins
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: everything
+| v=102 r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 | r/8 [D4 F4 Bb4]/8 r/4 r/8 [D4 F4 Bb4]/8 r/4 | r/8 [E4 G4 C5]/8 r/4 r/8 [E4 G4 C5]/8 r/4 | r/8 [D4 F4 A4]/8 r/4 r/8 [D4 F4 A4]/8 r/4 |
 # Outro
-| R*8 |
+| R | R | R | R |
+| R | R | R | R |
 
 track pad role=pad vol=0.45
-# Intro
-| R*8 |
-# Acid section
-| [D3 A3 F4]/1 | [D3 A3 F4]/1 | [D3 A3 F4]/1 | [D3 A3 F4]/1 |
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| R | R | R | R |
+| R | R | R | R |
+# The acid line
+| R | R | R | R |
+| R | R | R | R |
+| v=56 [D3 A3 F4]/1 | [D3 A3 F4]/1 | [D3 A3 F4]/1 | [D3 A3 F4]/1 |
 | [Bb2 F3 D4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [C3 G3 E4]/1 |
-| [D3 A3 F4]/1 | [D3 A3 F4]/1 | [D3 A3 F4]/1 | [D3 A3 F4]/1 |
-| [Bb2 F3 D4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [C3 G3 E4]/1 |
-# Breakdown
+# Breakdown: the hook appears
+| v=64 [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
-# Drop
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+# Drop: the hook over everything
+| v=60 [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+| [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+| [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+| [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+# Stripped: acid, pad, and an answering hook
+| v=62 [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+| [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+# Build: the kick returns, the arp joins
+| v=64 [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+| [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
+# Second drop: everything
+| v=62 [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 | [D3 A3 F4]/1 | [Bb2 F3 D4]/1 | [C3 G3 E4]/1 | [D3 A3 F4]/1 |
 # Outro
-| [D3 A3 F4]/1 | R*7 |
+| R | R | R | R |
+| R | R | R | R |
 
-track bass role=bass vol=0.8
-# Intro: bass from bar 5
-| R*4 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 |
-# Acid section
-| r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 C2 r C2 r C2 r C2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 C2 r C2 r C2 r C2 |
-# Breakdown: long notes
+track bass role=bass vol=0.6
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| v=96 r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 |
+| r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 |
+# The acid line
+| v=100 r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 |
+| r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 |
+| r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 |
+| r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 |
+# Breakdown: the hook appears
+| R | R | R | R |
+| R | R | R | R |
+| v=84 D2/1 | Bb1/1 | C2/1 | D2/1 |
 | D2/1 | Bb1/1 | C2/1 | D2/1 |
+# Drop: the hook over everything
+| v=112 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+# Stripped: acid, pad, and an answering hook
+| v=88 D2/1 | Bb1/1 | C2/1 | D2/1 |
 | D2/1 | Bb1/1 | C2/1 | D2/1 |
-# Drop
-| r/8 D2 r D2 r D2 r D2 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 Bb1 r Bb1 r Bb1 r Bb1 | r/8 C2 r C2 r C2 r C2 | r/8 D2 r D2 r D2 r D2 |
+# Build: the kick returns, the arp joins
+| v=104 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 |
+| r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 r/16 D2/16 D2/16 D2/16 | r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 r/16 Bb1/16 Bb1/16 Bb1/16 | r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 r/16 C2/16 C2/16 C2/16 | R |
+# Second drop: everything
+| v=114 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
+| r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 | r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 r/16 Bb1/16 Bb2/16 Bb1/16 | r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 r/16 C2/16 C3/16 C2/16 | r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 r/16 D2/16 D3/16 D2/16 |
 # Outro
-| r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 |
-| r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | r/8 D2 r D2 r D2 r D2 | D2/1 |
+| v=100 r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 | r/8 D2/8 r/8 D2/8 r/8 D2/8 r/8 D2/8 |
+| r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 r/8 Bb1/8 | R | R |
 
-track drums role=drums
-# Intro
-| k/4 k k k | k/4 k k k | k/4 k k k | k/4 k k k |
+track drums role=drums vol=0.75
+# Intro: kick, then hats
+| v=100 k/4 k k k | k/4 k k k | k/4 k k k | k/4 k k k |
 | k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh |
-# Acid section
+# The bass comes in
+| v=104 k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh |
+| k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh |
+# The acid line
+| v=108 [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
 | [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
 | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+# Breakdown: the hook appears
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| v=70 s/4 s s s | v=82 s/8 s s s s s s s | v=94 s/16 s s s s s s s s s s s s s s s | v=106 s/16 s s s s s s s r/2 |
+# Drop: the hook over everything
+| v=112 [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
 | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
 | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
-# Breakdown: no kick, then a snare roll
-| R*6 | s/8 s s s s s s s | s/16 s s s s s s s s s s s s s s s |
-# Drop
-| [k cr h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h |
-| [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h |
-| [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h |
-| [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h |
-| [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h |
-| [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h | [k h]/16 h oh h [k cl h] h oh h [k h] h oh h [k cl h] h oh h |
+# Stripped: acid, pad, and an answering hook
+| R | R | R | R |
+| R | R | R | R |
+# Build: the kick returns, the arp joins
+| v=108 k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh |
+| v=70 s/4 s s s | v=82 s/8 s s s s s s s | v=94 s/16 s s s s s s s s s s s s s s s | v=106 s/16 s s s s s s s r/2 |
+# Second drop: everything
+| v=114 [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| [k cr]/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
 # Outro
-| [k cr]/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh |
-| k/8 h k h k h k oh | k/8 h k h k h k oh | k/8 h k h k h k oh | [k cr]/1 |
+| v=104 k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh | k/8 oh [k cl] oh k oh [k cl] oh |
+| k/8 h k h k h k oh | k/8 h k h k h k oh | k/4 k k k | [k cr]/4 r/2. |
+
+track perc role=drums vol=0.45 pan=0.2
+# Intro: kick, then hats
+| R | R | R | R |
+| R | R | R | R |
+# The bass comes in
+| v=66 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# The acid line
+| v=70 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# Breakdown: the hook appears
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Drop: the hook over everything
+| v=76 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# Stripped: acid, pad, and an answering hook
+| v=66 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# Build: the kick returns, the arp joins
+| R | R | R | R |
+| R | R | R | R |
+# Second drop: everything
+| v=80 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+# Outro
+| v=66 r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 | r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8 |
+| R | R | R | R |
