@@ -122,24 +122,24 @@ track arp role=arp vol=0.3 pan=0.3
 | R | R | R | R |
 | R | R | R | R |
 
-track stabs role=chords vol=0.45 pan=-0.25
+track stabs role=chords vol=0.75 pan=-0.25
 # Intro: the beat and the theme chords
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 # The piano theme, the guitar answers
-| v=62 r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+| v=92 r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
 # The build, snare roll
-| v=66 r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| v=94 r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
 # Drop: the guitar rises
-| v=78 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 |
+| v=106 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 |
 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 |
 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
@@ -149,12 +149,12 @@ track stabs role=chords vol=0.45 pan=-0.25
 | R | R | R | R |
 | R | R | R | R |
 # Second drop: the guitar solo
-| v=80 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 |
+| v=104 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 r/4 r/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 |
 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 |
 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [D4 F4 Ab4]/8 r/4 r/8 [D4 F4 Ab4]/8 r/8 [D4 F4 Ab4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
 # Outro: piano and guitar trade
-| v=64 r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
+| v=92 r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 | r/8 [C4 Eb4 G4]/8 r/4 r/8 [C4 Eb4 G4]/8 r/8 [C4 Eb4 G4]/8 |
 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [Ab3 C4 Eb4]/8 r/4 r/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 | r/8 [G3 B3 D4]/8 r/4 r/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 |
 | R | R | R | R |
 | R | R | R | R |
@@ -196,7 +196,7 @@ track pad role=pad vol=0.4
 | [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
 | [D3 F3 Ab3]/1 | [G3 B3 D4 F4]/1 | [C3 Eb3 G3]/1 | [C3 Eb3 G3]/1 |
 
-track bass role=bass vol=0.75
+track bass role=bass vol=0.62
 # Intro: the beat and the theme chords
 | R | R | R | R |
 | R | R | R | R |

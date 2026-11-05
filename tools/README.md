@@ -6,7 +6,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 |---|---|
 | `arranger/` | Builds full `.song` files from a melody plus chords |
 | `check/` | Parses every song and reports note clashes |
-| `browser/` | Checks the running app in headless Edge: layout, loudness, offline, screenshots |
+| `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
 
 ## Arranger
@@ -182,6 +182,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   case-insensitive regex; `""` keeps the default URL and each song's own style) and a reference song,
   as in the second command.
 - **shot:** takes a screenshot, for example for the README.
+- **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
+  to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
+  hook,pluck,arp,stabs,pad,acid,sub,drums,perc,cymbals` (track names in the song file's order).
 
 `browser/cdp.mjs` is the shared helper. It launches headless Edge (set `EDGE_PATH` to use another
 Chromium) and talks to it over the DevTools protocol with Node's built-in WebSocket.

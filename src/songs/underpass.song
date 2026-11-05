@@ -124,7 +124,7 @@ track arp role=arp vol=0.3 pan=0.3
 | R | R | R | R |
 | R | R | R | R |
 
-track stabs role=chords vol=0.45 pan=-0.25
+track stabs role=chords vol=0.75 pan=-0.25
 # Intro: kick, then hats
 | R | R | R | R |
 | R | R | R | R |
@@ -134,13 +134,13 @@ track stabs role=chords vol=0.45 pan=-0.25
 # Groove: the bass rolls
 | R | R | R | R |
 | R | R | R | R |
-| v=70 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| v=96 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 # Build: acid riff and hook, snare roll
-| v=64 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| v=92 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 # Drop
-| v=76 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| v=104 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
@@ -150,14 +150,14 @@ track stabs role=chords vol=0.45 pan=-0.25
 | R | R | R | R |
 | R | R | R | R |
 # Second drop: everything
-| v=78 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| v=106 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 # Outro: stripping down
-| v=66 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
+| v=94 r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [F4 Ab4 C5]/8 r/4 r/8 [F4 Ab4 C5]/8 r/8 [F4 Ab4 C5]/8 | r/8 [C#4 F4 Ab4]/8 r/4 r/8 [C#4 F4 Ab4]/8 r/8 [C#4 F4 Ab4]/8 | r/8 [Eb4 G4 Bb4]/8 r/4 r/8 [Eb4 G4 Bb4]/8 r/8 [Eb4 G4 Bb4]/8 |
 | R | R | R | R |
 | R | R | R | R |
@@ -238,7 +238,7 @@ track acid role=bass inst=acid vol=0.4 pan=0.1
 | R | R | R | R |
 | R | R | R | R |
 
-track sub role=bass vol=0.75
+track sub role=bass vol=0.62
 # Intro: kick, then hats
 | R | R | R | R |
 | R | R | R | R |
