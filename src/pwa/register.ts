@@ -1,20 +1,60 @@
-// Registers the service worker and keeps the app up to date. It checks for a new build each time
-// the app comes back to the front. When a new build takes over, a page that already had one reloads
-// to pick it up: at once if it was just opened or brought back, otherwise the next time it is hidden,
-// so music that is playing isn't cut off.
+import { CACHE_PREFIX } from './precache';
+
+// Registers the service worker and keeps the app up to date. Each time the app opens or comes back
+// to the front it asks the server, past every cache, which build is current. If the cached app is
+// older, it updates the worker; if that hasn't taken over within HEAL_MS (a browser holding on to an
+// old worker), it unregisters the worker and drops its cache so the next load is fresh.
+// When a new build takes over, a page that already had one reloads to pick it up: at once if it was
+// just opened or brought back, otherwise the next time it is hidden, so music isn't cut off.
 const FRESH_MS = 8000;
+const HEAL_MS = 15000;
 
 export function registerServiceWorker(): void {
   if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
   const sw = navigator.serviceWorker;
+  const url = `${import.meta.env.BASE_URL}sw.js`;
   const hadController = sw.controller !== null;
   let shownAt = performance.now();
   let reloadWhenHidden = false;
+  let healing = false;
 
-  sw.addEventListener('controllerchange', () => {
-    if (!hadController) return;
+  const reload = (): void => {
     if (performance.now() - shownAt < FRESH_MS) window.location.reload();
     else reloadWhenHidden = true;
+  };
+
+  // The build the server has now, read from sw.js (its cache name holds the build's hash).
+  async function serverCache(): Promise<string | null> {
+    const response = await fetch(url, { cache: 'no-store' });
+    const match = /'drumline-radio-' \+ "([0-9a-f]+)"/.exec(await response.text());
+    return match ? `${CACHE_PREFIX}${match[1]}` : null;
+  }
+
+  async function checkForUpdate(): Promise<void> {
+    if (healing) return;
+    try {
+      const want = await serverCache();
+      if (!want || (await caches.keys()).includes(want)) return;
+      healing = true;
+      // An update that fails (a worker that won't install) still falls through to the heal below.
+      await (await sw.getRegistration())?.update().catch(() => undefined);
+      window.setTimeout(() => {
+        void (async () => {
+          if (!(await caches.keys()).includes(want)) {
+            for (const registration of await sw.getRegistrations()) await registration.unregister();
+            for (const name of await caches.keys()) if (name.startsWith(CACHE_PREFIX)) await caches.delete(name);
+            reload();
+          }
+          healing = false;
+        })().catch(() => { healing = false; });
+      }, HEAL_MS);
+    } catch {
+      healing = false; // offline: try again next time
+    }
+  }
+
+  sw.addEventListener('controllerchange', () => {
+    if (hadController) reload();
   });
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
@@ -22,9 +62,11 @@ export function registerServiceWorker(): void {
       return;
     }
     shownAt = performance.now();
-    void sw.getRegistration().then((registration) => registration?.update()).catch(() => {});
+    void checkForUpdate();
   });
   window.addEventListener('load', () => {
-    sw.register(`${import.meta.env.BASE_URL}sw.js`, { updateViaCache: 'none' }).catch(() => {});
+    sw.register(url, { updateViaCache: 'none' })
+      .then(() => checkForUpdate())
+      .catch(() => {});
   });
 }
