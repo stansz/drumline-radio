@@ -86,8 +86,11 @@ function part(): Part {
   return { nodes: [], sources: [] };
 }
 
+/** How long a voice cut short (by a seek, pause or station change) takes to fade out. */
+const STOP_FADE = 0.03;
+
 // Starts every source at `at`, stops them at `end`, and disconnects the whole voice once the last
-// source has ended.
+// source has ended. `env` is the gain the voice fades through when it is stopped early.
 function makeVoice(
   end: number,
   env: GainNode | null,
@@ -110,12 +113,23 @@ function makeVoice(
   return {
     end,
     stop(stopAt: number): void {
-      if (env) {
-        env.gain.cancelScheduledValues(stopAt);
-        env.gain.setValueAtTime(env.gain.value, stopAt);
-        env.gain.linearRampToValueAtTime(0, stopAt + 0.03);
+      // A voice booked ahead that hasn't started yet just never sounds.
+      if (at >= stopAt) {
+        for (const source of collected.sources) source.node.stop(at);
+        return;
       }
-      for (const source of collected.sources) source.node.stop(stopAt + 0.05);
+      // A sounding voice fades from wherever its envelope is: hold the envelope's current value
+      // (reading gain.value would give the value from before the automation) and ramp to zero.
+      if (env) {
+        const gain = env.gain;
+        if (typeof gain.cancelAndHoldAtTime === 'function') gain.cancelAndHoldAtTime(stopAt);
+        else {
+          gain.cancelScheduledValues(stopAt);
+          gain.setValueAtTime(gain.value, stopAt);
+        }
+        gain.linearRampToValueAtTime(0, stopAt + STOP_FADE);
+      }
+      for (const source of collected.sources) source.node.stop(stopAt + STOP_FADE + 0.02);
     },
   };
 }
@@ -258,11 +272,15 @@ export function playDrum(
   gm: number,
   time: number,
   gain: number,
-  out: AudioNode,
+  dest: AudioNode,
 ): Voice {
   const { ctx } = kit;
   const level = clampLevel(gain);
   const collected = part();
+  // Every drum voice goes through its own gain, so a hit cut short can fade instead of snapping off.
+  const out = ctx.createGain();
+  out.connect(dest);
+  collected.nodes.push(out);
 
   switch (gm) {
     case 36: {
@@ -295,7 +313,7 @@ export function playDrum(
         collected.sources.push(noise);
         longest = Math.max(longest, 0.005);
       }
-      return makeVoice(time + longest + 0.05, null, collected, time);
+      return makeVoice(time + longest + 0.05, out, collected, time);
     }
     case 38: {
       const { snare } = drums;
@@ -327,7 +345,7 @@ export function playDrum(
         collected.sources.push({ node: tone });
         longest = Math.max(longest, snare.decay * 0.5);
       }
-      return makeVoice(time + longest + 0.05, null, collected, time);
+      return makeVoice(time + longest + 0.05, out, collected, time);
     }
     case 42:
     case 46: {
@@ -345,7 +363,7 @@ export function playDrum(
       body.connect(out);
       collected.nodes.push(highpass, body);
       collected.sources.push(noise);
-      return makeVoice(time + decay + 0.05, null, collected, time);
+      return makeVoice(time + decay + 0.05, out, collected, time);
     }
     case 49: {
       const white = noiseSpec(kit, 'white');
@@ -368,7 +386,7 @@ export function playDrum(
       body.connect(out);
       collected.nodes.push(whiteGain, metalGain, highpass, body);
       collected.sources.push(white, metal);
-      return makeVoice(time + drums.crashDecay + 0.05, null, collected, time);
+      return makeVoice(time + drums.crashDecay + 0.05, out, collected, time);
     }
     case 51: {
       const metal = noiseSpec(kit, 'metal');
@@ -384,7 +402,7 @@ export function playDrum(
       body.connect(out);
       collected.nodes.push(bandpass, body);
       collected.sources.push(metal);
-      return makeVoice(time + 0.65, null, collected, time);
+      return makeVoice(time + 0.65, out, collected, time);
     }
     case 41:
     case 45:
@@ -401,7 +419,7 @@ export function playDrum(
       body.connect(out);
       collected.nodes.push(osc, body);
       collected.sources.push({ node: osc });
-      return makeVoice(time + 0.4, null, collected, time);
+      return makeVoice(time + 0.4, out, collected, time);
     }
     case 39: {
       const noise = noiseSpec(kit, 'white');
@@ -424,7 +442,7 @@ export function playDrum(
       body.connect(out);
       collected.nodes.push(bandpass, body);
       collected.sources.push(noise);
-      return makeVoice(time + 0.23, null, collected, time);
+      return makeVoice(time + 0.23, out, collected, time);
     }
     case 37: {
       const osc = ctx.createOscillator();
@@ -437,9 +455,10 @@ export function playDrum(
       body.connect(out);
       collected.nodes.push(osc, body);
       collected.sources.push({ node: osc });
-      return makeVoice(time + 0.08, null, collected, time);
+      return makeVoice(time + 0.08, out, collected, time);
     }
     default:
+      out.disconnect();
       return silentVoice(time);
   }
 }

@@ -11,7 +11,10 @@ seconds (`buildTimeline` in `src/music/timing.ts`), then every 25 ms it looks 12
 the notes that start in that window on the `AudioContext` clock. Scheduled notes are never touched
 again: the Web Audio engine plays them at the exact time they were given. Pausing, seeking, or
 loading another song stops every live voice, so the next `play()` starts a fresh schedule from the
-current position.
+current position. A stopped voice fades out over 30 ms (drums too, through a per-hit gain), a voice
+booked but not yet started never sounds, and the old song's channels stay connected for 200 ms so
+those fades finish. Each fresh schedule starts 50 ms ahead of the clock, so its first notes are
+booked in the future and keep their attack instead of starting late with a click.
 
 Each track gets its own channel: volume and pan from the song file, plus reverb and delay sends.
 Every voice connects to that channel, never straight to the master chain, so the track's volume,

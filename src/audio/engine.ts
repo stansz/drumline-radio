@@ -18,6 +18,12 @@ interface TrackChannel {
 const TICK_MS = 25;
 const LOOKAHEAD = 0.12;
 const MAKEUP_GAIN = 1.4;
+/** How long the vinyl bed fades when play starts or stops. */
+const STOP_FADE = 0.03;
+/** How long old track channels stay connected after a station change, so fading voices finish. */
+const CHANNEL_GRACE_MS = 200;
+/** How far ahead playback starts after play, a seek, or a station change. */
+const START_LEAD = 0.05;
 
 export class Engine {
   private readonly ctx: AudioContext;
@@ -56,6 +62,7 @@ export class Engine {
   private scheduledUntil = 0;
   private timer: ReturnType<typeof setInterval> | null = null;
   private crackleSource: AudioBufferSourceNode | null = null;
+  private crackleFade: GainNode | null = null;
   private readonly voices = new Set<Voice>();
 
   onEnded: (() => void) | null = null;
@@ -171,7 +178,7 @@ export class Engine {
 
   get position(): number {
     if (!this.playingValue) return this.positionValue;
-    const elapsed = this.ctx.currentTime - this.startCtx;
+    const elapsed = Math.max(0, this.ctx.currentTime - this.startCtx);
     return this.startPos + elapsed;
   }
 
@@ -209,14 +216,24 @@ export class Engine {
 
     const begin = (): void => {
       if (!this.playingValue || this.timer !== null) return;
-      this.startCtx = this.ctx.currentTime;
+      // Start a moment ahead, so the first notes are booked in the future and get their full
+      // attack instead of starting late, already at full level, with a click.
+      this.startCtx = this.ctx.currentTime + START_LEAD;
       this.scheduledUntil = this.startPos;
       const crackle = this.ctx.createBufferSource();
       crackle.buffer = this.crackleBuffer;
       crackle.loop = true;
-      crackle.connect(this.crackleGain);
+      // The vinyl bed fades in and out with play so starting and stopping it never clicks.
+      const fade = this.ctx.createGain();
+      const now = this.ctx.currentTime;
+      fade.gain.setValueAtTime(0, now);
+      fade.gain.linearRampToValueAtTime(1, now + STOP_FADE);
+      crackle.connect(fade);
+      fade.connect(this.crackleGain);
+      crackle.onended = () => fade.disconnect();
       crackle.start();
       this.crackleSource = crackle;
+      this.crackleFade = fade;
       this.timer = setInterval(() => this.tick(), TICK_MS);
       this.tick();
     };
@@ -260,12 +277,17 @@ export class Engine {
   }
 
   private buildChannels(song: Song): void {
-    for (const channel of this.channels) {
-      channel.gain.disconnect();
-      channel.pan.disconnect();
-      channel.reverbSend.disconnect();
-      channel.delaySend.disconnect();
-    }
+    // The old channels stay connected a moment, so voices still fading out of them finish their fade
+    // instead of being cut off.
+    const old = this.channels;
+    setTimeout(() => {
+      for (const channel of old) {
+        channel.gain.disconnect();
+        channel.pan.disconnect();
+        channel.reverbSend.disconnect();
+        channel.delaySend.disconnect();
+      }
+    }, CHANNEL_GRACE_MS);
     this.channels = [];
 
     for (const track of song.tracks) {
@@ -389,12 +411,15 @@ export class Engine {
       clearInterval(this.timer);
       this.timer = null;
     }
-    if (this.crackleSource !== null) {
-      this.crackleSource.stop();
-      this.crackleSource.disconnect();
-      this.crackleSource = null;
-    }
     const now = this.ctx.currentTime;
+    if (this.crackleSource !== null && this.crackleFade !== null) {
+      this.crackleFade.gain.cancelScheduledValues(now);
+      this.crackleFade.gain.setValueAtTime(this.crackleFade.gain.value, now);
+      this.crackleFade.gain.linearRampToValueAtTime(0, now + STOP_FADE);
+      this.crackleSource.stop(now + STOP_FADE + 0.02);
+      this.crackleSource = null;
+      this.crackleFade = null;
+    }
     for (const voice of this.voices) voice.stop(now);
     this.voices.clear();
   }
