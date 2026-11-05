@@ -1,4 +1,5 @@
-# Midnight Arcade: an original for the Synthwave style.
+# Midnight Arcade: an original for the Synthwave style. A sub on every kick and a bass that ducks it in
+# the choruses keep the low end hitting hard, in Techno most of all.
 title: Midnight Arcade
 composer: Claude & SZ
 year: 2026
@@ -96,7 +97,7 @@ track pad role=pad vol=0.5
 | [E3 G3 B3]/1 | [E3 G3 C4]/1 | [D3 G3 B3]/1 | [D3 F#3 A3]/1 |
 | [E3 G3 B3]/1 | [E3 G3 C4]/1 | [D3 F#3 A3]/1 | [E3 G3 B3]/1 |
 
-track bass role=bass vol=0.8
+track bass role=bass vol=0.58
 # Intro
 | E1/8 E2 E1 E2 E1 E2 E1 E2 | C2/8 C3 C2 C3 C2 C3 C2 C3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | D2/8 D3 D2 D3 D2 D3 D2 D3 |
 | E1/8 E2 E1 E2 E1 E2 E1 E2 | C2/8 C3 C2 C3 C2 C3 C2 C3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | D2/8 D3 D2 D3 D2 D3 D2 D3 |
@@ -106,10 +107,10 @@ track bass role=bass vol=0.8
 | E1/8 E2 E1 E2 E1 E2 E1 E2 | C2/8 C3 C2 C3 C2 C3 C2 C3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | D2/8 D3 D2 D3 D2 D3 D2 D3 |
 | E1/8 E2 E1 E2 E1 E2 E1 E2 | C2/8 C3 C2 C3 C2 C3 C2 C3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | D2/8 D3 D2 D3 D2 D3 D2 D3 |
 # Chorus
-| C2/8 C3 C2 C3 C2 C3 C2 C3 | D2/8 D3 D2 D3 D2 D3 D2 D3 | E1/8 E2 E1 E2 E1 E2 E1 E2 | E1/8 E2 E1 E2 E1 E2 E1 E2 |
-| C2/8 C3 C2 C3 C2 C3 C2 C3 | D2/8 D3 D2 D3 D2 D3 D2 D3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | B1/8 B2 B1 B2 B1 B2 B1 B2 |
-| C2/8 C3 C2 C3 C2 C3 C2 C3 | D2/8 D3 D2 D3 D2 D3 D2 D3 | E1/8 E2 E1 E2 E1 E2 E1 E2 | E1/8 E2 E1 E2 E1 E2 E1 E2 |
-| C2/8 C3 C2 C3 C2 C3 C2 C3 | D2/8 D3 D2 D3 D2 D3 D2 D3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | B1/8 B2 B1 B2 B1 B2 B1 B2 |
+| r/8 C3/8 C2/8 r/8 r/8 C3/8 C2/8 C3/8 | r/8 D3/8 D2/8 r/8 r/8 D3/8 D2/8 D3/8 | r/8 E2/8 E1/8 r/8 r/8 E2/8 E1/8 E2/8 | r/8 E2/8 E1/8 r/8 r/8 E2/8 E1/8 E2/8 |
+| r/8 C3/8 C2/8 r/8 r/8 C3/8 C2/8 C3/8 | r/8 D3/8 D2/8 r/8 r/8 D3/8 D2/8 D3/8 | r/8 G2/8 G1/8 r/8 r/8 G2/8 G1/8 G2/8 | r/8 B2/8 B1/8 r/8 r/8 B2/8 B1/8 B2/8 |
+| r/8 C3/8 C2/8 r/8 r/8 C3/8 C2/8 C3/8 | r/8 D3/8 D2/8 r/8 r/8 D3/8 D2/8 D3/8 | r/8 E2/8 E1/8 r/8 r/8 E2/8 E1/8 E2/8 | r/8 E2/8 E1/8 r/8 r/8 E2/8 E1/8 E2/8 |
+| r/8 C3/8 C2/8 r/8 r/8 C3/8 C2/8 C3/8 | r/8 D3/8 D2/8 r/8 r/8 D3/8 D2/8 D3/8 | r/8 G2/8 G1/8 r/8 r/8 G2/8 G1/8 G2/8 | r/8 B2/8 B1/8 r/8 r/8 B2/8 B1/8 B2/8 |
 # Breakdown: long notes
 | A1/1 | E1/1 | C2/1 | D2/1 |
 | A1/1 | E1/1 | C2/1 | D2/1 |
@@ -121,6 +122,32 @@ track bass role=bass vol=0.8
 # Outro
 | E1/8 E2 E1 E2 E1 E2 E1 E2 | C2/8 C3 C2 C3 C2 C3 C2 C3 | G1/8 G2 G1 G2 G1 G2 G1 G2 | D2/8 D3 D2 D3 D2 D3 D2 D3 |
 | E1/8 E2 E1 E2 E1 E2 E1 E2 | C2/8 C3 C2 C3 C2 C3 C2 C3 | D2/8 D3 D2 D3 D2 D3 D2 D3 | E1/1 |
+
+track sub role=bass vol=0.62
+# Intro: the sub waits for the kick
+| R*4 |
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | G1/4 r/4 G1/4 r/4 | D2/4 r/4 D2/4 r/4 |
+# Verse
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | G1/4 r/4 G1/4 r/4 | D2/4 r/4 D2/4 r/4 |
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | G1/4 r/4 G1/4 r/4 | D2/4 r/4 D2/4 r/4 |
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | G1/4 r/4 G1/4 r/4 | D2/4 r/4 D2/4 r/4 |
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | G1/4 r/4 G1/4 r/4 | D2/4 r/4 D2/4 r/4 |
+# Chorus
+| C2/4. C2/8 C2/4 r/4 | D2/4. D2/8 D2/4 r/4 | E1/4. E1/8 E1/4 r/4 | E1/4. E1/8 E1/4 r/4 |
+| C2/4. C2/8 C2/4 r/4 | D2/4. D2/8 D2/4 r/4 | G1/4. G1/8 G1/4 r/4 | B1/4. B1/8 B1/4 r/4 |
+| C2/4. C2/8 C2/4 r/4 | D2/4. D2/8 D2/4 r/4 | E1/4. E1/8 E1/4 r/4 | E1/4. E1/8 E1/4 r/4 |
+| C2/4. C2/8 C2/4 r/4 | D2/4. D2/8 D2/4 r/4 | G1/4. G1/8 G1/4 r/4 | B1/4. B1/8 B1/4 r/4 |
+# Breakdown: long notes
+| A1/1 | E1/1 | C2/1 | D2/1 |
+| A1/1 | E1/1 | C2/1 | D2/1 |
+# Last chorus
+| C2/4 r/4 C2/4 r/4 | D2/4 r/4 D2/4 r/4 | E1/4 r/4 E1/4 r/4 | E1/4 r/4 E1/4 r/4 |
+| C2/4 r/4 C2/4 r/4 | D2/4 r/4 D2/4 r/4 | G1/4 r/4 G1/4 r/4 | B1/4 r/4 B1/4 r/4 |
+| C2/4 r/4 C2/4 r/4 | D2/4 r/4 D2/4 r/4 | E1/4 r/4 E1/4 r/4 | E1/4 r/4 E1/4 r/4 |
+| C2/4 r/4 C2/4 r/4 | D2/4 r/4 D2/4 r/4 | G1/4 r/4 G1/4 r/4 | B1/4 r/4 B1/4 r/4 |
+# Outro
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | G1/4 r/4 G1/4 r/4 | D2/4 r/4 D2/4 r/4 |
+| E1/4 r/4 E1/4 r/4 | C2/4 r/4 C2/4 r/4 | D2/4 r/4 D2/4 r/4 | E1/1 |
 
 track drums role=drums
 # Intro
