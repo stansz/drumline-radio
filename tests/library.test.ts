@@ -81,7 +81,7 @@ describe('library', () => {
 
   it('parses the time signatures in Greensleeves', () => {
     const greensleeves = LIBRARY.find((entry) => entry.id === 'greensleeves');
-    expect(greensleeves?.song.bars.every((bar) => bar.time[0] === 3 && bar.time[1] === 4)).toBe(true);
+    expect(greensleeves?.song.bars.every((bar) => bar.time[0] === 6 && bar.time[1] === 8)).toBe(true);
   });
 
   it('puts the Valkyries in real 9/8', () => {

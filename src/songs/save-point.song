@@ -72,7 +72,7 @@ track arp role=arp vol=0.35
 # Outro
 | R*4 |
 
-track bass role=bass
+track bass role=bass vol=0.5
 # Intro
 | C3/4 G2 C3 G2 | A2/4 E2 A2 E2 | F2/4 C3 F2 C3 | G2/4 D2 G2 D2 |
 # A

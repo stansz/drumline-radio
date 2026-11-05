@@ -45,7 +45,7 @@ track hook role=counter vol=0.7
 # Outro
 | R*8 |
 
-track stabs role=chords vol=0.55
+track stabs role=chords vol=0.85
 # Intro and acid section
 | R*24 |
 # Breakdown

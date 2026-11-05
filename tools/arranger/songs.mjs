@@ -1,8 +1,8 @@
 // The 16 carols and classics built by the arranger. Each recipe is a melody, chords, and the song's
 // own intro, bass line, and drum groove. Writes .song files to <outDir> (default: src/songs).
 //   node tools/arranger/songs.mjs [outDir] [song-id ...]
-// Für Elise, Valkyries, Greensleeves, Mountain King, and the originals are hand-written: edit their
-// .song files directly.
+// Für Elise, Greensleeves, Mountain King, and the originals have their own scripts; Valkyries is
+// hand-written.
 import { mkdirSync } from 'node:fs';
 import { arrange, head } from './arranger.mjs';
 import { ABOUT } from './about.mjs';

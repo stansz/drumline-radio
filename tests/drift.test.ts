@@ -23,6 +23,9 @@ const SCRIPT = [
   'tools/arranger/ivory-and-ash.mjs',
   'tools/arranger/club.mjs',
   'tools/arranger/nocturne.mjs',
+  'tools/arranger/fur-elise.mjs',
+  'tools/arranger/greensleeves.mjs',
+  'tools/arranger/mountain-king.mjs',
 ];
 
 describe('the song generators', () => {

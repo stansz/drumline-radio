@@ -5,6 +5,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 | Folder | What it does |
 |---|---|
 | `arranger/` | Builds full `.song` files from a melody plus chords |
+| `midi/` | Converts a score's MIDI file into song bars (`midi2song.mjs`) |
 | `check/` | Parses every song and reports note clashes |
 | `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, late notes, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
@@ -65,7 +66,7 @@ generated song by hand.
 it. A recipe with `hidden: true` gets a `hidden: true` header, which keeps its song out of the
 library while it is still parsed and checked.
 
-Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the three older originals are
+Ride of the Valkyries and the three older originals (Midnight Arcade, Night Shift, Save Point) are
 hand-written. Edit their `.song` files directly.
 
 ### Form-based recipes (more shape)
@@ -125,6 +126,20 @@ in 12/8, and the script adds the harp and cello left hand, pad, flute counter-li
 ```bash
 node tools/arranger/nocturne.mjs tmp/noc
 ```
+
+Für Elise, Greensleeves, and Mountain King are built the same way from real scores, each by its own
+script in `arranger/` (`fur-elise.mjs`, `greensleeves.mjs`, `mountain-king.mjs`). Für Elise and
+Mountain King come from Mutopia Project MIDI files, converted with `midi/midi2song.mjs`; Greensleeves
+from the four voices of a Mutopia hymn setting. Each script holds the converted bars, the fixes (grace
+notes dropped, octaves moved into range), and the form, with repeats unfolded.
+
+```bash
+node tools/midi/midi2song.mjs score.mid --time 3/8 --pickup 480 --grid 40 --json bars.json
+```
+
+`midi2song.mjs` splits each MIDI track into voices, snaps notes to the grid (`--grid 40` fits 32nds
+and triplets), and prints each voice's range and how many notes moved. For a famous public-domain
+piece, start from a score like this rather than from memory.
 
 The club tracks have their own script too, `arranger/club.mjs`: Underpass (rolling sub bass, acid
 bass riff, stab hook) and Ivory and Ash (128 Mix), which reuses the Ivory and Ash melodies with every
