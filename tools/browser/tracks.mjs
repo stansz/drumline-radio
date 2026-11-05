@@ -1,9 +1,9 @@
 // Per-track levels: plays one song from a point and prints each track's RMS over 4 seconds, to find
 // a part that is buried or too loud. Track names are listed in the song file's track order.
-//   node tools/browser/tracks.mjs "<title>" <fraction 0-1> <track1,track2,...>
+//   node tools/browser/tracks.mjs "<title>" <fraction 0-1> <track1,track2,...> [style]
 //   node tools/browser/tracks.mjs "Underpass" 0.4 hook,pluck,arp,stabs,pad,acid,sub,drums,perc,cymbals
 import { openEdge, DEFAULT_URL, sleep } from './cdp.mjs';
-const [title, frac, names] = process.argv.slice(2);
+const [title, frac, names, style = ''] = process.argv.slice(2);
 const b = await openEdge();
 await b.send('Page.addScriptToEvaluateOnNewDocument', { source: `(() => {
   window.__pans = [];
@@ -14,6 +14,7 @@ await b.goto(DEFAULT_URL, 2500);
 await b.ev(`(() => { const s = [...document.querySelectorAll('.station')]; const i = s.findIndex(x => x.querySelector('.station-title').textContent === ${JSON.stringify(title)}); s[i].click(); })()`);
 await sleep(500);
 await b.ev(`document.querySelector('#play').click()`); await sleep(800);
+if (style) await b.ev(`document.querySelector('.band[data-style=${style}]').click()`);
 await b.ev(`(() => { const e = document.querySelector('#seek'); e.value = String(Math.round(${frac} * 1000)); e.dispatchEvent(new Event('input')); })()`);
 const list = names.split(',');
 const r = await b.ev(`(async () => {

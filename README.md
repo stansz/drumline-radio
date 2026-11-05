@@ -56,6 +56,7 @@ Other public-domain melodies, arranged by Claude and SZ:
 - **Eine kleine Nachtmusik** (Wolfgang Amadeus Mozart, 1787). Techno.
 - **Für Elise** (Ludwig van Beethoven, 1810). Synthwave.
 - **Korobeiniki**, the Tetris tune (Russian folk song, 1861). Chiptune.
+- **Nocturne in E-flat, Op. 9 No. 2** (Frédéric Chopin, 1832). Orchestral.
 - **Ode to Joy** (Ludwig van Beethoven, 1824). Orchestral.
 - **Swan Lake** (Pyotr Ilyich Tchaikovsky, 1876). Orchestral.
 - **When the Saints Go Marching In** (traditional). Synthwave.

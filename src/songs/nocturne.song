@@ -1,0 +1,148 @@
+# Nocturne in E-flat, Op. 9 No. 2 by Frédéric Chopin (1832), arranged by Claude and SZ for the
+# Orchestral style: violins sing the melody over harp and cellos, through Chopin's form to the coda.
+title: Nocturne in E-flat
+composer: Frédéric Chopin
+arranger: Claude & SZ
+about: Chopin wrote his three Op. 9 nocturnes around 1830 to 1831 and published them in 1832, dedicated to the pianist Marie Pleyel. The second, in E-flat, became his most famous: a singing melody over a rocking left hand, ornamented a little more each time it comes back.
+year: 1832
+source: public-domain
+category: classics
+key: Eb major
+style: orchestral
+tempo: 66
+time: 12/8
+
+@bars 29-32 tempo=66..46
+
+track violins role=lead vol=0.9
+# Intro: the harp sets the rocking left hand
+| v=84 r/2. r/4. r/4 Bb4/8 |
+# The theme
+| v=86 G5/4 F5/8 G5/2~ G5/8 F5/8 Eb5/4 Bb4/8 | G5/4 C5/8 C6/2~ C6/8 G5/8 Bb5/4 Ab5/8 | G5/4 F5/8 G5/4 C5/8 D5/4. Eb5/8 D5/8 C5/8 | Bb4/4. Bb5/8 Ab5/8 G5/8 F5/8 G5/8 C5/8 D5/8 Eb5/8 Bb4/8 |
+# The theme, ornamented
+| v=92 G5/4 F5/8 G5/4 Ab5/16 G5/16 F5/8 G5/8 F5/8 Eb5/4 Bb4/8 | G5/4 C5/8 C6/4 D6/16 C6/16 B5/8 C6/8 G5/8 Bb5/4 Ab5/8 | G5/4 F5/8 G5/4 C5/8 D5/4. Eb5/8 D5/8 C5/8 | Bb4/4. Bb5/8 Ab5/8 G5/8 F5/4 D5/8 Eb5/4. |
+# The middle, in B-flat
+| v=96 F5/4. D5/8 Eb5/8 F5/8 Bb5/4. Ab5/8 G5/8 F5/8 | G5/4. Eb5/8 F5/8 G5/8 C6/4 Bb5/8 A5/4 G5/8 | F5/4. D5/8 Eb5/8 F5/8 D6/4. C6/8 Bb5/8 G5/8 | F5/4. Eb5/8 D5/8 C5/8 Bb4/4. r/4 Bb4/8 |
+# The theme returns
+| v=94 G5/4 F5/8 G5/4 Ab5/16 G5/16 F5/8 G5/8 F5/8 Eb5/4 Bb4/8 | G5/4 C5/8 C6/4 D6/16 C6/16 B5/8 C6/8 G5/8 Bb5/4 Ab5/8 | G5/4 F5/8 G5/4 C5/8 D5/8 Eb5/16 D5/16 C#5/16 D5/16 Eb5/8 D5/8 C5/8 | Bb4/4. Bb5/8 Ab5/8 G5/8 F5/8 G5/8 C5/8 D5/8 Eb5/8 Bb4/8 |
+# Climax in C minor
+| v=112 Eb5/4. G5/8 C6/8 Eb6/8 D6/4. C6/8 B5/8 C6/8 | Ab5/4. F5/8 Ab5/8 C6/8 B5/4. G5/8 B5/8 D6/8 | Eb6/4. C6/8 Ab5/8 Eb6/8 F6/4. Eb6/8 D6/8 C6/8 | Bb5/4. Ab5/8 G5/8 F5/8 D5/4 Eb5/8 C5/4 Bb4/8 |
+# The theme in full
+| v=104 G5/4 F5/8 G5/8 Ab5/16 G5/16 F#5/16 G5/16 Bb5/8 G5/8 F5/8 Eb5/4 Bb4/8 | G5/4 C5/8 C6/4 D6/16 C6/16 B5/8 C6/8 G5/8 Bb5/4 Ab5/8 | G5/4 F5/8 G5/4 C5/8 D5/8 Eb5/16 D5/16 C#5/16 D5/16 Eb5/8 D5/8 C5/8 | Bb4/4. Bb5/8 Ab5/8 G5/8 F5/4 D5/8 Eb5/4. |
+# Coda: the cadenza and the last chords
+| v=94 Bb5/8 B5/8 Bb5/8 B5/8 Bb5/8 B5/8 Bb5/8 C6/8 Bb5/8 Db6/8 C6/8 Bb5/8 | Bb5/16 B5/16 C6/16 Db6/16 D6/16 Eb6/16 E6/16 F6/16 Gb6/16 G6/16 Ab6/16 A6/16 Bb6/2. | Ab6/8 G6/8 F6/8 Eb6/8 D6/8 C6/8 Bb5/8 Ab5/8 G5/8 F5/8 Eb5/8 D5/8 | Eb6/4. Bb5/8 G5/8 Eb5/8 G5/4. F5/8 Eb5/8 D5/8 |
+| G5/4. F5/4. Eb5/4. D5/4. | Eb5/2.~ Eb5/2. | r/1. |
+
+track flute role=counter vol=0.5 pan=0.3
+# Intro: the harp sets the rocking left hand
+| R |
+# The theme
+| R | R | R | R |
+# The theme, ornamented
+| v=52 G4/1. | Ab4/1. | G4/2. Ab4/2. | Ab4/2. G4/2. |
+# The middle, in B-flat
+| R | R | R | R |
+# The theme returns
+| v=56 G4/1. | Ab4/1. | G4/2. Ab4/2. | G4/2. Ab4/2. |
+# Climax in C minor
+| v=70 C5/2. B4/2. | C5/2. B4/2. | C5/2. C5/2. | Bb4/1. |
+# The theme in full
+| v=62 G4/1. | Ab4/1. | G4/2. Ab4/2. | Ab4/2. G4/2. |
+# Coda: the cadenza and the last chords
+| R | R | R | R |
+| R | R | R |
+
+track bells role=arp vol=0.3 pan=-0.3
+# Intro: the harp sets the rocking left hand
+| R |
+# The theme
+| R | R | R | R |
+# The theme, ornamented
+| R | R | R | R |
+# The middle, in B-flat
+| R | R | R | R |
+# The theme returns
+| R | R | R | R |
+# Climax in C minor
+| R | R | R | R |
+# The theme in full
+| R | R | R | R |
+# Coda: the cadenza and the last chords
+| R | v=40 Bb4/8 D5/8 F5/8 Bb5/8 Bb4/8 D5/8 F5/8 Bb5/8 Bb4/8 D5/8 F5/8 Bb5/8 | Bb4/8 D5/8 F5/8 Bb5/8 Bb4/8 D5/8 F5/8 Bb5/8 Bb4/8 D5/8 F5/8 Bb5/8 | R |
+| R | R | R |
+
+track harp role=chords vol=0.75 pan=-0.2
+# Intro: the harp sets the rocking left hand
+| v=62 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 |
+# The theme
+| v=64 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 | r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 |
+# The theme, ornamented
+| v=68 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 | r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 |
+# The middle, in B-flat
+| v=72 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [F4 A3 C4]/8 [F4 A3 C4]/8 r/8 [F4 A3 C4]/8 [F4 A3 C4]/8 | r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [G3 Bb3 D4]/8 [G3 Bb3 D4]/8 r/8 [G3 Bb3 D4]/8 [G3 Bb3 D4]/8 | r/8 [F4 A3 C4]/8 [F4 A3 C4]/8 r/8 [F4 A3 C4]/8 [F4 A3 C4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 |
+# The theme returns
+| v=70 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 | r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 |
+# Climax in C minor
+| v=82 r/8 [C4 Eb4 G3]/8 [C4 Eb4 G3]/8 r/8 [C4 Eb4 G3]/8 [C4 Eb4 G3]/8 r/8 [G3 B3 D4]/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 [G3 B3 D4]/8 | r/8 [F4 Ab3 C4]/8 [F4 Ab3 C4]/8 r/8 [F4 Ab3 C4]/8 [F4 Ab3 C4]/8 r/8 [G3 B3 D4]/8 [G3 B3 D4]/8 r/8 [G3 B3 D4]/8 [G3 B3 D4]/8 | r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [F4 Ab3 C4]/8 [F4 Ab3 C4]/8 r/8 [F4 Ab3 C4]/8 [F4 Ab3 C4]/8 | r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 |
+# The theme in full
+| v=76 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 | r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 r/8 [Ab3 C4 Eb4]/8 [Ab3 C4 Eb4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 |
+# Coda: the cadenza and the last chords
+| v=66 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 | r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 |
+| r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Bb3 D4 F4]/8 [Bb3 D4 F4]/8 | r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 r/8 [Eb4 G3 Bb3]/8 [Eb4 G3 Bb3]/8 | [Eb3 G3 Bb3 Eb4 G4]/1. |
+
+track strings role=pad vol=0.55
+# Intro: the harp sets the rocking left hand
+| R |
+# The theme
+| R | R | R | R |
+# The theme, ornamented
+| v=40 [Eb3 G3 Bb3]/1. | [Ab2 C3 Eb3]/1. | [Eb3 G3 Bb3]/2. [Bb2 D3 F3 Ab3]/2. | [Bb2 D3 F3 Ab3]/2. [Eb3 G3 Bb3]/2. |
+# The middle, in B-flat
+| v=46 [Bb2 D3 F3]/1. | [Eb3 G3 Bb3]/2. [F3 A3 C4 Eb4]/2. | [Bb2 D3 F3]/2. [G3 Bb3 D4]/2. | [F3 A3 C4 Eb4]/2. [Bb2 D3 F3 Ab3]/2. |
+# The theme returns
+| v=48 [Eb3 G3 Bb3]/1. | [Ab2 C3 Eb3]/1. | [Eb3 G3 Bb3]/2. [Bb2 D3 F3 Ab3]/2. | [Eb3 G3 Bb3]/2. [Bb2 D3 F3 Ab3]/2. |
+# Climax in C minor
+| v=64 [C3 Eb3 G3]/2. [G3 B3 D4 F4]/2. | [F3 Ab3 C4]/2. [G3 B3 D4 F4]/2. | [Ab2 C3 Eb3]/2. [F3 Ab3 C4]/2. | [Bb2 D3 F3 Ab3]/1. |
+# The theme in full
+| v=56 [Eb3 G3 Bb3]/1. | [Ab2 C3 Eb3]/1. | [Eb3 G3 Bb3]/2. [Bb2 D3 F3 Ab3]/2. | [Bb2 D3 F3 Ab3]/2. [Eb3 G3 Bb3]/2. |
+# Coda: the cadenza and the last chords
+| v=44 [Eb3 G3 Bb3]/1. | [Bb2 D3 F3 Ab3]/1. | [Bb2 D3 F3 Ab3]/1. | [Eb3 G3 Bb3]/2. [Bb2 D3 F3 Ab3]/2. |
+| [Eb3 G3 Bb3]/4. [Eb3 G3 Bb3]/4. [Eb3 G3 Bb3]/4. [Bb2 D3 F3 Ab3]/4. | [Eb3 G3 Bb3]/1. | [Eb3 G3 Bb3]/1. |
+
+track cellos role=bass vol=0.7
+# Intro: the harp sets the rocking left hand
+| v=84 Eb2/4. Eb2/4.:84 Eb2/4. Eb2/4.:84 |
+# The theme
+| v=92 Eb2/4. Eb2/4.:84 Eb2/4. Eb2/4.:84 | Ab1/4. Ab1/4.:84 Ab1/4. Ab1/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Eb2/4. Eb2/4.:84 Bb1/4. Bb1/4.:84 |
+# The theme, ornamented
+| v=96 Eb2/4. Eb2/4.:84 Eb2/4. Eb2/4.:84 | Ab1/4. Ab1/4.:84 Ab1/4. Ab1/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Bb1/4. Bb1/4.:84 Eb2/4. Eb2/4.:84 |
+# The middle, in B-flat
+| v=100 Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Eb2/4. Eb2/4.:84 F2/4. F2/4.:84 | D2/4. D2/4.:84 G2/4. G2/4.:84 | F2/4. F2/4.:84 Bb1/4. Bb1/4.:84 |
+# The theme returns
+| v=100 Eb2/4. Eb2/4.:84 Eb2/4. Eb2/4.:84 | Ab1/4. Ab1/4.:84 Ab1/4. Ab1/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Eb2/4. Eb2/4.:84 Bb1/4. Bb1/4.:84 |
+# Climax in C minor
+| v=110 C2/4. C2/4.:84 G2/4. G2/4.:84 | F2/4. F2/4.:84 G2/4. G2/4.:84 | Ab1/4. Ab1/4.:84 F2/4. F2/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 |
+# The theme in full
+| v=106 Eb2/4. Eb2/4.:84 Eb2/4. Eb2/4.:84 | Ab1/4. Ab1/4.:84 Ab1/4. Ab1/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Bb1/4. Bb1/4.:84 Eb2/4. Eb2/4.:84 |
+# Coda: the cadenza and the last chords
+| v=96 Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Bb1/4. Bb1/4.:84 Bb1/4. Bb1/4.:84 | Eb2/4. Eb2/4.:84 Bb1/4. Bb1/4.:84 |
+| Bb1/4. Bb1/4. Bb1/4. Bb1/4. | Eb2/4. Eb2/4.:84 Eb2/4. Eb2/4.:84 | Eb2/1. |
+
+track drums role=drums vol=0.6
+# Intro: the harp sets the rocking left hand
+| R |
+# The theme
+| R | R | R | R |
+# The theme, ornamented
+| R | R | R | R |
+# The middle, in B-flat
+| R | R | R | R |
+# The theme returns
+| R | R | R | R |
+# Climax in C minor
+| v=70 k/4. r/4. r/4. r/4. | k/4. r/4. r/4. r/4. | k/4. r/4. k/4. r/4. | k/4. r/4. [k cr]/4. r/4. |
+# The theme in full
+| v=60 k/4. r/4. r/4. r/4. | R | v=60 k/4. r/4. r/4. r/4. | R |
+# Coda: the cadenza and the last chords
+| R | R | R | R |
+| R | R | R |

@@ -4,7 +4,7 @@ import { LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(27);
+    expect(LIBRARY.length).toBe(28);
   });
 
   it('orders by category then title', () => {
@@ -25,6 +25,7 @@ describe('library', () => {
       'greensleeves',
       'mountain-king',
       'korobeiniki',
+      'nocturne',
       'ode-to-joy',
       'valkyries',
       'swan-lake',
@@ -43,7 +44,7 @@ describe('library', () => {
     const count = (category: string) =>
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
-    expect(count('classics')).toBe(11);
+    expect(count('classics')).toBe(12);
     expect(count('originals')).toBe(7);
   });
 
@@ -65,6 +66,7 @@ describe('library', () => {
       'orchestral',
       'chiptune',
       'chiptune',
+      'orchestral',
       'orchestral',
       'orchestral',
       'orchestral',

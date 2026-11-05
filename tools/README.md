@@ -110,6 +110,13 @@ from each section's chords.
 node tools/arranger/ivory-and-ash.mjs tmp/cine
 ```
 
+The Nocturne (Chopin) is built by `arranger/nocturne.mjs`: the melody is written out bar by bar
+in 12/8, and the script adds the harp and cello left hand, pad, flute counter-line, and bells.
+
+```bash
+node tools/arranger/nocturne.mjs tmp/noc
+```
+
 The club tracks have their own script too, `arranger/club.mjs`: Underpass (rolling sub bass, acid
 bass riff, stab hook) and Ivory and Ash (128 Mix), which reuses the Ivory and Ash melodies with every
 note doubled in length so the tune keeps its pace at 128 BPM.
@@ -141,7 +148,8 @@ npm run check:songs
 It parses every song in `src/songs/`, or in `CHECK_DIR` if set, and fails on any parse error. It
 also lists each song's length and any long melody notes (from the `melody` track and every `lead` or `lead2` track) a semitone away from the pad or bass under
 them. That count is a report, not a failure: passing notes and a maj7 against its root are fine,
-but a new spike is worth a listen.
+but a new spike is worth a listen. Set `CHECK_DETAIL=1` to list every clash with its time, the melody note and its length,
+and the pad or bass note under it.
 
 ## Browser checks
 
@@ -187,7 +195,7 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   `node tools/browser/late.mjs`.
 - **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
-  hook,pluck,arp,stabs,pad,acid,sub,drums,perc,cymbals` (track names in the song file's order).
+  hook,pluck,arp,stabs,pad,acid,sub,drums,perc,cymbals` (track names in the song file's order). Add a style id at the end to remix the song into it first.
 
 `browser/cdp.mjs` is the shared helper. It launches headless Edge (set `EDGE_PATH` to use another
 Chromium) and talks to it over the DevTools protocol with Node's built-in WebSocket.

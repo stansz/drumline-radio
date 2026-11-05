@@ -11,6 +11,10 @@ import { buildTimeline } from '../../src/music/timing';
 
 const DIR = process.env.CHECK_DIR ?? 'src/songs';
 const MIN_SECONDS = 0.3;
+// CHECK_DETAIL=1 lists every clash: time, melody note, its length, and the pad or bass note under it.
+const DETAIL = Boolean(process.env.CHECK_DETAIL);
+const NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+const noteName = (n: number) => `${NAMES[n % 12]}${Math.floor(n / 12) - 1}`;
 
 it(`songs in ${DIR} parse; clash report`, () => {
   const lines: string[] = [];
@@ -32,6 +36,7 @@ it(`songs in ${DIR} parse; clash report`, () => {
       song.tracks.flatMap((t, i) => (t.role === 'pad' || t.role === 'bass' ? [i] : [])),
     );
     const where: string[] = [];
+    const details: string[] = [];
     let clashes = 0;
     for (const note of timeline.notes) {
       if (!melody.has(note.track) || note.duration < MIN_SECONDS) continue;
@@ -43,6 +48,11 @@ it(`songs in ${DIR} parse; clash report`, () => {
             if ((((a - b) % 12) + 12) % 12 !== 1) continue;
             clashes += 1;
             if (where.length < 3) where.push(`${note.start.toFixed(1)}s`);
+            if (DETAIL) {
+              details.push(
+                `  ${note.start.toFixed(1)}s ${noteName(a)} (${note.duration.toFixed(2)}s) over ${song.tracks[other.track].id} ${noteName(b)}`,
+              );
+            }
           }
         }
       }
@@ -50,6 +60,7 @@ it(`songs in ${DIR} parse; clash report`, () => {
     const total = Math.round(timeline.duration);
     const mins = `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
     lines.push(`${file.padEnd(30)} ${mins.padStart(5)}  ${clashes} clashes${where.length ? ` (at ${where.join(', ')})` : ''}`);
+    lines.push(...details);
   }
   console.log(lines.join('\n'));
   expect(failed).toBe(0);
