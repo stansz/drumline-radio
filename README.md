@@ -12,6 +12,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 
 - A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
 - Category presets (All, Carols, Classics, Originals) above the dial show just that group of stations (remembered between visits).
+- A Playlist view (Radio | Playlist switch in the header): add any song in any of the 6 styles, the same song more than once, reorder or remove entries, and play the list in order, with a Loop toggle. The playlist is saved on this device.
 - Installable and works offline: install it from the browser (or the Install button where offered; on iPhone, Share → Add to Home Screen). Updates download quietly and apply the next time it opens.
 - A living score that scrolls each track's notes past a playhead. Drag it sideways to scrub through the song.
 - VU meters, a glowing readout, and a volume slider with mute (remembered between visits).
@@ -21,7 +22,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - Six styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi, Cinematic) with remix by band button: switch the band
   and the same notes play with that style's instruments.
 - Techno flashes the screen gently on the kick, within the WCAG flash limits (at most 3 a second, a soft fade). It is off with reduced motion, and the ⓘ panel has a switch to turn it off.
-- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–6 styles, C category, M mute, R repeat, S screensaver.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–6 styles, C category, M mute, R repeat, S screensaver, P playlist view.
 
 | Orchestral | Phone |
 |---|---|

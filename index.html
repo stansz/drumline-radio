@@ -20,7 +20,7 @@
   <body>
     <div id="app" class="radio">
       <header class="faceplate">
-        <div class="brand">Drumline <span>Radio</span> <button id="install" class="install" type="button" hidden>Install</button><button id="info" class="info-btn" type="button" aria-label="Info and screensaver" title="Info and screensaver"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="8" cy="3.2" r="1.5" fill="currentColor"/><rect x="6.7" y="6" width="2.6" height="7.5" rx="1.1" fill="currentColor"/></svg></button></div>
+        <div class="brand">Drumline <span>Radio</span> <div id="views" class="views" role="radiogroup" aria-label="View"><button type="button" class="view-btn" role="radio" data-view="radio" aria-checked="true">Radio</button><button type="button" class="view-btn" role="radio" data-view="playlist" aria-checked="false">Playlist</button></div><button id="install" class="install" type="button" hidden>Install</button><button id="info" class="info-btn" type="button" aria-label="Info and screensaver" title="Info and screensaver"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><circle cx="8" cy="3.2" r="1.5" fill="currentColor"/><rect x="6.7" y="6" width="2.6" height="7.5" rx="1.1" fill="currentColor"/></svg></button></div>
         <div class="readout" role="button" tabindex="0" aria-label="Song details" title="Song details">
           <div id="title" class="readout-title" aria-live="polite">Drumline Radio</div>
           <div id="subtitle" class="readout-sub">Press play</div>
@@ -43,6 +43,27 @@
         <canvas id="score" class="score" aria-label="Scrolling score of the current song"></canvas>
         <div id="style-banner" class="style-banner"></div>
       </main>
+      <section id="playlist-view" class="playlist-view" aria-label="Playlist" hidden>
+        <div class="pl-col pl-queue">
+          <div class="pl-head">
+            <h2 class="pl-title">Playlist <span id="pl-count" class="pl-count"></span></h2>
+            <div class="pl-actions">
+              <button id="pl-start" class="info-action" type="button">▶ Play playlist</button>
+              <button id="pl-loop" class="info-action" type="button" aria-pressed="false">Loop</button>
+              <button id="pl-clear" class="info-action" type="button">Clear</button>
+            </div>
+          </div>
+          <ol id="pl-list" class="pl-list"></ol>
+          <p id="pl-empty" class="pl-empty">Your playlist is empty. Pick a style next to a song below and press +.</p>
+        </div>
+        <div class="pl-col pl-library">
+          <div class="pl-head">
+            <h2 class="pl-title">Library</h2>
+            <div id="pl-filters" class="presets" role="radiogroup" aria-label="Library category"></div>
+          </div>
+          <ul id="pl-songs" class="pl-songs"></ul>
+        </div>
+      </section>
       <section class="tuner" aria-label="Stations">
         <div id="presets" class="presets" role="radiogroup" aria-label="Category"></div>
         <div class="dial-wrap">
@@ -99,7 +120,7 @@
       <div id="saver-auto" class="info-row" role="radiogroup" aria-labelledby="saver-auto-label"></div>
       <div class="info-label">Keyboard</div>
       <p class="info-keys">Space play/pause · ←/→ station · 1–6 style · C category · M mute · R repeat ·
-        S screensaver</p>
+        S screensaver · P playlist view</p>
       <button id="info-close" class="info-action info-close" type="button">Close</button>
     </dialog>
     <dialog id="song-card" class="info-panel song-card" aria-labelledby="card-title">

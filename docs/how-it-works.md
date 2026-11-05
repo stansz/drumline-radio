@@ -52,7 +52,9 @@ There are no recordings. Each song is a small text score, and the browser's buil
 - `saver.ts` is the dim and black screensaver overlays, and `wake.ts` keeps the screen awake while they're on.
 - `dial.ts` is the tuner strip of stations. `score.ts` draws the scrolling notes. `meters.ts`
   draws the L/R meters. `marquee.ts` scrolls long readout text back and forth. `view.ts` has the
-  screen math, kept pure so it can be tested.
+  screen math, kept pure so it can be tested. `playlist.ts` is the playlist logic (saved list,
+  reorder, remove, what plays next), kept pure so it can be tested; `ui.ts` draws the playlist view
+  and plays its entries.
 
 ## Roles: why remix works
 
