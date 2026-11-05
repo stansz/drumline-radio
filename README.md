@@ -52,8 +52,10 @@ Other public-domain melodies, arranged by Claude and SZ:
   up from start to finish.
 - **Ride of the Valkyries**, from Richard Wagner's *Die Walküre* (1856). Orchestral, in real 9/8.
 - **Canon in D** (Johann Pachelbel, around 1680). Orchestral.
+- **Clair de Lune** (Claude Debussy, 1905). Cinematic.
 - **Für Elise** (Ludwig van Beethoven, 1810). Synthwave.
 - **Korobeiniki**, the Tetris tune (Russian folk song, 1861). Chiptune.
+- **Moonlight Sonata**, first movement (Ludwig van Beethoven, 1801). Cinematic.
 - **Nocturne in E-flat, Op. 9 No. 2** (Frédéric Chopin, 1832). Orchestral.
 - **Swan Lake** (Pyotr Ilyich Tchaikovsky, 1876). Orchestral.
 

@@ -4,7 +4,7 @@ import { HIDDEN_IDS, LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(24);
+    expect(LIBRARY.length).toBe(26);
     expect(HIDDEN_IDS).toEqual([
       'can-can',
       'eine-kleine-nachtmusik',
@@ -16,10 +16,12 @@ describe('library', () => {
   it('orders by category then title', () => {
     expect(LIBRARY.map((entry) => entry.id)).toEqual([
       'canon-in-d',
+      'clair-de-lune',
       'fur-elise',
       'greensleeves',
       'mountain-king',
       'korobeiniki',
+      'moonlight',
       'nocturne',
       'valkyries',
       'swan-lake',
@@ -46,17 +48,19 @@ describe('library', () => {
     const count = (category: string) =>
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
-    expect(count('classics')).toBe(8);
+    expect(count('classics')).toBe(10);
     expect(count('originals')).toBe(7);
   });
 
   it('keeps each song in its own style', () => {
     expect(LIBRARY.map((entry) => entry.song.meta.style)).toEqual([
       'orchestral',
+      'cinematic',
       'synthwave',
       'orchestral',
       'chiptune',
       'chiptune',
+      'cinematic',
       'orchestral',
       'orchestral',
       'orchestral',

@@ -141,6 +141,11 @@ node tools/midi/midi2song.mjs score.mid --time 3/8 --pickup 480 --grid 40 --json
 and triplets), and prints each voice's range and how many notes moved. For a famous public-domain
 piece, start from a score like this rather than from memory.
 
+For piano pieces, a conversion script can import `readMidi`, `quantise`, `splitVoices`, and
+`writeBars` from `midi2song.mjs` and route the notes itself (Moonlight's triplets apart from its
+melody, the left hand's low notes doubled by a bass). `arranger/piano-piece.mjs` then writes the parts
+as a song; `moonlight.mjs` and `clair-de-lune.mjs` hold the converted bars and use it.
+
 The club tracks have their own script too, `arranger/club.mjs`: Underpass (Synthwave, in the manner
 of a synth film score: octave-pulse bass, step sequencer, brass chords, a heroic theme) and Ivory and
 Ash (128 Mix), which reuses the Ivory and Ash melodies with every note doubled in length so the tune
