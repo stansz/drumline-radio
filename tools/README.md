@@ -56,6 +56,15 @@ The first command builds all 16 songs into `tmp/songs`, the second builds just o
 checks the output. To keep the output, copy it over the file in `src/songs/`. The script's output
 matches the files in `src/songs/`, so re-running it is safe.
 
+`tests/drift.test.ts` runs every generator into a temp folder and fails if a generated song differs
+from its copy in `src/songs/`. It runs in `npm test` but not in `npm run test:sandbox`, because the
+sandbox blocks the child processes it starts. Regenerate after a recipe change instead of editing a
+generated song by hand.
+
+`writeSong()` in `arranger.mjs` writes every arranged song; `arrange()` and `arrangeForm()` share
+it. A recipe with `hidden: true` gets a `hidden: true` header, which keeps its song out of the
+library while it is still parsed and checked.
+
 Für Elise, Ride of the Valkyries, Greensleeves, Mountain King, and the three older originals are
 hand-written. Edit their `.song` files directly.
 

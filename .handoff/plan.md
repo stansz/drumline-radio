@@ -1,236 +1,113 @@
 ## Goal
 
-Add a Playlist view to Drumline Radio. A "Radio | Playlist" switch in the header flips between the
-existing radio screen and a new playlist screen. On the playlist screen the user picks songs from a
-library list, each with a style (the song's own style or any of the 6 styles), and adds them to one
-playlist. The same song can be added many times in different styles. The playlist can be reordered,
-entries removed, and the whole list cleared. "Play playlist" plays the entries in order, each in its
-saved style; a Loop toggle loops the list. The playlist, loop setting, and current view are saved in
-localStorage. The header (readout, meters, volume) and the transport row (prev/play/next/repeat/seek)
-stay visible in both views; the score, dial, category presets and style bands are hidden in the
-playlist view.
+Four changes to Drumline Radio:
+
+1. A drift guard: a Vitest test that runs every song generator into a temp folder and fails if any
+   generated `.song` file differs from the copy in `src/songs/`.
+2. One shared writer in `tools/arranger/arranger.mjs`: `arrange()` and `arrangeForm()` end with the
+   same ~30 lines (`block()`, the track table, the ramp line, the write). Move that tail into one
+   `writeSong()` helper. Every generated song must stay byte-identical (the drift guard proves it).
+3. Category order: Classics, Originals, Carols (carols move to the far right of the preset row and
+   to the end of the dial).
+4. A `hidden: true` song header. Hidden songs still parse (and are still checked) but are left out of
+   the library. Hide Can-Can, Eine kleine Nachtmusik, Ode to Joy, and When the Saints Go Marching In.
 
 ## Files to touch
 
-- `src/ui/playlist.ts` (new, pure, no DOM or audio)
-- `tests/playlist.test.ts` (new)
-- `src/ui/ui.ts`
-- `index.html`
-- `src/ui/style.css`
-- `README.md`
-- `docs/how-it-works.md`
+- `tests/drift.test.ts` (new)
+- `vitest.sandbox.config.mjs`
+- `tools/arranger/arranger.mjs`
+- `tools/arranger/songs.mjs`
+- `src/music/song.ts`
+- `src/music/library.ts`
+- `tests/song.test.ts`
+- `tests/library.test.ts`
+- `src/songs/can-can.song`, `src/songs/eine-kleine-nachtmusik.song`, `src/songs/ode-to-joy.song`,
+  `src/songs/when-the-saints.song` (only by regenerating them with `node tools/arranger/songs.mjs`)
+- `README.md`, `docs/song-format.md`, `tools/README.md`, `AGENTS.md`
 
 ## Steps
 
-1. Create `src/ui/playlist.ts`, DOM-free, exporting exactly:
-
-   ```ts
-   import { STYLES } from '../music/roles';
-   import type { StyleId } from '../music/roles';
-
-   export interface PlaylistEntry { song: string; style: StyleId } // song = LibraryEntry.id
-   export const PLAYLIST_MAX = 200;
-   export type AppView = 'radio' | 'playlist';
-   ```
-
-   - `parsePlaylist(stored: string | null, ids: string[]): PlaylistEntry[]` — `JSON.parse` inside
-     try/catch; returns `[]` for null, invalid JSON, or a non-array. Keeps only items that are objects
-     with a string `song` contained in `ids` and a `style` contained in `STYLES`; output objects contain
-     only `song` and `style`. Truncates to the first `PLAYLIST_MAX` kept items.
-   - `serializePlaylist(list: PlaylistEntry[]): string` — `JSON.stringify` of `{song, style}` items.
-   - `addEntry(list, entry): PlaylistEntry[]` — returns a new array with `entry` appended; if
-     `list.length >= PLAYLIST_MAX` returns `list` unchanged (same reference).
-   - `moveEntry(list, at: number | null, index: number, delta: -1 | 1): { list: PlaylistEntry[]; at: number | null }`
-     — swaps `index` with `index + delta` in a new array. If either position is out of range, returns
-     the same `list` reference and `at` unchanged. `at` (the playing entry) follows the swap: if
-     `at === index` it becomes `index + delta`; if `at === index + delta` it becomes `index`.
-   - `removeEntry(list, at: number | null, index: number): { list: PlaylistEntry[]; at: number | null }`
-     — new array without `index` (out of range: same reference, `at` unchanged). `at === index` → `null`;
-     `at > index` → `at - 1`; otherwise unchanged.
-   - `nextInPlaylist(at: number, length: number, repeatOne: boolean, loop: boolean): number` — returns
-     `-1` if `length === 0`; `at` if `repeatOne`; `at + 1` if `at + 1 < length`; `0` if `loop`; else `-1`.
-   - `prevInPlaylist(at: number, length: number): number` — `-1` if `length === 0`, otherwise
-     `(at - 1 + length) % length`.
-   - `parseView(stored: string | null): AppView` — `'playlist'` only for the exact string
-     `'playlist'`, otherwise `'radio'`.
-
-2. Create `tests/playlist.test.ts` (Vitest, same style as `tests/view.test.ts`) covering every function
-   above: parsePlaylist with null, bad JSON, non-array, unknown id, unknown style, extra fields
-   stripped, truncation at `PLAYLIST_MAX`; serialize→parse round trip; addEntry append and the cap;
-   moveEntry up/down, out-of-range, and `at` following both swapped positions; removeEntry before /
-   at / after `at` and out-of-range; nextInPlaylist for all branches; prevInPlaylist wrap; parseView.
-
-3. `index.html`:
-   - In `.brand`, directly before the `#install` button, add
-     `<div id="views" class="views" role="radiogroup" aria-label="View"><button type="button" class="view-btn" role="radio" data-view="radio" aria-checked="true">Radio</button><button type="button" class="view-btn" role="radio" data-view="playlist" aria-checked="false">Playlist</button></div>`.
-   - Between `</main>` and `<section class="tuner" ...>` add:
-
-     ```html
-     <section id="playlist-view" class="playlist-view" aria-label="Playlist" hidden>
-       <div class="pl-col pl-queue">
-         <div class="pl-head">
-           <h2 class="pl-title">Playlist <span id="pl-count" class="pl-count"></span></h2>
-           <div class="pl-actions">
-             <button id="pl-start" class="info-action" type="button">▶ Play playlist</button>
-             <button id="pl-loop" class="info-action" type="button" aria-pressed="false">Loop</button>
-             <button id="pl-clear" class="info-action" type="button">Clear</button>
-           </div>
-         </div>
-         <ol id="pl-list" class="pl-list"></ol>
-         <p id="pl-empty" class="pl-empty">Your playlist is empty. Pick a style next to a song below and press +.</p>
-       </div>
-       <div class="pl-col pl-library">
-         <div class="pl-head">
-           <h2 class="pl-title">Library</h2>
-           <div id="pl-filters" class="presets" role="radiogroup" aria-label="Library category"></div>
-         </div>
-         <ul id="pl-songs" class="pl-songs"></ul>
-       </div>
-     </section>
-     ```
-   - In the info panel, change the keyboard line to
-     `Space play/pause · ←/→ station · 1–6 style · C category · M mute · R repeat · S screensaver · P playlist view`.
-
-4. `src/ui/ui.ts` — wire the view and the playlist. Keep all existing behaviour in radio mode.
-   - Imports: everything needed from `./playlist`. New keys: `PLAYLIST_KEY = 'drumline-radio-playlist'`,
-     `PLAYLIST_LOOP_KEY = 'drumline-radio-playlist-loop'`, `VIEW_KEY = 'drumline-radio-view'`. Use the
-     existing `load`/`save` helpers (already try/catch).
-   - Query the new elements with `required(...)`: `#views`, `#playlist-view`, `#pl-count`, `#pl-start`,
-     `#pl-loop`, `#pl-clear`, `#pl-list`, `#pl-empty`, `#pl-filters`, `#pl-songs`.
-   - State: `let playlist = parsePlaylist(load(PLAYLIST_KEY), LIBRARY.map((e) => e.id));`,
-     `let playlistAt: number | null = null;` (index of the playing entry, null = radio playback),
-     `let loop = load(PLAYLIST_LOOP_KEY) === '1';`, `let view = parseView(load(VIEW_KEY));`,
-     `let libraryFilter: CategoryFilter = 'all';` (not saved).
-   - `setPlaylist(list)`: assigns, `save(PLAYLIST_KEY, serializePlaylist(list))`, calls `renderPlaylist()`.
-   - `applyView()`: sets `root.dataset.view = view` (`root` is `document.documentElement`), sets
-     `playlistView.hidden = view !== 'playlist'`, sets each `.view-btn` `aria-checked`. `selectView(v)`
-     assigns, saves `VIEW_KEY`, calls `applyView()`; when switching to radio also call
-     `titleMarquee.refit(); subtitleMarquee.refit();`. Click on a `.view-btn` → `selectView(button.dataset.view)`
-     (validate with `parseView`). ArrowLeft/ArrowRight on `#views` toggles between the two, with
-     `preventDefault` + `stopPropagation` (same pattern as the `presetsEl` keydown).
-   - Library list (`renderLibrary()`, called at start and on filter change): filter chips in `#pl-filters`
-     built once like the preset buttons (class `preset`, role radio, labels from `categoryLabel`, all
-     `CATEGORY_FILTERS`); clicking one sets `libraryFilter`, updates the chips' `aria-checked`, and
-     re-renders the rows. Rows are the indices from
-     `stationsIn(LIBRARY.map(e => e.song.meta.category), libraryFilter)`. Each row is
-     `<li class="pl-song">` with:
-     - `<div class="pl-song-text"><span class="pl-song-title">{title}</span><span class="pl-song-meta">{composer} · {formatTime(duration)}</span></div>`
-       (compute every song's `buildTimeline(song).duration` once at startup into an array, not per render);
-     - `<select class="pl-style" aria-label="Style for {title}">` with one `<option value="{id}">` per
-       `STYLES` id, text `STYLE_DEFS[id].name`; the song's own style option has text prefixed with `★ `
-       and is selected by default;
-     - `<button type="button" class="pl-add" aria-label="Add {title} to playlist">+</button>`; click →
-       if `playlist.length >= PLAYLIST_MAX` show `Full` as the button text for 900 ms; otherwise
-       `setPlaylist(addEntry(playlist, { song: entry.id, style: select.value as StyleId }))` and show
-       `✓` for 900 ms; then restore `+`.
-     Use `textContent` for all song text (no innerHTML with song data).
-   - Playlist list (`renderPlaylist()`): `#pl-count` text is `(${playlist.length})`, or empty when 0;
-     `#pl-empty.hidden = playlist.length > 0`; `#pl-start.disabled` and `#pl-clear.disabled` are
-     `playlist.length === 0`. Rebuild `#pl-list`: each entry → `<li class="pl-item">`, with
-     `aria-current="true"` and class `playing` when `index === playlistAt`, containing:
-     - `<span class="pl-num">{index + 1}</span>`;
-     - `<button type="button" class="pl-entry">` holding `<span class="pl-song-title">{title}</span>`
-       and `<span class="pl-song-meta">{STYLE_DEFS[style].name}{style === song's own style ? '' : ' remix'}</span>`;
-       click → `playEntry(index)`;
-     - three `<button type="button" class="pl-icon">` buttons: `↑` (aria-label "Move {title} up",
-       disabled for index 0), `↓` ("Move {title} down", disabled for the last), `✕` ("Remove {title}").
-       ↑/↓ → `const r = moveEntry(playlist, playlistAt, index, -1 or 1); playlistAt = r.at; setPlaylist(r.list); updateReadoutForEngine();`.
-       ✕ → the same with `removeEntry(playlist, playlistAt, index)`.
-   - `#pl-loop`: toggles `loop`, saves `PLAYLIST_LOOP_KEY` as '1'/'0', sets `aria-pressed`.
-   - `#pl-clear`: `if (!window.confirm('Clear the playlist?')) return;` then
-     `playlistAt = null; setPlaylist([]); updateReadoutForEngine();`.
-   - `#pl-start`: `playEntry(0)`.
-   - `playEntry(at: number)`:
-     ```
-     const item = playlist[at]; if (!item) return;
-     const index = LIBRARY.findIndex((e) => e.id === item.song); if (index < 0) return;
-     if (!visible().includes(index)) selectCategory('all');   // before playlistAt is set
-     const fresh = engine === null;
-     current = index;
-     const active = ensureEngine(); if (!active) return;
-     if (!fresh) loadSong(index);
-     const changed = lastStyle !== null && lastStyle !== item.style;
-     playlistAt = at;
-     active.setStyle(item.style);
-     root.dataset.style = item.style;
-     if (changed && !fresh) showBanner(item.style);
-     lastStyle = item.style;
-     updateReadout(item.style); updateBands(item.style);
-     dial.select(current, false);
-     active.play();
-     updatePlayButton(); renderPlaylist();
-     ```
-   - `updateReadout(style)`: when `playlistAt !== null`, append `` ` · ${playlistAt + 1}/${playlist.length}` ``
-     to the subtitle string. Add `updateReadoutForEngine()` = `if (engine) updateReadout(engine.style);`.
-   - Leaving playlist playback: set `playlistAt = null`, then call `renderPlaylist()` and
-     `updateReadoutForEngine()`, at the start of the dial `onTune` callback and at the start of
-     `selectCategory` (covers the preset buttons and the `C` key). `selectBand` keeps `playlistAt`
-     (a one-off style change while playing does not edit the entry).
-   - `handleEnded()`: if `playlistAt !== null`: `const n = nextInPlaylist(playlistAt, playlist.length, repeat, loop);`
-     if `n < 0` → `playlistAt = null; renderPlaylist(); updateReadoutForEngine(); updatePlayButton(); return;`
-     else `playEntry(n); return;`. Otherwise keep the existing radio behaviour.
-   - `next()`: after `ensureEngine()`, if `playlistAt !== null`:
-     `const n = nextInPlaylist(playlistAt, playlist.length, false, true); if (n >= 0) playEntry(n); return;`.
-     `previous()`: keep the restart-if-past-3s rule first; then if `playlistAt !== null`,
-     `const p = prevInPlaylist(playlistAt, playlist.length); if (p >= 0) playEntry(p); return;`.
-   - Global keydown: return early (before any shortcut, after the screensaver check) when
-     `document.activeElement instanceof HTMLSelectElement`. Add `P`/`p` →
-     `selectView(view === 'radio' ? 'playlist' : 'radio')`.
-   - At startup call `applyView()`, set `#pl-loop` `aria-pressed`, `renderLibrary()`, `renderPlaylist()`.
-     These must run before the `if (LIBRARY.length === 0)` early return and must not throw on an empty library.
-
-5. `src/ui/style.css`:
-   - `.views`: `display: inline-flex; gap: 4px; margin-left: 10px; vertical-align: middle;`.
-     `.view-btn` styled like `.preset` but `flex: none; padding: 2px 8px; font-size: 10px;`;
-     `.view-btn[aria-checked='true']` uses the same accent/glow as `.preset[aria-checked='true']`.
-   - `:root[data-view='playlist'] .stage, :root[data-view='playlist'] .tuner .presets, :root[data-view='playlist'] .dial-wrap, :root[data-view='playlist'] .bands { display: none; }`
-     (`.tuner .presets` must not hide `#pl-filters`, which is outside `.tuner`).
-   - `.playlist-view`: `flex: 1; min-height: 240px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start;`
-     and `.playlist-view[hidden] { display: none; }`. `.pl-col` uses the panel look of `.tuner`
-     (`background: var(--panel)`, `border: 1px solid rgba(255, 255, 255, 0.08)`, `border-radius: 12px`),
-     `padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0;`.
-     `.pl-list, .pl-songs { overflow-y: auto; max-height: 60dvh; list-style: none; margin: 0; padding: 0; }`.
-   - `.pl-head`: `display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;`.
-     `.pl-title`: `font-size: 12px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); margin: 0; font-weight: normal;`.
-     `.pl-actions`: `display: flex; gap: 6px; flex-wrap: wrap;`. `#pl-filters` keeps `.presets` styling
-     and gets `flex: 1 1 100%`.
-   - `.pl-song`, `.pl-item`: `display: flex; align-items: center; gap: 8px; padding: 6px 4px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); min-height: 42px;`.
-     `.pl-song-text`, `.pl-entry`: `flex: 1; min-width: 0; display: flex; flex-direction: column;`.
-     `.pl-song-title`: `white-space: nowrap; overflow: hidden; text-overflow: ellipsis;`.
-     `.pl-song-meta`: `font-size: 11px; color: var(--muted);`. `.pl-entry` is a reset button
-     (`border: 0; background: none; padding: 0; color: inherit; font: inherit; text-align: left; cursor: pointer;`).
-     `.pl-item.playing`: `border-left: 2px solid var(--accent);` and `.pl-item.playing .pl-song-title { color: var(--accent); }`.
-     `.pl-num`: `font-size: 11px; color: var(--muted); min-width: 1.6em; text-align: right;`.
-   - `.pl-style`: `background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: inherit; font: inherit; font-size: 11px; max-width: 9.5em; height: 30px;`
-     and `.pl-style option { background: #14101f; }`.
-     `.pl-add`, `.pl-icon`: `flex: none; width: 30px; height: 30px;` with the `.preset` border,
-     background and radius, `color: var(--muted); font: inherit; cursor: pointer;`; `.pl-add { color: var(--accent); min-width: 30px; width: auto; padding: 0 6px; }`;
-     `.pl-icon:disabled, #pl-start:disabled, #pl-clear:disabled { opacity: 0.35; cursor: default; }`.
-   - `.pl-empty`: `color: var(--muted); font-size: 13px; margin: 4px 0;`.
-   - In the existing `@media (max-width: 640px)` block add: `.playlist-view { grid-template-columns: 1fr; }`,
-     `.pl-list, .pl-songs { max-height: none; }`, `.view-btn { padding: 2px 6px; letter-spacing: 0.06em; }`.
-
-6. `README.md`: add a feature bullet after the category presets bullet:
-   "A Playlist view (Radio | Playlist switch in the header): add any song in any of the 6 styles,
-   the same song more than once, reorder or remove entries, and play the list in order, with a Loop
-   toggle. The playlist is saved on this device." Add `P playlist view` to the keyboard shortcuts bullet.
-
-7. `docs/how-it-works.md`: in the `src/ui/` section add a bullet: "`playlist.ts` is the playlist logic
-   (saved list, reorder, remove, what plays next), kept pure so it can be tested; `ui.ts` draws the
-   playlist view and plays its entries."
+1. `tests/drift.test.ts`: one `it` per generator script in this list:
+   `tools/arranger/songs.mjs`, `tools/arranger/originals.mjs`, `tools/arranger/ivory-and-ash.mjs`,
+   `tools/arranger/club.mjs`, `tools/arranger/nocturne.mjs`. Each test:
+   - makes a temp dir with `mkdtempSync(join(tmpdir(), 'radio-drift-'))`;
+   - runs `execFileSync(process.execPath, [script, dir], { stdio: 'pipe' })` from the repo root;
+   - lists the `.song` files written to `dir` and expects at least one;
+   - for each, reads it and `src/songs/<same name>`, normalises both with `.replace(/\r\n/g, '\n')`,
+     and expects them equal, with the file name in the assertion message
+     (`expect(generated, \`${file} differs from src/songs: re-run ${script}\`).toBe(committed)`);
+   - removes the temp dir in a `finally` (`rmSync(dir, { recursive: true, force: true })`).
+   Add a top comment: the generators are deterministic, so a recipe edit that was not regenerated
+   (or a hand edit to a generated file) fails here; hand-written songs have no generator and are
+   not checked.
+2. `vitest.sandbox.config.mjs`: exclude `tests/drift.test.ts` from the sandbox run (the dsh sandbox
+   blocks child processes). Use `import { configDefaults } from 'vitest/config'` and
+   `exclude: [...configDefaults.exclude, 'tests/drift.test.ts']` inside `test`, keeping the existing
+   `pool: 'threads'` and `resolve` settings. Add one comment line saying why.
+3. `tools/arranger/arranger.mjs`: add a module-level function
+   `writeSong(out, spec, { T, comment, tracks, style, ts })` that contains the shared tail:
+   `block()`, the `ramp` line, building `text` (header from `spec.head.trim()`, then `style`, `tempo`,
+   `time`, the ramp, then the tracks), and `writeFileSync(join(out, spec.file), text)`. Each arranger
+   keeps building its own `tracks` table (they differ: harmony volume 0.45 vs 0.4, the harmony role
+   default, and the arp volume for tease intros) and calls `writeSong`. If `spec.hidden` is true,
+   `writeSong` adds the line `hidden: true` directly after the head (before `style:`). Delete the two
+   duplicated tails. The output for every existing recipe must not change by a single byte.
+4. `src/music/song.ts`:
+   - Change `CATEGORIES` to `['classics', 'originals', 'carols'] as const`.
+   - Add `hidden: boolean` to `SongMeta` (default `false`) and `'hidden'` to `KNOWN_HEADER_KEYS`.
+     Parse it next to `about`: the only allowed value is `true`; any other value is an error
+     `hidden must be true` at that line (an absent header means not hidden).
+5. `src/music/library.ts`: parse every file as now (parse errors still go to `LIBRARY_ERRORS`), but
+   leave songs with `meta.hidden` out of `LIBRARY`. Export `HIDDEN_IDS: string[]` (sorted ids of the
+   hidden songs that parsed).
+6. `tools/arranger/songs.mjs`: add `hidden: true` to the recipes for `can-can.song`,
+   `eine-kleine-nachtmusik.song`, `ode-to-joy.song`, and `when-the-saints.song`. Then run
+   `node tools/arranger/songs.mjs` to regenerate `src/songs/`; the only changed song files must be
+   those four, each gaining exactly one line `hidden: true`.
+7. `tests/song.test.ts`: add tests: `hidden: true` gives `meta.hidden === true`; no header gives
+   `false`; `hidden: yes` is an error containing `hidden must be true`.
+8. `tests/library.test.ts`:
+   - `LIBRARY.length` is 24; add `expect(HIDDEN_IDS).toEqual(['can-can', 'eine-kleine-nachtmusik', 'ode-to-joy', 'when-the-saints'])`.
+   - The id order becomes exactly:
+     `canon-in-d, fur-elise, greensleeves, mountain-king, korobeiniki, nocturne, valkyries, swan-lake,
+     ivory-and-ash, ivory-and-ash-128, last-stop, midnight-arcade, night-shift, save-point, underpass,
+     deck-the-halls, god-rest-ye, good-king-wenceslas, hark-the-herald, jingle-bells,
+     joy-to-the-world, o-christmas-tree, silent-night, we-wish-you`.
+   - Category counts: classics 8, originals 7, carols 9.
+   - Rewrite the expected styles array in the same order, taking each value from that song's
+     `style:` header in `src/songs/`.
+   - Any other test that assumed the old order or old count: update the expectation (never song files).
+9. Docs:
+   - `README.md`: the presets bullet reads "Category presets (All, Classics, Originals, Carols)";
+     move Can-Can, Eine kleine Nachtmusik, Ode to Joy, and When the Saints out of the song list into
+     one line under it: "Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to
+     Joy, When the Saints Go Marching In."
+   - `docs/song-format.md`: add `hidden` to the header table ("No | `true` leaves the song out of the
+     library; it is still parsed and checked.") and the error to the error list.
+   - `tools/README.md`: describe `tests/drift.test.ts` (what it checks, that it runs in `npm test`
+     but not in `npm run test:sandbox`), and that the arranger's shared `writeSong()` writes every
+     arranged song and adds `hidden: true` for a recipe with `hidden: true`.
+   - `AGENTS.md`: in the rule about arranged songs, add that `tests/drift.test.ts` fails when a
+     generated song in `src/songs/` doesn't match its generator; and that a song is hidden with a
+     `hidden: true` header (set in its recipe when it has one).
+   - Fix any other doc sentence these changes make false.
 
 ## Acceptance
 
 - `npm run typecheck` exits 0.
-- `npm run test:sandbox` exits 0 and its output lists `tests/playlist.test.ts`.
+- `npm run test:sandbox` exits 0 (it skips `tests/drift.test.ts`).
+- `node tools/arranger/songs.mjs tmp/a && node tools/arranger/originals.mjs tmp/a && node tools/arranger/ivory-and-ash.mjs tmp/a && node tools/arranger/club.mjs tmp/a && node tools/arranger/nocturne.mjs tmp/a`
+  writes 21 files, and `git diff --stat -- src/songs` lists only the four hidden songs, 1 insertion each.
+  Delete `tmp/a` afterwards.
 - `git status --porcelain` lists only files from **Files to touch** (plus `.handoff/`).
 
 Verifier only:
-- `npm test` exits 0.
+- `npm test` exits 0, including `tests/drift.test.ts` (5 tests).
 - `npm run build` exits 0.
-- Headless Edge against `npx vite preview --port 4173`: switching to Playlist hides the dial and shows
-  both lists; two entries of the same song in different styles persist across a reload; Play playlist
-  plays entry 1 in its saved style; no horizontal scroll at 360 px wide.
+- `npm run check:songs` passes (it still parses the 4 hidden songs).
+- Headless Edge: the preset row reads All, Classics, Originals, Carols; the dial has 24 stations and
+  none of the hidden four.
 
 ## Parallel work
 
@@ -242,15 +119,14 @@ None — do it sequentially.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and report
   it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past it.
-- `src/ui/playlist.ts` must not reference `document`, `window`, `localStorage`, or any audio API.
-- All `localStorage` access goes through the existing `load`/`save` helpers in `ui.ts`.
-- No new dependencies. No `innerHTML` with song data.
-- Do not change any `.song` file, `src/audio/*`, or `src/music/*`.
+- Never hand-edit a generated `.song` file; change recipes or the arranger and regenerate.
+- Do not touch any other `.song` file, `src/audio/*`, or `src/ui/*`.
+- No new dependencies.
 
 ## Out of scope
 
-Multiple named playlists, shuffle, share links, drag-and-drop reordering, editing an entry's style
-after it is added, background or pre-rendered playback.
+Rewriting `arrange()` on top of `arrangeForm()`; changing any song's notes; redoing the hidden songs;
+a UI to show hidden songs.
 
 ## If blocked
 

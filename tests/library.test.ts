@@ -1,14 +1,35 @@
 import { describe, expect, it } from 'vitest';
-import { LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
+import { HIDDEN_IDS, LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(28);
+    expect(LIBRARY.length).toBe(24);
+    expect(HIDDEN_IDS).toEqual([
+      'can-can',
+      'eine-kleine-nachtmusik',
+      'ode-to-joy',
+      'when-the-saints',
+    ]);
   });
 
   it('orders by category then title', () => {
     expect(LIBRARY.map((entry) => entry.id)).toEqual([
+      'canon-in-d',
+      'fur-elise',
+      'greensleeves',
+      'mountain-king',
+      'korobeiniki',
+      'nocturne',
+      'valkyries',
+      'swan-lake',
+      'ivory-and-ash',
+      'ivory-and-ash-128',
+      'last-stop',
+      'midnight-arcade',
+      'night-shift',
+      'save-point',
+      'underpass',
       'deck-the-halls',
       'god-rest-ye',
       'good-king-wenceslas',
@@ -18,25 +39,6 @@ describe('library', () => {
       'o-christmas-tree',
       'silent-night',
       'we-wish-you',
-      'can-can',
-      'canon-in-d',
-      'eine-kleine-nachtmusik',
-      'fur-elise',
-      'greensleeves',
-      'mountain-king',
-      'korobeiniki',
-      'nocturne',
-      'ode-to-joy',
-      'valkyries',
-      'swan-lake',
-      'when-the-saints',
-      'ivory-and-ash',
-      'ivory-and-ash-128',
-      'last-stop',
-      'midnight-arcade',
-      'night-shift',
-      'save-point',
-      'underpass',
     ]);
   });
 
@@ -44,24 +46,13 @@ describe('library', () => {
     const count = (category: string) =>
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
-    expect(count('classics')).toBe(12);
+    expect(count('classics')).toBe(8);
     expect(count('originals')).toBe(7);
   });
 
   it('keeps each song in its own style', () => {
     expect(LIBRARY.map((entry) => entry.song.meta.style)).toEqual([
-      'synthwave',
-      'techno',
-      'chiptune',
       'orchestral',
-      'chiptune',
-      'orchestral',
-      'orchestral',
-      'synthwave',
-      'synthwave',
-      'chiptune',
-      'orchestral',
-      'techno',
       'synthwave',
       'orchestral',
       'chiptune',
@@ -69,8 +60,6 @@ describe('library', () => {
       'orchestral',
       'orchestral',
       'orchestral',
-      'orchestral',
-      'synthwave',
       'cinematic',
       'techno',
       'lofi',
@@ -78,6 +67,15 @@ describe('library', () => {
       'techno',
       'chiptune',
       'techno',
+      'synthwave',
+      'techno',
+      'chiptune',
+      'orchestral',
+      'chiptune',
+      'orchestral',
+      'orchestral',
+      'synthwave',
+      'synthwave',
     ]);
   });
 

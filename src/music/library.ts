@@ -22,17 +22,21 @@ function sortedEntries(entries: LibraryEntry[]): LibraryEntry[] {
 }
 
 const entries: LibraryEntry[] = [];
+const hidden: LibraryEntry[] = [];
 const errors: string[] = [];
 
 for (const path of Object.keys(FILES).sort()) {
   const id = idFor(path);
   const result = parseSong(FILES[path]);
   if (result.ok) {
-    entries.push({ id, song: result.song });
+    const entry = { id, song: result.song };
+    if (result.song.meta.hidden) hidden.push(entry);
+    else entries.push(entry);
   } else {
     errors.push(`${id}: ${result.errors.join('; ')}`);
   }
 }
 
 export const LIBRARY: LibraryEntry[] = sortedEntries(entries);
+export const HIDDEN_IDS: string[] = hidden.map((entry) => entry.id).sort();
 export const LIBRARY_ERRORS: string[] = errors;

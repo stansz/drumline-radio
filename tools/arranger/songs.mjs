@@ -36,7 +36,7 @@ A({
 });
 
 A({
-  file: 'ode-to-joy.song', style: 'orchestral', time: [4, 4], tempo: 112, passes: 3, keyUp: 2,
+  file: 'ode-to-joy.song', style: 'orchestral', time: [4, 4], tempo: 112, passes: 3, keyUp: 2, hidden: true,
   intro: { type: 'pad', bars: 2 }, bass: 'walk', drums: 'orch',
   head: head('Ode to Joy', 'Ludwig van Beethoven', '1824', 'D major', 'A string swell, then a walking bass under the tune; up a step at the end.', 'classics'),
   melody: [
@@ -49,7 +49,7 @@ A({
 });
 
 A({
-  file: 'can-can.song', style: 'chiptune', time: [2, 4], tempo: 152, passes: 4, keyUp: 2,
+  file: 'can-can.song', style: 'chiptune', time: [2, 4], tempo: 152, passes: 4, keyUp: 2, hidden: true,
   intro: { type: 'drums', bars: 2 }, bass: 'gallop', drums: 'march',
   head: head('Can-Can', 'Jacques Offenbach', '1858', 'C major', 'A snare roll-in, a galloping bass, four times round.', 'classics'),
   melody: [
@@ -88,7 +88,7 @@ A({
 });
 
 A({
-  file: 'eine-kleine-nachtmusik.song', style: 'techno', time: [4, 4], tempo: 128, passes: 3, keyUp: 2,
+  file: 'eine-kleine-nachtmusik.song', style: 'techno', time: [4, 4], tempo: 128, passes: 3, keyUp: 2, hidden: true,
   intro: { type: 'drums', bars: 4 }, bass: 'pulse16', drums: 'disco',
   head: head('Eine kleine Nachtmusik', 'Wolfgang Amadeus Mozart', '1787', 'G major', 'Four bars of open hats, then Mozart over a pulsing bass.', 'classics'),
   melody: [
@@ -99,7 +99,7 @@ A({
 });
 
 A({
-  file: 'when-the-saints.song', style: 'synthwave', time: [4, 4], tempo: 120, passes: 3, keyUp: 2,
+  file: 'when-the-saints.song', style: 'synthwave', time: [4, 4], tempo: 120, passes: 3, keyUp: 2, hidden: true,
   intro: { type: 'drums', bars: 2 }, bass: 'walk', drums: 'march',
   head: head('When the Saints Go Marching In', 'Traditional', 'traditional', 'C major', 'A marching snare, a walking bass, the last chorus up a step.', 'classics'),
   melody: [

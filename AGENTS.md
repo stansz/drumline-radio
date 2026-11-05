@@ -27,8 +27,11 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - Every song in `src/songs/` must parse with no errors; `tests/library.test.ts` checks this.
 - Dev scripts live in `tools/` (see `tools/README.md`): the arranger that builds the arranged
   songs, `npm run check:songs`, and headless-Edge checks. When an arranged song changes, change its
-  recipe in `tools/arranger/songs.mjs` too, so a rebuild keeps the change. Browser checks run Edge
+  recipe in `tools/arranger/songs.mjs` too, so a rebuild keeps the change; `tests/drift.test.ts`
+  fails when a generated song in `src/songs/` doesn't match its generator. Browser checks run Edge
   muted.
+- A song is hidden with a `hidden: true` header, set in its recipe when it has one. Hidden songs
+  are still parsed and checked, but they stay out of the library.
 - The arranger is a starting point, not a rule. Fit each song's form, grooves, and textures to its
   genre and mood (`arrangeForm()` for verse/chorus/breakdown shape). Hand-write a song when the
   arranger can't express it, and extend the arranger with opt-in options when it falls short.

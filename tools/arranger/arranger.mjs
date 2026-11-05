@@ -118,6 +118,31 @@ function groove(name, ts, level) {
 }
 
 /**
+ * Writes the bars, ramp, and header to spec.file. Both arrangers build their own tracks table but
+ * share this tail.
+ */
+function writeSong(out, spec, { T, comment, tracks, style, ts }) {
+  const block = (key) => {
+    const lines = [];
+    const marks = new Map(comment[key].map(([i, c]) => [i, c]));
+    let row = [];
+    const flush = () => { if (row.length) lines.push('| ' + row.join(' | ') + ' |'); row = []; };
+    T[key].forEach((bar, i) => {
+      if (marks.has(i)) { flush(); lines.push(`# ${marks.get(i)}`); }
+      row.push(bar);
+      if (row.length === 4) flush();
+    });
+    flush();
+    return lines.join('\n');
+  };
+  const hidden = spec.hidden ? 'hidden: true\n' : '';
+  const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
+  const text = `${spec.head.trim()}\n${hidden}style: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +
+    tracks.map(([h, k]) => `${h}\n${block(k)}`).join('\n\n') + '\n';
+  writeFileSync(join(out, spec.file), text);
+}
+
+/**
  * spec: { file, head, style, time, tempo, melody: [bars], chords: [bar chord strings], passes, keyUp,
  *   bass, drums (names above), intro: { type, bars, tease: [melody bar indices] },
  *   pickup, link, final, finalChord, ramp, parts, voices (pad voices), arpUnit }
@@ -201,19 +226,6 @@ export function arrange(out, spec) {
   T.cym.push(`cr${dur(BT)}`);
 
   const P = spec.parts;
-  const block = (key) => {
-    const lines = [];
-    const marks = new Map(comment[key].map(([i, c]) => [i, c]));
-    let row = [];
-    const flush = () => { if (row.length) lines.push('| ' + row.join(' | ') + ' |'); row = []; };
-    T[key].forEach((bar, i) => {
-      if (marks.has(i)) { flush(); lines.push(`# ${marks.get(i)}`); }
-      row.push(bar);
-      if (row.length === 4) flush();
-    });
-    flush();
-    return lines.join('\n');
-  };
   const tracks = [
     [`track melody role=${P?.lead ?? 'lead'} vol=0.8`, 'lead'],
     [`track harmony role=${P?.harm ?? 'lead2'} vol=0.45`, 'harm'],
@@ -223,10 +235,7 @@ export function arrange(out, spec) {
     [`track drums role=drums vol=0.8`, 'drums'],
     [`track cymbals role=drums vol=0.5`, 'cym'],
   ];
-  const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
-  const text = `${spec.head.trim()}\nstyle: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +
-    tracks.map(([h, k]) => `${h}\n${block(k)}`).join('\n\n') + '\n';
-  writeFileSync(join(out, spec.file), text);
+  writeSong(out, spec, { T, comment, tracks, style, ts });
 }
 
 export const head = (title, composer, year, key, note, category) => `# ${title}, arranged by Claude and SZ. ${note}
@@ -388,19 +397,6 @@ export function arrangeForm(out, spec) {
   T.cym.push(`cr${dur(BT)}`);
 
   const P = spec.parts;
-  const block = (key) => {
-    const lines = [];
-    const marks = new Map(comment[key].map(([i, c]) => [i, c]));
-    let row = [];
-    const flush = () => { if (row.length) lines.push('| ' + row.join(' | ') + ' |'); row = []; };
-    T[key].forEach((bar, i) => {
-      if (marks.has(i)) { flush(); lines.push(`# ${marks.get(i)}`); }
-      row.push(bar);
-      if (row.length === 4) flush();
-    });
-    flush();
-    return lines.join('\n');
-  };
   const tracks = [
     [`track melody role=${P?.lead ?? 'lead'} vol=0.8`, 'lead'],
     [`track harmony role=${P?.harm ?? (harmMode === 'counter' ? 'counter' : 'lead2')} vol=0.4`, 'harm'],
@@ -410,8 +406,5 @@ export function arrangeForm(out, spec) {
     [`track drums role=drums vol=0.8`, 'drums'],
     [`track cymbals role=drums vol=0.5`, 'cym'],
   ];
-  const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
-  const text = `${spec.head.trim()}\nstyle: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +
-    tracks.map(([h, k]) => `${h}\n${block(k)}`).join('\n\n') + '\n';
-  writeFileSync(join(out, spec.file), text);
+  writeSong(out, spec, { T, comment, tracks, style, ts });
 }

@@ -477,3 +477,26 @@ describe('the about header', () => {
     expect(result.errors.some((e) => e.includes('about must not be empty'))).toBe(true);
   });
 });
+
+describe('the hidden header', () => {
+  it('reads hidden: true', () => {
+    const result = parseSong(`${HEADER}\nhidden: true\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.meta.hidden).toBe(true);
+  });
+
+  it('defaults to false without the line', () => {
+    const result = parseSong(`${HEADER}\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.meta.hidden).toBe(false);
+  });
+
+  it('rejects any other value', () => {
+    const result = parseSong(`${HEADER}\nhidden: yes\ntrack a role=lead\n| C4/1 |`);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.some((e) => e.includes('hidden must be true'))).toBe(true);
+  });
+});

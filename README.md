@@ -11,7 +11,7 @@ Claude and SZ, and their own originals. It is the sibling of
 It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 
 - A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
-- Category presets (All, Carols, Classics, Originals) above the dial show just that group of stations (remembered between visits).
+- Category presets (All, Classics, Originals, Carols) above the dial show just that group of stations (remembered between visits).
 - A Playlist view (Radio | Playlist switch in the header): add any song in any of the 6 styles, the same song more than once, reorder or remove entries, and play the list in order, with a Loop toggle. The playlist is saved on this device.
 - Installable and works offline: install it from the browser (or the Install button where offered; on iPhone, Share → Add to Home Screen). Updates download quietly and apply the next time it opens.
 - A living score that scrolls each track's notes past a playhead. Drag it sideways to scrub through the song.
@@ -51,15 +51,13 @@ Other public-domain melodies, arranged by Claude and SZ:
 - **In the Hall of the Mountain King**, from Edvard Grieg's *Peer Gynt* (1875). Chiptune. It speeds
   up from start to finish.
 - **Ride of the Valkyries**, from Richard Wagner's *Die Walküre* (1856). Orchestral, in real 9/8.
-- **Can-Can** (Jacques Offenbach, 1858). Chiptune.
 - **Canon in D** (Johann Pachelbel, around 1680). Orchestral.
-- **Eine kleine Nachtmusik** (Wolfgang Amadeus Mozart, 1787). Techno.
 - **Für Elise** (Ludwig van Beethoven, 1810). Synthwave.
 - **Korobeiniki**, the Tetris tune (Russian folk song, 1861). Chiptune.
 - **Nocturne in E-flat, Op. 9 No. 2** (Frédéric Chopin, 1832). Orchestral.
-- **Ode to Joy** (Ludwig van Beethoven, 1824). Orchestral.
 - **Swan Lake** (Pyotr Ilyich Tchaikovsky, 1876). Orchestral.
-- **When the Saints Go Marching In** (traditional). Synthwave.
+
+Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy, When the Saints Go Marching In.
 
 Originals by Claude and SZ:
 

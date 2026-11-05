@@ -5,7 +5,7 @@ import type { PitchedRole, Role, StyleId } from './roles';
 export const TICKS_PER_QUARTER = 960;
 export const TICKS_PER_WHOLE = 3840;
 
-export const CATEGORIES = ['carols', 'classics', 'originals'] as const;
+export const CATEGORIES = ['classics', 'originals', 'carols'] as const;
 export type Category = (typeof CATEGORIES)[number];
 
 export interface SongMeta {
@@ -13,6 +13,7 @@ export interface SongMeta {
   composer: string;
   arranger: string | null;
   about: string | null;
+  hidden: boolean;
   year: string;
   source: 'public-domain' | 'original';
   category: Category;
@@ -70,7 +71,7 @@ const REQUIRED_HEADER_KEYS = [
   'time',
 ] as const;
 
-const KNOWN_HEADER_KEYS = new Set<string>([...REQUIRED_HEADER_KEYS, 'pickup', 'arranger', 'about']);
+const KNOWN_HEADER_KEYS = new Set<string>([...REQUIRED_HEADER_KEYS, 'pickup', 'arranger', 'about', 'hidden']);
 const TIME_DENOMINATORS = [1, 2, 4, 8, 16];
 const DURATION_NUMBERS = [1, 2, 4, 8, 16, 32, 64];
 
@@ -530,6 +531,7 @@ export function parseSong(text: string): ParseResult {
     composer: '',
     arranger: null,
     about: null,
+    hidden: false,
     year: '',
     source: 'original',
     category: 'classics',
@@ -560,6 +562,12 @@ export function parseSong(text: string): ParseResult {
   if (aboutEntry) {
     if (aboutEntry.value === '') err(aboutEntry.line, 'about must not be empty');
     else meta.about = aboutEntry.value;
+  }
+
+  const hiddenEntry = headerValues.get('hidden');
+  if (hiddenEntry) {
+    if (hiddenEntry.value !== 'true') err(hiddenEntry.line, 'hidden must be true');
+    else meta.hidden = true;
   }
 
   const sourceEntry = headerValues.get('source');
