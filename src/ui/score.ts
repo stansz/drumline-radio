@@ -2,7 +2,7 @@ import type { StyleDef } from '../audio/styles';
 import { resolvePatch } from '../audio/styles';
 import { tickToSeconds, notesBetween } from '../music/timing';
 import type { Timeline } from '../music/timing';
-import { laneLayout, noteHeight, noteY } from './view';
+import { laneLabels, laneLayout, noteHeight, noteY } from './view';
 
 export interface Score {
   draw(timeline: Timeline | null, position: number, style: StyleDef, tuning: boolean): void;
@@ -66,6 +66,10 @@ export function createScore(canvas: HTMLCanvasElement): Score {
         }
 
         const lanes = laneLayout(song, height);
+        const labels = laneLabels(
+          song.tracks.map((track) => resolvePatch(style, track).name),
+          song.tracks.map((track) => track.id),
+        );
         ctx.textBaseline = 'top';
         ctx.font = '11px system-ui, sans-serif';
         for (const lane of lanes) {
@@ -77,12 +81,11 @@ export function createScore(canvas: HTMLCanvasElement): Score {
             ctx.lineTo(width, Math.round(lane.top) + 0.5);
             ctx.stroke();
           }
-          const track = song.tracks[lane.track];
-          if (!track) continue;
-          const patch = resolvePatch(style, track);
+          const label = labels[lane.track];
+          if (label === undefined) continue;
           ctx.globalAlpha = 0.5;
           ctx.fillStyle = '#ffffff';
-          ctx.fillText(patch.name, 8, lane.top + 4);
+          ctx.fillText(label, 8, lane.top + 4);
         }
 
         const notes = notesBetween(

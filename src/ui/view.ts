@@ -195,6 +195,13 @@ export function laneLayout(song: Song, height: number): Lane[] {
   });
 }
 
+/** Lane labels: the instrument name, plus the track id when several lanes share that instrument. */
+export function laneLabels(names: string[], ids: string[]): string[] {
+  const counts = new Map<string, number>();
+  for (const name of names) counts.set(name, (counts.get(name) ?? 0) + 1);
+  return names.map((name, i) => ((counts.get(name) ?? 0) > 1 ? `${name} · ${ids[i]}` : name));
+}
+
 export function noteHeight(lane: Lane): number {
   if (lane.rows !== null) {
     if (lane.rows.length === 0) return 3;

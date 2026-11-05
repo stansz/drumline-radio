@@ -9,6 +9,7 @@ import {
   FLASH_PEAK,
   driftPosition,
   formatTime,
+  laneLabels,
   laneLayout,
   marqueeTiming,
   nearestStation,
@@ -221,5 +222,19 @@ describe('flashStep', () => {
   it('stays dim enough to stay under the WCAG flash threshold', () => {
     expect(FLASH_PEAK).toBeLessThanOrEqual(0.06);
     expect(flashStep(Number.NEGATIVE_INFINITY, 5, false).level).toBe(0);
+  });
+});
+
+describe('laneLabels', () => {
+  it('keeps unique instrument names as they are', () => {
+    expect(laneLabels(['Acid', 'Sub bass'], ['lead', 'bass'])).toEqual(['Acid', 'Sub bass']);
+  });
+
+  it('adds the track id to every lane that shares an instrument', () => {
+    expect(laneLabels(['909 kit', 'Acid', '909 kit'], ['drums', 'acid', 'cymbals'])).toEqual([
+      '909 kit · drums',
+      'Acid',
+      '909 kit · cymbals',
+    ]);
   });
 });
