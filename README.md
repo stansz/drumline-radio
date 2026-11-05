@@ -69,6 +69,7 @@ Originals by Claude and SZ:
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
 - **Save Point** (Chiptune)
+- **Third Rail** (Lo-fi)
 - **Underpass** (Synthwave)
 
 ## How it works

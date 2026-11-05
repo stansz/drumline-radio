@@ -1,0 +1,187 @@
+# Third Rail, by DeepSeek and SZ. A dusty boom-bap beat in D minor: swung ghost notes under a
+# Rhodes loop, a sparse bass, and two verses that leave room for a voice. 64 bars at 88 BPM.
+title: Third Rail
+composer: DeepSeek & SZ
+year: 2026
+source: original
+category: originals
+style: lofi
+key: D minor
+tempo: 88
+time: 4/4
+about: A boom-bap beat for a late train home: swung ghost notes, Rhodes chords, and two verses that leave room for a voice.
+
+track sample role=lead vol=0.8 pan=-0.1
+# Intro
+| R | R | R | R |
+# Verse 1
+| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+# Hook
+| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+# Verse 2
+| v=78 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=78 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=78 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=78 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=78 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=78 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=78 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=78 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| R | R | R | R |
+| v=84 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=84 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=84 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=84 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+# Hook
+| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+# Bridge
+| v=70 A4/2 G4/2 | v=70 F4/2 E4/2 | R | R |
+# Final hook
+| v=96 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=96 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=96 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=96 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=96 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=96 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=96 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | R |
+
+track keys role=chords vol=0.62 pan=-0.12
+# Intro
+| v=58 [D3 F3 C4 E4]/1 | v=58 [D3 F3 C4 E4]/1 | v=64 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=68 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+# Verse 1
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+# Hook
+| v=92 [D3 F3 C4 E4]/2 [D3 F3 C4 E4]/2 | v=92 [G2 Bb2 F3 A3]/2 [G2 Bb2 F3 A3]/2 | v=92 [Bb2 D3 F3 A3]/2 [Bb2 D3 F3 A3]/2 | v=92 [A2 C#3 G3 Bb3]/2 [A2 C#3 G3 Bb3]/2 |
+| v=92 [D3 F3 C4 E4]/2 [D3 F3 C4 E4]/2 | v=92 [G2 Bb2 F3 A3]/2 [G2 Bb2 F3 A3]/2 | v=92 [Bb2 D3 F3 A3]/2 [Bb2 D3 F3 A3]/2 | v=92 [A2 C#3 G3 Bb3]/2 [A2 C#3 G3 Bb3]/2 |
+# Verse 2
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+| v=64 [D3 F3 C4 E4]/1 | v=64 [G2 Bb2 F3 A3]/1 | v=80 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+| v=84 [D3 F3 C4 E4]/2 r/4 [D3 F3 C4 E4]/4 | v=84 [G2 Bb2 F3 A3]/2 r/4 [G2 Bb2 F3 A3]/4 | v=84 [Bb2 D3 F3 A3]/2 r/4 [Bb2 D3 F3 A3]/4 | v=84 [A2 C#3 G3 Bb3]/2 r/4 [A2 C#3 G3 Bb3]/4 |
+# Hook
+| v=92 [D3 F3 C4 E4]/2 [D3 F3 C4 E4]/2 | v=92 [G2 Bb2 F3 A3]/2 [G2 Bb2 F3 A3]/2 | v=92 [Bb2 D3 F3 A3]/2 [Bb2 D3 F3 A3]/2 | v=92 [A2 C#3 G3 Bb3]/2 [A2 C#3 G3 Bb3]/2 |
+| v=92 [D3 F3 C4 E4]/2 [D3 F3 C4 E4]/2 | v=92 [G2 Bb2 F3 A3]/2 [G2 Bb2 F3 A3]/2 | v=92 [Bb2 D3 F3 A3]/2 [Bb2 D3 F3 A3]/2 | v=92 [A2 C#3 G3 Bb3]/2 [A2 C#3 G3 Bb3]/2 |
+# Bridge
+| v=56 [D3 F3 C4 E4]/1 | v=56 [Bb2 D3 F3 A3]/1 | v=64 [A2 C#3 G3 Bb3]/1 | v=66 [A2 C#3 G3 Bb3]/1 |
+# Final hook
+| v=92 [D3 F3 C4 E4]/2 [D3 F3 C4 E4]/2 | v=92 [G2 Bb2 F3 A3]/2 [G2 Bb2 F3 A3]/2 | v=92 [Bb2 D3 F3 A3]/2 [Bb2 D3 F3 A3]/2 | v=92 [A2 C#3 G3 Bb3]/2 [A2 C#3 G3 Bb3]/2 |
+| v=92 [D3 F3 C4 E4]/2 [D3 F3 C4 E4]/2 | v=92 [G2 Bb2 F3 A3]/2 [G2 Bb2 F3 A3]/2 | v=92 [Bb2 D3 F3 A3]/2 [Bb2 D3 F3 A3]/2 | v=90 [D3 F3 A3 C4 E4]/1 |
+
+track bass role=bass vol=0.42
+# Intro
+| R | R | D2/1 | A2/1 |
+# Verse 1
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+# Hook
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+# Verse 2
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| v=80 D2/1 | v=80 G2/1 | v=84 Bb2/1 | v=86 A2/1 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+# Hook
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+# Bridge
+| v=80 D2/1 | v=80 Bb2/1 | v=84 A2/1 | v=88 A2/1 |
+# Final hook
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | A2/8 r/8 A2/4 r/8 C#3/8 E3/4 |
+| D2/8 r/8 D2/4 r/8 D2/8 A2/4 | G2/8 r/8 G2/4 r/8 Bb2/8 D3/4 | Bb2/8 r/8 Bb2/4 r/8 F2/8 A2/4 | v=90 D2/2. r/4 |
+
+track drums role=drums vol=0.95
+# Intro
+| R | R | R | [k h]/4:88 s/4:92 [k h]/4:92 s/4:96 |
+# Verse 1
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+# Hook
+| [k cr h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 |
+| [k cr h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 |
+# Verse 2
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+| k/2 s/2 | k/2 s/2 | k/4 s/4 k/4 [s h]/4 | s/16:70 s/16:73 s/16:76 s/16:79 s/16:82 s/16:85 s/16:88 s/16:91 s/16:94 s/16:97 s/16 s/16:103 s/16:106 s/16:109 s/16:112 s/16:115 |
+| [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8t:72 k/16t:84 [s h]/8:104 oh/8t:80 k/16t:88 | [k h]/8 h/8:72 [s cl h]/8 h/8t:72 s/16t:36 [k h]/8:96 h/8:72 [s cl h]/8:104 h/8t:72 k/16t:88 | [k h]/8 h/8:72 [s h]/8 h/8:72 [k h]/8:96 s/8t:92 s/16t:98 [s h]/8t:104 s/16t:108 [s h]/16t:110 s/16t:114 s/16t:118 |
+# Hook
+| [k cr h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 |
+| [k cr h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 |
+# Bridge
+| R | R | s/8:88 s/8:93 s/8:99 s/8:104 s/8:110 s/8:115 s/8:121 s/8:127 | s/16:96 s/16:98 s/16 s/16:102 s/16:104 s/16:106 s/16:108 s/16:110 s/16:112 s/16:114 s/16:116 s/16:118 s/16:120 s/16:122 s/16:124 s/16:127 |
+# Final hook
+| [k cr h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 |
+| [k cr h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k h]/8:104 h/8:76 [s h]/8:104 h/8:76 [k h]/8 h/8t:76 k/16t:88 [s h]/8:108 oh/8:84 | [k cr]/2. r/4 |
+
+track vibe role=lead2 vol=0.45 pan=0.22
+# Intro
+| R | R | R | R |
+# Verse 1
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Hook
+| R | R | R | R |
+| R | R | R | R |
+# Verse 2
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Hook
+| R | R | R | R |
+| R | R | v=55 r/2 A5/2 | v=55 r/2 C#6/2 |
+# Bridge
+| R | R | R | R |
+# Final hook
+| R | R | R | R |
+| R | R | R | R |
+
+track perc role=drums vol=0.7 pan=0.3
+# Intro
+| R | R | R | R |
+# Verse 1
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+# Hook
+| v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t |
+| v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t |
+# Verse 2
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+| R | R | R | R |
+| v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 | v=62 r/8 rim/8 r/8 rim/8 r/8 rim/8 r/8 rim/8 |
+# Hook
+| v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t |
+| v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t |
+# Bridge
+| R | R | R | R |
+# Final hook
+| v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t |
+| v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t | v=58 h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t h/8t h/16t |
+
+track pad role=pad vol=0.55
+# Intro
+| v=50 [D3 F3 C4 E4]/1 | v=50 [D3 F3 C4 E4]/1 | R | R |
+# Verse 1
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Hook
+| R | R | R | R |
+| R | R | R | R |
+# Verse 2
+| R | R | R | R |
+| R | R | R | R |
+| v=52 [D3 F3 C4 E4]/1 | v=52 [G2 Bb2 F3 A3]/1 | R | R |
+| R | R | R | R |
+# Hook
+| R | R | R | R |
+| R | R | R | R |
+# Bridge
+| v=50 [D3 F3 C4 E4]/1 | v=50 [Bb2 D3 F3 A3]/1 | v=52 [A2 C#3 G3 Bb3]/1 | R |
+# Final hook
+| R | R | R | R |
+| R | R | R | v=55 [D3 F3 C4 E4]/1 |
