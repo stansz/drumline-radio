@@ -1,8 +1,8 @@
-// The 16 carols and classics built by the arranger. Each recipe is a melody, chords, and the song's
+// The 15 carols and classics built by the arranger. Each recipe is a melody, chords, and the song's
 // own intro, bass line, and drum groove. Writes .song files to <outDir> (default: src/songs).
 //   node tools/arranger/songs.mjs [outDir] [song-id ...]
-// Für Elise, Greensleeves, Mountain King, and the originals have their own scripts; Valkyries is
-// hand-written.
+// Für Elise, Greensleeves, Mountain King, Swan Lake, and the originals have their own scripts;
+// Valkyries is hand-written.
 import { mkdirSync } from 'node:fs';
 import { arrange, head } from './arranger.mjs';
 import { ABOUT } from './about.mjs';
@@ -73,18 +73,6 @@ A({
   ],
   chords: ['D A', 'Bm F#m', 'G D', 'G A', 'D A', 'Bm F#m', 'G D', 'G A', 'D A', 'Bm F#m', 'G D', 'G A'],
   final: 'F#5/1', finalChord: 'D', ramp: [70, 56],
-});
-
-A({
-  file: 'swan-lake.song', style: 'orchestral', time: [4, 4], tempo: 72, passes: 3, keyUp: 0,
-  intro: { type: 'tease', tease: [0, 1] }, bass: 'held', drums: 'orch',
-  head: head('Swan Lake', 'Pyotr Ilyich Tchaikovsky', '1876', 'B minor', 'Bells preview the swan theme, which then rises each time.', 'classics'),
-  melody: [
-    'F#5/1', 'B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8', 'F#5/4. D5/8 F#5/4. B4/8', 'D5/8 B4/8 G4/8 D5/8 B4/2', 'B4/1',
-    'F#5/1', 'B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8', 'F#5/4. D5/8 F#5/4. B4/8', 'D5/8 B4/8 G4/8 D5/8 B4/2', 'B4/2 F#4/2',
-  ],
-  chords: ['Bm', 'Bm', 'Bm', 'G', 'Bm', 'Bm', 'Bm', 'Bm', 'G', 'Bm F#'],
-  final: 'B4/1', finalChord: 'Bm', ramp: [72, 54],
 });
 
 A({

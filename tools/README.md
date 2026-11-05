@@ -53,7 +53,7 @@ node tools/arranger/songs.mjs tmp/songs jingle-bells
 CHECK_DIR=tmp/songs npm run check:songs
 ```
 
-The first command builds all 16 songs into `tmp/songs`, the second builds just one, and the third
+The first command builds all 15 songs into `tmp/songs`, the second builds just one, and the third
 checks the output. To keep the output, copy it over the file in `src/songs/`. The script's output
 matches the files in `src/songs/`, so re-running it is safe.
 
@@ -127,8 +127,9 @@ in 12/8, and the script adds the harp and cello left hand, pad, flute counter-li
 node tools/arranger/nocturne.mjs tmp/noc
 ```
 
-Für Elise, Greensleeves, and Mountain King are built the same way from real scores, each by its own
-script in `arranger/` (`fur-elise.mjs`, `greensleeves.mjs`, `mountain-king.mjs`). Für Elise and
+Für Elise, Greensleeves, Mountain King, and Swan Lake are built the same way from real scores, each
+by its own script in `arranger/` (`fur-elise.mjs`, `greensleeves.mjs`, `mountain-king.mjs`,
+`swan-lake.mjs`). Swan Lake's melody was read from the oboe part of an IMSLP edition. Für Elise and
 Mountain King come from Mutopia Project MIDI files, converted with `midi/midi2song.mjs`; Greensleeves
 from the four voices of a Mutopia hymn setting. Each script holds the converted bars, the fixes (grace
 notes dropped, octaves moved into range), and the form, with repeats unfolded.

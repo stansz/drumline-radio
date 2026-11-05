@@ -1,4 +1,5 @@
-# Swan Lake, arranged by Claude and SZ. Bells preview the swan theme, which then rises each time.
+# Swan Lake, arranged by Claude and SZ for the Orchestral style: the Scène from Act II, with the
+# oboe's swan theme bar for bar, the theme for full orchestra, the lament, and a last fortissimo.
 title: Swan Lake
 composer: Pyotr Ilyich Tchaikovsky
 arranger: Claude & SZ
@@ -11,130 +12,158 @@ style: orchestral
 tempo: 72
 time: 4/4
 
-@bars 30-33 tempo=72..54
+@bars 43-45 tempo=72..50
 
-track melody role=lead vol=0.8
-# Intro
-| R | R |
-# The tune
-| F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 | F#5/4. D5/8 F#5/4. B4/8 | D5/8 B4/8 G4/8 D5/8 B4/2 |
-| B4/1 | F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 | F#5/4. D5/8 F#5/4. B4/8 |
-| D5/8 B4/8 G4/8 D5/8 B4/2 | B4/2 F#4/2 |
-# Pass 2, fuller
-| F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 | F#5/4. D5/8 F#5/4. B4/8 | D5/8 B4/8 G4/8 D5/8 B4/2 |
-| B4/1 | F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 | F#5/4. D5/8 F#5/4. B4/8 |
-| D5/8 B4/8 G4/8 D5/8 B4/2 | B4/2 F#4/2 |
-# Pass 3, fuller
-| F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 | F#5/4. D5/8 F#5/4. B4/8 | D5/8 B4/8 G4/8 D5/8 B4/2 |
-| B4/1 | F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 | F#5/4. D5/8 F#5/4. B4/8 |
-| D5/8 B4/8 G4/8 D5/8 B4/2 | B4/1 |
-# Ending
+track oboe role=counter vol=0.8 pan=0.15
+# Strings and harp set the lake
 | R |
+# The oboe sings the swan theme
+| v=84 F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/2 B4/8 C#5/8 D5/8 E5/8 |
+| F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/2. B4/4 |
+# The theme climbs
+| v=92 C#5/4 D5/4 E5/4 F#5/8 G5/8 | A5/4. G5/8 F#5/4 G5/8 A5/8 | B5/4. A5/8 G5/4 A5/8 B5/8 | C#6/4. B5/8 F#5/8 D5/8 C#5/8 B4/8 |
+| C#5/4 D5/4 E5/4 F#5/8 G5/8 | A5/4. G5/8 F#5/4 G5/8 A5/8 | B5/4. A5/8 G5/4 A5/8 B5/8 | C6/4. G5/8 E5/4 G5/8 A5/8 |
+| C#6/4. A#5/8 C#6/4. A#5/8 |
+# Full orchestra: the theme fortissimo
+| R | R | R | R |
+| R | R | R | R |
+# It climbs again
+| v=80 C#4/4 D4/4 E4/4 F#4/8 G4/8 | A4/4. G4/8 F#4/4 G4/8 A4/8 | B4/4. A4/8 G4/4 A4/8 B4/8 | C#5/4. B4/8 F#4/8 D4/8 C#4/8 B3/8 |
+| C#4/4 D4/4 E4/4 F#4/8 G4/8 | A4/4. G4/8 F#4/4 G4/8 A4/8 | B4/4. A4/8 G4/4 A4/8 B4/8 |
+# The lament falls away
+| v=90 C6/4t G5/4t C6/4t B5/2t B5/4t | A#5/4t F#5/4t A#5/4t B5/2t B4/4t | C5/4t G4/4t C5/4t B4/2t B4/4t | A#4/4t F#4/4t A#4/4t B4/2t B4/4t |
+# The swan theme, one last time
+| v=90 F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/2 B4/8 E5/8 D5/8 C#5/8 |
+| F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/1 |
 
-track harmony role=lead2 vol=0.45
-# Intro
-| R | R |
-# The tune
-| R | R | R | R |
-| R | R | R | R |
-| R | R |
-# Pass 2, fuller
-| F#6/1 | B5/8 C#6/8 D6/8 E6/8 F#6/4. D6/8 | F#6/4. D6/8 F#6/4. B5/8 | D6/8 B5/8 G5/8 D6/8 B5/2 |
-| B5/1 | F#6/1 | B5/8 C#6/8 D6/8 E6/8 F#6/4. D6/8 | F#6/4. D6/8 F#6/4. B5/8 |
-| D6/8 B5/8 G5/8 D6/8 B5/2 | B5/2 F#5/2 |
-# Pass 3, fuller
-| F#6/1 | B5/8 C#6/8 D6/8 E6/8 F#6/4. D6/8 | F#6/4. D6/8 F#6/4. B5/8 | D6/8 B5/8 G5/8 D6/8 B5/2 |
-| B5/1 | F#6/1 | B5/8 C#6/8 D6/8 E6/8 F#6/4. D6/8 | F#6/4. D6/8 F#6/4. B5/8 |
-| D6/8 B5/8 G5/8 D6/8 B5/2 | B5/1 |
-# Ending
+track violins role=lead vol=0.7
+# Strings and harp set the lake
 | R |
-
-track arp role=arp vol=0.4
-# Intro
-| F#5/1 | B4/8 C#5/8 D5/8 E5/8 F#5/4. D5/8 |
-# The tune
+# The oboe sings the swan theme
 | R | R | R | R |
 | R | R | R | R |
-| R | R |
-# Pass 2, fuller
-| B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | G4/8 B4/8 D5/8 G5/8 D5/8 B4/8 G4/8 B4/8 |
-| B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 |
-| G4/8 B4/8 D5/8 G5/8 D5/8 B4/8 G4/8 B4/8 | B4/8 D5/8 F#5/8 B5/8 F#4/8 A#4/8 C#5/8 F#5/8 |
-# Pass 3, fuller
-| B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | G4/8 B4/8 D5/8 G5/8 D5/8 B4/8 G4/8 B4/8 |
-| B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 |
-| G4/8 B4/8 D5/8 G5/8 D5/8 B4/8 G4/8 B4/8 | B4/8 D5/8 F#5/8 B5/8 F#5/8 D5/8 B4/8 D5/8 |
-# Ending
+# The theme climbs
+| R | R | R | R |
+| R | R | R | R |
 | R |
+# Full orchestra: the theme fortissimo
+| v=108 F#6/2 B5/8 C#6/8 D6/8 E6/8 | F#6/4. D6/8 F#6/4. D6/8 | F#6/4. B5/8 D6/8 B5/8 G5/8 D6/8 | B5/2 B5/8 E6/8 D6/8 C#6/8 |
+| F#6/2 B5/8 C#6/8 D6/8 E6/8 | F#6/4. D6/8 F#6/4. D6/8 | F#6/4. B5/8 D6/8 B5/8 G5/8 D6/8 | B5/2. B5/4 |
+# It climbs again
+| v=104 C#5/4 D5/4 E5/4 F#5/8 G5/8 | A5/4. G5/8 F#5/4 G5/8 A5/8 | B5/4. A5/8 G5/4 A5/8 B5/8 | C#6/4. B5/8 F#5/8 D5/8 C#5/8 B4/8 |
+| C#5/4 D5/4 E5/4 F#5/8 G5/8 | A5/4. G5/8 F#5/4 G5/8 A5/8 | B5/4. A5/8 G5/4 A5/8 B5/8 |
+# The lament falls away
+| v=84 C7/4t G6/4t C7/4t B6/2t B6/4t | A#6/4t F#6/4t A#6/4t B6/2t B5/4t | C6/4t G5/4t C6/4t B5/2t B5/4t | A#5/4t F#5/4t A#5/4t B5/2t B5/4t |
+# The swan theme, one last time
+| v=116 F#6/2 B5/8 C#6/8 D6/8 E6/8 | F#6/4. D6/8 F#6/4. D6/8 | F#6/4. B5/8 D6/8 B5/8 G5/8 D6/8 | B5/2 B5/8 E6/8 D6/8 C#6/8 |
+| F#6/2 B5/8 C#6/8 D6/8 E6/8 | F#6/4. D6/8 F#6/4. D6/8 | F#6/4. B5/8 D6/8 B5/8 G5/8 D6/8 | B5/1 |
 
-track pad role=pad vol=0.45
-# Intro
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 |
-# The tune
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [G3 B3 D4]/1 |
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 |
-| [G3 B3 D4]/1 | [B3 D4 F#4]/2 [F#3 A#3 C#4]/2 |
-# Pass 2, fuller
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [G3 B3 D4]/1 |
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 |
-| [G3 B3 D4]/1 | [B3 D4 F#4]/2 [F#3 A#3 C#4]/2 |
-# Pass 3, fuller
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [G3 B3 D4]/1 |
-| [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 | [B3 D4 F#4]/1 |
-| [G3 B3 D4]/1 | [B3 D4 F#4]/1 |
-# Ending
-| [B3 D4 F#4]/1 |
-
-track bass role=bass vol=0.75
-# Intro
-| R | R |
-# The tune
-| B2/1 | B2/1 | B2/1 | G2/1 |
-| B2/1 | B2/1 | B2/1 | B2/1 |
-| G2/1 | B2/2 F#2/2 |
-# Pass 2, fuller
-| B2/1 | B2/1 | B2/1 | G2/1 |
-| B2/1 | B2/1 | B2/1 | B2/1 |
-| G2/1 | B2/2 F#2/2 |
-# Pass 3, fuller
-| B2/1 | B2/1 | B2/1 | G2/1 |
-| B2/1 | B2/1 | B2/1 | B2/1 |
-| G2/1 | B2/1 |
-# Ending
-| B2/1 |
-
-track drums role=drums vol=0.8
-# Intro
-| R | R |
-# The tune
-| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
-| k/2 r/2 | k/2 r/2 | k/2 r/2 | k/2 r/2 |
-| k/2 r/2 | k/2 r/2 |
-# Pass 2, fuller
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-# Pass 3, fuller
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-| k/4 r/4 k/4 k/4 | k/4 r/4 k/4 k/4 |
-# Ending
-| k/1 |
-
-track cymbals role=drums vol=0.5
-# Intro
-| R | R |
-# The tune
+track brass role=lead2 vol=0.5 pan=-0.2
+# Strings and harp set the lake
+| R |
+# The oboe sings the swan theme
 | R | R | R | R |
 | R | R | R | R |
-| R | R |
-# Pass 2, fuller
-| cr/1 | R | R | R |
+# The theme climbs
 | R | R | R | R |
-| R | R |
-# Pass 3, fuller
-| cr/1 | R | R | R |
 | R | R | R | R |
-| R | R |
-# Ending
-| cr/1 |
+| R |
+# Full orchestra: the theme fortissimo
+| v=84 F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/2 B4/8 E5/8 D5/8 C#5/8 |
+| F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/2. B4/4 |
+# It climbs again
+| R | R | R | R |
+| R | R | R |
+# The lament falls away
+| R | R | R | R |
+# The swan theme, one last time
+| v=96 F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/2 B4/8 E5/8 D5/8 C#5/8 |
+| F#5/2 B4/8 C#5/8 D5/8 E5/8 | F#5/4. D5/8 F#5/4. D5/8 | F#5/4. B4/8 D5/8 B4/8 G4/8 D5/8 | B4/1 |
+
+track harp role=chords vol=0.6 pan=-0.3
+# Strings and harp set the lake
+| v=52 B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+# The oboe sings the swan theme
+| v=56 B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 G2/8 B2/8 D3/8 G3/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+| B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 G2/8 B2/8 D3/8 G3/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+# The theme climbs
+| v=62 A2/8 C#3/8 E3/8 A3/8 C#4/8 E4/8 A4/8 C#5/8 | D2/8 F#2/8 A2/8 D3/8 F#3/8 A3/8 D4/8 F#4/8 | G2/8 B2/8 D3/8 G3/8 B3/8 D4/8 G4/8 B4/8 | F#2/8 A#2/8 C#3/8 F#3/8 A#3/8 C#4/8 F#4/8 A#4/8 |
+| A2/8 C#3/8 E3/8 A3/8 C#4/8 E4/8 A4/8 C#5/8 | D2/8 F#2/8 A2/8 D3/8 F#3/8 A3/8 D4/8 F#4/8 | G2/8 B2/8 D3/8 G3/8 B3/8 D4/8 G4/8 B4/8 | C2/8 E2/8 G2/8 C3/8 E3/8 G3/8 C4/8 E4/8 |
+| F#2/8 A#2/8 C#3/8 F#3/8 A#3/8 C#4/8 F#4/8 A#4/8 |
+# Full orchestra: the theme fortissimo
+| v=70 B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 G2/8 B2/8 D3/8 G3/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+| B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 G2/8 B2/8 D3/8 G3/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+# It climbs again
+| v=66 A2/8 C#3/8 E3/8 A3/8 C#4/8 E4/8 A4/8 C#5/8 | D2/8 F#2/8 A2/8 D3/8 F#3/8 A3/8 D4/8 F#4/8 | G2/8 B2/8 D3/8 G3/8 B3/8 D4/8 G4/8 B4/8 | F#2/8 A#2/8 C#3/8 F#3/8 A#3/8 C#4/8 F#4/8 A#4/8 |
+| A2/8 C#3/8 E3/8 A3/8 C#4/8 E4/8 A4/8 C#5/8 | D2/8 F#2/8 A2/8 D3/8 F#3/8 A3/8 D4/8 F#4/8 | G2/8 B2/8 D3/8 G3/8 B3/8 D4/8 G4/8 B4/8 |
+# The lament falls away
+| R | R | R | R |
+# The swan theme, one last time
+| v=76 B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 G2/8 B2/8 D3/8 G3/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+| B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 | B2/8 D3/8 F#3/8 B3/8 G2/8 B2/8 D3/8 G3/8 | B2/8 D3/8 F#3/8 B3/8 D4/8 F#4/8 B4/8 D5/8 |
+
+track strings role=pad vol=0.5
+# Strings and harp set the lake
+| v=44 [B3 D4 F#3]/1 |
+# The oboe sings the swan theme
+| v=46 [B3 D4 F#3]/1 | [B3 D4 F#3]/1 | [B3 D4 F#3]/2 [G3 B3 D4]/2 | [B3 D4 F#3]/1 |
+| [B3 D4 F#3]/1 | [B3 D4 F#3]/1 | [B3 D4 F#3]/2 [G3 B3 D4]/2 | [B3 D4 F#3]/1 |
+# The theme climbs
+| v=56 [A3 C#4 E3]/1 | [D4 F#3 A3]/1 | [G3 B3 D4]/1 | [F#3 A#3 C#4]/1 |
+| [A3 C#4 E3]/1 | [D4 F#3 A3]/1 | [G3 B3 D4]/1 | [C4 E3 G3]/1 |
+| [F#3 A#3 C#4]/1 |
+# Full orchestra: the theme fortissimo
+| v=70 [B3 D4 F#3]/1 | [B3 D4 F#3]/1 | [B3 D4 F#3]/2 [G3 B3 D4]/2 | [B3 D4 F#3]/1 |
+| [B3 D4 F#3]/1 | [B3 D4 F#3]/1 | [B3 D4 F#3]/2 [G3 B3 D4]/2 | [B3 D4 F#3]/1 |
+# It climbs again
+| v=64 [A3 C#4 E3]/1 | [D4 F#3 A3]/1 | [G3 B3 D4]/1 | [F#3 A#3 C#4]/1 |
+| [A3 C#4 E3]/1 | [D4 F#3 A3]/1 | [G3 B3 D4]/1 |
+# The lament falls away
+| v=60 [C4 E3 G3]/2 [E3 G3 B3]/2 | [F#3 A#3 C#4]/2 [B3 D4 F#3]/2 | [C4 E3 G3]/2 [E3 G3 B3]/2 | [F#3 A#3 C#4]/2 [B3 D4 F#3]/2 |
+# The swan theme, one last time
+| v=76 [B3 D4 F#3]/1 | [B3 D4 F#3]/1 | [B3 D4 F#3]/2 [G3 B3 D4]/2 | [B3 D4 F#3]/1 |
+| [B3 D4 F#3]/1 | [B3 D4 F#3]/1 | [B3 D4 F#3]/2 [G3 B3 D4]/2 | [B3 D4 F#3]/1 |
+
+track basses role=bass vol=0.7
+# Strings and harp set the lake
+| v=80 B1/2 B1/2 |
+# The oboe sings the swan theme
+| v=88 B1/2 B1/2 | B1/2 B1/2 | B1/2 G2/2 | B1/2 B1/2 |
+| B1/2 B1/2 | B1/2 B1/2 | B1/2 G2/2 | B1/2 B1/2 |
+# The theme climbs
+| v=96 A2/2 A2/2 | D2/2 D2/2 | G2/2 G2/2 | F#2/2 F#2/2 |
+| A2/2 A2/2 | D2/2 D2/2 | G2/2 G2/2 | C2/2 C2/2 |
+| F#2/2 F#2/2 |
+# Full orchestra: the theme fortissimo
+| v=110 B1/2 B1/2 | B1/2 B1/2 | B1/2 G2/2 | B1/2 B1/2 |
+| B1/2 B1/2 | B1/2 B1/2 | B1/2 G2/2 | B1/2 B1/2 |
+# It climbs again
+| v=104 A2/2 A2/2 | D2/2 D2/2 | G2/2 G2/2 | F#2/2 F#2/2 |
+| A2/2 A2/2 | D2/2 D2/2 | G2/2 G2/2 |
+# The lament falls away
+| v=100 C2/2 E2/2 | F#2/2 B1/2 | C2/2 E2/2 | F#2/2 B1/2 |
+# The swan theme, one last time
+| v=116 B1/2 B1/2 | B1/2 B1/2 | B1/2 G2/2 | B1/2 B1/2 |
+| B1/2 B1/2 | B1/2 B1/2 | B1/2 G2/2 | B1/2 B1/2 |
+
+track timpani role=drums vol=0.6
+# Strings and harp set the lake
+| R |
+# The oboe sings the swan theme
+| R | R | R | R |
+| R | R | R | R |
+# The theme climbs
+| R | R | R | R |
+| R | R | R | v=66 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 |
+| k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 |
+# Full orchestra: the theme fortissimo
+| v=76 [k cr]/2 k/2 | R | R | k/2 k/2 |
+| [k cr]/2 k/2 | R | R | k/2 k/2 |
+# It climbs again
+| R | R | R | R |
+| R | R | R |
+# The lament falls away
+| R | R | v=70 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 | k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 |
+# The swan theme, one last time
+| v=88 [k cr]/2 k/2 | R | R | k/2 k/2 |
+| [k cr]/2 k/2 | R | k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 k/16 | [k cr]/1 |

@@ -26,6 +26,7 @@ const SCRIPT = [
   'tools/arranger/fur-elise.mjs',
   'tools/arranger/greensleeves.mjs',
   'tools/arranger/mountain-king.mjs',
+  'tools/arranger/swan-lake.mjs',
 ];
 
 describe('the song generators', () => {
