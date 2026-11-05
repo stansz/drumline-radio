@@ -3,8 +3,16 @@
 const PRECACHE = __PRECACHE__;
 const CACHE = 'drumline-radio-' + __VERSION__;
 
+// A new build takes over as soon as it is cached, instead of waiting for every window to close (an
+// installed iPhone app almost never closes). Files are fetched past the browser's HTTP cache, so the
+// new cache can't pick up old files.
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(PRECACHE)));
+  event.waitUntil(
+    caches
+      .open(CACHE)
+      .then((cache) => cache.addAll(PRECACHE.map((url) => new Request(url, { cache: 'reload' }))))
+      .then(() => self.skipWaiting()),
+  );
 });
 
 self.addEventListener('activate', (event) => {
@@ -15,7 +23,7 @@ self.addEventListener('activate', (event) => {
           .filter((name) => name.startsWith('drumline-radio-') && name !== CACHE)
           .map((name) => caches.delete(name)),
       ),
-    ),
+    ).then(() => self.clients.claim()),
   );
 });
 

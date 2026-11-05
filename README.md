@@ -13,7 +13,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
 - Category presets (All, Classics, Originals, Carols) above the dial show just that group of stations (remembered between visits).
 - A Playlist view (Radio | Playlist switch in the header): add any song in any of the 6 styles, the same song more than once, reorder or remove entries, and play the list in order, with a Loop toggle. The playlist is saved on this device.
-- Installable and works offline: install it from the browser (or the Install button where offered; on iPhone, Share → Add to Home Screen). Updates download quietly and apply the next time it opens.
+- Installable and works offline: install it from the browser (or the Install button where offered; on iPhone, Share → Add to Home Screen). It checks for an update each time it opens or comes back to the front, and a new version takes over right away (if music is playing, the next time you switch away from it).
 - A living score that scrolls each track's notes past a playhead. Drag it sideways to scrub through the song.
 - VU meters, a glowing readout, and a volume slider with mute (remembered between visits).
 - A repeat button that loops the current song (remembered between visits).

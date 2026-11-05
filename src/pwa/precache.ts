@@ -9,8 +9,9 @@ function normalize(name: string): string {
   return file;
 }
 
+// _headers is Cloudflare Pages configuration, never served, so caching it would fail the install.
 function keep(name: string): boolean {
-  return name !== 'sw.js' && !name.endsWith('.map') && !name.startsWith('.');
+  return name !== 'sw.js' && name !== '_headers' && !name.endsWith('.map') && !name.startsWith('.');
 }
 
 /**

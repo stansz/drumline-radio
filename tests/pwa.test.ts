@@ -6,7 +6,7 @@ describe('precacheList', () => {
     expect(
       precacheList(
         ['assets/a.js', 'index.html', 'assets/a.js.map'],
-        ['icons/x.png', 'sw.js', '.DS_Store', 'icons\\y.png'],
+        ['icons/x.png', 'sw.js', '_headers', '.DS_Store', 'icons\\y.png'],
       ),
     ).toEqual(['./', 'assets/a.js', 'icons/x.png', 'icons/y.png', 'index.html']);
   });
