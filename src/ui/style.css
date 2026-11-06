@@ -156,21 +156,37 @@ body::before {
   background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0 1px, transparent 1px 3px);
 }
 
-/* Orchestral: a concert hall. Red curtains, a scalloped valance with gold trim, a spotlight, and a
-   wooden stage. */
+/* Orchestral: an evening concert hall. Organ pipes glow faintly on the back wall, soft velvet drapes
+   frame the sides, a warm light falls from above with dust drifting in it, and the stage glows. */
 :root[data-style='orchestral'] body {
   background:
-    linear-gradient(#d9a441, #d9a441) 0 22px / 100% 3px no-repeat fixed,
-    radial-gradient(ellipse 50% 100% at 50% 0, #9c1f2a 0 68%, #5e0e16 70%, transparent 72%) 0 14px / 120px 34px repeat-x fixed,
-    linear-gradient(#5e0e16, #7a141d) 0 0 / 100% 24px no-repeat fixed,
-    repeating-linear-gradient(90deg, #3e080d 0, #7d1720 18px, #a82632 30px, #6b1018 46px, #3e080d 60px) left top / 13% 100% no-repeat fixed,
-    repeating-linear-gradient(270deg, #3e080d 0, #7d1720 18px, #a82632 30px, #6b1018 46px, #3e080d 60px) right top / 13% 100% no-repeat fixed,
-    radial-gradient(ellipse 26% 95% at 50% 0, rgba(255, 230, 170, 0.16), transparent 70%) fixed,
-    radial-gradient(ellipse 30% 14% at 50% 86%, rgba(255, 226, 160, 0.22), transparent 70%) fixed,
-    linear-gradient(#d9a441, #d9a441) left 0 bottom 22% / 100% 2px no-repeat fixed,
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0 2px, transparent 2px 90px) bottom / 100% 22% no-repeat fixed,
-    linear-gradient(#4a2c16, #1d120a) bottom / 100% 22% no-repeat fixed,
-    radial-gradient(ellipse at 50% 30%, #3a2716, #1a120b 70%) fixed;
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 1000' preserveAspectRatio='none'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23300509'/><stop offset='0.7' stop-color='%235c0d16'/><stop offset='1' stop-color='%235c0d16' stop-opacity='0'/></linearGradient><filter id='f'><feGaussianBlur stdDeviation='6'/></filter></defs><path fill='url(%23g)' d='M0 0 H190 C150 300 175 650 120 1000 H0 Z'/><g filter='url(%23f)' fill='%23a0283a' opacity='0.45'><ellipse cx='40' cy='500' rx='9' ry='520'/><ellipse cx='95' cy='480' rx='8' ry='520'/><ellipse cx='145' cy='420' rx='6' ry='460'/></g></svg>")
+      left top / 14% 100% no-repeat fixed,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 1000' preserveAspectRatio='none'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23300509'/><stop offset='0.7' stop-color='%235c0d16'/><stop offset='1' stop-color='%235c0d16' stop-opacity='0'/></linearGradient><filter id='f'><feGaussianBlur stdDeviation='6'/></filter></defs><g transform='translate(200 0) scale(-1 1)'><path fill='url(%23g)' d='M0 0 H190 C150 300 175 650 120 1000 H0 Z'/><g filter='url(%23f)' fill='%23a0283a' opacity='0.45'><ellipse cx='40' cy='500' rx='9' ry='520'/><ellipse cx='95' cy='480' rx='8' ry='520'/><ellipse cx='145' cy='420' rx='6' ry='460'/></g></g></svg>")
+      right top / 14% 100% no-repeat fixed,
+    radial-gradient(ellipse 34% 85% at 50% -10%, rgba(255, 226, 170, 0.2), transparent 70%) fixed,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 400'><defs><linearGradient id='p' x1='0' x2='1'><stop offset='0' stop-color='%237a5a2c'/><stop offset='0.45' stop-color='%23f0d08e'/><stop offset='1' stop-color='%236b4e26'/></linearGradient><linearGradient id='fade' y1='0' y2='1' x1='0' x2='0'><stop offset='0' stop-color='white' stop-opacity='0.9'/><stop offset='1' stop-color='white' stop-opacity='0'/></linearGradient><mask id='m'><rect width='1000' height='400' fill='url(%23fade)'/></mask></defs><g fill='url(%23p)' mask='url(%23m)' opacity='0.22'><rect x='40' y='270' width='26' height='130' rx='13'/><rect x='80' y='236' width='26' height='164' rx='13'/><rect x='120' y='204' width='26' height='196' rx='13'/><rect x='160' y='176' width='26' height='224' rx='13'/><rect x='200' y='151' width='26' height='249' rx='13'/><rect x='240' y='130' width='26' height='270' rx='13'/><rect x='280' y='112' width='26' height='288' rx='13'/><rect x='320' y='97' width='26' height='303' rx='13'/><rect x='360' y='85' width='26' height='315' rx='13'/><rect x='400' y='77' width='26' height='323' rx='13'/><rect x='440' y='72' width='26' height='328' rx='13'/><rect x='480' y='70' width='26' height='330' rx='13'/><rect x='520' y='72' width='26' height='328' rx='13'/><rect x='560' y='77' width='26' height='323' rx='13'/><rect x='600' y='85' width='26' height='315' rx='13'/><rect x='640' y='97' width='26' height='303' rx='13'/><rect x='680' y='112' width='26' height='288' rx='13'/><rect x='720' y='130' width='26' height='270' rx='13'/><rect x='760' y='151' width='26' height='249' rx='13'/><rect x='800' y='176' width='26' height='224' rx='13'/><rect x='840' y='204' width='26' height='196' rx='13'/><rect x='880' y='236' width='26' height='164' rx='13'/><rect x='920' y='270' width='26' height='130' rx='13'/></g></svg>")
+      center top 20% / min(900px, 76%) auto no-repeat fixed,
+    radial-gradient(ellipse 60% 20% at 50% 100%, rgba(232, 194, 122, 0.16), transparent 70%) fixed,
+    radial-gradient(ellipse at 50% 35%, #2e1f12, #120b06 75%) fixed;
+}
+
+:root[data-style='orchestral'] body::before {
+  inset: 0 0 -320px 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><defs><filter id='b'><feGaussianBlur stdDeviation='1.2'/></filter></defs><g fill='%23ffe2a8' filter='url(%23b)'><circle cx='40' cy='60' r='2' opacity='0.5'/><circle cx='150' cy='20' r='1.5' opacity='0.35'/><circle cx='260' cy='110' r='2.2' opacity='0.45'/><circle cx='90' cy='200' r='1.6' opacity='0.4'/><circle cx='210' cy='250' r='2' opacity='0.5'/><circle cx='300' cy='290' r='1.4' opacity='0.3'/><circle cx='20' cy='300' r='1.8' opacity='0.35'/></g></svg>")
+    0 0 / 320px 320px repeat;
+  opacity: 0.7;
+  animation: dust 48s linear infinite;
+}
+
+@keyframes dust {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-320px);
+  }
 }
 
 /* Techno: a warehouse. Swaying lasers from the ceiling, haze on the floor, LED floor lines, and the
