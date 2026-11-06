@@ -1,6 +1,6 @@
 // Last Stop: slow lo-fi hip-hop for the Lo-fi style. One four-bar minor loop all the way through,
-// like a sampled record: chopped Rhodes, a plucked bass on the kick, a lazy swung kick and snare, and
-// a dusty piano an octave down playing short repeating phrases. Written out by hand here.
+// like a sampled record: chopped Rhodes, a lazy swung kick and snare, and an upright bass playing the
+// melody in short repeating phrases (it doubles as the bass line). Written out by hand here.
 //   node tools/arranger/last-stop.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -19,8 +19,6 @@ const KEYS = {
   // held chords for the break
   hold: ['[F3 Ab3 C4 Eb4]/1', '[F3 Bb3 Db4]/1', '[F3 Ab3 Db4]/1', '[E3 G3 Bb3 C4]/1'],
 };
-// Roots on the kick: the one, beat three, and the swung and of three.
-const BASS = ['F2', 'Bb1', 'Db2', 'C2'].map((r) => `${r}/2 ${r}/4t:88 ${r}/8t:72 r/4`);
 
 // Swung eighths as triplets. The snare drags 18 ticks and the off-hats push 8 early.
 const DRUMS = {
@@ -33,13 +31,13 @@ const DRUMS = {
 const groove = (n, fill = true) => Array.from({ length: n }, (_, i) =>
   fill && i === n - 1 ? DRUMS.fill : i % 2 ? DRUMS.b : DRUMS.a);
 
-// The piano: two short phrases (the patch sounds them an octave down), a little behind the beat.
+// The upright bass: two short phrases (the patch sounds them an octave down), a little behind the beat.
 const VERSE = ['r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12', 'Db4/4.+12 C4/8+12 Bb3/4+12 r/4',
   'r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12', 'C4/2+12 r/4 G3/8+12 Bb3/8+12'];
 const HOOK = ['F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12', 'Db4/4+12 Bb3/4+12 r/2',
   'F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12', 'C4/4+12 Bb3/8+12 G3/8+12 E3/4+12 r/4'];
 
-const tracks = { lead: [], keys: [], bass: [], drums: [] };
+const tracks = { lead: [], keys: [], drums: [] };
 const marks = [];
 // Adds a section of n bars; each part is a list of bars (null or missing for rests).
 function section(name, n, parts) {
@@ -56,19 +54,16 @@ section('Intro: the record starts', 4, {
 });
 section('The beat drops in', 4, {
   keys: v(64, KEYS.chop),
-  bass: v(84, BASS),
   drums: v(92, [DRUMS.hats, DRUMS.kickHats, DRUMS.kickHats, DRUMS.fill]),
 });
 section('Verse', 8, {
   lead: v(84, loop(VERSE, 2)),
   keys: v(66, loop(KEYS.chop, 2)),
-  bass: v(90, loop(BASS, 2)),
   drums: v(100, groove(8)),
 });
 section('Hook', 8, {
   lead: v(90, loop(HOOK, 2)),
   keys: v(68, loop(KEYS.stab, 2)),
-  bass: v(94, loop(BASS, 2)),
   drums: v(104, groove(8)),
 });
 section('Break: keys and crackle', 4, {
@@ -78,26 +73,22 @@ section('Break: keys and crackle', 4, {
 section('Verse 2', 8, {
   lead: v(86, loop(VERSE, 2)),
   keys: v(66, loop(KEYS.chop, 2)),
-  bass: v(90, loop(BASS, 2)),
   drums: v(100, groove(8)),
 });
 section('Last hook', 8, {
   lead: v(92, loop(HOOK, 2)),
   keys: v(70, loop(KEYS.stab, 2)),
-  bass: v(96, loop(BASS, 2)),
   drums: v(106, groove(8)),
 });
 section('Outro: the record runs out', 4, {
   keys: v(58, [...KEYS.chop.slice(0, 3), '[F3 Ab3 C4 Eb4]/1']),
-  bass: v(80, [...BASS.slice(0, 3), 'F2/1']),
   drums: v(84, [DRUMS.a, DRUMS.b, DRUMS.kickHats, 'k/1']),
 });
 
 const total = tracks.lead.length;
 const HEADER = [
-  ['lead', 'track piano role=lead inst=dusty-piano vol=0.8 pan=0.1'],
+  ['lead', 'track upright role=lead inst=upright-bass vol=0.7'],
   ['keys', 'track keys role=chords vol=0.75 pan=-0.15'],
-  ['bass', 'track bass role=bass inst=pluck-bass vol=0.6'],
   ['drums', 'track drums role=drums vol=0.9'],
 ];
 const block = (key) => {
@@ -115,7 +106,7 @@ const block = (key) => {
 };
 
 const text = `# Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a plucked bass on the kick, a lazy swung beat, and a dusty piano playing short phrases.
+# keys, a lazy swung beat, and an upright bass playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -125,7 +116,7 @@ key: F minor
 style: lofi
 tempo: 72
 time: 4/4
-about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and a low piano humming the same few notes to itself.
+about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and an upright bass humming the same few notes to itself.
 
 @bars ${total - 3}-${total} tempo=72..62
 

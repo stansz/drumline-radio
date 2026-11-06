@@ -108,10 +108,9 @@ The Lo-fi style is mellow keys, a round bass, and a dusty swung kit. Its tape wo
 slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
 `fx.crackle`. Songs can reach the extra `Dusty sample` patch with `inst=dusty-sample`: a detuned saw
 and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
-lead. Two more extras serve Last Stop: `inst=dusty-piano`, a soft felt piano an octave below the
-written note (triangle and saw with a sine on top, a long decay, and slow tape wobble), and
-`inst=pluck-bass`, a triangle-and-sine bass that plucks and fades instead of booming like the round
-bass. No role maps to these three.
+lead. Last Stop uses one more extra, `inst=upright-bass`: a plucked upright bass (triangle, sine, and
+a little saw, a quick filter thump, a short decay) that sounds an octave below the written note, so
+a lead track can play the melody on it. No role maps to these two.
 
 ### Cinematic
 

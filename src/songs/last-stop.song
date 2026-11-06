@@ -1,5 +1,5 @@
 # Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a plucked bass on the kick, a lazy swung beat, and a dusty piano playing short phrases.
+# keys, a lazy swung beat, and an upright bass playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -9,11 +9,11 @@ key: F minor
 style: lofi
 tempo: 72
 time: 4/4
-about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and a low piano humming the same few notes to itself.
+about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and an upright bass humming the same few notes to itself.
 
 @bars 45-48 tempo=72..62
 
-track piano role=lead inst=dusty-piano vol=0.8 pan=0.1
+track upright role=lead inst=upright-bass vol=0.7
 # Intro: the record starts
 | R | R | R | R |
 # The beat drops in
@@ -56,28 +56,6 @@ track keys role=chords vol=0.75 pan=-0.15
 | [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/4 r/8 [Ab4 C5]/8:58 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/4 r/8 [F4 Bb4]/8:58 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/4 r/8 [F4 Ab4]/8:58 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/4 r/8 [E4 G4]/8:58 |
 # Outro: the record runs out
 | v=58 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [F3 Ab3 C4 Eb4]/1 |
-
-track bass role=bass inst=pluck-bass vol=0.6
-# Intro: the record starts
-| R | R | R | R |
-# The beat drops in
-| v=84 F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-# Verse
-| v=90 F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-| F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-# Hook
-| v=94 F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-| F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-# Break: keys and crackle
-| R | R | R | R |
-# Verse 2
-| v=90 F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-| F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-# Last hook
-| v=96 F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-| F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | C2/2 C2/4t:88 C2/8t:72 r/4 |
-# Outro: the record runs out
-| v=80 F2/2 F2/4t:88 F2/8t:72 r/4 | Bb1/2 Bb1/4t:88 Bb1/8t:72 r/4 | Db2/2 Db2/4t:88 Db2/8t:72 r/4 | F2/1 |
 
 track drums role=drums vol=0.9
 # Intro: the record starts
