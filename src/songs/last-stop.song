@@ -1,5 +1,5 @@
 # Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a lazy swung beat, and an upright bass playing short phrases.
+# keys, a lazy kick and rim click, and an upright bass playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -9,7 +9,7 @@ key: F minor
 style: lofi
 tempo: 72
 time: 4/4
-about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and an upright bass humming the same few notes to itself.
+about: The last bus home, half asleep: one dusty loop, a lazy kick and rim click, and an upright bass humming the same few notes to itself.
 
 @bars 45-48 tempo=72..62
 
@@ -22,59 +22,59 @@ track upright role=lead inst=upright-bass vol=0.7
 | v=84 r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12 | Db4/4.+12 C4/8+12 Bb3/4+12 r/4 | r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12 | C4/2+12 r/4 G3/8+12 Bb3/8+12 |
 | r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12 | Db4/4.+12 C4/8+12 Bb3/4+12 r/4 | r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12 | C4/2+12 r/4 G3/8+12 Bb3/8+12 |
 # Hook
-| v=90 F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 E3/4+12 r/4 |
-| F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 E3/4+12 r/4 |
+| v=90 F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4 |
+| F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4 |
 # Break: keys and crackle
 | v=70 r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12 | Db4/4.+12 C4/8+12 Bb3/4+12 r/4 | R | R |
 # Verse 2
 | v=86 r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12 | Db4/4.+12 C4/8+12 Bb3/4+12 r/4 | r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12 | C4/2+12 r/4 G3/8+12 Bb3/8+12 |
 | r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12 | Db4/4.+12 C4/8+12 Bb3/4+12 r/4 | r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12 | C4/2+12 r/4 G3/8+12 Bb3/8+12 |
 # Last hook
-| v=92 F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 E3/4+12 r/4 |
-| F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 E3/4+12 r/4 |
+| v=92 F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4 |
+| F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12 | Db4/4+12 Bb3/4+12 r/2 | F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12 | C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4 |
 # Outro: the record runs out
 | R | R | R | R |
 
-track keys role=chords vol=0.75 pan=-0.15
+track keys role=chords vol=0.9 pan=-0.15
 # Intro: the record starts
-| v=60 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2 |
+| v=60 [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 |
 # The beat drops in
-| v=64 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2 |
+| v=64 [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 |
 # Verse
-| v=66 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2 |
-| [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2 |
+| v=66 [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 |
+| [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 |
 # Hook
-| v=68 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/4 r/8 [Ab4 C5]/8:58 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/4 r/8 [F4 Bb4]/8:58 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/4 r/8 [F4 Ab4]/8:58 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/4 r/8 [E4 G4]/8:58 |
-| [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/4 r/8 [Ab4 C5]/8:58 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/4 r/8 [F4 Bb4]/8:58 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/4 r/8 [F4 Ab4]/8:58 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/4 r/8 [E4 G4]/8:58 |
+| v=68 [F3 Ab3 C4 Eb4]/8 r/8 r/8 [Ab4 C5]/8:58 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/8 [F4 Ab4]/8:58 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 |
+| [F3 Ab3 C4 Eb4]/8 r/8 r/8 [Ab4 C5]/8:58 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/8 [F4 Ab4]/8:58 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 |
 # Break: keys and crackle
-| v=54 [F3 Ab3 C4 Eb4]/1 | [F3 Bb3 Db4]/1 | [F3 Ab3 Db4]/1 | [E3 G3 Bb3 C4]/1 |
+| v=54 [F3 Ab3 C4 Eb4]/1 | [G3 Bb3 Eb4]/1 | [F3 Ab3 Db4]/1 | [G3 Bb3 Eb4]/1 |
 # Verse 2
-| v=66 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2 |
-| [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2 |
+| v=66 [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 |
+| [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 |
 # Last hook
-| v=70 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/4 r/8 [Ab4 C5]/8:58 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/4 r/8 [F4 Bb4]/8:58 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/4 r/8 [F4 Ab4]/8:58 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/4 r/8 [E4 G4]/8:58 |
-| [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/4 r/8 [Ab4 C5]/8:58 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/4 r/8 [F4 Bb4]/8:58 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/4 r/8 [F4 Ab4]/8:58 | [E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/4 r/8 [E4 G4]/8:58 |
+| v=70 [F3 Ab3 C4 Eb4]/8 r/8 r/8 [Ab4 C5]/8:58 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/8 [F4 Ab4]/8:58 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 |
+| [F3 Ab3 C4 Eb4]/8 r/8 r/8 [Ab4 C5]/8:58 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/8 [F4 Ab4]/8:58 r/8 [F3 Ab3 Db4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/8 [G4 Bb4]/8:58 r/8 [G3 Bb3 Eb4]/4.:54 |
 # Outro: the record runs out
-| v=58 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [F3 Ab3 C4 Eb4]/1 |
+| v=58 [F3 Ab3 C4 Eb4]/8 r/8 r/4 r/8 [F3 Ab3 C4 Eb4]/4.:54 | [G3 Bb3 Eb4]/8 r/8 r/4 r/8 [G3 Bb3 Eb4]/4.:54 | [F3 Ab3 Db4]/8 r/8 r/4 r/8 [F3 Ab3 Db4]/4.:54 | [F3 Ab3 C4 Eb4]/1 |
 
 track drums role=drums vol=0.9
 # Intro: the record starts
 | R | R | R | R |
 # The beat drops in
-| v=92 h/4t:70 h/8t-8:52 h/4t:66 h/8t-8:52 h/4t:70 h/8t-8:52 h/4t:66 h/8t-8:52 | k/4t h/8t-8:52 h/4t:66 h/8t-8:52 k/4t k/8t:78 h/4t:66 h/8t-8:52 | k/4t h/8t-8:52 h/4t:66 h/8t-8:52 k/4t k/8t:78 h/4t:66 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t s/8t+10:56 s/4t+12:70 s/8t+18:88 |
+| v=92 h/8:56 h/8:44 h/8:56 h/8:44 h/8:56 h/8:44 h/8:56 h/8:44 | k/8 h/8:44 h/8:56 h/8:44 h/8:56 k/8:84 h/8:56 h/8:44 | k/8 h/8:44 h/8:56 h/8:44 h/8:56 k/8:84 h/8:56 h/8:44 | k/8 h/8:44 [rim h]/8+30 h/8:44 k/8 rim/16+20:60 rim/16+20:70 [s h]/8+30:96 r/8 |
 # Verse
-| v=100 k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 |
-| k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t s/8t+10:56 s/4t+12:70 s/8t+18:88 |
+| v=100 k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 |
+| k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 h/8:44 k/8 rim/16+20:60 rim/16+20:70 [s h]/8+30:96 r/8 |
 # Hook
-| v=104 k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 |
-| k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t s/8t+10:56 s/4t+12:70 s/8t+18:88 |
+| v=104 k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 |
+| k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 h/8:44 k/8 rim/16+20:60 rim/16+20:70 [s h]/8+30:96 r/8 |
 # Break: keys and crackle
 | R | R | R | R |
 # Verse 2
-| v=100 k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 |
-| k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t s/8t+10:56 s/4t+12:70 s/8t+18:88 |
+| v=100 k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 |
+| k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 h/8:44 k/8 rim/16+20:60 rim/16+20:70 [s h]/8+30:96 r/8 |
 # Last hook
-| v=106 k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 |
-| k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t s/8t+10:56 s/4t+12:70 s/8t+18:88 |
+| v=106 k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 |
+| k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 h/8:44 k/8 rim/16+20:60 rim/16+20:70 [s h]/8+30:96 r/8 |
 # Outro: the record runs out
-| v=84 k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52 | k/4t h/8t-8:52 h/4t:66 h/8t-8:52 k/4t k/8t:78 h/4t:66 h/8t-8:52 | k/1 |
+| v=84 k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44 | k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80 | k/8 h/8:44 h/8:56 h/8:44 h/8:56 k/8:84 h/8:56 h/8:44 | k/1 |

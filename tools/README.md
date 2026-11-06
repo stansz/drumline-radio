@@ -106,7 +106,7 @@ node tools/arranger/examples/form-demo.mjs tmp/demo
 ```
 
 Last Stop has its own script, `arranger/last-stop.mjs`: one four-bar loop written out by hand
-(chopped keys, a swung beat, and an upright bass playing short phrases). Like the other
+(chopped keys, a straight kick and rim, and an upright bass playing short phrases). Like the other
 scripts, it writes to `src/songs` by default and takes an output folder:
 
 ```bash

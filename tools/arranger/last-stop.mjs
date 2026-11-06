@@ -1,5 +1,5 @@
 // Last Stop: slow lo-fi hip-hop for the Lo-fi style. One four-bar minor loop all the way through,
-// like a sampled record: chopped Rhodes, a lazy swung kick and snare, and an upright bass playing the
+// like a sampled record: chopped Rhodes, a lazy straight kick and rim click, and an upright bass playing the
 // melody in short repeating phrases (it doubles as the bass line). Written out by hand here.
 //   node tools/arranger/last-stop.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -8,25 +8,27 @@ import { join } from 'node:path';
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-// The loop: Fm7 | Bbm | Db | C7.
+// The loop: Fm7 | Eb | Db | Eb. A modal loop with no dominant chord, so it never resolves; Third
+// Rail's i-iv-VI-V7 turnaround does, which keeps the two songs apart.
+const CH = { fm: '[F3 Ab3 C4 Eb4]', eb: '[G3 Bb3 Eb4]', db: '[F3 Ab3 Db4]' };
+const LOOP = [CH.fm, CH.eb, CH.db, CH.eb];
 const KEYS = {
-  // a chop on the one, a softer re-hit on the and of two, then space
-  chop: ['[F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2', '[F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2',
-    '[F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2', '[E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/2'],
-  // the hook adds a high stab on the and of four
-  stab: ['[F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/4 r/8 [Ab4 C5]/8:58', '[F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/4 r/8 [F4 Bb4]/8:58',
-    '[F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/4 r/8 [F4 Ab4]/8:58', '[E3 G3 Bb3 C4]/4. [E3 G3 Bb3 C4]/8:54 r/4 r/8 [E4 G4]/8:58'],
+  // a short hit on the one, then the chord pushed in early on the and of three and held
+  chop: LOOP.map((c) => `${c}/8 r/8 r/4 r/8 ${c}/4.:54`),
+  // the hook adds a high stab on the and of two
+  stab: LOOP.map((c, i) => `${c}/8 r/8 r/8 ${['[Ab4 C5]', '[G4 Bb4]', '[F4 Ab4]', '[G4 Bb4]'][i]}/8:58 r/8 ${c}/4.:54`),
   // held chords for the break
-  hold: ['[F3 Ab3 C4 Eb4]/1', '[F3 Bb3 Db4]/1', '[F3 Ab3 Db4]/1', '[E3 G3 Bb3 C4]/1'],
+  hold: LOOP.map((c) => `${c}/1`),
 };
 
-// Swung eighths as triplets. The snare drags 18 ticks and the off-hats push 8 early.
+// Straight eighths, not swung, with a rim click instead of a snare. The rim drags 30 ticks; the hats
+// stay on the grid and alternate loud and soft.
 const DRUMS = {
-  hats: 'h/4t:70 h/8t-8:52 h/4t:66 h/8t-8:52 h/4t:70 h/8t-8:52 h/4t:66 h/8t-8:52',
-  kickHats: 'k/4t h/8t-8:52 h/4t:66 h/8t-8:52 k/4t k/8t:78 h/4t:66 h/8t-8:52',
-  a: 'k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t k/8t:78 [s h]/4t+18 h/8t-8:52',
-  b: 'k/4t h/8t-8:52 [s h]/4t+18 k/8t:74 r/4t k/8t:80 [s h]/4t+18 h/8t-8:52',
-  fill: 'k/4t h/8t-8:52 [s h]/4t+18 h/8t-8:52 k/4t s/8t+10:56 s/4t+12:70 s/8t+18:88',
+  hats: 'h/8:56 h/8:44 h/8:56 h/8:44 h/8:56 h/8:44 h/8:56 h/8:44',
+  kickHats: 'k/8 h/8:44 h/8:56 h/8:44 h/8:56 k/8:84 h/8:56 h/8:44',
+  a: 'k/8 h/8:44 [rim h]/8+30 h/8:44 h/8:56 k/8:84 [rim h]/8+30 h/8:44',
+  b: 'k/8 h/8:44 [rim h]/8+30 k/8:76 h/8:56 h/8:44 [rim h]/8+30 k/8:80',
+  fill: 'k/8 h/8:44 [rim h]/8+30 h/8:44 k/8 rim/16+20:60 rim/16+20:70 [s h]/8+30:96 r/8',
 };
 const groove = (n, fill = true) => Array.from({ length: n }, (_, i) =>
   fill && i === n - 1 ? DRUMS.fill : i % 2 ? DRUMS.b : DRUMS.a);
@@ -35,7 +37,7 @@ const groove = (n, fill = true) => Array.from({ length: n }, (_, i) =>
 const VERSE = ['r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12', 'Db4/4.+12 C4/8+12 Bb3/4+12 r/4',
   'r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12', 'C4/2+12 r/4 G3/8+12 Bb3/8+12'];
 const HOOK = ['F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12', 'Db4/4+12 Bb3/4+12 r/2',
-  'F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12', 'C4/4+12 Bb3/8+12 G3/8+12 E3/4+12 r/4'];
+  'F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12', 'C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4'];
 
 const tracks = { lead: [], keys: [], drums: [] };
 const marks = [];
@@ -88,7 +90,7 @@ section('Outro: the record runs out', 4, {
 const total = tracks.lead.length;
 const HEADER = [
   ['lead', 'track upright role=lead inst=upright-bass vol=0.7'],
-  ['keys', 'track keys role=chords vol=0.75 pan=-0.15'],
+  ['keys', 'track keys role=chords vol=0.9 pan=-0.15'],
   ['drums', 'track drums role=drums vol=0.9'],
 ];
 const block = (key) => {
@@ -106,7 +108,7 @@ const block = (key) => {
 };
 
 const text = `# Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a lazy swung beat, and an upright bass playing short phrases.
+# keys, a lazy kick and rim click, and an upright bass playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -116,7 +118,7 @@ key: F minor
 style: lofi
 tempo: 72
 time: 4/4
-about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and an upright bass humming the same few notes to itself.
+about: The last bus home, half asleep: one dusty loop, a lazy kick and rim click, and an upright bass humming the same few notes to itself.
 
 @bars ${total - 3}-${total} tempo=72..62
 
