@@ -19,7 +19,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const SCRIPT = [
   'tools/arranger/songs.mjs',
-  'tools/arranger/originals.mjs',
+  'tools/arranger/last-stop.mjs',
   'tools/arranger/ivory-and-ash.mjs',
   'tools/arranger/club.mjs',
   'tools/arranger/nocturne.mjs',

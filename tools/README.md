@@ -105,11 +105,12 @@ and a last chorus up a step.
 node tools/arranger/examples/form-demo.mjs tmp/demo
 ```
 
-Originals made with `arrangeForm()` live in `arranger/originals.mjs`; Last Stop is the first. Like
-`songs.mjs`, it writes to `src/songs` by default and takes an output folder and song ids:
+Last Stop has its own script, `arranger/last-stop.mjs`: one four-bar loop written out by hand
+(chopped keys, a gritty bass, a swung beat, and a guitar playing short phrases). Like the other
+scripts, it writes to `src/songs` by default and takes an output folder:
 
 ```bash
-node tools/arranger/originals.mjs tmp/orig last-stop
+node tools/arranger/last-stop.mjs tmp/orig
 ```
 
 Ivory and Ash has its own script, `arranger/ivory-and-ash.mjs`: its piano and guitar melodies are
@@ -165,8 +166,9 @@ grooves, and textures to suit the song's genre and mood. From there:
 
 - **Change the recipe** when an arranged song needs a different feel.
 - **Hand-write or hand-edit** a song when the arranger can't express it.
-- **Rewrite with `arrangeForm()`** when a simple arrangement feels flat. Last Stop replaced the
-  hand-written Late Bus Home this way.
+- **Rewrite with `arrangeForm()`** when a simple arrangement feels flat, or write a song's own
+  script when the arranger's shapes get in the way (Last Stop went from `arrangeForm()` to a
+  hand-written loop to sound less jazzy).
 - **Extend the arranger** with a new groove, bass line, texture, or option when it keeps falling
   short. Add new options as opt-in so existing recipes rebuild unchanged.
 
