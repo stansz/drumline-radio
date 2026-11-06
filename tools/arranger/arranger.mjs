@@ -108,7 +108,8 @@ const GROOVES = {
   ballad: { '6/8': ['k/4. rim/4.', 'k/8 h/8 h/8 [s h]/8 h/8 h/8'] },
   canon: { '4/4': ['R', 'k/2 r/2'] },
   lofi: {
-    '4/4': ['k/4t h/8t h/4t h/8t s/4t h/8t h/4t k/8t', 'k/4t h/8t h/4t k/8t s/4t h/8t h/4t h/8t'],
+    // Pocket: the snare sits 18 ticks late and the swung off-hats push 8 early (see micro-timing in song-format.md).
+    '4/4': ['k/4t h/8t-8 h/4t h/8t-8 s/4t+18 h/8t-8 h/4t k/8t', 'k/4t h/8t-8 h/4t k/8t s/4t+18 h/8t-8 h/4t h/8t-8'],
   },
 };
 function groove(name, ts, level) {
