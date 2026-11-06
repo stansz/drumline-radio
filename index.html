@@ -45,12 +45,14 @@
       </main>
       <section id="playlist-view" class="playlist-view" aria-label="Playlist" hidden>
         <div class="pl-col pl-queue">
+          <div id="pl-incoming" class="pl-incoming" hidden><p id="pl-incoming-text"></p><div class="pl-actions"><button id="pl-incoming-replace" class="info-action" type="button">Replace my playlist</button><button id="pl-incoming-add" class="info-action" type="button">Add to mine</button><button id="pl-incoming-dismiss" class="info-action" type="button">Dismiss</button></div></div>
           <div class="pl-head">
             <h2 class="pl-title">Playlist <span id="pl-count" class="pl-count"></span></h2>
             <div class="pl-actions">
               <button id="pl-start" class="info-action" type="button">▶ Play playlist</button>
               <button id="pl-loop" class="info-action" type="button" aria-pressed="false">Loop</button>
               <button id="pl-clear" class="info-action" type="button">Clear</button>
+              <button id="pl-share" class="info-action" type="button">Share</button>
             </div>
           </div>
           <ol id="pl-list" class="pl-list"></ol>
@@ -129,6 +131,7 @@
       <p id="card-byline" class="card-byline"></p>
       <dl id="card-facts" class="card-facts"></dl>
       <p id="card-about" class="card-about" hidden></p>
+      <div class="card-share info-row"><button id="card-share" class="info-action" type="button">Share song</button><button id="card-share-at" class="info-action" type="button" hidden>Share from 0:00</button></div>
       <button id="card-close" class="info-action info-close" type="button">Close</button>
     </dialog>
     <script type="module" src="/src/main.ts"></script>

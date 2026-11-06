@@ -54,7 +54,8 @@ There are no recordings. Each song is a small text score, and the browser's buil
   draws the L/R meters. `marquee.ts` scrolls long readout text back and forth. `view.ts` has the
   screen math, kept pure so it can be tested. `playlist.ts` is the playlist logic (saved list,
   reorder, remove, what plays next), kept pure so it can be tested; `ui.ts` draws the playlist view
-  and plays its entries.
+  and plays its entries. `share.ts` builds and reads share links (`#song=…&style=…&t=…` and
+  `#list=…`), kept pure so it can be tested.
 
 ## Roles: why remix works
 

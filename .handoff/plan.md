@@ -1,100 +1,133 @@
 ## Goal
 
-Add per-note micro-timing offsets to the song format of drumline-radio: a note token may carry
-`+N` or `-N` (ticks, 960 per quarter note, range -240..240) that shifts when the note starts.
-The design is in `plans/micro-timing.md`; this spec is the exact work.
+Share links for Drumline Radio. A link opens the app tuned to a song in a chosen style, optionally at
+a start time, ready to play (the listener presses ▶; no autoplay). A playlist can be shared as a link
+too. Share buttons use the system share sheet, falling back to copying the link.
+
+Link formats (hash only, so both hosts and the service worker need no change):
+
+- Song: `#song=<id>&style=<style>` or `#song=<id>&style=<style>&t=<m:ss>`, e.g.
+  `#song=third-rail&style=techno&t=1:20`. `<id>` is a `LibraryEntry.id` (the file name without
+  `.song`); `<style>` is one of `STYLES` in `src/music/roles.ts`.
+- Playlist: `#list=<id>~<style>,<id>~<style>,...`, e.g. `#list=third-rail~lofi,last-stop~techno`.
 
 ## Files to touch
 
-- `src/music/song.ts`
-- `src/music/timing.ts`
-- `docs/song-format.md`
-- `tests/song.test.ts`
-- `tests/timing.test.ts`
-- `.handoff/report.md`
+- `src/ui/share.ts` (new)
+- `tests/share.test.ts` (new)
+- `src/ui/ui.ts`
+- `index.html`
+- `src/ui/style.css`
+- `README.md`
+- `docs/how-it-works.md`
 
 ## Steps
 
-1. `src/music/song.ts`, `interface Note`: add `offset?: number;` after `staccato`, with a one-line
-   doc comment: start shift in ticks, -240..240, present only when non-zero.
-2. `src/music/song.ts`: add `export const MAX_OFFSET = 240;` near the other top-level constants.
-3. `src/music/song.ts`, `type ParsedToken`, `kind: 'note'` variant: add `offset: number;`.
-4. `src/music/song.ts`, `parseSuffixWithPitches`: after the staccato block and before the velocity
-   block, parse an offset:
-   - If `rest` starts with `+` or `-`, match `/^([+-])(\d+)/`. No match →
-     `{ kind: 'error', message: \`invalid offset in '${fullText}'\` }`.
-   - Value = sign × digits. If `Math.abs(value) > MAX_OFFSET` →
-     `{ kind: 'error', message: \`offset ${value} is outside -${MAX_OFFSET}..${MAX_OFFSET} in '${fullText}'\` }`.
-   - Slice the match off `rest`. Default offset is 0. Return `offset` in the note result.
-   - Rests must keep rejecting any suffix; do not change rest parsing.
-5. `src/music/song.ts`, the track loop in `parseSong` (around the `const note: Note = {` block):
-   - When building `note`, set `note.offset = parsed.offset` only if `parsed.offset !== 0`
-     (do not add the key otherwise).
-   - In the `pending.mode === 'tie'` branch and the `pending.mode === 'bend'` branch, before the
-     note is merged into `pending.note`: if `parsed.offset !== 0`, call
-     `err(token.line, \`offset on a tie or bend continuation in track ${raw.id}\`)` and then
-     continue merging exactly as today (the merged note keeps the first token's offset).
-   - Bar-length accounting (`barTicks`) stays on written durations; offsets never change it.
-6. `src/music/timing.ts`, `buildTimeline`: replace the start/duration/bend computation with:
-   - `const offset = note.offset ?? 0;`
-   - `const start = tickToSeconds(song, Math.max(0, note.tick + offset));`
-   - `const end = tickToSeconds(song, note.tick + note.ticks);`
-   - `let duration = end - start; if (note.staccato) duration /= 2;`
-     `duration = Math.max(duration, MIN_DURATION);` with `const MIN_DURATION = 0.01;` at module top.
-   - Bends: `time: Math.max(0, tickToSeconds(song, note.tick + bend.at) - start)`.
-   - For a note with no offset every value must be identical to today's (the `Math.max` with
-     MIN_DURATION must not change any existing note: existing tests and drift tests prove this).
-   - Keep the sort and `notesBetween` unchanged. Do not change `src/audio/engine.ts`.
-7. `docs/song-format.md`:
-   - In "Notes and durations", extend the token description sentence to include the optional
-     offset between the staccato mark and the velocity.
-   - Add a section `## Micro-timing` after "### Staccato" (before "## Chords") stating: syntax
-     `+N`/`-N` in ticks (960 a quarter), range -240..240, positive is later; examples `k/8+18`,
-     `s/8-10`, `[C4 E4 G4]/2+24:88`; it moves only the start and the end stays at the written end;
-     staccato halves the remaining length; minimum sounding length 10 ms; applies to the whole
-     chord; the first token of a tie or bend chain owns it and an offset on a continuation token is
-     an error; bend times stay at their written positions; a start before 0 clamps to 0; bar length
-     and song length use written durations; `%` and `{ }*n` repeat offsets; the score draws a
-     shifted note where it sounds.
-   - In "What the checker rejects", add: an offset outside -240..240, a malformed offset, and an
-     offset on a tie or bend continuation.
-   - In "Rests", add offset to the list of things a rest has no.
-8. `tests/song.test.ts`: add a `describe('micro-timing offsets', ...)` with tests that parse small
-   inline songs (copy the minimal header and track layout used by existing inline-song tests in
-   that file) and assert:
-   - `C4/4+18` gives `offset: 18`; `C4/4-10` gives `offset: -10`; `C4/4` has no `offset` key
-     (`expect('offset' in note).toBe(false)`).
-   - `C4/8'+12:90~ C4/8` parses: offset 12, staccato true, velocity 90, ticks 960 (tied).
-   - A chord `[C4 E4 G4]/2+24:88` gives offset 24 on the chord note.
-   - A drums token `s/8-10` gives offset -10.
-   - `C4/4+240` and `C4/4-240` parse; `C4/4+241` and `C4/4-241` fail with a message containing
-     `outside -240..240`.
-   - `C4/4+x` fails with `invalid offset`.
-   - `C4/4~ C4/4+10` and `G4/8^ A4/4+10` fail with `offset on a tie or bend continuation`.
-   - `r/4+10` fails.
-9. `tests/timing.test.ts`: add a `describe('micro-timing offsets', ...)` with tests that parse
-   small inline 4/4 songs at 60 BPM (one quarter = 1 s, one tick = 1/960 s) and assert, using
-   `toBeCloseTo`:
-   - `+96` on a quarter at tick 960: start 1.1, duration 0.9.
-   - `-96` on a quarter at tick 960: start 0.9, duration 1.1.
-   - staccato quarter with `+96`: duration 0.45.
-   - a `/32` note (120 ticks) with `+120`: duration 0.01 (minimum).
-   - `-96` on the very first note at tick 0: start 0.
-   - a bend `G4/4+96^ A4/4`: the bend time is 1 − 0.1 = 0.9 s after the shifted start.
-   - `notesBetween(timeline, 0.85, 0.95)` includes the note written at tick 960 with `-96`.
-   - the timeline stays sorted by `start` when an offset reorders two notes on different tracks.
+1. Create `src/ui/share.ts`. Pure, no DOM, no `window`, no audio. Export:
+   - `type ShareLink = { kind: 'song'; song: string; style: StyleId | null; t: number | null } | { kind: 'list'; entries: PlaylistEntry[] }`
+     (import `PlaylistEntry` from `./playlist`, `StyleId`/`STYLES` from `../music/roles`).
+   - `formatShareTime(seconds: number): string` → `m:ss` from the floored seconds
+     (`80` → `'1:20'`, `5.9` → `'0:05'`, `600` → `'10:00'`).
+   - `parseShareTime(text: string): number | null` → accepts `m:ss` (seconds part exactly two digits,
+     00–59) or a plain whole number of seconds (`'80'` → 80, `'1:20'` → 80). Anything else, or a
+     negative value, → `null`.
+   - `songHash(song: string, style: StyleId, t: number | null): string` →
+     `'#song=<song>&style=<style>'`, plus `'&t=' + formatShareTime(t)` when `t !== null && t >= 1`.
+     Values go through `encodeURIComponent` (`:` in the time may stay encoded or not; the parser must
+     accept both).
+   - `playlistHash(list: PlaylistEntry[]): string` → `'#list='` + entries joined as
+     `<song>~<style>` with `,`. Empty list → `''`.
+   - `parseShareHash(hash: string, ids: readonly string[]): ShareLink | null`:
+     - Strip a leading `#`, parse with `URLSearchParams`.
+     - If `list` is present: split on `,`, each item on `~`; keep items whose song is in `ids` and
+       style is in `STYLES`; cap at `PLAYLIST_MAX` from `./playlist`. No valid items → `null`.
+       Otherwise `{ kind: 'list', entries }`. `list` wins over `song` when both appear.
+     - Else if `song` is present and in `ids`: `{ kind: 'song', song, style, t }` where `style` is
+       the `style` param when it is in `STYLES`, else `null`; `t` is `parseShareTime(param)` or
+       `null` when missing/invalid.
+     - Otherwise `null` (unknown song id, empty hash, garbage).
+2. Create `tests/share.test.ts` covering: time format/parse round-trip and the rejected inputs
+   (`'1:5'`, `'1:60'`, `'-3'`, `'abc'`, `''`); `songHash` with and without `t` (and `t = 0.5` omitted);
+   `parseShareHash` for a valid song link, `%3A`-encoded time, unknown style → `style: null`, unknown
+   song → `null`, a playlist link with one bad item dropped, an all-bad playlist → `null`, `list`
+   winning over `song`, leading `#` optional; `playlistHash` → `parseShareHash` round-trip.
+3. `index.html`:
+   - In the `#song-card` dialog, before `#card-close`, add
+     `<div class="card-share info-row"><button id="card-share" class="info-action" type="button">Share song</button><button id="card-share-at" class="info-action" type="button" hidden>Share from 0:00</button></div>`.
+   - In the playlist `.pl-actions`, after `#pl-clear`, add
+     `<button id="pl-share" class="info-action" type="button">Share</button>`.
+   - At the top of `.pl-queue` (before its `.pl-head`), add a notice for incoming shared playlists:
+     `<div id="pl-incoming" class="pl-incoming" hidden><p id="pl-incoming-text"></p><div class="pl-actions"><button id="pl-incoming-replace" class="info-action" type="button">Replace my playlist</button><button id="pl-incoming-add" class="info-action" type="button">Add to mine</button><button id="pl-incoming-dismiss" class="info-action" type="button">Dismiss</button></div></div>`.
+4. `src/ui/ui.ts` (inside `startUi`):
+   - Grab the new elements with `required<...>()` like the others.
+   - Add `let pendingStyle: StyleId | null = null;` and `let pendingSeek: number | null = null;`.
+     In `ensureEngine`, right after `created.load(entry.song)`: if `pendingStyle` is set, call
+     `created.setStyle(pendingStyle)`; if `pendingSeek` is set, call `created.seek(pendingSeek)`
+     (seek clamps to the duration); then clear both. The existing lines after it already read
+     `created.style`, so the readout and bands follow.
+   - In `loadSong`, in the `!engine` branch, clear `pendingStyle` and `pendingSeek` (tuning away by
+     hand drops a shared link's settings). `selectBand` already creates the engine, so it needs no
+     change.
+   - `shareUrl(hash: string): string` → `location.origin + location.pathname + hash`.
+   - `async function shareLink(url: string, title: string, button: HTMLButtonElement): Promise<void>`:
+     if `navigator.share` exists, `await navigator.share({ title, url })` (catch and ignore errors,
+     including the user cancelling). Else try `await navigator.clipboard.writeText(url)`, then set
+     the button text to `Link copied` and restore its old text after 2000 ms. If the clipboard call
+     throws or is missing, `window.prompt('Copy this link', url)`.
+   - Current style for sharing: `engine?.style ?? pendingStyle ?? songStyle()`.
+   - `#card-share` click → share `songHash(LIBRARY[current].id, style, null)` with the song title.
+   - `#card-share-at`: in `openSongCard`, if `engine` exists and `engine.position >= 5`, show it with
+     text `Share from ${formatShareTime(engine.position)}` and remember that position; otherwise hide
+     it. Click → share `songHash(id, style, rememberedPosition)`.
+   - `#pl-share` click → share `playlistHash(playlist)` with title `Drumline Radio playlist`.
+     Disable it when the playlist is empty (set `disabled` wherever `renderPlaylist` updates the
+     count).
+   - `applyShareLink(link: ShareLink)`:
+     - Song: `playlistAt = null`; if the song's library index is not in `visible()`, call
+       `selectCategory('all')`; `selectView('radio')`. If `engine` exists: `loadSong(index)`, then if
+       `link.style` call `selectBand(STYLES.indexOf(link.style))`, then if `link.t !== null` call
+       `engine.seek(link.t)`. If no engine: `loadSong(index)`, then set `pendingStyle = link.style`
+       and `pendingSeek = link.t` (after `loadSong`, since it clears them). When `pendingStyle` is set,
+       also `updateBands(pendingStyle)`, `root.dataset.style = pendingStyle`, and set the subtitle to
+       `Press play · ${STYLE_DEFS[pendingStyle].name}`. Do not call `play()`. Finish with
+       `updatePlayButton()`.
+     - List: `selectView('playlist')`; store the entries in `let incoming: PlaylistEntry[] = []`;
+       show `#pl-incoming` with text `Shared playlist: N songs`. Replace → `setPlaylist(incoming)`;
+       Add → append each with `addEntry` then `setPlaylist`; Dismiss → nothing. All three hide the
+       notice and clear `incoming`. Never touch the saved playlist without one of these clicks.
+   - `consumeHash()`: `const link = parseShareHash(location.hash, LIBRARY.map((e) => e.id))`; if
+     `location.hash` is non-empty, remove it with
+     `history.replaceState(null, '', location.pathname + location.search)` (wrap in `try`/`catch`);
+     if `link`, `applyShareLink(link)`.
+   - Call `consumeHash()` once at the very end of `startUi` (after the existing first-station setup,
+     before or after `requestAnimationFrame(frame)` — after the setup lines), and add
+     `window.addEventListener('hashchange', consumeHash)`.
+5. `src/ui/style.css`: style `.card-share` as a row with a small gap (reuse existing `.info-row`
+   spacing values), and `.pl-incoming` as a bordered box with padding and margin-bottom, using the
+   existing CSS custom properties the playlist view already uses for borders and text. Keep the
+   phone layout working (buttons wrap).
+6. `README.md`: add a feature bullet after the Playlist bullet: share links. "Share song" in the song
+   card (tap the title) shares the song in the style you are hearing, and "Share from m:ss" adds the
+   current time; the playlist view's Share button shares the whole list. Opening a link tunes the
+   app, ready to play; a shared playlist asks before replacing or adding to yours. Uses the share
+   sheet where the browser has one, otherwise copies the link.
+7. `docs/how-it-works.md`: in the `src/ui/` list, add that `share.ts` builds and reads share links
+   (`#song=…&style=…&t=…` and `#list=…`), kept pure so it can be tested.
 
 ## Acceptance
 
-- `git diff --stat` lists only files from **Files to touch** (plus `plans/micro-timing.md`,
-  which was already modified before the run and must not be touched).
+- `npm run test:sandbox` exits 0, and its output includes `tests/share.test.ts`.
+- `npm run typecheck` exits 0.
+- `git status --porcelain` lists only the files in **Files to touch** (plus `.handoff/`).
 
 Verifier only:
-- `npm test` exits 0 (all existing tests unchanged and passing, including `tests/drift.test.ts`
-  and `tests/library.test.ts`, plus the new tests).
-- `npm run typecheck` exits 0.
-- `npm run check:songs` exits 0 with the same counts and clash totals as before the change.
+
+- `npm test` exits 0.
 - `npm run build` exits 0.
+- Headless Edge, `vite preview`: opening `/#song=third-rail&style=techno&t=1:20` shows Third Rail on
+  the dial, Techno band checked, the hash removed from the URL, not playing; pressing ▶ plays in
+  Techno from about 1:20. Opening `/#list=third-rail~lofi,last-stop~techno` shows the playlist view
+  with the incoming notice and leaves the saved playlist unchanged until a button is pressed.
 
 ## Parallel work
 
@@ -103,23 +136,22 @@ None — do it sequentially.
 ## Constraints
 
 - Do not commit, push, or switch branches.
-- Do not touch files outside **Files to touch** except `.handoff/report.md`. Do not edit
-  `plans/micro-timing.md`, any `.song` file, `src/audio/engine.ts`, or anything in `tools/`.
-- No new dependencies.
-- Follow the existing code style in each file (naming, comment density, error message wording).
-- Do not run the `Verifier only:` commands. Use `npm run test:sandbox` and `npm run typecheck` to
-  check your work if they run in the sandbox.
-- If any command fails with `spawn EPERM`, stop and report it; do not request wider sandbox access,
-  set `NODE_OPTIONS`, or stub modules to get past it.
+- Do not touch files outside **Files to touch** except `.handoff/report.md`.
+- Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and report
+  it; do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past it.
+- `src/ui/share.ts` stays free of the DOM and audio (AGENTS.md rule for testable modules).
+- Wrap any new `localStorage` use in `try`/`catch` (none is expected).
+- Do not change any `.song` file, the service worker, the manifest, or `vite.config.ts`.
+- Never call `engine.play()` from link handling.
 
 ## Out of scope
 
-- Any change to the audio engine or scheduler lookahead.
-- A `@swing` or `@humanize` directive.
-- Using offsets in any existing song or in the arranger.
-- Score view changes.
+- Autoplay, named playlists, shuffle, URL shorteners, QR codes.
+- Manifest link capture (`handle_links`, `launch_handler`) and `launchQueue`.
+- Sharing hidden songs (their ids are not in `LIBRARY`, so links to them are ignored).
+- Keeping the URL hash updated while the user tunes around.
 
 ## If blocked
 
-Stop, leave the working tree as it is, and write in `.handoff/report.md` which step failed, the
-exact error, and what you would need to continue.
+Stop and write `.handoff/report.md` with the failing step, the exact command and output, and what
+you would need to continue. Do not improvise a different link format or UI placement.

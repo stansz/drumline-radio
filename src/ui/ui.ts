@@ -43,6 +43,13 @@ import {
   PLAYLIST_MAX,
 } from './playlist';
 import type { AppView, PlaylistEntry } from './playlist';
+import {
+  formatShareTime,
+  parseShareHash,
+  playlistHash,
+  songHash,
+} from './share';
+import type { ShareLink } from './share';
 
 // Set by vite.config.ts at build time.
 declare const __BUILD_COMMIT__: string;
@@ -110,6 +117,8 @@ export function startUi(): void {
   const cardByline = required<HTMLElement>('#card-byline');
   const cardFacts = required<HTMLElement>('#card-facts');
   const cardAbout = required<HTMLElement>('#card-about');
+  const cardShare = required<HTMLButtonElement>('#card-share');
+  const cardShareAt = required<HTMLButtonElement>('#card-share-at');
   const cardClose = required<HTMLButtonElement>('#card-close');
   const dimToggle = required<HTMLButtonElement>('#dim-toggle');
   const flashToggle = required<HTMLButtonElement>('#flash-toggle');
@@ -126,8 +135,14 @@ export function startUi(): void {
   const playlistStart = required<HTMLButtonElement>('#pl-start');
   const playlistLoop = required<HTMLButtonElement>('#pl-loop');
   const playlistClear = required<HTMLButtonElement>('#pl-clear');
+  const playlistShare = required<HTMLButtonElement>('#pl-share');
   const playlistList = required<HTMLElement>('#pl-list');
   const playlistEmpty = required<HTMLElement>('#pl-empty');
+  const incomingNotice = required<HTMLElement>('#pl-incoming');
+  const incomingText = required<HTMLElement>('#pl-incoming-text');
+  const incomingReplace = required<HTMLButtonElement>('#pl-incoming-replace');
+  const incomingAdd = required<HTMLButtonElement>('#pl-incoming-add');
+  const incomingDismiss = required<HTMLButtonElement>('#pl-incoming-dismiss');
   const playlistFilters = required<HTMLElement>('#pl-filters');
   const playlistSongs = required<HTMLElement>('#pl-songs');
   const viewButtons = Array.from(viewsEl.querySelectorAll<HTMLButtonElement>('.view-btn'));
@@ -151,6 +166,11 @@ export function startUi(): void {
   let engine: Engine | null = null;
   let current = 0;
   let lastStyle: StyleId | null = null;
+  // A shared link can tune the first engine before it exists; the settings wait here.
+  let pendingStyle: StyleId | null = null;
+  let pendingSeek: number | null = null;
+  // The position the song card's "Share from" button will use.
+  let shareAtPosition: number | null = null;
   let bannerTimer = 0;
   let draggingSeek = false;
   // Dragging the score scrubs: the score follows the finger and the song seeks on release.
@@ -164,6 +184,8 @@ export function startUi(): void {
   );
   let playlistAt: number | null = null;
   let loop = load(PLAYLIST_LOOP_KEY) === '1';
+  // A shared playlist waits in `incoming` until the listener picks a button.
+  let incoming: PlaylistEntry[] = [];
   let view: AppView = parseView(load(VIEW_KEY));
   let libraryFilter: CategoryFilter = 'all';
   // Durations and the id lookup are fixed for the session, so the lists never recompute them.
@@ -373,6 +395,10 @@ export function startUi(): void {
     created.onEnded = handleEnded;
     created.setVolume(outputGain());
     created.load(entry.song);
+    if (pendingStyle) created.setStyle(pendingStyle);
+    if (pendingSeek !== null) created.seek(pendingSeek);
+    pendingStyle = null;
+    pendingSeek = null;
     engine = created;
 
     root.dataset.style = created.style;
@@ -389,6 +415,8 @@ export function startUi(): void {
     const entry = LIBRARY[current];
 
     if (!engine) {
+      pendingStyle = null;
+      pendingSeek = null;
       titleMarquee.set(entry.song.meta.title);
       subtitleMarquee.set('Press play');
       updateBands(entry.song.meta.style);
@@ -410,6 +438,91 @@ export function startUi(): void {
     seekEl.value = '0';
     if (wasPlaying) engine.play();
     updatePlayButton();
+  }
+
+  function shareUrl(hash: string): string {
+    return location.origin + location.pathname + hash;
+  }
+
+  function shareStyle(): StyleId {
+    return engine?.style ?? pendingStyle ?? songStyle();
+  }
+
+  async function shareLink(
+    url: string,
+    title: string,
+    button: HTMLButtonElement,
+  ): Promise<void> {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch {
+        // Sharing was cancelled, or the browser could not open the sheet.
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      const old = button.textContent;
+      button.textContent = 'Link copied';
+      window.setTimeout(() => {
+        button.textContent = old;
+      }, 2000);
+    } catch {
+      window.prompt('Copy this link', url);
+    }
+  }
+
+  function hideIncoming(): void {
+    incoming = [];
+    incomingNotice.hidden = true;
+    incomingText.textContent = '';
+  }
+
+  function applyShareLink(link: ShareLink): void {
+    if (link.kind === 'song') {
+      const index = LIBRARY.findIndex((entry) => entry.id === link.song);
+      if (index < 0) return;
+      playlistAt = null;
+      if (!visible().includes(index)) selectCategory('all');
+      selectView('radio');
+      if (engine) {
+        loadSong(index);
+        if (link.style) selectBand(STYLES.indexOf(link.style));
+        if (link.t !== null) engine.seek(link.t);
+      } else {
+        loadSong(index);
+        pendingStyle = link.style;
+        pendingSeek = link.t;
+        if (pendingStyle) {
+          updateBands(pendingStyle);
+          root.dataset.style = pendingStyle;
+          subtitleMarquee.set(`Press play · ${STYLE_DEFS[pendingStyle].name}`);
+        }
+      }
+      updatePlayButton();
+      return;
+    }
+
+    selectView('playlist');
+    incoming = link.entries;
+    incomingText.textContent = `Shared playlist: ${incoming.length} songs`;
+    incomingNotice.hidden = false;
+  }
+
+  function consumeHash(): void {
+    const link = parseShareHash(
+      location.hash,
+      LIBRARY.map((entry) => entry.id),
+    );
+    if (location.hash !== '') {
+      try {
+        history.replaceState(null, '', location.pathname + location.search);
+      } catch {
+        // Without history the link still tunes the app; the hash just stays put.
+      }
+    }
+    if (link) applyShareLink(link);
   }
 
   function handleEnded(): void {
@@ -598,6 +711,7 @@ export function startUi(): void {
     playlistEmpty.hidden = playlist.length > 0;
     playlistStart.disabled = playlist.length === 0;
     playlistClear.disabled = playlist.length === 0;
+    playlistShare.disabled = playlist.length === 0;
     playlistList.textContent = '';
     for (let index = 0; index < playlist.length; index += 1) {
       const item = playlist[index];
@@ -736,6 +850,14 @@ export function startUi(): void {
       cardAbout.hidden = false;
       cardAbout.textContent = meta.about;
     }
+    if (engine && engine.position >= 5) {
+      shareAtPosition = engine.position;
+      cardShareAt.hidden = false;
+      cardShareAt.textContent = `Share from ${formatShareTime(shareAtPosition)}`;
+    } else {
+      shareAtPosition = null;
+      cardShareAt.hidden = true;
+    }
     songCard.showModal();
   }
 
@@ -746,6 +868,51 @@ export function startUi(): void {
     openSongCard();
   });
   cardClose.addEventListener('click', () => songCard.close());
+
+  cardShare.addEventListener('click', () => {
+    const entry = LIBRARY[current];
+    if (!entry) return;
+    void shareLink(
+      shareUrl(songHash(entry.id, shareStyle(), null)),
+      entry.song.meta.title,
+      cardShare,
+    );
+  });
+  cardShareAt.addEventListener('click', () => {
+    const entry = LIBRARY[current];
+    if (!entry || shareAtPosition === null) return;
+    void shareLink(
+      shareUrl(songHash(entry.id, shareStyle(), shareAtPosition)),
+      entry.song.meta.title,
+      cardShareAt,
+    );
+  });
+
+  playlistShare.addEventListener('click', () => {
+    const hash = playlistHash(playlist);
+    if (hash === '') return;
+    void shareLink(shareUrl(hash), 'Drumline Radio playlist', playlistShare);
+  });
+
+  incomingReplace.addEventListener('click', () => {
+    if (incoming.length === 0) {
+      hideIncoming();
+      return;
+    }
+    setPlaylist(incoming);
+    hideIncoming();
+  });
+  incomingAdd.addEventListener('click', () => {
+    if (incoming.length === 0) {
+      hideIncoming();
+      return;
+    }
+    let next = playlist;
+    for (const entry of incoming) next = addEntry(next, entry);
+    setPlaylist(next);
+    hideIncoming();
+  });
+  incomingDismiss.addEventListener('click', hideIncoming);
 
   playButton.addEventListener('click', togglePlay);
   prevButton.addEventListener('click', previous);
@@ -1008,5 +1175,7 @@ export function startUi(): void {
   dial.select(current, false);
   totalEl.textContent = formatTime(0);
   updatePlayButton();
+  window.addEventListener('hashchange', consumeHash);
+  consumeHash();
   requestAnimationFrame(frame);
 }

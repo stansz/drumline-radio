@@ -879,6 +879,13 @@ body::after {
   margin: 0 0 4px;
 }
 
+.card-share {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
 /* Playlist view: the stage, presets, dial and style bands make way for the queue and library. */
 :root[data-view='playlist'] .stage,
 :root[data-view='playlist'] .tuner .presets,
@@ -1055,6 +1062,23 @@ body::after {
   color: var(--muted);
   font-size: 13px;
   margin: 4px 0;
+}
+
+/* A shared playlist waits here until the listener replaces their own or adds to it. */
+.pl-incoming {
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+  color: var(--muted);
+}
+
+.pl-incoming p {
+  margin: 0 0 8px;
+}
+
+.pl-incoming .pl-actions {
+  flex-wrap: wrap;
 }
 
 :focus-visible {
