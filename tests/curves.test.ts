@@ -1,12 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import {
   attackTime,
+  audibleOsc,
   BEND_GLIDE,
   bendGlide,
   crackleSamples,
   CRUSH_POINTS,
   crushCurve,
   driveCurve,
+  MIN_OSC_HZ,
   noteGain,
   pulseCoefficients,
   SOFT_CLIP_POINTS,
@@ -70,6 +72,16 @@ describe('attackTime', () => {
 
   it('keeps a patch attack that is already longer', () => {
     expect(attackTime(0.4, 55)).toBe(0.4);
+  });
+});
+
+describe('audibleOsc', () => {
+  it('skips an oscillator that would sound below the floor', () => {
+    expect(audibleOsc(43.65, -1)).toBe(false);
+    expect(audibleOsc(65.41, -1)).toBe(true);
+    expect(audibleOsc(41.2, 0)).toBe(true);
+    expect(audibleOsc(MIN_OSC_HZ, 0)).toBe(true);
+    expect(audibleOsc(29.9, 0)).toBe(false);
   });
 });
 

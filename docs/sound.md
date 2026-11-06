@@ -39,6 +39,9 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between the oscillators and
 the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample use it.
 
+An oscillator that would sound below 30 Hz is not created: that low it is felt as rumble rather than
+heard, and it only eats headroom, so a sub-octave layer drops out under very low notes.
+
 A bent note in the score (`^`, see [song-format.md](song-format.md)) automates each oscillator's
 detune, and the FM modulator's when the patch has FM. The pitch glides to each bend target over
 `BEND_GLIDE` (0.1 s), or less when the next bend is close. The vibrato LFO stays connected and adds
@@ -56,6 +59,9 @@ on top.
 | bass | Synth bass |
 | arp | Pluck |
 | drums | Gated kit |
+
+Synthwave also has an extra clean `sub-bass` patch, a sine sub with a little triangle at the octave,
+that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-bass`.
 
 ### Chiptune
 

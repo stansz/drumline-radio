@@ -155,10 +155,18 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       'synth-bass': synth({
         name: 'Synth bass',
         oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', -1, 0, 0.4)],
-        env: env(0.005, 0.2, 0.6, 0.08),
+        env: env(0.005, 0.2, 0.6, 0.05),
         filter: { type: 'lowpass', hz: 500, q: 2, envAmount: 4, envDecay: 0.12 },
         gain: 0.4,
         sends: { reverb: 0.2, delay: 0 },
+      }),
+      'sub-bass': synth({
+        name: 'Sub bass',
+        oscs: [osc('sine', 0, 0, 0.85), osc('triangle', 1, 0, 0.15)],
+        env: env(0.003, 0.15, 0.8, 0.05),
+        filter: { type: 'lowpass', hz: 400, q: 0.7, envAmount: 1, envDecay: 0.1 },
+        gain: 0.45,
+        sends: { reverb: 0, delay: 0 },
       }),
       pluck: synth({
         name: 'Pluck',

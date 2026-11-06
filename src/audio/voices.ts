@@ -1,4 +1,4 @@
-import { attackTime, bendGlide, driveCurve, pulseCoefficients } from './curves';
+import { attackTime, audibleOsc, bendGlide, driveCurve, pulseCoefficients } from './curves';
 import { midiToFreq } from '../music/pitch';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
 
@@ -217,6 +217,7 @@ export function playSynth(
 
   const oscillators: OscillatorNode[] = [];
   for (const spec of patch.oscs) {
+    if (!audibleOsc(freq, spec.octave)) continue;
     const osc = ctx.createOscillator();
     setWave(kit, osc, spec.wave);
     osc.frequency.value = freq * 2 ** spec.octave;

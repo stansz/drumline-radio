@@ -83,6 +83,14 @@ export function attackTime(patchAttack: number, freq: number): number {
   return Math.max(patchAttack, Math.min(MAX_LOW_ATTACK, Math.max(MIN_ATTACK, halfCycle)));
 }
 
+/** Below this an oscillator is felt as rumble, not heard, and only eats headroom. */
+export const MIN_OSC_HZ = 30;
+
+/** Whether an oscillator at `octave` above (or below) a note at `freq` is worth playing. */
+export function audibleOsc(freq: number, octave: number): boolean {
+  return freq * 2 ** octave >= MIN_OSC_HZ;
+}
+
 /** A loopable vinyl bed: faint hiss plus sparse clicks of random size. */
 export function crackleSamples(
   length: number,

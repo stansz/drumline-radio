@@ -123,7 +123,7 @@ track bass role=bass vol=0.58
 | E1/8:98 E2:78 E1:98 E2:78 E1:98 E2:78 E1:98 E2:78 | C2/8:98 C3:78 C2:98 C3:78 C2:98 C3:78 C2:98 C3:78 | G1/8:98 G2:78 G1:98 G2:78 G1:98 G2:78 G1:98 G2:78 | D2/8:98 D3:78 D2:98 D3:78 D2:98 D3:78 D2:98 D3:78 |
 | E1/8:98 E2:78 E1:98 E2:78 E1:98 E2:78 E1:98 E2:78 | C2/8:98 C3:78 C2:98 C3:78 C2:98 C3:78 C2:98 C3:78 | D2/8:98 D3:78 D2:98 D3:78 D2:98 D3:78 D2:98 D3:78 | E1/1:98 |
 
-track sub role=bass vol=0.62
+track sub role=bass inst=sub-bass vol=0.62
 # Intro: the sub waits for the kick
 | R*4 |
 | E1/4:100 r/4 E1/4:96 r/4 | C2/4:100 r/4 C2/4:96 r/4 | G1/4:100 r/4 G1/4:96 r/4 | D2/4:100 r/4 D2/4:96 r/4 |
