@@ -446,16 +446,29 @@ export function playDrum(
       return makeVoice(time + 0.23, out, collected, time);
     }
     case 37: {
-      const osc = ctx.createOscillator();
-      osc.type = 'square';
-      osc.frequency.value = 1800;
+      // A rimshot: a short, narrow burst of noise for the stick on the rim, plus a quick low knock
+      // for the drum shell. A pure tone here sounds like a cowbell.
+      const noise = noiseSpec(kit, 'white');
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 2500;
+      filter.Q.value = 3;
       const body = ctx.createGain();
-      body.gain.setValueAtTime(clampLevel(level * 0.4), time);
-      body.gain.exponentialRampToValueAtTime(0.001, time + 0.03);
-      osc.connect(body);
+      body.gain.setValueAtTime(clampLevel(level * 0.9), time);
+      body.gain.exponentialRampToValueAtTime(0.001, time + 0.035);
+      noise.node.connect(filter);
+      filter.connect(body);
       body.connect(out);
-      collected.nodes.push(osc, body);
-      collected.sources.push({ node: osc });
+      const knock = ctx.createOscillator();
+      knock.type = 'triangle';
+      knock.frequency.value = 450;
+      const knockGain = ctx.createGain();
+      knockGain.gain.setValueAtTime(clampLevel(level * 0.35), time);
+      knockGain.gain.exponentialRampToValueAtTime(0.001, time + 0.025);
+      knock.connect(knockGain);
+      knockGain.connect(out);
+      collected.nodes.push(filter, body, knock, knockGain);
+      collected.sources.push(noise, { node: knock });
       return makeVoice(time + 0.08, out, collected, time);
     }
     default:
