@@ -16,7 +16,10 @@ export function createWakeLock(): { set(wanted: boolean): void } {
           requesting = false;
           held = sentinel;
           sentinel.addEventListener('release', () => {
-            if (held === sentinel) held = null;
+            if (held !== sentinel) return;
+            held = null;
+            // The system can drop the lock mid-song; ask again while it is still wanted.
+            request();
           });
         })
         .catch(() => {
