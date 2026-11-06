@@ -1,113 +1,100 @@
 ## Goal
 
-Four changes to Drumline Radio:
-
-1. A drift guard: a Vitest test that runs every song generator into a temp folder and fails if any
-   generated `.song` file differs from the copy in `src/songs/`.
-2. One shared writer in `tools/arranger/arranger.mjs`: `arrange()` and `arrangeForm()` end with the
-   same ~30 lines (`block()`, the track table, the ramp line, the write). Move that tail into one
-   `writeSong()` helper. Every generated song must stay byte-identical (the drift guard proves it).
-3. Category order: Classics, Originals, Carols (carols move to the far right of the preset row and
-   to the end of the dial).
-4. A `hidden: true` song header. Hidden songs still parse (and are still checked) but are left out of
-   the library. Hide Can-Can, Eine kleine Nachtmusik, Ode to Joy, and When the Saints Go Marching In.
+Add per-note micro-timing offsets to the song format of drumline-radio: a note token may carry
+`+N` or `-N` (ticks, 960 per quarter note, range -240..240) that shifts when the note starts.
+The design is in `plans/micro-timing.md`; this spec is the exact work.
 
 ## Files to touch
 
-- `tests/drift.test.ts` (new)
-- `vitest.sandbox.config.mjs`
-- `tools/arranger/arranger.mjs`
-- `tools/arranger/songs.mjs`
 - `src/music/song.ts`
-- `src/music/library.ts`
+- `src/music/timing.ts`
+- `docs/song-format.md`
 - `tests/song.test.ts`
-- `tests/library.test.ts`
-- `src/songs/can-can.song`, `src/songs/eine-kleine-nachtmusik.song`, `src/songs/ode-to-joy.song`,
-  `src/songs/when-the-saints.song` (only by regenerating them with `node tools/arranger/songs.mjs`)
-- `README.md`, `docs/song-format.md`, `tools/README.md`, `AGENTS.md`
+- `tests/timing.test.ts`
+- `.handoff/report.md`
 
 ## Steps
 
-1. `tests/drift.test.ts`: one `it` per generator script in this list:
-   `tools/arranger/songs.mjs`, `tools/arranger/originals.mjs`, `tools/arranger/ivory-and-ash.mjs`,
-   `tools/arranger/club.mjs`, `tools/arranger/nocturne.mjs`. Each test:
-   - makes a temp dir with `mkdtempSync(join(tmpdir(), 'radio-drift-'))`;
-   - runs `execFileSync(process.execPath, [script, dir], { stdio: 'pipe' })` from the repo root;
-   - lists the `.song` files written to `dir` and expects at least one;
-   - for each, reads it and `src/songs/<same name>`, normalises both with `.replace(/\r\n/g, '\n')`,
-     and expects them equal, with the file name in the assertion message
-     (`expect(generated, \`${file} differs from src/songs: re-run ${script}\`).toBe(committed)`);
-   - removes the temp dir in a `finally` (`rmSync(dir, { recursive: true, force: true })`).
-   Add a top comment: the generators are deterministic, so a recipe edit that was not regenerated
-   (or a hand edit to a generated file) fails here; hand-written songs have no generator and are
-   not checked.
-2. `vitest.sandbox.config.mjs`: exclude `tests/drift.test.ts` from the sandbox run (the dsh sandbox
-   blocks child processes). Use `import { configDefaults } from 'vitest/config'` and
-   `exclude: [...configDefaults.exclude, 'tests/drift.test.ts']` inside `test`, keeping the existing
-   `pool: 'threads'` and `resolve` settings. Add one comment line saying why.
-3. `tools/arranger/arranger.mjs`: add a module-level function
-   `writeSong(out, spec, { T, comment, tracks, style, ts })` that contains the shared tail:
-   `block()`, the `ramp` line, building `text` (header from `spec.head.trim()`, then `style`, `tempo`,
-   `time`, the ramp, then the tracks), and `writeFileSync(join(out, spec.file), text)`. Each arranger
-   keeps building its own `tracks` table (they differ: harmony volume 0.45 vs 0.4, the harmony role
-   default, and the arp volume for tease intros) and calls `writeSong`. If `spec.hidden` is true,
-   `writeSong` adds the line `hidden: true` directly after the head (before `style:`). Delete the two
-   duplicated tails. The output for every existing recipe must not change by a single byte.
-4. `src/music/song.ts`:
-   - Change `CATEGORIES` to `['classics', 'originals', 'carols'] as const`.
-   - Add `hidden: boolean` to `SongMeta` (default `false`) and `'hidden'` to `KNOWN_HEADER_KEYS`.
-     Parse it next to `about`: the only allowed value is `true`; any other value is an error
-     `hidden must be true` at that line (an absent header means not hidden).
-5. `src/music/library.ts`: parse every file as now (parse errors still go to `LIBRARY_ERRORS`), but
-   leave songs with `meta.hidden` out of `LIBRARY`. Export `HIDDEN_IDS: string[]` (sorted ids of the
-   hidden songs that parsed).
-6. `tools/arranger/songs.mjs`: add `hidden: true` to the recipes for `can-can.song`,
-   `eine-kleine-nachtmusik.song`, `ode-to-joy.song`, and `when-the-saints.song`. Then run
-   `node tools/arranger/songs.mjs` to regenerate `src/songs/`; the only changed song files must be
-   those four, each gaining exactly one line `hidden: true`.
-7. `tests/song.test.ts`: add tests: `hidden: true` gives `meta.hidden === true`; no header gives
-   `false`; `hidden: yes` is an error containing `hidden must be true`.
-8. `tests/library.test.ts`:
-   - `LIBRARY.length` is 24; add `expect(HIDDEN_IDS).toEqual(['can-can', 'eine-kleine-nachtmusik', 'ode-to-joy', 'when-the-saints'])`.
-   - The id order becomes exactly:
-     `canon-in-d, fur-elise, greensleeves, mountain-king, korobeiniki, nocturne, valkyries, swan-lake,
-     ivory-and-ash, ivory-and-ash-128, last-stop, midnight-arcade, night-shift, save-point, underpass,
-     deck-the-halls, god-rest-ye, good-king-wenceslas, hark-the-herald, jingle-bells,
-     joy-to-the-world, o-christmas-tree, silent-night, we-wish-you`.
-   - Category counts: classics 8, originals 7, carols 9.
-   - Rewrite the expected styles array in the same order, taking each value from that song's
-     `style:` header in `src/songs/`.
-   - Any other test that assumed the old order or old count: update the expectation (never song files).
-9. Docs:
-   - `README.md`: the presets bullet reads "Category presets (All, Classics, Originals, Carols)";
-     move Can-Can, Eine kleine Nachtmusik, Ode to Joy, and When the Saints out of the song list into
-     one line under it: "Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to
-     Joy, When the Saints Go Marching In."
-   - `docs/song-format.md`: add `hidden` to the header table ("No | `true` leaves the song out of the
-     library; it is still parsed and checked.") and the error to the error list.
-   - `tools/README.md`: describe `tests/drift.test.ts` (what it checks, that it runs in `npm test`
-     but not in `npm run test:sandbox`), and that the arranger's shared `writeSong()` writes every
-     arranged song and adds `hidden: true` for a recipe with `hidden: true`.
-   - `AGENTS.md`: in the rule about arranged songs, add that `tests/drift.test.ts` fails when a
-     generated song in `src/songs/` doesn't match its generator; and that a song is hidden with a
-     `hidden: true` header (set in its recipe when it has one).
-   - Fix any other doc sentence these changes make false.
+1. `src/music/song.ts`, `interface Note`: add `offset?: number;` after `staccato`, with a one-line
+   doc comment: start shift in ticks, -240..240, present only when non-zero.
+2. `src/music/song.ts`: add `export const MAX_OFFSET = 240;` near the other top-level constants.
+3. `src/music/song.ts`, `type ParsedToken`, `kind: 'note'` variant: add `offset: number;`.
+4. `src/music/song.ts`, `parseSuffixWithPitches`: after the staccato block and before the velocity
+   block, parse an offset:
+   - If `rest` starts with `+` or `-`, match `/^([+-])(\d+)/`. No match →
+     `{ kind: 'error', message: \`invalid offset in '${fullText}'\` }`.
+   - Value = sign × digits. If `Math.abs(value) > MAX_OFFSET` →
+     `{ kind: 'error', message: \`offset ${value} is outside -${MAX_OFFSET}..${MAX_OFFSET} in '${fullText}'\` }`.
+   - Slice the match off `rest`. Default offset is 0. Return `offset` in the note result.
+   - Rests must keep rejecting any suffix; do not change rest parsing.
+5. `src/music/song.ts`, the track loop in `parseSong` (around the `const note: Note = {` block):
+   - When building `note`, set `note.offset = parsed.offset` only if `parsed.offset !== 0`
+     (do not add the key otherwise).
+   - In the `pending.mode === 'tie'` branch and the `pending.mode === 'bend'` branch, before the
+     note is merged into `pending.note`: if `parsed.offset !== 0`, call
+     `err(token.line, \`offset on a tie or bend continuation in track ${raw.id}\`)` and then
+     continue merging exactly as today (the merged note keeps the first token's offset).
+   - Bar-length accounting (`barTicks`) stays on written durations; offsets never change it.
+6. `src/music/timing.ts`, `buildTimeline`: replace the start/duration/bend computation with:
+   - `const offset = note.offset ?? 0;`
+   - `const start = tickToSeconds(song, Math.max(0, note.tick + offset));`
+   - `const end = tickToSeconds(song, note.tick + note.ticks);`
+   - `let duration = end - start; if (note.staccato) duration /= 2;`
+     `duration = Math.max(duration, MIN_DURATION);` with `const MIN_DURATION = 0.01;` at module top.
+   - Bends: `time: Math.max(0, tickToSeconds(song, note.tick + bend.at) - start)`.
+   - For a note with no offset every value must be identical to today's (the `Math.max` with
+     MIN_DURATION must not change any existing note: existing tests and drift tests prove this).
+   - Keep the sort and `notesBetween` unchanged. Do not change `src/audio/engine.ts`.
+7. `docs/song-format.md`:
+   - In "Notes and durations", extend the token description sentence to include the optional
+     offset between the staccato mark and the velocity.
+   - Add a section `## Micro-timing` after "### Staccato" (before "## Chords") stating: syntax
+     `+N`/`-N` in ticks (960 a quarter), range -240..240, positive is later; examples `k/8+18`,
+     `s/8-10`, `[C4 E4 G4]/2+24:88`; it moves only the start and the end stays at the written end;
+     staccato halves the remaining length; minimum sounding length 10 ms; applies to the whole
+     chord; the first token of a tie or bend chain owns it and an offset on a continuation token is
+     an error; bend times stay at their written positions; a start before 0 clamps to 0; bar length
+     and song length use written durations; `%` and `{ }*n` repeat offsets; the score draws a
+     shifted note where it sounds.
+   - In "What the checker rejects", add: an offset outside -240..240, a malformed offset, and an
+     offset on a tie or bend continuation.
+   - In "Rests", add offset to the list of things a rest has no.
+8. `tests/song.test.ts`: add a `describe('micro-timing offsets', ...)` with tests that parse small
+   inline songs (copy the minimal header and track layout used by existing inline-song tests in
+   that file) and assert:
+   - `C4/4+18` gives `offset: 18`; `C4/4-10` gives `offset: -10`; `C4/4` has no `offset` key
+     (`expect('offset' in note).toBe(false)`).
+   - `C4/8'+12:90~ C4/8` parses: offset 12, staccato true, velocity 90, ticks 960 (tied).
+   - A chord `[C4 E4 G4]/2+24:88` gives offset 24 on the chord note.
+   - A drums token `s/8-10` gives offset -10.
+   - `C4/4+240` and `C4/4-240` parse; `C4/4+241` and `C4/4-241` fail with a message containing
+     `outside -240..240`.
+   - `C4/4+x` fails with `invalid offset`.
+   - `C4/4~ C4/4+10` and `G4/8^ A4/4+10` fail with `offset on a tie or bend continuation`.
+   - `r/4+10` fails.
+9. `tests/timing.test.ts`: add a `describe('micro-timing offsets', ...)` with tests that parse
+   small inline 4/4 songs at 60 BPM (one quarter = 1 s, one tick = 1/960 s) and assert, using
+   `toBeCloseTo`:
+   - `+96` on a quarter at tick 960: start 1.1, duration 0.9.
+   - `-96` on a quarter at tick 960: start 0.9, duration 1.1.
+   - staccato quarter with `+96`: duration 0.45.
+   - a `/32` note (120 ticks) with `+120`: duration 0.01 (minimum).
+   - `-96` on the very first note at tick 0: start 0.
+   - a bend `G4/4+96^ A4/4`: the bend time is 1 − 0.1 = 0.9 s after the shifted start.
+   - `notesBetween(timeline, 0.85, 0.95)` includes the note written at tick 960 with `-96`.
+   - the timeline stays sorted by `start` when an offset reorders two notes on different tracks.
 
 ## Acceptance
 
-- `npm run typecheck` exits 0.
-- `npm run test:sandbox` exits 0 (it skips `tests/drift.test.ts`).
-- `node tools/arranger/songs.mjs tmp/a && node tools/arranger/originals.mjs tmp/a && node tools/arranger/ivory-and-ash.mjs tmp/a && node tools/arranger/club.mjs tmp/a && node tools/arranger/nocturne.mjs tmp/a`
-  writes 21 files, and `git diff --stat -- src/songs` lists only the four hidden songs, 1 insertion each.
-  Delete `tmp/a` afterwards.
-- `git status --porcelain` lists only files from **Files to touch** (plus `.handoff/`).
+- `git diff --stat` lists only files from **Files to touch** (plus `plans/micro-timing.md`,
+  which was already modified before the run and must not be touched).
 
 Verifier only:
-- `npm test` exits 0, including `tests/drift.test.ts` (5 tests).
+- `npm test` exits 0 (all existing tests unchanged and passing, including `tests/drift.test.ts`
+  and `tests/library.test.ts`, plus the new tests).
+- `npm run typecheck` exits 0.
+- `npm run check:songs` exits 0 with the same counts and clash totals as before the change.
 - `npm run build` exits 0.
-- `npm run check:songs` passes (it still parses the 4 hidden songs).
-- Headless Edge: the preset row reads All, Classics, Originals, Carols; the dial has 24 stations and
-  none of the hidden four.
 
 ## Parallel work
 
@@ -116,19 +103,23 @@ None — do it sequentially.
 ## Constraints
 
 - Do not commit, push, or switch branches.
-- Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and report
-  it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past it.
-- Never hand-edit a generated `.song` file; change recipes or the arranger and regenerate.
-- Do not touch any other `.song` file, `src/audio/*`, or `src/ui/*`.
+- Do not touch files outside **Files to touch** except `.handoff/report.md`. Do not edit
+  `plans/micro-timing.md`, any `.song` file, `src/audio/engine.ts`, or anything in `tools/`.
 - No new dependencies.
+- Follow the existing code style in each file (naming, comment density, error message wording).
+- Do not run the `Verifier only:` commands. Use `npm run test:sandbox` and `npm run typecheck` to
+  check your work if they run in the sandbox.
+- If any command fails with `spawn EPERM`, stop and report it; do not request wider sandbox access,
+  set `NODE_OPTIONS`, or stub modules to get past it.
 
 ## Out of scope
 
-Rewriting `arrange()` on top of `arrangeForm()`; changing any song's notes; redoing the hidden songs;
-a UI to show hidden songs.
+- Any change to the audio engine or scheduler lookahead.
+- A `@swing` or `@humanize` directive.
+- Using offsets in any existing song or in the arranger.
+- Score view changes.
 
 ## If blocked
 
-Stop, leave the working tree as is, and write in `.handoff/report.md` which step failed, the exact
-command and error output, and what you think the fix is.
+Stop, leave the working tree as it is, and write in `.handoff/report.md` which step failed, the
+exact error, and what you would need to continue.

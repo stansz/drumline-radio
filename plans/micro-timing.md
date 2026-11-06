@@ -1,154 +1,98 @@
-# Micro-timing plan (not built yet)
+# Micro-timing plan
 
-An idea for per-note pocket, not implemented. Written before touching the parser.
+Per-note pocket. Decided 2026-11-05: Option A (±240 ticks), no scheduler change. Handed to dsh to
+build; this file records the design.
 
 ## Problem
 
 Every note starts exactly on its tick. A song can swing (the grid is written with triplets) but it
 cannot sit behind the beat, push the hats, or drag a snare by a few milliseconds. That is the
-difference between a groove that is *correct* and one that is *played*. Right now the format has no
-way to express it, so the engine is always perfectly quantised.
+difference between a groove that is *correct* and one that is *played*.
 
-## Idea
+## Syntax
 
-A tick offset on a note, written after the duration and before the velocity:
+A tick offset on a note, written after the duration (and staccato mark) and before the velocity:
 
 ```
 k/8+18          kick 18 ticks late
 s/8-10          snare 10 ticks early
 [C4 E4 G4]/2+24:88
+C4/8'-6:70~
 ```
-
-One tick is 1/960 of a quarter note. At 88 BPM that is about 0.71 ms, so `+18` is roughly 13 ms —
-enough to hear, not enough to sound like a mistake. Positive is later, negative is earlier.
-
-### Where it sits in the token grammar
 
 ```
 pitch  /duration  ['staccato]  [+/-offset]  [:velocity]  [~ tie | ^ bend]
 ```
 
-Backwards compatible: with no offset the token parses exactly as it does today.
+One tick is 1/960 of a quarter note. At 88 BPM that is about 0.71 ms, so `+18` is roughly 13 ms.
+Positive is later, negative is earlier. With no offset a token parses exactly as it does today.
 
-## Semantics
+## Limit
 
-- The offset moves the note's **start** only. Its written length and its end are unchanged.
-- It applies to the whole chord when written on a chord token.
-- **Ties and bends:** the offset comes from the first token in the chain; the merged note keeps it.
-  An offset on a continuation token (`C4/4~ C4/4+10`) is an error, so the intent stays unambiguous.
-- Rests cannot carry one (their suffix grammar already rejects it).
-- `%` and `{ ... }*n` repeat offsets, because they repeat the bar.
-- A negative offset that would begin before tick 0 clamps to 0.
-- Offsets never change a song's written length or bar count.
-- The score view keeps drawing notes on the grid in this version. Offsets are a performance detail,
-  not a notation one; drawing them would make the score look broken at small sizes.
-- `check:songs` clash timing uses the timeline, so a shifted melody note is checked where it
-  actually sounds. That is the correct behaviour.
-
-## The lookahead problem
-
-`engine.ts` schedules 120 ms ahead (`LOOKAHEAD`) and ticks every 25 ms. A note that starts *early*
-must be booked earlier than its grid position, or it will be booked late, lose its attack, and
-click. At 88 BPM, a −240 tick offset is −170 ms, which is beyond the current lookahead.
-
-Design: when a song loads, compute the largest negative offset in its timeline and extend the
-scheduler's lookahead by that much (rounded up to the 25 ms tick). One line when the song is set,
-no per-note work, and it costs nothing for songs with no negative offsets.
-
-## Limits
-
-Two limits are on the table. Both are documented here; the choice is Sz's after review.
-
-### Option A — ±240 ticks (a sixteenth)
-
-Enough for every played feel: a snare 15 ticks late, hats pushed 8, a kick leaning forward. Too
-small to disguise a rhythm that is simply wrong, and it keeps the offset local to the note.
+±240 ticks (a sixteenth), checked at parse time:
 
 ```
 line 12: offset 300 is outside -240..240 in 'C4/8+300'
 ```
 
-The lookahead grows by at most 240 ticks — about 170 ms at 88 BPM — which is a modest change to
-`engine.ts`.
+That covers every played feel (laid-back snare, pushed hats, a leaning kick) and is too small to
+disguise a rhythm that is simply wrong. Deliberate displacement (flams, chops answering the grid)
+should be written as rhythm. The limit is one constant if a wider range is ever needed.
 
-### Option B — ±half a bar, from the bar's own time signature
+## Semantics
 
-The limit is `barTicks / 2`: 1920 in 4/4, 1440 in 3/4, 960 in 2/4, 1440 in 6/8. This is no longer
-micro-timing; it lets a note answer the grid, make a deliberate flam, or sit displaced the way a
-chopped sample does.
+- The offset moves the note's **start** only. Its end stays at the written end, so the sounding
+  length is the written length minus the offset.
+- Staccato halves that sounding length.
+- The sounding length never drops below 10 ms, so a short note with a large positive offset still
+  sounds.
+- It applies to the whole chord when written on a chord token.
+- **Ties and bends:** the first token of the chain owns the offset. An offset on a continuation
+  token (`C4/4~ C4/4+10`) is an error.
+- **Bend times** stay at their written positions in time; they are measured from the shifted start,
+  and a bend that would land before the shifted start is clamped to it.
+- Rests cannot carry one (their suffix grammar already rejects it).
+- `%` and `{ ... }*n` repeat offsets, because they repeat the bar's tokens.
+- A negative offset that would begin before tick 0 clamps to 0.
+- Offsets never change a song's written length or bar count, and the bar-length check still uses
+  written durations.
 
-```
-line 12: offset 2000 is outside -1920..1920 (half of a 4/4 bar) in 'C4/8+2000'
-```
+## Scheduling
 
-Costs and risks:
+No engine change. `buildTimeline` bakes the offset into each note's `start`, the timeline is sorted
+by `start`, and `notesBetween` selects by `start`. An early note is therefore picked up by the
+scheduler window before its grid position, inside the existing 120 ms lookahead.
 
-- The lookahead must grow by up to half a bar: about 1.36 s at 88 BPM in 4/4. The scheduler can book
-  that far ahead, but a seek that lands inside the window can double-book a note, so the engine's
-  `scheduledUntil` handling needs a test at this range.
-- A negative offset can move a note into the previous bar, or across a section boundary, so the
-  first written note of a bar is no longer the first one heard. The score view will not show that.
-- A tie or bend chain that crosses the moved note now has ambiguous ordering; the plan's rule
-  (first token owns the offset) still holds, but it is easier to write something confusing.
+Known edge: seeking exactly to a grid time skips a note that was pushed earlier than that time,
+because it now starts before the seek point. That is expected, not a bug.
 
-### Comparison
+## Display and checks
 
-| | Option A (±240) | Option B (±half a bar) |
-| --- | --- | --- |
-| Enables | pocket, laid-back snare, pushed hats | flams, displaced chops, notes answering the grid |
-| Lookahead growth | ≤ ~170 ms at 88 BPM | ≤ ~1.36 s at 88 BPM |
-| Risk of masking a wrong rhythm | low | higher |
-| Interaction with bars, ties, sections | local, simple | crosses boundaries; needs care |
-| Recommendation | **preferred** | only if deliberate displacement is wanted |
-
-Either way the limit is validated at parse time, so no invalid offset can reach the timeline.
+- The score view draws from the timeline, so a shifted note is drawn (and lit) where it sounds. At
+  ±240 ticks that is a few pixels at most.
+- `check:songs` clash timing uses the timeline, so a shifted melody note is checked where it
+  actually sounds.
 
 ## What changes
 
 | File | Change |
 | --- | --- |
-| `src/music/song.ts` | `Note.offset` (ticks, default 0); parse `+N`/`-N`; range and tie rules |
-| `src/music/timing.ts` | `start = tickToSeconds(song, tick + offset)`, clamped at 0 |
-| `src/audio/engine.ts` | extend the lookahead by the song's largest negative offset |
+| `src/music/song.ts` | `Note.offset?` (ticks, set only when non-zero); parse `+N`/`-N`; range and continuation rules |
+| `src/music/timing.ts` | start from `tick + offset` clamped at 0; length rule; bends measured from the shifted start |
 | `docs/song-format.md` | the syntax, the rules, the limit |
-| `docs/sound.md` | the scheduling paragraph: the lookahead is 120 ms, extended by a song's largest early offset |
-| `tests/song.test.ts` | parse, chord, tie, rest, out-of-range, boundary values |
-| `tests/timing.test.ts` | the start shifts by exactly `offset * secondsPerTick` |
+| `tests/song.test.ts` | parse, chord, drum, tie, continuation error, out of range, boundary values |
+| `tests/timing.test.ts` | start shift, length, staccato, minimum length, clamp at 0, bends, `notesBetween` picks up an early note |
 
 ## What must not change
 
-- **Existing songs.** With no offset the value is 0 and every scheduled time is identical.
-  `drift.test.ts` must still report the generated `.song` files byte-identical.
-- **Audio.** Record 12 s of Third Rail before and after the change, decode both to WAV, and compare
-  the PCM hashes. They must match exactly. If they do not, the change is wrong regardless of tests.
-- **`check:songs`** output for songs that use no offsets.
-- **The bundle** grows by a few hundred bytes; the service-worker cache version changes, as it does
-  for any build.
+- Existing songs: with no offset nothing is added to a note, and every scheduled time is identical.
+  `drift.test.ts` and all existing tests must pass unchanged.
+- `check:songs` output.
+- `tools/browser/late.mjs`: `late` stays 0 and `min` stays positive.
 
-## Verification order
+## Later, on top of offsets
 
-1. `npm test` and `npm run typecheck`.
-2. `npm run check:songs` — same counts and clash totals as before.
-3. Before/after audio hash of an unmodified song.
-4. A draft song that uses `+18` on the snare and `-8` on the hats, run through
-   `tools/browser/late.mjs`; `late` must stay 0 and `min` must stay positive. If Option B is chosen,
-   repeat at the largest negative offset that limit allows, to prove the extended lookahead still
-   books the note in time.
-5. Listen.
-
-## Decision for Sz (after review)
-
-Both limits are documented above, with their costs and risks. Recommendation: start at Option A
-(±240 ticks). It covers every played feel; a wider range invites using the offset as a rhythm
-feature, which the format should express honestly instead. Option B can be layered on later by
-raising one constant, if the need is real.
-
-## Other options considered
-
-1. **Per-note offsets (this plan).** Recommended: it is the primitive, and everything else can be
-   layered on it.
-2. **A `@swing 62` directive** that auto-displaces every other sixteenth. Simpler to write, but it
-   applies one ratio to every instrument — it cannot put the snare behind the kick while the hats
-   push. Worth adding later *on top of* offsets, not instead of them.
-3. **A `@humanize N` jitter.** Rejected: random timing is not groove, and it makes a song
-   unreproducible, which breaks the drift test's contract.
+- A `@swing 62` directive that displaces every other sixteenth. It applies one ratio to every
+  instrument, so it complements per-note offsets rather than replacing them.
+- `@humanize` jitter is rejected: random timing is not groove, and it breaks the drift test's
+  reproducibility.

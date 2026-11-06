@@ -5,6 +5,8 @@ import type { PitchedRole, Role, StyleId } from './roles';
 export const TICKS_PER_QUARTER = 960;
 export const TICKS_PER_WHOLE = 3840;
 
+export const MAX_OFFSET = 240;
+
 export const CATEGORIES = ['classics', 'originals', 'carols'] as const;
 export type Category = (typeof CATEGORIES)[number];
 
@@ -38,6 +40,8 @@ export interface Note {
   pitches: number[];
   velocity: number;
   staccato: boolean;
+  /** Start shift in ticks, -240..240, present only when non-zero. */
+  offset?: number;
   bends?: { at: number; pitch: number }[];
 }
 
@@ -142,6 +146,7 @@ type ParsedToken =
       durationWritten: number | null;
       velocity: number | null;
       staccato: boolean;
+      offset: number;
       tie: boolean;
       bend: boolean;
     }
@@ -177,6 +182,21 @@ function parseSuffixWithPitches(
     rest = rest.slice(1);
   }
 
+  let offset = 0;
+  if (rest.startsWith('+') || rest.startsWith('-')) {
+    const match = /^([+-])(\d+)/.exec(rest);
+    if (!match) return { kind: 'error', message: `invalid offset in '${fullText}'` };
+    const value = (match[1] === '-' ? -1 : 1) * Number(match[2]);
+    if (Math.abs(value) > MAX_OFFSET) {
+      return {
+        kind: 'error',
+        message: `offset ${value} is outside -${MAX_OFFSET}..${MAX_OFFSET} in '${fullText}'`,
+      };
+    }
+    offset = value;
+    rest = rest.slice(match[0].length);
+  }
+
   let velocity: number | null = null;
   if (rest.startsWith(':')) {
     const match = /^:(\d+)/.exec(rest);
@@ -209,6 +229,7 @@ function parseSuffixWithPitches(
     durationWritten,
     velocity,
     staccato,
+    offset,
     tie,
     bend,
   };
@@ -880,6 +901,7 @@ export function parseSong(text: string): ParseResult {
           velocity,
           staccato: parsed.staccato,
         };
+        if (parsed.offset !== 0) note.offset = parsed.offset;
 
         if (raw.role !== 'drums') {
           const range = ROLE_RANGES[raw.role as PitchedRole];
@@ -905,6 +927,9 @@ export function parseSong(text: string): ParseResult {
 
         if (pending && pending.mode === 'tie') {
           if (pitchesEqual(pending.tiePitches, note.pitches)) {
+            if (parsed.offset !== 0) {
+              err(token.line, `offset on a tie or bend continuation in track ${raw.id}`);
+            }
             pending.note.ticks += parsed.ticks;
             if (parsed.tie) {
               // Still waiting for the next note of the tie.
@@ -926,6 +951,9 @@ export function parseSong(text: string): ParseResult {
             err(token.line, `bend to a chord in track ${raw.id}`);
             flushPending();
           } else {
+            if (parsed.offset !== 0) {
+              err(token.line, `offset on a tie or bend continuation in track ${raw.id}`);
+            }
             addBend(pending.note, noteTick - pending.note.tick, note.pitches[0]);
             pending.note.ticks += parsed.ticks;
             if (parsed.tie) {

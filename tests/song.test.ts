@@ -432,6 +432,79 @@ describe('bends', () => {
   });
 });
 
+describe('micro-timing offsets', () => {
+  function leadNotes(body: string) {
+    const result = parseSong(`${HEADER}\n${body}`);
+    if (!result.ok) throw new Error(`failed to parse: ${result.errors.join('; ')}`);
+    return result.song.tracks[0].notes;
+  }
+
+  it('reads a positive and a negative offset', () => {
+    expect(leadNotes('track a role=lead\n| C4/1+18 |')[0].offset).toBe(18);
+    expect(leadNotes('track a role=lead\n| C4/1-10 |')[0].offset).toBe(-10);
+  });
+
+  it('leaves an offset key off a note without one', () => {
+    const note = leadNotes('track a role=lead\n| C4/1 |')[0];
+    expect('offset' in note).toBe(false);
+  });
+
+  it('combines with staccato, velocity, and a tie', () => {
+    const note = leadNotes("track a role=lead\n| C4/8'+12:90~ C4/8 r/2 r/4 |")[0];
+    expect(note.offset).toBe(12);
+    expect(note.staccato).toBe(true);
+    expect(note.velocity).toBe(90);
+    expect(note.ticks).toBe(960);
+  });
+
+  it('applies to a chord', () => {
+    const note = leadNotes('track a role=lead\n| [C4 E4 G4]/2+24:88 r/2 |')[0];
+    expect(note.offset).toBe(24);
+    expect(note.pitches).toEqual([60, 64, 67]);
+  });
+
+  it('applies to a drum token', () => {
+    const result = parseSong(`${HEADER}\ntrack a role=drums\n| s/8-10 h h h h h h h |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.tracks[0].notes[0].offset).toBe(-10);
+  });
+
+  it('accepts the limit and rejects one tick past it', () => {
+    expect(leadNotes('track a role=lead\n| C4/1+240 |')[0].offset).toBe(240);
+    expect(leadNotes('track a role=lead\n| C4/1-240 |')[0].offset).toBe(-240);
+    expect(
+      errorsFor('track a role=lead\n| C4/1+241 |').some((e) => e.includes('outside -240..240')),
+    ).toBe(true);
+    expect(
+      errorsFor('track a role=lead\n| C4/1-241 |').some((e) => e.includes('outside -240..240')),
+    ).toBe(true);
+  });
+
+  it('rejects a malformed offset', () => {
+    expect(errorsFor('track a role=lead\n| C4/1+x |').some((e) => e.includes('invalid offset'))).toBe(
+      true,
+    );
+  });
+
+  it('rejects an offset on a tie or bend continuation', () => {
+    expect(
+      errorsFor('track a role=lead\n| C4/4~ C4/4+10 C4/2 |').some((e) =>
+        e.includes('offset on a tie or bend continuation'),
+      ),
+    ).toBe(true);
+    expect(
+      errorsFor('track a role=lead\n| G4/8^ A4/4+10 r/2 r/8 |').some((e) =>
+        e.includes('offset on a tie or bend continuation'),
+      ),
+    ).toBe(true);
+  });
+
+  it('rejects an offset on a rest', () => {
+    expect(errorsFor('track a role=lead\n| r/4+10 C4/1 |').length).toBeGreaterThan(0);
+  });
+});
+
 describe('the arranger header', () => {
   it('reads an optional arranger', () => {
     const result = parseSong(`${HEADER}\narranger: Claude & SZ\ntrack a role=lead\n| C4/1 |`);

@@ -113,8 +113,8 @@ A note name in a drums track, or a drum name in a pitched track, is an error.
 
 ## Notes and durations
 
-A single note is a pitch, an optional duration, an optional staccato mark, an optional velocity, and
-an optional tie or bend, in that order:
+A single note is a pitch, an optional duration, an optional staccato mark, an optional offset, an
+optional velocity, and an optional tie or bend, in that order:
 
 ```
 C4/4      F#5/8'      G5/2:120      F5/2~      E5
@@ -145,6 +145,30 @@ default velocity is 100.
 
 A `'` after the duration makes the note staccato. It plays for half its written length.
 
+## Micro-timing
+
+A `+N` or `-N` after the duration and staccato mark moves a note's start by N ticks. One tick is
+1/960 of a quarter note and the range is -240 to 240 (a sixteenth). Positive is later, negative is
+earlier, and a note with no offset keeps its written timing.
+
+```
+k/8+18      s/8-10      [C4 E4 G4]/2+24:88
+```
+
+An offset moves only the start; the note still ends at its written end, so a later start makes it
+sound shorter and an earlier start makes it sound longer. Staccato halves the remaining length, and
+a note never sounds for less than 10 ms. The offset applies to the whole chord when written on a
+chord token.
+
+The first token of a tie or bend chain owns the offset; an offset on a continuation token is an
+error. Bend times stay at their written positions in time, measured from the shifted start, and a
+bend that would land before the start is clamped to it. A note that would start before tick 0
+starts at tick 0 instead.
+
+Offsets never change bar lengths or the song's written length; those use written durations. `%` and
+`{ ... }*n` repeat offsets along with the rest of their bars. The score draws a shifted note where
+it sounds.
+
 ## Chords
 
 Square brackets group pitches that start together, and the duration and other suffixes follow the
@@ -161,8 +185,8 @@ note token with several pitches is one note.
 
 ## Rests
 
-`r` is a rest. It takes a duration like a note and has no staccato mark, velocity, tie, or bend:
-`r/4`, `r/2`.
+`r` is a rest. It takes a duration like a note and has no staccato mark, offset, velocity, tie, or
+bend: `r/4`, `r/2`.
 
 ## Ties
 
@@ -225,6 +249,7 @@ Every track must have the same number of bars.
 - A drum name in a pitched track, or a note name in a drums track.
 - A pitch outside the role's range.
 - A bad velocity, either in `:VEL` or in `v=`.
+- An offset outside -240..240, a malformed offset, or an offset on a tie or bend continuation.
 - A bad duration, an unrecognised token, a broken tie, or a misplaced whole-bar shortcut.
 - A bend from or to a chord, a bend into a rest, a bend in a drums track, or a bend with no
   following note.

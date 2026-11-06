@@ -91,6 +91,82 @@ describe('notesBetween', () => {
   });
 });
 
+describe('micro-timing offsets', () => {
+  const HEADER = [
+    'title: T',
+    'composer: original',
+    'year: 2026',
+    'source: original',
+    'category: originals',
+    'style: chiptune',
+    'key: C major',
+    'tempo: 60',
+    'time: 4/4',
+  ].join('\n');
+
+  function timelineFor(body: string) {
+    const result = parseSong(`${HEADER}\n${body}`);
+    if (!result.ok) throw new Error(`failed to parse: ${result.errors.join('; ')}`);
+    return buildTimeline(result.song);
+  }
+
+  // At 60 BPM one quarter is 1 s and one tick is 1/960 s.
+  it('pushes a start later and shortens the note', () => {
+    const timeline = timelineFor('track a role=lead\n| C4/4 C4/4+96 r/2 |');
+    const shifted = timeline.notes.filter((note) => note.pitches[0] === 60)[1];
+    expect(shifted.start).toBeCloseTo(1.1, 6);
+    expect(shifted.duration).toBeCloseTo(0.9, 6);
+  });
+
+  it('pulls a start earlier and lengthens the note', () => {
+    const timeline = timelineFor('track a role=lead\n| C4/4 C4/4-96 r/2 |');
+    const shifted = timeline.notes.filter((note) => note.pitches[0] === 60)[1];
+    expect(shifted.start).toBeCloseTo(0.9, 6);
+    expect(shifted.duration).toBeCloseTo(1.1, 6);
+  });
+
+  it('halves the remaining length when staccato', () => {
+    const timeline = timelineFor("track a role=lead\n| C4/4 C4/4'+96 r/2 |");
+    const shifted = timeline.notes.filter((note) => note.pitches[0] === 60)[1];
+    expect(shifted.duration).toBeCloseTo(0.45, 6);
+  });
+
+  it('never sounds for less than the minimum length', () => {
+    const timeline = timelineFor('track a role=lead\n| C4/4 C4/32+120 r/2 r/8 r/16 r/32 |');
+    const shifted = timeline.notes.filter((note) => note.pitches[0] === 60)[1];
+    expect(shifted.duration).toBeCloseTo(0.01, 6);
+  });
+
+  it('clamps a start before zero', () => {
+    const timeline = timelineFor('track a role=lead\n| C4/4-96 r/4 C4/2 |');
+    const first = timeline.notes.find((note) => note.start === 0);
+    expect(first).toBeDefined();
+    expect(first?.start).toBe(0);
+  });
+
+  it('measures a bend from the shifted start', () => {
+    const timeline = timelineFor('track a role=lead\n| G4/4+96^ A4/4 r/2 |');
+    const bent = timeline.notes.find((note) => note.track === 0);
+    expect(bent?.bends).toEqual([{ time: 0.9, pitch: 69 }]);
+  });
+
+  it('lets notesBetween find an early note', () => {
+    const timeline = timelineFor('track a role=lead\n| C4/4 C4/4-96 r/2 |');
+    const found = notesBetween(timeline, 0.85, 0.95);
+    expect(found.some((note) => note.pitches[0] === 60)).toBe(true);
+  });
+
+  it('keeps the timeline sorted by start across tracks', () => {
+    const timeline = timelineFor(
+      'track a role=lead\n| r/2 C4/2 |\ntrack b role=lead\n| r/2 C4/2-96 |',
+    );
+    const starts = timeline.notes.map((note) => note.start);
+    expect(starts).toEqual([...starts].sort((a, b) => a - b));
+    expect(starts[0]).toBeCloseTo(1.9, 6);
+    expect(starts[1]).toBeCloseTo(2, 6);
+  });
+});
+
 describe('bend times', () => {
   const HEADER = [
     'title: T',

@@ -16,6 +16,9 @@ export interface Timeline {
   notes: ScheduledNote[];
 }
 
+/** Shortest sounding length in seconds; a large offset can otherwise collapse a note. */
+const MIN_DURATION = 0.01;
+
 function secondsPerTick(bar: BarInfo): number {
   return 60 / (bar.tempo * TICKS_PER_QUARTER);
 }
@@ -84,10 +87,12 @@ export function buildTimeline(song: Song): Timeline {
 
   for (let trackIndex = 0; trackIndex < song.tracks.length; trackIndex++) {
     for (const note of song.tracks[trackIndex].notes) {
-      const start = tickToSeconds(song, note.tick);
+      const offset = note.offset ?? 0;
+      const start = tickToSeconds(song, Math.max(0, note.tick + offset));
       const end = tickToSeconds(song, note.tick + note.ticks);
       let duration = end - start;
       if (note.staccato) duration /= 2;
+      duration = Math.max(duration, MIN_DURATION);
       const scheduled: ScheduledNote = {
         track: trackIndex,
         pitches: note.pitches,
@@ -97,7 +102,7 @@ export function buildTimeline(song: Song): Timeline {
       };
       if (note.bends && note.bends.length > 0) {
         scheduled.bends = note.bends.map((bend) => ({
-          time: tickToSeconds(song, note.tick + bend.at) - start,
+          time: Math.max(0, tickToSeconds(song, note.tick + bend.at) - start),
           pitch: bend.pitch,
         }));
       }
