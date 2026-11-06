@@ -11,7 +11,7 @@ tempo: 88
 time: 4/4
 about: A boom-bap beat for a late train home: swung ghost notes, Rhodes chords, and two verses that leave room for a voice.
 
-track sample role=lead vol=0.8 pan=-0.1
+track sample role=lead vol=0.8 pan=-0.1 inst=tine-keys
 # Intro
 | R | R | R | R |
 # Verse 1
