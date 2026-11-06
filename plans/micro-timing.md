@@ -57,14 +57,51 @@ no per-note work, and it costs nothing for songs with no negative offsets.
 
 ## Limits
 
-Cap at **±240 ticks**, one sixteenth. Beyond that it is no longer micro-timing but a different
-rhythm, and the error should say so:
+Two limits are on the table. Both are documented here; the choice is Sz's after review.
+
+### Option A — ±240 ticks (a sixteenth)
+
+Enough for every played feel: a snare 15 ticks late, hats pushed 8, a kick leaning forward. Too
+small to disguise a rhythm that is simply wrong, and it keeps the offset local to the note.
 
 ```
 line 12: offset 300 is outside -240..240 in 'C4/8+300'
 ```
 
-Rejected at parse time, so no invalid offset can reach the timeline.
+The lookahead grows by at most 240 ticks — about 170 ms at 88 BPM — which is a modest change to
+`engine.ts`.
+
+### Option B — ±half a bar, from the bar's own time signature
+
+The limit is `barTicks / 2`: 1920 in 4/4, 1440 in 3/4, 960 in 2/4, 1440 in 6/8. This is no longer
+micro-timing; it lets a note answer the grid, make a deliberate flam, or sit displaced the way a
+chopped sample does.
+
+```
+line 12: offset 2000 is outside -1920..1920 (half of a 4/4 bar) in 'C4/8+2000'
+```
+
+Costs and risks:
+
+- The lookahead must grow by up to half a bar: about 1.36 s at 88 BPM in 4/4. The scheduler can book
+  that far ahead, but a seek that lands inside the window can double-book a note, so the engine's
+  `scheduledUntil` handling needs a test at this range.
+- A negative offset can move a note into the previous bar, or across a section boundary, so the
+  first written note of a bar is no longer the first one heard. The score view will not show that.
+- A tie or bend chain that crosses the moved note now has ambiguous ordering; the plan's rule
+  (first token owns the offset) still holds, but it is easier to write something confusing.
+
+### Comparison
+
+| | Option A (±240) | Option B (±half a bar) |
+| --- | --- | --- |
+| Enables | pocket, laid-back snare, pushed hats | flams, displaced chops, notes answering the grid |
+| Lookahead growth | ≤ ~170 ms at 88 BPM | ≤ ~1.36 s at 88 BPM |
+| Risk of masking a wrong rhythm | low | higher |
+| Interaction with bars, ties, sections | local, simple | crosses boundaries; needs care |
+| Recommendation | **preferred** | only if deliberate displacement is wanted |
+
+Either way the limit is validated at parse time, so no invalid offset can reach the timeline.
 
 ## What changes
 
@@ -94,14 +131,17 @@ Rejected at parse time, so no invalid offset can reach the timeline.
 2. `npm run check:songs` — same counts and clash totals as before.
 3. Before/after audio hash of an unmodified song.
 4. A draft song that uses `+18` on the snare and `-8` on the hats, run through
-   `tools/browser/late.mjs`; `late` must stay 0 and `min` must stay positive.
+   `tools/browser/late.mjs`; `late` must stay 0 and `min` must stay positive. If Option B is chosen,
+   repeat at the largest negative offset that limit allows, to prove the extended lookahead still
+   books the note in time.
 5. Listen.
 
-## Open question for Sz
+## Decision for Sz (after review)
 
-Cap at ±240 ticks (a sixteenth), or allow up to ±half a bar so it can also do deliberate flams and
-displaced chops? Recommendation: start at a sixteenth. It already covers every played feel; a wider
-range invites using it as a rhythm feature, which the format should express honestly instead.
+Both limits are documented above, with their costs and risks. Recommendation: start at Option A
+(±240 ticks). It covers every played feel; a wider range invites using the offset as a rhythm
+feature, which the format should express honestly instead. Option B can be layered on later by
+raising one constant, if the need is real.
 
 ## Other options considered
 
