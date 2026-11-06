@@ -44,6 +44,10 @@ import {
 } from './playlist';
 import type { AppView, PlaylistEntry } from './playlist';
 
+// Set by vite.config.ts at build time.
+declare const __BUILD_COMMIT__: string;
+declare const __BUILD_TIME__: string;
+
 const VOLUME_KEY = 'drumline-radio-volume';
 const MUTED_KEY = 'drumline-radio-muted';
 const REPEAT_KEY = 'drumline-radio-repeat';
@@ -771,6 +775,13 @@ export function startUi(): void {
     updateReadoutForEngine();
   });
 
+  const builtAt = new Date(__BUILD_TIME__).toLocaleString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  required<HTMLParagraphElement>('#build-stamp').textContent = `Build ${__BUILD_COMMIT__} · ${builtAt}`;
   infoButton.addEventListener('click', () => infoPanel.showModal());
   infoClose.addEventListener('click', () => infoPanel.close());
   dimToggle.addEventListener('click', toggleDim);
