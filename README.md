@@ -1,7 +1,7 @@
 # Drumline Radio
 
 A browser jukebox for full songs written as text scores: public-domain melodies arranged by
-Claude and SZ, and their own originals. It is the sibling of
+SZ and AI, and their own originals. It is the sibling of
 [Drumline Studio](https://stansz.github.io/drumline-studio/).
 
 **Play it:** https://radio.ogsapps.cc/ (mirror: https://stansz.github.io/drumline-radio/)
