@@ -95,7 +95,7 @@ section('Outro: the record runs out', 4, {
 
 const total = tracks.lead.length;
 const HEADER = [
-  ['lead', 'track guitar role=lead inst=dusty-guitar vol=0.75 pan=0.1'],
+  ['lead', 'track guitar role=lead inst=dusty-guitar vol=0.95 pan=0.1'],
   ['keys', 'track keys role=chords vol=0.75 pan=-0.15'],
   ['bass', 'track bass role=bass inst=pluck-bass vol=0.6'],
   ['drums', 'track drums role=drums vol=0.9'],

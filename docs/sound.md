@@ -37,8 +37,7 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 `(remix)` when the style differs from the one named in the song file.
 
 A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between the oscillators and
-the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample and dusty
-guitar use it.
+the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample uses it.
 
 An oscillator that would sound below 30 Hz is not created: that low it is felt as rumble rather than
 heard, and it only eats headroom, so a sub-octave layer drops out under very low notes.
@@ -109,10 +108,10 @@ The Lo-fi style is mellow keys, a round bass, and a dusty swung kit. Its tape wo
 slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
 `fx.crackle`. Songs can reach the extra `Dusty sample` patch with `inst=dusty-sample`: a detuned saw
 and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
-lead. Two more extras serve Last Stop: `inst=dusty-guitar`, a saw and pulse with a quick
-filter pluck, a short decay and light drive, for a plucked electric guitar, and `inst=pluck-bass`,
-a triangle-and-sine bass that plucks and fades instead of booming like the round bass. No role maps
-to these three.
+lead. Two more extras serve Last Stop: `inst=dusty-guitar`, a narrow pulse and two saws an octave
+below the written note, with a quick filter snap, a little FM bite and a fast fade, for an acoustic
+guitar, and `inst=pluck-bass`, a triangle-and-sine bass that plucks and fades instead of booming
+like the round bass. No role maps to these three.
 
 ### Cinematic
 

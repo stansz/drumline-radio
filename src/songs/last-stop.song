@@ -13,7 +13,7 @@ about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, an
 
 @bars 45-48 tempo=72..62
 
-track guitar role=lead inst=dusty-guitar vol=0.75 pan=0.1
+track guitar role=lead inst=dusty-guitar vol=0.95 pan=0.1
 # Intro: the record starts
 | R | R | R | R |
 # The beat drops in
