@@ -40,6 +40,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   public-domain piece in `README.md`.
 - Song data is written by Claude and pasted verbatim. Don't change notes in a song file to make a
   test pass; report the failing check instead.
+- Don't put `share` (or other social-button words) in element ids or classes: content blockers such
+  as uBlock Origin hide them, which hid the Share buttons in Firefox.
 - Wrap every `localStorage` call in `try`/`catch`, and make the app work without it. Keys start
   with `drumline-radio-`.
 - The service worker (src/pwa/sw.js) precaches every built file, and its list is generated in

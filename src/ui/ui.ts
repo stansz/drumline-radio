@@ -117,8 +117,8 @@ export function startUi(): void {
   const cardByline = required<HTMLElement>('#card-byline');
   const cardFacts = required<HTMLElement>('#card-facts');
   const cardAbout = required<HTMLElement>('#card-about');
-  const cardShare = required<HTMLButtonElement>('#card-share');
-  const cardShareAt = required<HTMLButtonElement>('#card-share-at');
+  const cardShare = required<HTMLButtonElement>('#card-link');
+  const cardShareAt = required<HTMLButtonElement>('#card-link-at');
   const cardClose = required<HTMLButtonElement>('#card-close');
   const dimToggle = required<HTMLButtonElement>('#dim-toggle');
   const flashToggle = required<HTMLButtonElement>('#flash-toggle');
@@ -135,7 +135,7 @@ export function startUi(): void {
   const playlistStart = required<HTMLButtonElement>('#pl-start');
   const playlistLoop = required<HTMLButtonElement>('#pl-loop');
   const playlistClear = required<HTMLButtonElement>('#pl-clear');
-  const playlistShare = required<HTMLButtonElement>('#pl-share');
+  const playlistShare = required<HTMLButtonElement>('#pl-link');
   const playlistList = required<HTMLElement>('#pl-list');
   const playlistEmpty = required<HTMLElement>('#pl-empty');
   const incomingNotice = required<HTMLElement>('#pl-incoming');

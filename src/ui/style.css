@@ -1017,7 +1017,9 @@ body::before {
   margin: 0 0 4px;
 }
 
-.card-share {
+/* Ids and classes avoid the word "share": content blockers hide elements named like social share
+   buttons. */
+.card-link {
   display: flex;
   gap: 8px;
   margin: 10px 0;
