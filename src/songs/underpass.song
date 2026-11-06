@@ -260,32 +260,32 @@ track drums role=drums vol=0.8
 | v=96 [k cr]/1 | R | v=96 [k cr]/1 | R |
 | v=96 [k cr]/1 | R | v=96 [k cr]/1 | R |
 # The sequencer starts, half-time drums
-| v=100 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
-| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16 |
+| v=100 k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 |
+| k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 tm/16 tm/16 tl/16 tl/16 |
 # The theme, half-time
-| v=104 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
-| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16 |
-| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
-| k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16 |
+| v=104 k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 |
+| k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 tm/16 tm/16 tl/16 tl/16 |
+| k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 |
+| k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 tm/16 tm/16 tl/16 tl/16 |
 # Build
-| v=104 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
+| v=104 k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 |
 | v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
 # Drop: four on the floor, the theme up high
-| v=112 [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
-| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
-| [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
-| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| v=112 [k cr]/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 |
+| k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| [k cr]/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 |
+| k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
 # Breakdown: the old stab hook over the brass
 | v=90 [k cr]/1 | R | R | R |
 | v=90 [k cr]/1 | R | R | R |
 | v=90 v=60 s/4 s/4 s/4 s/4 | v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8 | v=88 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 | v=104 s/16 s/16 s/16 s/16 s/16 s/16 s/16 s/16 r/2 |
 # Final: everything, the theme in two voices
-| v=116 [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
-| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
-| [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
-| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
-| [k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 |
-| k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| v=116 [k cr]/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 |
+| k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| [k cr]/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 |
+| k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
+| [k cr]/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 |
+| k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6 | th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8 |
 # Outro: the pulse fades
-| v=100 k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 | k/4 h/8 h/8 [s cl]/4 h/8 k/8 |
+| v=100 k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 | k/4 h/8 h/8 [s cl]/4+10 h/8 k/8 |
 | [k cr]/1 | R | R | v=100 [k cr]/1 |

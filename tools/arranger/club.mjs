@@ -163,10 +163,11 @@ const write = (file, head, song, header) => {
   };
   const D2 = {
     hit: '[k cr]/1',
-    half: 'k/4 h/8 h/8 [s cl]/4 h/8 k/8',
-    halfFill: 'k/4 h/8 h/8 [s cl]/4 tm/16 tm/16 tl/16 tl/16',
-    four: 'k/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8',
-    fourCrash: '[k cr]/8 h/8 [k cl]/8 h/8 k/8 h/8 [k cl]/8 oh/8',
+    // micro-timing: the half-time snare drags a little, the off-beat hats lean in a little
+    half: 'k/4 h/8 h/8 [s cl]/4+10 h/8 k/8',
+    halfFill: 'k/4 h/8 h/8 [s cl]/4+10 tm/16 tm/16 tl/16 tl/16',
+    four: 'k/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6',
+    fourCrash: '[k cr]/8 h/8-6 [k cl]/8 h/8-6 k/8 h/8-6 [k cl]/8 oh/8-6',
     toms: 'th/8 th/8 tm/8 tm/8 tl/8 tl/8 [k s]/8 [k s]/8',
     end: '[k cr]/1',
   };
@@ -403,6 +404,7 @@ composer: Claude & SZ
 year: 2026
 source: original
 category: originals
+hidden: true
 key: C minor
 style: techno
 tempo: 128

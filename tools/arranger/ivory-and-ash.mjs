@@ -27,6 +27,25 @@ const spans = (bar) => bar.split(' ').map((s) => ({ c: chord(s), ticks: 3840 / b
 const each = (bars, fn) => bars.map((bar) => spans(bar).map(({ c, ticks }) => fn(c, ticks)).join(' '));
 const fillU = (ticks, unit, fn) => Array.from({ length: ticks / unit }, (_, i) => fn(i, DUR[unit])).join(' ');
 
+// Micro-timing (ticks, 960 per quarter). Moves each note's start, never its written length.
+// The first note of a tie or bend chain owns the offset, so continuations (even across a bar line)
+// are left alone. Takes and returns a list of bars; null bars stay null.
+function lay(bars, ticks) {
+  let held = false;
+  return bars.map((bar) => {
+    if (bar === null) { held = false; return null; }
+    return bar.split(' ').map((tok) => {
+      const m = /^([A-G](?:#|b)?\d\/\d+\.?t?)(.*)$/.exec(tok);
+      const out = m && !held ? `${m[1]}${ticks >= 0 ? '+' : ''}${ticks}${m[2]}` : tok;
+      held = /[~^]$/.test(tok);
+      return out;
+    }).join(' ');
+  });
+}
+// The guitar sits behind the beat; the cello leans back a little less.
+const GUITAR_LAG = 20;
+const CELLO_LAG = 10;
+
 const low = (c) => 36 + c.bass; // a low octave for the bass and the left hand, C2-B2
 const bassNote = (c) => (c.bass >= 8 ? 24 + c.bass : 36 + c.bass); // Ab1-G2
 const triad = (c, base = 48) => c.iv.slice(0, 3).map((i) => base + c.pc + i);
@@ -34,22 +53,22 @@ const arpBase = (c) => (c.pc < 6 ? 48 + c.pc : 36 + c.pc);
 
 // Accompaniment textures, each for one chord span.
 const T = {
-  // piano left hand: a low octave, then the chord
+  // piano left hand: a low octave, then the chord, played a touch after it
   lh: (c, t) => t === 3840
-    ? `[${nm(low(c))} ${nm(low(c) + 12)}]/2 [${triad(c).map(nm).join(' ')}]/2`
-    : `[${nm(low(c))} ${nm(low(c) + 12)}]/4 [${triad(c).map(nm).join(' ')}]/4`,
-  // piano arpeggio in eighths: 1 5 8 10 12 10 8 5
+    ? `[${nm(low(c))} ${nm(low(c) + 12)}]/2 [${triad(c).map(nm).join(' ')}]/2+14`
+    : `[${nm(low(c))} ${nm(low(c) + 12)}]/4 [${triad(c).map(nm).join(' ')}]/4+14`,
+  // piano arpeggio in eighths: 1 5 8 10 12 10 8 5, off-beats a hair late
   arp8: (c, t) => {
     const b = arpBase(c);
     const seq = [0, 7, 12, 12 + c.iv[1], 19, 12 + c.iv[1], 12, 7].map((i) => b + i);
-    return fillU(t, 480, (i, d) => `${nm(seq[i % 8])}${d}`);
+    return fillU(t, 480, (i, d) => `${nm(seq[i % 8])}${d}${i % 2 ? '+8' : ''}`);
   },
-  // piano sweep in sixteenths across two octaves, up and back
+  // piano sweep in sixteenths across two octaves, up and back, off-beats a hair late
   arp16: (c, t) => {
     const b = arpBase(c);
     const up = [0, 7, 12, 12 + c.iv[1], 19, 24, 24 + c.iv[1], 31];
     const seq = [...up, ...up.slice().reverse()].map((i) => b + i);
-    return fillU(t, 240, (i, d) => `${nm(seq[i % 16])}${d}`);
+    return fillU(t, 240, (i, d) => `${nm(seq[i % 16])}${d}${i % 2 ? '+6' : ''}`);
   },
   chord: (c, t) => `[${nm(low(c))} ${triad(c).map(nm).join(' ')}]${DUR[t]}`,
   pad: (c, t) => `[${c.iv.map((i) => nm(48 + c.pc + i - (c.pc >= 8 ? 12 : 0))).join(' ')}]${DUR[t]}`,
@@ -77,12 +96,13 @@ function counterLine(bars, start = 55) {
   });
 }
 
+// The backbeat drags behind the kick, and the off-beat hats are softer.
 const DRUMS = {
-  light: '[k h]/8 h/8 h/8 h/8 [rim h]/8 h/8 h/8 h/8',
-  full: '[k h]/8 h/8 h/8 [k h]/8 [s h]/8 h/8 h/8 h/8',
-  ride: '[k rd]/8 rd/8 rd/8 [k rd]/8 [s rd]/8 rd/8 rd/8 rd/8',
-  fill: 'k/8 s/8 s/8 tm/8 tm/16 tm/16 tl/16 tl/16 tl/8 [k s]/8',
-  stop: '[k h]/8 h/8 h/8 h/8 [s h]/8 r/8 r/4',
+  light: '[k h]/8 h/8:70 h/8 h/8:70 [rim h]/8+12 h/8:70 h/8 h/8:70',
+  full: '[k h]/8 h/8:70 h/8 [k h]/8 [s h]/8+16 h/8:70 h/8 h/8:70',
+  ride: '[k rd]/8 rd/8:72 rd/8 [k rd]/8 [s rd]/8+16 rd/8:72 rd/8 rd/8:72',
+  fill: 'k/8 s/8+10 s/8+6 tm/8 tm/16 tm/16+6 tl/16 tl/16+6 tl/8 [k s]/8',
+  stop: '[k h]/8 h/8:70 h/8 h/8:70 [s h]/8+16 r/8 r/4',
   hit: '[k s]/2. r/4',
 };
 
@@ -143,14 +163,14 @@ section('Intro: piano alone, strings join', 8, {
 
 section('The guitar answers', 8, {
   piano: v(70, pick(PIANO_THEME, [0, 1, 4, 5])),
-  guitar: v(84, THEME.map((_, i) => GUITAR_ANSWER[i] ?? null)),
+  guitar: v(84, lay(THEME.map((_, i) => GUITAR_ANSWER[i] ?? null), GUITAR_LAG)),
   keys: v(52, each(THEME, T.lh)),
   strings: v(52, each(THEME, T.pad)),
   bass: v(62, each(THEME, T.hold)),
 });
 
 section('The build', 8, {
-  guitar: v(92, GUITAR_BUILD),
+  guitar: v(92, lay(GUITAR_BUILD, GUITAR_LAG)),
   keys: v(66, each(BUILD, T.arp8)),
   strings: v(62, each(BUILD, T.pad)),
   synth: v(50, each(BUILD, T.pad)),
@@ -159,9 +179,9 @@ section('The build', 8, {
 });
 
 section('First crescendo', 8, {
-  guitar: v(104, GUITAR_RISE),
+  guitar: v(104, lay(GUITAR_RISE, GUITAR_LAG)),
   keys: v(82, each(RISE, T.arp8)),
-  cello: v(78, counterLine(RISE)),
+  cello: v(78, lay(counterLine(RISE), CELLO_LAG)),
   strings: v(84, each(RISE, T.pad)),
   synth: v(66, each(RISE, T.pad)),
   arp: v(58, each(RISE, T.synth16)),
@@ -173,13 +193,13 @@ section('First crescendo', 8, {
 section('Quiet: piano and cello', 4, {
   piano: v(56, PIANO_THEME.slice(0, 4)),
   keys: v(42, each(THEME.slice(0, 4), T.lh)),
-  cello: v(58, counterLine(THEME.slice(0, 4), 51)),
+  cello: v(58, lay(counterLine(THEME.slice(0, 4), 51), CELLO_LAG)),
   strings: v(36, each(THEME.slice(0, 4), T.pad)),
 });
 
 section('Piano and guitar trade', 8, {
   piano: v(80, TRADE_PIANO),
-  guitar: v(96, TRADE_GUITAR),
+  guitar: v(96, lay(TRADE_GUITAR, GUITAR_LAG)),
   keys: v(58, each(THEME, T.lh)),
   strings: v(60, each(THEME, T.pad)),
   synth: v(52, each(THEME, T.pad)),
@@ -189,9 +209,9 @@ section('Piano and guitar trade', 8, {
 });
 
 section('Final crescendo', 8, {
-  guitar: v(112, GUITAR_SOLO),
+  guitar: v(112, lay(GUITAR_SOLO, GUITAR_LAG)),
   keys: v(90, [...each(RISE.slice(0, 7), T.arp16), each(['Cm'], T.chord)[0]]),
-  cello: v(90, counterLine(RISE)),
+  cello: v(90, lay(counterLine(RISE), CELLO_LAG)),
   strings: v(98, [...each(RISE.slice(0, 7), T.pad), each(['Cm'], T.pad)[0]]),
   synth: v(80, [...each(RISE.slice(0, 7), T.pad), each(['Cm'], T.pad)[0]]),
   arp: v(66, [...each(RISE.slice(0, 7), T.synth16), null]),
