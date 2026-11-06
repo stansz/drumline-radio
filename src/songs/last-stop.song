@@ -1,5 +1,5 @@
 # Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a gritty bass on the kick, a lazy swung beat, and a dusty guitar playing short phrases.
+# keys, a plucked bass on the kick, a lazy swung beat, and a dusty guitar playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -57,7 +57,7 @@ track keys role=chords vol=0.75 pan=-0.15
 # Outro: the record runs out
 | v=58 [F3 Ab3 C4 Eb4]/4. [F3 Ab3 C4 Eb4]/8:54 r/2 | [F3 Bb3 Db4]/4. [F3 Bb3 Db4]/8:54 r/2 | [F3 Ab3 Db4]/4. [F3 Ab3 Db4]/8:54 r/2 | [F3 Ab3 C4 Eb4]/1 |
 
-track bass role=bass inst=grit-bass vol=0.5
+track bass role=bass inst=pluck-bass vol=0.6
 # Intro: the record starts
 | R | R | R | R |
 # The beat drops in

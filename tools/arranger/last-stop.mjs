@@ -1,5 +1,5 @@
 // Last Stop: slow lo-fi hip-hop for the Lo-fi style. One four-bar minor loop all the way through,
-// like a sampled record: chopped Rhodes, a gritty bass on the kick, a lazy swung kick and snare, and
+// like a sampled record: chopped Rhodes, a plucked bass on the kick, a lazy swung kick and snare, and
 // a dusty guitar an octave down playing short repeating phrases. Written out by hand here.
 //   node tools/arranger/last-stop.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -97,7 +97,7 @@ const total = tracks.lead.length;
 const HEADER = [
   ['lead', 'track guitar role=lead inst=dusty-guitar vol=0.75 pan=0.1'],
   ['keys', 'track keys role=chords vol=0.75 pan=-0.15'],
-  ['bass', 'track bass role=bass inst=grit-bass vol=0.5'],
+  ['bass', 'track bass role=bass inst=pluck-bass vol=0.6'],
   ['drums', 'track drums role=drums vol=0.9'],
 ];
 const block = (key) => {
@@ -115,7 +115,7 @@ const block = (key) => {
 };
 
 const text = `# Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a gritty bass on the kick, a lazy swung beat, and a dusty guitar playing short phrases.
+# keys, a plucked bass on the kick, a lazy swung beat, and a dusty guitar playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
