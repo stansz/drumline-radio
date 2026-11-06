@@ -7,6 +7,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 | `arranger/` | Builds full `.song` files from a melody plus chords |
 | `midi/` | Converts a score's MIDI file into song bars (`midi2song.mjs`) |
 | `check/` | Parses every song and reports note clashes |
+| `analysis/` | Reports one song's density, register, dynamics and energy; reads a reference MIDI's groove |
 | `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, late notes, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
 
@@ -182,6 +183,31 @@ also lists each song's length and any long melody notes (from the `melody` track
 them. That count is a report, not a failure: passing notes and a maj7 against its root are fine,
 but a new spike is worth a listen. Set `CHECK_DETAIL=1` to list every clash with its time, the melody note and its length,
 and the pad or bass note under it.
+
+## Song report
+
+```bash
+SONG=src/songs/third-rail.song npm run report:song
+SONG=out/draft.song VERBOSE=1 npm run report:song
+```
+
+It prints, per track, the note count, events per bar, the share of bars it plays in, its register,
+mean velocity and spread, and how many bars are unique (a low number means a loop). For the lead it
+adds the interval mix — repeats, steps, leaps — and how often the line rests. An 8-bar energy map
+shows where the song opens up and where it thins out. The flags at the end are heuristics (busy,
+flat velocity, never rests, high register), not failures; they point at something to listen for.
+
+## Reference MIDI
+
+```bash
+npm run analyze:midi -- reference.mid --time 4/4 --grid 120
+npm run analyze:midi -- reference.mid --json out/stats.json
+```
+
+It reports the bar count, each MIDI track's register, velocity spread and how many bars are unique,
+then the groove itself: the median position of off-16th notes (50% is straight, about 67% is a 2:1
+swing), the share of main/accent/ghost velocities, and for percussion tracks a sixteenth-by-sixteenth
+hit grid with a row per drum. Copy those numbers into a `.song` instead of guessing at the feel.
 
 ## Browser checks
 
