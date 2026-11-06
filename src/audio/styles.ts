@@ -489,10 +489,10 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       'dusty-sample': synth({ name: 'Dusty sample', oscs: [osc('sawtooth', 0, -5, 0.55), osc('triangle', 0, 5, 0.45)],
         env: env(0.004, 0.32, 0.14, 0.16), filter: { type: 'lowpass', hz: 1150, q: 1.4, envAmount: 2.4, envDecay: 0.13 },
         drive: 0.35, gain: 0.3, sends: { reverb: 0.2, delay: 0.1 } }),
-      // Sounds an octave below the written note, in a real guitar's range.
-      'dusty-guitar': synth({ name: 'Dusty guitar', oscs: [osc('pulse12', -1, 0, 0.5), osc('sawtooth', -1, 7, 0.35), osc('sawtooth', 0, -5, 0.15)],
-        env: env(0.002, 0.9, 0.05, 0.25), filter: { type: 'lowpass', hz: 1100, q: 2.2, envAmount: 3.5, envDecay: 0.05 },
-        fm: { ratio: 3, index: 0.25, decay: 0.08 }, gain: 0.6, sends: { reverb: 0.6, delay: 0.4 } }),
+      // A soft felt piano that sounds an octave below the written note, with a little tape wobble.
+      'dusty-piano': synth({ name: 'Dusty piano', oscs: [osc('triangle', -1, 0, 0.6), osc('sine', 0, 0, 0.25), osc('sawtooth', -1, 3, 0.15)],
+        env: env(0.003, 2.2, 0, 0.4), filter: { type: 'lowpass', hz: 1100, q: 0.6, envAmount: 3, envDecay: 0.4 },
+        vibrato: { rate: 0.6, cents: 6, delay: 0 }, gain: 0.42, sends: { reverb: 0.8, delay: 0.3 } }),
       'pluck-bass': synth({ name: 'Plucked bass', oscs: [osc('triangle', 0, 0, 0.6), osc('sine', 0, 0, 0.4)],
         env: env(0.004, 0.35, 0.3, 0.1), filter: { type: 'lowpass', hz: 650, q: 0.8, envAmount: 2.5, envDecay: 0.08 },
         gain: 0.46, sends: { reverb: 0.05, delay: 0 } }),

@@ -1,6 +1,6 @@
 // Last Stop: slow lo-fi hip-hop for the Lo-fi style. One four-bar minor loop all the way through,
 // like a sampled record: chopped Rhodes, a plucked bass on the kick, a lazy swung kick and snare, and
-// a dusty guitar an octave down playing short repeating phrases. Written out by hand here.
+// a dusty piano an octave down playing short repeating phrases. Written out by hand here.
 //   node tools/arranger/last-stop.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -33,7 +33,7 @@ const DRUMS = {
 const groove = (n, fill = true) => Array.from({ length: n }, (_, i) =>
   fill && i === n - 1 ? DRUMS.fill : i % 2 ? DRUMS.b : DRUMS.a);
 
-// The guitar: two short phrases, an octave down, sitting a little behind the beat.
+// The piano: two short phrases (the patch sounds them an octave down), a little behind the beat.
 const VERSE = ['r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12', 'Db4/4.+12 C4/8+12 Bb3/4+12 r/4',
   'r/4 Ab3/8+12 C4/8+12 F4/4+12 Eb4/8+12 Db4/8+12', 'C4/2+12 r/4 G3/8+12 Bb3/8+12'];
 const HOOK = ['F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12', 'Db4/4+12 Bb3/4+12 r/2',
@@ -95,7 +95,7 @@ section('Outro: the record runs out', 4, {
 
 const total = tracks.lead.length;
 const HEADER = [
-  ['lead', 'track guitar role=lead inst=dusty-guitar vol=0.95 pan=0.1'],
+  ['lead', 'track piano role=lead inst=dusty-piano vol=0.8 pan=0.1'],
   ['keys', 'track keys role=chords vol=0.75 pan=-0.15'],
   ['bass', 'track bass role=bass inst=pluck-bass vol=0.6'],
   ['drums', 'track drums role=drums vol=0.9'],
@@ -115,7 +115,7 @@ const block = (key) => {
 };
 
 const text = `# Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a plucked bass on the kick, a lazy swung beat, and a dusty guitar playing short phrases.
+# keys, a plucked bass on the kick, a lazy swung beat, and a dusty piano playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -125,7 +125,7 @@ key: F minor
 style: lofi
 tempo: 72
 time: 4/4
-about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and a guitar humming the same few notes to itself.
+about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and a low piano humming the same few notes to itself.
 
 @bars ${total - 3}-${total} tempo=72..62
 

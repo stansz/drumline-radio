@@ -1,5 +1,5 @@
 # Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
-# keys, a plucked bass on the kick, a lazy swung beat, and a dusty guitar playing short phrases.
+# keys, a plucked bass on the kick, a lazy swung beat, and a dusty piano playing short phrases.
 title: Last Stop
 composer: Claude & SZ
 year: 2026
@@ -9,11 +9,11 @@ key: F minor
 style: lofi
 tempo: 72
 time: 4/4
-about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and a guitar humming the same few notes to itself.
+about: The last bus home, half asleep: one dusty loop, a lazy kick and snare, and a low piano humming the same few notes to itself.
 
 @bars 45-48 tempo=72..62
 
-track guitar role=lead inst=dusty-guitar vol=0.95 pan=0.1
+track piano role=lead inst=dusty-piano vol=0.8 pan=0.1
 # Intro: the record starts
 | R | R | R | R |
 # The beat drops in
