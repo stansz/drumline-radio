@@ -63,13 +63,14 @@ Other public-domain melodies, arranged by Claude and SZ:
 
 Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy, When the Saints Go Marching In.
 
-Originals by Claude and SZ:
+Originals by SZ (and AI):
 
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
 - **Save Point** (Chiptune)
+- **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
 - **Underpass** (Synthwave)
 
