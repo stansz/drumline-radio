@@ -37,7 +37,7 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 `(remix)` when the style differs from the one named in the song file.
 
 A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between the oscillators and
-the filter, so the patch distorts; only the Cinematic lead guitar uses it.
+the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample use it.
 
 A bent note in the score (`^`, see [song-format.md](song-format.md)) automates each oscillator's
 detune, and the FM modulator's when the patch has FM. The pitch glides to each bend target over
@@ -100,7 +100,9 @@ on top.
 
 The Lo-fi style is mellow keys, a round bass, and a dusty swung kit. Its tape wobble comes from the
 slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
-`fx.crackle`.
+`fx.crackle`. Songs can reach the extra `Dusty sample` patch with `inst=dusty-sample`: a detuned saw
+and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
+lead. No role maps to it.
 
 ### Cinematic
 

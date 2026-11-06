@@ -1,5 +1,5 @@
 # Third Rail, by DeepSeek and SZ. A dusty boom-bap beat in D minor: swung ghost notes under a
-# Rhodes loop, a sparse bass, and two verses that leave room for a voice. 64 bars at 88 BPM.
+# chopped lead, Rhodes chords, and two verses that leave room for a voice. 64 bars at 88 BPM.
 title: Third Rail
 composer: DeepSeek & SZ
 year: 2026
@@ -9,32 +9,32 @@ style: lofi
 key: D minor
 tempo: 88
 time: 4/4
-about: A boom-bap beat for a late train home: swung ghost notes, Rhodes chords, and two verses that leave room for a voice.
+about: A boom-bap beat for a late train home: swung ghost notes, a chopped dusty lead over Rhodes chords, and two verses that leave room for a voice.
 
-track sample role=lead vol=0.8 pan=-0.1 inst=tine-keys
+track sample role=lead vol=0.8 pan=-0.1 inst=dusty-sample
 # Intro
 | R | R | R | R |
 # Verse 1
-| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=74 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=74 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=74 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=74 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=66 D4/4. r/8 F4/4 r/4 | v=66 G4/2 r/4 Bb4/4 | v=66 A4/4. r/8 F4/2 | v=66 E4/4 r/4 C#4/2 |
+| v=66 D4/4. r/8 F4/4 r/4 | v=66 G4/2 r/4 Bb4/4 | v=66 A4/4. r/8 F4/2 | v=66 E4/4 r/4 C#4/2 |
+| v=66 D4/4. r/8 F4/4 r/4 | v=66 G4/2 r/4 Bb4/4 | v=66 A4/4. r/8 F4/2 | v=66 E4/4 r/4 C#4/2 |
+| v=66 D4/4. r/8 F4/4 r/4 | v=66 G4/2 r/4 Bb4/4 | v=66 A4/4. r/8 F4/2 | v=66 E4/4 r/4 C#4/2 |
 # Hook
-| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=84 D4/2 F4/4 A4/4 | v=84 Bb4/4. A4/8 G4/2 | v=84 F4/2 A4/4 D5/4 | v=84 E4/4 r/4 C#4/2 |
+| v=84 D4/2 F4/4 A4/4 | v=84 Bb4/4. A4/8 G4/2 | v=84 F4/2 A4/4 D5/4 | v=84 E4/4 r/4 C#4/2 |
 # Verse 2
-| v=78 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=78 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=78 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=78 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=78 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=78 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=78 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=78 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=68 D4/4. r/8 F4/4 r/4 | v=68 G4/2 r/4 Bb4/4 | v=68 A4/4. r/8 F4/2 | v=68 E4/4 r/4 C#4/2 |
+| v=68 D4/4. r/8 F4/4 r/4 | v=68 G4/2 r/4 Bb4/4 | v=68 A4/4. r/8 F4/2 | v=68 E4/4 r/4 C#4/2 |
 | R | R | R | R |
-| v=84 A4/8 r/8 D5/8 F5/4 E5/8 D5/8 r/8 | v=84 C5/8 r/8 Bb4/8 A4/4 G4/8 A4/8 r/8 | v=84 F4/8 r/8 A4/8 C5/4 D5/8 C5/8 r/8 | v=84 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=72 D4/4. r/8 F4/4 r/4 | v=72 G4/2 r/4 Bb4/4 | v=72 A4/4. r/8 F4/2 | v=72 E4/4 r/4 C#4/2 |
 # Hook
-| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=94 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=94 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=94 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=94 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
+| v=84 D4/2 F4/4 A4/4 | v=84 Bb4/4. A4/8 G4/2 | v=84 F4/2 A4/4 D5/4 | v=84 E4/4 r/4 C#4/2 |
+| v=84 D4/2 F4/4 A4/4 | v=84 Bb4/4. A4/8 G4/2 | v=84 F4/2 A4/4 D5/4 | v=84 E4/4 r/4 C#4/2 |
 # Bridge
-| v=70 A4/2 G4/2 | v=70 F4/2 E4/2 | R | R |
+| v=60 A3/2 G3/2 | v=60 F3/2 E3/2 | R | R |
 # Final hook
-| v=96 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=96 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=96 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | v=96 C#5/8 r/8 E5/8 G5/4 E5/8 C#5/8 r/8 |
-| v=96 D5/8 r/8 F5/8 A5/4 G5/8 F5/8 r/8 | v=96 E5/8 r/8 D5/8 C5/4 A4/8 C5/8 r/8 | v=96 D5/8 r/8 F5/8 A5/4 C6/8 A5/8 r/8 | R |
+| v=86 D4/2 F4/4 A4/4 | v=86 Bb4/4. A4/8 G4/2 | v=86 F4/2 A4/4 D5/4 | v=86 E4/4 r/4 C#4/2 |
+| v=86 D4/2 F4/4 A4/4 | v=86 Bb4/4. A4/8 G4/2 | v=86 F4/2 A4/4 D5/4 | R |
 
 track keys role=chords vol=0.62 pan=-0.12
 # Intro
