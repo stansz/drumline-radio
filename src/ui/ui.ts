@@ -169,6 +169,7 @@ export function startUi(): void {
     const name = styleFilter === 'all' ? 'All styles' : STYLE_DEFS[styleFilter].name;
     styleCycle.textContent = name;
     styleCycle.classList.toggle('on', styleFilter !== 'all');
+    styleCycle.dataset.style = styleFilter;
     styleCycle.setAttribute('aria-label', `Style filter: ${name}. Press for the next style.`);
   }
 

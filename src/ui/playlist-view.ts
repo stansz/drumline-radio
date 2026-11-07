@@ -139,6 +139,7 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
     const styleName = libraryStyle === 'all' ? 'All styles' : STYLE_DEFS[libraryStyle].name;
     styleCycle.textContent = styleName;
     styleCycle.classList.toggle('on', libraryStyle !== 'all');
+    styleCycle.dataset.style = libraryStyle;
     styleCycle.setAttribute('aria-label', `Style filter: ${styleName}. Press for the next style.`);
     const rows = stationsIn(libraryCategories, libraryFilter, libraryStyles, libraryStyle);
     for (const index of rows) {

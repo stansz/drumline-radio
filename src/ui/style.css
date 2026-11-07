@@ -886,14 +886,22 @@ body::before {
 }
 
 /* Each band lights up in its own style's colour when selected, like the presets on a radio. */
-.band[data-style='synthwave'] { --band: #ff4fa3; }
-.band[data-style='chiptune'] { --band: #7cff4f; }
-.band[data-style='orchestral'] { --band: #e8c27a; }
-.band[data-style='techno'] { --band: #c6ff00; }
-.band[data-style='lofi'] { --band: #ffb37a; }
-.band[data-style='cinematic'] { --band: #f2b55a; }
-.band[data-style='altrock'] { --band: #ff4136; }
-.band[data-style='studio'] { --band: #5ee0c1; }
+.band[data-style='synthwave'],
+.style-cycle[data-style='synthwave'] { --band: #ff4fa3; }
+.band[data-style='chiptune'],
+.style-cycle[data-style='chiptune'] { --band: #7cff4f; }
+.band[data-style='orchestral'],
+.style-cycle[data-style='orchestral'] { --band: #e8c27a; }
+.band[data-style='techno'],
+.style-cycle[data-style='techno'] { --band: #c6ff00; }
+.band[data-style='lofi'],
+.style-cycle[data-style='lofi'] { --band: #ffb37a; }
+.band[data-style='cinematic'],
+.style-cycle[data-style='cinematic'] { --band: #f2b55a; }
+.band[data-style='altrock'],
+.style-cycle[data-style='altrock'] { --band: #ff4136; }
+.band[data-style='studio'],
+.style-cycle[data-style='studio'] { --band: #5ee0c1; }
 
 .band {
   position: relative;
@@ -958,19 +966,49 @@ body::before {
     inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
-/* The style button cycles rather than picks, so it is wider and dashed (unlike the solid style
-   bands it shares names with), and lit only while it filters. */
+/* The style button cycles rather than picks, so it is a pill (unlike the square presets and style
+   bands) with a "next" arrow. Its dot shows every style's colour while it shows all styles, and the
+   filtered style's colour while it filters; then the whole button lights up in that colour. */
 .style-cycle {
   flex: 1.5;
-  border-style: dashed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 999px;
   white-space: nowrap;
 }
 
+.style-cycle::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: conic-gradient(#ff4fa3, #7cff4f, #e8c27a, #c6ff00, #ffb37a, #f2b55a, #ff4136, #5ee0c1, #ff4fa3);
+}
+
+.style-cycle::after {
+  content: '\203A';
+  font-size: 1.4em;
+  line-height: 0.7;
+  opacity: 0.6;
+}
+
+.style-cycle.on::before {
+  background: var(--band, var(--accent));
+  box-shadow: 0 0 6px var(--band, var(--accent));
+}
+
+.style-cycle:hover {
+  color: var(--text);
+}
+
 .style-cycle.on {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--band, var(--accent));
+  color: var(--band, var(--accent));
   box-shadow:
-    0 0 10px var(--glow),
+    0 0 10px var(--band, var(--glow)),
     inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
