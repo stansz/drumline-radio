@@ -315,8 +315,11 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
       hideIncoming();
       return;
     }
+    // The old playing index means nothing in the new list, so the current song plays on as radio.
+    playlistAt = null;
     setPlaylist(incoming);
     hideIncoming();
+    deps.onChange();
   });
   incomingAdd.addEventListener('click', () => {
     if (incoming.length === 0) {

@@ -375,10 +375,8 @@ export class Engine {
       this.positionValue = this.timelineValue.duration;
       this.playingValue = false;
       this.scheduledUntil = this.positionValue;
-      if (this.timer !== null) {
-        clearInterval(this.timer);
-        this.timer = null;
-      }
+      // The same cleanup as pause, so the looping vinyl bed stops when nothing plays next.
+      this.stopAll();
       const ended = this.onEnded;
       if (ended) ended();
     }
