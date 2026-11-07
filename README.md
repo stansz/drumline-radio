@@ -68,6 +68,7 @@ Originals by SZ (and AI):
 
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
+- **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
