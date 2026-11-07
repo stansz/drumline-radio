@@ -8,7 +8,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 | `midi/` | Converts a score's MIDI file into song bars (`midi2song.mjs`) |
 | `check/` | Parses every song and reports note clashes |
 | `analysis/` | Reports one song's density, register, dynamics and energy; reads a reference MIDI's groove |
-| `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, late notes, offline, screenshots |
+| `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, patch timbre, late notes, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
 
 ## Arranger
@@ -256,6 +256,10 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order). Add a style id at the end to remix the song into it first.
+- **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
+  that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`
+  instead of the preview server, because it imports the audio code from `src/`:
+  `node tools/browser/timbre.mjs lofi soft-flute,radio-lead` (style, patches, optional MIDI note).
 
 `browser/cdp.mjs` is the shared helper. It launches headless Edge (set `EDGE_PATH` to use another
 Chromium) and talks to it over the DevTools protocol with Node's built-in WebSocket.

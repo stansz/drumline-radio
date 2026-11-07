@@ -12,6 +12,7 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 
 - The big picture: [docs/how-it-works.md](docs/how-it-works.md)
 - Song files, the parser, or timing: [docs/song-format.md](docs/song-format.md)
+- Writing or reworking a song: [docs/composing.md](docs/composing.md), including its checks before committing
 - Sound, styles, or patches: [docs/sound.md](docs/sound.md)
 
 ## Rules

@@ -97,6 +97,8 @@ track lead role=lead
 - `[C4 E4 G4]` is a chord. `r/4` is a rest. `~` ties a note into the next one.
 - `|` separates bars, and every bar must add up to the time signature.
 - Every track needs the same number of bars. Run `npm test` and the checker shows any mistakes.
+- Before writing a real song, read [composing.md](composing.md): what to check, which patches to
+  avoid, and how to keep a new song from copying an old one.
 
 ## Day to day
 
