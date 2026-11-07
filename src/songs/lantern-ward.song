@@ -1,0 +1,231 @@
+# Lantern Ward, an original orchestral nocturne by Tencent HY 4 (tencent/hy4) and SZ.
+# Form: prelude, two tutti statements, brass-led development, false recapitulation, cadence,
+# 3/4 hemiola, slow chorale, hocket retransition, reprise, subtractive coda.
+title: Lantern Ward
+composer: Tencent HY 4 & SZ
+about: An original nocturne in D minor: a woodwind prelude, a string processional, a brass-led development, a 3/4 hemiola, a slow chorale, a hocket that reassembles the theme without the violins, and a coda that removes one section of the orchestra per bar.
+year: 2026
+source: original
+category: originals
+key: D minor
+style: orchestral
+tempo: 76
+time: 6/8
+
+@bars 9-12 tempo=76..112
+@bar 49 time=3/4
+@bar 57 time=4/4 tempo=68
+@bar 67 time=6/8
+@bars 67-70 tempo=68..112
+@bars 83-86 tempo=112..72
+
+track violins role=lead vol=0.8 pan=-0.25
+# I. Prelude: silent. II. Bridge: silent.
+| R*8 | R*4 |
+# III. Tutti I: the theme alone
+| D5/4. F5/8 E5/8 D5/8 | Bb4/8 D5/8 F5/4. D5/8 | A5/4. G5/8 F5/8 E5/8 | E5/4. G5/8 E5/8 C5/8 |
+| F5/4. A5/8 D6/8 A5/8 | G5/4. Bb5/8 A5/8 G5/8 | C#6/4. E6/8 C#6/8 A5/8 | D6/2. |
+# IV. Tutti II: the theme again over the full orchestra
+| D5/4. F5/8 E5/8 D5/8 | Bb4/8 D5/8 F5/4. D5/8 | A5/4. G5/8 F5/8 E5/8 | E5/4. G5/8 E5/8 C5/8 |
+| F5/4. A5/8 D6/8 A5/8 | G5/4. Bb5/8 A5/8 G5/8 | C#6/4. E6/8 C#6/8 A5/8 | D6/2. |
+# V. Development: the strings become a staccato accompaniment to the brass
+| { [A4 D5 F5]/4.' r/4. | [Bb3 D4 F4]/4.' r/4. }*4 |
+# VI. False recapitulation: the violins never enter
+| R*8 |
+# VII. Cadence
+| A5/4. D6/4. | [D5 F5 A5]/2. | C#6/4. A5/4. | [D5 F5 A5]/2. |
+# VIII. Hemiola, IX. Chorale, X. Hocket: silent
+| R*8 | R*10 | R*8 |
+# XI. Reprise: the theme returns
+| D5/4. F5/8 E5/8 D5/8 | Bb4/8 D5/8 F5/4. D5/8 | A5/4. G5/8 F5/8 E5/8 | E5/4. G5/8 E5/8 C5/8 |
+| F5/4. A5/8 D6/8 A5/8 | G5/4. Bb5/8 A5/8 G5/8 | C#6/4. E6/8 C#6/8 A5/8 | D6/2. |
+# XII. Coda: the strings thin out and leave
+| D6/2. | A5/4. F5/4. | R | R |
+
+track flutes role=counter vol=0.6 pan=0.25
+# I. Prelude: a solo line, later heard in the hocket
+| D5/4. A4/4. | F5/4. E5/8 D5/8 C#5/8 | D5/4. F5/4. | A5/2. |
+| Bb4/4. D5/4. | F5/4. E5/8 F5/8 G5/8 | A5/4. C#5/4. | D5/2. |
+# II. Bridge: a rising scale into the processional
+| D5/8 E5 F5 G5 A5 Bb5 | C6/4. A5/4. | D6/8 C6 Bb5 A5 G5 F5 | A5/2. |
+# III. Tutti I: silent
+| R*8 |
+# IV. Tutti II: filigree above the theme
+| { D5/8 F5 A5 F5 D5 F5 | E5/8 G5 Bb5 G5 E5 G5 | F5/8 A5 D6 A5 F5 A5 | C#6/8 E6 A5 E6 C#6 A5 }*2 |
+# V. Development: a running counter-line
+| { F5/8 E5 D5 E5 F5 A5 | G5/8 F5 E5 F5 G5 Bb5 }*4 |
+# VI. False recapitulation: the theme as long notes, without its owner
+| { D5/4. F5/4. | Bb4/4. D5/4. | A5/4. G5/4. | E5/4. C5/4. }*2 |
+# VII. Cadence
+| A5/8 C6 E6 C6 A5 E5 | F5/4. D5/4. | C#6/8 E6 A5 E6 C#6 A5 | D5/2. |
+# VIII. Hemiola: three quarters against the harp's six eighths
+| D5/4 F5 A5 | Bb4/4 D5 F5 | A5/4 G5 F5 | E5/4 G5 C5 |
+| F5/4 A5 D6 | G5/4 Bb5 A5 | C#6/4 E6 A5 | D6/2. |
+# IX. Chorale: silent
+| R*10 |
+# X. Hocket: only the first and fourth eighths of each bar, then the whole line
+| D5/8 r/8 r/8 F5/8 r/8 r/8 | Bb4/8 r/8 r/8 D5/8 r/8 r/8 | A5/8 r/8 r/8 E5/8 r/8 r/8 | E5/8 r/8 r/8 C5/8 r/8 r/8 |
+| D5/8 F5 A5 F5 E5 D5 | Bb4/8 D5 F5 D5 F5 A5 | A5/8 G5 F5 E5 F5 G5 | E5/8 G5 E5 C5 E5 G5 |
+# XI. Reprise: a high descant
+| D6/8 F6 E6 D6 C6 A5 | Bb5/8 D6 F6 D6 C6 Bb5 | A5/8 C6 Bb5 A5 G5 F5 | G5/8 Bb5 A5 G5 E5 C#5 |
+| F5/8 A5 D6 A5 F5 D5 | G5/8 Bb5 D6 Bb5 G5 F5 | C#6/8 E6 A5 E6 C#6 A5 | D6/2. |
+# XII. Coda
+| A5/4. D6/4. | F5/4. A5/4. | R | R |
+
+track horns role=lead2 vol=0.55 pan=-0.1
+# I, II, III: silent
+| R*12 | R*8 |
+# IV. Tutti II: a slow counter-subject under the theme
+| D4/2. | Bb3/2. | F4/2. | C4/2. | D4/2. | G3/2. | A3/2. | D4/2. |
+# V. Development: the brass takes the lead with a sequential tune
+| { A4/8 Bb4 C5 D5 C5 Bb4 | A4/4. F4/8 G4 A4 | D5/8 C5 Bb4 A4 G4 F4 | A4/2. }*2 |
+# VI. False recapitulation: silent
+| R*8 |
+# VII. Cadence: chords
+| [A4 C#5 E5]/2. | [D4 F4 A4]/2. | [A4 C#5 E5]/2. | [D4 F4 A4]/2. |
+# VIII, IX, X: silent
+| R*8 | R*10 | R*8 |
+# XI. Reprise: the roots, low and long
+| D3/2. | Bb3/2. | F3/2. | C3/2. | D3/2. | G3/2. | A3/2. | D3/2. |
+# XII. Coda: the first family to go
+| [D4 F4 A4]/2. | R | R | R |
+
+track strings role=pad vol=0.45 pan=0.1
+# I. Prelude: the harmony alone
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+# II. Bridge
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+# III, IV: the processional harmony
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+# V. Development: a different harmonic route
+| [F3 A3 C4]/2. | [C4 E4 G4]/2. | [D4 F4 A4]/2. | [Bb3 D4 F4]/2. |
+| [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. | [A3 C#4 E4]/2. |
+# VI. False recapitulation
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+# VII. Cadence
+| [A3 C#4 E4]/2. | [D4 F4 A4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+# VIII. Hemiola: the same chords, now under three quarter beats
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+# IX. Chorale: whole-bar chords in 4/4
+| [D4 F4 A4]/1 | [Bb3 D4 F4]/1 | [F3 A3 C4]/1 | [C4 E4 G4]/1 | [D4 F4 A4]/1 |
+| [G3 Bb3 D4]/1 | [A3 C#4 E4]/1 | [D4 F4 A4]/1 | [D4 F4 A4]/1 | [D4 F4 A4]/1 |
+# X. Hocket, XI. Reprise
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+| [D4 F4 A4]/2. | [Bb3 D4 F4]/2. | [F3 A3 C4]/2. | [C4 E4 G4]/2. |
+| [D4 F4 A4]/2. | [G3 Bb3 D4]/2. | [A3 C#4 E4]/2. | [D4 F4 A4]/2. |
+# XII. Coda: the chord that outlasts everyone
+| [D4 F4 A4]/2. | [D4 F4 A4]/2. | [D4 F4 A4]/2. | [D4 F4 A4]/2. |
+
+track harp role=chords vol=0.5 pan=0.3
+# I. Prelude: broken chords
+| D4/8 A4 F5 D5 A4 F5 | Bb3/8 F4 D5 Bb4 F4 D5 | F3/8 C4 A4 F4 C4 A4 | C4/8 G4 E5 C5 G4 E5 |
+| D4/8 A4 F5 D5 A4 F5 | G3/8 D4 Bb4 G4 D4 Bb4 | A3/8 E4 C#5 A4 E4 C#5 | D4/8 A4 F5 D5 A4 F5 |
+# II. Bridge: sixteenth-note flourishes
+| D4/16 F4 A4 D5 F5 A5 D5 A5 F5 D5 A4 F4 |
+| Bb3/16 D4 F4 Bb4 D5 F5 D5 Bb4 F4 D4 Bb3 D4 |
+| F3/16 A3 C4 F4 A4 C5 A4 F4 C4 A3 F3 A3 |
+| C4/16 E4 G4 C5 E5 G5 E5 C5 G4 E4 C4 E4 |
+# III. Tutti I
+| { D4/8 A4 F5 D5 A4 F5 | Bb3/8 F4 D5 Bb4 F4 D5 }*4 |
+# IV. Tutti II: staccato chord stabs
+| { [D4 F4 A4]/4.' [D4 F4 A4]/4.' | [Bb3 D4 F4]/4.' [Bb3 D4 F4]/4.' }*4 |
+# V. Development: running eighths
+| { F3/8 A3 C4 F4 A4 C5 | G3/8 Bb3 D4 G4 Bb4 D5 }*4 |
+# VI. False recapitulation: a note and its silence
+| D5/4. r/4. | Bb4/4. r/4. | A4/4. r/4. | E5/4. r/4. | F5/4. r/4. | G5/4. r/4. | C#5/4. r/4. | D5/4. r/4. |
+# VII. Cadence
+| D4/8 A4 F5 D5 A4 F5 | [A3 C#4 E4]/2. | A3/8 E4 C#5 A4 E4 C#5 | [D4 F4 A4]/2. |
+# VIII. Hemiola: six eighths accented as three pairs
+| D4/8:110 A4 F4/8:110 A4 D5/8:110 F5 | Bb3/8:110 F4 D4/8:110 F4 Bb4/8:110 D5 |
+| F3/8:110 C4 A3/8:110 C4 F4/8:110 A4 | C4/8:110 G4 E4/8:110 G4 C5/8:110 E5 |
+| D4/8:110 A4 F4/8:110 A4 D5/8:110 F5 | G3/8:110 D4 Bb3/8:110 D4 G4/8:110 Bb4 |
+| A3/8:110 E4 C#4/8:110 E4 A4/8:110 C#5 | D4/8:110 A4 F4/8:110 A4 D5/8:110 F5 |
+# IX. Chorale: four quarters to the bar
+| D4/4 A4 F4 A4 | Bb3/4 F4 D4 F4 | F3/4 C4 A3 C4 | C4/4 G4 E4 G4 | D4/4 A4 F4 A4 |
+| G3/4 D4 Bb3 D4 | A3/4 E4 C#4 E4 | D4/4 A4 F4 A4 | D4/4 A4 F4 A4 | D4/4 A4 F4 A4 |
+# X. Hocket: only the second and fifth eighths, then the whole line
+| r/8 F5 r/8 r/8 E5 r/8 | r/8 D5 r/8 r/8 F5 r/8 | r/8 G5 r/8 r/8 F5 r/8 | r/8 G5 r/8 r/8 E5 r/8 |
+| D4/8 F4 A4 F4 E4 D4 | Bb3/8 D4 F4 D4 F4 A4 | A4/8 G4 F4 E4 F4 G4 | E4/8 G4 E4 C4 E4 G4 |
+# XI. Reprise
+| { D4/8 A4 F5 D5 A4 F5 | Bb3/8 F4 D5 Bb4 F4 D5 }*4 |
+# XII. Coda
+| D4/8 A4 F5 D5 A4 F5 | D4/8 A4 F5 D5 A4 F5 | D4/4 A4 F5 | [D4 F4 A4]/2. |
+
+track bells role=arp vol=0.35 pan=0.35
+# I. Prelude: silent
+| R*8 |
+# II. Bridge: the first bell tones
+| D6/2. | A5/2. | F6/2. | D6/2. |
+# III. Tutti I: silent
+| R*8 |
+# IV. Tutti II: offbeat sparkle
+| { r/8 D6 r/8 A5 r/8 F6 | r/8 Bb5 r/8 D6 r/8 F6 }*4 |
+# V. Development: an arched bell line
+| { A5/8 C6 E6 C6 A5 E6 | G5/8 Bb5 D6 Bb5 G5 D6 }*4 |
+# VI. False recapitulation: one bell per bar
+| D6/4. r/4. | Bb5/4. r/4. | A5/4. r/4. | E6/4. r/4. | F6/4. r/4. | G5/4. r/4. | C#6/4. r/4. | A5/4. r/4. |
+# VII. Cadence
+| A5/8 E6 C#6 E6 A5 E6 | [A5 C#6 E6]/2. | C#6/8 E6 A5 E6 C#6 A5 | D6/2. |
+# VIII. Hemiola: on the first, third and fifth eighths
+| D6/8:100 r/8 A5/8:100 r/8 F6/8:100 r/8 | Bb5/8:100 r/8 D6/8:100 r/8 F6/8:100 r/8 |
+| A5/8:100 r/8 C6/8:100 r/8 E6/8:100 r/8 | E6/8:100 r/8 C6/8:100 r/8 A5/8:100 r/8 |
+| F6/8:100 r/8 D6/8:100 r/8 A5/8:100 r/8 | G5/8:100 r/8 Bb5/8:100 r/8 D6/8:100 r/8 |
+| C#6/8:100 r/8 E6/8:100 r/8 A5/8:100 r/8 | D6/2. |
+# IX. Chorale: silent
+| R*10 |
+# X. Hocket: only the third and sixth eighths, then the whole line up an octave
+| r/8 r/8 A5/8 r/8 r/8 D5/8 | r/8 r/8 F5/8 r/8 r/8 A5/8 | r/8 r/8 F5/8 r/8 r/8 G5/8 | r/8 r/8 E5/8 r/8 r/8 G5/8 |
+| D6/8 F6 A6 F6 E6 D6 | Bb5/8 D6 F6 D6 F6 A6 | A5/8 G5 F5 E5 F5 G5 | E6/8 G6 E6 C6 E6 G6 |
+# XI. Reprise
+| { D6/8 F6 E6 D6 C6 A5 | Bb5/8 D6 F6 D6 C6 Bb5 }*4 |
+# XII. Coda: the last sound after the orchestra has gone
+| D6/8 r/8 r/8 A5/8 r/8 r/8 | R | R | D6/2. |
+
+track cellos role=bass vol=0.65 pan=0
+# I. Prelude through VIII. Hemiola: roots
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+| D2/2. | Bb1/2. | F2/2. | C2/2. |
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+| F2/2. | C2/2. | D2/2. | Bb1/2. | G2/2. | A2/2. | D2/2. | A2/2. |
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+| A2/2. | D2/2. | A2/2. | D2/2. |
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+# IX. Chorale: whole-bar roots
+| D2/1 | Bb1/1 | F2/1 | C2/1 | D2/1 | G2/1 | A2/1 | D2/1 | D2/1 | D2/1 |
+# X. Hocket, XI. Reprise
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+| D2/2. | Bb1/2. | F2/2. | C2/2. | D2/2. | G2/2. | A2/2. | D2/2. |
+# XII. Coda: the pedal that remains
+| D2/2. | D2/2. | D2/2. | D2/2. |
+
+track timpani role=drums vol=0.5 pan=-0.15
+# I. Prelude: silent
+| R*8 |
+# II. Bridge: one roll at the end
+| R*3 | k/2. |
+# III. Tutti I: a two-against-three pulse
+| { k/4. k/8 r/8 r/8 | k/4. k/4. }*4 |
+# IV. Tutti II: fuller, with a crash
+| { k/8 k/8 r/8 k/8 r/8 k/8 | [k cr]/4. k/4. }*4 |
+# V. Development
+| { k/4. k/8 r/8 r/8 | k/4. k/4. }*4 |
+# VI. False recapitulation: silent
+| R*8 |
+# VII. Cadence
+| cr/2. | k/4. k/4. | [k cr]/2. | k/2. |
+# VIII. Hemiola, IX. Chorale: silent
+| R*8 | R*10 |
+# X. Hocket: the drums return halfway through
+| R*4 | { k/4. k/4. }*4 |
+# XI. Reprise
+| { k/8 k/8 r/8 k/8 r/8 k/8 | [k cr]/4. k/4. }*4 |
+# XII. Coda: two bars, then silence
+| cr/2. | k/4. k/4. | R | R |

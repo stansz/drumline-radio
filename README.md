@@ -66,6 +66,7 @@ Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy,
 Originals by SZ (and AI):
 
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
+- **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
