@@ -80,8 +80,11 @@ patch from the same style. Choose the lead's patch on purpose rather than taking
 
 ## Credits
 
-- `composer:` names who wrote it, the user last: `Claude & SZ`, or `GLM, Claude & SZ` when another
-  model wrote the first version and Claude reworked it.
-- Public-domain pieces keep the real composer and add `arranger: Claude & SZ`.
-- Start the file with a comment that says what the song is and how it is built, and give it an
-  `about:` line for the song card.
+- `composer:` names who wrote it, the user last. Credit yourself by your own model name, not by a
+  name copied from another song: `Kimi & SZ` for a song Kimi wrote, or `GLM, Claude & SZ` when GLM
+  wrote the first version and Claude reworked it. Most songs here say Claude because Claude wrote
+  them; that is not a template.
+- Public-domain pieces keep the real composer and add an arranger line in the same form, such as
+  `arranger: Claude & SZ`.
+- Start the file with a comment that says what the song is, who wrote it (the same names as
+  `composer:`), and how it is built, and give it an `about:` line for the song card.
