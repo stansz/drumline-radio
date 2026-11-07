@@ -1,98 +1,163 @@
 ## Goal
 
-Tighten the Synthwave bass on songs with very low bass lines (Underpass, Midnight Arcade):
-
-1. Any oscillator whose frequency would fall below 30 Hz is not created (only rumble, and it makes the
-   limiter pump). This drops Synthwave's sub-octave square under notes below about B1.
-2. Synthwave gets a clean `sub-bass` patch, and Midnight Arcade's `sub` track asks for it with
-   `inst=sub-bass` (Techno already has a `sub-bass` patch, so Techno is unchanged).
-3. Synthwave's `synth-bass` release goes from 0.08 to 0.05.
+Split `src/ui/ui.ts` (one 1,090-line `startUi()` closure) into focused modules, with no change in
+behavior, markup, CSS, storage keys, or keyboard shortcuts. Each new module follows the pattern the
+codebase already uses (`createDial`, `createSaver`, `createScore`): a `createX(deps)` factory that
+looks up its own elements, keeps its own state, wires its own listeners, and returns a small API.
 
 ## Files to touch
 
-- `src/audio/curves.ts`
-- `src/audio/voices.ts`
-- `src/audio/styles.ts`
-- `src/songs/midnight-arcade.song`
-- `tests/curves.test.ts`
-- `docs/sound.md`
+- `src/ui/ui.ts` (shrinks; keeps the player core)
+- `src/ui/dom.ts` (new)
+- `src/ui/settings.ts` (new)
+- `src/ui/links.ts` (new)
+- `src/ui/playlist-view.ts` (new)
+- `src/ui/song-card.ts` (new)
+- `docs/how-it-works.md` (the `src/ui/` section)
 
 ## Steps
 
-1. `src/audio/curves.ts`: add, next to `attackTime`:
-   ```ts
-   /** Below this an oscillator is felt as rumble, not heard, and only eats headroom. */
-   export const MIN_OSC_HZ = 30;
+Move code by function name, not line number. Move bodies verbatim; only change how they reach
+state that now lives in another module (a getter or a callback in `deps`).
 
-   /** Whether an oscillator at `octave` above (or below) a note at `freq` is worth playing. */
-   export function audibleOsc(freq: number, octave: number): boolean {
-     return freq * 2 ** octave >= MIN_OSC_HZ;
-   }
-   ```
-2. `src/audio/voices.ts`: import `audibleOsc` from `./curves` (add it to the existing import line).
-   In the `for (const spec of patch.oscs)` loop, make the first line
-   `if (!audibleOsc(freq, spec.octave)) continue;`. Leave everything else in the loop as is.
-   If a patch then has no oscillators at all for a note, that is fine (it cannot happen with the
-   current patches: every patch has an octave-0 oscillator and the lowest note is C1, 32.7 Hz).
-3. `src/audio/styles.ts`, Synthwave (`STYLE_DEFS.synthwave.patches`):
-   - In `'synth-bass'`, change `env(0.005, 0.2, 0.6, 0.08)` to `env(0.005, 0.2, 0.6, 0.05)`. Nothing
-     else in that patch changes.
-   - Add a new patch right after `'synth-bass'`:
+1. **`src/ui/dom.ts`**: move `load`, `save`, and `required` here unchanged and export them. Every
+   module imports them from here.
+
+2. **`src/ui/settings.ts`**: `export function createSettings(deps: { engine(): Engine | null;
+   updatePlayButton(): void; showSaver(): void })`.
+   - Owns: the `VOLUME_KEY`, `MUTED_KEY`, `REPEAT_KEY`, `DIM_KEY`, `FLASH_KEY`, and `SAVER_KEY`
+     constants; the `volume`, `muted`, `repeat`, `dim`, `flashOn`, and `saverMinutes` state;
+     `outputGain`, `applyVolume`, `toggleMute`, `applyRepeat`, `toggleRepeat`, `applyDim`,
+     `toggleDim`, `toggleFlash`, `applySaverMinutes`, `selectSaverMinutes`; the saver-minutes
+     buttons; the build stamp; the info panel open/close; the `#dim-toggle`, `#flash-toggle`,
+     `#saver-start`, `#mute`, `#volume`, and `#repeat` listeners; and the initial `apply*()` calls.
+   - `#saver-start` calls `infoPanel.close()` and then `deps.showSaver()`.
+   - Returns `{ outputGain, toggleMute, toggleRepeat, get repeat(), get flashOn(),
+     get saverMinutes(), get infoOpen(), volumeEl, init() }`. `init()` runs the initial `apply*()`
+     calls. `volumeEl` is returned so the global key handler can check focus.
+
+3. **`src/ui/links.ts`**: no state, no factory.
+   - Move `shareUrl` as `export function linkUrl(hash: string): string`.
+   - Move `shareLink` as `export async function sendLink(url, title, button)`.
+   - Add `export function takeHash(ids: string[]): ShareLink | null`, holding the parse and
+     `replaceState` half of `consumeHash`.
+   - `consumeHash` stays in `ui.ts` as `const link = takeHash(...); if (link) applyShareLink(link);`.
+
+4. **`src/ui/playlist-view.ts`**: `export function createPlaylistView(deps: { playEntry(at: number):
+   void; onChange(): void })`. `onChange` is `updateReadoutForEngine`.
+   - Owns: the `PLAYLIST_KEY`, `PLAYLIST_LOOP_KEY`, and `VIEW_KEY` constants; the `playlist`,
+     `playlistAt`, `loop`, `incoming`, `view`, and `libraryFilter` state; `songDurations`,
+     `libraryById`, the library filter buttons, `setPlaylist`, `applyView`, `selectView`,
+     `selectLibraryFilter`, `renderLibrary`, `renderPlaylist`, `movePlaylist`,
+     `removeFromPlaylist`, `applyLoop`, `hideIncoming`; the `#pl-start`, `#pl-loop`, `#pl-clear`,
+     and `#pl-link` listeners and the three `#pl-incoming-*` listeners; and the view buttons with
+     their arrow-key handler.
+   - `#pl-start` calls `deps.playEntry(0)`. `#pl-link` uses `linkUrl` and `sendLink` from
+     `links.ts`.
+   - Returns:
      ```ts
-     'sub-bass': synth({
-       name: 'Sub bass',
-       oscs: [osc('sine', 0, 0, 0.85), osc('triangle', 1, 0, 0.15)],
-       env: env(0.003, 0.15, 0.8, 0.05),
-       filter: { type: 'lowpass', hz: 400, q: 0.7, envAmount: 1, envDecay: 0.1 },
-       gain: 0.45,
-       sends: { reverb: 0, delay: 0 },
-     }),
+     {
+       get entries(): PlaylistEntry[];
+       get at(): number | null;
+       set at(value: number | null);   // setting re-renders the playlist
+       get loop(): boolean;
+       get view(): AppView;
+       selectView(next: AppView): void;
+       showIncoming(entries: PlaylistEntry[]): void;
+       stop(): void;                   // at = null, re-render, deps.onChange()
+       init(): void;                   // applyView, applyLoop, renderLibrary, renderPlaylist
+     }
      ```
-   - Do not change the Synthwave `roles` map or any other style.
-4. `src/songs/midnight-arcade.song`: change exactly the line
-   `track sub role=bass vol=0.62` to `track sub role=bass inst=sub-bass vol=0.62`. No other change to
-   the file.
-5. `tests/curves.test.ts`: add a `describe('audibleOsc')` (import `audibleOsc` and `MIN_OSC_HZ`) with:
-   F1 (43.65 Hz) one octave down → `false`; C2 (65.41 Hz) one octave down → `true`; E1 (41.2 Hz) at
-   octave 0 → `true`; exactly `MIN_OSC_HZ` at octave 0 → `true`; 29.9 at octave 0 → `false`.
-6. `docs/sound.md`: where it describes how voices are built (or the Synthwave patches), add one
-   sentence: oscillators that would sound below 30 Hz are skipped, so a sub-octave layer drops out
-   under very low notes. If it lists Synthwave patches, add `sub-bass` (a clean sine sub, used by
-   Midnight Arcade's `sub` track via `inst=sub-bass`). Fix any statement the change makes false
-   (e.g. a quoted synth-bass release of 0.08).
+   - `selectView('radio')` still refits the title and subtitle marquees. Pass a `refit(): void`
+     callback in `deps` for that.
+
+5. **`src/ui/song-card.ts`**: `export function createSongCard(deps: { entry(): LibraryEntry |
+   undefined; position(): number | null; style(): StyleId })`.
+   - Owns: the `#song-card` and `#card-*` elements, `shareAtPosition`, `openSongCard`, the
+     readout's click and keydown listeners, and the close and two share buttons (via `links.ts`).
+   - `position()` returns `engine?.position ?? null`. `style()` is the current `shareStyle`.
+   - Returns `{ open(): void, get isOpen(): boolean }`.
+
+6. **`src/ui/ui.ts`** keeps:
+   - element lookups for what it still uses; the marquees; score; meters; engine;
+   - `current`, `lastStyle`, `pendingStyle`, `pendingSeek`, `bannerTimer`, scrub and seek state;
+   - category state and `CATEGORY_KEY`; `visible`; band and preset buttons and their arrow keys;
+   - `songStyle`, `updateReadout`, `updateReadoutForEngine`, `updateBands`, `updatePlayButton`,
+     `showBanner`, `ensureEngine`, `loadSong`, `shareStyle`, `applyShareLink`, `consumeHash`,
+     `handleEnded`, `selectBand`, `selectCategory`, `togglePlay`, `previous`, `next`,
+     `playEntry`, the dial;
+   - the score scrub and seek listeners, the interaction tracking, the global keydown handler,
+     `updateFlash`, `frame`, and the startup block at the end.
+
+   Wire it up:
+   - Replace `playlistAt = null; renderPlaylist(); updateReadoutForEngine();` sequences with
+     `playlistView.stop()`.
+   - Replace reads of `playlist`, `playlistAt`, `loop`, `view`, `repeat`, `flashOn`, and
+     `saverMinutes` with the module getters.
+   - Replace `infoPanel.open || songCard.open` with `settings.infoOpen || songCard.isOpen`.
+   - In `playEntry`, `playlistAt = at;` becomes `playlistView.at = at;`. The existing call to
+     `renderPlaylist()` goes away because the setter re-renders.
+   - The global keydown handler keeps every shortcut exactly as it is today.
+
+7. **Order of creation in `startUi`**: settings, then playlist view, then song card, then dial.
+   Function declarations are hoisted, so callbacks that point to `ui.ts` functions work. Call
+   `settings.init()` and `playlistView.init()` where the old `apply*()` and `render*()` calls were.
+
+8. **`docs/how-it-works.md`**, `src/ui/` section: replace the `ui.ts` bullet with one bullet per
+   file:
+   - `ui.ts`: the player core: engine, tuning, styles, transport, keyboard, the frame loop;
+   - `settings.ts`: volume, mute, repeat, dim, flash, the screensaver timer, the info panel;
+   - `playlist-view.ts`: the playlist view and the library list;
+   - `song-card.ts`: the song card;
+   - `links.ts`: sending a link and reading a link from the address bar;
+   - `dom.ts`: storage and element helpers.
+
+   Change "`ui.ts` draws the playlist view" to "`playlist-view.ts` draws the playlist view".
 
 ## Acceptance
 
-- `npm run test:sandbox` exits 0.
 - `npm run typecheck` exits 0.
-- `git diff -- src/songs/midnight-arcade.song` shows exactly one changed line, the `track sub` line.
-- `git status --porcelain` lists only files in **Files to touch** (plus `.handoff/`).
+- `wc -l src/ui/ui.ts` prints a number below 650.
+- `grep -l "localStorage" src/ui/*.ts` prints only `src/ui/dom.ts`.
+- `grep -rn "function load\|function save\|function required" src/ui/` matches only
+  `src/ui/dom.ts`.
+- `git diff --stat -- index.html src/ui/style.css` prints nothing.
 
 Verifier only:
-
-- `npm test` exits 0 (includes `tests/drift.test.ts`).
+- `npm test` exits 0.
 - `npm run build` exits 0.
+- Headless Edge smoke check on `npm run dev`:
+  - tune the dial, play/pause, switch style bands with keys 1–6;
+  - change category with `c`; mute with `m`;
+  - open the song card and Share song;
+  - add two songs to the playlist and play it;
+  - load `#song=last-stop&style=chiptune&t=0:30` and `#list=...`;
+  - check there are no console errors.
 
 ## Parallel work
 
-None — do it sequentially.
+None — do it sequentially. Every module is carved out of the same file.
 
 ## Constraints
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and report
-  it; do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past it.
-- `src/audio/curves.ts` and `src/audio/styles.ts` stay free of the DOM and audio.
-- No note in any `.song` file changes.
+- No behavior changes: same storage keys, same element ids, same shortcuts, same text, and the same
+  order of side effects inside each moved function.
+- Do not add dependencies or frameworks, and do not change `view.ts`, `playlist.ts`, `share.ts`,
+  `dial.ts`, or anything outside `src/ui/` except the doc.
+- Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and
+  report it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules.
 
 ## Out of scope
 
-- Any other style's patches, the Techno `sub-bass` patch, the mixer, compressor or limiter.
-- Underpass's song file or `tools/arranger/club.mjs`.
-- Changing bass octaves in any song.
+- Style filter chips, grouping the dial by style, or any other new feature.
+- Splitting `style.css`, `song.ts`, or the audio files.
+- Renaming existing functions beyond `shareUrl` → `linkUrl` and `shareLink` → `sendLink` (moved
+  into `links.ts`).
 
 ## If blocked
 
-Stop and write `.handoff/report.md` with the failing step, the exact command and output, and what you
-would need to continue.
+If a moved function needs state from two modules in a way the APIs above don't cover, leave that
+function in `ui.ts`, finish the rest, and list it in `.handoff/report.md`. If `npm run typecheck`
+fails and the fix isn't a missing import or getter, stop and report the error.

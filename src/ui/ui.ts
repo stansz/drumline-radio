@@ -1,92 +1,38 @@
 import { createDial } from './dial';
 import { Engine } from '../audio/engine';
 import { LIBRARY, LIBRARY_ERRORS } from '../music/library';
-import { createMeters, SEGMENTS } from './meters';
+import { createMeters } from './meters';
 import { STYLES } from '../music/roles';
 import type { StyleId } from '../music/roles';
 import { createScore } from './score';
 import { STYLE_DEFS } from '../audio/styles';
-import { buildTimeline, notesBetween } from '../music/timing';
+import { notesBetween } from '../music/timing';
 import { createSaver } from './saver';
 import { createWakeLock } from './wake';
 import {
+  categoryLabel,
+  CATEGORY_FILTERS,
   flashStep,
   formatTime,
   nextAfterEnd,
-  parseSaverMinutes,
-  parseVolume,
+  parseCategory,
   prevAction,
-  SAVER_OPTIONS,
   scrubTarget,
   shouldStartSaver,
-  songFacts,
-  volumeGain,
-} from './view';
-import { createMarquee } from './marquee';
-import {
-  categoryLabel,
-  CATEGORY_FILTERS,
-  parseCategory,
   stationsIn,
   stepStation,
 } from './view';
-import type { CategoryFilter, SaverMinutes } from './view';
-import {
-  addEntry,
-  moveEntry,
-  nextInPlaylist,
-  parsePlaylist,
-  parseView,
-  prevInPlaylist,
-  removeEntry,
-  serializePlaylist,
-  PLAYLIST_MAX,
-} from './playlist';
-import type { AppView, PlaylistEntry } from './playlist';
-import {
-  formatShareTime,
-  parseShareHash,
-  playlistHash,
-  songHash,
-} from './share';
+import type { CategoryFilter } from './view';
+import { createMarquee } from './marquee';
+import { nextInPlaylist, prevInPlaylist } from './playlist';
 import type { ShareLink } from './share';
+import { createSettings } from './settings';
+import { createPlaylistView } from './playlist-view';
+import { createSongCard } from './song-card';
+import { takeHash } from './links';
+import { load, required, save } from './dom';
 
-// Set by vite.config.ts at build time.
-declare const __BUILD_COMMIT__: string;
-declare const __BUILD_TIME__: string;
-
-const VOLUME_KEY = 'drumline-radio-volume';
-const MUTED_KEY = 'drumline-radio-muted';
-const REPEAT_KEY = 'drumline-radio-repeat';
 const CATEGORY_KEY = 'drumline-radio-category';
-const DIM_KEY = 'drumline-radio-dim';
-const FLASH_KEY = 'drumline-radio-flash';
-const SAVER_KEY = 'drumline-radio-saver';
-const PLAYLIST_KEY = 'drumline-radio-playlist';
-const PLAYLIST_LOOP_KEY = 'drumline-radio-playlist-loop';
-const VIEW_KEY = 'drumline-radio-view';
-
-function load(key: string): string | null {
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-
-function save(key: string, value: string): void {
-  try {
-    localStorage.setItem(key, value);
-  } catch {
-    // Settings just aren't remembered without storage.
-  }
-}
-
-function required<T extends Element>(selector: string): T {
-  const element = document.querySelector<T>(selector);
-  if (!element) throw new Error(`missing ${selector}`);
-  return element;
-}
 
 export function startUi(): void {
   for (const error of LIBRARY_ERRORS) console.error(error);
@@ -95,57 +41,21 @@ export function startUi(): void {
   const subtitleEl = required<HTMLElement>('#subtitle');
   const readoutEl = required<HTMLElement>('.readout');
   const metersCanvas = required<HTMLCanvasElement>('#meters');
-  const muteButton = required<HTMLButtonElement>('#mute');
-  const volumeEl = required<HTMLInputElement>('#volume');
   const scoreCanvas = required<HTMLCanvasElement>('#score');
   const banner = required<HTMLElement>('#style-banner');
   const dialEl = required<HTMLElement>('#dial');
   const prevButton = required<HTMLButtonElement>('#prev');
   const playButton = required<HTMLButtonElement>('#play');
   const nextButton = required<HTMLButtonElement>('#next');
-  const repeatButton = required<HTMLButtonElement>('#repeat');
   const elapsedEl = required<HTMLElement>('#elapsed');
   const totalEl = required<HTMLElement>('#total');
   const seekEl = required<HTMLInputElement>('#seek');
   const bandsEl = required<HTMLElement>('#bands');
   const presetsEl = required<HTMLElement>('#presets');
-  const infoButton = required<HTMLButtonElement>('#info');
-  const infoPanel = required<HTMLDialogElement>('#info-panel');
-  const infoClose = required<HTMLButtonElement>('#info-close');
-  const songCard = required<HTMLDialogElement>('#song-card');
-  const cardTitle = required<HTMLElement>('#card-title');
-  const cardByline = required<HTMLElement>('#card-byline');
-  const cardFacts = required<HTMLElement>('#card-facts');
-  const cardAbout = required<HTMLElement>('#card-about');
-  const cardShare = required<HTMLButtonElement>('#card-link');
-  const cardShareAt = required<HTMLButtonElement>('#card-link-at');
-  const cardClose = required<HTMLButtonElement>('#card-close');
-  const dimToggle = required<HTMLButtonElement>('#dim-toggle');
-  const flashToggle = required<HTMLButtonElement>('#flash-toggle');
-  const saverStart = required<HTMLButtonElement>('#saver-start');
-  const saverAutoEl = required<HTMLElement>('#saver-auto');
-  const dimOverlay = required<HTMLElement>('#dim');
   const saverOverlay = required<HTMLElement>('#screensaver');
   const saverBox = required<HTMLElement>('#saver-box');
   const saverTitle = required<HTMLElement>('#saver-title');
   const saverTime = required<HTMLElement>('#saver-time');
-  const viewsEl = required<HTMLElement>('#views');
-  const playlistView = required<HTMLElement>('#playlist-view');
-  const playlistCount = required<HTMLElement>('#pl-count');
-  const playlistStart = required<HTMLButtonElement>('#pl-start');
-  const playlistLoop = required<HTMLButtonElement>('#pl-loop');
-  const playlistClear = required<HTMLButtonElement>('#pl-clear');
-  const playlistShare = required<HTMLButtonElement>('#pl-link');
-  const playlistList = required<HTMLElement>('#pl-list');
-  const playlistEmpty = required<HTMLElement>('#pl-empty');
-  const incomingNotice = required<HTMLElement>('#pl-incoming');
-  const incomingText = required<HTMLElement>('#pl-incoming-text');
-  const incomingReplace = required<HTMLButtonElement>('#pl-incoming-replace');
-  const incomingAdd = required<HTMLButtonElement>('#pl-incoming-add');
-  const incomingDismiss = required<HTMLButtonElement>('#pl-incoming-dismiss');
-  const playlistFilters = required<HTMLElement>('#pl-filters');
-  const playlistSongs = required<HTMLElement>('#pl-songs');
-  const viewButtons = Array.from(viewsEl.querySelectorAll<HTMLButtonElement>('.view-btn'));
   const root = document.documentElement;
 
   const titleMarquee = createMarquee(titleEl);
@@ -169,8 +79,6 @@ export function startUi(): void {
   // A shared link can tune the first engine before it exists; the settings wait here.
   let pendingStyle: StyleId | null = null;
   let pendingSeek: number | null = null;
-  // The position the song card's "Share from" button will use.
-  let shareAtPosition: number | null = null;
   let bannerTimer = 0;
   let draggingSeek = false;
   // Dragging the score scrubs: the score follows the finger and the song seeks on release.
@@ -178,30 +86,37 @@ export function startUi(): void {
 
   let category: CategoryFilter = parseCategory(load(CATEGORY_KEY));
 
-  let playlist: PlaylistEntry[] = parsePlaylist(
-    load(PLAYLIST_KEY),
-    LIBRARY.map((entry) => entry.id),
-  );
-  let playlistAt: number | null = null;
-  let loop = load(PLAYLIST_LOOP_KEY) === '1';
-  // A shared playlist waits in `incoming` until the listener picks a button.
-  let incoming: PlaylistEntry[] = [];
-  let view: AppView = parseView(load(VIEW_KEY));
-  let libraryFilter: CategoryFilter = 'all';
-  // Durations and the id lookup are fixed for the session, so the lists never recompute them.
-  const songDurations = LIBRARY.map((entry) => buildTimeline(entry.song).duration);
-  const libraryById = new Map(LIBRARY.map((entry) => [entry.id, entry]));
-
-  let dim = load(DIM_KEY) === '1';
-  let flashOn = load(FLASH_KEY) !== '0';
   let flashStart = Number.NEGATIVE_INFINITY;
-  let saverMinutes: SaverMinutes = parseSaverMinutes(load(SAVER_KEY));
   let lastInteraction = performance.now();
 
   const wake = createWakeLock();
   const saver = createSaver(saverOverlay, saverBox, saverTitle, saverTime, () => {
     lastInteraction = performance.now();
     updatePlayButton();
+  });
+
+  const settings = createSettings({
+    engine: () => engine,
+    updatePlayButton,
+    showSaver: () => {
+      saver.show();
+      updatePlayButton();
+    },
+  });
+
+  const playlistView = createPlaylistView({
+    playEntry: (at) => playEntry(at),
+    onChange: updateReadoutForEngine,
+    refit: () => {
+      titleMarquee.refit();
+      subtitleMarquee.refit();
+    },
+  });
+
+  const songCard = createSongCard({
+    entry: () => LIBRARY[current],
+    position: () => engine?.position ?? null,
+    style: shareStyle,
   });
 
   const bandButtons: HTMLButtonElement[] = [];
@@ -230,31 +145,6 @@ export function startUi(): void {
     presetButtons.push(button);
   }
 
-  const libraryButtons: HTMLButtonElement[] = [];
-  for (const filter of CATEGORY_FILTERS) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'preset';
-    button.setAttribute('role', 'radio');
-    button.textContent = categoryLabel(filter);
-    button.setAttribute('aria-checked', String(filter === libraryFilter));
-    button.addEventListener('click', () => selectLibraryFilter(filter));
-    playlistFilters.append(button);
-    libraryButtons.push(button);
-  }
-
-  const saverButtons: HTMLButtonElement[] = [];
-  for (const minutes of SAVER_OPTIONS) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'info-choice';
-    button.setAttribute('role', 'radio');
-    button.textContent = minutes === 0 ? 'Off' : `${minutes} min`;
-    button.addEventListener('click', () => selectSaverMinutes(minutes));
-    saverAutoEl.append(button);
-    saverButtons.push(button);
-  }
-
   const visible = (): number[] =>
     stationsIn(
       LIBRARY.map((entry) => entry.song.meta.category),
@@ -276,8 +166,9 @@ export function startUi(): void {
       song.meta.arranger === null
         ? song.meta.composer
         : `${song.meta.composer}, arr. ${song.meta.arranger}`;
+    const at = playlistView.at;
     const position =
-      playlistAt === null ? '' : ` · ${playlistAt + 1}/${playlist.length}`;
+      at === null ? '' : ` · ${at + 1}/${playlistView.entries.length}`;
     subtitleMarquee.set(`${byline} · ${song.meta.year} · ${name}${remix}${position}`);
   }
 
@@ -317,74 +208,6 @@ export function startUi(): void {
     bannerTimer = window.setTimeout(() => banner.classList.remove('show'), 2500);
   }
 
-  let volume = parseVolume(load(VOLUME_KEY));
-  let muted = load(MUTED_KEY) === '1';
-  let repeat = load(REPEAT_KEY) === '1';
-
-  function outputGain(): number {
-    return muted ? 0 : volumeGain(volume);
-  }
-
-  function applyVolume(): void {
-    volumeEl.value = String(volume);
-    const lit = Math.round((volume / 100) * SEGMENTS);
-    volumeEl.style.setProperty('--fill', `${(lit / SEGMENTS) * 100}%`);
-    muteButton.setAttribute('aria-pressed', String(muted));
-    muteButton.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
-    muteButton.classList.toggle('muted', muted || volume === 0);
-    engine?.setVolume(outputGain());
-  }
-
-  function toggleMute(): void {
-    muted = !muted;
-    save(MUTED_KEY, muted ? '1' : '0');
-    applyVolume();
-  }
-
-  function applyRepeat(): void {
-    repeatButton.setAttribute('aria-pressed', String(repeat));
-    repeatButton.classList.toggle('on', repeat);
-  }
-
-  function toggleRepeat(): void {
-    repeat = !repeat;
-    save(REPEAT_KEY, repeat ? '1' : '0');
-    applyRepeat();
-  }
-
-  function applyDim(): void {
-    dimOverlay.hidden = !dim;
-    dimToggle.setAttribute('aria-pressed', String(dim));
-    updatePlayButton();
-  }
-
-  function toggleDim(): void {
-    dim = !dim;
-    save(DIM_KEY, dim ? '1' : '0');
-    applyDim();
-  }
-
-  function toggleFlash(): void {
-    flashOn = !flashOn;
-    save(FLASH_KEY, flashOn ? '1' : '0');
-    flashToggle.setAttribute('aria-pressed', String(flashOn));
-  }
-
-  function applySaverMinutes(): void {
-    for (let index = 0; index < SAVER_OPTIONS.length; index += 1) {
-      saverButtons[index].setAttribute(
-        'aria-checked',
-        String(SAVER_OPTIONS[index] === saverMinutes),
-      );
-    }
-  }
-
-  function selectSaverMinutes(minutes: SaverMinutes): void {
-    saverMinutes = minutes;
-    save(SAVER_KEY, String(minutes));
-    applySaverMinutes();
-  }
-
   function ensureEngine(): Engine | null {
     const entry = LIBRARY[current];
     if (!entry) return null;
@@ -393,7 +216,7 @@ export function startUi(): void {
     const ctx = new AudioContext();
     const created = new Engine(ctx);
     created.onEnded = handleEnded;
-    created.setVolume(outputGain());
+    created.setVolume(settings.outputGain());
     created.load(entry.song);
     if (pendingStyle) created.setStyle(pendingStyle);
     if (pendingSeek !== null) created.seek(pendingSeek);
@@ -440,52 +263,17 @@ export function startUi(): void {
     updatePlayButton();
   }
 
-  function shareUrl(hash: string): string {
-    return location.origin + location.pathname + hash;
-  }
-
   function shareStyle(): StyleId {
     return engine?.style ?? pendingStyle ?? songStyle();
-  }
-
-  async function shareLink(
-    url: string,
-    title: string,
-    button: HTMLButtonElement,
-  ): Promise<void> {
-    if (navigator.share) {
-      try {
-        await navigator.share({ title, url });
-      } catch {
-        // Sharing was cancelled, or the browser could not open the sheet.
-      }
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      const old = button.textContent;
-      button.textContent = 'Link copied';
-      window.setTimeout(() => {
-        button.textContent = old;
-      }, 2000);
-    } catch {
-      window.prompt('Copy this link', url);
-    }
-  }
-
-  function hideIncoming(): void {
-    incoming = [];
-    incomingNotice.hidden = true;
-    incomingText.textContent = '';
   }
 
   function applyShareLink(link: ShareLink): void {
     if (link.kind === 'song') {
       const index = LIBRARY.findIndex((entry) => entry.id === link.song);
       if (index < 0) return;
-      playlistAt = null;
+      playlistView.at = null;
       if (!visible().includes(index)) selectCategory('all');
-      selectView('radio');
+      playlistView.selectView('radio');
       if (engine) {
         loadSong(index);
         if (link.style) selectBand(STYLES.indexOf(link.style));
@@ -504,41 +292,28 @@ export function startUi(): void {
       return;
     }
 
-    selectView('playlist');
-    incoming = link.entries;
-    incomingText.textContent = `Shared playlist: ${incoming.length} songs`;
-    incomingNotice.hidden = false;
+    playlistView.selectView('playlist');
+    playlistView.showIncoming(link.entries);
   }
 
   function consumeHash(): void {
-    const link = parseShareHash(
-      location.hash,
-      LIBRARY.map((entry) => entry.id),
-    );
-    if (location.hash !== '') {
-      try {
-        history.replaceState(null, '', location.pathname + location.search);
-      } catch {
-        // Without history the link still tunes the app; the hash just stays put.
-      }
-    }
+    const link = takeHash(LIBRARY.map((entry) => entry.id));
     if (link) applyShareLink(link);
   }
 
   function handleEnded(): void {
-    if (playlistAt !== null) {
-      const n = nextInPlaylist(playlistAt, playlist.length, repeat, loop);
+    const at = playlistView.at;
+    if (at !== null) {
+      const n = nextInPlaylist(at, playlistView.entries.length, settings.repeat, playlistView.loop);
       if (n < 0) {
-        playlistAt = null;
-        renderPlaylist();
-        updateReadoutForEngine();
+        playlistView.stop();
         updatePlayButton();
         return;
       }
       playEntry(n);
       return;
     }
-    loadSong(nextAfterEnd(current, visible(), repeat));
+    loadSong(nextAfterEnd(current, visible(), settings.repeat));
     engine?.play();
     updatePlayButton();
   }
@@ -557,9 +332,7 @@ export function startUi(): void {
   }
 
   function selectCategory(filter: CategoryFilter): void {
-    playlistAt = null;
-    renderPlaylist();
-    updateReadoutForEngine();
+    playlistView.stop();
     category = filter;
     save(CATEGORY_KEY, filter);
     for (let index = 0; index < CATEGORY_FILTERS.length; index += 1) {
@@ -595,8 +368,9 @@ export function startUi(): void {
       updatePlayButton();
       return;
     }
-    if (playlistAt !== null) {
-      const p = prevInPlaylist(playlistAt, playlist.length);
+    const at = playlistView.at;
+    if (at !== null) {
+      const p = prevInPlaylist(at, playlistView.entries.length);
       if (p >= 0) playEntry(p);
       return;
     }
@@ -605,192 +379,17 @@ export function startUi(): void {
 
   function next(): void {
     if (!ensureEngine()) return;
-    if (playlistAt !== null) {
-      const n = nextInPlaylist(playlistAt, playlist.length, false, true);
+    const at = playlistView.at;
+    if (at !== null) {
+      const n = nextInPlaylist(at, playlistView.entries.length, false, true);
       if (n >= 0) playEntry(n);
       return;
     }
     loadSong(stepStation(visible(), current, 1));
   }
 
-  function setPlaylist(list: PlaylistEntry[]): void {
-    playlist = list;
-    save(PLAYLIST_KEY, serializePlaylist(list));
-    renderPlaylist();
-  }
-
-  function applyView(): void {
-    root.dataset.view = view;
-    playlistView.hidden = view !== 'playlist';
-    for (const button of viewButtons) {
-      button.setAttribute('aria-checked', String(button.dataset.view === view));
-    }
-  }
-
-  function selectView(next: AppView): void {
-    view = next;
-    save(VIEW_KEY, view);
-    applyView();
-    if (view === 'radio') {
-      titleMarquee.refit();
-      subtitleMarquee.refit();
-    }
-  }
-
-  function selectLibraryFilter(filter: CategoryFilter): void {
-    libraryFilter = filter;
-    for (let index = 0; index < CATEGORY_FILTERS.length; index += 1) {
-      libraryButtons[index].setAttribute(
-        'aria-checked',
-        String(CATEGORY_FILTERS[index] === filter),
-      );
-    }
-    renderLibrary();
-  }
-
-  function renderLibrary(): void {
-    playlistSongs.textContent = '';
-    const rows = stationsIn(
-      LIBRARY.map((entry) => entry.song.meta.category),
-      libraryFilter,
-    );
-    for (const index of rows) {
-      const entry = LIBRARY[index];
-      const song = entry.song;
-      const row = document.createElement('li');
-      row.className = 'pl-song';
-
-      const text = document.createElement('div');
-      text.className = 'pl-song-text';
-      const title = document.createElement('span');
-      title.className = 'pl-song-title';
-      title.textContent = song.meta.title;
-      const meta = document.createElement('span');
-      meta.className = 'pl-song-meta';
-      meta.textContent = `${song.meta.composer} · ${formatTime(songDurations[index])}`;
-      text.append(title, meta);
-
-      const select = document.createElement('select');
-      select.className = 'pl-style';
-      select.setAttribute('aria-label', `Style for ${song.meta.title}`);
-      for (const id of STYLES) {
-        const option = document.createElement('option');
-        option.value = id;
-        option.textContent = `${id === song.meta.style ? '★ ' : ''}${STYLE_DEFS[id].name}`;
-        if (id === song.meta.style) option.selected = true;
-        select.append(option);
-      }
-
-      const add = document.createElement('button');
-      add.type = 'button';
-      add.className = 'pl-add';
-      add.setAttribute('aria-label', `Add ${song.meta.title} to playlist`);
-      add.textContent = '+';
-      add.addEventListener('click', () => {
-        if (playlist.length >= PLAYLIST_MAX) {
-          add.textContent = 'Full';
-          window.setTimeout(() => {
-            add.textContent = '+';
-          }, 900);
-          return;
-        }
-        setPlaylist(addEntry(playlist, { song: entry.id, style: select.value as StyleId }));
-        add.textContent = '✓';
-        window.setTimeout(() => {
-          add.textContent = '+';
-        }, 900);
-      });
-
-      row.append(text, select, add);
-      playlistSongs.append(row);
-    }
-  }
-
-  function renderPlaylist(): void {
-    playlistCount.textContent = playlist.length > 0 ? `(${playlist.length})` : '';
-    playlistEmpty.hidden = playlist.length > 0;
-    playlistStart.disabled = playlist.length === 0;
-    playlistClear.disabled = playlist.length === 0;
-    playlistShare.disabled = playlist.length === 0;
-    playlistList.textContent = '';
-    for (let index = 0; index < playlist.length; index += 1) {
-      const item = playlist[index];
-      const entry = libraryById.get(item.song);
-      if (!entry) continue;
-      const song = entry.song;
-
-      const row = document.createElement('li');
-      row.className = 'pl-item';
-      if (index === playlistAt) {
-        row.classList.add('playing');
-        row.setAttribute('aria-current', 'true');
-      }
-
-      const number = document.createElement('span');
-      number.className = 'pl-num';
-      number.textContent = String(index + 1);
-
-      const play = document.createElement('button');
-      play.type = 'button';
-      play.className = 'pl-entry';
-      const title = document.createElement('span');
-      title.className = 'pl-song-title';
-      title.textContent = song.meta.title;
-      const meta = document.createElement('span');
-      meta.className = 'pl-song-meta';
-      const remix = item.style === song.meta.style ? '' : ' remix';
-      meta.textContent = `${STYLE_DEFS[item.style].name}${remix}`;
-      play.append(title, meta);
-      play.addEventListener('click', () => playEntry(index));
-
-      const up = document.createElement('button');
-      up.type = 'button';
-      up.className = 'pl-icon';
-      up.textContent = '↑';
-      up.setAttribute('aria-label', `Move ${song.meta.title} up`);
-      up.disabled = index === 0;
-      up.addEventListener('click', () => movePlaylist(index, -1));
-
-      const down = document.createElement('button');
-      down.type = 'button';
-      down.className = 'pl-icon';
-      down.textContent = '↓';
-      down.setAttribute('aria-label', `Move ${song.meta.title} down`);
-      down.disabled = index === playlist.length - 1;
-      down.addEventListener('click', () => movePlaylist(index, 1));
-
-      const remove = document.createElement('button');
-      remove.type = 'button';
-      remove.className = 'pl-icon';
-      remove.textContent = '✕';
-      remove.setAttribute('aria-label', `Remove ${song.meta.title}`);
-      remove.addEventListener('click', () => removeFromPlaylist(index));
-
-      row.append(number, play, up, down, remove);
-      playlistList.append(row);
-    }
-  }
-
-  function movePlaylist(index: number, delta: -1 | 1): void {
-    const result = moveEntry(playlist, playlistAt, index, delta);
-    playlistAt = result.at;
-    setPlaylist(result.list);
-    updateReadoutForEngine();
-  }
-
-  function removeFromPlaylist(index: number): void {
-    const result = removeEntry(playlist, playlistAt, index);
-    playlistAt = result.at;
-    setPlaylist(result.list);
-    updateReadoutForEngine();
-  }
-
-  function applyLoop(): void {
-    playlistLoop.setAttribute('aria-pressed', String(loop));
-  }
-
   function playEntry(at: number): void {
-    const item = playlist[at];
+    const item = playlistView.entries[at];
     if (!item) return;
     const index = LIBRARY.findIndex((entry) => entry.id === item.song);
     if (index < 0) return;
@@ -801,7 +400,7 @@ export function startUi(): void {
     if (!active) return;
     if (!fresh) loadSong(index);
     const changed = lastStyle !== null && lastStyle !== item.style;
-    playlistAt = at;
+    playlistView.at = at;
     active.setStyle(item.style);
     root.dataset.style = item.style;
     if (changed && !fresh) showBanner(item.style);
@@ -811,153 +410,18 @@ export function startUi(): void {
     dial.select(current, false);
     active.play();
     updatePlayButton();
-    renderPlaylist();
   }
 
   // Tuning to a station keeps the play state: it plays on if music was playing, stays stopped if not.
   const dial = createDial(dialEl, LIBRARY, (index) => {
-    playlistAt = null;
-    renderPlaylist();
-    updateReadoutForEngine();
+    playlistView.stop();
     loadSong(index);
     updatePlayButton();
   });
 
-  function openSongCard(): void {
-    const entry = LIBRARY[current];
-    if (!entry) return;
-    const { meta } = entry.song;
-    cardTitle.textContent = meta.title;
-    cardByline.textContent =
-      meta.arranger === null ? meta.composer : `${meta.composer} · arr. ${meta.arranger}`;
-    cardFacts.textContent = '';
-    const facts = songFacts(
-      meta,
-      categoryLabel(meta.category),
-      STYLE_DEFS[meta.style].name,
-      buildTimeline(entry.song).duration,
-    );
-    for (const [label, value] of facts) {
-      const dt = document.createElement('dt');
-      dt.textContent = label;
-      const dd = document.createElement('dd');
-      dd.textContent = value;
-      cardFacts.append(dt, dd);
-    }
-    if (meta.about === null) {
-      cardAbout.hidden = true;
-    } else {
-      cardAbout.hidden = false;
-      cardAbout.textContent = meta.about;
-    }
-    if (engine && engine.position >= 5) {
-      shareAtPosition = engine.position;
-      cardShareAt.hidden = false;
-      cardShareAt.textContent = `Share from ${formatShareTime(shareAtPosition)}`;
-    } else {
-      shareAtPosition = null;
-      cardShareAt.hidden = true;
-    }
-    songCard.showModal();
-  }
-
-  readoutEl.addEventListener('click', () => openSongCard());
-  readoutEl.addEventListener('keydown', (event) => {
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-    event.preventDefault();
-    openSongCard();
-  });
-  cardClose.addEventListener('click', () => songCard.close());
-
-  cardShare.addEventListener('click', () => {
-    const entry = LIBRARY[current];
-    if (!entry) return;
-    void shareLink(
-      shareUrl(songHash(entry.id, shareStyle(), null)),
-      entry.song.meta.title,
-      cardShare,
-    );
-  });
-  cardShareAt.addEventListener('click', () => {
-    const entry = LIBRARY[current];
-    if (!entry || shareAtPosition === null) return;
-    void shareLink(
-      shareUrl(songHash(entry.id, shareStyle(), shareAtPosition)),
-      entry.song.meta.title,
-      cardShareAt,
-    );
-  });
-
-  playlistShare.addEventListener('click', () => {
-    const hash = playlistHash(playlist);
-    if (hash === '') return;
-    void shareLink(shareUrl(hash), 'Drumline Radio playlist', playlistShare);
-  });
-
-  incomingReplace.addEventListener('click', () => {
-    if (incoming.length === 0) {
-      hideIncoming();
-      return;
-    }
-    setPlaylist(incoming);
-    hideIncoming();
-  });
-  incomingAdd.addEventListener('click', () => {
-    if (incoming.length === 0) {
-      hideIncoming();
-      return;
-    }
-    let next = playlist;
-    for (const entry of incoming) next = addEntry(next, entry);
-    setPlaylist(next);
-    hideIncoming();
-  });
-  incomingDismiss.addEventListener('click', hideIncoming);
-
   playButton.addEventListener('click', togglePlay);
   prevButton.addEventListener('click', previous);
   nextButton.addEventListener('click', next);
-  repeatButton.addEventListener('click', toggleRepeat);
-
-  for (const button of viewButtons) {
-    button.addEventListener('click', () => selectView(parseView(button.dataset.view ?? null)));
-  }
-  viewsEl.addEventListener('keydown', (event) => {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-    event.preventDefault();
-    event.stopPropagation();
-    selectView(view === 'radio' ? 'playlist' : 'radio');
-  });
-  playlistStart.addEventListener('click', () => playEntry(0));
-  playlistLoop.addEventListener('click', () => {
-    loop = !loop;
-    save(PLAYLIST_LOOP_KEY, loop ? '1' : '0');
-    applyLoop();
-  });
-  playlistClear.addEventListener('click', () => {
-    if (!window.confirm('Clear the playlist?')) return;
-    playlistAt = null;
-    setPlaylist([]);
-    updateReadoutForEngine();
-  });
-
-  const builtAt = new Date(__BUILD_TIME__).toLocaleString(undefined, {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-  required<HTMLParagraphElement>('#build-stamp').textContent = `Build ${__BUILD_COMMIT__} · ${builtAt}`;
-  infoButton.addEventListener('click', () => infoPanel.showModal());
-  infoClose.addEventListener('click', () => infoPanel.close());
-  dimToggle.addEventListener('click', toggleDim);
-  flashToggle.setAttribute('aria-pressed', String(flashOn));
-  flashToggle.addEventListener('click', toggleFlash);
-  saverStart.addEventListener('click', () => {
-    infoPanel.close();
-    saver.show();
-    updatePlayButton();
-  });
 
   const noteInteraction = (): void => {
     lastInteraction = performance.now();
@@ -993,20 +457,7 @@ export function startUi(): void {
     presetButtons[nextIndex].focus();
   });
 
-  applyVolume();
-  applyRepeat();
-  applyDim();
-  applySaverMinutes();
-  muteButton.addEventListener('click', toggleMute);
-  volumeEl.addEventListener('input', () => {
-    volume = Number(volumeEl.value);
-    if (muted && volume > 0) {
-      muted = false;
-      save(MUTED_KEY, '0');
-    }
-    save(VOLUME_KEY, String(volume));
-    applyVolume();
-  });
+  settings.init();
 
   scoreCanvas.addEventListener('pointerdown', (event) => {
     if (!engine || engine.duration <= 0) return;
@@ -1052,14 +503,14 @@ export function startUi(): void {
       return;
     }
     if (document.activeElement instanceof HTMLSelectElement) return;
-    if (infoPanel.open || songCard.open) return;
-    if (document.activeElement === seekEl || document.activeElement === volumeEl) return;
+    if (settings.infoOpen || songCard.isOpen) return;
+    if (document.activeElement === seekEl || document.activeElement === settings.volumeEl) return;
     if (event.key === 'm' || event.key === 'M') {
-      toggleMute();
+      settings.toggleMute();
       return;
     }
     if (event.key === 'r' || event.key === 'R') {
-      toggleRepeat();
+      settings.toggleRepeat();
       return;
     }
     if (event.key === 's' || event.key === 'S') {
@@ -1068,7 +519,7 @@ export function startUi(): void {
       return;
     }
     if (event.key === 'p' || event.key === 'P') {
-      selectView(view === 'radio' ? 'playlist' : 'radio');
+      playlistView.selectView(playlistView.view === 'radio' ? 'playlist' : 'radio');
       return;
     }
     if (event.key === 'c' || event.key === 'C') {
@@ -1099,7 +550,7 @@ export function startUi(): void {
 
   function updateFlash(active: Engine): void {
     let kick = false;
-    if (flashOn && active.style === 'techno' && active.playing && active.timeline && active.song) {
+    if (settings.flashOn && active.style === 'techno' && active.playing && active.timeline && active.song) {
       const position = active.position;
       for (const note of notesBetween(active.timeline, position - 0.06, position + 0.0001)) {
         const track = active.song.tracks[note.track];
@@ -1111,7 +562,7 @@ export function startUi(): void {
     }
     const step = flashStep(flashStart, performance.now() / 1000, kick);
     flashStart = step.start;
-    const level = flashOn ? step.level : 0;
+    const level = settings.flashOn ? step.level : 0;
     root.style.setProperty('--flash', level.toFixed(3));
   }
 
@@ -1119,9 +570,9 @@ export function startUi(): void {
     if (
       shouldStartSaver(
         performance.now() - lastInteraction,
-        saverMinutes,
+        settings.saverMinutes,
         engine?.playing ?? false,
-        saver.visible || infoPanel.open || songCard.open,
+        saver.visible || settings.infoOpen || songCard.isOpen,
       )
     ) {
       saver.show();
@@ -1154,10 +605,7 @@ export function startUi(): void {
     requestAnimationFrame(frame);
   }
 
-  applyView();
-  applyLoop();
-  renderLibrary();
-  renderPlaylist();
+  playlistView.init();
 
   if (LIBRARY.length === 0) {
     titleMarquee.set('Drumline Radio');

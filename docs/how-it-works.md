@@ -48,12 +48,17 @@ There are no recordings. Each song is a small text score, and the browser's buil
 
 ### `src/ui/`: the screen
 
-- `ui.ts` wires it all together: buttons, keyboard, volume, repeat, saved settings.
+- `ui.ts` is the player core: engine, tuning, styles, transport, keyboard, the frame loop.
+- `settings.ts` is volume, mute, repeat, dim, flash, the screensaver timer, and the info panel.
+- `playlist-view.ts` is the playlist view and the library list.
+- `song-card.ts` is the song card.
+- `links.ts` sends a link and reads a link from the address bar.
+- `dom.ts` has the storage and element helpers.
 - `saver.ts` is the dim and black screensaver overlays, and `wake.ts` keeps the screen awake while music plays.
 - `dial.ts` is the tuner strip of stations. `score.ts` draws the scrolling notes. `meters.ts`
   draws the L/R meters. `marquee.ts` scrolls long readout text back and forth. `view.ts` has the
   screen math, kept pure so it can be tested. `playlist.ts` is the playlist logic (saved list,
-  reorder, remove, what plays next), kept pure so it can be tested; `ui.ts` draws the playlist view
+  reorder, remove, what plays next), kept pure so it can be tested; `playlist-view.ts` draws the playlist view
   and plays its entries. `share.ts` builds and reads share links (`#song=…&style=…&t=…` and
   `#list=…`), kept pure so it can be tested.
 
