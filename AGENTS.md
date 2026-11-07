@@ -22,6 +22,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   `src/songs/`. [docs/how-it-works.md](docs/how-it-works.md) is the short overview.
 - Keep everything in `src/music/`, plus `src/audio/styles.ts`, `src/audio/curves.ts`, and
   `src/ui/view.ts`, free of the DOM and audio, so Vitest can test them.
+- `tsconfig.json` type-checks `src/` with browser types only; `tsconfig.node.json` adds Node
+  types for `tests/` and `vite.config.ts`. Don't add Node types to `src/`. `npm run typecheck`
+  runs both.
 - `src/audio/engine.ts` and `src/audio/voices.ts` don't touch the DOM.
 - Every voice connects to its track's channel in `engine.ts`, never straight to the master chain,
   so track volume, pan, and sends cover everything.
@@ -57,3 +60,4 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   doc in the same change.
 - Update `README.md` for features or commands, `docs/song-format.md` for the song format, and
   this file for rules.
+- Files use LF line endings, UTF-8, and 2-space indents (`.gitattributes`, `.editorconfig`).

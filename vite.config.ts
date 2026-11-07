@@ -1,14 +1,8 @@
-// @ts-ignore -- @types/node is not a dependency here, and tsconfig/package.json are outside this change.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
-// @ts-ignore -- same reason as above.
 import { join, relative, sep } from 'node:path';
-// @ts-ignore -- same reason as above.
 import { execSync } from 'node:child_process';
 import { defineConfig, type Plugin } from 'vite';
 import { cacheVersion, precacheList } from './src/pwa/precache.ts';
-
-// Node's process, declared here because @types/node is not a dependency.
-declare const process: { env: Record<string, string | undefined> };
 
 // GitHub Pages serves the site under /drumline-radio/. Cloudflare Pages (which sets CF_PAGES) and
 // other hosts at a domain root use /. BASE_PATH overrides both.
