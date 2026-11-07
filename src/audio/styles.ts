@@ -477,10 +477,12 @@ export const STYLE_DEFS: Record<StyleId, StyleDef> = {
       'soft-flute': synth({ name: 'Soft flute', oscs: [osc('sine', 0, 0, 0.7), osc('triangle', 0, 3, 0.3)],
         env: env(0.05, 0.3, 0.7, 0.3), filter: { type: 'lowpass', hz: 2000, q: 0.5, envAmount: 1, envDecay: 0.2 },
         vibrato: { rate: 0.7, cents: 10, delay: 0 }, gain: 0.22 }),
-      // A lead heard through a small radio: narrow band, a little drive, and a slow wide drift.
-      'radio-lead': synth({ name: 'Radio lead', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 6, 0.4)],
-        env: env(0.01, 0.3, 0.65, 0.25), filter: { type: 'bandpass', hz: 1300, q: 1.8, envAmount: 0.6, envDecay: 0.2 },
-        vibrato: { rate: 0.35, cents: 16, delay: 0 }, drive: 0.3, gain: 0.3, sends: { reverb: 0.8, delay: 0.9 } }),
+      // A lead through a small radio speaker: saw and a narrow pulse, plucked so it decays instead of
+      // holding, driven hard, and band-passed wide around the speaker's mids. No vibrato: a held,
+      // smooth, wobbling tone in this register reads as a flute.
+      'radio-lead': synth({ name: 'Radio lead', oscs: [osc('sawtooth', 0, 0, 0.6), osc('pulse12', 0, 7, 0.4)],
+        env: env(0.003, 0.35, 0.3, 0.15), filter: { type: 'bandpass', hz: 1800, q: 0.6, envAmount: 1.5, envDecay: 0.15 },
+        drive: 0.75, gain: 0.45, sends: { reverb: 0.5, delay: 0.6 } }),
       'tape-pad': synth({ name: 'Tape pad', oscs: [osc('sawtooth', 0, -10, 0.3), osc('sawtooth', 0, 10, 0.3), osc('triangle', -1, 0, 0.4)],
         env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 1, envDecay: 1 },
         vibrato: { rate: 0.5, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1.4, delay: 0.3 } }),

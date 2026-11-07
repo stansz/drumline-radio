@@ -111,9 +111,11 @@ slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose
 and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
 lead. Last Stop uses one more extra, `inst=upright-bass`: a plucked upright bass (triangle, sine, and
 a little saw, a quick filter thump, a short decay) that sounds an octave below the written note, so
-a lead track can play the melody on it. Shortwave's melody uses `inst=radio-lead`: a square and saw
-through a narrow band-pass with a little drive and a slow, wide vibrato, like a lead heard on a small
-radio. No role maps to these three.
+a lead track can play the melody on it. Shortwave's melody uses `inst=radio-lead`: a saw and a narrow
+pulse, plucked so it decays instead of holding, driven hard, and band-passed wide around 1.8 kHz,
+like a lead through a small radio speaker. It has no vibrato on purpose: in a lead's register, a
+smooth held tone with slow wobble and few harmonics is what a flute sounds like, and the Lo-fi
+master filter already takes off the top. No role maps to these three.
 
 ### Cinematic
 
