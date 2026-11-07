@@ -3,9 +3,13 @@ export function createWakeLock(): { set(wanted: boolean): void } {
   let wanted = false;
   let held: WakeLockSentinel | null = null;
   let requesting = false;
+  // After a refusal (battery saver, permissions), wait before asking again instead of asking every
+  // frame. Coming back to the page asks again at once.
+  const RETRY_MS = 30000;
+  let retryAt = 0;
 
   const request = (): void => {
-    if (!wanted || held || requesting) return;
+    if (!wanted || held || requesting || performance.now() < retryAt) return;
     if (!('wakeLock' in navigator)) return;
     if (document.visibilityState !== 'visible') return;
     requesting = true;
@@ -24,9 +28,11 @@ export function createWakeLock(): { set(wanted: boolean): void } {
         })
         .catch(() => {
           requesting = false;
+          retryAt = performance.now() + RETRY_MS;
         });
     } catch {
       requesting = false;
+      retryAt = performance.now() + RETRY_MS;
       // The wake lock just isn't available here.
     }
   };
@@ -43,7 +49,10 @@ export function createWakeLock(): { set(wanted: boolean): void } {
   };
 
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') request();
+    if (document.visibilityState === 'visible') {
+      retryAt = 0;
+      request();
+    }
   });
 
   return {
