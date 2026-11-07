@@ -82,8 +82,9 @@ export const LEADS: Record<string, Patch> = {
   // Alt rock: a clean indie lead guitar, the opposite of the fuzz. A guitar pluck starts bright and
   // buzzy and mellows fast, so a nasal pulse and a saw go through a resonant low-pass that snaps
   // open on each note and closes within a beat; a touch of amp grit, a slow chorus wobble, and a
-  // long delay tail. Soft triangles and sines read as a keyboard instead.
-  'indie-lead': synth({ name: 'Indie lead', oscs: [osc('pulse25', 0, -5, 0.45), osc('sawtooth', 0, 5, 0.35), osc('triangle', 0, 0, 0.2)],
+  // long delay tail. Soft triangles and sines read as a keyboard instead. It sounds an octave
+  // below the written note, as a real guitar does (guitar music is written an octave up).
+  'indie-lead': synth({ name: 'Indie lead', oscs: [osc('pulse25', -1, -5, 0.45), osc('sawtooth', -1, 5, 0.35), osc('triangle', -1, 0, 0.2)],
     env: env(0.002, 1.2, 0.2, 0.45), filter: { type: 'lowpass', hz: 2400, q: 2, envAmount: 2.5, envDecay: 0.12 },
     vibrato: { rate: 0.9, cents: 6, delay: 0 }, drive: 0.15, gain: 0.34, sends: { reverb: 1.3, delay: 2.4 } }),
 };

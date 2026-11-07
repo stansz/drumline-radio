@@ -162,7 +162,9 @@ room (1.4 s reverb), little delay, and no crush.
 
 Alt rock has two extras that no role maps to. `inst=indie-lead` is a clean lead guitar, the opposite of
 the fuzz: a nasal pulse and a saw through a resonant low-pass that snaps open on each pluck and
-closes within a beat, a touch of amp grit, a slow chorus wobble, and a long delay tail. `inst=shimmer-guitar` is a shimmering clean guitar for
+closes within a beat, a touch of amp grit, a slow chorus wobble, and a long delay tail. Like a real
+guitar, it sounds an octave below the written note: guitar music is written an octave above where
+it sounds, so a melody written for guitar lands in the guitar's own range. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: two triangles detuned apart and a slow 0.9 Hz wobble give it a chorus sheen, and a
 large reverb and delay send makes its notes echo on the style's dotted-eighth delay. Porch Light uses
 both.
