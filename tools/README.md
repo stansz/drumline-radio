@@ -256,6 +256,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order). Add a style id at the end to remix the song into it first.
+- **stall:** blocks the main thread for 1.5 s while a song plays and counts sounds booked in the
+  past afterwards (they would start together as a burst); `late` should be 0:
+  `node tools/browser/stall.mjs`.
 - **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
   that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`
   instead of the preview server, because it imports the audio code from `src/`:

@@ -359,7 +359,10 @@ export class Engine {
     const now = this.ctx.currentTime;
 
     if (position + LOOKAHEAD > this.scheduledUntil) {
-      const notes = notesBetween(this.timelineValue, this.scheduledUntil, position + LOOKAHEAD);
+      // A stalled main thread or a throttled timer can leave the booked window behind the playhead.
+      // Notes in that gap would all start at once in a burst, so they are skipped instead.
+      const from = Math.max(this.scheduledUntil, position);
+      const notes = notesBetween(this.timelineValue, from, position + LOOKAHEAD);
       for (const note of notes) this.scheduleNote(note);
       this.scheduledUntil = position + LOOKAHEAD;
     }
