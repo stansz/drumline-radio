@@ -12,6 +12,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 
 - A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
 - Category presets (All, Classics, Originals, Carols) above the dial show just that group of stations (remembered between visits).
+- Within each category the dial is grouped by home style, with a caption at the start of each style. The style button next to the presets (or G) cycles through the styles that category has, showing only that style's songs; the playlist's library list has the same button.
 - A Playlist view (Radio | Playlist switch in the header): add any song in any of the 6 styles, the same song more than once, reorder or remove entries, and play the list in order, with a Loop toggle. The playlist is saved on this device.
 - Share links: in the song card (tap the song title), "Share song" shares the song in the style you are hearing, and "Share from m:ss" adds the current time; the playlist view's Share button shares the whole list. Opening a link tunes the app, ready to play; a shared playlist asks before replacing or adding to yours. Uses the share sheet where the browser has one, otherwise copies the link.
 - Installable and works offline: install it from the browser (or the Install button where offered; on iPhone, Share → Add to Home Screen). It checks for an update each time it opens or comes back to the front, and a new version takes over right away (if music is playing, the next time you switch away from it). The bottom of the ⓘ panel shows the build's commit and time, so you can check which version is running.
@@ -24,7 +25,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
   and the same notes play with that style's instruments.
 - Each style has its own full-screen scene behind the player: a neon sunset and grid (Synthwave), an 8-bit night with pixel mountains (Chiptune), an evening concert hall with organ pipes, velvet drapes and drifting dust in the stage light (Orchestral), a warehouse with swaying lasers (Techno), a rainy window over city lights (Lo-fi), and a widescreen sunrise over mountains with a lens flare (Cinematic). The lasers, rain and dust stop with reduced motion.
 - Techno flashes the screen gently on the kick, within the WCAG flash limits (at most 3 a second, a soft fade). It is off with reduced motion, and the ⓘ panel has a switch to turn it off.
-- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–6 styles, C category, M mute, R repeat, S screensaver, P playlist view.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–6 styles, C category, G style filter, M mute, R repeat, S screensaver, P playlist view.
 
 | Orchestral | Phone |
 |---|---|

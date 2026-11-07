@@ -860,6 +860,22 @@ body::before {
     inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+/* The style button cycles rather than picks, so it is wider and dashed (unlike the solid style
+   bands it shares names with), and lit only while it filters. */
+.style-cycle {
+  flex: 1.5;
+  border-style: dashed;
+  white-space: nowrap;
+}
+
+.style-cycle.on {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
 /* Dim view: a dark veil over the player. It never takes a tap, so the player stays usable. */
 .dim-overlay {
   position: fixed;

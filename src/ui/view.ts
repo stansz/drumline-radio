@@ -1,5 +1,7 @@
 import { CATEGORIES } from '../music/song';
 import type { Category, Song } from '../music/song';
+import { STYLES } from '../music/roles';
+import type { StyleId } from '../music/roles';
 
 /** Formats song seconds as `m:ss`, flooring and clamping negatives to zero. */
 /** Maps the 0–100 volume slider to a gain, squared so the slider feels even to the ear. */
@@ -132,13 +134,42 @@ export function parseCategory(stored: string | null): CategoryFilter {
     : 'all';
 }
 
-/** The library indices a preset shows, in library order. */
-export function stationsIn(categories: Category[], filter: CategoryFilter): number[] {
+/** The library indices a preset shows, in library order, optionally only songs in one home style. */
+export function stationsIn(
+  categories: Category[],
+  filter: CategoryFilter,
+  styles: StyleId[] = [],
+  style: StyleFilter = 'all',
+): number[] {
   const indices: number[] = [];
   for (let index = 0; index < categories.length; index += 1) {
-    if (filter === 'all' || categories[index] === filter) indices.push(index);
+    if (filter !== 'all' && categories[index] !== filter) continue;
+    if (style !== 'all' && styles[index] !== style) continue;
+    indices.push(index);
   }
   return indices;
+}
+
+export type StyleFilter = StyleId | 'all';
+
+/** Reads a stored style filter; anything missing or unknown gives all styles. */
+export function parseStyleFilter(stored: string | null): StyleFilter {
+  return (STYLES as readonly string[]).includes(stored ?? '') ? (stored as StyleId) : 'all';
+}
+
+/** The home styles that have songs under a preset, in style order. */
+export function stylesIn(categories: Category[], styles: StyleId[], filter: CategoryFilter): StyleId[] {
+  const present = new Set(stationsIn(categories, filter).map((index) => styles[index]));
+  return STYLES.filter((id) => present.has(id));
+}
+
+/** The style filter after `current`: all styles, then each available style in turn, then back. */
+export function nextStyleFilter(current: StyleFilter, available: StyleId[]): StyleFilter {
+  if (available.length === 0) return 'all';
+  if (current === 'all') return available[0];
+  const at = available.indexOf(current);
+  if (at < 0 || at === available.length - 1) return 'all';
+  return available[at + 1];
 }
 
 /** The station `delta` places from `current` among the visible stations, wrapping around. */

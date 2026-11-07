@@ -1,4 +1,5 @@
 import type { LibraryEntry } from '../music/library';
+import { STYLE_DEFS } from '../audio/styles';
 import { categoryLabel, nearestStation, stationLabel, stepStation } from './view';
 
 export interface Dial {
@@ -26,6 +27,7 @@ export function createDial(
   const stations: HTMLButtonElement[] = [];
   let visible: number[] = songs.map((_, index) => index);
   let previousCategory: string | null = null;
+  let previousStyle: string | null = null;
 
   for (let index = 0; index < songs.length; index += 1) {
     const entry = songs[index];
@@ -34,12 +36,17 @@ export function createDial(
     station.className = 'station';
     station.setAttribute('aria-label', `${entry.song.meta.title}, station ${stationLabel(index, songs.length)}`);
 
-    if (entry.song.meta.category !== previousCategory) {
+    // Each category, and each home style inside it, starts with a caption above its first station.
+    const { category, style } = entry.song.meta;
+    if (category !== previousCategory || style !== previousStyle) {
       const caption = document.createElement('span');
       caption.className = 'station-caption';
-      caption.textContent = categoryLabel(entry.song.meta.category);
+      const styleName = STYLE_DEFS[style].name;
+      caption.textContent =
+        category !== previousCategory ? `${categoryLabel(category)} · ${styleName}` : styleName;
       station.append(caption);
-      previousCategory = entry.song.meta.category;
+      previousCategory = category;
+      previousStyle = style;
     }
 
     const frequency = document.createElement('span');

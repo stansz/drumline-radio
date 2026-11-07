@@ -1,3 +1,4 @@
+import { STYLES } from './roles';
 import { CATEGORIES, parseSong } from './song';
 import type { Song } from './song';
 
@@ -16,9 +17,13 @@ function idFor(path: string): string {
   return path.replace(/^.*\//, '').replace(/\.song$/, '');
 }
 
+// By category, then home style, then title, so the dial walks one style at a time.
 function sortedEntries(entries: LibraryEntry[]): LibraryEntry[] {
   const rank = (entry: LibraryEntry) => CATEGORIES.indexOf(entry.song.meta.category);
-  return entries.sort((a, b) => rank(a) - rank(b) || a.song.meta.title.localeCompare(b.song.meta.title));
+  const style = (entry: LibraryEntry) => STYLES.indexOf(entry.song.meta.style);
+  return entries.sort(
+    (a, b) => rank(a) - rank(b) || style(a) - style(b) || a.song.meta.title.localeCompare(b.song.meta.title),
+  );
 }
 
 const entries: LibraryEntry[] = [];

@@ -15,14 +15,17 @@ import {
   flashStep,
   formatTime,
   nextAfterEnd,
+  nextStyleFilter,
   parseCategory,
+  parseStyleFilter,
   prevAction,
   scrubTarget,
   shouldStartSaver,
   stationsIn,
   stepStation,
+  stylesIn,
 } from './view';
-import type { CategoryFilter } from './view';
+import type { CategoryFilter, StyleFilter } from './view';
 import { createMarquee } from './marquee';
 import { nextInPlaylist, prevInPlaylist } from './playlist';
 import type { ShareLink } from './share';
@@ -33,6 +36,7 @@ import { takeHash } from './links';
 import { load, required, save } from './dom';
 
 const CATEGORY_KEY = 'drumline-radio-category';
+const STYLE_FILTER_KEY = 'drumline-radio-style-filter';
 
 export function startUi(): void {
   for (const error of LIBRARY_ERRORS) console.error(error);
@@ -85,6 +89,12 @@ export function startUi(): void {
   let scrub: { pointer: number; x: number; start: number; target: number; moved: boolean } | null = null;
 
   let category: CategoryFilter = parseCategory(load(CATEGORY_KEY));
+  let styleFilter: StyleFilter = parseStyleFilter(load(STYLE_FILTER_KEY));
+  const libraryCategories = LIBRARY.map((entry) => entry.song.meta.category);
+  const libraryStyles = LIBRARY.map((entry) => entry.song.meta.style);
+  if (styleFilter !== 'all' && !stylesIn(libraryCategories, libraryStyles, category).includes(styleFilter)) {
+    styleFilter = 'all';
+  }
 
   let flashStart = Number.NEGATIVE_INFINITY;
   let lastInteraction = performance.now();
@@ -145,11 +155,21 @@ export function startUi(): void {
     presetButtons.push(button);
   }
 
-  const visible = (): number[] =>
-    stationsIn(
-      LIBRARY.map((entry) => entry.song.meta.category),
-      category,
-    );
+  // One button cycles the dial through the home styles under the current preset.
+  const styleCycle = document.createElement('button');
+  styleCycle.type = 'button';
+  styleCycle.className = 'preset style-cycle';
+  styleCycle.addEventListener('click', cycleStyle);
+  presetsEl.append(styleCycle);
+
+  const visible = (): number[] => stationsIn(libraryCategories, category, libraryStyles, styleFilter);
+
+  function updateStyleCycle(): void {
+    const name = styleFilter === 'all' ? 'All styles' : STYLE_DEFS[styleFilter].name;
+    styleCycle.textContent = name;
+    styleCycle.classList.toggle('on', styleFilter !== 'all');
+    styleCycle.setAttribute('aria-label', `Style filter: ${name}. Press for the next style.`);
+  }
 
   function songStyle(): StyleId {
     return LIBRARY[current]?.song.meta.style ?? 'synthwave';
@@ -272,7 +292,7 @@ export function startUi(): void {
       const index = LIBRARY.findIndex((entry) => entry.id === link.song);
       if (index < 0) return;
       playlistView.at = null;
-      if (!visible().includes(index)) selectCategory('all');
+      if (!visible().includes(index)) clearFilters();
       playlistView.selectView('radio');
       if (engine) {
         loadSong(index);
@@ -332,7 +352,6 @@ export function startUi(): void {
   }
 
   function selectCategory(filter: CategoryFilter): void {
-    playlistView.stop();
     category = filter;
     save(CATEGORY_KEY, filter);
     for (let index = 0; index < CATEGORY_FILTERS.length; index += 1) {
@@ -341,6 +360,29 @@ export function startUi(): void {
         String(CATEGORY_FILTERS[index] === filter),
       );
     }
+    if (styleFilter !== 'all' && !stylesIn(libraryCategories, libraryStyles, category).includes(styleFilter)) {
+      styleFilter = 'all';
+      save(STYLE_FILTER_KEY, styleFilter);
+    }
+    applyFilters();
+  }
+
+  function clearFilters(): void {
+    styleFilter = 'all';
+    save(STYLE_FILTER_KEY, styleFilter);
+    selectCategory('all');
+  }
+
+  function cycleStyle(): void {
+    styleFilter = nextStyleFilter(styleFilter, stylesIn(libraryCategories, libraryStyles, category));
+    save(STYLE_FILTER_KEY, styleFilter);
+    applyFilters();
+  }
+
+  // Shows the stations the preset and style filter allow, staying on the current song if it's one.
+  function applyFilters(): void {
+    playlistView.stop();
+    updateStyleCycle();
     const shown = visible();
     dial.filter(shown);
     if (shown.includes(current)) {
@@ -393,7 +435,7 @@ export function startUi(): void {
     if (!item) return;
     const index = LIBRARY.findIndex((entry) => entry.id === item.song);
     if (index < 0) return;
-    if (!visible().includes(index)) selectCategory('all'); // before playlistAt is set
+    if (!visible().includes(index)) clearFilters(); // before playlistAt is set
     const fresh = engine === null;
     current = index;
     const active = ensureEngine();
@@ -527,6 +569,10 @@ export function startUi(): void {
       selectCategory(CATEGORY_FILTERS[(index + 1) % CATEGORY_FILTERS.length]);
       return;
     }
+    if (event.key === 'g' || event.key === 'G') {
+      cycleStyle();
+      return;
+    }
     if (event.key === ' ' || event.code === 'Space') {
       event.preventDefault();
       togglePlay();
@@ -613,6 +659,7 @@ export function startUi(): void {
     return;
   }
 
+  updateStyleCycle();
   dial.filter(visible());
   current = visible()[0] ?? 0;
   const first = LIBRARY[current];

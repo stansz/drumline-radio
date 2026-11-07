@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
 import type { Category, Song } from '../src/music/song';
+import type { StyleId } from '../src/music/roles';
 import {
   flashStep,
   FLASH_FADE,
@@ -14,9 +15,11 @@ import {
   marqueeTiming,
   nearestStation,
   nextAfterEnd,
+  nextStyleFilter,
   noteY,
   parseCategory,
   parseSaverMinutes,
+  parseStyleFilter,
   parseVolume,
   prevAction,
   scrubTarget,
@@ -25,6 +28,7 @@ import {
   stationLabel,
   stationsIn,
   stepStation,
+  stylesIn,
   volumeGain,
 } from '../src/ui/view';
 
@@ -243,5 +247,35 @@ describe('laneLabels', () => {
       'Acid',
       '909 kit · cymbals',
     ]);
+  });
+});
+
+describe('style filter', () => {
+  const categories: Category[] = ['classics', 'originals', 'originals', 'originals'];
+  const styles: StyleId[] = ['orchestral', 'synthwave', 'lofi', 'lofi'];
+
+  it('narrows a preset to one home style', () => {
+    expect(stationsIn(categories, 'originals', styles, 'lofi')).toEqual([2, 3]);
+    expect(stationsIn(categories, 'all', styles, 'orchestral')).toEqual([0]);
+    expect(stationsIn(categories, 'originals', styles, 'all')).toEqual([1, 2, 3]);
+  });
+
+  it('lists the styles a preset has, in style order', () => {
+    expect(stylesIn(categories, styles, 'originals')).toEqual(['synthwave', 'lofi']);
+    expect(stylesIn(categories, styles, 'all')).toEqual(['synthwave', 'orchestral', 'lofi']);
+  });
+
+  it('cycles all, each style, then all again', () => {
+    expect(nextStyleFilter('all', ['synthwave', 'lofi'])).toBe('synthwave');
+    expect(nextStyleFilter('synthwave', ['synthwave', 'lofi'])).toBe('lofi');
+    expect(nextStyleFilter('lofi', ['synthwave', 'lofi'])).toBe('all');
+    expect(nextStyleFilter('techno', ['synthwave', 'lofi'])).toBe('all');
+    expect(nextStyleFilter('all', [])).toBe('all');
+  });
+
+  it('reads a stored style filter', () => {
+    expect(parseStyleFilter('lofi')).toBe('lofi');
+    expect(parseStyleFilter(null)).toBe('all');
+    expect(parseStyleFilter('jazz')).toBe('all');
   });
 });

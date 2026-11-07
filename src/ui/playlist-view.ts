@@ -3,8 +3,8 @@ import { STYLES } from '../music/roles';
 import type { StyleId } from '../music/roles';
 import { STYLE_DEFS } from '../audio/styles';
 import { buildTimeline } from '../music/timing';
-import { categoryLabel, CATEGORY_FILTERS, formatTime, stationsIn } from './view';
-import type { CategoryFilter } from './view';
+import { categoryLabel, CATEGORY_FILTERS, formatTime, nextStyleFilter, stationsIn, stylesIn } from './view';
+import type { CategoryFilter, StyleFilter } from './view';
 import {
   addEntry,
   moveEntry,
@@ -71,6 +71,9 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
   let incoming: PlaylistEntry[] = [];
   let view: AppView = parseView(load(VIEW_KEY));
   let libraryFilter: CategoryFilter = 'all';
+  let libraryStyle: StyleFilter = 'all';
+  const libraryCategories = LIBRARY.map((entry) => entry.song.meta.category);
+  const libraryStyles = LIBRARY.map((entry) => entry.song.meta.style);
   // Durations and the id lookup are fixed for the session, so the lists never recompute them.
   const songDurations = LIBRARY.map((entry) => buildTimeline(entry.song).duration);
   const libraryById = new Map(LIBRARY.map((entry) => [entry.id, entry]));
@@ -87,6 +90,14 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
     playlistFilters.append(button);
     libraryButtons.push(button);
   }
+  const styleCycle = document.createElement('button');
+  styleCycle.type = 'button';
+  styleCycle.className = 'preset style-cycle';
+  styleCycle.addEventListener('click', () => {
+    libraryStyle = nextStyleFilter(libraryStyle, stylesIn(libraryCategories, libraryStyles, libraryFilter));
+    renderLibrary();
+  });
+  playlistFilters.append(styleCycle);
 
   function setPlaylist(list: PlaylistEntry[]): void {
     playlist = list;
@@ -111,6 +122,9 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
 
   function selectLibraryFilter(filter: CategoryFilter): void {
     libraryFilter = filter;
+    if (libraryStyle !== 'all' && !stylesIn(libraryCategories, libraryStyles, filter).includes(libraryStyle)) {
+      libraryStyle = 'all';
+    }
     for (let index = 0; index < CATEGORY_FILTERS.length; index += 1) {
       libraryButtons[index].setAttribute(
         'aria-checked',
@@ -122,10 +136,11 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
 
   function renderLibrary(): void {
     playlistSongs.textContent = '';
-    const rows = stationsIn(
-      LIBRARY.map((entry) => entry.song.meta.category),
-      libraryFilter,
-    );
+    const styleName = libraryStyle === 'all' ? 'All styles' : STYLE_DEFS[libraryStyle].name;
+    styleCycle.textContent = styleName;
+    styleCycle.classList.toggle('on', libraryStyle !== 'all');
+    styleCycle.setAttribute('aria-label', `Style filter: ${styleName}. Press for the next style.`);
+    const rows = stationsIn(libraryCategories, libraryFilter, libraryStyles, libraryStyle);
     for (const index of rows) {
       const entry = LIBRARY[index];
       const song = entry.song;

@@ -35,7 +35,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 - `pitch.ts` has note names and frequencies (`A4` = 440 Hz). `roles.ts` has the roles, styles, and
   drum names.
 - `library.ts` loads every file in `src/songs/` automatically: drop a file in and it's on the dial.
-  Songs are sorted by category, then title.
+  Songs are sorted by category, then home style (in the order of `STYLES`), then title.
 
 ### `src/audio/`: the sound side
 
