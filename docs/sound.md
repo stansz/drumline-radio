@@ -26,17 +26,28 @@ pan, and effects cover all of its notes.
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
 (oscillators, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit (kick, snare,
-hats, cymbals, and toms). `src/audio/styles.ts` holds the six styles as data.
+hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every patch, once,
+under a unique id, grouped into leads, keys, pads, basses, and kits. `src/audio/styles.ts` holds
+the six styles as recipes: each picks the bank instruments it uses, under its own local names, and
+sets its role map and effects.
 
 A track picks its patch in this order:
 
-1. If the track header names an instrument with `inst=` and the current style has a patch with
-   that name, the track uses it.
-2. Otherwise it uses the patch for the track's `role`.
+1. `inst=bank:<id>` names a bank instrument: the track uses it in every style.
+2. `inst=<name>` and the current style has an instrument with that local name: the track uses it.
+3. Otherwise the patch for the track's `role`.
 
 That is what makes remixes work. The score stores roles, not instruments, so switching the style
 (by pressing a band button) re-reads the same notes with the new style's patches. The readout adds
 `(remix)` when the style differs from the one named in the song file.
+
+A track with `inst=bank:` keeps its sound in every remix, so use it only when that sound is the
+point of the part. Plain `inst=` and roles let each style supply its own sound, which keeps styles
+distinct.
+
+The tables below use each style's local names. Three of them differ from the bank id, because two
+styles had different patches under one name: Chiptune's `square-lead` is `chip-square` in the bank,
+Techno's `sub-bass` is `techno-sub`, and Cinematic's `strings` is `string-section`.
 
 A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between the oscillators and
 the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample and radio
@@ -147,11 +158,12 @@ their levels.
 
 ## Adding a patch or a style
 
-- Add a synth patch with `synth({...})` or a drum kit with `drums({...})` in `src/audio/styles.ts`, then
-  point a role at it in that style's `roles` map. A song can also reach an extra patch by name with
-  `inst=` in its track header.
-- Add a style by adding a `StyleDef` to `STYLE_DEFS`, a colour token block for
-  `:root[data-style='<id>']` in `src/ui/style.css`, and the id to `STYLES` in `src/music/roles.ts`.
-  `tests/styles.test.ts` checks that every style covers every role.
+- Add a synth patch with `synth({...})` or a drum kit with `drums({...})` to its family in
+  `src/audio/instruments.ts` under a new unique id. A style uses it by adding `localName: 'bank-id'`
+  to its `instruments` and pointing a role or `inst=` at the local name; any song can reach it with
+  `inst=bank:<id>`.
+- Add a style by adding a `StyleRecipe` to `RECIPES` in `src/audio/styles.ts` (pick instruments from
+  the bank), a colour token block for `:root[data-style='<id>']` in `src/ui/style.css`, and the id to
+  `STYLES` in `src/music/roles.ts`. `tests/styles.test.ts` checks that every style covers every role.
 - Voice recipes live in `src/audio/voices.ts`. The scheduling and mix graph live in `src/audio/engine.ts`. Both
   stay free of the DOM so the rest of the app can be tested without Web Audio.

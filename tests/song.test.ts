@@ -289,6 +289,19 @@ describe('the checker', () => {
     expect(collected.length).toBeGreaterThan(0);
     for (const error of collected) expect(error).toMatch(/^line \d+: /);
   });
+
+  it('accepts inst=bank:<id> and rejects a malformed bank instrument', () => {
+    const result = parseSong(`${HEADER}\ntrack a role=lead inst=bank:radio-lead\n| C4/1 |`);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.song.tracks[0].inst).toBe('bank:radio-lead');
+    expect(
+      errorsFor('track a role=lead inst=bank:\n| C4/1 |').some((e) => e.includes('invalid inst')),
+    ).toBe(true);
+    expect(
+      errorsFor('track a role=lead inst=Bank:x\n| C4/1 |').some((e) => e.includes('invalid inst')),
+    ).toBe(true);
+  });
 });
 
 describe('the parser', () => {

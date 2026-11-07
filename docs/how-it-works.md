@@ -43,7 +43,10 @@ There are no recordings. Each song is a small text score, and the browser's buil
   in that window, so timing is exact. It also runs the mixer: per-track volume and pan, reverb, delay,
   then a compressor, a limiter, and volume.
 - `voices.ts` builds each note from scratch (oscillators, filters, envelopes, and noise for drums).
-- `styles.ts` holds the six styles. Each one maps a **role** to an instrument patch.
+- `instruments.ts` is the instrument bank: every patch once, by id, in families; `patches.ts`
+  has the patch types and the `synth()`/`drums()` helpers.
+- `styles.ts` holds the six styles as recipes. Each picks instruments from the bank and maps a
+  **role** to one.
 - `curves.ts` has small sound-shaping helpers (soft clip, bit-crush, velocity to loudness).
 
 ### `src/ui/`: the screen

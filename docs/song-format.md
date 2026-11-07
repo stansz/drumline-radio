@@ -68,7 +68,9 @@ track mel role=lead inst=saw-lead vol=0.7 pan=-0.25
 
 - `id` follows `track` and matches `^[a-z0-9-]+$`. Track ids must be unique.
 - `role` is required and is one of the roles below.
-- `inst` is optional and matches `^[a-z0-9-]+$`. It names an instrument; it defaults to none.
+- `inst` is optional and matches `^(bank:)?[a-z0-9-]+$`; a plain name picks the current style's
+  instrument of that name, `bank:<id>` picks a bank instrument in every style (see
+  [sound.md](sound.md)). It defaults to none.
 - `vol` is optional, from 0 to 1, default 0.8.
 - `pan` is optional, from -1 to 1, default 0.
 
@@ -244,8 +246,8 @@ Every track must have the same number of bars.
 - An unknown `source`, an unknown `category`, an unknown `style`, or a bad `tempo`, `time`, or `pickup`.
 - A directive that names a bar past the end of the song, or a ramp whose end bar is not after its
   start bar.
-- A track with an unknown role, an id or instrument that does not match `^[a-z0-9-]+$`, a bad
-  `vol` or `pan`, or a duplicate id.
+- A track with an unknown role, an id that does not match `^[a-z0-9-]+$` or an instrument that does
+  not match `^(bank:)?[a-z0-9-]+$`, a bad `vol` or `pan`, or a duplicate id.
 - A drum name in a pitched track, or a note name in a drums track.
 - A pitch outside the role's range.
 - A bad velocity, either in `:VEL` or in `v=`.

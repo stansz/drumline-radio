@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ROLES, STYLES } from '../src/music/roles';
 import { resolvePatch, STYLE_DEFS } from '../src/audio/styles';
+import { INSTRUMENTS } from '../src/audio/instruments';
 
 describe('styles', () => {
   it('has a definition for every style', () => {
@@ -57,5 +58,30 @@ describe('styles', () => {
         expect(patch.drive, `${id} ${patch.name}`).toBeLessThanOrEqual(1);
       }
     }
+  });
+
+  it('builds every style patch from the bank', () => {
+    for (const id of STYLES) {
+      for (const [local, patch] of Object.entries(STYLE_DEFS[id].patches)) {
+        expect(Object.values(INSTRUMENTS), `${id} ${local}`).toContain(patch);
+      }
+    }
+  });
+
+  it('resolves inst=bank:<id> in any style', () => {
+    expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'bank:radio-lead' }).name).toBe(
+      'Radio lead',
+    );
+    expect(resolvePatch(STYLE_DEFS.chiptune, { role: 'lead', inst: 'bank:square-lead' }).name).toBe(
+      'Square lead',
+    );
+    expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'bank:nope' }).name).toBe('Acid');
+    expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'radio-lead' }).name).toBe('Acid');
+  });
+
+  it('keeps local names that differ from bank ids', () => {
+    expect(STYLE_DEFS.chiptune.patches['square-lead'].name).toBe('Square');
+    expect(STYLE_DEFS.techno.patches['sub-bass']).toBe(INSTRUMENTS['techno-sub']);
+    expect(STYLE_DEFS.cinematic.patches.strings.name).toBe('String section');
   });
 });

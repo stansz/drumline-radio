@@ -391,7 +391,7 @@ export function parseSong(text: string): ParseResult {
         if (isRole(value)) track.role = value;
         else err(lineNumber, `unknown role '${value}'`);
       } else if (key === 'inst') {
-        if (!/^[a-z0-9-]+$/.test(value)) err(lineNumber, `invalid inst '${value}'`);
+        if (!/^(bank:)?[a-z0-9-]+$/.test(value)) err(lineNumber, `invalid inst '${value}'`);
         else track.inst = value;
       } else if (key === 'vol') {
         const volume = Number(value);

@@ -40,8 +40,21 @@ This file holds the lessons from earlier songs, so a new song doesn't repeat the
 
 ## Picking instruments
 
-Each style maps every role to a patch ([sound.md](sound.md) has the tables); `inst=` picks another
-patch from the same style. Choose the lead's patch on purpose rather than taking the default.
+Each style maps every role to a patch ([sound.md](sound.md) has the tables). Choose the lead's
+patch on purpose rather than taking the default. Every patch lives once in the instrument bank,
+`src/audio/instruments.ts`, grouped into leads, keys, pads, basses, and kits, and a track can pick
+one in two ways:
+
+- **`inst=<name>`** picks the current style's instrument of that name. When the song is remixed
+  into a style without it, the track falls back to that style's patch for its role. Prefer this:
+  each style keeps its own sound.
+- **`inst=bank:<id>`** picks a bank instrument in every style, so the part sounds the same in every
+  remix. Use it only when that sound is the point of the part, for example a signature lead. If
+  every song reaches for the same favourite this way, the styles start to sound alike.
+
+A new instrument goes into the bank under a new unique id (see
+[sound.md](sound.md#adding-a-patch-or-a-style)). Measure it with `timbre.mjs` (below) before a song
+depends on it.
 
 - **The flute problem.** A held, smooth tone with few harmonics and slow wobble, in a lead's
   register (about G4 to E5), sounds like a flute whatever it was meant to be. Lo-fi is prone to it:
