@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { LIBRARY } from '../src/music/library';
-import { resolvePatch, STYLE_DEFS } from '../src/audio/styles';
 import { buildTimeline } from '../src/music/timing';
 import type { Note } from '../src/music/song';
 
@@ -35,7 +34,7 @@ function signature(id: string, first: number, last: number) {
 }
 
 describe('Exit Sign', () => {
-  it('is a credited Alt rock original with the intended length and role patches', () => {
+  it('is a credited Alt rock original with the intended length and roles', () => {
     expect(song.meta).toMatchObject({
       title: 'Exit Sign', composer: 'GPT-6.1-sol & SZ', source: 'original',
       category: 'originals', style: 'altrock', key: 'G major', tempo: 152, hidden: false,
@@ -44,8 +43,9 @@ describe('Exit Sign', () => {
     expect(buildTimeline(song).duration).toBeCloseTo(176.842105, 5);
     expect(song.tracks).toHaveLength(7);
     expect(song.tracks.every((part) => part.inst === null)).toBe(true);
-    expect(song.tracks.map((part) => resolvePatch(STYLE_DEFS.altrock, part).name)).toEqual([
-      'Fuzz guitar', 'Power chords', 'Guitar wall', 'Clean guitar', 'Pick bass', 'Rock kit', 'Rock kit',
+    // Roles only, not patch names, so a change to the Alt rock style doesn't fail this song's test.
+    expect(song.tracks.map((part) => part.role)).toEqual([
+      'lead', 'chords', 'pad', 'lead2', 'bass', 'drums', 'drums',
     ]);
   });
 

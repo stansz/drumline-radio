@@ -45,6 +45,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - Songs are public-domain melodies (composer long dead and published before 1930, or traditional)
   arranged by SZ and AI, or their own originals. Never add copyrighted songs. Credit every
   public-domain piece in `README.md`.
+- A test for one song (like `tests/exit-sign.test.ts`) checks only that song's own notes, form,
+  and header. It must not assert anything about shared code (style patches, patch names, the
+  arranger), so changes elsewhere never fail it. Most songs need no test of their own.
 - Song data is written by the composing AI assistant and pasted verbatim. Don't change notes in a
   song file to make a test pass; report the failing check instead.
 - Don't put `share` (or other social-button words) in element ids or classes: content blockers such
