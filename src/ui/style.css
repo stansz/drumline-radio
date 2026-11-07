@@ -1494,9 +1494,9 @@ body::before {
     visibility: hidden;
     transform: translateY(10px);
     transition:
-      opacity 0.5s ease 0.35s,
-      transform 0.5s ease 0.35s,
-      visibility 0s linear 0.85s;
+      opacity 0.2s ease 0.14s,
+      transform 0.2s ease 0.14s,
+      visibility 0s linear 0.34s;
   }
 
   .bands.open {
