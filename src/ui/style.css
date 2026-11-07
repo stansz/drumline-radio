@@ -1415,8 +1415,8 @@ body::before {
     display: none;
   }
 
-  /* Two rows: the seek bar and both times across the full width, then the knobs and the style
-     toggle. The ::before is a full-width break between the rows. */
+  /* Two rows: the times, seek bar, and repeat knob across the full width, then the knobs and the
+     style toggle. The ::before is a full-width break between the rows. */
   .tuner {
     position: relative;
   }
@@ -1428,14 +1428,14 @@ body::before {
 
   .transport::before {
     content: '';
-    order: 4;
+    order: 5;
     flex-basis: 100%;
   }
 
   #elapsed { order: 1; }
   #seek { order: 2; }
   #total { order: 3; }
-  #repeat { order: 5; }
+  #repeat { order: 4; }
   #prev { order: 6; }
   #play { order: 7; }
   #next { order: 8; }
