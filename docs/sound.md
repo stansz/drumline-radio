@@ -37,7 +37,8 @@ That is what makes remixes work. The score stores roles, not instruments, so swi
 `(remix)` when the style differs from the one named in the song file.
 
 A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between the oscillators and
-the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample uses it.
+the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample and radio
+lead use it.
 
 An oscillator that would sound below 30 Hz is not created: that low it is felt as rumble rather than
 heard, and it only eats headroom, so a sub-octave layer drops out under very low notes.
@@ -110,7 +111,9 @@ slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose
 and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
 lead. Last Stop uses one more extra, `inst=upright-bass`: a plucked upright bass (triangle, sine, and
 a little saw, a quick filter thump, a short decay) that sounds an octave below the written note, so
-a lead track can play the melody on it. No role maps to these two.
+a lead track can play the melody on it. Shortwave's melody uses `inst=radio-lead`: a square and saw
+through a narrow band-pass with a little drive and a slow, wide vibrato, like a lead heard on a small
+radio. No role maps to these three.
 
 ### Cinematic
 

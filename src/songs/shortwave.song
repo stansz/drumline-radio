@@ -6,118 +6,118 @@ year: 2026
 source: original
 category: originals
 style: lofi
-key: D minor
-tempo: 88
+key: C minor
+tempo: 80
 time: 4/4
 about: A late-night boom-bap beat that keeps tuning back to one small melody, drifting in and out of the static like a far-off station.
 
-track melody role=lead vol=0.8
+track melody role=lead inst=radio-lead vol=0.8
 # Intro
 | R*4 |
 # Verse 1: the melody stays off the mic
 | R*16 |
 # Hook
-| v=92 r/8 A4/4.+14 C5/8+14 D5/4+14 r/8 | D5/8+14 F5/4+14 E5/8+14 D5/2+14 | r/4 G4/8+14 A4/8+14 Bb4/2+14 | A4/2+14 r/8 C#5/4+14 r/8 |
-| r/8 A4/4.+14 C5/8+14 D5/4+14 r/8 | D5/8+14 F5/4+14 E5/8+14 D5/2+14 | r/4 A4/8+14 Bb4/8+14 C5/2+14 | E5/4+14 C#5/4+14 A4/2+14 |
+| v=92 r/8 G4/4.+14 Bb4/8+14 C5/4+14 r/8 | C5/8+14 Eb5/4+14 D5/8+14 C5/2+14 | r/4 F4/8+14 G4/8+14 Ab4/2+14 | G4/2+14 r/8 B4/4+14 r/8 |
+| r/8 G4/4.+14 Bb4/8+14 C5/4+14 r/8 | C5/8+14 Eb5/4+14 D5/8+14 C5/2+14 | r/4 G4/8+14 Ab4/8+14 Bb4/2+14 | D5/4+14 B4/4+14 G4/2+14 |
 # Verse 2
 | R*16 |
 # Hook
-| v=92 r/8 A4/4.+14 C5/8+14 D5/4+14 r/8 | D5/8+14 F5/4+14 E5/8+14 D5/2+14 | r/4 G4/8+14 A4/8+14 Bb4/2+14 | A4/2+14 r/8 C#5/4+14 r/8 |
-| r/8 A4/4.+14 C5/8+14 D5/4+14 r/8 | D5/8+14 F5/4+14 E5/8+14 D5/2+14 | r/4 A4/8+14 Bb4/8+14 C5/2+14 | E5/4+14 C#5/4+14 A4/2+14 |
+| v=92 r/8 G4/4.+14 Bb4/8+14 C5/4+14 r/8 | C5/8+14 Eb5/4+14 D5/8+14 C5/2+14 | r/4 F4/8+14 G4/8+14 Ab4/2+14 | G4/2+14 r/8 B4/4+14 r/8 |
+| r/8 G4/4.+14 Bb4/8+14 C5/4+14 r/8 | C5/8+14 Eb5/4+14 D5/8+14 C5/2+14 | r/4 G4/8+14 Ab4/8+14 Bb4/2+14 | D5/4+14 B4/4+14 G4/2+14 |
 # Bridge: one leading-tone ping foreshadows the hook
-| R*3 | v=86 r/2 C#5/4+14 r/4 |
+| R*3 | v=86 r/2 B4/4+14 r/4 |
 # Last hook and ending
-| v=92 r/8 A4/4.+14 C5/8+14 D5/4+14 r/8 | D5/8+14 F5/4+14 E5/8+14 D5/2+14 | r/4 G4/8+14 A4/8+14 Bb4/2+14 | A4/2+14 r/8 C#5/4+14 r/8 |
-| r/8 A4/4.+14 C5/8+14 D5/4+14 r/8 | D5/8+14 F5/4+14 E5/8+14 D5/2+14 | E5/4+14 C#5/4+14 A4/2+14 | v=80 D5/1 |
+| v=92 r/8 G4/4.+14 Bb4/8+14 C5/4+14 r/8 | C5/8+14 Eb5/4+14 D5/8+14 C5/2+14 | r/4 F4/8+14 G4/8+14 Ab4/2+14 | G4/2+14 r/8 B4/4+14 r/8 |
+| r/8 G4/4.+14 Bb4/8+14 C5/4+14 r/8 | C5/8+14 Eb5/4+14 D5/8+14 C5/2+14 | D5/4+14 B4/4+14 G4/2+14 | v=80 C5/1 |
 
 track sample role=counter inst=dusty-sample vol=0.5 pan=0.28
 # Intro
 | v=72 r/1 | R*3 |
 # Verse 1: a two-bar chop quotes the hook at each phrase end
-| R*7 | r/2 A3/8 C4/8 D4/4 | R*7 | r/2 A3/8 C4/8 D4/4 |
+| R*7 | r/2 G3/8 Bb3/8 C4/4 | R*7 | r/2 G3/8 Bb3/8 C4/4 |
 # Hook: echoes the melody's tails an octave down
-| R | r/2 C4/4 D4/4 | R | r/2 A3/4 r/8 C#4/8+60 | R | r/2 C4/4 D4/4 | R | r/2 E4/4 r/8 C#4/8+60 |
+| R | r/2 Bb3/4 C4/4 | R | r/2 G3/4 r/8 B3/8+60 | R | r/2 Bb3/4 C4/4 | R | r/2 D4/4 r/8 B3/8+60 |
 # Verse 2: the chop trades phrases with the pluck
-| R*7 | r/2 D4/8 F4/8 E4/4 | R*7 | r/2 A3/8 C4/8 D4/4 |
+| R*7 | r/2 C4/8 Eb4/8 D4/4 | R*7 | r/2 G3/8 Bb3/8 C4/4 |
 # Hook
-| R | r/2 C4/4 D4/4 | R | r/2 A3/4 r/8 C#4/8+60 | R | r/2 C4/4 D4/4 | R | r/2 E4/4 r/8 C#4/8+60 |
+| R | r/2 Bb3/4 C4/4 | R | r/2 G3/4 r/8 B3/8+60 | R | r/2 Bb3/4 C4/4 | R | r/2 D4/4 r/8 B3/8+60 |
 # Bridge
 | R*4 |
 # Last hook and ending
-| R | r/2 C4/4 D4/4 | R | R | R | r/2 C4/4 D4/4 | r/2 E4/4 r/8 C#4/8+60 | v=64 r/2 D4/2 |
+| R | r/2 Bb3/4 C4/4 | R | R | R | r/2 Bb3/4 C4/4 | r/2 D4/4 r/8 B3/8+60 | v=64 r/2 C4/2 |
 
 track pluck role=arp vol=0.45 pan=-0.3
 # Intro: the hook's first phrase, heard far away
-| R | R | r/4 A3/8 C4/8 D4/2 | r/2 E4/2 |
+| R | R | r/4 G3/8 Bb3/8 C4/2 | r/2 D4/2 |
 # Verse 1
 | R*16 |
 # Hook: eighth-note arpeggios walk each chord up and down
-| v=60 D3/8+40 F3/8+40 A3/8+40 C4/8+40 E4/8+40 C4/8+40 A3/8+40 F3/8+40 | Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 C4/8+40 A3/8+40 F3/8+40 D3/8+40 | G2/8+40 Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 F3/8+40 D3/8+40 Bb2/8+40 | A2/8+40 C#3/8+40 E3/8+40 G3/8+40 A3/8+40 G3/8+40 E3/8+40 C#3/8+40 |
-| D3/8+40 F3/8+40 A3/8+40 C4/8+40 E4/8+40 C4/8+40 A3/8+40 F3/8+40 | Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 C4/8+40 A3/8+40 F3/8+40 D3/8+40 | G2/8+40 Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 F3/8+40 D3/8+40 Bb2/8+40 | A2/8+40 C#3/8+40 E3/8+40 G3/8+40 A3/8+40 G3/8+40 E3/8+40 C#3/8+40 |
+| v=60 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 D4/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 | Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 | F2/8+40 Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 Ab2/8+40 | G2/8+40 B2/8+40 D3/8+40 F3/8+40 G3/8+40 F3/8+40 D3/8+40 B2/8+40 |
+| C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 D4/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 | Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 | F2/8+40 Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 Ab2/8+40 | G2/8+40 B2/8+40 D3/8+40 F3/8+40 G3/8+40 F3/8+40 D3/8+40 B2/8+40 |
 # Verse 2: the hook haunts the verses in fragments
-| R*3 | r/2 D4/8 F4/8 E4/4 | R*7 | r/2 A3/8 C4/8 D4/4 | R*4 |
+| R*3 | r/2 C4/8 Eb4/8 D4/4 | R*7 | r/2 G3/8 Bb3/8 C4/4 | R*4 |
 # Hook
-| v=60 D3/8+40 F3/8+40 A3/8+40 C4/8+40 E4/8+40 C4/8+40 A3/8+40 F3/8+40 | Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 C4/8+40 A3/8+40 F3/8+40 D3/8+40 | G2/8+40 Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 F3/8+40 D3/8+40 Bb2/8+40 | A2/8+40 C#3/8+40 E3/8+40 G3/8+40 A3/8+40 G3/8+40 E3/8+40 C#3/8+40 |
-| D3/8+40 F3/8+40 A3/8+40 C4/8+40 E4/8+40 C4/8+40 A3/8+40 F3/8+40 | Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 C4/8+40 A3/8+40 F3/8+40 D3/8+40 | G2/8+40 Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 F3/8+40 D3/8+40 Bb2/8+40 | A2/8+40 C#3/8+40 E3/8+40 G3/8+40 A3/8+40 G3/8+40 E3/8+40 C#3/8+40 |
+| v=60 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 D4/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 | Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 | F2/8+40 Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 Ab2/8+40 | G2/8+40 B2/8+40 D3/8+40 F3/8+40 G3/8+40 F3/8+40 D3/8+40 B2/8+40 |
+| C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 D4/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 | Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 | F2/8+40 Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 Ab2/8+40 | G2/8+40 B2/8+40 D3/8+40 F3/8+40 G3/8+40 F3/8+40 D3/8+40 B2/8+40 |
 # Bridge: quarter notes, calmer
-| v=52 F3/4+40 A3/4+40 C4/4+40 E4/4+40 | E3/4+40 G3/4+40 Bb3/4+40 D4/4+40 | D3/4+40 F3/4+40 A3/4+40 C4/4+40 | A3/4+40 G3/4+40 E3/4+40 D3/4+40 |
+| v=52 Eb3/4+40 G3/4+40 Bb3/4+40 D4/4+40 | D3/4+40 F3/4+40 Ab3/4+40 C4/4+40 | C3/4+40 Eb3/4+40 G3/4+40 Bb3/4+40 | G3/4+40 F3/4+40 D3/4+40 C3/4+40 |
 # Last hook and ending
-| v=58 D3/8+40 F3/8+40 A3/8+40 C4/8+40 E4/8+40 C4/8+40 A3/8+40 F3/8+40 | Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 C4/8+40 A3/8+40 F3/8+40 D3/8+40 | G2/8+40 Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 F3/8+40 D3/8+40 Bb2/8+40 | A2/8+40 C#3/8+40 E3/8+40 G3/8+40 A3/8+40 G3/8+40 E3/8+40 C#3/8+40 |
-| D3/8+40 F3/8+40 A3/8+40 C4/8+40 E4/8+40 C4/8+40 A3/8+40 F3/8+40 | Bb2/8+40 D3/8+40 F3/8+40 A3/8+40 C4/8+40 A3/8+40 F3/8+40 D3/8+40 | A2/8+40 C#3/8+40 E3/8+40 G3/8+40 A3/8+40 G3/8+40 E3/8+40 C#3/8+40 | r/8 A3/8 C4/8 D4/2 r/8 |
+| v=58 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 D4/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 | Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 | F2/8+40 Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 Ab2/8+40 | G2/8+40 B2/8+40 D3/8+40 F3/8+40 G3/8+40 F3/8+40 D3/8+40 B2/8+40 |
+| C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 D4/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 | Ab2/8+40 C3/8+40 Eb3/8+40 G3/8+40 Bb3/8+40 G3/8+40 Eb3/8+40 C3/8+40 | G2/8+40 B2/8+40 D3/8+40 F3/8+40 G3/8+40 F3/8+40 D3/8+40 B2/8+40 | r/8 G3/8 Bb3/8 C4/2 r/8 |
 
 track keys role=chords vol=0.75
 # Intro: the record starts
-| v=58 [D3 F3 A3 C4]/8 r/8 r/4 r/8 [D3 F3 A3 C4]/4.:56 | [Bb2 F3 A3 C4]/8 r/8 r/4 r/8 [Bb2 F3 A3 C4]/4.:56 | [G2 D3 F3 A3]/8 r/8 r/4 r/8 [G2 D3 F3 A3]/4.:56 | [A2 E3 G3 C#4]/8 r/8 r/4 r/8 [A2 E3 G3 C#4]/4.:56 |
+| v=58 [C3 Eb3 G3 Bb3]/4.+25 r/8 r/8 [C3 Eb3 G3 Bb3]/8+90:50 r/4 | [Ab2 Eb3 G3 Bb3]/4.+25 r/8 r/8 [Ab2 Eb3 G3 Bb3]/8+90:50 r/4 | [F2 C3 Eb3 G3]/4.+25 r/8 r/8 [F2 C3 Eb3 G3]/8+90:50 r/4 | [G2 D3 F3 B3]/4.+25 r/8 r/8 [G2 D3 F3 B3]/8+90:50 r/4 |
 # Verse 1: stabs behind the snare, laid back
-| { v=64 r/8 [A2 E3 G3 B3]/4'+25 r/4 [C3 E3 G3]/4+25 r/8 | r/8 [D3 F3 A3 C4]/4'+25 r/4 [F3 A3 C4]/4+25 r/8 | r/8 [Bb2 F3 A3 C4]/4'+25 r/4 [F3 A3 D4]/4+25 r/8 | r/8 [C3 G3 Bb3 D4]/4'+25 r/4 [E3 G3 Bb3]/4+25 r/8 | }*4
+| { v=64 r/8 [G2 D3 F3 A3]/4'+25 r/4 [Bb2 D3 F3]/4+25 r/8 | r/8 [C3 Eb3 G3 Bb3]/4'+25 r/4 [Eb3 G3 Bb3]/4+25 r/8 | r/8 [Ab2 Eb3 G3 Bb3]/4'+25 r/4 [Eb3 G3 C4]/4+25 r/8 | r/8 [Bb2 F3 Ab3 C4]/4'+25 r/4 [D3 F3 Ab3]/4+25 r/8 | }*4
 # Hook: full voicing on the one, upper answer on the three-and
-| v=68 [D3 F3 A3 C4]/2+25 r/8 [A3 C4 E4]/8+90 r/4 | [Bb2 F3 A3 C4]/2+25 r/8 [F3 A3 C4]/8+90 r/4 | [G2 D3 F3 A3]/2+25 r/8 [A3 D4 F4]/8+90 r/4 | [A2 E3 G3 C#4]/2+25 r/8 [E3 G3 C#4]/8+90 r/4 |
-| [D3 F3 A3 C4]/2+25 r/8 [A3 C4 E4]/8+90 r/4 | [Bb2 F3 A3 C4]/2+25 r/8 [F3 A3 C4]/8+90 r/4 | [G2 D3 F3 A3]/2+25 r/8 [A3 D4 F4]/8+90 r/4 | [A2 E3 G3 C#4]/2+25 r/8 [E3 G3 C#4]/8+90 r/4 |
+| v=68 [C3 Eb3 G3 Bb3]/2+25 r/8 [G3 Bb3 D4]/8+90 r/4 | [Ab2 Eb3 G3 Bb3]/2+25 r/8 [Eb3 G3 Bb3]/8+90 r/4 | [F2 C3 Eb3 G3]/2+25 r/8 [G3 C4 Eb4]/8+90 r/4 | [G2 D3 F3 B3]/2+25 r/8 [D3 F3 B3]/8+90 r/4 |
+| [C3 Eb3 G3 Bb3]/2+25 r/8 [G3 Bb3 D4]/8+90 r/4 | [Ab2 Eb3 G3 Bb3]/2+25 r/8 [Eb3 G3 Bb3]/8+90 r/4 | [F2 C3 Eb3 G3]/2+25 r/8 [G3 C4 Eb4]/8+90 r/4 | [G2 D3 F3 B3]/2+25 r/8 [D3 F3 B3]/8+90 r/4 |
 # Verse 2
-| { v=64 r/8 [A2 E3 G3 B3]/4'+25 r/4 [C3 E3 G3]/4+25 r/8 | r/8 [D3 F3 A3 C4]/4'+25 r/4 [F3 A3 C4]/4+25 r/8 | r/8 [Bb2 F3 A3 C4]/4'+25 r/4 [F3 A3 D4]/4+25 r/8 | r/8 [C3 G3 Bb3 D4]/4'+25 r/4 [E3 G3 Bb3]/4+25 r/8 | }*4
+| { v=64 r/8 [G2 D3 F3 A3]/4'+25 r/4 [Bb2 D3 F3]/4+25 r/8 | r/8 [C3 Eb3 G3 Bb3]/4'+25 r/4 [Eb3 G3 Bb3]/4+25 r/8 | r/8 [Ab2 Eb3 G3 Bb3]/4'+25 r/4 [Eb3 G3 C4]/4+25 r/8 | r/8 [Bb2 F3 Ab3 C4]/4'+25 r/4 [D3 F3 Ab3]/4+25 r/8 | }*4
 # Hook
-| v=68 [D3 F3 A3 C4]/2+25 r/8 [A3 C4 E4]/8+90 r/4 | [Bb2 F3 A3 C4]/2+25 r/8 [F3 A3 C4]/8+90 r/4 | [G2 D3 F3 A3]/2+25 r/8 [A3 D4 F4]/8+90 r/4 | [A2 E3 G3 C#4]/2+25 r/8 [E3 G3 C#4]/8+90 r/4 |
-| [D3 F3 A3 C4]/2+25 r/8 [A3 C4 E4]/8+90 r/4 | [Bb2 F3 A3 C4]/2+25 r/8 [F3 A3 C4]/8+90 r/4 | [G2 D3 F3 A3]/2+25 r/8 [A3 D4 F4]/8+90 r/4 | [A2 E3 G3 C#4]/2+25 r/8 [E3 G3 C#4]/8+90 r/4 |
+| v=68 [C3 Eb3 G3 Bb3]/2+25 r/8 [G3 Bb3 D4]/8+90 r/4 | [Ab2 Eb3 G3 Bb3]/2+25 r/8 [Eb3 G3 Bb3]/8+90 r/4 | [F2 C3 Eb3 G3]/2+25 r/8 [G3 C4 Eb4]/8+90 r/4 | [G2 D3 F3 B3]/2+25 r/8 [D3 F3 B3]/8+90 r/4 |
+| [C3 Eb3 G3 Bb3]/2+25 r/8 [G3 Bb3 D4]/8+90 r/4 | [Ab2 Eb3 G3 Bb3]/2+25 r/8 [Eb3 G3 Bb3]/8+90 r/4 | [F2 C3 Eb3 G3]/2+25 r/8 [G3 C4 Eb4]/8+90 r/4 | [G2 D3 F3 B3]/2+25 r/8 [D3 F3 B3]/8+90 r/4 |
 # Bridge: whole chords under the pad
-| v=58 [F2 C3 E3 A3]/1 | [E3 G3 Bb3 D4]/1 | [D3 F3 A3 C4]/1 | [A2 D3 E3 G3]/1 |
+| v=58 [Eb2 Bb2 D3 G3]/1 | [D3 F3 Ab3 C4]/1 | [C3 Eb3 G3 Bb3]/1 | [G2 C3 D3 F3]/1 |
 # Last hook and ending
-| v=68 [D3 F3 A3 C4]/2+25 r/8 [A3 C4 E4]/8+90 r/4 | [Bb2 F3 A3 C4]/2+25 r/8 [F3 A3 C4]/8+90 r/4 | [G2 D3 F3 A3]/2+25 r/8 [A3 D4 F4]/8+90 r/4 | [A2 E3 G3 C#4]/2+25 r/8 [E3 G3 C#4]/8+90 r/4 |
-| [D3 F3 A3 C4]/2+25 r/8 [A3 C4 E4]/8+90 r/4 | [Bb2 F3 A3 C4]/2+25 r/8 [F3 A3 C4]/8+90 r/4 | [A2 E3 Bb3 C#4]/2+25 r/2 | v=60 [D3 F3 A3 C4 E4]/1 |
+| v=68 [C3 Eb3 G3 Bb3]/2+25 r/8 [G3 Bb3 D4]/8+90 r/4 | [Ab2 Eb3 G3 Bb3]/2+25 r/8 [Eb3 G3 Bb3]/8+90 r/4 | [F2 C3 Eb3 G3]/2+25 r/8 [G3 C4 Eb4]/8+90 r/4 | [G2 D3 F3 B3]/2+25 r/8 [D3 F3 B3]/8+90 r/4 |
+| [C3 Eb3 G3 Bb3]/2+25 r/8 [G3 Bb3 D4]/8+90 r/4 | [Ab2 Eb3 G3 Bb3]/2+25 r/8 [Eb3 G3 Bb3]/8+90 r/4 | [G2 D3 Ab3 B3]/2+25 r/2 | v=60 [C3 Eb3 G3 Bb3 D4]/1 |
 
 track pad role=pad vol=0.4
 # Intro
-| v=54 [D2 A2]/1~ | [D2 A2]/1 | [G2 D3]/1 | [A2 E3]/1 |
+| v=54 [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
 # Verse 1
 | R*16 |
 # Hook
-| [D2 A2]/1~ | [D2 A2]/1 | [G2 D3]/1 | [A2 E3]/1 | [D2 A2]/1~ | [D2 A2]/1 | [G2 D3]/1 | [A2 E3]/1 |
+| [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 | [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
 # Verse 2
 | R*16 |
 # Hook
-| [D2 A2]/1~ | [D2 A2]/1 | [G2 D3]/1 | [A2 E3]/1 | [D2 A2]/1~ | [D2 A2]/1 | [G2 D3]/1 | [A2 E3]/1 |
+| [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 | [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
 # Bridge: the pad's moment
-| v=62 [F2 C3]/1 | [E3 Bb3]/1 | [D3 A3]/1 | [A2 D3]/1 |
+| v=62 [Eb2 Bb2]/1 | [D3 Ab3]/1 | [C3 G3]/1 | [G2 C3]/1 |
 # Last hook and ending
-| v=56 [D2 A2]/1~ | [D2 A2]/1 | [G2 D3]/1 | [A2 E3]/1 | [D2 A2]/1 | [Bb2 F3]/1 | [A2 E3]/1 | [D2 A2 D3]/1 |
+| v=56 [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 | [C2 G2]/1 | [Ab2 Eb3]/1 | [G2 D3]/1 | [C2 G2 C3]/1 |
 
-track bass role=bass vol=0.72
+track bass role=bass vol=0.62
 # Intro
-| R | R | G1/1 | A1/2 B1/4 A1/4 |
+| R | R | F1/1 | G1/2 A1/4 G1/4 |
 # Verse 1: root, octave pop on the two-and, home on the three-and
-| { v=88 A1/4 r/8 A2/8+50 r/8 A1/4 r/8 | D2/4 r/8 D3/8+50 r/8 D2/4 r/8 | Bb1/4 r/8 Bb2/8+50 r/8 Bb1/4 r/8 | C2/4 r/8 C3/8+50 r/8 C2/4 B1/8 | }*4
+| { v=88 G1/4 r/8 G2/8+50 r/8 G1/4 r/8 | C2/4 r/8 C3/8+50 r/8 C2/4 r/8 | Ab1/4 r/8 Ab2/8+50 r/8 Ab1/4 r/8 | Bb1/4 r/8 Bb2/8+50 r/8 Bb1/4 A1/8 | }*4
 # Hook: the bass walks the chord
-| v=92 D2/4 D2/8 r/8 F2/4 A2/8 r/8 | Bb1/4 r/8 Bb2/8 r/8 F2/4 r/8 | G1/4 r/8 A1/8 r/8 Bb1/4 r/8 | A1/2 r/4 C#2/4 |
-| D2/4 D2/8 r/8 F2/4 A2/8 r/8 | Bb1/4 r/8 Bb2/8 r/8 F2/4 r/8 | G1/4 r/8 A1/8 r/8 Bb1/4 r/8 | A1/2 r/4 C#2/4 |
+| v=92 C2/4 C2/8 r/8 Eb2/4 G2/8 r/8 | Ab1/4 r/8 Ab2/8 r/8 Eb2/4 r/8 | F1/4 r/8 G1/8 r/8 Ab1/4 r/8 | G1/2 r/4 B1/4 |
+| C2/4 C2/8 r/8 Eb2/4 G2/8 r/8 | Ab1/4 r/8 Ab2/8 r/8 Eb2/4 r/8 | F1/4 r/8 G1/8 r/8 Ab1/4 r/8 | G1/2 r/4 B1/4 |
 # Verse 2
-| { v=88 A1/4 r/8 A2/8+50 r/8 A1/4 r/8 | D2/4 r/8 D3/8+50 r/8 D2/4 r/8 | Bb1/4 r/8 Bb2/8+50 r/8 Bb1/4 r/8 | C2/4 r/8 C3/8+50 r/8 C2/4 B1/8 | }*4
+| { v=88 G1/4 r/8 G2/8+50 r/8 G1/4 r/8 | C2/4 r/8 C3/8+50 r/8 C2/4 r/8 | Ab1/4 r/8 Ab2/8+50 r/8 Ab1/4 r/8 | Bb1/4 r/8 Bb2/8+50 r/8 Bb1/4 A1/8 | }*4
 # Hook
-| v=92 D2/4 D2/8 r/8 F2/4 A2/8 r/8 | Bb1/4 r/8 Bb2/8 r/8 F2/4 r/8 | G1/4 r/8 A1/8 r/8 Bb1/4 r/8 | A1/2 r/4 C#2/4 |
-| D2/4 D2/8 r/8 F2/4 A2/8 r/8 | Bb1/4 r/8 Bb2/8 r/8 F2/4 r/8 | G1/4 r/8 A1/8 r/8 Bb1/4 r/8 | A1/2 r/4 C#2/4 |
+| v=92 C2/4 C2/8 r/8 Eb2/4 G2/8 r/8 | Ab1/4 r/8 Ab2/8 r/8 Eb2/4 r/8 | F1/4 r/8 G1/8 r/8 Ab1/4 r/8 | G1/2 r/4 B1/4 |
+| C2/4 C2/8 r/8 Eb2/4 G2/8 r/8 | Ab1/4 r/8 Ab2/8 r/8 Eb2/4 r/8 | F1/4 r/8 G1/8 r/8 Ab1/4 r/8 | G1/2 r/4 B1/4 |
 # Bridge: long roots
-| v=86 F1/1 | E1/2 A1/2 | D2/1 | A1/1 |
+| v=86 Eb1/1 | D1/2 G1/2 | C2/1 | G1/1 |
 # Last hook and ending
-| v=92 D2/4 D2/8 r/8 F2/4 A2/8 r/8 | Bb1/4 r/8 Bb2/8 r/8 F2/4 r/8 | G1/4 r/8 A1/8 r/8 Bb1/4 r/8 | A1/2 r/4 C#2/4 |
-| D2/4 D2/8 r/8 F2/4 A2/8 r/8 | Bb1/4 r/8 Bb2/8 r/8 F2/4 r/8 | A1/2 C#2/2 | v=84 D2/1 |
+| v=92 C2/4 C2/8 r/8 Eb2/4 G2/8 r/8 | Ab1/4 r/8 Ab2/8 r/8 Eb2/4 r/8 | F1/4 r/8 G1/8 r/8 Ab1/4 r/8 | G1/2 r/4 B1/4 |
+| C2/4 C2/8 r/8 Eb2/4 G2/8 r/8 | Ab1/4 r/8 Ab2/8 r/8 Eb2/4 r/8 | G1/2 B1/2 | v=84 C2/1 |
 
 track drums role=drums vol=0.85
 # Intro: a rim click, then the kick picks up the verse
