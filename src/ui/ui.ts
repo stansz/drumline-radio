@@ -588,7 +588,7 @@ export function startUi(): void {
       next();
       return;
     }
-    if (/^[1-7]$/.test(event.key)) {
+    if (/^[1-8]$/.test(event.key)) {
       event.preventDefault();
       selectBand(Number(event.key) - 1);
     }

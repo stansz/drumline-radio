@@ -23,7 +23,7 @@ Every key may appear once, and no other keys are allowed.
 | `year`     | yes      | Any non-empty text, e.g. `1856` or `traditional`. |
 | `source`   | yes      | `public-domain` or `original`.                   |
 | `category` | yes      | `carols`, `classics`, or `originals`. Picks the preset group in the player. |
-| `style`    | yes      | One of `synthwave`, `chiptune`, `orchestral`, `techno`, `lofi`, `cinematic`, `studio`. |
+| `style`    | yes      | One of `synthwave`, `chiptune`, `orchestral`, `techno`, `lofi`, `cinematic`, `altrock`, `studio`. |
 | `key`      | yes      | Any non-empty text, e.g. `C major`.              |
 | `tempo`    | yes      | Number from 20 to 400, quarter notes per minute; decimals allowed. |
 | `time`     | yes      | `N/D`, N an integer 1 to 32, D one of 1, 2, 4, 8, 16. |

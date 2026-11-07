@@ -75,6 +75,10 @@ export const LEADS: Record<string, Patch> = {
   guitar: synth({ name: 'Lead guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 4, 0.25), osc('sine', -1, 0, 0.15)],
     env: env(0.008, 0.8, 0.7, 0.6), filter: { type: 'lowpass', hz: 2600, q: 1.2, envAmount: 1.6, envDecay: 0.25 },
     vibrato: { rate: 5.2, cents: 22, delay: 0.45 }, drive: 0.6, gain: 0.2, sends: { reverb: 1, delay: 1.5 } }),
+  // Alt rock: a fuzz guitar lead, driven hard, that holds and sings.
+  'fuzz-lead': synth({ name: 'Fuzz guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 6, 0.3), osc('sawtooth', -1, 0, 0.1)],
+    env: env(0.005, 0.6, 0.75, 0.3), filter: { type: 'lowpass', hz: 2800, q: 1, envAmount: 1.4, envDecay: 0.2 },
+    vibrato: { rate: 5.5, cents: 15, delay: 0.5 }, drive: 0.85, gain: 0.2, sends: { reverb: 0.7, delay: 0.6 } }),
 };
 
 export const KEYS: Record<string, Patch> = {
@@ -159,6 +163,14 @@ export const KEYS: Record<string, Patch> = {
   'analog-synth': synth({ name: 'Analog synth', oscs: [osc('sawtooth', 0, -6, 0.5), osc('pulse25', 0, 6, 0.5)],
     env: env(0.005, 0.35, 0.2, 0.3), filter: { type: 'lowpass', hz: 1400, q: 3, envAmount: 3, envDecay: 0.18 },
     gain: 0.16, sends: { reverb: 1, delay: 1.2 } }),
+  // Alt rock: a clean, jangly guitar for arpeggios and counter-lines; plucked so it rings and fades.
+  'clean-guitar': synth({ name: 'Clean guitar', oscs: [osc('triangle', 0, 0, 0.55), osc('sawtooth', 0, 5, 0.3), osc('sine', 1, 0, 0.15)],
+    env: env(0.003, 0.9, 0.15, 0.35), filter: { type: 'lowpass', hz: 3400, q: 1.2, envAmount: 2, envDecay: 0.15 },
+    gain: 0.24, sends: { reverb: 1, delay: 0.9 } }),
+  // Alt rock: palm-muted power-chord chugs, short and crunchy.
+  'power-chords': synth({ name: 'Power chords', oscs: [osc('sawtooth', 0, -6, 0.45), osc('sawtooth', 0, 6, 0.4), osc('square', -1, 0, 0.15)],
+    env: env(0.003, 0.22, 0.25, 0.1), filter: { type: 'lowpass', hz: 1900, q: 1.5, envAmount: 2.5, envDecay: 0.1 },
+    drive: 0.7, gain: 0.16, sends: { reverb: 0.5, delay: 0 } }),
 };
 
 export const PADS: Record<string, Patch> = {
@@ -222,6 +234,10 @@ export const PADS: Record<string, Patch> = {
   'synth-pad': synth({ name: 'Analog pad', oscs: [osc('sawtooth', 0, -12, 0.5), osc('sawtooth', 0, 12, 0.5)],
     env: env(1.2, 1.5, 0.8, 2), filter: { type: 'lowpass', hz: 1100, q: 1, envAmount: 1.5, envDecay: 2 },
     vibrato: { rate: 0.4, cents: 6, delay: 0 }, gain: 0.16, sends: { reverb: 1.5, delay: 0.4 } }),
+  // Alt rock: a held wall of distorted rhythm guitar for the chorus.
+  'guitar-wall': synth({ name: 'Guitar wall', oscs: [osc('sawtooth', 0, -10, 0.4), osc('sawtooth', 0, 10, 0.4), osc('square', -1, 0, 0.2)],
+    env: env(0.01, 0.5, 0.8, 0.25), filter: { type: 'lowpass', hz: 2200, q: 0.8, envAmount: 1, envDecay: 0.3 },
+    drive: 0.75, gain: 0.13, sends: { reverb: 0.8, delay: 0 } }),
 };
 
 export const BASSES: Record<string, Patch> = {
@@ -274,6 +290,10 @@ export const BASSES: Record<string, Patch> = {
   'warm-bass': synth({ name: 'Warm bass', oscs: [osc('sine', 0, 0, 0.6), osc('sawtooth', 0, 0, 0.4)],
     env: env(0.01, 0.4, 0.75, 0.2), filter: { type: 'lowpass', hz: 650, q: 0.8, envAmount: 1.8, envDecay: 0.12 },
     gain: 0.45, sends: { reverb: 0.15, delay: 0 } }),
+  // Alt rock: a picked electric bass with a little grit, for driving eighth notes.
+  'pick-bass': synth({ name: 'Pick bass', oscs: [osc('sawtooth', 0, 0, 0.5), osc('square', 0, 0, 0.2), osc('sine', -1, 0, 0.3)],
+    env: env(0.003, 0.3, 0.6, 0.08), filter: { type: 'lowpass', hz: 950, q: 1.2, envAmount: 2.2, envDecay: 0.08 },
+    drive: 0.3, gain: 0.42, sends: { reverb: 0.1, delay: 0 } }),
 };
 
 export const KITS: Record<string, Patch> = {
@@ -323,6 +343,12 @@ export const KITS: Record<string, Patch> = {
     snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 180, decay: 0.22 },
     hat: { noise: 'white', hz: 7000, decay: 0.05 },
     crashDecay: 2.4, gain: 0.8, sends: { reverb: 0.9, delay: 0 } }),
+  // Alt rock: a punchy kit in a small room, with a big snare and a washy crash.
+  'rock-kit': drums({ name: 'Rock kit',
+    kick: { wave: 'sine', hz: 58, sweep: 2.6, sweepTime: 0.07, decay: 0.42, click: 0.4 },
+    snare: { noise: 'white', filter: 'bandpass', hz: 1600, toneHz: 200, decay: 0.28 },
+    hat: { noise: 'white', hz: 7500, decay: 0.07 },
+    crashDecay: 1.8, gain: 0.9, sends: { reverb: 0.8, delay: 0 } }),
 };
 
 export const FAMILIES = { leads: LEADS, keys: KEYS, pads: PADS, basses: BASSES, kits: KITS };

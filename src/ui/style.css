@@ -80,6 +80,16 @@
   --glow: #f2b55a;
 }
 
+:root[data-style='altrock'] {
+  --bg: #120c0c;
+  --panel: rgba(28, 14, 14, 0.88);
+  --text: #f6eee6;
+  --muted: #b39d94;
+  --accent: #ff4136;
+  --accent-2: #ffd23f;
+  --glow: #ff4136;
+}
+
 :root[data-style='studio'] {
   --bg: #15171a;
   --panel: rgba(24, 27, 31, 0.88);
@@ -298,6 +308,22 @@ body::before {
 :root[data-style='cinematic'] body::after {
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.5'/></svg>");
   opacity: 0.07;
+}
+
+/* Alt rock: a basement show. A brick wall, one spotlight from above, and a red and amber stage wash. */
+:root[data-style='altrock'] body {
+  background:
+    radial-gradient(ellipse 28% 75% at 50% -10%, rgba(255, 236, 200, 0.22), transparent 70%) fixed,
+    radial-gradient(ellipse 60% 30% at 20% 100%, rgba(255, 65, 54, 0.32), transparent 70%) fixed,
+    radial-gradient(ellipse 60% 30% at 80% 100%, rgba(255, 210, 63, 0.2), transparent 70%) fixed,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='56'><rect width='120' height='56' fill='%23170d0c'/><g fill='%23331713'><rect x='1' y='1' width='58' height='26' rx='2'/><rect x='61' y='1' width='58' height='26' rx='2'/><rect x='-29' y='29' width='58' height='26' rx='2'/><rect x='31' y='29' width='58' height='26' rx='2'/><rect x='91' y='29' width='58' height='26' rx='2'/></g></svg>")
+      0 0 / 120px 56px repeat fixed,
+    #120c0c;
+}
+
+:root[data-style='altrock'] body::after {
+  background: radial-gradient(ellipse 85% 80% at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+  opacity: 1;
 }
 
 /* Studio: a control room. Acoustic panels on the wall, a soft monitor glow, and a warm on-air lamp. */
@@ -846,20 +872,55 @@ body::before {
   cursor: pointer;
 }
 
-/* Seven bands on one row down to tablet width: tighter letters so none wraps. */
+/* Below desktop width the eight bands sit in two rows of four. */
 @media (max-width: 960px) {
-  .band {
-    padding: 10px 2px;
-    font-size: 11px;
-    letter-spacing: 0.04em;
+  .bands {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
+/* Each band carries its own style's colour, like the lit presets on a radio. */
+.band[data-style='synthwave'] { --band: #ff4fa3; }
+.band[data-style='chiptune'] { --band: #7cff4f; }
+.band[data-style='orchestral'] { --band: #e8c27a; }
+.band[data-style='techno'] { --band: #c6ff00; }
+.band[data-style='lofi'] { --band: #ffb37a; }
+.band[data-style='cinematic'] { --band: #f2b55a; }
+.band[data-style='altrock'] { --band: #ff4136; }
+.band[data-style='studio'] { --band: #5ee0c1; }
+
+.band {
+  position: relative;
+  overflow: hidden;
+}
+
+.band::before {
+  content: '';
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--band, var(--accent));
+  opacity: 0.45;
+}
+
+.band:hover {
+  color: var(--text);
+}
+
+.band[aria-checked='true']::before {
+  opacity: 1;
+  box-shadow: 0 0 8px var(--band, var(--accent));
+}
+
 .band[aria-checked='true'] {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--band, var(--accent));
+  color: var(--band, var(--accent));
   box-shadow:
-    0 0 10px var(--glow),
+    0 0 10px var(--band, var(--glow)),
     inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -1427,10 +1488,7 @@ body::before {
     background: var(--accent);
   }
 
-  /* Seven bands on two rows of four, big enough to read and tap. */
   .bands {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 6px;
   }
 

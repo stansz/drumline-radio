@@ -227,6 +227,22 @@ const RECIPES: StyleRecipe[] = [
     fx: { reverbSeconds: 3.2, reverbSend: 0.35, delayBeats: 0.75, delaySend: 0.22, delayFeedback: 0.38, crush: 0, lowpassHz: 15000, crackle: 0 },
     lanes: ['#f2b55a', '#9ec3ff', '#e86a5c', '#c9d6df', '#8f7ad8', '#6fd3b5'],
   },
+  {
+    id: 'altrock',
+    name: 'Alt rock',
+    blurb: 'Fuzzy power chords, a jangly clean guitar, a driving bass, and a punchy room kit.',
+    roles: { lead: 'fuzz-lead', lead2: 'clean-guitar', counter: 'clean-guitar', pad: 'guitar-wall', chords: 'power-chords', bass: 'pick-bass', arp: 'clean-guitar', drums: 'rock-kit' },
+    instruments: {
+      'fuzz-lead': 'fuzz-lead',
+      'clean-guitar': 'clean-guitar',
+      'guitar-wall': 'guitar-wall',
+      'power-chords': 'power-chords',
+      'pick-bass': 'pick-bass',
+      'rock-kit': 'rock-kit',
+    },
+    fx: { reverbSeconds: 1.4, reverbSend: 0.18, delayBeats: 0.75, delaySend: 0.08, delayFeedback: 0.25, crush: 0, lowpassHz: 16000, crackle: 0 },
+    lanes: ['#ff4136', '#ffd23f', '#3fa7ff', '#f4e9d8', '#7ee081', '#ff8fc7'],
+  },
   // The open style: every bank instrument under its bank id, through clean, neutral effects, so a
   // song written for it can pick any instrument with plain `inst=`. Remixes still fall back to the
   // other styles' own patches.

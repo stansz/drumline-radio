@@ -28,7 +28,7 @@ A style is a set of patches plus the settings of the shared effects. A patch is 
 (oscillators, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit (kick, snare,
 hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every patch, once,
 under a unique id, grouped into leads, keys, pads, basses, and kits. `src/audio/styles.ts` holds
-the seven styles as recipes: each picks the bank instruments it uses, under its own local names, and
+the eight styles as recipes: each picks the bank instruments it uses, under its own local names, and
 sets its role map and effects.
 
 A track picks its patch in this order:
@@ -136,6 +136,27 @@ The Cinematic style is a grand piano, an overdriven lead guitar, a solo cello, a
 section, an analog synth, and an organic studio kit. The guitar's `drive` gives it the distortion,
 and its long delay send and the style's 3.2 s reverb give it a big hall. Songs can reach the extra
 `Analog pad` patch with `inst=synth-pad`; no role maps to it.
+
+### Alt rock
+
+The Alt rock style is guitar-band rock: punk, pop punk, and indie. Its six instruments are all new
+in the bank.
+
+| Role | Patch |
+| --- | --- |
+| lead | Fuzz guitar |
+| lead2 | Clean guitar |
+| counter | Clean guitar |
+| pad | Guitar wall |
+| chords | Power chords |
+| bass | Pick bass |
+| arp | Clean guitar |
+| drums | Rock kit |
+
+The fuzz lead and both rhythm guitars use heavy `drive`; Power chords is short and palm-muted for
+chugging, and Guitar wall holds for a chorus. Clean guitar is a plucked, jangly tone for arpeggios
+and counter-lines. Pick bass has a little drive for driving eighth notes. The style has a small
+room (1.4 s reverb), little delay, and no crush.
 
 ### Studio
 
