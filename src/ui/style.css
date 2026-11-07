@@ -851,6 +851,11 @@ body::before {
   accent-color: var(--accent);
 }
 
+/* The phone-only button that opens the style panel. */
+.style-toggle {
+  display: none;
+}
+
 .bands {
   display: flex;
   gap: 8px;
@@ -1139,7 +1144,8 @@ body::before {
 :root[data-view='playlist'] .stage,
 :root[data-view='playlist'] .tuner .presets,
 :root[data-view='playlist'] .dial-wrap,
-:root[data-view='playlist'] .bands {
+:root[data-view='playlist'] .bands,
+:root[data-view='playlist'] .style-toggle {
   display: none;
 }
 
@@ -1409,27 +1415,97 @@ body::before {
     display: none;
   }
 
-  /* One row: knobs, seek bar, and both times. */
+  /* Two rows: the seek bar and both times across the full width, then the knobs and the style
+     toggle. The ::before is a full-width break between the rows. */
+  .tuner {
+    position: relative;
+  }
+
   .transport {
-    gap: 8px;
+    --toggle-w: 100px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 8px;
+  }
+
+  .transport::before {
+    content: '';
+    order: 4;
+    flex-basis: 100%;
+  }
+
+  #elapsed { order: 1; }
+  #seek { order: 2; }
+  #total { order: 3; }
+  #repeat { order: 5; }
+  #prev { order: 6; }
+  #play { order: 7; }
+  #next { order: 8; }
+  #style-toggle { order: 9; }
+
+  /* A fixed width so the knobs don't shift when the style name changes. */
+  .style-toggle {
+    display: block;
+    width: var(--toggle-w);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 8px 4px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    color: var(--accent);
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .style-toggle::after {
+    content: ' ▴';
+  }
+
+  .style-toggle[aria-expanded='true']::after {
+    content: ' ▾';
+  }
+
+  /* The styles fold away and open as a panel above the knobs. */
+  .bands {
+    display: none;
+  }
+
+  .bands.open {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 62px;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    background: var(--bg);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.6);
   }
 
   .knob {
-    width: 34px;
-    height: 34px;
-    font-size: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
   }
 
   .knob-main {
-    width: 42px;
-    height: 42px;
-    font-size: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 17px;
   }
 
   .knob-small {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
   }
 
   .time {

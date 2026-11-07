@@ -55,6 +55,7 @@ export function startUi(): void {
   const totalEl = required<HTMLElement>('#total');
   const seekEl = required<HTMLInputElement>('#seek');
   const bandsEl = required<HTMLElement>('#bands');
+  const styleToggle = required<HTMLButtonElement>('#style-toggle');
   const presetsEl = required<HTMLElement>('#presets');
   const saverOverlay = required<HTMLElement>('#screensaver');
   const saverBox = required<HTMLElement>('#saver-box');
@@ -204,6 +205,14 @@ export function startUi(): void {
       button.textContent = `${own ? '★ ' : ''}${STYLE_DEFS[id].name}`;
       button.setAttribute('aria-checked', String(id === style));
     }
+    styleToggle.textContent = STYLE_DEFS[style].name;
+    styleToggle.setAttribute('aria-label', `Style: ${STYLE_DEFS[style].name}. Change style`);
+  }
+
+  // On phones the style buttons fold into one toggle that opens them as a panel.
+  function setStylePanel(open: boolean): void {
+    bandsEl.classList.toggle('open', open);
+    styleToggle.setAttribute('aria-expanded', String(open));
   }
 
   function updatePlayButton(): void {
@@ -349,6 +358,7 @@ export function startUi(): void {
     updateReadout(id);
     updateBands(id);
     showBanner(id);
+    setStylePanel(false);
   }
 
   function selectCategory(filter: CategoryFilter): void {
@@ -471,7 +481,23 @@ export function startUi(): void {
   document.addEventListener('pointerdown', noteInteraction, true);
   document.addEventListener('keydown', noteInteraction, true);
 
+  styleToggle.addEventListener('click', () => {
+    const open = !bandsEl.classList.contains('open');
+    setStylePanel(open);
+    if (open) bandButtons.find((button) => button.getAttribute('aria-checked') === 'true')?.focus();
+  });
+  document.addEventListener('pointerdown', (event) => {
+    const target = event.target as Node;
+    if (bandsEl.classList.contains('open') && !bandsEl.contains(target) && !styleToggle.contains(target)) {
+      setStylePanel(false);
+    }
+  });
   bandsEl.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && bandsEl.classList.contains('open')) {
+      setStylePanel(false);
+      styleToggle.focus();
+      return;
+    }
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
     event.stopPropagation();
