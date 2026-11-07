@@ -79,10 +79,11 @@ export const LEADS: Record<string, Patch> = {
   'fuzz-lead': synth({ name: 'Fuzz guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 6, 0.3), osc('sawtooth', -1, 0, 0.1)],
     env: env(0.005, 0.6, 0.75, 0.3), filter: { type: 'lowpass', hz: 2800, q: 1, envAmount: 1.4, envDecay: 0.2 },
     vibrato: { rate: 5.5, cents: 15, delay: 0.5 }, drive: 0.85, gain: 0.2, sends: { reverb: 0.7, delay: 0.6 } }),
-  // Alt rock: a warm indie lead, lightly overdriven and rounder than the fuzz, with a long delay tail.
-  'indie-lead': synth({ name: 'Indie lead', oscs: [osc('sawtooth', 0, 0, 0.5), osc('triangle', 0, 4, 0.35), osc('sine', -1, 0, 0.15)],
-    env: env(0.006, 0.7, 0.7, 0.4), filter: { type: 'lowpass', hz: 2200, q: 0.8, envAmount: 1.2, envDecay: 0.25 },
-    vibrato: { rate: 5, cents: 12, delay: 0.5 }, drive: 0.45, gain: 0.21, sends: { reverb: 1.2, delay: 1.4 } }),
+  // Alt rock: an indie lead, unlike the fuzz: light crunch, notes that ring and fade instead of
+  // holding, a slow chorus wobble from two detuned triangles, and a long delay tail.
+  'indie-lead': synth({ name: 'Indie lead', oscs: [osc('triangle', 0, -5, 0.4), osc('triangle', 0, 5, 0.3), osc('sawtooth', 0, 0, 0.2), osc('sine', 1, 0, 0.1)],
+    env: env(0.004, 1.1, 0.35, 0.5), filter: { type: 'lowpass', hz: 3000, q: 1, envAmount: 2, envDecay: 0.2 },
+    vibrato: { rate: 0.9, cents: 5, delay: 0 }, drive: 0.3, gain: 0.26, sends: { reverb: 1.3, delay: 2 } }),
 };
 
 export const KEYS: Record<string, Patch> = {

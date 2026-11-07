@@ -160,8 +160,8 @@ chugging, and Guitar wall holds for a chorus. Clean guitar is a plucked, jangly 
 and counter-lines. Pick bass has a little drive for driving eighth notes. The style has a small
 room (1.4 s reverb), little delay, and no crush.
 
-Alt rock has two extras that no role maps to. `inst=indie-lead` is a warm, lightly overdriven lead,
-rounder than the fuzz, with a long delay tail. `inst=shimmer-guitar` is a shimmering clean guitar for
+Alt rock has two extras that no role maps to. `inst=indie-lead` is a lead with light crunch whose
+notes ring and fade instead of holding like the fuzz, with a slow chorus wobble and a long delay tail. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: two triangles detuned apart and a slow 0.9 Hz wobble give it a chorus sheen, and a
 large reverb and delay send makes its notes echo on the style's dotted-eighth delay. Porch Light uses
 both.
