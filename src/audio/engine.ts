@@ -16,7 +16,12 @@ interface TrackChannel {
 }
 
 const TICK_MS = 25;
-const LOOKAHEAD = 0.12;
+/** How far ahead notes are booked. Long enough to ride out the timer delays browsers add to windows
+ * that aren't focused; changing style rebooks, so it never delays a switch. */
+const LOOKAHEAD = 0.5;
+/** A note missed by a late tick still plays if it is at most this late (inaudible in a song). Notes
+ * missed by more, after a real freeze, are skipped, so they don't all start at once in a burst. */
+const LATE_OK = 0.3;
 const MAKEUP_GAIN = 1.4;
 /** How long the vinyl bed fades when play starts or stops. */
 const STOP_FADE = 0.03;
@@ -63,7 +68,8 @@ export class Engine {
   private timer: ReturnType<typeof setInterval> | null = null;
   private crackleSource: AudioBufferSourceNode | null = null;
   private crackleFade: GainNode | null = null;
-  private readonly voices = new Set<Voice>();
+  /** Every sounding or booked voice, with the time it starts. */
+  private readonly voices = new Map<Voice, number>();
 
   onEnded: (() => void) | null = null;
 
@@ -204,6 +210,23 @@ export class Engine {
   setStyle(id: StyleId): void {
     this.styleValue = id;
     this.applyStyleFx();
+    this.rebook();
+  }
+
+  /** Cancels the notes booked but not yet started and books them again, in the current style. */
+  private rebook(): void {
+    if (!this.playingValue || !this.timelineValue || this.timer === null) return;
+    const now = this.ctx.currentTime;
+    const from = this.position;
+    for (const [voice, start] of this.voices) {
+      if (start > now) {
+        voice.stop(now);
+        this.voices.delete(voice);
+      }
+    }
+    for (const note of notesBetween(this.timelineValue, from, this.scheduledUntil)) {
+      if (this.startCtx + (note.start - this.startPos) > now) this.scheduleNote(note);
+    }
   }
 
   play(): void {
@@ -359,12 +382,13 @@ export class Engine {
     const now = this.ctx.currentTime;
 
     if (position + LOOKAHEAD > this.scheduledUntil) {
-      const notes = notesBetween(this.timelineValue, this.scheduledUntil, position + LOOKAHEAD);
+      const from = Math.max(this.scheduledUntil, position - LATE_OK);
+      const notes = notesBetween(this.timelineValue, from, position + LOOKAHEAD);
       for (const note of notes) this.scheduleNote(note);
       this.scheduledUntil = position + LOOKAHEAD;
     }
 
-    for (const voice of this.voices) {
+    for (const voice of this.voices.keys()) {
       if (voice.end < now) this.voices.delete(voice);
     }
 
@@ -400,7 +424,7 @@ export class Engine {
               channel.gain,
               note.bends ?? [],
             );
-      this.voices.add(voice);
+      this.voices.set(voice, when);
     }
   }
 
@@ -418,7 +442,7 @@ export class Engine {
       this.crackleSource = null;
       this.crackleFade = null;
     }
-    for (const voice of this.voices) voice.stop(now);
+    for (const voice of this.voices.keys()) voice.stop(now);
     this.voices.clear();
   }
 }

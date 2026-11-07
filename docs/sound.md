@@ -7,9 +7,13 @@ nodes.
 ## Scheduling
 
 The audio clock is the master clock. `src/audio/engine.ts` turns the parsed score into a timeline of
-seconds (`buildTimeline` in `src/music/timing.ts`), then every 25 ms it looks 120 ms ahead and schedules
-the notes that start in that window on the `AudioContext` clock. Scheduled notes are never touched
-again: the Web Audio engine plays them at the exact time they were given. Pausing, seeking, or
+seconds (`buildTimeline` in `src/music/timing.ts`), then every 25 ms it looks 0.5 s ahead and schedules
+the notes that start in that window on the `AudioContext` clock. The long window rides out the timer
+delays browsers add to windows that aren't focused (Safari on macOS). If a tick still comes late, a
+missed note that is at most 0.3 s late plays at once (too little to hear); notes missed by more,
+after a real freeze, are skipped so they don't all start together in a burst. The Web Audio engine
+plays scheduled notes at the exact time they were given. Changing style cancels the notes booked
+but not yet started and books them again with the new style's patches, so a switch is instant. Pausing, seeking, or
 loading another song stops every live voice, so the next `play()` starts a fresh schedule from the
 current position. A stopped voice fades out over 30 ms (drums too, through a per-hit gain), a voice
 booked but not yet started never sounds, and the old song's channels stay connected for 200 ms so

@@ -263,6 +263,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **late:** seeks and changes stations while playing and checks that every note is booked ahead of
   time (`late` 0, `min` above 0). A note booked for the past starts without its attack and clicks:
   `node tools/browser/late.mjs`.
+- **stall:** blocks the main thread for 1.5 s while a song plays and counts sounds booked in the past
+  afterwards. Only notes up to 0.3 s late may play late; the rest of the gap is skipped, so there is
+  no burst: `node tools/browser/stall.mjs`.
 - **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order). Add a style id at the end to remix the song into it first.

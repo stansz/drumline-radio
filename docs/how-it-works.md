@@ -39,7 +39,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 
 ### `src/audio/`: the sound side
 
-- `engine.ts` is the player. It looks about 0.1 s ahead on the audio clock and books the notes due
+- `engine.ts` is the player. It looks 0.5 s ahead on the audio clock and books the notes due
   in that window, so timing is exact. It also runs the mixer: per-track volume and pan, reverb, delay,
   then a compressor, a limiter, and volume.
 - `voices.ts` builds each note from scratch (oscillators, filters, envelopes, and noise for drums).
@@ -75,8 +75,8 @@ track bass   role=bass
 ```
 
 Each style picks its own instrument for each role (lead = Saw lead in Synthwave, Strings in
-Orchestral, Acid in Techno...). Pressing a style button swaps the whole set, and since notes are
-booked only 0.1 s ahead, the change is almost instant.
+Orchestral, Acid in Techno...). Pressing a style button swaps the whole set: the notes already booked
+ahead are cancelled and booked again with the new patches, so the change is instant.
 
 ## Writing a song (one-minute version)
 
