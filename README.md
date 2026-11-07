@@ -21,11 +21,11 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - A repeat button that loops the current song (remembered between visits).
 - Long titles scroll in the readout. Tap the readout for a song card: credits, key, tempo, length, and a short story for each public-domain song.
 - An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5 minutes without a touch) to save battery. The screen stays awake whenever music plays. Phones pause the live synth when the app is minimized, so keep it open.
-- Six styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi, Cinematic) with remix by band button: switch the band
-  and the same notes play with that style's instruments.
-- Each style has its own full-screen scene behind the player: a neon sunset and grid (Synthwave), an 8-bit night with pixel mountains (Chiptune), an evening concert hall with organ pipes, velvet drapes and drifting dust in the stage light (Orchestral), a warehouse with swaying lasers (Techno), a rainy window over city lights (Lo-fi), and a widescreen sunrise over mountains with a lens flare (Cinematic). The lasers, rain and dust stop with reduced motion.
+- Seven styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi, Cinematic, Studio) with remix by band button: switch the band
+  and the same notes play with that style's instruments. Studio is the open style: every instrument in the bank, through a clean mix. On a phone the style buttons sit in two rows.
+- Each style has its own full-screen scene behind the player: a neon sunset and grid (Synthwave), an 8-bit night with pixel mountains (Chiptune), an evening concert hall with organ pipes, velvet drapes and drifting dust in the stage light (Orchestral), a warehouse with swaying lasers (Techno), a rainy window over city lights (Lo-fi), a widescreen sunrise over mountains with a lens flare (Cinematic), and a control room with acoustic panels and an on-air lamp (Studio). The lasers, rain and dust stop with reduced motion.
 - Techno flashes the screen gently on the kick, within the WCAG flash limits (at most 3 a second, a soft fade). It is off with reduced motion, and the ⓘ panel has a switch to turn it off.
-- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–6 styles, C category, G style filter, M mute, R repeat, S screensaver, P playlist view.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–7 styles, C category, G style filter, M mute, R repeat, S screensaver, P playlist view.
 
 | Orchestral | Phone |
 |---|---|

@@ -79,6 +79,12 @@ describe('styles', () => {
     expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'radio-lead' }).name).toBe('Acid');
   });
 
+  it('gives Studio every bank instrument under its bank id', () => {
+    expect(Object.keys(STYLE_DEFS.studio.patches)).toEqual(Object.keys(INSTRUMENTS));
+    expect(resolvePatch(STYLE_DEFS.studio, { role: 'lead', inst: 'radio-lead' }).name).toBe('Radio lead');
+    expect(resolvePatch(STYLE_DEFS.studio, { role: 'bass', inst: 'techno-sub' })).toBe(INSTRUMENTS['techno-sub']);
+  });
+
   it('keeps local names that differ from bank ids', () => {
     expect(STYLE_DEFS.chiptune.patches['square-lead'].name).toBe('Square');
     expect(STYLE_DEFS.techno.patches['sub-bass']).toBe(INSTRUMENTS['techno-sub']);

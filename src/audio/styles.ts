@@ -227,6 +227,18 @@ const RECIPES: StyleRecipe[] = [
     fx: { reverbSeconds: 3.2, reverbSend: 0.35, delayBeats: 0.75, delaySend: 0.22, delayFeedback: 0.38, crush: 0, lowpassHz: 15000, crackle: 0 },
     lanes: ['#f2b55a', '#9ec3ff', '#e86a5c', '#c9d6df', '#8f7ad8', '#6fd3b5'],
   },
+  // The open style: every bank instrument under its bank id, through clean, neutral effects, so a
+  // song written for it can pick any instrument with plain `inst=`. Remixes still fall back to the
+  // other styles' own patches.
+  {
+    id: 'studio',
+    name: 'Studio',
+    blurb: 'Every instrument in the bank, through a clean, neutral mix.',
+    roles: { lead: 'saw-lead', lead2: 'grand-piano', counter: 'woodwind', pad: 'warm-pad', chords: 'grand-piano', bass: 'warm-bass', arp: 'pluck', drums: 'studio-kit' },
+    instruments: Object.fromEntries(Object.keys(INSTRUMENTS).map((id) => [id, id])),
+    fx: { reverbSeconds: 2, reverbSend: 0.2, delayBeats: 0.75, delaySend: 0.12, delayFeedback: 0.3, crush: 0, lowpassHz: 20000, crackle: 0 },
+    lanes: ['#5ee0c1', '#f4f4f0', '#ff8a5c', '#8fb3ff', '#ffd166', '#c79bff'],
+  },
 ];
 
 export const STYLE_DEFS = Object.fromEntries(RECIPES.map((r) => [r.id, buildStyle(r)])) as Record<StyleId, StyleDef>;

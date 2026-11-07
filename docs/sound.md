@@ -28,7 +28,7 @@ A style is a set of patches plus the settings of the shared effects. A patch is 
 (oscillators, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit (kick, snare,
 hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every patch, once,
 under a unique id, grouped into leads, keys, pads, basses, and kits. `src/audio/styles.ts` holds
-the six styles as recipes: each picks the bank instruments it uses, under its own local names, and
+the seven styles as recipes: each picks the bank instruments it uses, under its own local names, and
 sets its role map and effects.
 
 A track picks its patch in this order:
@@ -136,6 +136,16 @@ The Cinematic style is a grand piano, an overdriven lead guitar, a solo cello, a
 section, an analog synth, and an organic studio kit. The guitar's `drive` gives it the distortion,
 and its long delay send and the style's 3.2 s reverb give it a big hall. Songs can reach the extra
 `Analog pad` patch with `inst=synth-pad`; no role maps to it.
+
+### Studio
+
+The Studio style is the open one: it lists every bank instrument under its bank id, so a song whose
+home style is Studio can pick any instrument with plain `inst=` (`inst=radio-lead`, `inst=909-kit`).
+A new instrument in the bank appears in Studio by itself. Its effects are clean and neutral: a 2 s
+reverb, a light delay, no crush, no crackle, and no high cut. Tracks without `inst=` use neutral
+defaults: Saw lead (lead), Grand piano (lead2 and chords), Woodwind (counter), Warm pad (pad), Warm
+bass (bass), Pluck (arp), and Studio kit (drums). A Studio song remixed into another style falls back
+to that style's patch for each role, so give every track a fitting role.
 
 ## Master chain
 

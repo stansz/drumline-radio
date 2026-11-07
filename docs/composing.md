@@ -52,6 +52,10 @@ one in two ways:
   remix. Use it only when that sound is the point of the part, for example a signature lead. If
   every song reaches for the same favourite this way, the styles start to sound alike.
 
+A song whose home style is Studio can use any bank instrument with plain `inst=`, and its remixes
+still change sound with each style. That makes Studio the place for a song that mixes instruments
+from several styles; give each track the role it plays, since remixes fall back to it.
+
 A new instrument goes into the bank under a new unique id (see
 [sound.md](sound.md#adding-a-patch-or-a-style)). Measure it with `timbre.mjs` (below) before a song
 depends on it.

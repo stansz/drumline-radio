@@ -1,4 +1,4 @@
-export const STYLES = ['synthwave', 'chiptune', 'orchestral', 'techno', 'lofi', 'cinematic'] as const;
+export const STYLES = ['synthwave', 'chiptune', 'orchestral', 'techno', 'lofi', 'cinematic', 'studio'] as const;
 export type StyleId = (typeof STYLES)[number];
 
 export const ROLES = ['lead', 'lead2', 'counter', 'pad', 'chords', 'bass', 'arp', 'drums'] as const;
