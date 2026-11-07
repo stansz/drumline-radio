@@ -159,6 +159,16 @@ save-room interlude, an adventure section, all again up a step).
 node tools/arranger/club.mjs tmp/club
 ```
 
+Exit Sign has its own script, `arranger/exit-sign.mjs`: hand-composed vocal-style melodies over a
+single harmonic map, palm-muted eighths, held chorus guitars, kick-locked bass, and separate
+backbeat and cymbal tracks. Its twelve-bar chorus is shared by every reprise, with clean-guitar
+answers added in the final double chorus. The bridge drops bass and drums for two bars before
+returning in half time.
+
+```bash
+node tools/arranger/exit-sign.mjs tmp/rock
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,
