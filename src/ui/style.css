@@ -1516,15 +1516,15 @@ body::before {
   }
 
   .knob {
-    width: 44px;
-    height: 44px;
-    font-size: 14px;
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
   }
 
   .knob-main {
-    width: 54px;
-    height: 54px;
-    font-size: 18px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
   }
 
   .knob-small {
