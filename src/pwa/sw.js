@@ -11,7 +11,9 @@ self.addEventListener('install', (event) => {
     caches
       .open(CACHE)
       .then((cache) => cache.addAll(PRECACHE.map((url) => new Request(url, { cache: 'reload' }))))
-      .then(() => self.skipWaiting()),
+      .then(() => self.skipWaiting())
+      // A failed install must not leave a half-filled cache that looks like this build.
+      .catch((error) => caches.delete(CACHE).then(() => { throw error; })),
   );
 });
 

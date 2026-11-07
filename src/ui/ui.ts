@@ -261,7 +261,8 @@ export function startUi(): void {
     return created;
   }
 
-  function loadSong(index: number): void {
+  /** Loads a song. If music was playing it plays on, unless `resume` is false (the caller starts it). */
+  function loadSong(index: number, resume = true): void {
     if (LIBRARY.length === 0) return;
     current = ((index % LIBRARY.length) + LIBRARY.length) % LIBRARY.length;
     const entry = LIBRARY[current];
@@ -288,7 +289,7 @@ export function startUi(): void {
     totalEl.textContent = formatTime(engine.duration);
     elapsedEl.textContent = formatTime(0);
     seekEl.value = '0';
-    if (wasPlaying) engine.play();
+    if (wasPlaying && resume) engine.play();
     updatePlayButton();
   }
 
@@ -450,7 +451,8 @@ export function startUi(): void {
     current = index;
     const active = ensureEngine();
     if (!active) return;
-    if (!fresh) loadSong(index);
+    // Load without resuming, so no note is booked in the song's own style before the entry's style is set.
+    if (!fresh) loadSong(index, false);
     const changed = lastStyle !== null && lastStyle !== item.style;
     playlistView.at = at;
     active.setStyle(item.style);

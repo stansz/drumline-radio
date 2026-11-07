@@ -13,6 +13,9 @@ export function registerServiceWorker(): void {
   if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
   const sw = navigator.serviceWorker;
   const url = `${import.meta.env.BASE_URL}sw.js`;
+  // Other apps can share this origin (GitHub Pages serves every project from one host), so only
+  // this app's registration is ever touched.
+  const scope = new URL(import.meta.env.BASE_URL, window.location.href).href;
   const hadController = sw.controller !== null;
   let shownAt = performance.now();
   let reloadWhenHidden = false;
@@ -30,18 +33,26 @@ export function registerServiceWorker(): void {
     return match ? `${CACHE_PREFIX}${match[1]}` : null;
   }
 
+  // A build counts as installed only when its cache holds the app page. A failed install can leave
+  // an empty cache behind under the right name.
+  async function installed(name: string): Promise<boolean> {
+    return (await caches.has(name)) && (await caches.match('./', { cacheName: name, ignoreVary: true })) !== undefined;
+  }
+
   async function checkForUpdate(): Promise<void> {
     if (healing) return;
     try {
       const want = await serverCache();
-      if (!want || (await caches.keys()).includes(want)) return;
+      if (!want || (await installed(want))) return;
       healing = true;
       // An update that fails (a worker that won't install) still falls through to the heal below.
       await (await sw.getRegistration())?.update().catch(() => undefined);
       window.setTimeout(() => {
         void (async () => {
-          if (!(await caches.keys()).includes(want)) {
-            for (const registration of await sw.getRegistrations()) await registration.unregister();
+          if (!(await installed(want))) {
+            for (const registration of await sw.getRegistrations()) {
+              if (registration.scope === scope) await registration.unregister();
+            }
             for (const name of await caches.keys()) if (name.startsWith(CACHE_PREFIX)) await caches.delete(name);
             reload();
           }
