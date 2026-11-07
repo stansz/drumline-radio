@@ -33,7 +33,7 @@ tempo: 110
 time: 4/4
 about: A light left on at mid-tempo: clean guitar carries the verses, a borrowed minor chord turns the hook, and the band waits until the last chorus to get loud.
 
-track melody role=lead inst=fuzz-lead vol=1 pan=0
+track melody role=lead inst=indie-lead vol=1 pan=0
 # Intro: clean guitar alone, then bass (bars 1-4)
 | R |
 | R |
@@ -319,7 +319,7 @@ track wall role=pad inst=guitar-wall vol=0.66 pan=0.22
 | v=60 [D3 F3 A3]/1 |
 | v=54 [A3 C#4 E4]/1 |
 
-track clean role=lead2 inst=clean-guitar vol=0.7 pan=0.4
+track clean role=lead2 inst=shimmer-guitar vol=0.7 pan=0.4
 # Intro: the fingerpicked figure, up front (bars 1-4)
 | v=86 A4/8 E5/8 C#5/4 A4/8 E4/8 C#5/4 |
 | v=86 D4/8 A4/8 F#4/4 D5/8 A4/8 F#4/4 |
