@@ -880,7 +880,7 @@ body::before {
   }
 }
 
-/* Each band carries its own style's colour, like the lit presets on a radio. */
+/* Each band lights up in its own style's colour when selected, like the presets on a radio. */
 .band[data-style='synthwave'] { --band: #ff4fa3; }
 .band[data-style='chiptune'] { --band: #7cff4f; }
 .band[data-style='orchestral'] { --band: #e8c27a; }
@@ -904,7 +904,8 @@ body::before {
   height: 2px;
   border-radius: 2px;
   background: var(--band, var(--accent));
-  opacity: 0.45;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .band:hover {
