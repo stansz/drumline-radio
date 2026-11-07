@@ -14,9 +14,7 @@ loading another song stops every live voice, so the next `play()` starts a fresh
 current position. A stopped voice fades out over 30 ms (drums too, through a per-hit gain), a voice
 booked but not yet started never sounds, and the old song's channels stay connected for 200 ms so
 those fades finish. Each fresh schedule starts 50 ms ahead of the clock, so its first notes are
-booked in the future and keep their attack instead of starting late with a click. If a tick comes
-late (a long task on the main thread, or a throttled timer), the notes that should already have
-started are skipped rather than booked in the past, where they would all sound at once.
+booked in the future and keep their attack instead of starting late with a click.
 
 Each track gets its own channel: volume and pan from the song file, plus reverb and delay sends.
 Every voice connects to that channel, never straight to the master chain, so the track's volume,
