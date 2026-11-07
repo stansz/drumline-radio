@@ -37,6 +37,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   recipe in `tools/arranger/songs.mjs` too, so a rebuild keeps the change; `tests/drift.test.ts`
   fails when a generated song in `src/songs/` doesn't match its generator. Browser checks run Edge
   muted.
+- Before starting a dev or preview server, check whether one is already running and reuse it. Stop
+  any server you start as soon as your check is done, including its child processes (on Windows,
+  `taskkill /F /T /PID <pid>`), and never leave one running when you finish.
 - A song is hidden with a `hidden: true` header, set in its recipe when it has one. Hidden songs
   are still parsed and checked, but they stay out of the library.
 - The arranger is a starting point, not a rule. Fit each song's form, grooves, and textures to its
