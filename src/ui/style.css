@@ -966,11 +966,15 @@ body::before {
     inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
-/* The style button cycles rather than picks, so it is a pill (unlike the square presets and style
-   bands) with a "next" arrow. Its dot shows every style's colour while it shows all styles, and the
+/* The style button cycles rather than picks, so it is a smaller pill set apart from the square presets
+   (and unlike the style bands), with a "next" arrow. Its dot shows every style's colour while it shows all styles, and the
    filtered style's colour while it filters; then the whole button lights up in that colour. */
 .style-cycle {
-  flex: 1.5;
+  flex: none;
+  align-self: center;
+  margin-left: 10px;
+  padding: 4px 12px;
+  font-size: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1637,6 +1641,13 @@ body::before {
     padding: 4px 4px;
     font-size: 10px;
     letter-spacing: 0.06em;
+  }
+
+  .style-cycle {
+    margin-left: 4px;
+    padding: 3px 8px;
+    font-size: 9px;
+    gap: 4px;
   }
 
   .band {
