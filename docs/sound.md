@@ -177,11 +177,9 @@ some reverb and echo, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: a warm, darkly filtered plucked string at the written pitch, with a deep, slow
 chorus wobble and a moderate reverb and delay send that makes its notes echo on the style's
-dotted-eighth delay. `inst=soft-guitar` starts from the Orchestral harp:
-smooth detuned triangles and a soft octave, plucked and fading to nothing, with a little saw through
-a gentle low-pass for a hint of string, a soft attack, and a slight chorus, an octave below the
-written note; it has no drive or resonant filter, so it never buzzes. Porch Light uses `soft-guitar`
-and `shimmer-guitar`.
+dotted-eighth delay. `inst=clean-electric` is the Cinematic lead guitar made
+clean: almost no drive, a milder vibrato, less sustain, and small reverb and delay sends, an octave
+below the written note. Porch Light uses `clean-electric` and `shimmer-guitar`.
 
 ### Studio
 

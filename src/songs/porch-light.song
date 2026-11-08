@@ -25,7 +25,7 @@
 # Reworked slower (72 BPM, from 110) with a Ben Folds-style piano on the chords; the piano uses
 # inst=bank:grand-piano so it stays a piano in every remix. The power-chord chugs are gone: the
 # piano drives the rhythm.
-# The melody is a soft guitar (built from the harp), written an octave lower with its quick pickups merged, and the
+# The melody is a clean electric guitar, written an octave lower with its quick pickups merged, and the
 # bass plays only roots.
 # The melody is played lazily: every note sits 14-40 ticks (about 15-35 ms) behind the beat, the
 # first in each bar the least, with small uneven velocities, from a fixed-seed generator.
@@ -40,7 +40,7 @@ tempo: 72
 time: 4/4
 about: A light left on at a slow, emo pace: clean guitar and a piano carry the verses, a borrowed minor chord turns the hook, and the band waits until the last chorus to get loud.
 
-track melody role=lead inst=soft-guitar vol=1 pan=0
+track melody role=lead inst=clean-electric vol=1 pan=0
 # Intro: clean guitar alone, then bass (bars 1-4)
 | R |
 | R |
