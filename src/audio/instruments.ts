@@ -197,13 +197,13 @@ export const KEYS: Record<string, Patch> = {
     env: env(0.012, 1.2, 0.2, 0.3), filter: { type: 'lowpass', hz: 4000, q: 0.6, envAmount: 1.05, envDecay: 0.2 },
     gain: 1, sends: { reverb: 0.9, delay: 0.3 } }),
   // Alt rock: an acoustic guitar through its pickup and an amp: a wide band-pass keeps the direct,
-  // mid-forward piezo tone and drops the body boom, light drive squashes it like a compressor, a
-  // soft 20 ms attack and a gentle filter snap keep the pick from biting, and it rings open into a
-  // fair amount of reverb and echo.
+  // mid-forward piezo tone and drops the body boom, light drive squashes it like a compressor. It is
+  // played like soft fingerpicking: a fingertip near the middle of the string, a 50 ms fade-in and
+  // no filter snap, so nothing bites. It rings open into some reverb and echo.
   'plugged-acoustic': synth({ name: 'Plugged acoustic', oscs: [],
-    string: { octave: -1, level: 1, decay: 2, brightness: 0.4, pick: 0.3 },
-    env: env(0.02, 1.5, 0.35, 0.45), filter: { type: 'bandpass', hz: 1400, q: 0.4, envAmount: 1.15, envDecay: 0.25 },
-    drive: 0.2, gain: 0.32, sends: { reverb: 1.2, delay: 1.4 } }),
+    string: { octave: -1, level: 1, decay: 2, brightness: 0.3, pick: 0.45 },
+    env: env(0.05, 1.5, 0.35, 0.45), filter: { type: 'bandpass', hz: 1400, q: 0.4, envAmount: 1, envDecay: 0.25 },
+    drive: 0.2, gain: 0.37, sends: { reverb: 0.9, delay: 1.4 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
