@@ -196,6 +196,13 @@ export const KEYS: Record<string, Patch> = {
     string: { octave: -1, level: 1, decay: 1.6, brightness: 0.42, pick: 0.28 },
     env: env(0.012, 1.2, 0.2, 0.3), filter: { type: 'lowpass', hz: 4000, q: 0.6, envAmount: 1.05, envDecay: 0.2 },
     gain: 1, sends: { reverb: 0.9, delay: 0.3 } }),
+  // Alt rock: an acoustic guitar through its pickup and an amp: a wide band-pass keeps the direct,
+  // mid-forward piezo tone and drops the body boom and the room's air, light drive squashes it like
+  // a compressor, and it stays dry and close.
+  'plugged-acoustic': synth({ name: 'Plugged acoustic', oscs: [],
+    string: { octave: -1, level: 1, decay: 1.4, brightness: 0.5, pick: 0.22 },
+    env: env(0.006, 1.1, 0.25, 0.3), filter: { type: 'bandpass', hz: 1000, q: 0.5, envAmount: 1.5, envDecay: 0.2 },
+    drive: 0.2, gain: 0.45, sends: { reverb: 0.5, delay: 0.6 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
