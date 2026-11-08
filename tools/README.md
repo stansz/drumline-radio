@@ -289,7 +289,10 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).
   Each line also shows the track's level below 150 Hz; the bass's low level should sit under the
-  drums' low level (the kick). Add a style id at the end to remix the song into it first.
+  drums' low level (the kick). It also prints each track's peak: for a sparse part (a stab every
+  few beats) RMS reads low because most of the 4 s window is silence, so compare peaks there. A note
+  that started before the seek point isn't heard, so seek to just before a long held note to
+  measure it. Add a style id at the end to remix the song into it first.
 - **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
   that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`
   instead of the preview server, because it imports the audio code from `src/`:

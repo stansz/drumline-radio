@@ -340,6 +340,13 @@ section('The stab alone', 8, {
   ], 92),
 });
 
+// --- mix ----------------------------------------------------------------------
+// The stabs are the star but peaked 12-16 dB under the kick, so their velocities are lifted here
+// (with the echo layer's volume, and the drums and sub lowered, in the track headers below).
+tracks.stabs = tracks.stabs.map((bar) =>
+  bar.replace(/:(\d+)/g, (_, v) => `:${Math.min(127, Math.round(Number(v) * 1.25))}`),
+);
+
 // --- checks -----------------------------------------------------------------
 // Every bar must be exactly one 4/4 bar (3840 ticks). The grid builder guarantees it; this reads
 // the finished strings again so a hand-written bar can't slip past.
@@ -410,16 +417,16 @@ time: 4/4
 track stabs role=chords vol=1 pan=-0.12
 ${block('stabs')}
 
-track echo role=chords vol=0.7 pan=0.45
+track echo role=chords vol=1 pan=0.45
 ${block('echo')}
 
 track hang role=pad vol=0.9
 ${block('hang')}
 
-track sub role=bass vol=0.38
+track sub role=bass vol=0.27
 ${block('sub')}
 
-track drums role=drums vol=0.78
+track drums role=drums vol=0.5
 ${block('drums')}
 
 track hats role=drums vol=1 pan=0.22

@@ -96,7 +96,9 @@ depends on it.
    with the keys at −36 and the drums at −33. Nothing should be buried 15 dB under the rest. Keep
    the bass under the kick: Porch Light's and Riverfront's first versions had the bass nearly as
    loud as the drums, which sounds boomy and hides the chords. `tracks.mjs` prints each track's
-   level below 150 Hz; the bass's low level should sit a few dB under the drums' low level.
+   level below 150 Hz; the bass's low level should sit a few dB under the drums' low level. For
+   sparse parts like dub stabs, compare peaks, not RMS (Fathom's stabs read 20 dB down by RMS but
+   12-16 dB by peak).
 4. Add the song to the originals list in `README.md`.
 5. The user listens and decides; a passing check is not the same as sounding good.
 
