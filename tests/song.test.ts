@@ -143,7 +143,16 @@ describe('the format fixture', () => {
 describe('the checker', () => {
   it('reports a bar that is too long', () => {
     const errors = errorsFor('track a role=lead\n| C4/4 C4 C4 C4 C4 |');
-    expect(errors).toContain('line 11: track a bar 1 is 4800 ticks, expected 3840');
+    expect(errors).toContain(
+      'line 11: track a bar 1 is 4800 ticks, expected 3840 (960 over): C4/4 960, C4 960, C4 960, C4 960, C4 960',
+    );
+  });
+
+  it('lists each token and its ticks in a short bar', () => {
+    const errors = errorsFor('track a role=drums\n| k/4 s/8 s h |');
+    expect(errors).toContain(
+      'line 11: track a bar 1 is 2400 ticks, expected 3840 (1440 short): k/4 960, s/8 480, s 480, h 480',
+    );
   });
 
   it('collects several bar errors', () => {

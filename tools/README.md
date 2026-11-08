@@ -208,7 +208,9 @@ Listening wins over the script: if it sounds wrong, change it.
 npm run check:songs
 ```
 
-It parses every song in `src/songs/`, or in `CHECK_DIR` if set, and fails on any parse error. It
+It parses every song in `src/songs/`, or in `CHECK_DIR` if set, and fails on any parse error. Set
+`SONG` to a song's name or path (for example `SONG=wayfarers-rest npm run check:songs`) to check
+only that song. A bar-length parse error lists each token in that bar with the ticks it got. It
 also lists each song's length and any long note in a pitched part (every track except the pad, bass,
 and drums) a semitone away from the pad or bass under them. That count is a report, not a failure:
 passing notes and a maj7 against its root are fine, but a new spike is worth a listen. Each clash
@@ -285,7 +287,14 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **stall:** blocks the main thread for 1.5 s while a song plays and counts sounds booked in the past
   afterwards. Only notes up to 0.3 s late may play late; the rest of the gap is skipped, so there is
   no burst: `node tools/browser/stall.mjs`.
-- **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
+- **balance:** the standard balance check. `npm run balance -- wayfarers-rest` (a song name or
+  path, then optionally a style and the bars per section, default 8) starts its own Vite server on a
+  free port, renders the whole song offline in headless Edge through the real engine with each
+  track tapped separately, prints every track's RMS / peak per section (and the level below 150 Hz
+  for bass and drums), flags a pad or chords part more than 10 dB under the lead, a bass louder
+  than the lead, and a bass low end louder than the kick's, then stops the server and browser.
+  About 10 seconds for a 3-minute song; no seeking, so held notes are measured too.
+- **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).
   Each line also shows the track's level below 150 Hz; the bass's low level should sit under the

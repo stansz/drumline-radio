@@ -873,6 +873,7 @@ export function parseSong(text: string): ParseResult {
       }
 
       let barTicks = 0;
+      const barParts: string[] = [];
       for (const token of assembledBar.tokens) {
         const parsed = parseNoteToken(token.text, raw.role, stickyDuration);
 
@@ -888,11 +889,13 @@ export function parseSong(text: string): ParseResult {
         if (parsed.kind === 'rest') {
           restError(token.line);
           barTicks += parsed.ticks;
+          barParts.push(`${token.text} ${parsed.ticks}`);
           continue;
         }
 
         const noteTick = barInfo.startTick + barTicks;
         barTicks += parsed.ticks;
+        barParts.push(`${token.text} ${parsed.ticks}`);
         const velocity = parsed.velocity ?? stickyVelocity;
         const note: Note = {
           tick: noteTick,
@@ -982,7 +985,9 @@ export function parseSong(text: string): ParseResult {
       if (barTicks !== barInfo.ticks) {
         err(
           assembledBar.line,
-          `track ${raw.id} bar ${barInfo.number} is ${barTicks} ticks, expected ${barInfo.ticks}`,
+          `track ${raw.id} bar ${barInfo.number} is ${barTicks} ticks, expected ${barInfo.ticks} ` +
+            `(${Math.abs(barInfo.ticks - barTicks)} ${barTicks < barInfo.ticks ? 'short' : 'over'}): ` +
+            barParts.join(', '),
         );
       }
     }

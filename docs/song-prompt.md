@@ -48,8 +48,8 @@ Rules:
   this song, it must check only this song's own notes, form, and header.
 - Run npm test and npm run check:songs; both must pass. Aim for 0 clashes; explain any that
   remain as deliberate (a passing note, a suspension, a jazz voicing). Check the balance with
-  tools/browser/tracks.mjs at a quiet point and a busy one, as docs/composing.md describes,
-  including the low-band column for the bass against the kick.
+  npm run balance -- <song> (one command, the whole song, no server to manage) and fix every
+  flag it prints, as docs/composing.md describes.
 - Start your own dev or preview server for browser checks, and stop it (with its child
   processes) when you're done.
 ```

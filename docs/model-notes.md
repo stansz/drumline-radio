@@ -41,7 +41,11 @@ Stop) aren't listed.
   ignored it. Microtiming was a uniform late push (+8 to +14 ticks) on phrase starts rather than
   varied. It changed shared code (`tools/browser/cdp.mjs`), against the prompt.
 - **Fixed after:** arp velocities ×1.5 and volume 1, bass 0.38 → 0.16, pad 0.72 → 1.
-- **Tool changes from it:** the `RADIO_URL` override it added to `cdp.mjs` was kept and documented.
+- **Tool changes from it:** `npm run balance` (Gemini asked for a one-shot offline balance check,
+  since `tracks.mjs` needs a server, a browser, and well-timed seek points: the likely reason its
+  mix went unchecked); bar-length parse errors that list each token's ticks (it lost time to a
+  sticky-duration slip); `SONG=` for checking one song; and the `RADIO_URL` override it added to
+  `cdp.mjs`, kept and documented. Its idea of a per-bar pitch-class report was left for later.
 
 ### Fathom — Qwen3.8 Flash (2026-11-08)
 

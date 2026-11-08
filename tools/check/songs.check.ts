@@ -4,24 +4,42 @@
 // are intended (passing notes, a maj7 against its root). Parse errors fail.
 //   npm run check:songs                      (checks src/songs)
 //   CHECK_DIR=out npm run check:songs        (checks another folder, e.g. arranger output)
-import { readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+//   SONG=wayfarers-rest npm run check:songs  (checks one song by name, file name, or path)
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { basename, dirname, join } from 'node:path';
 import { expect, it } from 'vitest';
 import { parseSong } from '../../src/music/song';
 import { buildTimeline } from '../../src/music/timing';
 
 const DIR = process.env.CHECK_DIR ?? 'src/songs';
+// SONG narrows the check to one song. A name or file name is looked up in DIR; a path brings its
+// own folder.
+const SONG = process.env.SONG;
+const FOLDER = SONG && /[\\/]/.test(SONG) ? dirname(SONG) : DIR;
+const NAME = SONG ? basename(SONG).replace(/\.song$/, '') : null;
 const MIN_SECONDS = 0.3;
 // CHECK_DETAIL=1 lists every clash: time, track, note, its length, and the pad or bass note under it.
 const DETAIL = Boolean(process.env.CHECK_DETAIL);
 const NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const noteName = (n: number) => `${NAMES[n % 12]}${Math.floor(n / 12) - 1}`;
 
-it(`songs in ${DIR} parse; clash report`, () => {
+it(`songs in ${FOLDER} parse; clash report`, () => {
   const lines: string[] = [];
   let failed = 0;
-  for (const file of readdirSync(DIR).filter((f) => f.endsWith('.song')).sort()) {
-    const result = parseSong(readFileSync(join(DIR, file), 'utf8'));
+  const wanted = NAME ? `${NAME}.song` : null;
+  const files = wanted
+    ? existsSync(join(FOLDER, wanted))
+      ? [wanted]
+      : []
+    : readdirSync(FOLDER)
+        .filter((f) => f.endsWith('.song'))
+        .sort();
+  if (wanted && files.length === 0) {
+    lines.push(`no song file at ${join(FOLDER, wanted)}`);
+    failed += 1;
+  }
+  for (const file of files) {
+    const result = parseSong(readFileSync(join(FOLDER, file), 'utf8'));
     if (!result.ok) {
       failed += 1;
       lines.push(`${file}: PARSE ERROR ${result.errors.slice(0, 3).join('; ')}`);

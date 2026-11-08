@@ -35,7 +35,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   so track volume, pan, and sends cover everything.
 - Every song in `src/songs/` must parse with no errors; `tests/library.test.ts` checks this.
 - Dev scripts live in `tools/` (see `tools/README.md`): the arranger that builds the arranged
-  songs, `npm run check:songs`, and headless-Edge checks. When a generated song changes, change its
+  songs, `npm run check:songs`, `npm run balance -- <song>` (the per-section balance check), and
+  headless-Edge checks. When a generated song changes, change its
   recipe in `tools/arranger/songs.mjs` or its own script in `tools/arranger/` too, so a rebuild
   keeps the change; `tests/drift.test.ts`
   fails when a generated song in `src/songs/` doesn't match its generator. Browser checks run Edge
