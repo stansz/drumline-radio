@@ -103,7 +103,7 @@ track strings role=pad vol=0.34 pan=0.1
 | v=70 [D3 F#3 A3]/1 | [A3 C#4 E4]/1 | [B3 D4 F#4]/1 | [F#3 A3 C#4]/1 |
 | [D3 F#3 A3]/1 | [B3 D4 F#4]/1 | [E3 G#3 B3]/1 | [A3 C#4 E4]/1 |
 
-track harp role=chords vol=0.4 pan=0.3
+track harp role=chords vol=0.25 pan=0.3
 # I. Prologue: measured broken chords beneath the solo.
 | v=68 A3/8 C#4 E4 A4 E4 C#4 A3 C#4 | E3/8 G#3 B3 E4 B3 G#3 E3 G#3 | F#3/8 A3 C#4 F#4 C#4 A3 F#3 A3 | D3/8 F#3 A3 D4 A3 F#3 D3 F#3 |
 | C#3/8 E3 A3 C#4 A3 E3 C#3 E3 | B2/8 D3 F#3 B3 F#3 D3 B2 D3 | E3/8 G#3 B3 E4 B3 G#3 E3 G#3 | A3/8 C#4 E4 A4 E4 C#4 A3 C#4 |
