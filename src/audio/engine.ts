@@ -29,9 +29,14 @@ const STOP_FADE = 0.03;
 const CHANNEL_GRACE_MS = 200;
 /** How far ahead playback starts after play, a seek, or a station change. */
 const START_LEAD = 0.05;
+/** Extra time rendered after the song, so reverb and delay tails finish. */
+const RENDER_TAIL = 3;
+const RENDER_RATE = 44100;
+/** How much of an offline render is booked at once, in seconds. */
+const RENDER_CHUNK = 2;
 
 export class Engine {
-  private readonly ctx: AudioContext;
+  private readonly ctx: BaseAudioContext;
   private readonly voiceKit: VoiceKit;
   private readonly mix: GainNode;
   private readonly dryGain: GainNode;
@@ -73,7 +78,7 @@ export class Engine {
 
   onEnded: (() => void) | null = null;
 
-  constructor(ctx: AudioContext) {
+  constructor(ctx: BaseAudioContext) {
     this.ctx = ctx;
     this.voiceKit = createVoiceKit(ctx);
 
@@ -229,6 +234,49 @@ export class Engine {
     }
   }
 
+  /** @internal Books the loaded song for an offline render; used by `renderSong`. */
+  bookOffline(ctx: OfflineAudioContext, onProgress?: (fraction: number) => void): void {
+    const timeline = this.timelineValue;
+    if (!timeline) return;
+    const duration = timeline.duration;
+    this.startPos = 0;
+    this.startCtx = 0;
+
+    const crackle = ctx.createBufferSource();
+    crackle.buffer = this.crackleBuffer;
+    crackle.loop = true;
+    crackle.connect(this.crackleGain);
+    crackle.start(0);
+    crackle.stop(ctx.length / ctx.sampleRate);
+
+    const book = (from: number, to: number): void => {
+      for (const note of notesBetween(timeline, from, to)) this.scheduleNote(note);
+      // An offline render never stops voices early, so don't keep them: holding every voice of a
+      // long song would keep all of its nodes in memory.
+      this.voices.clear();
+    };
+
+    // Book the first windows now; then book one more each time the render reaches a chunk boundary,
+    // so every note is booked at least RENDER_CHUNK ahead and a long song never holds every voice.
+    book(0, RENDER_CHUNK);
+    book(RENDER_CHUNK, RENDER_CHUNK * 2);
+
+    if (typeof ctx.suspend !== 'function') {
+      book(RENDER_CHUNK * 2, duration);
+      return;
+    }
+
+    for (let k = 0; (k + 2) * RENDER_CHUNK < duration; k += 1) {
+      const from = (k + 2) * RENDER_CHUNK;
+      const to = (k + 3) * RENDER_CHUNK;
+      void ctx.suspend(k * RENDER_CHUNK).then(() => {
+        book(from, to);
+        onProgress?.((k * RENDER_CHUNK) / duration);
+        return ctx.resume();
+      });
+    }
+  }
+
   play(): void {
     if (!this.songValue || this.playingValue) return;
     if (this.positionValue >= this.duration) this.positionValue = 0;
@@ -261,7 +309,7 @@ export class Engine {
       this.tick();
     };
 
-    if (this.ctx.state === 'suspended') void this.ctx.resume().then(begin);
+    if (this.ctx.state === 'suspended') void (this.ctx as AudioContext).resume().then(begin);
     else begin();
   }
 
@@ -445,4 +493,25 @@ export class Engine {
     for (const voice of this.voices.keys()) voice.stop(now);
     this.voices.clear();
   }
+}
+
+/** Renders a whole song in a style, offline, with the same voices and mix as live play. */
+export async function renderSong(
+  song: Song,
+  style: StyleId,
+  onProgress?: (fraction: number) => void,
+): Promise<AudioBuffer> {
+  const duration = buildTimeline(song).duration;
+  const ctx = new OfflineAudioContext(
+    2,
+    Math.ceil((duration + RENDER_TAIL) * RENDER_RATE),
+    RENDER_RATE,
+  );
+  const engine = new Engine(ctx);
+  engine.load(song);
+  engine.setStyle(style);
+  engine.bookOffline(ctx, onProgress);
+  const buffer = await ctx.startRendering();
+  onProgress?.(1);
+  return buffer;
 }

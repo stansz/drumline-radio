@@ -211,6 +211,13 @@ mix -> crush crossfade -> lowpass -> compressor -> makeup gain -> limiter -> sof
 The soft clip output also feeds two analysers, one per channel, which is where the VU meters get
 their levels.
 
+## Saving a song
+
+`renderSong` in `engine.ts` renders a song offline with an `OfflineAudioContext` at 44.1 kHz stereo,
+through the same engine, voices, and master chain as live play, plus a 3 s tail for reverb and delay.
+It books notes 2 s ahead in steps while rendering, so a long song never holds every voice at once.
+`src/audio/wav.ts` encodes the result as 16-bit PCM WAV.
+
 ## Adding a patch or a style
 
 - Add a synth patch with `synth({...})` or a drum kit with `drums({...})` to its family in

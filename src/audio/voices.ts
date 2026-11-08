@@ -9,7 +9,7 @@ export interface Voice {
 }
 
 export interface VoiceKit {
-  ctx: AudioContext;
+  ctx: BaseAudioContext;
   noise: { white: AudioBuffer; chip: AudioBuffer; metal: AudioBuffer };
   pulse12: PeriodicWave;
   pulse25: PeriodicWave;
@@ -31,7 +31,7 @@ function seededNoise(seed: number): () => number {
   };
 }
 
-export function createVoiceKit(ctx: AudioContext): VoiceKit {
+export function createVoiceKit(ctx: BaseAudioContext): VoiceKit {
   const length = Math.max(1, Math.floor(ctx.sampleRate));
 
   const white = ctx.createBuffer(1, length, ctx.sampleRate);
