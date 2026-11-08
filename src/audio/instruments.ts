@@ -96,8 +96,8 @@ export const LEADS: Record<string, Patch> = {
   'vox-lead': synth({ name: 'Vox lead', oscs: [osc('sawtooth', 0, 0, 0.7), osc('pulse25', 0, 4, 0.3)],
     formants: VOWELS.ah, env: env(0.06, 0.3, 0.9, 0.3),
     vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.64, sends: { reverb: 1, delay: 0.6 } }),
-  // A reed lead: a square and saw through two broad formant bands, for a clarinet-like body.
-  'reed-lead': synth({ name: 'Reed lead', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
+  // An oboe: a square and saw through two broad formant bands, for a nasal double-reed body.
+  'oboe': synth({ name: 'Oboe', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
     formants: [{ hz: 1200, q: 3, gain: 1 }, { hz: 2700, q: 5, gain: 0.35 }],
     env: env(0.04, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.88 }),
 };

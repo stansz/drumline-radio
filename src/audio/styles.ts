@@ -132,6 +132,7 @@ const RECIPES: StyleRecipe[] = [
       strings: 'strings',
       brass: 'fm-brass',
       woodwind: 'woodwind',
+      oboe: 'oboe',
       'string-pad': 'string-pad',
       harp: 'concert-harp',
       'low-strings': 'low-strings',
