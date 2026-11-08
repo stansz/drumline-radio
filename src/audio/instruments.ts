@@ -210,7 +210,7 @@ export const KEYS: Record<string, Patch> = {
   // written note, like a real guitar.
   'clean-electric': synth({ name: 'Clean electric', oscs: [osc('sawtooth', -1, 0, 0.35), osc('triangle', -1, 4, 0.5), osc('sine', -2, 0, 0.15)],
     env: env(0.008, 0.8, 0.5, 0.5), filter: { type: 'lowpass', hz: 2000, q: 0.7, envAmount: 1.4, envDecay: 0.25 },
-    vibrato: { rate: 5.2, cents: 10, delay: 0.45 }, gain: 0.35, sends: { reverb: 0.6, delay: 0.8 } }),
+    vibrato: { rate: 5.2, cents: 10, delay: 0.45 }, gain: 0.5, sends: { reverb: 0.6, delay: 0.8 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
