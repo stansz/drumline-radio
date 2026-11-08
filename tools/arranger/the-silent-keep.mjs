@@ -623,6 +623,12 @@ section('Outro: the last E minor chord', 2, '4/4', {
   clean: ['R', 'R'],
 });
 
+// Mix: the strings were written very soft and sat about 25 dB under the lead, so their velocities
+// are scaled up here (and their volume raised below).
+tracks.strings = tracks.strings.map((bar) =>
+  bar.replace(/:(\d+)/g, (_, v) => `:${Math.min(110, Math.round(Number(v) * 1.6))}`),
+);
+
 // Validate every bar before writing, so a bad duration fails loudly.
 const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
 const barTicks = (bar, time) => {
@@ -675,11 +681,11 @@ const HEADERS = {
   lead: 'track lead role=lead inst=guitar vol=1 pan=-0.15',
   harmony: 'track harmony role=lead2 inst=guitar vol=0.88 pan=0.2',
   cello: 'track cello role=counter inst=cello vol=0.75 pan=-0.25',
-  piano: 'track piano role=chords inst=grand-piano vol=0.55 pan=-0.3',
-  strings: 'track strings role=pad inst=strings vol=0.65 pan=0.35',
+  piano: 'track piano role=chords inst=grand-piano vol=0.78 pan=-0.3',
+  strings: 'track strings role=pad inst=strings vol=1 pan=0.35',
   chugs: 'track chugs role=chords inst=bank:power-chords vol=0.72 pan=-0.35',
   wall: 'track wall role=pad inst=bank:guitar-wall vol=0.62 pan=0.4',
-  bass: 'track bass role=bass inst=bank:pick-bass vol=0.38 pan=0',
+  bass: 'track bass role=bass inst=bank:pick-bass vol=0.27 pan=0',
   drums: 'track drums role=drums inst=bank:rock-kit vol=0.55 pan=0',
   cymbals: 'track cymbals role=drums inst=bank:rock-kit vol=0.45 pan=-0.1',
 };
