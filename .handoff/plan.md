@@ -1,206 +1,170 @@
 ## Goal
 
-Split `src/audio/styles.ts` into a shared instrument bank and style recipes, so instruments and
-styles can be added independently. Every instrument is defined once in the bank under a unique id.
-Each style lists the bank instruments it uses under its own local names, plus its role map, fx and
-lanes. `STYLE_DEFS` keeps exactly its current runtime shape and values (`patches` is still
-`Record<string, Patch>` keyed by the style's local names), so nothing sounds different and no
-consumer of `STYLE_DEFS` changes. Add one opt-in: a track header `inst=bank:<id>` picks any bank
-instrument, whatever the style.
+This is a rerun. The previous run already implemented most of this plan in the working tree;
+keep that work, fix only what differs from this plan (the loop gain in step 2 and step 7b), and make
+sure every touched file has LF line endings (`src/audio/voices.ts` currently has CRLF).
+
+
+Add plucked-string (Karplus-Strong) synthesis to synth patches, so guitar instruments sound like
+plucked strings instead of oscillators. Rebuild `indie-lead` on it and add two new guitar
+instruments, `acoustic-guitar` and `crunch-guitar`, to the bank.
 
 ## Files to touch
 
-- `src/audio/patches.ts` (new)
-- `src/audio/instruments.ts` (new)
+- `src/audio/strings.ts` (new)
+- `src/audio/patches.ts`
+- `src/audio/voices.ts`
+- `src/audio/instruments.ts`
 - `src/audio/styles.ts`
-- `src/music/song.ts`
+- `tests/strings.test.ts` (new)
+- `tests/instruments.test.ts`
 - `tests/styles.test.ts`
-- `tests/instruments.test.ts` (new)
-- `tests/song.test.ts`
 - `docs/sound.md`
-- `docs/song-format.md`
-- `docs/how-it-works.md`
 - `AGENTS.md`
 
 ## Steps
 
-1. Create `src/audio/patches.ts`. Move into it, unchanged, from `src/audio/styles.ts`: the types
-   `Wave`, `Osc`, `SynthPatch`, `DrumKit`, `Patch`, the constant `DEFAULT_SENDS`, the helper types
-   `SynthInput` and `DrumInput`, and the functions `osc`, `env`, `synth`, `drums`. Export all four
-   functions and all five public types (`Wave`, `Osc`, `SynthPatch`, `DrumKit`, `Patch`). It
-   imports nothing.
+1. In `src/audio/patches.ts`, add to `SynthPatch` an optional field, documented with a `/** */`
+   comment like `drive`:
 
-2. Create `src/audio/instruments.ts`. It imports `osc`, `env`, `synth`, `drums` and `type Patch`
-   from `./patches`. Move every patch definition out of the six `patches` blocks in `styles.ts`
-   into five exported family objects, each typed `Record<string, Patch>`. Copy each `synth({...})`
-   / `drums({...})` call character for character (same `name`, numbers, and `sends`), and move the
-   comments above `radio-lead` and `upright-bass` with them. Bank ids are the current patch keys,
-   except the three keys used by two styles with different definitions:
-   - chiptune's `square-lead` becomes bank id `chip-square` (synthwave's stays `square-lead`);
-   - techno's `sub-bass` becomes bank id `techno-sub` (synthwave's stays `sub-bass`);
-   - cinematic's `strings` becomes bank id `string-section` (orchestral's stays `strings`).
-
-   Families, in this order and with these ids:
-   - `LEADS`: `saw-lead`, `square-lead`, `pulse-lead`, `chip-square`, `brass`, `woodwind`, `acid`,
-     `soft-lead`, `soft-flute`, `radio-lead`, `dusty-sample`, `guitar`
-   - `KEYS`: `poly-stab`, `pluck`, `pulse-chords`, `pulse-arp`, `harp`, `bells`, `square-stab`,
-     `fm-pluck`, `stab`, `acid-arp`, `tine-keys`, `muted-pluck`, `grand-piano`, `analog-synth`
-   - `PADS`: `warm-pad`, `square-pad`, `strings`, `string-pad`, `dark-pad`, `tape-pad`,
-     `string-section`, `cello`, `synth-pad`
-   - `BASSES`: `synth-bass`, `sub-bass`, `triangle-bass`, `low-strings`, `techno-sub`,
-     `round-bass`, `upright-bass`, `warm-bass`
-   - `KITS`: `gated-kit`, `chip-kit`, `orchestra-kit`, `909-kit`, `dusty-kit`, `studio-kit`
-
-   Then export:
    ```ts
-   export const FAMILIES = { leads: LEADS, keys: KEYS, pads: PADS, basses: BASSES, kits: KITS };
-
-   function merge(families: Record<string, Record<string, Patch>>): Record<string, Patch> {
-     const all: Record<string, Patch> = {};
-     for (const family of Object.values(families)) {
-       for (const [id, patch] of Object.entries(family)) {
-         if (id in all) throw new Error(`instrument '${id}' is defined twice`);
-         all[id] = patch;
-       }
-     }
-     return all;
-   }
-
-   /** Every instrument, by bank id. Styles pick from this; `inst=bank:<id>` reaches it directly. */
-   export const INSTRUMENTS: Record<string, Patch> = merge(FAMILIES);
+   /** A plucked string (Karplus-Strong) voiced with the oscillators. */
+   string?: {
+     octave: number;      // like Osc.octave: -1 sounds an octave below the written note
+     level: number;       // like Osc.level
+     decay: number;       // seconds for the string to fall 60 dB
+     brightness: number;  // 0 (mellow, plain averaging) to 1 (bright, metallic)
+     pick: number;        // pick position, 0.05 (near the bridge, thin) to 0.5 (middle, round)
+   };
    ```
-   Put a two-line comment at the top of the file: the bank holds every instrument once under a
-   unique id, grouped by family; a style picks instruments from it in `styles.ts`.
 
-3. Rewrite `src/audio/styles.ts`:
-   - Imports: `type { Role, StyleId }` from `../music/roles`, `type { Track }` from
-     `../music/song`, `type { Patch }` from `./patches`, `{ INSTRUMENTS }` from `./instruments`.
-   - Re-export the types so existing imports keep working:
-     `export type { Wave, Osc, SynthPatch, DrumKit, Patch } from './patches';`
-   - Keep `interface StyleDef` exactly as it is.
-   - Add:
+   `oscs` stays required; a string-only patch passes `oscs: []`.
+
+2. Create `src/audio/strings.ts`, free of the DOM and Web Audio (pure functions only, like
+   `curves.ts`). Export:
+
+   ```ts
+   export interface StringSpec { decay: number; brightness: number; pick: number }
+   export const STRING_SECONDS = 2.5;
+   export function pluckSamples(sampleRate: number, freq: number, spec: StringSpec, seconds = STRING_SECONDS): Float32Array<ArrayBuffer>
+   ```
+
+   `pluckSamples` implements Karplus-Strong exactly like this:
+   - `period = sampleRate / freq`.
+   - Loop filter: `y = s * x[n] + (1 - s) * x[n - 1]` with `s = 0.5 + 0.45 * clamp(brightness, 0, 1)`.
+     Its delay is `1 - s` samples.
+   - Fractional tuning with a first-order all-pass: `delayTotal = period - (1 - s)`;
+     `N = Math.floor(delayTotal - 0.5)` (at least 2); `frac = delayTotal - N` (between 0.5 and 1.5);
+     all-pass coefficient `c = (1 - frac) / (1 + frac)`; all-pass
+     `ap[n] = c * in[n] + in[n - 1] - c * ap[n - 1]`.
+   - Loop gain `g = 10 ** (-3 / (decay * freq))`, with `decay` clamped to at least 0.05. Each
+     sample passes through the loop once per period, so this gives −60 dB after `decay` seconds.
+   - Excitation: `N` samples of noise from a fixed-seed LCG (copy `seededNoise` from
+     `src/audio/voices.ts` into `strings.ts`, seed 11; never use `Math.random`), so output is
+     deterministic. Apply the pick-position comb: `P = Math.max(1, Math.round(clamp(pick, 0.05, 0.5) * N))`;
+     `e[i] = noise[i] - noise[i - P]` (treat `noise[i - P]` as 0 for `i < P`). Remove the mean, then
+     scale so the peak absolute value is 1.
+   - Run a circular delay line of length `N` initialised with the excitation. Each output sample is
+     the value read from the delay line; the value written back is
+     `g * allpass(loopFilter(read))`, keeping the filter and all-pass states across samples.
+   - Output length `Math.ceil(seconds * sampleRate)`. Finally scale the whole output so its peak
+     absolute value is 1 (skip if the peak is 0).
+
+3. In `src/audio/voices.ts`:
+   - Add `strings: Map<string, AudioBuffer>` to `VoiceKit` and initialise it in `createVoiceKit`.
+   - In `playSynth`, after the oscillator loop and before the vibrato block, if `patch.string` is
+     set and `audibleOsc(freq, patch.string.octave)`:
+     - `stringFreq = freq * 2 ** patch.string.octave`.
+     - Cache key `` `${ctx.sampleRate}:${stringFreq.toFixed(3)}:${decay}:${brightness}:${pick}` ``.
+       On a miss, call `pluckSamples(ctx.sampleRate, stringFreq, patch.string)`, copy it into a new
+       mono `AudioBuffer` (`ctx.createBuffer(1, samples.length, ctx.sampleRate)` then
+       `copyToChannel`), and store it.
+     - Create an `AudioBufferSourceNode` with that buffer, a `GainNode` with `gain.value =
+       patch.string.level`, connect source → gain → `oscTarget` (the same target the oscillators
+       use, so drive, filter and envelope apply).
+     - Bends: if `bends.length > 0`, call `scheduleBends(source.detune, 0)`.
+     - Push the source and gain onto `collected.nodes`, push `{ node: source }` onto
+       `collected.sources`, and keep the source in a new `detuneTargets: AudioParam[]` list.
+   - Change the vibrato block so its depth connects to every oscillator's `detune` and to every
+     entry of `detuneTargets` (the string source's `detune`). Leave FM connecting to oscillators
+     only.
+
+4. In `src/audio/instruments.ts`:
+   - Replace the `indie-lead` entry in `LEADS` (keep its comment style, rewrite the comment to
+     describe a plucked string sounding an octave below the written note) with:
+
      ```ts
-     /** A style as written: its instruments as local name -> bank id, everything else as in StyleDef. */
-     interface StyleRecipe extends Omit<StyleDef, 'patches'> {
-       instruments: Record<string, string>;
-     }
-
-     function buildStyle(recipe: StyleRecipe): StyleDef {
-       const { instruments, ...rest } = recipe;
-       const patches: Record<string, Patch> = {};
-       for (const [local, id] of Object.entries(instruments)) {
-         const patch = INSTRUMENTS[id];
-         if (!patch) throw new Error(`style '${recipe.id}' uses unknown instrument '${id}'`);
-         patches[local] = patch;
-       }
-       return { ...rest, patches };
-     }
+     'indie-lead': synth({ name: 'Indie lead', oscs: [],
+       string: { octave: -1, level: 1, decay: 2.2, brightness: 0.55, pick: 0.18 },
+       env: env(0.002, 1.5, 0.35, 0.4), filter: { type: 'lowpass', hz: 3200, q: 0.9, envAmount: 1.6, envDecay: 0.2 },
+       vibrato: { rate: 0.9, cents: 5, delay: 0 }, drive: 0.25, gain: 0.5, sends: { reverb: 1.3, delay: 2.4 } }),
      ```
-   - Replace each style's `patches: {...}` block with `instruments: {...}`, mapping every local key
-     the style has today, in the same order, to its bank id. Local name and bank id are equal
-     except: chiptune `'square-lead': 'chip-square'`, techno `'sub-bass': 'techno-sub'`, cinematic
-     `strings: 'string-section'`. Keep `id`, `name`, `blurb`, `roles`, `fx`, `lanes` unchanged.
-   - Define the six recipes as `const RECIPES: StyleRecipe[] = [ ... ]` in the current order
-     (synthwave, chiptune, orchestral, techno, lofi, cinematic), then:
+
+   - Add to `KEYS`, after `power-chords`, with one comment line each:
+
      ```ts
-     export const STYLE_DEFS = Object.fromEntries(RECIPES.map((r) => [r.id, buildStyle(r)])) as Record<StyleId, StyleDef>;
-     ```
-   - Add `export const BANK_PREFIX = 'bank:';` and replace `patchKey` and `resolvePatch` with:
-     ```ts
-     /** The bank id when a track names `inst=bank:<id>` and the bank has it, else null. */
-     export function bankId(inst: string | null): string | null {
-       if (inst === null || !inst.startsWith(BANK_PREFIX)) return null;
-       const id = inst.slice(BANK_PREFIX.length);
-       return Object.prototype.hasOwnProperty.call(INSTRUMENTS, id) ? id : null;
-     }
-
-     export function patchKey(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): string {
-       if (bankId(track.inst) !== null) return track.inst as string;
-       if (track.inst !== null && Object.prototype.hasOwnProperty.call(style.patches, track.inst)) {
-         return track.inst;
-       }
-       return style.roles[track.role];
-     }
-
-     export function resolvePatch(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): Patch {
-       const id = bankId(track.inst);
-       if (id !== null) return INSTRUMENTS[id];
-       return style.patches[patchKey(style, track)];
-     }
+     'acoustic-guitar': synth({ name: 'Acoustic guitar', oscs: [],
+       string: { octave: -1, level: 1, decay: 3, brightness: 0.45, pick: 0.25 },
+       env: env(0.002, 2.5, 0.3, 0.5), filter: { type: 'lowpass', hz: 5000, q: 0.7, envAmount: 1.2, envDecay: 0.3 },
+       gain: 0.5, sends: { reverb: 1, delay: 0.4 } }),
+     'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
+       string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
+       env: env(0.002, 1.2, 0.5, 0.25), filter: { type: 'lowpass', hz: 2600, q: 1, envAmount: 1.5, envDecay: 0.15 },
+       drive: 0.6, gain: 0.3, sends: { reverb: 0.6, delay: 0.3 } }),
      ```
 
-4. In `src/music/song.ts`, in the `key === 'inst'` branch, change the regex from
-   `/^[a-z0-9-]+$/` to `/^(bank:)?[a-z0-9-]+$/`. Change nothing else in the file.
+5. In `src/audio/styles.ts`, add `'acoustic-guitar': 'acoustic-guitar'` and
+   `'crunch-guitar': 'crunch-guitar'` to the `altrock` recipe's `instruments`, after
+   `'shimmer-guitar'`. Change no roles.
 
-5. In `tests/styles.test.ts`, add to the existing `describe('styles')`:
-   - `it('builds every style patch from the bank')`: for every style and every
-     `[local, patch]` of `STYLE_DEFS[id].patches`, `Object.values(INSTRUMENTS)` contains `patch`
-     (same object, `toContain`).
-   - `it('resolves inst=bank:<id> in any style')`:
-     `resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'bank:radio-lead' }).name` is
-     `'Radio lead'`; `resolvePatch(STYLE_DEFS.chiptune, { role: 'lead', inst: 'bank:square-lead' }).name`
-     is `'Square lead'`; `resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'bank:nope' }).name`
-     is `'Acid'`; `resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'radio-lead' }).name` is
-     `'Acid'`.
-   - `it('keeps local names that differ from bank ids')`:
-     `STYLE_DEFS.chiptune.patches['square-lead'].name` is `'Square'`,
-     `STYLE_DEFS.techno.patches['sub-bass']` is `INSTRUMENTS['techno-sub']`,
-     `STYLE_DEFS.cinematic.patches.strings.name` is `'String section'`.
+6. Create `tests/strings.test.ts` (Vitest, importing only from `../src/audio/strings`) with these
+   tests, at `sampleRate = 48000` and spec `{ decay: 2, brightness: 0.5, pick: 0.2 }` unless stated:
+   - Length is `Math.ceil(2.5 * 48000)` by default and `Math.ceil(1 * 48000)` with `seconds = 1`;
+     peak absolute value is 1 within 1e-6; every sample is finite.
+   - Same inputs give identical arrays (deterministic).
+   - Pitch: for freq 110, 220, 440, and 659.25, estimate the period by autocorrelation over samples
+     2400–7200 (search lags from `0.5 * sr / freq` to `1.5 * sr / freq`, pick the lag with the
+     highest correlation, refine with parabolic interpolation) and expect `sr / lag` within 1% of
+     freq.
+   - Decay: RMS of samples 0.9–1.0 s is at least 20 dB below RMS of samples 0.0–0.1 s with
+     `decay: 1`.
+   - Brightness: the mean absolute first difference over samples 0–4800 is larger for
+     `brightness: 1` than for `brightness: 0`.
 
-6. Create `tests/instruments.test.ts`:
-   - every family's ids are unique across families, and `Object.keys(INSTRUMENTS).length` equals
-     the sum of the family sizes (49);
-   - every patch in `KITS` has `kind` `'drums'`; every patch in the other families has `kind`
-     `'synth'`;
-   - every bank id matches `/^[a-z0-9-]+$/`.
+7. In `tests/instruments.test.ts`, change `expect(total).toBe(57)` to `expect(total).toBe(59)`.
 
-7. In `tests/song.test.ts`, add one test: a song whose track header has `inst=bank:radio-lead`
-   parses with no errors and the track's `inst` is `'bank:radio-lead'`; and `inst=bank:` (empty id)
-   or `inst=Bank:x` gives an `invalid inst` error. Follow the file's existing helpers for building a
-   minimal song.
+7b. In `tests/styles.test.ts`, change the assertion at line 31,
+    `expect(patch.oscs.length, `${id} ${key}`).toBeGreaterThanOrEqual(1);`, so a patch with a
+    `string` may have no oscillators:
+    `expect(patch.oscs.length + (patch.string ? 1 : 0), `${id} ${key}`).toBeGreaterThanOrEqual(1);`.
 
-8. Docs:
-   - `docs/sound.md`, `## Patches and styles`: replace the sentence "`src/audio/styles.ts` holds the
-     six styles as data." with: "`src/audio/instruments.ts` is the instrument bank: every patch,
-     once, under a unique id, grouped into leads, keys, pads, basses, and kits. `src/audio/styles.ts`
-     holds the six styles as recipes: each picks the bank instruments it uses, under its own local
-     names, and sets its role map and effects." Replace the pick-order list with three steps:
-     1. `inst=bank:<id>` names a bank instrument: the track uses it in every style. 2. `inst=<name>`
-     and the current style has an instrument with that local name: the track uses it. 3. Otherwise
-     the patch for the track's `role`. After the list add: "A song that wants its own sound in every
-     remix uses `inst=bank:`; plain `inst=` lets each style supply its own sound, which keeps styles
-     distinct."
-   - `docs/sound.md`, `## Adding a patch or a style`: first bullet becomes: add a synth patch with
-     `synth({...})` or a drum kit with `drums({...})` to its family in `src/audio/instruments.ts`
-     under a new unique id; a style uses it by adding `localName: 'bank-id'` to its `instruments`
-     and pointing a role or `inst=` at the local name; any song can reach it with `inst=bank:<id>`.
-     Second bullet: "Add a style by adding a `StyleRecipe` to `RECIPES` in `src/audio/styles.ts`
-     (pick instruments from the bank), ..." keeping the rest of that bullet.
-   - `docs/song-format.md` line 71: `inst` matches `^(bank:)?[a-z0-9-]+$`; a plain name picks the
-     current style's instrument of that name, `bank:<id>` picks a bank instrument in every style
-     (see sound.md). Line 247: change `^[a-z0-9-]+$` to say an id that does not match
-     `^[a-z0-9-]+$` or an instrument that does not match `^(bank:)?[a-z0-9-]+$`.
-   - `docs/how-it-works.md`: replace the `styles.ts` bullet with two bullets:
-     "`instruments.ts` is the instrument bank: every patch once, by id, in families; `patches.ts`
-     has the patch types and the `synth()`/`drums()` helpers." and "`styles.ts` holds the six
-     styles as recipes. Each picks instruments from the bank and maps a **role** to one."
-   - `AGENTS.md` rule starting "Keep everything in `src/music/`": change "plus
-     `src/audio/styles.ts`," to "plus `src/audio/styles.ts`, `src/audio/instruments.ts`,
-     `src/audio/patches.ts`,".
+8. In `docs/sound.md`:
+   - Under "Patches and styles", after the paragraph about `drive`, add a paragraph: a synth patch can
+     set `string` to add a plucked string (Karplus-Strong): a burst of fixed-seed noise, shaped by
+     the pick position, circulates in a delay line one period long and is softened on each pass, so
+     it rings and decays like a string. `decay`, `brightness`, and `pick` shape it, `octave` and
+     `level` work as for an oscillator, and it goes through the patch's drive, filter, and
+     envelope. Each pitch is rendered once (2.5 s, `src/audio/strings.ts`) and reused. Guitar
+     patches set `octave: -1`, because guitar music is written an octave above where it sounds.
+   - In the Alt rock section, replace the description of `inst=indie-lead` with one that says it is
+     a plucked string, lightly driven, an octave below the written note, with a slow chorus wobble
+     and a long delay tail; add that `inst=acoustic-guitar` (a plucked acoustic, rounder pick,
+     longer ring) and `inst=crunch-guitar` (a driven plucked electric for crunchy parts) are also
+     extras no role maps to; change "Its eight instruments" to "Its ten instruments".
+9. In `AGENTS.md`, in the rule listing the files that stay free of the DOM and audio, add
+   `src/audio/strings.ts` after `src/audio/curves.ts`.
 
 ## Acceptance
 
-- `git diff --stat -- src/songs tools src/audio/engine.ts src/audio/voices.ts src/ui` prints nothing.
-- `grep -c "synth({" src/audio/styles.ts` prints `0`.
-- `grep -c "synth({\|drums({" src/audio/instruments.ts` prints `49`.
-- `grep -n "export function \(osc\|env\|synth\|drums\)" src/audio/patches.ts` prints 4 lines.
-- `npm run typecheck` exits 0.
+- `npm run test:sandbox` exits 0, and its output includes `tests/strings.test.ts` passing.
+- `git diff --stat` lists only files from **Files to touch**, plus the two new files shown by
+  `git status --porcelain`.
+- `git grep -n "Math.random" -- src/audio/strings.ts` prints nothing.
 
 Verifier only:
 - `npm test` exits 0.
+- `npm run typecheck` exits 0.
 - `npm run build` exits 0.
-- `node C:/Users/sz/AppData/Local/Temp/claude/C--Users-sz-Documents-Code/ce1b9b2a-6e0c-43e9-8569-be25bf365806/scratchpad/style-diff.mjs .` prints `identical` (STYLE_DEFS deep-equals the snapshot
-  taken before the change).
 
 ## Parallel work
 
@@ -210,21 +174,20 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Do not change any number, wave, name, or `sends` value of any patch. Do not change `fx`, `roles`,
-  `lanes`, `name`, or `blurb` of any style.
-- Do not change `src/audio/engine.ts`, `src/audio/voices.ts`, `src/ui/`, `tools/`, or any song.
+- Do not change any song in `src/songs/`, any other instrument, or `src/audio/engine.ts`.
+- Keep `src/audio/strings.ts` free of DOM and Web Audio types.
+- Files use LF line endings, UTF-8, and 2-space indents.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and
-  report it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules.
-- `npm run test:sandbox` may be run to check tests inside the sandbox.
+  report it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past
+  it.
 
 ## Out of scope
 
-- New instruments or styles.
-- A generated instrument list for the docs.
-- Changing `tools/browser/timbre.mjs`.
-- Using `inst=bank:` in any song.
+- AudioWorklet or delay-node feedback loops.
+- Changing `shimmer-guitar`, `fuzz-lead`, `clean-guitar`, `power-chords`, or `guitar-wall`.
+- Level tuning in a browser.
 
 ## If blocked
 
-If `npm run typecheck` reports errors in a file outside **Files to touch**, report the exact errors
-instead of editing that file. If a patch cannot be placed in a family as listed, stop and report.
+Stop, write `.handoff/report.md` with what was done, the exact failing command and its output,
+and what decision is needed.

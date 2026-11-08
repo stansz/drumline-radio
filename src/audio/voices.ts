@@ -1,6 +1,7 @@
 import { attackTime, audibleOsc, bendGlide, driveCurve, pulseCoefficients } from './curves';
 import { midiToFreq } from '../music/pitch';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
+import { pluckSamples } from './strings';
 
 export interface Voice {
   end: number;
@@ -14,6 +15,8 @@ export interface VoiceKit {
   pulse25: PeriodicWave;
   /** Drive curves built per amount, so a patch's curve is only made once. */
   driveCurves: Map<number, Float32Array<ArrayBuffer>>;
+  /** Rendered plucked-string buffers, keyed by sample rate, pitch, and string spec. */
+  strings: Map<string, AudioBuffer>;
 }
 
 const CHIP_NOISE_HOLD = 14;
@@ -63,6 +66,7 @@ export function createVoiceKit(ctx: AudioContext): VoiceKit {
     pulse12: ctx.createPeriodicWave(first.real, first.imag),
     pulse25: ctx.createPeriodicWave(second.real, second.imag),
     driveCurves: new Map(),
+    strings: new Map(),
   };
 }
 
@@ -232,6 +236,32 @@ export function playSynth(
     oscillators.push(osc);
   }
 
+  // The plucked string is voiced with the oscillators: it goes through the same drive, filter, and
+  // envelope, and its detune takes the same bends and vibrato.
+  const detuneTargets: AudioParam[] = [];
+  const string = patch.string;
+  if (string && audibleOsc(freq, string.octave)) {
+    const stringFreq = freq * 2 ** string.octave;
+    const key = `${ctx.sampleRate}:${stringFreq.toFixed(3)}:${string.decay}:${string.brightness}:${string.pick}`;
+    let buffer = kit.strings.get(key);
+    if (!buffer) {
+      const samples = pluckSamples(ctx.sampleRate, stringFreq, string);
+      buffer = ctx.createBuffer(1, samples.length, ctx.sampleRate);
+      buffer.copyToChannel(samples, 0);
+      kit.strings.set(key, buffer);
+    }
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    const level = ctx.createGain();
+    level.gain.value = string.level;
+    source.connect(level);
+    level.connect(oscTarget);
+    if (bends.length > 0) scheduleBends(source.detune, 0);
+    collected.nodes.push(source, level);
+    collected.sources.push({ node: source });
+    detuneTargets.push(source.detune);
+  }
+
   if (patch.vibrato) {
     const lfo = ctx.createOscillator();
     lfo.frequency.value = patch.vibrato.rate;
@@ -241,6 +271,7 @@ export function playSynth(
     depth.gain.linearRampToValueAtTime(patch.vibrato.cents, time + patch.vibrato.delay + 0.2);
     lfo.connect(depth);
     for (const osc of oscillators) depth.connect(osc.detune);
+    for (const target of detuneTargets) depth.connect(target);
     collected.nodes.push(lfo, depth);
     collected.sources.push({ node: lfo });
   }

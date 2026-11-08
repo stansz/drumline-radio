@@ -21,8 +21,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   (engine, voices, styles, curves), and `src/ui/` (page, dial, score, meters, CSS). Songs live in
   `src/songs/`. [docs/how-it-works.md](docs/how-it-works.md) is the short overview.
 - Keep everything in `src/music/`, plus `src/audio/styles.ts`, `src/audio/instruments.ts`,
-  `src/audio/patches.ts`, `src/audio/curves.ts`, and `src/ui/view.ts`, free of the DOM and audio,
-  so Vitest can test them.
+  `src/audio/patches.ts`, `src/audio/curves.ts`, `src/audio/strings.ts`, and `src/ui/view.ts`, free
+  of the DOM and audio, so Vitest can test them.
 - Instruments live once in the bank (`src/audio/instruments.ts`) under unique ids; styles in
   `src/audio/styles.ts` pick from it by local name. Add an instrument to the bank, not to a style.
 - `tsconfig.json` type-checks `src/` with browser types only; `tsconfig.node.json` adds Node

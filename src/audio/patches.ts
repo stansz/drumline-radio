@@ -21,6 +21,14 @@ export interface SynthPatch {
   };
   vibrato?: { rate: number; cents: number; delay: number };
   fm?: { ratio: number; index: number; decay: number };
+  /** A plucked string (Karplus-Strong) voiced with the oscillators. */
+  string?: {
+    octave: number;      // like Osc.octave: -1 sounds an octave below the written note
+    level: number;       // like Osc.level
+    decay: number;       // seconds for the string to fall 60 dB
+    brightness: number;  // 0 (mellow, plain averaging) to 1 (bright, metallic)
+    pick: number;        // pick position, 0.05 (near the bridge, thin) to 0.5 (middle, round)
+  };
   /** Distortion amount, 0 to 1. A wave shaper with this much tanh drive. */
   drive?: number;
   gain: number;

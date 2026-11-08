@@ -79,14 +79,13 @@ export const LEADS: Record<string, Patch> = {
   'fuzz-lead': synth({ name: 'Fuzz guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 6, 0.3), osc('sawtooth', -1, 0, 0.1)],
     env: env(0.005, 0.6, 0.75, 0.3), filter: { type: 'lowpass', hz: 2800, q: 1, envAmount: 1.4, envDecay: 0.2 },
     vibrato: { rate: 5.5, cents: 15, delay: 0.5 }, drive: 0.85, gain: 0.2, sends: { reverb: 0.7, delay: 0.6 } }),
-  // Alt rock: a clean indie lead guitar, the opposite of the fuzz. A guitar pluck starts bright and
-  // buzzy and mellows fast, so a nasal pulse and a saw go through a resonant low-pass that snaps
-  // open on each note and closes within a beat; a touch of amp grit, a slow chorus wobble, and a
-  // long delay tail. Soft triangles and sines read as a keyboard instead. It sounds an octave
-  // below the written note, as a real guitar does (guitar music is written an octave up).
-  'indie-lead': synth({ name: 'Indie lead', oscs: [osc('pulse25', -1, -5, 0.45), osc('sawtooth', -1, 5, 0.35), osc('triangle', -1, 0, 0.2)],
-    env: env(0.002, 1.2, 0.2, 0.45), filter: { type: 'lowpass', hz: 2400, q: 2, envAmount: 2.5, envDecay: 0.12 },
-    vibrato: { rate: 0.9, cents: 6, delay: 0 }, drive: 0.15, gain: 0.34, sends: { reverb: 1.3, delay: 2.4 } }),
+  // Alt rock: a clean indie lead guitar built on a plucked string (Karplus-Strong), lightly driven
+  // through a resonant low-pass, with a slow chorus wobble and a long delay tail. It sounds an
+  // octave below the written note, as a real guitar does (guitar music is written an octave up).
+  'indie-lead': synth({ name: 'Indie lead', oscs: [],
+    string: { octave: -1, level: 1, decay: 2.2, brightness: 0.55, pick: 0.18 },
+    env: env(0.002, 1.5, 0.35, 0.4), filter: { type: 'lowpass', hz: 3200, q: 0.9, envAmount: 1.6, envDecay: 0.2 },
+    vibrato: { rate: 0.9, cents: 5, delay: 0 }, drive: 0.25, gain: 0.5, sends: { reverb: 1.3, delay: 2.4 } }),
 };
 
 export const KEYS: Record<string, Patch> = {
@@ -184,6 +183,16 @@ export const KEYS: Record<string, Patch> = {
   'power-chords': synth({ name: 'Power chords', oscs: [osc('sawtooth', 0, -6, 0.45), osc('sawtooth', 0, 6, 0.4), osc('square', -1, 0, 0.15)],
     env: env(0.003, 0.22, 0.25, 0.1), filter: { type: 'lowpass', hz: 1900, q: 1.5, envAmount: 2.5, envDecay: 0.1 },
     drive: 0.7, gain: 0.16, sends: { reverb: 0.5, delay: 0 } }),
+  // Alt rock: a plucked acoustic guitar, with a rounder pick and a longer ring.
+  'acoustic-guitar': synth({ name: 'Acoustic guitar', oscs: [],
+    string: { octave: -1, level: 1, decay: 3, brightness: 0.45, pick: 0.25 },
+    env: env(0.002, 2.5, 0.3, 0.5), filter: { type: 'lowpass', hz: 5000, q: 0.7, envAmount: 1.2, envDecay: 0.3 },
+    gain: 0.5, sends: { reverb: 1, delay: 0.4 } }),
+  // Alt rock: a driven plucked electric guitar for crunchy parts.
+  'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
+    string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
+    env: env(0.002, 1.2, 0.5, 0.25), filter: { type: 'lowpass', hz: 2600, q: 1, envAmount: 1.5, envDecay: 0.15 },
+    drive: 0.6, gain: 0.3, sends: { reverb: 0.6, delay: 0.3 } }),
 };
 
 export const PADS: Record<string, Patch> = {

@@ -55,6 +55,13 @@ A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between 
 the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample and radio
 lead use it.
 
+A synth patch can also set `string` to add a plucked string (Karplus-Strong): a burst of fixed-seed
+noise, shaped by the pick position, circulates in a delay line one period long and is softened on
+each pass, so it rings and decays like a string. `decay`, `brightness`, and `pick` shape it, `octave`
+and `level` work as for an oscillator, and it goes through the patch's drive, filter, and envelope.
+Each pitch is rendered once (2.5 s, `src/audio/strings.ts`) and reused. Guitar patches set
+`octave: -1`, because guitar music is written an octave above where it sounds.
+
 An oscillator that would sound below 30 Hz is not created: that low it is felt as rumble rather than
 heard, and it only eats headroom, so a sub-octave layer drops out under very low notes.
 
@@ -141,7 +148,7 @@ and its long delay send and the style's 3.2 s reverb give it a big hall. Songs c
 
 ### Alt rock
 
-The Alt rock style is guitar-band rock: punk, pop punk, and indie. Its eight instruments are all new
+The Alt rock style is guitar-band rock: punk, pop punk, and indie. Its ten instruments are all new
 in the bank.
 
 | Role | Patch |
@@ -160,14 +167,13 @@ chugging, and Guitar wall holds for a chorus. Clean guitar is a plucked, jangly 
 and counter-lines. Pick bass has a little drive for driving eighth notes. The style has a small
 room (1.4 s reverb), little delay, and no crush.
 
-Alt rock has two extras that no role maps to. `inst=indie-lead` is a clean lead guitar, the opposite of
-the fuzz: a nasal pulse and a saw through a resonant low-pass that snaps open on each pluck and
-closes within a beat, a touch of amp grit, a slow chorus wobble, and a long delay tail. Like a real
-guitar, it sounds an octave below the written note: guitar music is written an octave above where
-it sounds, so a melody written for guitar lands in the guitar's own range. `inst=shimmer-guitar` is a shimmering clean guitar for
+Alt rock has four extras that no role maps to. `inst=indie-lead` is a plucked string, lightly driven,
+an octave below the written note, with a slow chorus wobble and a long delay tail. `inst=acoustic-guitar`
+is a plucked acoustic with a rounder pick and a longer ring, and `inst=crunch-guitar` is a driven
+plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: two triangles detuned apart and a slow 0.9 Hz wobble give it a chorus sheen, and a
 large reverb and delay send makes its notes echo on the style's dotted-eighth delay. Porch Light uses
-both.
+`indie-lead` and `shimmer-guitar`.
 
 ### Studio
 

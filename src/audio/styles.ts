@@ -241,6 +241,8 @@ const RECIPES: StyleRecipe[] = [
       'rock-kit': 'rock-kit',
       'indie-lead': 'indie-lead',
       'shimmer-guitar': 'shimmer-guitar',
+      'acoustic-guitar': 'acoustic-guitar',
+      'crunch-guitar': 'crunch-guitar',
     },
     fx: { reverbSeconds: 1.4, reverbSend: 0.18, delayBeats: 0.75, delaySend: 0.08, delayFeedback: 0.25, crush: 0, lowpassHz: 16000, crackle: 0 },
     lanes: ['#ff4136', '#ffd23f', '#3fa7ff', '#f4e9d8', '#7ee081', '#ff8fc7'],

@@ -28,7 +28,7 @@ describe('styles', () => {
     for (const id of STYLES) {
       for (const [key, patch] of Object.entries(STYLE_DEFS[id].patches)) {
         if (patch.kind !== 'synth') continue;
-        expect(patch.oscs.length, `${id} ${key}`).toBeGreaterThanOrEqual(1);
+        expect(patch.oscs.length + (patch.string ? 1 : 0), `${id} ${key}`).toBeGreaterThanOrEqual(1);
         expect(patch.env.attack, `${id} ${key}`).toBeGreaterThan(0);
         expect(patch.gain, `${id} ${key}`).toBeGreaterThan(0);
         expect(patch.gain, `${id} ${key}`).toBeLessThanOrEqual(1);
