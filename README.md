@@ -67,7 +67,7 @@ Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy,
 Originals by SZ (and AI):
 
 - **Exit Sign** (Alt rock), by GPT-6.1-sol & SZ. A 2:57 guitar-band original: palm-muted verses, a twelve-bar vocal-style hook, a half-time bridge, and a final double chorus.
-- **Porch Light** (Alt rock), by Grok & SZ. A 3:03 mid-tempo indie original: clean guitar up front, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
+- **Porch Light** (Alt rock), by Grok & SZ. A 4:18 slow, emo indie original with a Ben Folds-style piano: clean guitar up front, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.

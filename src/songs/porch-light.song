@@ -1,4 +1,4 @@
-# Porch Light, by Grok & SZ. Original mid-tempo indie in the Alt rock style:
+# Porch Light, by Grok & SZ. Original slow indie in the Alt rock style:
 # clean guitar up front, palm-muted eighths underneath, a vocal-style hook that
 # saves the loud band for the last chorus. Written to sit apart from Exit Sign:
 # A major at 110, offbeat verse hats, a borrowed minor iv, and a flat-side bridge.
@@ -22,6 +22,8 @@
 # Form 81-84: outro - Outro: the opening figure and the F natural, then home
 # The verse snare drags 20 ticks; the last chorus tightens to 14. Verse chugs sit 16 ticks late.
 # Plain style instrument names only, so a remix still falls back to each style's own patches.
+# Reworked slower (78 BPM, from 110) with a Ben Folds-style piano on the chords; the piano uses
+# inst=bank:grand-piano so it stays a piano in every remix, and the chugs sit lower under it.
 title: Porch Light
 composer: Grok & SZ
 year: 2026
@@ -29,9 +31,9 @@ source: original
 category: originals
 style: altrock
 key: A major
-tempo: 110
+tempo: 78
 time: 4/4
-about: A light left on at mid-tempo: clean guitar carries the verses, a borrowed minor chord turns the hook, and the band waits until the last chorus to get loud.
+about: A light left on at a slow, emo pace: clean guitar and a piano carry the verses, a borrowed minor chord turns the hook, and the band waits until the last chorus to get loud.
 
 track melody role=lead inst=indie-lead vol=1 pan=0
 # Intro: clean guitar alone, then bass (bars 1-4)
@@ -130,7 +132,7 @@ track melody role=lead inst=indie-lead vol=1 pan=0
 | v=82 F4/2 A4/4 r/4 |
 | v=74 A4/1 |
 
-track rhythm role=chords inst=power-chords vol=0.56 pan=-0.4
+track rhythm role=chords inst=power-chords vol=0.4 pan=-0.4
 # Intro: no chugs; the clean guitar is alone (bars 1-4)
 | R |
 | R |
@@ -226,6 +228,104 @@ track rhythm role=chords inst=power-chords vol=0.56 pan=-0.4
 | v=60 [D3 A3]/2 r/2 |
 | v=56 [D3 A3]/2 r/2 |
 | v=64 [A3 E4]/1 |
+
+track piano role=chords inst=bank:grand-piano vol=1 pan=0.12
+# Piano, Ben Folds style: held chords in the verses, pumping quarters in the pre-chorus,
+# eighths in the choruses; left hand on the root, right hand on the chord above it.
+# intro (from bar 1)
+| R |
+| R |
+| [F#2 F#4 A4 C#5]/1:52 |
+| [E2 E4 G#4 B4]/1:52 |
+# verse (from bar 5)
+| [A2 E4 A4 C#5]/2:56 [E4 A4 C#5]/2:50 |
+| [B2 F#4 B4 D5]/2:56 [F#4 B4 D5]/2:50 |
+| [D3 F#4 A4 D5]/2:56 [F#4 A4 D5]/2:50 |
+| [E2 E4 G#4 B4]/2:56 [E4 G#4 B4]/2:50 |
+| [A2 E4 A4 C#5]/2:56 [E4 A4 C#5]/2:50 |
+| [C#3 E4 G#4 C#5]/2:56 [E4 G#4 C#5]/2:50 |
+| [F#2 F#4 A4 C#5]/2:56 [F#4 A4 C#5]/2:50 |
+| [E2 E4 G#4 B4]/2:56 [E4 G#4 B4]/2:50 |
+| [A2 E4 A4 C#5]/2:56 [E4 A4 C#5]/2:50 |
+| [D3 F#4 A4 D5]/2:56 [F#4 A4 D5]/2:50 |
+| [B2 F#4 B4 D5]/2:56 [F#4 B4 D5]/2:50 |
+| [E2 E4 G#4 B4]/2:56 [E4 G#4 B4]/2:50 |
+# pre (from bar 17)
+| [F#2 F#4 A4 C#5]/4:64 [F#4 A4 C#5]/4:56 F#2/4:60 [F#4 A4 C#5]/4:56 |
+| [D3 F#4 A4 D5]/4:67 [F#4 A4 D5]/4:59 D3/4:63 [F#4 A4 D5]/4:59 |
+| [A2 E4 A4 C#5]/4:70 [E4 A4 C#5]/4:62 A2/4:66 [E4 A4 C#5]/4:62 |
+| [B2 F#4 B4 D5]/4:73 [F#4 B4 D5]/4:65 B2/4:69 [F#4 B4 D5]/4:65 |
+| [E2 E4 G#4 B4]/4:76 [E4 G#4 B4]/4:68 E2/4:72 [E4 G#4 B4]/4:68 |
+| [E2 E4 G#4 B4]/4:79 [E4 G#4 B4]/4:71 E2/4:75 [E4 G#4 B4]/4:71 |
+# chorus (from bar 23)
+| [A2 E4 A4 C#5]/8:78 [E4 A4 C#5]/8:64 [E4 A4 C#5]/8:70 [E4 A4 C#5]/8:64 [A2 E4 A4 C#5]/8:74 [E4 A4 C#5]/8:64 [E4 A4 C#5]/8:70 [E4 A4 C#5]/8:64 |
+| [E2 E4 G#4 B4]/8:78 [E4 G#4 B4]/8:64 [E4 G#4 B4]/8:70 [E4 G#4 B4]/8:64 [E2 E4 G#4 B4]/8:74 [E4 G#4 B4]/8:64 [E4 G#4 B4]/8:70 [E4 G#4 B4]/8:64 |
+| [D3 F#4 A4 D5]/8:78 [F#4 A4 D5]/8:64 [F#4 A4 D5]/8:70 [F#4 A4 D5]/8:64 [D3 F#4 A4 D5]/8:74 [F#4 A4 D5]/8:64 [F#4 A4 D5]/8:70 [F#4 A4 D5]/8:64 |
+| [F#2 F#4 A4 C#5]/8:78 [F#4 A4 C#5]/8:64 [F#4 A4 C#5]/8:70 [F#4 A4 C#5]/8:64 [F#2 F#4 A4 C#5]/8:74 [F#4 A4 C#5]/8:64 [F#4 A4 C#5]/8:70 [F#4 A4 C#5]/8:64 |
+| [A2 E4 A4 C#5]/8:78 [E4 A4 C#5]/8:64 [E4 A4 C#5]/8:70 [E4 A4 C#5]/8:64 [A2 E4 A4 C#5]/8:74 [E4 A4 C#5]/8:64 [E4 A4 C#5]/8:70 [E4 A4 C#5]/8:64 |
+| [D3 F#4 A4 D5]/8:78 [F#4 A4 D5]/8:64 [F#4 A4 D5]/8:70 [F#4 A4 D5]/8:64 [D3 F#4 A4 D5]/8:74 [F#4 A4 D5]/8:64 [F#4 A4 D5]/8:70 [F#4 A4 D5]/8:64 |
+| [D3 F4 A4 D5]/8:78 [F4 A4 D5]/8:64 [F4 A4 D5]/8:70 [F4 A4 D5]/8:64 [D3 F4 A4 D5]/8:74 [F4 A4 D5]/8:64 [F4 A4 D5]/8:70 [F4 A4 D5]/8:64 |
+| [E2 E4 G#4 B4]/8:78 [E4 G#4 B4]/8:64 [E4 G#4 B4]/8:70 [E4 G#4 B4]/8:64 [E2 E4 G#4 B4]/8:74 [E4 G#4 B4]/8:64 [E4 G#4 B4]/8:70 [E4 G#4 B4]/8:64 |
+# verse (from bar 31)
+| [A2 E4 A4 C#5]/2:62 [E4 A4 C#5]/2:56 |
+| [B2 F#4 B4 D5]/2:62 [F#4 B4 D5]/2:56 |
+| [D3 F#4 A4 D5]/2:62 [F#4 A4 D5]/2:56 |
+| [E2 E4 G#4 B4]/2:62 [E4 G#4 B4]/2:56 |
+| [A2 E4 A4 C#5]/2:62 [E4 A4 C#5]/2:56 |
+| [C#3 E4 G#4 C#5]/2:62 [E4 G#4 C#5]/2:56 |
+| [F#2 F#4 A4 C#5]/2:62 [F#4 A4 C#5]/2:56 |
+| [E2 E4 G#4 B4]/2:62 [E4 G#4 B4]/2:56 |
+| [A2 E4 A4 C#5]/2:62 [E4 A4 C#5]/2:56 |
+| [D3 F#4 A4 D5]/2:62 [F#4 A4 D5]/2:56 |
+| [B2 F#4 B4 D5]/2:62 [F#4 B4 D5]/2:56 |
+| [E2 E4 G#4 B4]/2:62 [E4 G#4 B4]/2:56 |
+# pre (from bar 43)
+| [F#2 F#4 A4 C#5]/4:70 [F#4 A4 C#5]/4:62 F#2/4:66 [F#4 A4 C#5]/4:62 |
+| [D3 F#4 A4 D5]/4:73 [F#4 A4 D5]/4:65 D3/4:69 [F#4 A4 D5]/4:65 |
+| [A2 E4 A4 C#5]/4:76 [E4 A4 C#5]/4:68 A2/4:72 [E4 A4 C#5]/4:68 |
+| [B2 F#4 B4 D5]/4:79 [F#4 B4 D5]/4:71 B2/4:75 [F#4 B4 D5]/4:71 |
+| [E2 E4 G#4 B4]/4:82 [E4 G#4 B4]/4:74 E2/4:78 [E4 G#4 B4]/4:74 |
+| [E2 E4 G#4 B4]/4:85 [E4 G#4 B4]/4:77 E2/4:81 [E4 G#4 B4]/4:77 |
+# chorus (from bar 49)
+| [A2 E4 A4 C#5]/8:86 [E4 A4 C#5]/8:72 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:72 [A2 E4 A4 C#5]/8:82 [E4 A4 C#5]/8:72 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:72 |
+| [E2 E4 G#4 B4]/8:86 [E4 G#4 B4]/8:72 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:72 [E2 E4 G#4 B4]/8:82 [E4 G#4 B4]/8:72 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:72 |
+| [D3 F#4 A4 D5]/8:86 [F#4 A4 D5]/8:72 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:72 [D3 F#4 A4 D5]/8:82 [F#4 A4 D5]/8:72 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:72 |
+| [F#2 F#4 A4 C#5]/8:86 [F#4 A4 C#5]/8:72 [F#4 A4 C#5]/8:78 [F#4 A4 C#5]/8:72 [F#2 F#4 A4 C#5]/8:82 [F#4 A4 C#5]/8:72 [F#4 A4 C#5]/8:78 [F#4 A4 C#5]/8:72 |
+| [A2 E4 A4 C#5]/8:86 [E4 A4 C#5]/8:72 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:72 [A2 E4 A4 C#5]/8:82 [E4 A4 C#5]/8:72 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:72 |
+| [D3 F#4 A4 D5]/8:86 [F#4 A4 D5]/8:72 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:72 [D3 F#4 A4 D5]/8:82 [F#4 A4 D5]/8:72 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:72 |
+| [D3 F4 A4 D5]/8:86 [F4 A4 D5]/8:72 [F4 A4 D5]/8:78 [F4 A4 D5]/8:72 [D3 F4 A4 D5]/8:82 [F4 A4 D5]/8:72 [F4 A4 D5]/8:78 [F4 A4 D5]/8:72 |
+| [E2 E4 G#4 B4]/8:86 [E4 G#4 B4]/8:72 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:72 [E2 E4 G#4 B4]/8:82 [E4 G#4 B4]/8:72 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:72 |
+# bridge (from bar 57)
+| R |
+| R |
+| [A2 E4 A4 C5]/1:70 |
+| [D3 F4 A4 D5]/1:70 |
+| [Bb2 F4 Bb4 D5]/1:70 |
+| [G2 G4 B4 D5]/1:70 |
+| [E2 E4 G#4 B4]/4:72 [E4 G#4 B4]/4:66 [E2 E4 G#4 B4]/4:74 [E4 G#4 B4]/4:70 |
+| [E2 E4 G#4 B4]/4:78 [E4 G#4 B4]/4:72 [E2 E4 G#4 B4]/4:80 [E4 G#4 B4]/4:76 |
+# chorus (from bar 65)
+| [A2 E4 A4 C#5]/8:92 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:78 [A2 E4 A4 C#5]/8:88 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:78 |
+| [E2 E4 G#4 B4]/8:92 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:78 [E2 E4 G#4 B4]/8:88 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:78 |
+| [D3 F#4 A4 D5]/8:92 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:78 [D3 F#4 A4 D5]/8:88 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:78 |
+| [F#2 F#4 A4 C#5]/8:92 [F#4 A4 C#5]/8:78 [F#4 A4 C#5]/8:84 [F#4 A4 C#5]/8:78 [F#2 F#4 A4 C#5]/8:88 [F#4 A4 C#5]/8:78 [F#4 A4 C#5]/8:84 [F#4 A4 C#5]/8:78 |
+| [A2 E4 A4 C#5]/8:92 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:78 [A2 E4 A4 C#5]/8:88 [E4 A4 C#5]/8:78 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:78 |
+| [D3 F#4 A4 D5]/8:92 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:78 [D3 F#4 A4 D5]/8:88 [F#4 A4 D5]/8:78 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:78 |
+| [D3 F4 A4 D5]/8:92 [F4 A4 D5]/8:78 [F4 A4 D5]/8:84 [F4 A4 D5]/8:78 [D3 F4 A4 D5]/8:88 [F4 A4 D5]/8:78 [F4 A4 D5]/8:84 [F4 A4 D5]/8:78 |
+| [E2 E4 G#4 B4]/8:92 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:78 [E2 E4 G#4 B4]/8:88 [E4 G#4 B4]/8:78 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:78 |
+| [A2 E4 A4 C#5]/8:98 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:90 [E4 A4 C#5]/8:84 [A2 E4 A4 C#5]/8:94 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:90 [E4 A4 C#5]/8:84 |
+| [E2 E4 G#4 B4]/8:98 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:90 [E4 G#4 B4]/8:84 [E2 E4 G#4 B4]/8:94 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:90 [E4 G#4 B4]/8:84 |
+| [D3 F#4 A4 D5]/8:98 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:90 [F#4 A4 D5]/8:84 [D3 F#4 A4 D5]/8:94 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:90 [F#4 A4 D5]/8:84 |
+| [F#2 F#4 A4 C#5]/8:98 [F#4 A4 C#5]/8:84 [F#4 A4 C#5]/8:90 [F#4 A4 C#5]/8:84 [F#2 F#4 A4 C#5]/8:94 [F#4 A4 C#5]/8:84 [F#4 A4 C#5]/8:90 [F#4 A4 C#5]/8:84 |
+| [A2 E4 A4 C#5]/8:98 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:90 [E4 A4 C#5]/8:84 [A2 E4 A4 C#5]/8:94 [E4 A4 C#5]/8:84 [E4 A4 C#5]/8:90 [E4 A4 C#5]/8:84 |
+| [D3 F#4 A4 D5]/8:98 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:90 [F#4 A4 D5]/8:84 [D3 F#4 A4 D5]/8:94 [F#4 A4 D5]/8:84 [F#4 A4 D5]/8:90 [F#4 A4 D5]/8:84 |
+| [D3 F4 A4 D5]/8:98 [F4 A4 D5]/8:84 [F4 A4 D5]/8:90 [F4 A4 D5]/8:84 [D3 F4 A4 D5]/8:94 [F4 A4 D5]/8:84 [F4 A4 D5]/8:90 [F4 A4 D5]/8:84 |
+| [E2 E4 G#4 B4]/8:98 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:90 [E4 G#4 B4]/8:84 [E2 E4 G#4 B4]/8:94 [E4 G#4 B4]/8:84 [E4 G#4 B4]/8:90 [E4 G#4 B4]/8:84 |
+# outro (from bar 81)
+| [A2 E4 A4 C#5]/1:64 |
+| [D3 F#4 A4 D5]/1:64 |
+| [D3 F4 A4 D5]/1:64 |
+| [A2 E4 A4 C#5]/1:58 |
 
 track wall role=pad inst=guitar-wall vol=0.66 pan=0.22
 # Intro through chorus 1: no wall yet (bars 1-48)
