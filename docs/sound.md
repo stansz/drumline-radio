@@ -266,7 +266,10 @@ peaks are what make a vowel, so the vowel stays the same whatever note is played
 body is one or two broad bands (low `q`, as in `oboe`). Start from a bright source (saws, a
 square, a pulse), since a band-pass only takes away. Narrow bands remove most of the energy, so
 formant patches need a higher `gain` than plain ones and should be level-matched with
-`tools/browser/levels.mjs`. It sounds like a synth choir, not real singers.
+`tools/browser/levels.mjs`. It sounds like a synth choir, not real singers. Keep bands wide for a high
+part: a narrow band passes only the one harmonic that falls inside it, so above about C5 the
+`VOWELS` bands leave one or two harmonics and the part sounds like a flute. `vox-lead` uses wide
+(low `q`), soprano-placed bands for that reason; the narrow `VOWELS` suit pads and lower parts.
 
 ### Hearing and levelling a patch
 

@@ -103,10 +103,14 @@ export const LEADS: Record<string, Patch> = {
     fm: { ratio: 1, index: 3.5, attack: 0.07, decay: 0.5, sustain: 0.45, velocity: 0.7 },
     env: env(0.06, 0.4, 0.8, 0.2), filter: { type: 'lowpass', hz: 3000, q: 0.7, envAmount: 1, envDecay: 0.2 },
     vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.15 }),
-  // A wordless vocal lead: a bright saw and pulse through the "ah" formants, with a singer's vibrato.
+  // A wordless vocal lead: a bright saw and pulse through wide, soprano-placed "ah" bands, with a
+  // singer's vibrato. The bands are wide on purpose: narrow vowel bands pass only one or two harmonics
+  // of a note above C5, which sounds like a flute.
   'vox-lead': synth({ name: 'Vox lead', oscs: [osc('sawtooth', 0, 0, 0.7), osc('pulse25', 0, 4, 0.3)],
-    formants: VOWELS.ah, env: env(0.06, 0.3, 0.9, 0.3),
-    vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.64, sends: { reverb: 1, delay: 0.6 } }),
+    formants: [{ hz: 900, q: 3, gain: 1 }, { hz: 1300, q: 3.5, gain: 0.8 }, { hz: 2900, q: 4, gain: 0.5 },
+      { hz: 3800, q: 5, gain: 0.25 }],
+    env: env(0.06, 0.3, 0.9, 0.3),
+    vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.3, sends: { reverb: 1, delay: 0.6 } }),
   // An oboe: a square and saw through two broad formant bands, for a nasal double-reed body.
   'oboe': synth({ name: 'Oboe', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
     formants: [{ hz: 1200, q: 3, gain: 1 }, { hz: 2700, q: 5, gain: 0.35 }],
