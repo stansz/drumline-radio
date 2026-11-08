@@ -201,9 +201,9 @@ export const KEYS: Record<string, Patch> = {
   // played like soft fingerpicking: a fingertip near the middle of the string, a 50 ms fade-in and
   // no filter snap, so nothing bites. It rings open into some reverb and echo.
   'plugged-acoustic': synth({ name: 'Plugged acoustic', oscs: [],
-    string: { octave: -1, level: 1, decay: 2, brightness: 0.3, pick: 0.45 },
-    env: env(0.05, 1.5, 0.35, 0.45), filter: { type: 'bandpass', hz: 1400, q: 0.4, envAmount: 1, envDecay: 0.25 },
-    drive: 0.2, gain: 0.37, sends: { reverb: 0.9, delay: 1.4 } }),
+    string: { octave: -1, level: 1, decay: 2, brightness: 0.25, pick: 0.45 },
+    env: env(0.05, 1.5, 0.35, 0.45), filter: { type: 'bandpass', hz: 1000, q: 0.3, envAmount: 1, envDecay: 0.25 },
+    drive: 0.1, gain: 0.52, sends: { reverb: 0.9, delay: 1.4 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
