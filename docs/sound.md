@@ -172,7 +172,7 @@ picked toward the middle and darkly filtered so it isn't twangy, an octave below
 with a short ring, a deep, slow chorus, and moderate reverb and delay. `inst=acoustic-guitar`
 is a plucked acoustic, open, with a soft pick attack and a moderate ring, `inst=plugged-acoustic` is the same kind of string
 heard through a pickup and an amp: a wide band-pass for the direct, mid-forward piezo tone, light
-drive for compression, and little reverb, and `inst=crunch-guitar` is a driven
+drive for compression, and an open ring into a fair amount of reverb and echo, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: a warm, darkly filtered plucked string at the written pitch, with a deep, slow
 chorus wobble and a moderate reverb and delay send that makes its notes echo on the style's
