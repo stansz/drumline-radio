@@ -43,7 +43,7 @@ track violins role=lead vol=0.8 pan=-0.25
 # XII. Coda: the strings thin out and leave
 | D6/2. | A5/4. F5/4. | R | R |
 
-track flutes role=counter vol=0.6 pan=0.25
+track oboe role=counter inst=oboe vol=0.6 pan=0.25
 # I. Prelude: a solo line, later heard in the hocket
 | D5/4. A4/4. | F5/4. E5/8 D5/8 C#5/8 | D5/4. F5/4. | A5/2. |
 | Bb4/4. D5/4. | F5/4. E5/8 F5/8 G5/8 | A5/4. C#5/4. | D5/2. |
