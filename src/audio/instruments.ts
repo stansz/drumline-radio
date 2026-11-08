@@ -171,15 +171,20 @@ export const KEYS: Record<string, Patch> = {
   'analog-synth': synth({ name: 'Analog synth', oscs: [osc('sawtooth', 0, -6, 0.5), osc('pulse25', 0, 6, 0.5)],
     env: env(0.005, 0.35, 0.2, 0.3), filter: { type: 'lowpass', hz: 1400, q: 3, envAmount: 3, envDecay: 0.18 },
     gain: 0.16, sends: { reverb: 1, delay: 1.2 } }),
-  // Alt rock: a clean, jangly guitar for arpeggios and counter-lines; plucked so it rings and fades.
-  'clean-guitar': synth({ name: 'Clean guitar', oscs: [osc('triangle', 0, 0, 0.55), osc('sawtooth', 0, 5, 0.3), osc('sine', 1, 0, 0.15)],
-    env: env(0.003, 0.9, 0.15, 0.35), filter: { type: 'lowpass', hz: 3400, q: 1.2, envAmount: 2, envDecay: 0.15 },
-    gain: 0.24, sends: { reverb: 1, delay: 0.9 } }),
-  // Alt rock: a shimmering clean guitar. Two detuned triangles and a slow wobble give it a chorus
-  // sheen, and a big delay send gives the echoing indie arpeggio.
-  'shimmer-guitar': synth({ name: 'Shimmer guitar', oscs: [osc('triangle', 0, -7, 0.4), osc('triangle', 0, 7, 0.3), osc('sawtooth', 0, 0, 0.15), osc('sine', 1, 0, 0.15)],
-    env: env(0.003, 1.4, 0.2, 0.6), filter: { type: 'lowpass', hz: 3800, q: 0.9, envAmount: 1.6, envDecay: 0.2 },
-    vibrato: { rate: 0.9, cents: 6, delay: 0 }, gain: 0.24, sends: { reverb: 2, delay: 3 } }),
+  // Alt rock: a clean, jangly guitar for arpeggios and counter-lines, built on a plucked string
+  // (Karplus-Strong) so each note is picked, rings, and fades. It sounds an octave below the written
+  // note, like a real guitar.
+  'clean-guitar': synth({ name: 'Clean guitar', oscs: [],
+    string: { octave: -1, level: 1, decay: 1.8, brightness: 0.45, pick: 0.25 },
+    env: env(0.003, 1.2, 0.25, 0.35), filter: { type: 'lowpass', hz: 3000, q: 0.8, envAmount: 1.4, envDecay: 0.2 },
+    gain: 0.75, sends: { reverb: 1, delay: 0.9 } }),
+  // Alt rock: a shimmering clean guitar for echoing indie arpeggios: a warm plucked string with a
+  // deep, slow chorus wobble and big reverb and delay sends. It stays at the written pitch, so its
+  // arpeggios sparkle above an indie lead and stay clear of the bass.
+  'shimmer-guitar': synth({ name: 'Shimmer guitar', oscs: [],
+    string: { octave: 0, level: 1, decay: 2.4, brightness: 0.3, pick: 0.35 },
+    env: env(0.003, 1.8, 0.3, 0.6), filter: { type: 'lowpass', hz: 3200, q: 0.7, envAmount: 1.2, envDecay: 0.2 },
+    vibrato: { rate: 0.9, cents: 8, delay: 0 }, gain: 0.82, sends: { reverb: 2, delay: 3 } }),
   // Alt rock: palm-muted power-chord chugs, short and crunchy.
   'power-chords': synth({ name: 'Power chords', oscs: [osc('sawtooth', 0, -6, 0.45), osc('sawtooth', 0, 6, 0.4), osc('square', -1, 0, 0.15)],
     env: env(0.003, 0.22, 0.25, 0.1), filter: { type: 'lowpass', hz: 1900, q: 1.5, envAmount: 2.5, envDecay: 0.1 },

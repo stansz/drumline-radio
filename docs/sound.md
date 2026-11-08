@@ -163,8 +163,8 @@ in the bank.
 | drums | Rock kit |
 
 The fuzz lead and both rhythm guitars use heavy `drive`; Power chords is short and palm-muted for
-chugging, and Guitar wall holds for a chorus. Clean guitar is a plucked, jangly tone for arpeggios
-and counter-lines. Pick bass has a little drive for driving eighth notes. The style has a small
+chugging, and Guitar wall holds for a chorus. Clean guitar is a jangly plucked string for arpeggios
+and counter-lines, an octave below the written note. Pick bass has a little drive for driving eighth notes. The style has a small
 room (1.4 s reverb), little delay, and no crush.
 
 Alt rock has four extras that no role maps to. `inst=indie-lead` is a warm, clean plucked string,
@@ -172,8 +172,8 @@ picked toward the middle and darkly filtered so it isn't twangy, an octave below
 with a deep, slow chorus, lots of reverb, and a long delay tail. `inst=acoustic-guitar`
 is a plucked acoustic with a rounder pick and a longer ring, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
-indie arpeggios: two triangles detuned apart and a slow 0.9 Hz wobble give it a chorus sheen, and a
-large reverb and delay send makes its notes echo on the style's dotted-eighth delay. Porch Light uses
+indie arpeggios: a warm plucked string at the written pitch, with a deep, slow chorus wobble and a
+large reverb and delay send that makes its notes echo on the style's dotted-eighth delay. Porch Light uses
 `indie-lead` and `shimmer-guitar`.
 
 ### Studio
