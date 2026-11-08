@@ -37,7 +37,15 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
 - **Use micro-timing for feel, sparingly** (see [song-format.md](song-format.md#micro-timing)).
   What has worked: snare or rim dragged +10 to +30 ticks, off-beat hats -6 to -8, a lead or guitar
   +10 to +20 behind the beat, chord stabs +25. Some songs stay on the grid on purpose (Night Shift,
-  Save Point).
+  Save Point). Vary it: a whole part pushed late by the same amount is just a delay, not
+  feel (Wayfarer's Rest's first version pushed every phrase start +8 to +14). An early offset (-N)
+  on a bar's first note starts it under the previous bar's pad or bass, which may still be holding
+  the old chord, so the clash check can flag it even when the written harmony is clean (Dusk Over
+  Dunmere's first run had 9 such clashes). Make those first notes late instead.
+- **Keep the pad open when the melody holds colour tones.** A pad on just the root and fifth, with
+  the arp or chords spelling the full triad, leaves room for a held 9th, 4th, or 6th in the lead
+  without a half-step clash against a pad third. Dusk Over Dunmere uses this to keep long melody
+  notes clash-free.
 
 ## Picking instruments
 
@@ -100,8 +108,8 @@ depends on it.
    ready.
 3. Check the balance with `npm run balance -- <song>` (see [tools/README.md](../tools/README.md)).
    It renders the whole song offline in about 10 seconds, prints every track's level in each
-   8-bar section, and flags a pad or chords part more than 10 dB under the lead, a bass louder than
-   the lead, and a bass whose low end is louder than the kick's. Fix every flag or say why it
+   8-bar section, and flags a pad or chords part more than 10 dB under the lead, an arp peaking more
+   than 8 dB under the lead, a bass louder than the lead, and a bass whose low end is louder than the kick's. Fix every flag or say why it
    stays. It starts and stops its own server, so there is nothing to clean up. The lead should be on
    top: in Shortwave's hook it sits at −30 dB
    with the keys at −36 and the drums at −33. Nothing should be buried 15 dB under the rest. Keep

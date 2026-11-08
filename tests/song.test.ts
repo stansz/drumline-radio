@@ -148,6 +148,11 @@ describe('the checker', () => {
     );
   });
 
+  it('explains a whole-bar shortcut that shares its bar', () => {
+    const errors = errorsFor('track a role=lead\nR*1\nR*1');
+    expect(errors.some((e) => e.includes("unrecognised token 'R*1': a whole-bar shortcut must be the only thing in its bar"))).toBe(true);
+  });
+
   it('lists each token and its ticks in a short bar', () => {
     const errors = errorsFor('track a role=drums\n| k/4 s/8 s h |');
     expect(errors).toContain(

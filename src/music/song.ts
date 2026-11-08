@@ -153,7 +153,12 @@ type ParsedToken =
   | { kind: 'error'; message: string };
 
 function unrecognised(text: string): ParsedToken {
-  return { kind: 'error', message: `unrecognised token '${text}'` };
+  // A whole-bar shortcut lands here when it shares a bar with something else, usually because a
+  // line without | marks ran on into the next one.
+  const hint = /^(R(\*\d+)?|%)$/.test(text)
+    ? ': a whole-bar shortcut must be the only thing in its bar, between | marks (a new line does not start a new bar)'
+    : '';
+  return { kind: 'error', message: `unrecognised token '${text}'${hint}` };
 }
 
 function parseSuffixWithPitches(

@@ -215,7 +215,9 @@ Staccato does not change the bend times.
 
 ## Whole-bar shortcuts
 
-These fill whole bars. Each must be the only content of its bar.
+These fill whole bars. Each must be the only content of its bar, between `|` marks: write
+`| R*8 |`, not a bare `R*8` line. A new line does not start a new bar, so two bare shortcut lines run
+together into one bar and fail with "a whole-bar shortcut must be the only thing in its bar".
 
 - `R` is a rest that fills the bar.
 - `R*n` is n such bars (`n` at least 1), each sized to its own time signature.
@@ -230,12 +232,15 @@ These fill whole bars. Each must be the only content of its bar.
 
 ## Bars
 
-`|` separates bars and must stand alone as a token. A bar may span several lines. Empty segments —
+`|` separates bars and must stand alone as a token. A bar may span several lines, and a new line
+never starts a new bar on its own. Empty segments —
 from a leading, trailing, or doubled `|` — are ignored.
 
 Every bar must add up to exactly its time signature's ticks, except the pickup bar, which must be
-exactly the pickup length. When a bar is wrong the error reads:
-`line <n>: track <id> bar <number> is <got> ticks, expected <want>`.
+exactly the pickup length. When a bar is wrong the error reads
+`line <n>: track <id> bar <number> is <got> ticks, expected <want> (<diff> short|over): ` followed by
+every token in the bar with the ticks it got, for example `h/4 960, s/8' 480, s/8' 480, h 480`. A
+token with no duration inherits the last one written, which is the usual cause.
 
 Every track must have the same number of bars.
 

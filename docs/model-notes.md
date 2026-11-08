@@ -13,7 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | — | — | Mix: bass 10 dB over lead |
+| Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | — | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
 | Fathom | Techno | Qwen3.8 Flash | — | — | Mix: stabs buried |
 | The Silent Keep | Cinematic | DeepSeek V4 Flash | — | — | Mix: strings buried |
@@ -43,12 +43,14 @@ Stop) aren't listed.
 - **Missed:** the triangle bass sat 9–11 dB over the lead until `npm run balance` caught it. Six
   early (−N) microtiming offsets pulled notes under the *previous* bar's held pad tone (an F under
   an E, a B under a Bb) and were turned late to clear the clash check.
-- **Fixed after:** bass volume 0.35 → 0.1, lead, arp, and pad up slightly, counter and drums
-  trimmed so the lead stays on top.
-- **Tool changes from it:** — (ideas left for later: a parse error that says a whole-bar shortcut
-  merged with a neighbour when a line has no `|`; a note in composing.md that early offsets can
-  overlap the ending pad of the bar before; a balance flag for an arp buried under the lead, which
-  the docs care about but the tool doesn't check).
+- **Fixed by itself before handing over:** bass volume 0.35 → 0.1, lead, arp, and pad up slightly,
+  counter and drums trimmed so the lead stays on top.
+- **Fixed after:** nothing. The first model song to pass every check as delivered (0 clashes, no
+  balance flags, no shared code touched).
+- **Tool changes from it:** a parse error that explains a whole-bar shortcut sharing its bar (and a
+  song-format line that a new line doesn't start a bar); composing.md notes on early offsets
+  clashing with the previous bar's pad and on the open-fifths pad; and a balance flag for an arp
+  peaking more than 8 dB under the lead. Its idea of a "safe notes" helper was left for later.
 
 ### Wayfarer's Rest — Gemini 3.8 Flash (2026-11-08)
 

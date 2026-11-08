@@ -2,8 +2,9 @@
 // every section, so a buried or overpowering part shows up without seeking or timing. One command:
 // it starts its own Vite server on a free port, renders in headless Edge, and stops both when done.
 // For each track and section it prints RMS / peak in dB, plus the level below 150 Hz for the bass and
-// drums, then flags common problems: a pad or chords part more than 10 dB under the lead, a bass
-// louder than the lead, and a bass whose low end is louder than the kick's.
+// drums, then flags common problems: a pad or chords part more than 10 dB under the lead, an arp
+// peaking more than 8 dB under the lead's peak, a bass louder than the lead, and a bass whose low
+// end is louder than the kick's.
 //   npm run balance -- <song name or path> [style] [bars per section, default 8]
 //   npm run balance -- wayfarers-rest
 //   npm run balance -- src/songs/riverfront.song lofi 16
@@ -130,6 +131,12 @@ try {
       if (lead) {
         for (const x of [...at('pad'), ...at('chords')]) {
           if (lead.l.rms - x.l.rms > 10) flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(lead.l.rms - x.l.rms)} dB under ${lead.t.id}`);
+        }
+        // An arp is short plucks, so its RMS reads low; compare peaks.
+        // A buried arp's RMS can sit under the playing threshold, so find it by its peak.
+        const arps = tracks.map((t, i) => ({ t, l: levels[i][j] })).filter((x) => x.t.role === 'arp' && x.l.peak > -45);
+        for (const x of arps) {
+          if (lead.l.peak - x.l.peak > 8) flags.push(`${where}: ${x.t.id} (arp) peaks ${Math.round(lead.l.peak - x.l.peak)} dB under ${lead.t.id}`);
         }
         for (const x of at('bass')) {
           if (x.l.rms > lead.l.rms) flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(x.l.rms - lead.l.rms)} dB over ${lead.t.id}`);

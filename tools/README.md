@@ -291,8 +291,8 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   path, then optionally a style and the bars per section, default 8) starts its own Vite server on a
   free port, renders the whole song offline in headless Edge through the real engine with each
   track tapped separately, prints every track's RMS / peak per section (and the level below 150 Hz
-  for bass and drums), flags a pad or chords part more than 10 dB under the lead, a bass louder
-  than the lead, and a bass low end louder than the kick's, then stops the server and browser.
+  for bass and drums), flags a pad or chords part more than 10 dB under the lead, an arp peaking
+  more than 8 dB under the lead, a bass louder than the lead, and a bass low end louder than the kick's, then stops the server and browser.
   About 10 seconds for a 3-minute song; no seeking, so held notes are measured too.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
