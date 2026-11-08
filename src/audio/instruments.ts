@@ -245,7 +245,7 @@ export const KEYS: Record<string, Patch> = {
   'concert-harp': synth({ name: 'Concert harp', oscs: [],
     string: { octave: 0, level: 1, decay: 3.5, brightness: 0.25, pick: 0.35 },
     env: env(0.002, 4, 0.5, 0.8), filter: { type: 'lowpass', hz: 3500, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
-    gain: 0.85, sends: { reverb: 1, delay: 0.3 } }),
+    gain: 0.54, sends: { reverb: 1, delay: 0.3 } }),
   // Pizzicato strings: a short plucked string with a quick, muted ring.
   'pizzicato': synth({ name: 'Pizzicato strings', oscs: [],
     string: { octave: 0, level: 1, decay: 0.45, brightness: 0.3, pick: 0.22 },
