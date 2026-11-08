@@ -78,6 +78,11 @@ Originals by SZ (and AI):
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
+- **Fathom** (Techno), by Qwen3.8 Flash & SZ. A 5:09 dub techno original at 118 BPM in G minor: one
+  chord stab and nothing else melodic, voiced eight ways, its repeats written as extra stabs that
+  land later and softer each time. It opens on the lone echoing chord with no kick, builds a rumbling
+  sub, hiss hats and a second high stab layer over 16-bar stages, drops the kick for a breakdown where
+  the chord hangs in the pad, comes back widest, then strips down to the stab alone in the dark.
 - **Night Shift** (Techno)
 - **Riverfront** (Techno), by MiMo v2.6 Pro & SZ. A 4:23 deep techno original at 124 BPM in F minor:
   it opens with no kick (a pad, then a hypnotic FM counter-line) before the kick and a rolling sub

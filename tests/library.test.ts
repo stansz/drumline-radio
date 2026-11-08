@@ -4,7 +4,7 @@ import { HIDDEN_IDS, LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(33);
+    expect(LIBRARY.length).toBe(34);
     expect(HIDDEN_IDS).toEqual([
       'can-can',
       'eine-kleine-nachtmusik',
@@ -31,6 +31,7 @@ describe('library', () => {
       'save-point',
       'lantern-ward',
       'cartographer',
+      'fathom',
       'night-shift',
       'riverfront',
       'last-stop',
@@ -57,7 +58,7 @@ describe('library', () => {
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
     expect(count('classics')).toBe(10);
-    expect(count('originals')).toBe(14);
+    expect(count('originals')).toBe(15);
   });
 
   it('keeps each song in its own style', () => {
@@ -77,6 +78,7 @@ describe('library', () => {
       'chiptune',
       'orchestral',
       'orchestral',
+      'techno',
       'techno',
       'techno',
       'lofi',

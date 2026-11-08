@@ -21,6 +21,7 @@ const SCRIPT = [
   'tools/arranger/swan-lake.mjs',
   'tools/arranger/night-shift.mjs',
   'tools/arranger/riverfront.mjs',
+  'tools/arranger/fathom.mjs',
   'tools/arranger/save-point.mjs',
   'tools/arranger/moonlight.mjs',
   'tools/arranger/clair-de-lune.mjs',

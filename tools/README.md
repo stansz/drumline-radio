@@ -159,6 +159,16 @@ save-room interlude, an adventure section, all again up a step).
 node tools/arranger/club.mjs tmp/club
 ```
 
+Riverfront and Fathom have their own scripts too. `arranger/riverfront.mjs` lays its counter-line,
+stabs, pad and rolling sub out over 136 bars. `arranger/fathom.mjs` builds Fathom, a dub techno track
+that is one G minor chord voiced eight ways: every bar is laid on a sixteenth grid, so a pattern is a
+list of slots, and the stab patterns are echo trails whose repeats land later and softer each time.
+Sections are 16 bars, and each one adds or drops a layer.
+
+```bash
+node tools/arranger/fathom.mjs tmp/dub
+```
+
 Exit Sign has its own script, `arranger/exit-sign.mjs`: hand-composed vocal-style melodies over a
 single harmonic map, palm-muted eighths, held chorus guitars, kick-locked bass, and separate
 backbeat and cymbal tracks. Its twelve-bar chorus is shared by every reprise, with clean-guitar
