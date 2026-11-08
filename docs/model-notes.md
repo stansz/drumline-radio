@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| Signal Fire | Techno | MiniMax M3.1 Flash | — | — | Mix: stabs and pad buried, bass over the hook |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
 | Fathom | Techno | Qwen3.8 Flash | — | — | Mix: stabs buried |
@@ -29,6 +30,25 @@ Claude's own originals (Midnight Arcade, Night Shift, Save Point, Underpass, Ivo
 Stop) aren't listed.
 
 ## Entries
+
+### Signal Fire — MiniMax M3.1 Flash (2026-11-08)
+
+- **Brief:** a peak-time dance anthem, Techno, 132 BPM, F# minor, 4:00-4:30: a chopped vocal hook
+  on the bank `vox-lead`, a rolling off-beat sub, punchy stabs, a dark pad in the breakdowns, a
+  909 kit, and a DJ form with two builds and two drops.
+- **Cost:** —.
+- **Followed well:** the form (16-bar intro, a groove that adds the stabs, a 16-bar breakdown, an
+  8-bar build, a 16-bar drop, an 8-bar breakdown, an 8-bar build, a 32-bar final drop with the
+  hook doubled an octave up, a 16-bar outro); one chord map (F#m - D - A - E) for all 136 bars, and
+  every pitched part written from it; the hook in octaves 4-5 over a sub in octaves 1-2 and stabs
+  and pad in octaves 3-4; 0 clashes; the mix fixed by `npm run balance` before handing over.
+- **Missed at first:** the balance. The stabs sat 14 dB under the hook and the pad 12 dB under it,
+  and the bass was 3 dB over the hook, so the first mix had the vocal buried under the drums.
+- **Fixed by itself before handing over:** stabs and pad up (and the stabs made denser in the
+  drops), the bass down to 0.3 so it sits under the kick, the drums down to 0.58, the hook up to
+  full velocity; the claps moved to their own track so they can sit behind the beat while the kick
+  stays dead on the grid; a test for the song's own notes, form and header.
+- **Fixed after:** nothing.
 
 ### Dusk Over Dunmere — MiMo v2.6 Pro (2026-11-08)
 

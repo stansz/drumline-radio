@@ -89,6 +89,11 @@ Originals by SZ (and AI):
   it opens with no kick (a pad, then a hypnotic FM counter-line) before the kick and a rolling sub
   bass drop in together; warm chord stabs, a breakdown where the kick drops and the hook surfaces
   over the pad and chords, and two drops.
+- **Signal Fire** (Techno), by MiniMax M3.1 Flash & SZ. A 4:07 peak-time techno original at 132 BPM
+  in F# minor: a 16-bar drums-and-bass intro, a groove that adds the chord stabs, a breakdown where
+  the kick drops and a chopped wordless vocal hook carries over a dark pad, a snare-roll build into
+  the first drop, a short second breakdown, a bigger build, a 32-bar final drop with the hook
+  doubled an octave up, and a 16-bar outro for the mixer.
 - **Dusk Over Dunmere** (Chiptune), by MiMo v2.6 Pro & SZ. A 3:04 wistful fantasy RPG theme at
   88 BPM in 3/4: a singing pulse lead with long held notes over rolling pulse-arp broken chords in
   place of drums, a walking triangle bass, a square counter-melody answering the lead's holds,
