@@ -34,7 +34,8 @@ Brief:
   song's own plan>. The lead sits on top; the bass sits under the kick, never louder than it;
   chords and pads must be audible, not buried 10 dB under the lead.
 - Use the <Style> style's roles and instruments; reach for other bank instruments only with
-  inst= when a part really needs it.
+  inst= when a part really needs it. The whole bank, including instruments in no style (choirs,
+  a vocal lead, oboe, pizzicato, and more), is in src/audio/instruments.ts with a comment on each.
 
 Rules:
 - Original melody only, nothing copyrighted.

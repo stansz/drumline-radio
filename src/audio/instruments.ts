@@ -5,6 +5,7 @@ import { drums, env, osc, synth, VOWELS } from './patches';
 import type { Patch } from './patches';
 
 export const LEADS: Record<string, Patch> = {
+  // Synthwave lead: two detuned saws through a swept low-pass, with vibrato.
   'saw-lead': synth({
     name: 'Saw lead',
     oscs: [osc('sawtooth', 0, -8, 0.5), osc('sawtooth', 0, 8, 0.5)],
@@ -14,6 +15,7 @@ export const LEADS: Record<string, Patch> = {
     gain: 0.32,
     sends: { reverb: 1, delay: 1 },
   }),
+  // A square lead with an octave layer, for Synthwave's second lead and counter-lines.
   'square-lead': synth({
     name: 'Square lead',
     oscs: [osc('square', 0, 0, 0.6), osc('square', 1, 4, 0.2)],
@@ -21,6 +23,7 @@ export const LEADS: Record<string, Patch> = {
     filter: { type: 'lowpass', hz: 3000, q: 1, envAmount: 1.5, envDecay: 0.2 },
     gain: 0.26,
   }),
+  // Chiptune lead: a thin 12.5% pulse with delayed vibrato, like an 8-bit melody channel.
   'pulse-lead': synth({
     name: 'Pulse lead',
     oscs: [osc('pulse12', 0, 0, 1)],
@@ -28,12 +31,14 @@ export const LEADS: Record<string, Patch> = {
     vibrato: { rate: 6, cents: 10, delay: 0.3 },
     gain: 0.22,
   }),
+  // Chiptune second voice: a plain square for harmonies and counter-melodies.
   'chip-square': synth({
     name: 'Square',
     oscs: [osc('square', 0, 0, 1)],
     env: env(0.002, 0.1, 0.7, 0.05),
     gain: 0.16,
   }),
+  // An older brass: filtered saws that open on each note (Orchestral now uses fm-brass).
   brass: synth({
     name: 'Brass',
     oscs: [osc('sawtooth', 0, 0, 0.7), osc('sawtooth', 0, 5, 0.3)],
@@ -42,6 +47,7 @@ export const LEADS: Record<string, Patch> = {
     vibrato: { rate: 5, cents: 8, delay: 0.4 },
     gain: 0.26,
   }),
+  // Orchestral counter-line: a soft, flute-like triangle and sine with vibrato.
   woodwind: synth({
     name: 'Woodwind',
     oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
@@ -49,6 +55,7 @@ export const LEADS: Record<string, Patch> = {
     vibrato: { rate: 5.5, cents: 16, delay: 0.2 },
     gain: 0.3,
   }),
+  // Techno lead: a resonant, squelchy acid line.
   acid: synth({
     name: 'Acid',
     oscs: [osc('sawtooth', 0, 0, 1)],
@@ -57,9 +64,11 @@ export const LEADS: Record<string, Patch> = {
     gain: 0.24,
     sends: { reverb: 0.6, delay: 1 },
   }),
+  // Lo-fi lead: a mellow, filtered voice with tape-like wobble.
   'soft-lead': synth({ name: 'Soft lead', oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
     env: env(0.02, 0.4, 0.6, 0.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
     vibrato: { rate: 0.7, cents: 9, delay: 0 }, gain: 0.3, sends: { reverb: 1, delay: 0.8 } }),
+  // Lo-fi counter-line: a breathy, flute-like near-sine.
   'soft-flute': synth({ name: 'Soft flute', oscs: [osc('sine', 0, 0, 0.7), osc('triangle', 0, 3, 0.3)],
     env: env(0.05, 0.3, 0.7, 0.3), filter: { type: 'lowpass', hz: 2000, q: 0.5, envAmount: 1, envDecay: 0.2 },
     vibrato: { rate: 0.7, cents: 10, delay: 0 }, gain: 0.22 }),
@@ -69,9 +78,11 @@ export const LEADS: Record<string, Patch> = {
   'radio-lead': synth({ name: 'Radio lead', oscs: [osc('sawtooth', 0, 0, 0.6), osc('pulse12', 0, 7, 0.4)],
     env: env(0.003, 0.35, 0.3, 0.15), filter: { type: 'bandpass', hz: 1800, q: 0.6, envAmount: 1.5, envDecay: 0.15 },
     drive: 0.75, gain: 0.45, sends: { reverb: 0.5, delay: 0.6 } }),
+  // Lo-fi extra: a detuned, driven saw and triangle, like a chopped-record lead.
   'dusty-sample': synth({ name: 'Dusty sample', oscs: [osc('sawtooth', 0, -5, 0.55), osc('triangle', 0, 5, 0.45)],
     env: env(0.004, 0.32, 0.14, 0.16), filter: { type: 'lowpass', hz: 1150, q: 1.4, envAmount: 2.4, envDecay: 0.13 },
     drive: 0.35, gain: 0.3, sends: { reverb: 0.2, delay: 0.1 } }),
+  // Cinematic lead: an overdriven electric lead guitar.
   guitar: synth({ name: 'Lead guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 4, 0.25), osc('sine', -1, 0, 0.15)],
     env: env(0.008, 0.8, 0.7, 0.6), filter: { type: 'lowpass', hz: 2600, q: 1.2, envAmount: 1.6, envDecay: 0.25 },
     vibrato: { rate: 5.2, cents: 22, delay: 0.45 }, drive: 0.6, gain: 0.2, sends: { reverb: 1, delay: 1.5 } }),
@@ -103,6 +114,7 @@ export const LEADS: Record<string, Patch> = {
 };
 
 export const KEYS: Record<string, Patch> = {
+  // Synthwave chords: short, bright detuned-saw stabs.
   'poly-stab': synth({
     name: 'Poly stab',
     oscs: [osc('sawtooth', 0, -6, 0.5), osc('sawtooth', 0, 6, 0.5)],
@@ -110,6 +122,7 @@ export const KEYS: Record<string, Patch> = {
     filter: { type: 'lowpass', hz: 1800, q: 3, envAmount: 3, envDecay: 0.15 },
     gain: 0.22,
   }),
+  // Synthwave arp: a short plucked synth for fast arpeggios.
   pluck: synth({
     name: 'Pluck',
     oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 1, 5, 0.25)],
@@ -118,24 +131,28 @@ export const KEYS: Record<string, Patch> = {
     gain: 0.2,
     sends: { reverb: 1, delay: 1.5 },
   }),
+  // Chiptune chords: pulse-wave chord hits.
   'pulse-chords': synth({
     name: 'Pulse chords',
     oscs: [osc('pulse25', 0, 0, 1)],
     env: env(0.002, 0.15, 0.4, 0.05),
     gain: 0.12,
   }),
+  // Chiptune arp: fast pulse arpeggios.
   'pulse-arp': synth({
     name: 'Pulse arp',
     oscs: [osc('pulse12', 0, 0, 1)],
     env: env(0.001, 0.08, 0, 0.03),
     gain: 0.16,
   }),
+  // An older harp: a triangle and sine pluck (Orchestral now uses concert-harp).
   harp: synth({
     name: 'Harp',
     oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
     env: env(0.002, 1.2, 0, 0.6),
     gain: 0.3,
   }),
+  // An older bell: FM that rings and decays (Orchestral now uses glockenspiel).
   bells: synth({
     name: 'Bells',
     oscs: [osc('sine', 0, 0, 1)],
@@ -143,6 +160,7 @@ export const KEYS: Record<string, Patch> = {
     env: env(0.002, 1.8, 0, 1),
     gain: 0.2,
   }),
+  // Techno second lead: a short square stab.
   'square-stab': synth({
     name: 'Square stab',
     oscs: [osc('square', 0, 0, 0.7), osc('square', 0, 7, 0.3)],
@@ -150,6 +168,7 @@ export const KEYS: Record<string, Patch> = {
     filter: { type: 'lowpass', hz: 1600, q: 4, envAmount: 3, envDecay: 0.08 },
     gain: 0.18,
   }),
+  // Techno counter-line: a short FM pluck.
   'fm-pluck': synth({
     name: 'FM pluck',
     oscs: [osc('sine', 0, 0, 1)],
@@ -157,6 +176,7 @@ export const KEYS: Record<string, Patch> = {
     env: env(0.002, 0.3, 0, 0.15),
     gain: 0.24,
   }),
+  // Techno chords: a detuned-saw chord stab.
   stab: synth({
     name: 'Chord stab',
     oscs: [osc('sawtooth', 0, -8, 0.5), osc('sawtooth', 0, 8, 0.5)],
@@ -165,6 +185,7 @@ export const KEYS: Record<string, Patch> = {
     gain: 0.2,
     sends: { reverb: 1, delay: 1.3 },
   }),
+  // Techno arp: a resonant acid sequence.
   'acid-arp': synth({
     name: 'Acid arp',
     oscs: [osc('sawtooth', 0, 0, 1)],
@@ -172,15 +193,19 @@ export const KEYS: Record<string, Patch> = {
     filter: { type: 'lowpass', hz: 900, q: 10, envAmount: 5, envDecay: 0.08 },
     gain: 0.18,
   }),
+  // An older electric piano: plain FM tines (Lo-fi now uses fm-rhodes).
   'tine-keys': synth({ name: 'Tine keys', oscs: [osc('sine', 0, 0, 1)], fm: { ratio: 1, index: 1.2, decay: 0.8 },
     env: env(0.005, 1.2, 0.25, 0.5), filter: { type: 'lowpass', hz: 2200, q: 0.5, envAmount: 1, envDecay: 0.3 },
     vibrato: { rate: 0.6, cents: 7, delay: 0 }, gain: 0.26, sends: { reverb: 1, delay: 0.5 } }),
+  // Lo-fi arp: a soft, muted pluck with a long delay send.
   'muted-pluck': synth({ name: 'Muted pluck', oscs: [osc('triangle', 0, 0, 1)],
     env: env(0.003, 0.25, 0, 0.2), filter: { type: 'lowpass', hz: 1600, q: 1, envAmount: 2, envDecay: 0.12 },
     vibrato: { rate: 0.6, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1, delay: 1.2 } }),
+  // Cinematic chords and second lead: a synthesised grand piano.
   'grand-piano': synth({ name: 'Grand piano', oscs: [osc('triangle', 0, 0, 0.6), osc('sine', 1, 0, 0.25), osc('sawtooth', 0, 3, 0.15)],
     env: env(0.002, 2.6, 0, 0.45), filter: { type: 'lowpass', hz: 1500, q: 0.6, envAmount: 3.5, envDecay: 0.5 },
     gain: 0.32, sends: { reverb: 1.1, delay: 0.2 } }),
+  // Cinematic arp: a warm analog-style synth.
   'analog-synth': synth({ name: 'Analog synth', oscs: [osc('sawtooth', 0, -6, 0.5), osc('pulse25', 0, 6, 0.5)],
     env: env(0.005, 0.35, 0.2, 0.3), filter: { type: 'lowpass', hz: 1400, q: 3, envAmount: 3, envDecay: 0.18 },
     gain: 0.16, sends: { reverb: 1, delay: 1.2 } }),
@@ -259,6 +284,7 @@ export const KEYS: Record<string, Patch> = {
 };
 
 export const PADS: Record<string, Patch> = {
+  // Synthwave pad: wide detuned saws with a slow attack.
   'warm-pad': synth({
     name: 'Warm pad',
     oscs: [
@@ -271,12 +297,14 @@ export const PADS: Record<string, Patch> = {
     gain: 0.22,
     sends: { reverb: 1.4, delay: 0.5 },
   }),
+  // Chiptune pad: held square-wave chords.
   'square-pad': synth({
     name: 'Square pad',
     oscs: [osc('pulse25', 0, 0, 1)],
     env: env(0.02, 0.3, 0.6, 0.2),
     gain: 0.1,
   }),
+  // Orchestral lead: a bowed string section (the violins).
   strings: synth({
     name: 'Strings',
     oscs: [
@@ -290,6 +318,7 @@ export const PADS: Record<string, Patch> = {
     gain: 0.24,
     sends: { reverb: 1.2, delay: 0 },
   }),
+  // Orchestral pad: soft sustained strings.
   'string-pad': synth({
     name: 'String pad',
     oscs: [osc('sawtooth', 0, -9, 0.5), osc('sawtooth', 0, 9, 0.5)],
@@ -299,6 +328,7 @@ export const PADS: Record<string, Patch> = {
     gain: 0.2,
     sends: { reverb: 1.3, delay: 0 },
   }),
+  // Techno pad: a dark, evolving bed.
   'dark-pad': synth({
     name: 'Dark pad',
     oscs: [osc('sawtooth', 0, -10, 0.5), osc('sawtooth', 0, 10, 0.5)],
@@ -307,15 +337,19 @@ export const PADS: Record<string, Patch> = {
     gain: 0.2,
     sends: { reverb: 1.5, delay: 0.5 },
   }),
+  // Lo-fi pad: a warm pad with tape wobble.
   'tape-pad': synth({ name: 'Tape pad', oscs: [osc('sawtooth', 0, -10, 0.3), osc('sawtooth', 0, 10, 0.3), osc('triangle', -1, 0, 0.4)],
     env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 1, envDecay: 1 },
     vibrato: { rate: 0.5, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1.4, delay: 0.3 } }),
+  // Cinematic pad: a full string section.
   'string-section': synth({ name: 'String section', oscs: [osc('sawtooth', 0, -9, 0.34), osc('sawtooth', 0, 0, 0.33), osc('sawtooth', 0, 9, 0.33)],
     env: env(0.6, 1, 0.85, 1.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1, envDecay: 1 },
     vibrato: { rate: 4.5, cents: 10, delay: 0.4 }, gain: 0.19, sends: { reverb: 1.4, delay: 0 } }),
+  // Cinematic counter-line: a solo cello.
   cello: synth({ name: 'Solo strings', oscs: [osc('sawtooth', 0, -4, 0.5), osc('sawtooth', 0, 4, 0.5)],
     env: env(0.18, 0.5, 0.85, 0.6), filter: { type: 'lowpass', hz: 1900, q: 0.6, envAmount: 1, envDecay: 0.3 },
     vibrato: { rate: 5, cents: 14, delay: 0.3 }, gain: 0.22, sends: { reverb: 1.2, delay: 0 } }),
+  // A slow analog pad: detuned saws with a long swell, for Studio.
   'synth-pad': synth({ name: 'Analog pad', oscs: [osc('sawtooth', 0, -12, 0.5), osc('sawtooth', 0, 12, 0.5)],
     env: env(1.2, 1.5, 0.8, 2), filter: { type: 'lowpass', hz: 1100, q: 1, envAmount: 1.5, envDecay: 2 },
     vibrato: { rate: 0.4, cents: 6, delay: 0 }, gain: 0.16, sends: { reverb: 1.5, delay: 0.4 } }),
@@ -338,6 +372,7 @@ export const PADS: Record<string, Patch> = {
 };
 
 export const BASSES: Record<string, Patch> = {
+  // Synthwave bass: a punchy filtered saw bass.
   'synth-bass': synth({
     name: 'Synth bass',
     oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', -1, 0, 0.4)],
@@ -346,6 +381,7 @@ export const BASSES: Record<string, Patch> = {
     gain: 0.4,
     sends: { reverb: 0.2, delay: 0 },
   }),
+  // A deep sine sub bass with a little triangle on top.
   'sub-bass': synth({
     name: 'Sub bass',
     oscs: [osc('sine', 0, 0, 0.85), osc('triangle', 1, 0, 0.15)],
@@ -354,6 +390,7 @@ export const BASSES: Record<string, Patch> = {
     gain: 0.45,
     sends: { reverb: 0, delay: 0 },
   }),
+  // Chiptune bass: a triangle-wave bass, like an 8-bit bass channel.
   'triangle-bass': synth({
     name: 'Triangle bass',
     oscs: [osc('triangle', 0, 0, 1)],
@@ -361,6 +398,7 @@ export const BASSES: Record<string, Patch> = {
     gain: 0.5,
     sends: { reverb: 0.3, delay: 0 },
   }),
+  // Orchestral bass: cellos and basses.
   'low-strings': synth({
     name: 'Low strings',
     oscs: [osc('sawtooth', 0, -5, 0.5), osc('sawtooth', 0, 5, 0.5)],
@@ -369,6 +407,7 @@ export const BASSES: Record<string, Patch> = {
     gain: 0.36,
     sends: { reverb: 0.8, delay: 0 },
   }),
+  // Techno bass: a rolling sub bass that sits under the kick.
   'techno-sub': synth({
     name: 'Sub bass',
     oscs: [osc('sine', 0, 0, 0.85), osc('square', 1, 0, 0.15)],
@@ -377,6 +416,7 @@ export const BASSES: Record<string, Patch> = {
     gain: 0.5,
     sends: { reverb: 0, delay: 0 },
   }),
+  // Lo-fi bass: a round, soft bass.
   'round-bass': synth({ name: 'Round bass', oscs: [osc('sine', 0, 0, 0.75), osc('triangle', 0, 0, 0.25)],
     env: env(0.01, 0.3, 0.7, 0.12), filter: { type: 'lowpass', hz: 600, q: 0.7, envAmount: 1.5, envDecay: 0.1 },
     gain: 0.5, sends: { reverb: 0.1, delay: 0 } }),
@@ -384,6 +424,7 @@ export const BASSES: Record<string, Patch> = {
   'upright-bass': synth({ name: 'Upright bass', oscs: [osc('triangle', -1, 0, 0.55), osc('sine', -1, 0, 0.3), osc('sawtooth', -1, 0, 0.15)],
     env: env(0.004, 0.7, 0.15, 0.15), filter: { type: 'lowpass', hz: 700, q: 1.2, envAmount: 2.5, envDecay: 0.06 },
     gain: 0.6, sends: { reverb: 0.4, delay: 0.1 } }),
+  // Cinematic bass: a warm sine and saw bass.
   'warm-bass': synth({ name: 'Warm bass', oscs: [osc('sine', 0, 0, 0.6), osc('sawtooth', 0, 0, 0.4)],
     env: env(0.01, 0.4, 0.75, 0.2), filter: { type: 'lowpass', hz: 650, q: 0.8, envAmount: 1.8, envDecay: 0.12 },
     gain: 0.45, sends: { reverb: 0.15, delay: 0 } }),
@@ -403,6 +444,7 @@ export const BASSES: Record<string, Patch> = {
 };
 
 export const KITS: Record<string, Patch> = {
+  // Synthwave drums: an 80s electronic kit.
   'gated-kit': drums({
     name: 'Gated kit',
     kick: { wave: 'sine', hz: 55, sweep: 3, sweepTime: 0.12, decay: 0.45, click: 0.3 },
@@ -412,6 +454,7 @@ export const KITS: Record<string, Patch> = {
     gain: 0.9,
     sends: { reverb: 1.3, delay: 0 },
   }),
+  // Chiptune drums: crunchy noise-channel drums.
   'chip-kit': drums({
     name: 'Noise kit',
     kick: { wave: 'square', hz: 90, sweep: 5, sweepTime: 0.05, decay: 0.1, click: 0 },
@@ -421,6 +464,7 @@ export const KITS: Record<string, Patch> = {
     gain: 0.7,
     sends: { reverb: 0.3, delay: 0 },
   }),
+  // Orchestral drums: timpani, a suspended-cymbal tap, and cymbals.
   'orchestra-kit': drums({
     name: 'Timpani & cymbals',
     kick: { wave: 'sine', hz: 70, sweep: 1.15, sweepTime: 0.08, decay: 1.1, click: 0 },
@@ -431,6 +475,7 @@ export const KITS: Record<string, Patch> = {
     gain: 0.85,
     sends: { reverb: 1.2, delay: 0 },
   }),
+  // Techno drums: a 909-style kit.
   '909-kit': drums({
     name: '909 kit',
     kick: { wave: 'sine', hz: 50, sweep: 4, sweepTime: 0.08, decay: 0.38, click: 0.5 },
@@ -440,11 +485,13 @@ export const KITS: Record<string, Patch> = {
     gain: 0.9,
     sends: { reverb: 0.4, delay: 0 },
   }),
+  // Lo-fi drums: a dusty, swung kit.
   'dusty-kit': drums({ name: 'Dusty kit',
     kick: { wave: 'sine', hz: 50, sweep: 2, sweepTime: 0.08, decay: 0.35, click: 0.1 },
     snare: { noise: 'white', filter: 'bandpass', hz: 1400, toneHz: 0, decay: 0.18 },
     hat: { noise: 'white', hz: 6000, decay: 0.03 },
     crashDecay: 1.2, gain: 0.75, sends: { reverb: 0.6, delay: 0 } }),
+  // Cinematic and Studio drums: an organic studio kit.
   'studio-kit': drums({ name: 'Studio kit',
     kick: { wave: 'sine', hz: 55, sweep: 2.2, sweepTime: 0.06, decay: 0.5, click: 0.25 },
     snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 180, decay: 0.22 },

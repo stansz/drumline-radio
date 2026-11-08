@@ -57,6 +57,13 @@ A song whose home style is Studio can use any bank instrument with plain `inst=`
 still change sound with each style. That makes Studio the place for a song that mixes instruments
 from several styles; give each track the role it plays, since remixes fall back to it.
 
+Read the bank before picking: every patch in `src/audio/instruments.ts` has a one-line comment saying
+what it is for, and many are in no style's role map, so a song only gets them by asking. Among them:
+choirs (`choir-aah`, `choir-ooh`), a wordless vocal lead (`vox-lead`), `oboe`, `tubular-bells`
+(as `fm-bells`), `pizzicato`, `nylon-guitar`, `dx-bass`, and the older oscillator `brass`, `harp`,
+`bells`, `tine-keys`, and `upright-bass`. Orchestral also reaches `oboe`, `tubular-bells`, and
+`pizzicato` by plain `inst=`.
+
 A new instrument goes into the bank under a new unique id (see
 [sound.md](sound.md#adding-a-patch-or-a-style)). Measure it with `timbre.mjs` (below) before a song
 depends on it.
