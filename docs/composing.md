@@ -3,6 +3,7 @@
 How to write a song that sounds good in this app, and what to check before committing it. For the
 notation itself, see [song-format.md](song-format.md); for the instruments, see [sound.md](sound.md).
 This file holds the lessons from earlier songs, so a new song doesn't repeat their mistakes.
+To ask another model for a song, fill in the template in [song-prompt.md](song-prompt.md).
 
 ## Before writing
 
@@ -91,7 +92,9 @@ depends on it.
    suspension is fine). A song with ten clashes is not ready.
 3. Check the balance with `tools/browser/tracks.mjs` (see [tools/README.md](../tools/README.md)) at
    a busy point and a quiet one. The lead should be on top: in Shortwave's hook it sits at −30 dB
-   with the keys at −36 and the drums at −33. Nothing should be buried 15 dB under the rest.
+   with the keys at −36 and the drums at −33. Nothing should be buried 15 dB under the rest. Keep
+   the bass under the kick: Porch Light's and Riverfront's first versions had the bass nearly as
+   loud as the drums, which sounds boomy and hides the chords.
 4. Add the song to the originals list in `README.md`.
 5. The user listens and decides; a passing check is not the same as sounding good.
 
