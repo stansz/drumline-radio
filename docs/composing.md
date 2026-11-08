@@ -87,14 +87,16 @@ depends on it.
 
 1. `npm test` passes. A new song changes the counts and orders in `tests/library.test.ts`; update
    them, but never change notes just to make a test pass.
-2. `CHECK_DETAIL=1 npm run check:songs` lists every half-step clash between a lead and the pad or
-   bass. Fix each one, or say in the commit why it stays (a short passing note or a deliberate
-   suspension is fine). A song with ten clashes is not ready.
+2. `CHECK_DETAIL=1 npm run check:songs` lists every half-step clash between a pitched part (leads,
+   counter-lines, arpeggios, chords) and the pad or bass. Fix each one, or say in the commit why it
+   stays (a short passing note or a deliberate suspension is fine). A song with ten clashes is not
+   ready.
 3. Check the balance with `tools/browser/tracks.mjs` (see [tools/README.md](../tools/README.md)) at
    a busy point and a quiet one. The lead should be on top: in Shortwave's hook it sits at −30 dB
    with the keys at −36 and the drums at −33. Nothing should be buried 15 dB under the rest. Keep
    the bass under the kick: Porch Light's and Riverfront's first versions had the bass nearly as
-   loud as the drums, which sounds boomy and hides the chords.
+   loud as the drums, which sounds boomy and hides the chords. `tracks.mjs` prints each track's
+   level below 150 Hz; the bass's low level should sit a few dB under the drums' low level.
 4. Add the song to the originals list in `README.md`.
 5. The user listens and decides; a passing check is not the same as sounding good.
 

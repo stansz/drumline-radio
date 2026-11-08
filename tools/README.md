@@ -191,10 +191,11 @@ npm run check:songs
 ```
 
 It parses every song in `src/songs/`, or in `CHECK_DIR` if set, and fails on any parse error. It
-also lists each song's length and any long melody notes (from the `melody` track and every `lead` or `lead2` track) a semitone away from the pad or bass under
-them. That count is a report, not a failure: passing notes and a maj7 against its root are fine,
-but a new spike is worth a listen. Set `CHECK_DETAIL=1` to list every clash with its time, the melody note and its length,
-and the pad or bass note under it.
+also lists each song's length and any long note in a pitched part (every track except the pad, bass,
+and drums) a semitone away from the pad or bass under them. That count is a report, not a failure:
+passing notes and a maj7 against its root are fine, but a new spike is worth a listen. Each clash
+line names its track, and the summary breaks the count down by track. Set `CHECK_DETAIL=1` to list
+every clash with its time, the track, note, and its length, and the pad or bass note under it.
 
 ## Song report
 
@@ -268,7 +269,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   no burst: `node tools/browser/stall.mjs`.
 - **tracks:** plays one song from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
-  lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order). Add a style id at the end to remix the song into it first.
+  lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).
+  Each line also shows the track's level below 150 Hz; the bass's low level should sit under the
+  drums' low level (the kick). Add a style id at the end to remix the song into it first.
 - **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
   that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`
   instead of the preview server, because it imports the audio code from `src/`:

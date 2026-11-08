@@ -46,7 +46,8 @@ Rules:
 - Don't change shared code (styles, instruments, engine, arranger). If you add a test for
   this song, it must check only this song's own notes, form, and header.
 - Run npm test and npm run check:songs; both must pass with 0 clashes. Check the balance with
-  tools/browser/tracks.mjs at a quiet point and a busy one, as docs/composing.md describes.
+  tools/browser/tracks.mjs at a quiet point and a busy one, as docs/composing.md describes,
+  including the low-band column for the bass against the kick.
 - Start your own dev or preview server for browser checks, and stop it (with its child
   processes) when you're done.
 ```
