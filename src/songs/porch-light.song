@@ -36,7 +36,7 @@ tempo: 72
 time: 4/4
 about: A light left on at a slow, emo pace: clean guitar and a piano carry the verses, a borrowed minor chord turns the hook, and the band waits until the last chorus to get loud.
 
-track melody role=lead inst=indie-lead vol=1 pan=0
+track melody role=lead inst=indie-lead vol=0.7 pan=0
 # Intro: clean guitar alone, then bass (bars 1-4)
 | R |
 | R |

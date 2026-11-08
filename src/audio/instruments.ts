@@ -79,14 +79,14 @@ export const LEADS: Record<string, Patch> = {
   'fuzz-lead': synth({ name: 'Fuzz guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 6, 0.3), osc('sawtooth', -1, 0, 0.1)],
     env: env(0.005, 0.6, 0.75, 0.3), filter: { type: 'lowpass', hz: 2800, q: 1, envAmount: 1.4, envDecay: 0.2 },
     vibrato: { rate: 5.5, cents: 15, delay: 0.5 }, drive: 0.85, gain: 0.2, sends: { reverb: 0.7, delay: 0.6 } }),
-  // Alt rock: a warm, clean indie lead guitar built on a plucked string (Karplus-Strong): picked
-  // toward the middle of the string and darkly filtered so it isn't twangy, with a deep, slow
-  // chorus, lots of reverb, and a long delay tail. It sounds an
+  // Alt rock: a warm, muffled indie lead guitar built on a plucked string (Karplus-Strong): picked
+  // toward the middle of the string and darkly filtered so it isn't twangy, with a short ring, a
+  // deep, slow chorus, and moderate reverb and delay. It sounds an
   // octave below the written note, as a real guitar does (guitar music is written an octave up).
   'indie-lead': synth({ name: 'Indie lead', oscs: [],
-    string: { octave: -1, level: 1, decay: 2.6, brightness: 0.25, pick: 0.38 },
-    env: env(0.004, 1.8, 0.4, 0.5), filter: { type: 'lowpass', hz: 2000, q: 0.7, envAmount: 1.2, envDecay: 0.25 },
-    vibrato: { rate: 0.7, cents: 9, delay: 0 }, drive: 0.1, gain: 1, sends: { reverb: 1.9, delay: 2.4 } }),
+    string: { octave: -1, level: 1, decay: 1.2, brightness: 0.2, pick: 0.38 },
+    env: env(0.004, 0.9, 0.25, 0.3), filter: { type: 'lowpass', hz: 1500, q: 0.6, envAmount: 1.2, envDecay: 0.2 },
+    vibrato: { rate: 0.7, cents: 9, delay: 0 }, drive: 0.1, gain: 1, sends: { reverb: 1.2, delay: 1.4 } }),
 };
 
 export const KEYS: Record<string, Patch> = {

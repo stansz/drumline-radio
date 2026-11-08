@@ -167,9 +167,9 @@ chugging, and Guitar wall holds for a chorus. Clean guitar is a jangly plucked s
 and counter-lines, an octave below the written note. Pick bass has a little drive for driving eighth notes. The style has a small
 room (1.4 s reverb), little delay, and no crush.
 
-Alt rock has four extras that no role maps to. `inst=indie-lead` is a warm, clean plucked string,
+Alt rock has four extras that no role maps to. `inst=indie-lead` is a warm, muffled plucked string,
 picked toward the middle and darkly filtered so it isn't twangy, an octave below the written note,
-with a deep, slow chorus, lots of reverb, and a long delay tail. `inst=acoustic-guitar`
+with a short ring, a deep, slow chorus, and moderate reverb and delay. `inst=acoustic-guitar`
 is a plucked acoustic with a rounder pick and a longer ring, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: a warm plucked string at the written pitch, with a deep, slow chorus wobble and a
