@@ -87,6 +87,11 @@ export const LEADS: Record<string, Patch> = {
     string: { octave: -1, level: 1, decay: 1.2, brightness: 0.2, pick: 0.38 },
     env: env(0.004, 0.9, 0.25, 0.3), filter: { type: 'lowpass', hz: 1500, q: 0.6, envAmount: 1.2, envDecay: 0.2 },
     vibrato: { rate: 0.7, cents: 9, delay: 0 }, drive: 0.1, gain: 1, sends: { reverb: 1.2, delay: 1.4 } }),
+  // A bright brass lead: FM with an index attack swell, so the tone opens up like a horn.
+  'fm-brass': synth({ name: 'FM brass', oscs: [osc('sine', 0, 0, 1)],
+    fm: { ratio: 1, index: 3.5, attack: 0.07, decay: 0.5, sustain: 0.45, velocity: 0.7 },
+    env: env(0.06, 0.4, 0.8, 0.2), filter: { type: 'lowpass', hz: 3000, q: 0.7, envAmount: 1, envDecay: 0.2 },
+    vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.26 }),
 };
 
 export const KEYS: Record<string, Patch> = {
@@ -216,6 +221,33 @@ export const KEYS: Record<string, Patch> = {
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
     env: env(0.002, 1.2, 0.5, 0.25), filter: { type: 'lowpass', hz: 2600, q: 1, envAmount: 1.5, envDecay: 0.15 },
     drive: 0.6, gain: 0.3, sends: { reverb: 0.6, delay: 0.3 } }),
+  // An electric piano: FM with velocity, so soft notes are mellow and hard ones bark, like a DX7.
+  'fm-rhodes': synth({ name: 'FM Rhodes', oscs: [osc('sine', 0, 0, 1), osc('sine', 0, 7, 0.35)],
+    fm: { ratio: 1, index: 2.2, decay: 1.2, sustain: 0.15, velocity: 0.8, targets: [0] },
+    env: env(0.003, 2.5, 0.12, 0.6), gain: 0.3, sends: { reverb: 0.8, delay: 0.4 } }),
+  // A bell: inharmonic FM (ratio 1.4) that rings long and decays.
+  'fm-bells': synth({ name: 'FM bells', oscs: [osc('sine', 0, 0, 1)],
+    fm: { ratio: 1.4, index: 4, decay: 2.5, sustain: 0.1, velocity: 0.5 },
+    env: env(0.001, 3, 0, 2), gain: 0.22 }),
+  // A glockenspiel: bright, high-ratio FM with a short metallic ring.
+  'glockenspiel': synth({ name: 'Glockenspiel', oscs: [osc('sine', 1, 0, 1)],
+    fm: { ratio: 3.5, index: 1.5, decay: 0.3, sustain: 0.02, velocity: 0.6 },
+    env: env(0.001, 1.4, 0, 1), gain: 0.2 }),
+  // A concert harp: a plucked string with a long ring and a mellow, resonant filter.
+  'concert-harp': synth({ name: 'Concert harp', oscs: [],
+    string: { octave: 0, level: 1, decay: 3.5, brightness: 0.25, pick: 0.35 },
+    env: env(0.002, 4, 0.5, 0.8), filter: { type: 'lowpass', hz: 3500, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
+    gain: 0.5, sends: { reverb: 1, delay: 0.3 } }),
+  // Pizzicato strings: a short plucked string with a quick, muted ring.
+  'pizzicato': synth({ name: 'Pizzicato strings', oscs: [],
+    string: { octave: 0, level: 1, decay: 0.45, brightness: 0.3, pick: 0.22 },
+    env: env(0.003, 0.4, 0, 0.15), filter: { type: 'lowpass', hz: 2500, q: 0.6, envAmount: 1.2, envDecay: 0.1 },
+    gain: 0.5 }),
+  // A nylon-string guitar: a plucked string an octave below the written note, warm and soft.
+  'nylon-guitar': synth({ name: 'Nylon guitar', oscs: [],
+    string: { octave: -1, level: 1, decay: 2.2, brightness: 0.2, pick: 0.3 },
+    env: env(0.006, 1.5, 0.3, 0.4), filter: { type: 'lowpass', hz: 2200, q: 0.6, envAmount: 1.2, envDecay: 0.2 },
+    gain: 0.6, sends: { reverb: 0.9, delay: 0.3 } }),
 };
 
 export const PADS: Record<string, Patch> = {
@@ -339,6 +371,15 @@ export const BASSES: Record<string, Patch> = {
   'pick-bass': synth({ name: 'Pick bass', oscs: [osc('sawtooth', 0, 0, 0.5), osc('square', 0, 0, 0.2), osc('sine', -1, 0, 0.3)],
     env: env(0.003, 0.3, 0.6, 0.08), filter: { type: 'lowpass', hz: 950, q: 1.2, envAmount: 2.2, envDecay: 0.08 },
     drive: 0.3, gain: 0.42, sends: { reverb: 0.1, delay: 0 } }),
+  // A DX-style synth bass: FM with a fast index decay, for a punchy, bright attack.
+  'dx-bass': synth({ name: 'DX bass', oscs: [osc('sine', 0, 0, 1), osc('sine', -1, 0, 0.4)],
+    fm: { ratio: 1, index: 5, decay: 0.15, sustain: 0.08, velocity: 0.8, targets: [0] },
+    env: env(0.002, 0.5, 0.3, 0.1), gain: 0.4, sends: { reverb: 0.15, delay: 0 } }),
+  // A double bass: a plucked string an octave down with a sine under it, for a rounded low end.
+  'string-bass': synth({ name: 'String bass', oscs: [osc('sine', -1, 0, 0.35)],
+    string: { octave: -1, level: 1, decay: 1.2, brightness: 0.15, pick: 0.22 },
+    env: env(0.004, 1, 0.25, 0.15), filter: { type: 'lowpass', hz: 900, q: 0.8, envAmount: 2, envDecay: 0.08 },
+    gain: 0.6, sends: { reverb: 0.4, delay: 0.1 } }),
 };
 
 export const KITS: Record<string, Patch> = {

@@ -27,11 +27,11 @@ pan, and effects cover all of its notes.
 ## Patches and styles
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
-(oscillators, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit (kick, snare,
-hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every patch, once,
-under a unique id, grouped into leads, keys, pads, basses, and kits. `src/audio/styles.ts` holds
-the eight styles as recipes: each picks the bank instruments it uses, under its own local names, and
-sets its role map and effects.
+(oscillators, a plucked string, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit
+(kick, snare, hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every
+patch, once, under a unique id, grouped into leads, keys, pads, basses, and kits.
+`src/audio/styles.ts` holds the eight styles as recipes: each picks the bank instruments it uses,
+under its own local names, and sets its role map and effects.
 
 A track picks its patch in this order:
 
@@ -211,6 +211,47 @@ mix -> crush crossfade -> lowpass -> compressor -> makeup gain -> limiter -> sof
 The soft clip output also feeds two analysers, one per channel, which is where the VU meters get
 their levels.
 
+## Building a patch
+
+Start from the closest bank patch in `src/audio/instruments.ts` and change one thing at a time. Every
+bank patch has a one-line comment saying what it is for, and every `SynthPatch` field is commented in
+`src/audio/patches.ts` with what it does and its unit (seconds, Hz, cents, 0–1, octaves).
+
+| Sound | Technique | Start from |
+| --- | --- | --- |
+| Leads, pads, synth basses | oscillators + filter | `saw-lead`, `warm-pad`, `synth-bass` |
+| Electric piano, bells, glockenspiel | FM | `fm-rhodes`, `fm-bells`, `glockenspiel` |
+| Brass | FM with an index swell | `fm-brass` |
+| Slap and DX bass | FM | `dx-bass` |
+| Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
+
+### FM
+
+`fm` makes the patch two-operator FM: a sine modulator at the note frequency × `ratio` wobbles the
+pitch of the oscillators, so it stays in tune with the note but grows sidebands. `ratio` sets the
+character: whole numbers sound harmonic (an organ, a horn), and non-integer ratios such as 1.4 or 3.5
+sound bell-like or metallic. `index` is the peak modulation depth, so it sets the brightness. `decay`
+is how many seconds the index takes to fall toward its floor, and `sustain` is that floor as a
+fraction of the peak, so the tone can settle instead of going silent. `velocity` (0 to 1) makes soft
+notes mellower by lowering the peak with the note's velocity, the DX7 electric-piano trick: at 1 a
+velocity-zero note gets no FM, at 0 velocity has no effect. `attack` adds seconds for the index to
+swell from the floor to the peak, which is what makes `fm-brass` open up like a horn. `targets` names
+which oscillators the modulator drives (indexes into `oscs`), so a patch can keep an oscillator
+unmodulated as a clean layer under the FM, as `fm-rhodes` does with its second sine. The modulator
+never drives the plucked string. The defaults keep older FM patches unchanged, so `bells`, `fm-pluck`,
+and `tine-keys` sound exactly as before.
+
+### Plucked string
+
+`string` renders a Karplus-Strong plucked string: a burst of fixed-seed noise shaped by the pick
+position circulates in a delay line one period long and is softened on each pass, so it rings and
+decays like a string. `decay` sets how long it rings, `brightness` how mellow or metallic it is, and
+`pick` how thin or round the strike sounds; `octave` and `level` work as for an oscillator, and guitar
+patches use `octave: -1` because guitar music is written an octave above where it sounds. Each pitch
+is rendered once by `src/audio/strings.ts` and cached. The string goes through the patch's drive,
+filter, and envelope, and it can sit under oscillators, as `string-bass` does with a sine. A patch
+with an empty `oscs` list is a pure plucked string.
+
 ## Saving a song
 
 `renderSong` in `engine.ts` renders a song offline with an `OfflineAudioContext` at 44.1 kHz stereo,
@@ -221,9 +262,9 @@ It books notes 2 s ahead in steps while rendering, so a long song never holds ev
 ## Adding a patch or a style
 
 - Add a synth patch with `synth({...})` or a drum kit with `drums({...})` to its family in
-  `src/audio/instruments.ts` under a new unique id. A style uses it by adding `localName: 'bank-id'`
-  to its `instruments` and pointing a role or `inst=` at the local name; any song can reach it with
-  `inst=bank:<id>`.
+  `src/audio/instruments.ts` under a new unique id, with a one-line `//` comment saying what it is
+  for. A style uses it by adding `localName: 'bank-id'` to its `instruments` and pointing a role or
+  `inst=` at the local name; any song can reach it with `inst=bank:<id>`.
 - Add a style by adding a `StyleRecipe` to `RECIPES` in `src/audio/styles.ts` (pick instruments from
   the bank), a colour token block for `:root[data-style='<id>']` in `src/ui/style.css`, and the id to
   `STYLES` in `src/music/roles.ts`. `tests/styles.test.ts` checks that every style covers every role.

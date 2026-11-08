@@ -1,4 +1,4 @@
-import { attackTime, audibleOsc, bendGlide, driveCurve, pulseCoefficients } from './curves';
+import { attackTime, audibleOsc, bendGlide, driveCurve, fmIndex, pulseCoefficients } from './curves';
 import { midiToFreq } from '../music/pitch';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
 import { pluckSamples } from './strings';
@@ -157,6 +157,7 @@ export function playSynth(
   gain: number,
   out: AudioNode,
   bends: { time: number; pitch: number }[] = [],
+  velocity = 127,
 ): Voice {
   const { ctx } = kit;
   const freq = midiToFreq(midi);
@@ -220,8 +221,14 @@ export function playSynth(
   }
 
   const oscillators: OscillatorNode[] = [];
+  // One entry per patch oscillator, in order, so `fm.targets` can name them; undefined when the
+  // oscillator was skipped as inaudible.
+  const oscBySpec: (OscillatorNode | undefined)[] = [];
   for (const spec of patch.oscs) {
-    if (!audibleOsc(freq, spec.octave)) continue;
+    if (!audibleOsc(freq, spec.octave)) {
+      oscBySpec.push(undefined);
+      continue;
+    }
     const osc = ctx.createOscillator();
     setWave(kit, osc, spec.wave);
     osc.frequency.value = freq * 2 ** spec.octave;
@@ -234,6 +241,7 @@ export function playSynth(
     collected.nodes.push(osc, level);
     collected.sources.push({ node: osc });
     oscillators.push(osc);
+    oscBySpec.push(osc);
   }
 
   // The plucked string is voiced with the oscillators: it goes through the same drive, filter, and
@@ -277,15 +285,31 @@ export function playSynth(
   }
 
   if (patch.fm) {
+    const { peak, floor } = fmIndex(patch.fm, velocity);
+    const attack = patch.fm.attack ?? 0;
     const modulator = ctx.createOscillator();
     modulator.type = 'sine';
     modulator.frequency.value = freq * patch.fm.ratio;
     if (bends.length > 0) scheduleBends(modulator.detune, 0);
     const depth = ctx.createGain();
-    depth.gain.setValueAtTime(freq * patch.fm.index, time);
-    depth.gain.setTargetAtTime(freq * patch.fm.index * 0.05, time, Math.max(0.001, patch.fm.decay / 3));
+    if (attack > 0) {
+      depth.gain.setValueAtTime(freq * floor, time);
+      depth.gain.linearRampToValueAtTime(freq * peak, time + attack);
+      depth.gain.setTargetAtTime(freq * floor, time + attack, Math.max(0.001, patch.fm.decay / 3));
+    } else {
+      depth.gain.setValueAtTime(freq * peak, time);
+      depth.gain.setTargetAtTime(freq * floor, time, Math.max(0.001, patch.fm.decay / 3));
+    }
     modulator.connect(depth);
-    for (const osc of oscillators) depth.connect(osc.frequency);
+    const targets = patch.fm.targets;
+    if (targets === undefined) {
+      for (const osc of oscillators) depth.connect(osc.frequency);
+    } else {
+      for (const index of targets) {
+        const osc = oscBySpec[index];
+        if (osc) depth.connect(osc.frequency);
+      }
+    }
     collected.nodes.push(modulator, depth);
     collected.sources.push({ node: modulator });
   }

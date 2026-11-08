@@ -73,6 +73,17 @@ export function noteGain(patchGain: number, velocity: number, chordSize: number)
   return (patchGain * velocityGain(velocity)) / Math.sqrt(Math.max(1, chordSize));
 }
 
+/** The FM index at its peak and at its floor for a note, from the patch's fm settings. */
+export function fmIndex(
+  fm: { index: number; sustain?: number; velocity?: number },
+  velocity: number,
+): { peak: number; floor: number } {
+  const amount = Math.max(0, Math.min(1, fm.velocity ?? 0));
+  const peak = fm.index * (1 - amount + amount * (velocity / 127));
+  const floor = peak * (fm.sustain ?? 0.05);
+  return { peak, floor };
+}
+
 export const MIN_ATTACK = 0.003;
 export const MAX_LOW_ATTACK = 0.012;
 

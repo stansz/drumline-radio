@@ -1,26 +1,64 @@
 export type Wave = 'sine' | 'square' | 'sawtooth' | 'triangle' | 'pulse12' | 'pulse25';
 
 export interface Osc {
+  /** The waveform: a pure sine, a rich sawtooth or square, a triangle, or a pulse at 12.5% or 25% duty. */
   wave: Wave;
+  /** Octaves above (or below) the written note; 0 is unison, -1 an octave down. */
   octave: number;
+  /** Fine tuning in cents (±50 is the next semitone); opposite signs thicken a pair. */
   detune: number;
+  /** Mix level, 0 to 1; several oscillators sum, so levels near 0.5 each keep headroom. */
   level: number;
 }
 
 export interface SynthPatch {
+  /** Discriminates a synth patch from a drum kit. */
   kind: 'synth';
+  /** The display name, shown in the readout. */
   name: string;
+  /** The oscillators layered into the voice; an empty list leaves only the plucked string. */
   oscs: Osc[];
-  env: { attack: number; decay: number; sustain: number; release: number };
+  /** The amplitude envelope. */
+  env: {
+    /** Seconds to rise from silence to the peak. */
+    attack: number;
+    /** Seconds to fall from the peak toward the sustain level. */
+    decay: number;
+    /** The held level, 0–1 of the peak. */
+    sustain: number;
+    /** Seconds to fade to silence after the note ends. */
+    release: number;
+  };
   filter?: {
+    /** Which edge the filter shapes: lowpass, highpass, or bandpass. */
     type: 'lowpass' | 'highpass' | 'bandpass';
+    /** The corner frequency in Hz the filter settles back to. */
     hz: number;
+    /** Resonance in dB-ish units, 0 to about 20; higher is sharper and whistles. */
     q: number;
+    /** How far the filter envelope opens above `hz`, as a multiple; 1 leaves it still. */
     envAmount: number;
+    /** Seconds for the filter envelope to fall back to `hz`. */
     envDecay: number;
   };
-  vibrato?: { rate: number; cents: number; delay: number };
-  fm?: { ratio: number; index: number; decay: number };
+  vibrato?: {
+    /** LFO rate in Hz; around 5 is a singer's wobble, under 1 a slow drift. */
+    rate: number;
+    /** Peak pitch wobble in cents; 10–20 is a normal vibrato. */
+    cents: number;
+    /** Seconds the vibrato waits before fading in. */
+    delay: number;
+  };
+  /** Two-operator FM: a sine modulator at note frequency × ratio wobbles the oscillators' pitch. */
+  fm?: {
+    ratio: number;     // modulator frequency ÷ note frequency; whole numbers are harmonic, others bell-like
+    index: number;     // peak modulation depth (× note frequency); higher is brighter
+    decay: number;     // seconds for the index to fall from its peak toward its floor
+    attack?: number;   // seconds for the index to rise from its floor to its peak (a brass swell); default 0
+    sustain?: number;  // the index floor as a fraction of the peak; default 0.05
+    velocity?: number; // 0 to 1: how much a soft note lowers the peak (0 = velocity has no effect); default 0
+    targets?: number[]; // indexes into `oscs` that the modulator drives; default every oscillator
+  };
   /** A plucked string (Karplus-Strong) voiced with the oscillators. */
   string?: {
     octave: number;      // like Osc.octave: -1 sounds an octave below the written note
@@ -31,7 +69,9 @@ export interface SynthPatch {
   };
   /** Distortion amount, 0 to 1. A wave shaper with this much tanh drive. */
   drive?: number;
+  /** Output level, 0 to 1, before the track channel and mix. */
   gain: number;
+  /** Reverb and delay send levels, 0 to 1. */
   sends: { reverb: number; delay: number };
 }
 

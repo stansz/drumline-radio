@@ -8,6 +8,7 @@ import {
   CRUSH_POINTS,
   crushCurve,
   driveCurve,
+  fmIndex,
   MIN_OSC_HZ,
   noteGain,
   pulseCoefficients,
@@ -60,6 +61,32 @@ describe('gain helpers', () => {
 
   it('divides a chord across its pitches', () => {
     expect(noteGain(0.5, 127, 4)).toBeCloseTo(0.25, 6);
+  });
+});
+
+describe('fmIndex', () => {
+  it('defaults to no velocity scaling and a floor of 5%', () => {
+    const result = fmIndex({ index: 3 }, 64);
+    expect(result.peak).toBeCloseTo(3, 6);
+    expect(result.floor).toBeCloseTo(0.15, 6);
+  });
+
+  it('scales the peak by velocity and the floor by sustain', () => {
+    const result = fmIndex({ index: 2, velocity: 1, sustain: 0.5 }, 127);
+    expect(result.peak).toBeCloseTo(2, 6);
+    expect(result.floor).toBeCloseTo(1, 6);
+  });
+
+  it('brings the peak to zero for a note at velocity zero', () => {
+    expect(fmIndex({ index: 2, velocity: 1 }, 0).peak).toBe(0);
+  });
+
+  it('lowers the peak by half when velocity scaling is 0.5', () => {
+    expect(fmIndex({ index: 4, velocity: 0.5 }, 0).peak).toBe(2);
+  });
+
+  it('clamps a velocity scaling above one', () => {
+    expect(fmIndex({ index: 4, velocity: 3 }, 0).peak).toBe(0);
   });
 });
 

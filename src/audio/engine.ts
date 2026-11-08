@@ -471,6 +471,7 @@ export class Engine {
               gain,
               channel.gain,
               note.bends ?? [],
+              note.velocity,
             );
       this.voices.set(voice, when);
     }
