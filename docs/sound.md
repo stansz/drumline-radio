@@ -170,11 +170,11 @@ room (1.4 s reverb), little delay, and no crush.
 Alt rock has four extras that no role maps to. `inst=indie-lead` is a warm, muffled plucked string,
 picked toward the middle and darkly filtered so it isn't twangy, an octave below the written note,
 with a short ring, a deep, slow chorus, and moderate reverb and delay. `inst=acoustic-guitar`
-is a plucked acoustic with a rounder pick and a longer ring, and `inst=crunch-guitar` is a driven
+is a plucked acoustic, bright and open with a crisp pick and a moderate ring, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: a warm plucked string at the written pitch, with a deep, slow chorus wobble and a
 large reverb and delay send that makes its notes echo on the style's dotted-eighth delay. Porch Light uses
-`indie-lead` and `shimmer-guitar`.
+`acoustic-guitar` and `shimmer-guitar`.
 
 ### Studio
 

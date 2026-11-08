@@ -1,5 +1,5 @@
 # Porch Light, by Grok, Claude & SZ. Original slow indie in the Alt rock style:
-# clean guitar up front, palm-muted eighths underneath, a vocal-style hook that
+# clean guitar up front, a piano underneath, a vocal-style hook that
 # saves the loud band for the last chorus. Written to sit apart from Exit Sign:
 # A major at 110, offbeat verse hats, a borrowed minor iv, and a flat-side bridge.
 # Each chord below lasts one bar; every pitched part stays on that bar's chord tones.
@@ -10,7 +10,7 @@
 # Chords bridge: C | F | Am | Dm | Bb | G | E | E
 # Chords outro: A | D | Dm | A
 # Form 1-4: intro - Clean guitar alone, then bass, then a soft count
-# Form 5-16: verse - Verse 1: clean answers in the gaps, quiet palm-mute eighths, offbeat hats
+# Form 5-16: verse - Verse 1: clean answers in the gaps, held piano chords, offbeat hats
 # Form 17-22: pre - Pre-chorus 1: the vocal climbs; a tom fill opens the chorus
 # Form 23-30: chorus - Chorus 1: the hook, still held back, no guitar wall
 # Form 31-42: verse - Verse 2: a new vocal line, rim then snare, ride cymbal
@@ -20,11 +20,13 @@
 # Form 65-72: chorus - Final chorus A: full band, crashes, a fill into the last one
 # Form 73-80: chorus - Final chorus B: the biggest pass; the minor iv is held longer
 # Form 81-84: outro - Outro: the opening figure and the F natural, then home
-# The verse snare drags 20 ticks; the last chorus tightens to 14. Verse chugs sit 16 ticks late.
+# The verse snare drags 20 ticks; the last chorus tightens to 14.
 # Plain style instrument names only, so a remix still falls back to each style's own patches.
 # Reworked slower (72 BPM, from 110) with a Ben Folds-style piano on the chords; the piano uses
-# inst=bank:grand-piano so it stays a piano in every remix, and the chugs sit lower under it.
-# The melody is written an octave lower with its quick pickups merged, and the bass plays only roots.
+# inst=bank:grand-piano so it stays a piano in every remix. The power-chord chugs are gone: the
+# piano drives the rhythm.
+# The melody is an acoustic guitar, written an octave lower with its quick pickups merged, and the
+# bass plays only roots.
 title: Porch Light
 composer: Grok, Claude & SZ
 year: 2026
@@ -36,7 +38,7 @@ tempo: 72
 time: 4/4
 about: A light left on at a slow, emo pace: clean guitar and a piano carry the verses, a borrowed minor chord turns the hook, and the band waits until the last chorus to get loud.
 
-track melody role=lead inst=indie-lead vol=0.7 pan=0
+track melody role=lead inst=acoustic-guitar vol=1 pan=0
 # Intro: clean guitar alone, then bass (bars 1-4)
 | R |
 | R |
@@ -132,103 +134,6 @@ track melody role=lead inst=indie-lead vol=0.7 pan=0
 | v=88 F#3/4 A3/2 r/4 |
 | v=82 F3/2 A3/4 r/4 |
 | v=74 A3/1 |
-
-track rhythm role=chords inst=power-chords vol=0.4 pan=-0.4
-# Intro: no chugs; the clean guitar is alone (bars 1-4)
-| R |
-| R |
-| R |
-| R |
-# Verse 1: quiet palm-muted eighths under the clean guitar (bars 5-16)
-| [A3 E4]/8'+16:52 [A3 E4]/8'+16:42 [A3 E4]/8'+16:46 [A3 E4]/8'+16:42 [A3 E4]/8'+16:52 [A3 E4]/8'+16:42 [A3 E4]/8'+16:46 [A3 E4]/8'+16:42 |
-| [B3 F#4]/8'+16:52 [B3 F#4]/8'+16:42 [B3 F#4]/8'+16:46 [B3 F#4]/8'+16:42 [B3 F#4]/8'+16:52 [B3 F#4]/8'+16:42 [B3 F#4]/8'+16:46 [B3 F#4]/8'+16:42 |
-| [D3 A3]/8'+16:52 [D3 A3]/8'+16:42 [D3 A3]/8'+16:46 [D3 A3]/8'+16:42 [D3 A3]/8'+16:52 [D3 A3]/8'+16:42 [D3 A3]/8'+16:46 [D3 A3]/8'+16:42 |
-| [E3 B3]/8'+16:52 [E3 B3]/8'+16:42 [E3 B3]/8'+16:46 [E3 B3]/8'+16:42 [E3 B3]/8'+16:52 [E3 B3]/8'+16:42 [E3 B3]/8'+16:46 [E3 B3]/8'+16:42 |
-| [A3 E4]/8'+16:52 [A3 E4]/8'+16:42 [A3 E4]/8'+16:46 [A3 E4]/8'+16:42 [A3 E4]/8'+16:52 [A3 E4]/8'+16:42 [A3 E4]/8'+16:46 [A3 E4]/8'+16:42 |
-| [C#3 G#3]/8'+16:52 [C#3 G#3]/8'+16:42 [C#3 G#3]/8'+16:46 [C#3 G#3]/8'+16:42 [C#3 G#3]/8'+16:52 [C#3 G#3]/8'+16:42 [C#3 G#3]/8'+16:46 [C#3 G#3]/8'+16:42 |
-| [F#3 C#4]/8'+16:52 [F#3 C#4]/8'+16:42 [F#3 C#4]/8'+16:46 [F#3 C#4]/8'+16:42 [F#3 C#4]/8'+16:52 [F#3 C#4]/8'+16:42 [F#3 C#4]/8'+16:46 [F#3 C#4]/8'+16:42 |
-| [E3 B3]/8'+16:52 [E3 B3]/8'+16:42 [E3 B3]/8'+16:46 [E3 B3]/8'+16:42 [E3 B3]/8'+16:52 [E3 B3]/8'+16:42 [E3 B3]/8'+16:46 [E3 B3]/8'+16:42 |
-| [A3 E4]/8'+16:52 [A3 E4]/8'+16:42 [A3 E4]/8'+16:46 [A3 E4]/8'+16:42 [A3 E4]/8'+16:52 [A3 E4]/8'+16:42 [A3 E4]/8'+16:46 [A3 E4]/8'+16:42 |
-| [D3 A3]/8'+16:52 [D3 A3]/8'+16:42 [D3 A3]/8'+16:46 [D3 A3]/8'+16:42 [D3 A3]/8'+16:52 [D3 A3]/8'+16:42 [D3 A3]/8'+16:46 [D3 A3]/8'+16:42 |
-| [B3 F#4]/8'+16:52 [B3 F#4]/8'+16:42 [B3 F#4]/8'+16:46 [B3 F#4]/8'+16:42 [B3 F#4]/8'+16:52 [B3 F#4]/8'+16:42 [B3 F#4]/8'+16:46 [B3 F#4]/8'+16:42 |
-| [E3 B3]/8'+16:52 [E3 B3]/8'+16:42 [E3 B3]/8'+16:46 [E3 B3]/8'+16:42 [E3 B3]/8'+16:52 [E3 B3]/8'+16:42 [E3 B3]/8'+16:46 [E3 B3]/8'+16:42 |
-# Pre-chorus 1: eighths open up and get louder (bars 17-22)
-| [F#3 C#4]/8+12:70 [F#3 C#4]/8+12:60 [F#3 C#4]/8+12:64 [F#3 C#4]/8+12:60 [F#3 C#4]/8+12:70 [F#3 C#4]/8+12:60 [F#3 C#4]/8+12:64 [F#3 C#4]/8+12:60 |
-| [D3 A3]/8+12:74 [D3 A3]/8+12:64 [D3 A3]/8+12:68 [D3 A3]/8+12:64 [D3 A3]/8+12:74 [D3 A3]/8+12:64 [D3 A3]/8+12:68 [D3 A3]/8+12:64 |
-| [A3 E4]/8+12:78 [A3 E4]/8+12:68 [A3 E4]/8+12:72 [A3 E4]/8+12:68 [A3 E4]/8+12:78 [A3 E4]/8+12:68 [A3 E4]/8+12:72 [A3 E4]/8+12:68 |
-| [B3 F#4]/8+12:82 [B3 F#4]/8+12:72 [B3 F#4]/8+12:76 [B3 F#4]/8+12:72 [B3 F#4]/8+12:82 [B3 F#4]/8+12:72 [B3 F#4]/8+12:76 [B3 F#4]/8+12:72 |
-| [E3 B3]/8+12:86 [E3 B3]/8+12:76 [E3 B3]/8+12:80 [E3 B3]/8+12:76 [E3 B3]/8+12:86 [E3 B3]/8+12:76 [E3 B3]/8+12:80 [E3 B3]/8+12:76 |
-| [E3 B3]/8+12:90 [E3 B3]/8+12:80 [E3 B3]/8+12:84 [E3 B3]/8+12:80 [E3 B3]/8+12:90 [E3 B3]/8+12:80 [E3 B3]/8+12:84 [E3 B3]/8+12:80 |
-# Chorus 1: medium chugs, not the big chorus yet (bars 23-30)
-| [A3 E4]/8+10:84 [A3 E4]/8+10:72 [A3 E4]/8+10:78 [A3 E4]/8+10:72 [A3 E4]/8+10:84 [A3 E4]/8+10:72 [A3 E4]/8+10:78 [A3 E4]/8+10:72 |
-| [E3 B3]/8+10:84 [E3 B3]/8+10:72 [E3 B3]/8+10:78 [E3 B3]/8+10:72 [E3 B3]/8+10:84 [E3 B3]/8+10:72 [E3 B3]/8+10:78 [E3 B3]/8+10:72 |
-| [D3 A3]/8+10:84 [D3 A3]/8+10:72 [D3 A3]/8+10:78 [D3 A3]/8+10:72 [D3 A3]/8+10:84 [D3 A3]/8+10:72 [D3 A3]/8+10:78 [D3 A3]/8+10:72 |
-| [F#3 C#4]/8+10:84 [F#3 C#4]/8+10:72 [F#3 C#4]/8+10:78 [F#3 C#4]/8+10:72 [F#3 C#4]/8+10:84 [F#3 C#4]/8+10:72 [F#3 C#4]/8+10:78 [F#3 C#4]/8+10:72 |
-| [A3 E4]/8+10:84 [A3 E4]/8+10:72 [A3 E4]/8+10:78 [A3 E4]/8+10:72 [A3 E4]/8+10:84 [A3 E4]/8+10:72 [A3 E4]/8+10:78 [A3 E4]/8+10:72 |
-| [D3 A3]/8+10:84 [D3 A3]/8+10:72 [D3 A3]/8+10:78 [D3 A3]/8+10:72 [D3 A3]/8+10:84 [D3 A3]/8+10:72 [D3 A3]/8+10:78 [D3 A3]/8+10:72 |
-| [D3 A3]/8+10:84 [D3 A3]/8+10:72 [D3 A3]/8+10:78 [D3 A3]/8+10:72 [D3 A3]/8+10:84 [D3 A3]/8+10:72 [D3 A3]/8+10:78 [D3 A3]/8+10:72 |
-| [E3 B3]/8+10:84 [E3 B3]/8+10:72 [E3 B3]/8+10:78 [E3 B3]/8+10:72 [E3 B3]/8+10:84 [E3 B3]/8+10:72 [E3 B3]/8+10:78 [E3 B3]/8+10:72 |
-# Verse 2: palm-mute returns, a little fuller (bars 31-42)
-| [A3 E4]/8'+16:60 [A3 E4]/8'+16:50 [A3 E4]/8'+16:54 [A3 E4]/8'+16:50 [A3 E4]/8'+16:60 [A3 E4]/8'+16:50 [A3 E4]/8'+16:54 [A3 E4]/8'+16:50 |
-| [B3 F#4]/8'+16:60 [B3 F#4]/8'+16:50 [B3 F#4]/8'+16:54 [B3 F#4]/8'+16:50 [B3 F#4]/8'+16:60 [B3 F#4]/8'+16:50 [B3 F#4]/8'+16:54 [B3 F#4]/8'+16:50 |
-| [D3 A3]/8'+16:60 [D3 A3]/8'+16:50 [D3 A3]/8'+16:54 [D3 A3]/8'+16:50 [D3 A3]/8'+16:60 [D3 A3]/8'+16:50 [D3 A3]/8'+16:54 [D3 A3]/8'+16:50 |
-| [E3 B3]/8'+16:60 [E3 B3]/8'+16:50 [E3 B3]/8'+16:54 [E3 B3]/8'+16:50 [E3 B3]/8'+16:60 [E3 B3]/8'+16:50 [E3 B3]/8'+16:54 [E3 B3]/8'+16:50 |
-| [A3 E4]/8'+16:60 [A3 E4]/8'+16:50 [A3 E4]/8'+16:54 [A3 E4]/8'+16:50 [A3 E4]/8'+16:60 [A3 E4]/8'+16:50 [A3 E4]/8'+16:54 [A3 E4]/8'+16:50 |
-| [C#3 G#3]/8'+16:60 [C#3 G#3]/8'+16:50 [C#3 G#3]/8'+16:54 [C#3 G#3]/8'+16:50 [C#3 G#3]/8'+16:60 [C#3 G#3]/8'+16:50 [C#3 G#3]/8'+16:54 [C#3 G#3]/8'+16:50 |
-| [F#3 C#4]/8'+16:60 [F#3 C#4]/8'+16:50 [F#3 C#4]/8'+16:54 [F#3 C#4]/8'+16:50 [F#3 C#4]/8'+16:60 [F#3 C#4]/8'+16:50 [F#3 C#4]/8'+16:54 [F#3 C#4]/8'+16:50 |
-| [E3 B3]/8'+16:60 [E3 B3]/8'+16:50 [E3 B3]/8'+16:54 [E3 B3]/8'+16:50 [E3 B3]/8'+16:60 [E3 B3]/8'+16:50 [E3 B3]/8'+16:54 [E3 B3]/8'+16:50 |
-| [A3 E4]/8'+16:60 [A3 E4]/8'+16:50 [A3 E4]/8'+16:54 [A3 E4]/8'+16:50 [A3 E4]/8'+16:60 [A3 E4]/8'+16:50 [A3 E4]/8'+16:54 [A3 E4]/8'+16:50 |
-| [D3 A3]/8'+16:60 [D3 A3]/8'+16:50 [D3 A3]/8'+16:54 [D3 A3]/8'+16:50 [D3 A3]/8'+16:60 [D3 A3]/8'+16:50 [D3 A3]/8'+16:54 [D3 A3]/8'+16:50 |
-| [B3 F#4]/8'+16:60 [B3 F#4]/8'+16:50 [B3 F#4]/8'+16:54 [B3 F#4]/8'+16:50 [B3 F#4]/8'+16:60 [B3 F#4]/8'+16:50 [B3 F#4]/8'+16:54 [B3 F#4]/8'+16:50 |
-| [E3 B3]/8'+16:60 [E3 B3]/8'+16:50 [E3 B3]/8'+16:54 [E3 B3]/8'+16:50 [E3 B3]/8'+16:60 [E3 B3]/8'+16:50 [E3 B3]/8'+16:54 [E3 B3]/8'+16:50 |
-# Pre-chorus 2: louder than the first climb (bars 43-48)
-| [F#3 C#4]/8+12:82 [F#3 C#4]/8+12:72 [F#3 C#4]/8+12:76 [F#3 C#4]/8+12:72 [F#3 C#4]/8+12:82 [F#3 C#4]/8+12:72 [F#3 C#4]/8+12:76 [F#3 C#4]/8+12:72 |
-| [D3 A3]/8+12:86 [D3 A3]/8+12:76 [D3 A3]/8+12:80 [D3 A3]/8+12:76 [D3 A3]/8+12:86 [D3 A3]/8+12:76 [D3 A3]/8+12:80 [D3 A3]/8+12:76 |
-| [A3 E4]/8+12:90 [A3 E4]/8+12:80 [A3 E4]/8+12:84 [A3 E4]/8+12:80 [A3 E4]/8+12:90 [A3 E4]/8+12:80 [A3 E4]/8+12:84 [A3 E4]/8+12:80 |
-| [B3 F#4]/8+12:94 [B3 F#4]/8+12:84 [B3 F#4]/8+12:88 [B3 F#4]/8+12:84 [B3 F#4]/8+12:94 [B3 F#4]/8+12:84 [B3 F#4]/8+12:88 [B3 F#4]/8+12:84 |
-| [E3 B3]/8+12:98 [E3 B3]/8+12:88 [E3 B3]/8+12:92 [E3 B3]/8+12:88 [E3 B3]/8+12:98 [E3 B3]/8+12:88 [E3 B3]/8+12:92 [E3 B3]/8+12:88 |
-| [E3 B3]/8+12:102 [E3 B3]/8+12:92 [E3 B3]/8+12:96 [E3 B3]/8+12:92 [E3 B3]/8+12:102 [E3 B3]/8+12:92 [E3 B3]/8+12:96 [E3 B3]/8+12:92 |
-# Chorus 2: the chug locks in with the wall (bars 49-56)
-| [A3 E4]/8+8:100 [A3 E4]/8+8:88 [A3 E4]/8+8:94 [A3 E4]/8+8:88 [A3 E4]/8+8:100 [A3 E4]/8+8:88 [A3 E4]/8+8:94 [A3 E4]/8+8:88 |
-| [E3 B3]/8+8:100 [E3 B3]/8+8:88 [E3 B3]/8+8:94 [E3 B3]/8+8:88 [E3 B3]/8+8:100 [E3 B3]/8+8:88 [E3 B3]/8+8:94 [E3 B3]/8+8:88 |
-| [D3 A3]/8+8:100 [D3 A3]/8+8:88 [D3 A3]/8+8:94 [D3 A3]/8+8:88 [D3 A3]/8+8:100 [D3 A3]/8+8:88 [D3 A3]/8+8:94 [D3 A3]/8+8:88 |
-| [F#3 C#4]/8+8:100 [F#3 C#4]/8+8:88 [F#3 C#4]/8+8:94 [F#3 C#4]/8+8:88 [F#3 C#4]/8+8:100 [F#3 C#4]/8+8:88 [F#3 C#4]/8+8:94 [F#3 C#4]/8+8:88 |
-| [A3 E4]/8+8:100 [A3 E4]/8+8:88 [A3 E4]/8+8:94 [A3 E4]/8+8:88 [A3 E4]/8+8:100 [A3 E4]/8+8:88 [A3 E4]/8+8:94 [A3 E4]/8+8:88 |
-| [D3 A3]/8+8:100 [D3 A3]/8+8:88 [D3 A3]/8+8:94 [D3 A3]/8+8:88 [D3 A3]/8+8:100 [D3 A3]/8+8:88 [D3 A3]/8+8:94 [D3 A3]/8+8:88 |
-| [D3 A3]/8+8:100 [D3 A3]/8+8:88 [D3 A3]/8+8:94 [D3 A3]/8+8:88 [D3 A3]/8+8:100 [D3 A3]/8+8:88 [D3 A3]/8+8:94 [D3 A3]/8+8:88 |
-| [E3 B3]/8+8:100 [E3 B3]/8+8:88 [E3 B3]/8+8:94 [E3 B3]/8+8:88 [E3 B3]/8+8:100 [E3 B3]/8+8:88 [E3 B3]/8+8:94 [E3 B3]/8+8:88 |
-# Bridge: drop, then half-time hits in the new key (bars 57-64)
-| R |
-| R |
-| v=78 [A3 E4]/2 r/4 [A3 E4]/4 |
-| v=81 [D3 A3]/2 r/4 [D3 A3]/4 |
-| v=84 [Bb3 F4]/2 r/4 [Bb3 F4]/4 |
-| v=87 [G3 D4]/2 r/4 [G3 D4]/4 |
-| v=90 [E3 B3]/2 r/4 [E3 B3]/4 |
-| v=93 [E3 B3]/2 r/4 [E3 B3]/4 |
-# Final chorus A: full eighths (bars 65-72)
-| [A3 E4]/8+8:112 [A3 E4]/8+8:102 [A3 E4]/8+8:106 [A3 E4]/8+8:102 [A3 E4]/8+8:112 [A3 E4]/8+8:102 [A3 E4]/8+8:106 [A3 E4]/8+8:102 |
-| [E3 B3]/8+8:112 [E3 B3]/8+8:102 [E3 B3]/8+8:106 [E3 B3]/8+8:102 [E3 B3]/8+8:112 [E3 B3]/8+8:102 [E3 B3]/8+8:106 [E3 B3]/8+8:102 |
-| [D3 A3]/8+8:112 [D3 A3]/8+8:102 [D3 A3]/8+8:106 [D3 A3]/8+8:102 [D3 A3]/8+8:112 [D3 A3]/8+8:102 [D3 A3]/8+8:106 [D3 A3]/8+8:102 |
-| [F#3 C#4]/8+8:112 [F#3 C#4]/8+8:102 [F#3 C#4]/8+8:106 [F#3 C#4]/8+8:102 [F#3 C#4]/8+8:112 [F#3 C#4]/8+8:102 [F#3 C#4]/8+8:106 [F#3 C#4]/8+8:102 |
-| [A3 E4]/8+8:112 [A3 E4]/8+8:102 [A3 E4]/8+8:106 [A3 E4]/8+8:102 [A3 E4]/8+8:112 [A3 E4]/8+8:102 [A3 E4]/8+8:106 [A3 E4]/8+8:102 |
-| [D3 A3]/8+8:112 [D3 A3]/8+8:102 [D3 A3]/8+8:106 [D3 A3]/8+8:102 [D3 A3]/8+8:112 [D3 A3]/8+8:102 [D3 A3]/8+8:106 [D3 A3]/8+8:102 |
-| [D3 A3]/8+8:112 [D3 A3]/8+8:102 [D3 A3]/8+8:106 [D3 A3]/8+8:102 [D3 A3]/8+8:112 [D3 A3]/8+8:102 [D3 A3]/8+8:106 [D3 A3]/8+8:102 |
-| [E3 B3]/8+8:112 [E3 B3]/8+8:102 [E3 B3]/8+8:106 [E3 B3]/8+8:102 [E3 B3]/8+8:112 [E3 B3]/8+8:102 [E3 B3]/8+8:106 [E3 B3]/8+8:102 |
-# Final chorus B: the loudest chug (bars 73-80)
-| [A3 E4]/8+6:120 [A3 E4]/8+6:112 [A3 E4]/8+6:114 [A3 E4]/8+6:112 [A3 E4]/8+6:120 [A3 E4]/8+6:112 [A3 E4]/8+6:114 [A3 E4]/8+6:112 |
-| [E3 B3]/8+6:120 [E3 B3]/8+6:112 [E3 B3]/8+6:114 [E3 B3]/8+6:112 [E3 B3]/8+6:120 [E3 B3]/8+6:112 [E3 B3]/8+6:114 [E3 B3]/8+6:112 |
-| [D3 A3]/8+6:120 [D3 A3]/8+6:112 [D3 A3]/8+6:114 [D3 A3]/8+6:112 [D3 A3]/8+6:120 [D3 A3]/8+6:112 [D3 A3]/8+6:114 [D3 A3]/8+6:112 |
-| [F#3 C#4]/8+6:120 [F#3 C#4]/8+6:112 [F#3 C#4]/8+6:114 [F#3 C#4]/8+6:112 [F#3 C#4]/8+6:120 [F#3 C#4]/8+6:112 [F#3 C#4]/8+6:114 [F#3 C#4]/8+6:112 |
-| [A3 E4]/8+6:120 [A3 E4]/8+6:112 [A3 E4]/8+6:114 [A3 E4]/8+6:112 [A3 E4]/8+6:120 [A3 E4]/8+6:112 [A3 E4]/8+6:114 [A3 E4]/8+6:112 |
-| [D3 A3]/8+6:120 [D3 A3]/8+6:112 [D3 A3]/8+6:114 [D3 A3]/8+6:112 [D3 A3]/8+6:120 [D3 A3]/8+6:112 [D3 A3]/8+6:114 [D3 A3]/8+6:112 |
-| [D3 A3]/8+6:120 [D3 A3]/8+6:112 [D3 A3]/8+6:114 [D3 A3]/8+6:112 [D3 A3]/8+6:120 [D3 A3]/8+6:112 [D3 A3]/8+6:114 [D3 A3]/8+6:112 |
-| [E3 B3]/8+6:120 [E3 B3]/8+6:112 [E3 B3]/8+6:114 [E3 B3]/8+6:112 [E3 B3]/8+6:120 [E3 B3]/8+6:112 [E3 B3]/8+6:114 [E3 B3]/8+6:112 |
-# Outro: the chug falls away; one last chord (bars 81-84)
-| [A3 E4]/8'+16:64 [A3 E4]/8'+16:54 [A3 E4]/8'+16:58 [A3 E4]/8'+16:54 [A3 E4]/8'+16:64 [A3 E4]/8'+16:54 [A3 E4]/8'+16:58 [A3 E4]/8'+16:54 |
-| v=60 [D3 A3]/2 r/2 |
-| v=56 [D3 A3]/2 r/2 |
-| v=64 [A3 E4]/1 |
 
 track piano role=chords inst=bank:grand-piano vol=0.75 pan=0.12
 # Piano, Ben Folds style: held chords in the verses, pumping quarters in the pre-chorus,
