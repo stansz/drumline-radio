@@ -25,7 +25,7 @@ time: 4/4
 
 @bars 61-64 tempo=96..72
 
-track violins role=lead vol=0.78 pan=-0.25
+track violins role=lead vol=1 pan=-0.25
 # I. Prologue: silent; the woodwind owns the theme.
 | R*8 |
 # II. Theme: open intervals and a rising answer.
