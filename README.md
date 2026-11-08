@@ -74,6 +74,9 @@ Originals by SZ (and AI):
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
+- **Riverfront** (Techno), by MiMo v2.6 Pro & SZ. A 4:23 deep techno original at 124 BPM in F minor:
+  warm chord stabs, a dark evolving pad, a hypnotic counter-line, and a rolling sub bass, with a
+  breakdown where the kick drops and the hook surfaces over the pad and chords.
 - **Save Point** (Chiptune)
 - **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
