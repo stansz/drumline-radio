@@ -189,11 +189,12 @@ export const KEYS: Record<string, Patch> = {
   'power-chords': synth({ name: 'Power chords', oscs: [osc('sawtooth', 0, -6, 0.45), osc('sawtooth', 0, 6, 0.4), osc('square', -1, 0, 0.15)],
     env: env(0.003, 0.22, 0.25, 0.1), filter: { type: 'lowpass', hz: 1900, q: 1.5, envAmount: 2.5, envDecay: 0.1 },
     drive: 0.7, gain: 0.16, sends: { reverb: 0.5, delay: 0 } }),
-  // Alt rock: a plucked acoustic guitar: a bright, open string with a crisp pick attack, so it
-  // never reads as a piano, and a moderate ring that fades before the next phrase.
+  // Alt rock: a plucked acoustic guitar: an open string with a soft pick attack (a 12 ms rise and a
+  // gentle filter snap, so the strike isn't heavy), and a moderate ring that fades before the next
+  // phrase.
   'acoustic-guitar': synth({ name: 'Acoustic guitar', oscs: [],
-    string: { octave: -1, level: 1, decay: 1.6, brightness: 0.5, pick: 0.2 },
-    env: env(0.002, 1.2, 0.2, 0.3), filter: { type: 'lowpass', hz: 4500, q: 0.7, envAmount: 1.3, envDecay: 0.2 },
+    string: { octave: -1, level: 1, decay: 1.6, brightness: 0.42, pick: 0.28 },
+    env: env(0.012, 1.2, 0.2, 0.3), filter: { type: 'lowpass', hz: 4000, q: 0.6, envAmount: 1.05, envDecay: 0.2 },
     gain: 1, sends: { reverb: 0.9, delay: 0.3 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
