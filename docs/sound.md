@@ -27,7 +27,8 @@ pan, and effects cover all of its notes.
 ## Patches and styles
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
-(oscillators, a plucked string, envelope, filter, vibrato, FM, drive, and send levels) or a drum kit
+(oscillators, a plucked string, formants, envelope, filter,
+vibrato, FM, drive, and send levels) or a drum kit
 (kick, snare, hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every
 patch, once, under a unique id, grouped into leads, keys, pads, basses, and kits.
 `src/audio/styles.ts` holds the eight styles as recipes: each picks the bank instruments it uses,
@@ -227,6 +228,7 @@ bank patch has a one-line comment saying what it is for, and every `SynthPatch` 
 | Brass | FM with an index swell | `fm-brass` |
 | Slap and DX bass | FM | `dx-bass` |
 | Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
+| Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `reed-lead` |
 
 ### FM
 
@@ -254,6 +256,17 @@ patches use `octave: -1` because guitar music is written an octave above where i
 is rendered once by `src/audio/strings.ts` and cached. The string goes through the patch's drive,
 filter, and envelope, and it can sit under oscillators, as `string-bass` does with a sine. A patch
 with an empty `oscs` list is a pure plucked string.
+
+### Formants
+
+`formants` is a list of band-pass bands at fixed frequencies that the oscillators and the plucked
+string pass through in parallel (the bands are summed) before drive, filter, and envelope. The fixed
+peaks are what make a vowel, so the vowel stays the same whatever note is played. `VOWELS` in
+`src/audio/patches.ts` holds `ah`, `oh`, `oo`, and `ee` (use as `formants: VOWELS.ah`). A reed or a
+body is one or two broad bands (low `q`, as in `reed-lead`). Start from a bright source (saws, a
+square, a pulse), since a band-pass only takes away. Narrow bands remove most of the energy, so
+formant patches need a higher `gain` than plain ones and should be level-matched with
+`tools/browser/levels.mjs`. It sounds like a synth choir, not real singers.
 
 ### Hearing and levelling a patch
 

@@ -1,169 +1,118 @@
 ## Goal
 
-Extend the synth's two-operator FM (velocity-scaled index, an index floor, an attack swell, and a
-choice of which oscillators it modulates), add nine new bank patches built with FM and with the
-existing plucked string (Karplus-Strong), and document how to build patches so later sessions can
-use these techniques. Existing patches must sound exactly as before.
+Add formant filtering to synth patches (a bank of parallel band-pass filters that shapes the
+oscillators into a vowel or a reed), a shared table of vowel formants, and four new bank patches
+built with it: a choir "aah" pad, a choir "ooh" pad, a wordless vocal lead, and a reed lead.
+Document it. Existing patches must sound exactly as before.
 
 ## Files to touch
 
 - `src/audio/patches.ts`
-- `src/audio/curves.ts`
 - `src/audio/voices.ts`
-- `src/audio/engine.ts`
 - `src/audio/instruments.ts`
-- `tests/curves.test.ts`
+- `tests/patches.test.ts` (new)
 - `tests/instruments.test.ts`
 - `docs/sound.md`
-- `AGENTS.md`
 
 ## Steps
 
 1. `src/audio/patches.ts`:
-   - Replace the `fm` field of `SynthPatch` with:
+   - Add and export:
 
      ```ts
-     /** Two-operator FM: a sine modulator at note frequency × ratio wobbles the oscillators' pitch. */
-     fm?: {
-       ratio: number;     // modulator frequency ÷ note frequency; whole numbers are harmonic, others bell-like
-       index: number;     // peak modulation depth (× note frequency); higher is brighter
-       decay: number;     // seconds for the index to fall from its peak toward its floor
-       attack?: number;   // seconds for the index to rise from its floor to its peak (a brass swell); default 0
-       sustain?: number;  // the index floor as a fraction of the peak; default 0.05
-       velocity?: number; // 0 to 1: how much a soft note lowers the peak (0 = velocity has no effect); default 0
-       targets?: number[]; // indexes into `oscs` that the modulator drives; default every oscillator
+     /** One formant: a band-pass peak at a fixed frequency, whatever note is played. */
+     export interface Formant {
+       hz: number;   // centre frequency in Hz
+       q: number;    // sharpness: centre frequency ÷ bandwidth
+       gain: number; // level of this band, 0 to 1
+     }
+
+     /** Formants of sung vowels (an alto-like voice), loudest band first: use as `formants: VOWELS.ah`. */
+     export const VOWELS: Record<'ah' | 'oh' | 'oo' | 'ee', Formant[]> = {
+       ah: [{ hz: 800, q: 10, gain: 1 }, { hz: 1150, q: 12.8, gain: 0.5 }, { hz: 2900, q: 24.2, gain: 0.25 }],
+       oh: [{ hz: 450, q: 6.4, gain: 1 }, { hz: 800, q: 10, gain: 0.3 }, { hz: 2830, q: 28.3, gain: 0.15 }],
+       oo: [{ hz: 325, q: 6.5, gain: 1 }, { hz: 700, q: 11.7, gain: 0.15 }, { hz: 2530, q: 14.9, gain: 0.08 }],
+       ee: [{ hz: 270, q: 4.5, gain: 1 }, { hz: 2140, q: 23.8, gain: 0.3 }, { hz: 2950, q: 29.5, gain: 0.2 }],
      };
      ```
 
-   - Add a one-line `/** ... */` comment to every other field of `Osc`, `SynthPatch`, and its `env`,
-     `filter`, `vibrato`, `drive`, `gain`, and `sends` saying what it does and its unit (seconds,
-     Hz, cents, 0–1, octaves). Keep the existing `string` and `drive` comments. Change no types
-     other than `fm`.
+   - Add to `SynthPatch`, after `string`:
 
-2. `src/audio/curves.ts`: add after `noteGain`:
+     ```ts
+     /** Formant bands: the oscillators and string pass through these band-pass filters in parallel,
+      *  summed, before drive, filter, and envelope. Fixed frequencies make a vowel or a reed body. */
+     formants?: Formant[];
+     ```
 
-   ```ts
-   /** The FM index at its peak and at its floor for a note, from the patch's fm settings. */
-   export function fmIndex(
-     fm: { index: number; sustain?: number; velocity?: number },
-     velocity: number,
-   ): { peak: number; floor: number }
-   ```
+2. `src/audio/voices.ts`, `playSynth`: right after `oscTarget` is decided (after the drive block,
+   before the oscillators are created), if `patch.formants` has at least one entry:
+   - Create a `GainNode` `formantIn` (gain 1). For each formant, create a `BiquadFilterNode` with
+     `type = 'bandpass'`, `frequency.value = formant.hz`, `Q.value = formant.q`, and a `GainNode`
+     with `gain.value = formant.gain`; connect `formantIn → band-pass → band gain → oscTarget`.
+   - Push every new node into `collected.nodes`.
+   - Set `oscTarget = formantIn`, so the oscillators and the plucked string connect to it.
+   - When `formants` is undefined or empty, change nothing.
 
-   `amount = clamp(fm.velocity ?? 0, 0, 1)`; `peak = fm.index * (1 - amount + amount * (velocity / 127))`;
-   `floor = peak * (fm.sustain ?? 0.05)`.
-
-3. `src/audio/voices.ts`, `playSynth`:
-   - Add a last parameter `velocity = 127` after `bends`.
-   - Keep a list `oscBySpec: (OscillatorNode | undefined)[]` with one entry per `patch.oscs` item
-     (undefined when `audibleOsc` skipped it) next to the existing `oscillators` array.
-   - In the `if (patch.fm)` block, compute `const { peak, floor } = fmIndex(patch.fm, velocity)`
-     and `const attack = patch.fm.attack ?? 0`. Schedule `depth.gain`:
-     - `attack > 0`: `setValueAtTime(freq * floor, time)`, `linearRampToValueAtTime(freq * peak, time + attack)`,
-       `setTargetAtTime(freq * floor, time + attack, Math.max(0.001, patch.fm.decay / 3))`.
-     - otherwise: `setValueAtTime(freq * peak, time)`,
-       `setTargetAtTime(freq * floor, time, Math.max(0.001, patch.fm.decay / 3))`.
-   - Connect `depth` to `osc.frequency` of each oscillator in `patch.fm.targets` (looked up in
-     `oscBySpec`, skipping undefined and out-of-range indexes), or of every oscillator when
-     `targets` is undefined. The modulator never drives the plucked string.
-   - With `attack`, `sustain`, `velocity`, and `targets` all unset, the result must be identical to
-     today's code (peak = index, floor = index × 0.05, every oscillator).
-
-4. `src/audio/engine.ts`: in the `playSynth(...)` call, pass `note.velocity` as the new last
-   argument. Change nothing else.
-
-5. `src/audio/instruments.ts`: add these patches. Put a one-line `//` comment above each saying
-   what it is for. Change no existing patch and no style.
+3. `src/audio/instruments.ts`: import `VOWELS` from `./patches` and add these patches, each with a
+   one-line `//` comment above it saying what it is for. Change no existing patch and no style.
 
    In `LEADS`:
    ```ts
-   'fm-brass': synth({ name: 'FM brass', oscs: [osc('sine', 0, 0, 1)],
-     fm: { ratio: 1, index: 3.5, attack: 0.07, decay: 0.5, sustain: 0.45, velocity: 0.7 },
-     env: env(0.06, 0.4, 0.8, 0.2), filter: { type: 'lowpass', hz: 3000, q: 0.7, envAmount: 1, envDecay: 0.2 },
-     vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.26 }),
+   'vox-lead': synth({ name: 'Vox lead', oscs: [osc('sawtooth', 0, 0, 0.7), osc('pulse25', 0, 4, 0.3)],
+     formants: VOWELS.ah, env: env(0.06, 0.3, 0.9, 0.3),
+     vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.9, sends: { reverb: 1, delay: 0.6 } }),
+   'reed-lead': synth({ name: 'Reed lead', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
+     formants: [{ hz: 1200, q: 3, gain: 1 }, { hz: 2700, q: 5, gain: 0.35 }],
+     env: env(0.04, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.6 }),
    ```
 
-   In `KEYS`:
+   In `PADS`:
    ```ts
-   'fm-rhodes': synth({ name: 'FM Rhodes', oscs: [osc('sine', 0, 0, 1), osc('sine', 0, 7, 0.35)],
-     fm: { ratio: 1, index: 2.2, decay: 1.2, sustain: 0.15, velocity: 0.8, targets: [0] },
-     env: env(0.003, 2.5, 0.12, 0.6), gain: 0.3, sends: { reverb: 0.8, delay: 0.4 } }),
-   'fm-bells': synth({ name: 'FM bells', oscs: [osc('sine', 0, 0, 1)],
-     fm: { ratio: 1.4, index: 4, decay: 2.5, sustain: 0.1, velocity: 0.5 },
-     env: env(0.001, 3, 0, 2), gain: 0.22 }),
-   'glockenspiel': synth({ name: 'Glockenspiel', oscs: [osc('sine', 1, 0, 1)],
-     fm: { ratio: 3.5, index: 1.5, decay: 0.3, sustain: 0.02, velocity: 0.6 },
-     env: env(0.001, 1.4, 0, 1), gain: 0.2 }),
-   'concert-harp': synth({ name: 'Concert harp', oscs: [],
-     string: { octave: 0, level: 1, decay: 3.5, brightness: 0.25, pick: 0.35 },
-     env: env(0.002, 4, 0.5, 0.8), filter: { type: 'lowpass', hz: 3500, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
-     gain: 0.5, sends: { reverb: 1, delay: 0.3 } }),
-   'pizzicato': synth({ name: 'Pizzicato strings', oscs: [],
-     string: { octave: 0, level: 1, decay: 0.45, brightness: 0.3, pick: 0.22 },
-     env: env(0.003, 0.4, 0, 0.15), filter: { type: 'lowpass', hz: 2500, q: 0.6, envAmount: 1.2, envDecay: 0.1 },
-     gain: 0.5 }),
-   'nylon-guitar': synth({ name: 'Nylon guitar', oscs: [],
-     string: { octave: -1, level: 1, decay: 2.2, brightness: 0.2, pick: 0.3 },
-     env: env(0.006, 1.5, 0.3, 0.4), filter: { type: 'lowpass', hz: 2200, q: 0.6, envAmount: 1.2, envDecay: 0.2 },
-     gain: 0.6, sends: { reverb: 0.9, delay: 0.3 } }),
+   'choir-aah': synth({ name: 'Choir aah',
+     oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
+     formants: VOWELS.ah, env: env(0.35, 1, 0.85, 0.9),
+     filter: { type: 'lowpass', hz: 4000, q: 0.5, envAmount: 1, envDecay: 0.1 },
+     vibrato: { rate: 5, cents: 10, delay: 0.4 }, gain: 0.9, sends: { reverb: 1, delay: 0.3 } }),
+   'choir-ooh': synth({ name: 'Choir ooh',
+     oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
+     formants: VOWELS.oo, env: env(0.4, 1, 0.85, 1),
+     filter: { type: 'lowpass', hz: 3000, q: 0.5, envAmount: 1, envDecay: 0.1 },
+     vibrato: { rate: 5, cents: 10, delay: 0.4 }, gain: 0.9, sends: { reverb: 1, delay: 0.3 } }),
    ```
 
-   In `BASSES`:
-   ```ts
-   'dx-bass': synth({ name: 'DX bass', oscs: [osc('sine', 0, 0, 1), osc('sine', -1, 0, 0.4)],
-     fm: { ratio: 1, index: 5, decay: 0.15, sustain: 0.08, velocity: 0.8, targets: [0] },
-     env: env(0.002, 0.5, 0.3, 0.1), gain: 0.4, sends: { reverb: 0.15, delay: 0 } }),
-   'string-bass': synth({ name: 'String bass', oscs: [osc('sine', -1, 0, 0.35)],
-     string: { octave: -1, level: 1, decay: 1.2, brightness: 0.15, pick: 0.22 },
-     env: env(0.004, 1, 0.25, 0.15), filter: { type: 'lowpass', hz: 900, q: 0.8, envAmount: 2, envDecay: 0.08 },
-     gain: 0.6, sends: { reverb: 0.4, delay: 0.1 } }),
-   ```
+4. Create `tests/patches.test.ts` (Vitest, importing only `../src/audio/patches`):
+   - Every entry of `VOWELS` (`ah`, `oh`, `oo`, `ee`) has exactly 3 formants, with `hz` strictly
+     ascending, every `q` > 0, and every `gain` in (0, 1].
+   - The first formant of each vowel has `gain` 1.
 
-6. `tests/curves.test.ts`: import `fmIndex` and add a `describe('fmIndex')` with:
-   - `fmIndex({ index: 3 }, 64)` is `{ peak: 3, floor: 0.15 }` (toBeCloseTo, 6 digits).
-   - `fmIndex({ index: 2, velocity: 1, sustain: 0.5 }, 127)` is `{ peak: 2, floor: 1 }`.
-   - `fmIndex({ index: 2, velocity: 1 }, 0).peak` is 0.
-   - `fmIndex({ index: 4, velocity: 0.5 }, 0).peak` is 2.
-   - `fmIndex({ index: 4, velocity: 3 }, 0).peak` is 0 (velocity clamped to 1).
+5. `tests/instruments.test.ts`: change the bank total from 70 to 74.
 
-7. `tests/instruments.test.ts`: change the bank total from 61 to 70.
-
-8. `docs/sound.md`: add a section `## Building a patch` before `## Saving a song`. It must cover,
-   in short paragraphs and one table:
-   - Start from the closest bank patch and change one thing at a time; every bank patch has a
-     one-line comment saying what it is for, and every `SynthPatch` field is commented in
-     `src/audio/patches.ts`.
-   - A table, columns "Sound", "Technique", "Start from": leads, pads, and synth basses →
-     oscillators + filter → `saw-lead`, `warm-pad`, `synth-bass`; electric piano, bells,
-     glockenspiel → FM → `fm-rhodes`, `fm-bells`, `glockenspiel`; brass → FM with an index swell →
-     `fm-brass`; slap/DX bass → FM → `dx-bass`; guitars, harp, pizzicato, upright bass → plucked
-     string → `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass`.
-   - FM: what each `fm` field does (ratio: whole numbers harmonic, 1.4 or 3.5 bell-like; index:
-     brightness; decay; sustain: the floor the tone settles to; velocity: soft notes mellower, the
-     DX7 electric-piano trick; attack: a brass-style swell; targets: keep one oscillator unmodulated
-     as a clean layer). The defaults keep older FM patches unchanged.
-   - Plucked string: the `string` field (decay, brightness, pick position, octave, level), rendered
-     once per pitch by `src/audio/strings.ts` and cached; it goes through the patch's drive,
-     filter, and envelope, and can sit under oscillators (as `string-bass` does with a sine).
-   - New bank patches get a one-line comment saying what they are for.
-   Also in `## Patches and styles`, change "(oscillators, envelope, filter, vibrato, FM, drive, and
-   send levels)" to "(oscillators, a plucked string, envelope, filter, vibrato, FM, drive, and send
-   levels)".
-
-9. `AGENTS.md`: change the line
-   `- Sound, styles, or patches: [docs/sound.md](docs/sound.md)` to
-   `- Sound, styles, or patches, including building a new patch with FM or a plucked string: [docs/sound.md](docs/sound.md)`.
+6. `docs/sound.md`, section `## Building a patch`:
+   - In the table, add a row: `| Choir, wordless vocals, reeds | formants | \`choir-aah\`, \`choir-ooh\`, \`vox-lead\`, \`reed-lead\` |`.
+   - Add a subsection `### Formants` after `### Plucked string` and before
+     `### Hearing and levelling a patch`, covering: `formants` is a list of band-pass bands at
+     fixed frequencies that the oscillators and plucked string pass through in parallel (summed)
+     before drive, filter, and envelope; fixed peaks are what make a vowel, so the vowel stays the
+     same whatever note is played; `VOWELS` in `src/audio/patches.ts` holds `ah`, `oh`, `oo`, and
+     `ee` (use as `formants: VOWELS.ah`); a reed or a body is one or two broad bands (low `q`, as
+     in `reed-lead`); start from a bright source (saws, a square, a pulse), since a band-pass only
+     takes away; narrow bands remove most of the energy, so formant patches need a higher `gain`
+     than plain ones and should be level-matched with `tools/browser/levels.mjs`; it sounds like a
+     synth choir, not real singers.
+   - In `## Patches and styles`, change "(oscillators, a plucked string, envelope, filter, vibrato,
+     FM, drive, and send levels)" to "(oscillators, a plucked string, formants, envelope, filter,
+     vibrato, FM, drive, and send levels)".
 
 ## Acceptance
 
-- `npm run test:sandbox` exits 0, and its output shows `tests/curves.test.ts` and
+- `npm run test:sandbox` exits 0, and its output shows `tests/patches.test.ts` and
   `tests/instruments.test.ts` passing.
 - `git diff --stat` and `git status --porcelain` list only files from **Files to touch** (plus
   ignored `.handoff/` files).
-- `git grep -c -E "'(fm-brass|fm-rhodes|fm-bells|glockenspiel|concert-harp|pizzicato|nylon-guitar|dx-bass|string-bass)': synth" -- src/audio/instruments.ts`
-  prints `src/audio/instruments.ts:9`.
-- `git grep -n "## Building a patch" -- docs/sound.md` prints one line.
-- `git diff -- src/audio/styles.ts` prints nothing.
+- `git grep -c -E "'(vox-lead|reed-lead|choir-aah|choir-ooh)': synth" -- src/audio/instruments.ts`
+  prints `src/audio/instruments.ts:4`.
+- `git grep -n "### Formants" -- docs/sound.md` prints one line.
+- `git diff -- src/audio/styles.ts src/audio/engine.ts` prints nothing.
 
 Verifier only:
 - `npm test` exits 0.
@@ -178,9 +127,9 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Do not change any existing patch, style, song, or the playback scheduling; existing FM patches
-  (`bells`, `fm-pluck`, `tine-keys`) must schedule exactly the same values as before.
-- Keep `src/audio/curves.ts` and `src/audio/patches.ts` free of DOM and Web Audio.
+- Do not change any existing patch, style, song, the engine, or playback scheduling. A patch
+  without `formants` must build exactly the same audio graph as before.
+- Keep `src/audio/patches.ts` free of DOM and Web Audio.
 - Files use LF line endings, UTF-8, and 2-space indents.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and
   report it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past
@@ -188,8 +137,8 @@ None — do it sequentially.
 
 ## Out of scope
 
-- Formant filters, harmonic tables or AKWF waves, samples, operator feedback, more than two
-  operators, wiring the new patches into styles or songs, browser checks.
+- Pitch-tracking formants, vowel morphing over time, breath noise, wiring the new patches into
+  styles or songs, changing `woodwind` or `soft-flute`, browser checks.
 
 ## If blocked
 

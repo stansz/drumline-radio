@@ -220,6 +220,28 @@ export function playSynth(
     oscTarget = shaper;
   }
 
+  // Formants: the sources feed parallel band-pass bands, each with its own level, and the bands sum
+  // back into one node. The peaks sit at fixed frequencies, so the vowel stays the same at any pitch.
+  const formants = patch.formants;
+  if (formants && formants.length > 0) {
+    const formantIn = ctx.createGain();
+    formantIn.gain.value = 1;
+    collected.nodes.push(formantIn);
+    for (const formant of formants) {
+      const band = ctx.createBiquadFilter();
+      band.type = 'bandpass';
+      band.frequency.value = formant.hz;
+      band.Q.value = formant.q;
+      const level = ctx.createGain();
+      level.gain.value = formant.gain;
+      formantIn.connect(band);
+      band.connect(level);
+      level.connect(oscTarget);
+      collected.nodes.push(band, level);
+    }
+    oscTarget = formantIn;
+  }
+
   const oscillators: OscillatorNode[] = [];
   // One entry per patch oscillator, in order, so `fm.targets` can name them; undefined when the
   // oscillator was skipped as inaudible.

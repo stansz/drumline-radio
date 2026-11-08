@@ -11,6 +11,21 @@ export interface Osc {
   level: number;
 }
 
+/** One formant: a band-pass peak at a fixed frequency, whatever note is played. */
+export interface Formant {
+  hz: number;   // centre frequency in Hz
+  q: number;    // sharpness: centre frequency ÷ bandwidth
+  gain: number; // level of this band, 0 to 1
+}
+
+/** Formants of sung vowels (an alto-like voice), loudest band first: use as `formants: VOWELS.ah`. */
+export const VOWELS: Record<'ah' | 'oh' | 'oo' | 'ee', Formant[]> = {
+  ah: [{ hz: 800, q: 10, gain: 1 }, { hz: 1150, q: 12.8, gain: 0.5 }, { hz: 2900, q: 24.2, gain: 0.25 }],
+  oh: [{ hz: 450, q: 6.4, gain: 1 }, { hz: 800, q: 10, gain: 0.3 }, { hz: 2830, q: 28.3, gain: 0.15 }],
+  oo: [{ hz: 325, q: 6.5, gain: 1 }, { hz: 700, q: 11.7, gain: 0.15 }, { hz: 2530, q: 14.9, gain: 0.08 }],
+  ee: [{ hz: 270, q: 4.5, gain: 1 }, { hz: 2140, q: 23.8, gain: 0.3 }, { hz: 2950, q: 29.5, gain: 0.2 }],
+};
+
 export interface SynthPatch {
   /** Discriminates a synth patch from a drum kit. */
   kind: 'synth';
@@ -67,6 +82,9 @@ export interface SynthPatch {
     brightness: number;  // 0 (mellow, plain averaging) to 1 (bright, metallic)
     pick: number;        // pick position, 0.05 (near the bridge, thin) to 0.5 (middle, round)
   };
+  /** Formant bands: the oscillators and string pass through these band-pass filters in parallel,
+   *  summed, before drive, filter, and envelope. Fixed frequencies make a vowel or a reed body. */
+  formants?: Formant[];
   /** Distortion amount, 0 to 1. A wave shaper with this much tanh drive. */
   drive?: number;
   /** Output level, 0 to 1, before the track channel and mix. */

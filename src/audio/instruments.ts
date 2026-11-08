@@ -1,7 +1,7 @@
 // The instrument bank: every instrument once, under a unique id, grouped by family.
 // A style picks instruments from it in styles.ts.
 
-import { drums, env, osc, synth } from './patches';
+import { drums, env, osc, synth, VOWELS } from './patches';
 import type { Patch } from './patches';
 
 export const LEADS: Record<string, Patch> = {
@@ -92,6 +92,14 @@ export const LEADS: Record<string, Patch> = {
     fm: { ratio: 1, index: 3.5, attack: 0.07, decay: 0.5, sustain: 0.45, velocity: 0.7 },
     env: env(0.06, 0.4, 0.8, 0.2), filter: { type: 'lowpass', hz: 3000, q: 0.7, envAmount: 1, envDecay: 0.2 },
     vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.15 }),
+  // A wordless vocal lead: a bright saw and pulse through the "ah" formants, with a singer's vibrato.
+  'vox-lead': synth({ name: 'Vox lead', oscs: [osc('sawtooth', 0, 0, 0.7), osc('pulse25', 0, 4, 0.3)],
+    formants: VOWELS.ah, env: env(0.06, 0.3, 0.9, 0.3),
+    vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.64, sends: { reverb: 1, delay: 0.6 } }),
+  // A reed lead: a square and saw through two broad formant bands, for a clarinet-like body.
+  'reed-lead': synth({ name: 'Reed lead', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
+    formants: [{ hz: 1200, q: 3, gain: 1 }, { hz: 2700, q: 5, gain: 0.35 }],
+    env: env(0.04, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 8, delay: 0.35 }, gain: 0.88 }),
 };
 
 export const KEYS: Record<string, Patch> = {
@@ -315,6 +323,18 @@ export const PADS: Record<string, Patch> = {
   'guitar-wall': synth({ name: 'Guitar wall', oscs: [osc('sawtooth', 0, -10, 0.4), osc('sawtooth', 0, 10, 0.4), osc('square', -1, 0, 0.2)],
     env: env(0.01, 0.5, 0.8, 0.25), filter: { type: 'lowpass', hz: 2200, q: 0.8, envAmount: 1, envDecay: 0.3 },
     drive: 0.75, gain: 0.13, sends: { reverb: 0.8, delay: 0 } }),
+  // A wordless choir singing "aah": detuned saws through the "ah" formants, with a slow swell.
+  'choir-aah': synth({ name: 'Choir aah',
+    oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
+    formants: VOWELS.ah, env: env(0.35, 1, 0.85, 0.9),
+    filter: { type: 'lowpass', hz: 4000, q: 0.5, envAmount: 1, envDecay: 0.1 },
+    vibrato: { rate: 5, cents: 10, delay: 0.4 }, gain: 0.8, sends: { reverb: 1, delay: 0.3 } }),
+  // A wordless choir singing "ooh": detuned saws through the "oo" formants, darker and rounder.
+  'choir-ooh': synth({ name: 'Choir ooh',
+    oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
+    formants: VOWELS.oo, env: env(0.4, 1, 0.85, 1),
+    filter: { type: 'lowpass', hz: 3000, q: 0.5, envAmount: 1, envDecay: 0.1 },
+    vibrato: { rate: 5, cents: 10, delay: 0.4 }, gain: 0.53, sends: { reverb: 1, delay: 0.3 } }),
 };
 
 export const BASSES: Record<string, Patch> = {
