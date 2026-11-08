@@ -2,7 +2,7 @@
 
 A prompt to give another model when you want a new original song. Fill in the `<...>` parts in the
 brief, then paste everything from "Write a new original song" down. The rules part stays the same
-for every song.
+for every song. When the song lands, add an entry to [model-notes.md](model-notes.md).
 
 Before filling it in, list the originals that are already in the style, so the brief can steer
 away from them:

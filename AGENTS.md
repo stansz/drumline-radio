@@ -13,7 +13,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - The big picture: [docs/how-it-works.md](docs/how-it-works.md)
 - Song files, the parser, or timing: [docs/song-format.md](docs/song-format.md)
 - Writing or reworking a song: [docs/composing.md](docs/composing.md), including its checks before committing
-- Asking another model for a song: the prompt template in [docs/song-prompt.md](docs/song-prompt.md)
+- Asking another model for a song: the prompt template in [docs/song-prompt.md](docs/song-prompt.md),
+  and the record of past model songs in [docs/model-notes.md](docs/model-notes.md)
 - Sound, styles, or patches, including building a new patch with FM or a plucked string: [docs/sound.md](docs/sound.md)
 
 ## Rules
