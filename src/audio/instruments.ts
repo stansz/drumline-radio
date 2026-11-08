@@ -175,9 +175,9 @@ export const KEYS: Record<string, Patch> = {
   // (Karplus-Strong) so each note is picked, rings, and fades. It sounds an octave below the written
   // note, like a real guitar.
   'clean-guitar': synth({ name: 'Clean guitar', oscs: [],
-    string: { octave: -1, level: 1, decay: 1.8, brightness: 0.45, pick: 0.25 },
-    env: env(0.003, 1.2, 0.25, 0.35), filter: { type: 'lowpass', hz: 3000, q: 0.8, envAmount: 1.4, envDecay: 0.2 },
-    gain: 0.75, sends: { reverb: 1, delay: 0.9 } }),
+    string: { octave: -1, level: 1, decay: 1.8, brightness: 0.35, pick: 0.28 },
+    env: env(0.003, 1.2, 0.25, 0.35), filter: { type: 'lowpass', hz: 2600, q: 0.8, envAmount: 1.3, envDecay: 0.2 },
+    gain: 0.5, sends: { reverb: 1, delay: 0.9 } }),
   // Alt rock: a shimmering clean guitar for echoing indie arpeggios: a warm plucked string with a
   // deep, slow chorus wobble and big reverb and delay sends. It stays at the written pitch, so its
   // arpeggios sparkle above an indie lead and stay clear of the bass.
