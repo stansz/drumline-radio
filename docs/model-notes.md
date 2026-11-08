@@ -13,7 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| Signal Fire | Techno | MiniMax M3.1 Flash | — | — | Mix: stabs and pad buried, bass over the hook |
+| Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
 | Fathom | Techno | Qwen3.8 Flash | — | — | Mix: stabs buried |
@@ -36,7 +36,7 @@ Stop) aren't listed.
 - **Brief:** a peak-time dance anthem, Techno, 132 BPM, F# minor, 4:00-4:30: a chopped vocal hook
   on the bank `vox-lead`, a rolling off-beat sub, punchy stabs, a dark pad in the breakdowns, a
   909 kit, and a DJ form with two builds and two drops.
-- **Cost:** —.
+- **Cost:** about $0.40.
 - **Followed well:** the form (16-bar intro, a groove that adds the stabs, a 16-bar breakdown, an
   8-bar build, a 16-bar drop, an 8-bar breakdown, an 8-bar build, a 32-bar final drop with the
   hook doubled an octave up, a 16-bar outro); one chord map (F#m - D - A - E) for all 136 bars, and
