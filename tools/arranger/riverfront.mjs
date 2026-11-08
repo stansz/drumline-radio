@@ -1,7 +1,8 @@
 // Riverfront: an original deep techno track for the Techno style, by MiMo v2.6 Pro and SZ. Warm
 // chord stabs, a dark evolving pad, a hypnotic FM counter-line, and a rolling sub bass under a
 // four-on-the-floor kit at 124 BPM in F minor. This script lays the parts out over 136 bars: an
-// intro, a groove that grows a layer every 8 bars, a breakdown where the kick drops and the hook
+// intro with no kick (the pad, then the counter-line), the kick and sub bass dropping in together
+// under off-beat open hats, a groove that grows a layer every 8 bars, a breakdown where the kick drops and the hook
 // surfaces over the pad and chords, a build, two drops, a stripped break, a second build, the final
 // drop with the hook over everything, and an outro that cadences on F minor.
 //   node tools/arranger/riverfront.mjs [outDir]
@@ -119,6 +120,7 @@ const HAT_V = [[64, 58, 66, 60], [62, 60, 64, 56], [66, 56, 62, 62], [60, 62, 58
 const HAT_O = [26, 20, 24, 18];
 const KICK_V = [0, -6, -2, -8];
 
+// hats: '8' closed eighths, '16' closed sixteenths, 'off' Detroit-style open hats on every off-beat.
 function drumBar({ v, i, hats = '8', claps = false, open = false, crash = false }) {
   const hv = HAT_V[i % 4];
   const parts = [];
@@ -128,7 +130,8 @@ function drumBar({ v, i, hats = '8', claps = false, open = false, crash = false 
     else if (claps && (b === 1 || b === 3)) kick = `[k cl]/8+${10 + 2 * b}:${v + KICK_V[(i + b) % 4] - 10}`;
     parts.push(kick);
     const hatV = hv[b] + (v - 108);
-    if (open && b === 3) parts.push(`oh/8+22:${hatV + 16}`);
+    if (hats === 'off') parts.push(`oh/8+${HAT_O[b] - 6}:${hatV + 6}`);
+    else if (open && b === 3) parts.push(`oh/8+22:${hatV + 16}`);
     else if (hats === '8') parts.push(`h/8+${HAT_O[b]}:${hatV}`);
     else if (hats === '16') parts.push(`h/16:${hatV - 4} h/16+${HAT_O[b] - 8}:${hatV - 10}`);
   }
@@ -167,18 +170,22 @@ function section(name, n, parts) {
   }
 }
 
-// Intro: the kick alone, then the hats and the pad.
-section('Intro: the kick, then the pad', 8, {
-  drums: fill(8, (i) => (i < 4 ? kickOnly(100, i) : drumBar({ v: 104, i }))),
-  pad: [...fill(4, () => R), ...fill(4, (i) => pad('padA', ch(4 + i), 52))],
+// Intro: no kick. The pad swells in alone, then the counter-line enters over it with soft rims,
+// and a snare pickup leads into the kick.
+section('Intro: the pad, then the counter-line', 8, {
+  pad: fill(8, (i) => pad('padA', ch(i), 40 + 2 * i)),
+  melody: [...fill(4, () => R), ...fill(4, (i) => m2(ch(4 + i), 76))],
+  perc: [...fill(4, () => R), ...fill(4, (i) => pRim(54, i))],
+  drums: [...fill(7, () => R), 'r/2 r/4 s/8:70 s/8:84'],
 });
 
-// The groove: the sub bass rolls in, the counter-line answers.
-section('Groove: the sub bass rolls in', 8, {
-  drums: fill(8, (i) => drumBar({ v: i < 4 ? 104 : 108, i, claps: i >= 4 })),
-  bass: fill(8, (i) => (i < 4 ? b8(ch(8 + i), 92) : b16(ch(8 + i), 100, i))),
-  pad: fill(8, (i) => pad('padA', ch(8 + i), 54)),
-  melody: [...fill(4, () => R), ...fill(4, (i) => m2(ch(12 + i), 82))],
+// The groove: the kick and the rolling sub bass drop in together, under off-beat open hats.
+section('Groove: the kick and the sub bass drop in', 8, {
+  drums: fill(8, (i) => drumBar({ v: i < 4 ? 104 : 108, i, hats: 'off', claps: i >= 4, crash: i === 0 })),
+  bass: fill(8, (i) => b16(ch(8 + i), i < 4 ? 96 : 100, i)),
+  pad: fill(8, (i) => pad('padA', ch(8 + i), 56)),
+  melody: fill(8, (i) => m2(ch(8 + i), 82)),
+  perc: fill(8, (i) => pRim(60, i)),
 });
 
 // The stabs arrive, and the counter-line takes the cell.
@@ -386,8 +393,9 @@ const block = (key) => {
 
 const text = `# Riverfront, by MiMo v2.6 Pro and SZ. An original for the Techno style: warm chord stabs, a dark
 # evolving pad, a hypnotic counter-line, and a rolling sub bass under a four-on-the-floor kit at 124
-# BPM in F minor. Built section by section over 136 bars: intro, a groove that grows a layer every 8
-# bars, a breakdown where the kick drops and the hook surfaces over the pad and chords, a build, two
+# BPM in F minor. Built section by section over 136 bars: an intro with no kick (the pad, then the
+# counter-line), the kick and sub bass dropping in together under off-beat open hats, a groove that
+# grows a layer every 8 bars, a breakdown where the kick drops and the hook surfaces over the pad and chords, a build, two
 # drops, a stripped break, a second build, the final drop with the hook over everything, and an outro
 # that cadences on F minor. The chord loop is Fm Db Ab Eb Fm Db Bbm Eb; every part follows it, the
 # hats and stabs carry small timing offsets and uneven velocities so the kit breathes.
