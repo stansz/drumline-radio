@@ -178,13 +178,13 @@ export const KEYS: Record<string, Patch> = {
     string: { octave: -1, level: 1, decay: 1.8, brightness: 0.35, pick: 0.28 },
     env: env(0.003, 1.2, 0.25, 0.35), filter: { type: 'lowpass', hz: 2600, q: 0.8, envAmount: 1.3, envDecay: 0.2 },
     gain: 0.5, sends: { reverb: 1, delay: 0.9 } }),
-  // Alt rock: a shimmering clean guitar for echoing indie arpeggios: a warm plucked string with a
-  // deep, slow chorus wobble and big reverb and delay sends. It stays at the written pitch, so its
-  // arpeggios sparkle above an indie lead and stay clear of the bass.
+  // Alt rock: a shimmering clean guitar for echoing indie arpeggios: a warm, darkly filtered plucked
+  // string with a deep, slow chorus wobble and moderate reverb and delay sends. It stays at the
+  // written pitch, so its arpeggios sit above a low lead and stay clear of the bass.
   'shimmer-guitar': synth({ name: 'Shimmer guitar', oscs: [],
-    string: { octave: 0, level: 1, decay: 2.4, brightness: 0.3, pick: 0.35 },
-    env: env(0.003, 1.8, 0.3, 0.6), filter: { type: 'lowpass', hz: 3200, q: 0.7, envAmount: 1.2, envDecay: 0.2 },
-    vibrato: { rate: 0.9, cents: 8, delay: 0 }, gain: 0.82, sends: { reverb: 2, delay: 3 } }),
+    string: { octave: 0, level: 1, decay: 2.4, brightness: 0.22, pick: 0.35 },
+    env: env(0.003, 1.8, 0.3, 0.6), filter: { type: 'lowpass', hz: 2000, q: 0.6, envAmount: 1.1, envDecay: 0.2 },
+    vibrato: { rate: 0.9, cents: 8, delay: 0 }, gain: 0.82, sends: { reverb: 1, delay: 1.8 } }),
   // Alt rock: palm-muted power-chord chugs, short and crunchy.
   'power-chords': synth({ name: 'Power chords', oscs: [osc('sawtooth', 0, -6, 0.45), osc('sawtooth', 0, 6, 0.4), osc('square', -1, 0, 0.15)],
     env: env(0.003, 0.22, 0.25, 0.1), filter: { type: 'lowpass', hz: 1900, q: 1.5, envAmount: 2.5, envDecay: 0.1 },

@@ -172,8 +172,9 @@ picked toward the middle and darkly filtered so it isn't twangy, an octave below
 with a short ring, a deep, slow chorus, and moderate reverb and delay. `inst=acoustic-guitar`
 is a plucked acoustic, open, with a soft pick attack and a moderate ring, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
-indie arpeggios: a warm plucked string at the written pitch, with a deep, slow chorus wobble and a
-large reverb and delay send that makes its notes echo on the style's dotted-eighth delay. Porch Light uses
+indie arpeggios: a warm, darkly filtered plucked string at the written pitch, with a deep, slow
+chorus wobble and a moderate reverb and delay send that makes its notes echo on the style's
+dotted-eighth delay. Porch Light uses
 `acoustic-guitar` and `shimmer-guitar`.
 
 ### Studio
