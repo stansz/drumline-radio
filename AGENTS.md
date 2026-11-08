@@ -13,12 +13,13 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - The big picture: [docs/how-it-works.md](docs/how-it-works.md)
 - Song files, the parser, or timing: [docs/song-format.md](docs/song-format.md)
 - Writing or reworking a song: [docs/composing.md](docs/composing.md), including its checks before committing
+- Asking another model for a song: the prompt template in [docs/song-prompt.md](docs/song-prompt.md)
 - Sound, styles, or patches: [docs/sound.md](docs/sound.md)
 
 ## Rules
 
 - Code is grouped by layer: `src/music/` (song format, timing, pitch, library), `src/audio/`
-  (engine, voices, styles, curves), and `src/ui/` (page, dial, score, meters, CSS). Songs live in
+  (engine, voices, the instrument bank, styles, curves, plucked strings), and `src/ui/` (page, dial, score, meters, CSS). Songs live in
   `src/songs/`. [docs/how-it-works.md](docs/how-it-works.md) is the short overview.
 - Keep everything in `src/music/`, plus `src/audio/styles.ts`, `src/audio/instruments.ts`,
   `src/audio/patches.ts`, `src/audio/curves.ts`, `src/audio/strings.ts`, and `src/ui/view.ts`, free
@@ -33,8 +34,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   so track volume, pan, and sends cover everything.
 - Every song in `src/songs/` must parse with no errors; `tests/library.test.ts` checks this.
 - Dev scripts live in `tools/` (see `tools/README.md`): the arranger that builds the arranged
-  songs, `npm run check:songs`, and headless-Edge checks. When an arranged song changes, change its
-  recipe in `tools/arranger/songs.mjs` too, so a rebuild keeps the change; `tests/drift.test.ts`
+  songs, `npm run check:songs`, and headless-Edge checks. When a generated song changes, change its
+  recipe in `tools/arranger/songs.mjs` or its own script in `tools/arranger/` too, so a rebuild
+  keeps the change; `tests/drift.test.ts`
   fails when a generated song in `src/songs/` doesn't match its generator. Browser checks run Edge
   muted.
 - Start your own dev or preview server on a free port, note its process ID, and stop it as soon as
@@ -54,6 +56,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   arranger), so changes elsewhere never fail it. Most songs need no test of their own.
 - Song data is written by the composing AI assistant and pasted verbatim. Don't change notes in a
   song file to make a test pass; report the failing check instead.
+- `npm run check:songs` reports half-step clashes between every pitched part and the pad or bass.
+  The count is a report, not a failure. Aim for 0 in a new song and explain any that stay; older
+  songs' counts are a record, not a to-do list.
 - Don't put `share` (or other social-button words) in element ids or classes: content blockers such
   as uBlock Origin hide them, which hid the Share buttons in Firefox.
 - Wrap every `localStorage` call in `try`/`catch`, and make the app work without it. Keys start

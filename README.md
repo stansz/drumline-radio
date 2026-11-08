@@ -13,7 +13,7 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - A tuner dial of stations, one per song, with a fixed needle that snaps to the nearest one.
 - Category presets (All, Classics, Originals, Carols) above the dial show just that group of stations (remembered between visits).
 - Within each category the dial is grouped by home style, with a caption at the start of each style. The style button next to the presets (or G) cycles through the styles that category has, showing only that style's songs; the playlist's library list has the same button.
-- A Playlist view (Radio | Playlist switch in the header): add any song in any of the 6 styles, the same song more than once, reorder or remove entries, and play the list in order, with a Loop toggle. The playlist is saved on this device.
+- A Playlist view (Radio | Playlist switch in the header): add any song in any of the 8 styles, the same song more than once, reorder or remove entries, and play the list in order, with a Loop toggle. The playlist is saved on this device.
 - Share links: in the song card (tap the song title), "Share song" shares the song in the style you are hearing, and "Share from m:ss" adds the current time; the playlist view's Share button shares the whole list. Opening a link tunes the app, ready to play; a shared playlist asks before replacing or adding to yours. Uses the share sheet where the browser has one, otherwise copies the link.
 - Installable and works offline: install it from the browser (or the Install button where offered; on iPhone, Share → Add to Home Screen). It checks for an update each time it opens or comes back to the front, and a new version takes over right away (if music is playing, the next time you switch away from it). The bottom of the ⓘ panel shows the build's commit and time, so you can check which version is running.
 - A living score that scrolls each track's notes past a playhead. Drag it sideways to scrub through the song.
@@ -31,8 +31,9 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 |---|---|
 | ![Ride of the Valkyries in the Orchestral style](docs/images/orchestral.png) | <img src="docs/images/phone.png" alt="The player on a phone" width="260"> |
 
-The sound engine, and how to add a patch or a style, are described in
-[docs/sound.md](docs/sound.md).
+The sound engine, including the instrument bank and its plucked-string guitars, and how to add a
+patch or a style, are described in [docs/sound.md](docs/sound.md). To ask another AI model for a new
+song, fill in the prompt template in [docs/song-prompt.md](docs/song-prompt.md).
 
 ## Songs
 
@@ -67,7 +68,7 @@ Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy,
 Originals by SZ (and AI):
 
 - **Exit Sign** (Alt rock), by GPT-6.1-sol & SZ. A 2:57 guitar-band original: palm-muted verses, a twelve-bar vocal-style hook, a half-time bridge, and a final double chorus.
-- **Porch Light** (Alt rock), by Grok, Claude & SZ. A 4:40 slow, emo indie original with a Ben Folds-style piano: clean guitar up front, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
+- **Porch Light** (Alt rock), by Grok, Claude & SZ. A 4:40 slow, emo indie original at 72 BPM: a laid-back clean electric guitar lead, shimmering arpeggios, a Ben Folds-style piano, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
@@ -75,8 +76,9 @@ Originals by SZ (and AI):
 - **Midnight Arcade** (Synthwave)
 - **Night Shift** (Techno)
 - **Riverfront** (Techno), by MiMo v2.6 Pro & SZ. A 4:23 deep techno original at 124 BPM in F minor:
-  warm chord stabs, a dark evolving pad, a hypnotic counter-line, and a rolling sub bass, with a
-  breakdown where the kick drops and the hook surfaces over the pad and chords.
+  it opens with no kick (a pad, then a hypnotic FM counter-line) before the kick and a rolling sub
+  bass drop in together; warm chord stabs, a breakdown where the kick drops and the hook surfaces
+  over the pad and chords, and two drops.
 - **Save Point** (Chiptune)
 - **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
