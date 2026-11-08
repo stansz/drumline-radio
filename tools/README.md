@@ -169,6 +169,14 @@ returning in half time.
 node tools/arranger/exit-sign.mjs tmp/rock
 ```
 
+The Silent Keep has its own script, `arranger/the-silent-keep.mjs`: a clean-guitar and cello intro,
+a ballad verse, a Phrygian gallop, a 6/8 twin-guitar middle, a 48-bar solo with bends and sextuplet
+runs, a twin-guitar reprise, and a clean outro, all following one harmonic map.
+
+```bash
+node tools/arranger/the-silent-keep.mjs tmp/epic
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,

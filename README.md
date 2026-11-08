@@ -70,6 +70,10 @@ Originals by SZ (and AI):
 - **Exit Sign** (Alt rock), by GPT-6.1-sol & SZ. A 2:57 guitar-band original: palm-muted verses, a twelve-bar vocal-style hook, a half-time bridge, and a final double chorus.
 - **Porch Light** (Alt rock), by Grok, Claude & SZ. A 4:40 slow, emo indie original at 72 BPM: a laid-back clean electric guitar lead, shimmering arpeggios, a Ben Folds-style piano, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
+- **The Silent Keep** (Cinematic), by DeepSeek V4 Flash & SZ. A 6:06 heavy-metal ballad-epic in E minor:
+  a clean guitar and solo cello state the theme, the band kicks into a Phrygian gallop, twin guitars
+  trade thirds and sixths, a 48-bar solo climbs through sixteenth and sextuplet runs to a held, bent
+  high E, and the fire dies back to a lone cello.
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
 - **Last Stop** (Lo-fi)
