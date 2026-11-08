@@ -13,7 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | — | None (it caught its own loud bass with `npm run balance`) |
+| Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
 | Fathom | Techno | Qwen3.8 Flash | — | — | Mix: stabs buried |
 | The Silent Keep | Cinematic | DeepSeek V4 Flash | — | — | Mix: strings buried |
@@ -34,7 +34,7 @@ Stop) aren't listed.
 
 - **Brief:** slow wistful fantasy RPG theme, Chiptune, 88 BPM, 3/4, D minor with Dorian B naturals
   (the same brief as Wayfarer's Rest, written fresh without opening that file).
-- **Cost:** —.
+- **Cost:** about $0.20.
 - **Followed well:** the form (arp intro, A, A with the counter, B lifting to F with a light march
   snare, a quiet arp-and-bass bridge ending on a dominant B, the E minor statement, a stepped
   ritardando outro to the lone arp); registers held apart (lead mostly octave 5, counter B4–F#5
