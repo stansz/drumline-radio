@@ -1,0 +1,206 @@
+# Wayfarer's Rest, by Gemini 3.8 Flash & SZ. A slow, wistful fantasy RPG theme for the Chiptune
+# style: a singing pulse lead, rolling pulse-arp broken chords, walking triangle bass, and an
+# answering square counter-melody in D Dorian at dusk.
+title: Wayfarer's Rest
+composer: Gemini 3.8 Flash & SZ
+about: A wistful fantasy RPG theme at dusk: singing pulse lead, rolling broken chords, walking triangle bass, and an answering square counter-melody.
+year: 2026
+source: original
+category: originals
+style: chiptune
+key: D minor
+tempo: 88
+time: 3/4
+
+@bar 92 tempo=82
+@bar 94 tempo=74
+@bar 95 tempo=66
+@bar 96 tempo=58
+
+track lead role=lead vol=0.85 pan=-0.1
+# Intro
+| R*8 |
+# Theme A1 (bars 9-16)
+| v=98 A5/4.+14 F5/8 D5/4 | G5/2+10 E5/4 | B5/4.+12 A5/8 G5/4 | F5/2+8 D5/4 |
+| E5/4+12 F5/8 G5/8 A5/4 | G5/4.+10 F5/8 D5/4 | E5/2.+14~ | E5/2 C#5/4 |
+# Theme A2 (bars 17-24)
+| A5/4.+14 F5/8 D5/4 | G5/2+10 E5/4 | D6/4.+12 B5/8 G5/4 | A5/2+10 F5/4 |
+| F5/4+12 G5/8 A5/8 C6/4 | Bb5/4.+10 A5/8 G5/4 | G5/4+12 E5/8 G5/8 C6/4 | D5/2.+12 |
+# Theme A1 with counter (bars 25-32)
+| v=100 A5/4.+14 F5/8 D5/4 | G5/2+10 E5/4 | B5/4.+12 A5/8 G5/4 | F5/2+8 D5/4 |
+| E5/4+12 F5/8 G5/8 A5/4 | G5/4.+10 F5/8 D5/4 | E5/2.+14~ | E5/2 C#5/4 |
+# Theme A2 with counter (bars 33-40)
+| A5/4.+14 F5/8 D5/4 | G5/2+10 E5/4 | D6/4.+12 B5/8 G5/4 | A5/2+10 F5/4 |
+| F5/4+12 G5/8 A5/8 C6/4 | Bb5/4.+10 A5/8 G5/4 | G5/4+12 E5/8 G5/8 C6/4 | D5/2.+12 |
+# B section part 1 - F major (bars 41-48)
+| v=102 C6/4.+12 A5/8 F5/4 | G5/2+10 C6/4 | A5/4.+12 F5/8 D5/4 | E5/2+10 A5/4 |
+| D6/4.+12 C6/8 Bb5/4 | A5/2+10 F5/4 | G5/4.+10 A5/8 Bb5/4 | C6/2.+14 |
+# B section part 2 - build (bars 49-56)
+| v=105 C6/4.+12 A5/8 F5/4 | G5/2+10 C6/4 | A5/4.+12 F5/8 D5/4 | F6/4.+14 D6/8 Bb5/4 |
+| D6/4.+12 Bb5/8 G5/4 | B5/4.+12 G5/8 D5/4 | E5/2.+14~ | E5/2 C#5/4 |
+# Bridge - quiet arp + bass (bars 57-64)
+| R*8 |
+# Theme A1 in Em (bars 65-72)
+| v=106 B5/4.+14 G5/8 E5/4 | A5/2+10 F#5/4 | C#6/4.+12 B5/8 A5/4 | G5/2+8 E5/4 |
+| F#5/4+12 G5/8 A5/8 B5/4 | A5/4.+10 G5/8 E5/4 | F#5/2.+14~ | F#5/2 D#5/4 |
+# Theme A2 in Em (bars 73-80)
+| B5/4.+14 G5/8 E5/4 | A5/2+10 F#5/4 | E6/4.+12 C#6/8 A5/4 | B5/2+10 G5/4 |
+| G5/4+12 A5/8 B5/8 D6/4 | C6/4.+10 B5/8 A5/4 | A5/4+12 F#5/8 A5/8 D6/4 | E5/2.+12 |
+# Outro part 1 (bars 81-88)
+| v=88 B5/4.+10 G5/8 E5/4 | G5/2+8 E5/4 | D5/4.+10 E5/8 G5/4 | E5/2.+10 |
+| G5/4.+8 E5/8 B4/4 | E5/2+8 C5/4 | F#5/2.+10 | E5/2.+10 |
+# Outro part 2 (bars 89-96)
+| R*8 |
+
+track counter role=counter vol=0.65 pan=0.2
+# Intro & A1 & A2 (bars 1-24)
+| R*24 |
+# Theme A1 with counter (bars 25-32)
+| R | v=78 r/2 C5/4+8 | R | r/4 D5/4+8 Bb4/4 |
+| R | r/4 Bb4/4+8 G4/4 | r/4 D5/4+8 E5/4 | A4/2.+10 |
+# Theme A2 with counter (bars 33-40)
+| R | r/2 C5/4+8 | R | r/4 F5/4+8 D5/4 |
+| R | r/4 D5/4+8 Bb4/4 | r/4 E5/4+8 C5/4 | D5/2.+10 |
+# B section part 1 (bars 41-48)
+| R*8 |
+# B section part 2 - build (bars 49-56)
+| R | v=82 r/4 E5/4+8 C5/4 | R | D5/2.+10 |
+| Bb4/2.+10 | G4/2.+10 | r/4 D5/4+8 E5/4 | A4/2.+10 |
+# Bridge (bars 57-64)
+| R*8 |
+# Theme A1 in Em (bars 65-72)
+| R | v=84 r/2 D5/4+8 | R | r/4 E5/4+8 C5/4 |
+| R | r/4 C5/4+8 A4/4 | r/4 E5/4+8 F#5/4 | B4/2.+10 |
+# Theme A2 in Em (bars 73-80)
+| R | r/2 D5/4+8 | R | r/4 G5/4+8 E5/4 |
+| R | r/4 E5/4+8 C5/4 | r/4 F#5/4+8 D5/4 | E5/2.+10 |
+# Outro (bars 81-96)
+| R*16 |
+
+track pad role=pad vol=0.72 pan=-0.2
+# Intro & A1 (bars 1-16)
+| R*16 |
+# Theme A2 (bars 17-24)
+| v=82 [D4 F4 A4]/2. | [C4 E4 G4]/2. | [D4 G4 B4]/2. | [D4 F4 Bb4]/2. |
+| [C4 F4 A4]/2. | [D4 G4 Bb4]/2. | [C4 E4 G4]/2. | [D4 F4 A4]/2. |
+# Theme A1 with counter (bars 25-32)
+| [D4 F4 A4]/2. | [C4 E4 G4]/2. | [D4 G4 B4]/2. | [D4 F4 Bb4]/2. |
+| [C4 F4 A4]/2. | [D4 G4 Bb4]/2. | [D4 E4 A4]/2. | [C#4 E4 A4]/2. |
+# Theme A2 with counter (bars 33-40)
+| v=86 [D4 F4 A4]/2. | [C4 E4 G4]/2. | [D4 G4 B4]/2. | [D4 F4 Bb4]/2. |
+| [C4 F4 A4]/2. | [D4 G4 Bb4]/2. | [C4 E4 G4]/2. | [D4 F4 A4]/2. |
+# B section part 1 - F major (bars 41-48)
+| v=88 [C4 F4 A4]/2. | [C4 E4 G4]/2. | [D4 F4 A4]/2. | [C4 E4 A4]/2. |
+| [D4 F4 Bb4]/2. | [C4 F4 A4]/2. | [D4 G4 Bb4]/2. | [C4 E4 G4]/2. |
+# B section part 2 - build (bars 49-56)
+| v=92 [C4 F4 A4]/2. | [C4 E4 G4]/2. | [D4 F4 A4]/2. | [D4 F4 Bb4]/2. |
+| [D4 G4 Bb4]/2. | [D4 G4 B4]/2. | [D4 E4 A4]/2. | [C#4 E4 A4]/2. |
+# Bridge (bars 57-64)
+| R*8 |
+# Theme A1 in Em (bars 65-72)
+| v=94 [E4 G4 B4]/2. | [D4 F#4 A4]/2. | [E4 A4 C#5]/2. | [E4 G4 C5]/2. |
+| [D4 G4 B4]/2. | [E4 A4 C5]/2. | [E4 F#4 B4]/2. | [D#4 F#4 B4]/2. |
+# Theme A2 in Em (bars 73-80)
+| [E4 G4 B4]/2. | [D4 F#4 A4]/2. | [E4 A4 C#5]/2. | [E4 G4 C5]/2. |
+| [D4 G4 B4]/2. | [E4 A4 C5]/2. | [D4 F#4 A4]/2. | [E4 G4 B4]/2. |
+# Outro part 1 (bars 81-88)
+| v=72 [E4 G4 B4]/2. | [E4 G4 C5]/2. | [D4 G4 B4]/2. | [E4 A4 C5]/2. |
+| [E4 G4 B4]/2. | [E4 G4 C5]/2. | [E4 F#4 B4]/2. | [E4 G4 B4]/2. |
+# Outro part 2 (bars 89-96)
+| R*8 |
+
+track arp role=arp vol=0.65 pan=0.15
+# Intro lone arp (bars 1-8)
+| v=68 D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 | C4/8:68 E4:60 G4:66 C5:58 G4:62 E4:56 | D4/8:68 G4:60 B4:66 D5:58 B4:62 G4:56 | D4/8:68 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 |
+| C4/8:68 F4:60 A4:66 C5:58 A4:62 F4:56 | D4/8:68 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | D4/8:68 E4:60 A4:66 D5:58 A4:62 E4:56 | C#4/8:68 E4:60 A4:66 E5:58 A4:62 E4:56 |
+# Theme A1 (bars 9-16)
+| D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 | E4/8:68 G4:60 C5:66 E5:58 C5:62 G4:56 | D4/8:68 G4:60 B4:66 D5:58 B4:62 G4:56 | D4/8:68 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 |
+| C4/8:68 F4:60 A4:66 C5:58 A4:62 F4:56 | D4/8:68 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | D4/8:68 E4:60 A4:66 D5:58 A4:62 E4:56 | C#4/8:68 E4:60 A4:66 E5:58 A4:62 E4:56 |
+# Theme A2 (bars 17-24)
+| D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 | E4/8:68 G4:60 C5:66 E5:58 C5:62 G4:56 | D4/8:68 G4:60 B4:66 D5:58 B4:62 G4:56 | D4/8:68 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 |
+| C4/8:68 F4:60 A4:66 C5:58 A4:62 F4:56 | D4/8:68 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | C4/8:68 E4:60 G4:66 C5:58 G4:62 E4:56 | D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 |
+# Theme A1 with counter (bars 25-32)
+| D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 | E4/8:68 G4:60 C5:66 E5:58 C5:62 G4:56 | D4/8:68 G4:60 B4:66 D5:58 B4:62 G4:56 | D4/8:68 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 |
+| C4/8:68 F4:60 A4:66 C5:58 A4:62 F4:56 | D4/8:68 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | D4/8:68 E4:60 A4:66 D5:58 A4:62 E4:56 | C#4/8:68 E4:60 A4:66 E5:58 A4:62 E4:56 |
+# Theme A2 with counter (bars 33-40)
+| D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 | E4/8:68 G4:60 C5:66 E5:58 C5:62 G4:56 | D4/8:68 G4:60 B4:66 D5:58 B4:62 G4:56 | D4/8:68 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 |
+| C4/8:68 F4:60 A4:66 C5:58 A4:62 F4:56 | D4/8:68 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | C4/8:68 E4:60 G4:66 C5:58 G4:62 E4:56 | D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 |
+# B section part 1 - F major (bars 41-48)
+| C4/8:70 F4:60 A4:66 C5:58 A4:62 F4:56 | C4/8:68 E4:60 G4:66 C5:58 G4:62 E4:56 | D4/8:70 F4:60 A4:66 D5:58 A4:62 F4:56 | C4/8:68 E4:60 A4:66 C5:58 A4:62 E4:56 |
+| D4/8:68 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 | C4/8:68 F4:60 A4:66 C5:58 A4:62 F4:56 | D4/8:68 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | C4/8:68 E4:60 G4:66 C5:58 G4:62 E4:56 |
+# B section part 2 - build (bars 49-56)
+| C4/8:72 F4:62 A4:68 C5:60 A4:64 F4:58 | C4/8:70 E4:60 G4:66 C5:58 G4:62 E4:56 | D4/8:72 F4:62 A4:68 D5:60 A4:64 F4:58 | D4/8:70 F4:60 Bb4:66 D5:58 Bb4:62 F4:56 |
+| D4/8:70 G4:60 Bb4:66 D5:58 Bb4:62 G4:56 | D4/8:72 G4:62 B4:68 D5:60 B4:64 G4:58 | D4/8:72 E4:62 A4:68 D5:60 A4:64 E4:58 | C#4/8:72 E4:62 A4:68 E5:60 A4:64 E4:58 |
+# Bridge (bars 57-64)
+| D4/8:64 F4:54 A4:60 D5:52 A4:56 F4:50 | C4/8:64 E4:54 A4:60 C5:52 A4:56 E4:50 | D4/8:64 G4:54 B4:60 D5:52 B4:56 G4:50 | D4/8:64 F4:54 Bb4:60 D5:52 Bb4:56 F4:50 |
+| C4/8:64 F4:54 A4:60 C5:52 A4:56 F4:50 | D4/8:64 G4:54 Bb4:60 D5:52 Bb4:56 G4:50 | D4/8:64 E4:54 A4:60 D5:52 A4:56 E4:50 | D#4/8:66 F#4:56 A4:62 B4:54 A4:58 F#4:52 |
+# Theme A1 in Em (bars 65-72)
+| E4/8:72 G4:62 B4:68 E5:60 B4:64 G4:58 | D4/8:70 F#4:60 A4:66 D5:58 A4:62 F#4:56 | E4/8:70 A4:60 C#5:66 E5:58 C#5:62 A4:56 | E4/8:70 G4:60 C5:66 E5:58 C5:62 G4:56 |
+| D4/8:70 G4:60 B4:66 D5:58 B4:62 G4:56 | E4/8:70 A4:60 C5:66 E5:58 C5:62 A4:56 | E4/8:70 F#4:60 B4:66 E5:58 B4:62 F#4:56 | D#4/8:70 F#4:60 B4:66 F#5:58 B4:62 F#4:56 |
+# Theme A2 in Em (bars 73-80)
+| E4/8:72 G4:62 B4:68 E5:60 B4:64 G4:58 | D4/8:70 F#4:60 A4:66 D5:58 A4:62 F#4:56 | E4/8:70 A4:60 C#5:66 E5:58 C#5:62 A4:56 | E4/8:70 G4:60 C5:66 E5:58 C5:62 G4:56 |
+| D4/8:70 G4:60 B4:66 D5:58 B4:62 G4:56 | E4/8:70 A4:60 C5:66 E5:58 C5:62 A4:56 | D4/8:70 F#4:60 A4:66 D5:58 A4:62 F#4:56 | E4/8:72 G4:62 B4:68 E5:60 B4:64 G4:58 |
+# Outro part 1 (bars 81-88)
+| E4/8:66 G4:56 B4:62 E5:54 B4:58 G4:52 | E4/8:64 G4:54 C5:60 E5:52 C5:56 G4:50 | D4/8:64 G4:54 B4:60 D5:52 B4:56 G4:50 | E4/8:64 A4:54 C5:60 E5:52 C5:56 A4:50 |
+| E4/8:64 G4:54 B4:60 E5:52 B4:56 G4:50 | E4/8:64 G4:54 C5:60 E5:52 C5:56 G4:50 | E4/8:64 F#4:54 B4:60 E5:52 B4:56 F#4:50 | E4/8:64 G4:54 B4:60 E5:52 B4:56 G4:50 |
+# Outro part 2 (bars 89-96)
+| E4/8:62 G4:52 B4:58 E5:50 B4:54 G4:48 | E4/8:60 G4:50 C5:56 E5:48 C5:52 G4:46 | D4/8:60 G4:50 B4:56 D5:48 B4:52 G4:46 | E4/8:58 A4:48 C5:54 E5:46 C5:50 A4:44 |
+| E4/8:56 G4:46 B4:52 E5:44 B4:48 G4:42 | E4/8:54 G4:44 B4:50 E5:42 B4:46 G4:40 | E4/8:52 G4:42 B4:48 E5:40 B4:44 G4:38 | [E4 B4 E5]/2.:50 |
+
+track bass role=bass vol=0.38 pan=0.0
+# Intro (bars 1-8)
+| R*4 |
+| v=82 A2/4 C3 F2 | G2/4 D3 Bb2 | A2/4 E2 D3 | A2/2. |
+# Theme A1 (bars 9-16)
+| v=84 D2/4 A2 D3 | E2/4 G2 C3 | B2/4 D3 G2 | Bb2/4 F2 D3 |
+| A2/4 C3 F2 | G2/4 D3 Bb2 | A2/4 E2 D3 | A2/2. |
+# Theme A2 (bars 17-24)
+| D2/4 A2 D3 | E2/4 G2 C3 | B2/4 D3 G2 | Bb2/4 F2 D3 |
+| A2/4 C3 F2 | G2/4 D3 Bb2 | C3/4 G2 E2 | D2/2. |
+# Theme A1 with counter (bars 25-32)
+| D2/4 A2 D3 | E2/4 G2 C3 | B2/4 D3 G2 | Bb2/4 F2 D3 |
+| A2/4 C3 F2 | G2/4 D3 Bb2 | A2/4 E2 D3 | A2/2. |
+# Theme A2 with counter (bars 33-40)
+| D2/4 A2 D3 | E2/4 G2 C3 | B2/4 D3 G2 | Bb2/4 F2 D3 |
+| A2/4 C3 F2 | G2/4 D3 Bb2 | C3/4 G2 E2 | D2/2. |
+# B section part 1 - F major (bars 41-48)
+| v=86 F2/4 C3 F2 | E2/4 G2 C3 | D2/4 A2 D3 | C3/4 E2 A2 |
+| Bb2/4 F2 D3 | A2/4 C3 F2 | G2/4 D3 Bb2 | C3/2. |
+# B section part 2 - build (bars 49-56)
+| F2/4 C3 F2 | E2/4 G2 C3 | D2/4 A2 D3 | Bb2/4 F2 D3 |
+| G2/4 D3 Bb2 | B2/4 D3 G2 | A2/4 E2 D3 | A2/2. |
+# Bridge (bars 57-64)
+| v=78 D2/4 A2 D3 | C3/4 G2 E2 | B2/4 D3 G2 | Bb2/4 F2 D3 |
+| A2/4 C3 F2 | G2/4 D3 Bb2 | A2/4 E2 D3 | B2/4 F#2 D#3 |
+# Theme A1 in Em (bars 65-72)
+| v=88 E2/4 B2 E3 | F#2/4 A2 D3 | C#3/4 E2 A2 | C3/4 G2 E3 |
+| B2/4 D3 G2 | A2/4 E2 C3 | B2/4 F#2 E3 | B2/2. |
+# Theme A2 in Em (bars 73-80)
+| E2/4 B2 E3 | F#2/4 A2 D3 | C#3/4 E2 A2 | C3/4 G2 E3 |
+| B2/4 D3 G2 | A2/4 E2 C3 | D3/4 A2 F#2 | E2/2. |
+# Outro part 1 (bars 81-88)
+| v=76 E2/4 B2 E3 | C3/4 G2 E2 | B2/4 G2 D3 | A2/4 E2 C3 |
+| E2/4 B2 E3 | C3/4 G2 E2 | B2/4 F#2 D#3 | E2/2. |
+# Outro part 2 (bars 89-96)
+| v=70 E2/4 B2 E3 | C3/4 G2 E2 | B2/4 G2 D3 | A2/4 E2 C3 |
+| E2/2. | R*3 |
+
+track beat role=drums vol=0.55 pan=0.0
+# Intro & Theme A (bars 1-40)
+| R*40 |
+# B section part 1 - soft hats (bars 41-48)
+| v=64 h/4 h h | h/4 s/4':58 h/4 | h/4 h h | h/4 s/8':58 s/8':58 h/4 |
+| h/4 h h | h/4 s/4':58 h/4 | h/4 h s/4':60 | s/8':60 s/8':60 s/8':62 s/8':62 s/4':66 |
+# B section part 2 - light march snare (bars 49-56)
+| v=68 [k h]/4 s/8':64 s/16:54 s:54 [s h]/4:66 | h/4 s/8':64 s/16:54 s:54 [s h]/4:66 | [k h]/4 s/8':64 s/16:54 s:54 [s h]/4:66 | h/4 s/8':64 s/16:54 s:54 [s h]/4:66 |
+| [k h]/4 s/8':64 s/16:54 s:54 [s h]/4:66 | h/4 s/8':64 s/16:54 s:54 [s h]/4:66 | [k h]/4 s/8':66 s/8':66 s/4':70 | [k cr]/2.:74 |
+# Bridge (bars 57-64)
+| R*8 |
+# Theme A1 in Em (bars 65-72)
+| v=72 [k cr]/4:76 s/8':66 s/16:56 s:56 [s h]/4:68 | h/4 s/8':66 s/16:56 s:56 [s h]/4:68 | [k h]/4 s/8':66 s/16:56 s:56 [s h]/4:68 | h/4 s/8':66 s/16:56 s:56 [s h]/4:68 |
+| [k h]/4 s/8':66 s/16:56 s:56 [s h]/4:68 | h/4 s/8':66 s/16:56 s:56 [s h]/4:68 | [k h]/4 s/8':68 s/8':68 s/4':72 | s/8':68 s/8':68 s/8':70 s/8':70 s/4':74 |
+# Theme A2 in Em (bars 73-80)
+| [k cr]/4:76 s/8':66 s/16:56 s:56 [s h]/4:68 | h/4 s/8':66 s/16:56 s:56 [s h]/4:68 | [k h]/4 s/8':66 s/16:56 s:56 [s h]/4:68 | h/4 s/8':66 s/16:56 s:56 [s h]/4:68 |
+| [k h]/4 s/8':66 s/16:56 s:56 [s h]/4:68 | h/4 s/8':66 s/16:56 s:56 [s h]/4:68 | [k h]/4 s/8':68 s/8':68 s/4':72 | [k cr]/2.:76 |
+# Outro (bars 81-96)
+| R*16 |

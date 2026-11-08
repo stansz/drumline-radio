@@ -93,6 +93,7 @@ Originals by SZ (and AI):
 - **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
 - **Underpass** (Synthwave)
+- **Wayfarer's Rest** (Chiptune), by Gemini 3.8 Flash & SZ. A 3:19 wistful fantasy RPG theme at 88 BPM in 3/4: a singing pulse lead over rolling pulse-arp broken chords in D Dorian, a walking triangle bass, an answering square counter-melody, a warm major-key lift in F, a quiet bridge, a final heroic statement up a step in E minor, and an outro that winds down to the lone arp.
 
 ## How it works
 

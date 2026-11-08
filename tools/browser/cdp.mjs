@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 
 export const EDGE = process.env.EDGE_PATH ?? 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
-export const DEFAULT_URL = 'http://localhost:4173/drumline-radio/';
+export const DEFAULT_URL = process.env.RADIO_URL ?? 'http://localhost:4173/drumline-radio/';
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /** Launches headless Edge on a fresh profile and connects to its first page. */
