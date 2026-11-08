@@ -34,8 +34,13 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   if (new URL(request.url).origin !== self.location.origin) return;
 
+  // A navigation to the radio gets the cached app shell. Other pages (instruments.html) go to the
+  // network, so they aren't answered with the radio.
   if (request.mode === 'navigate') {
-    event.respondWith(caches.match('./', { cacheName: CACHE, ignoreVary: true }).then((cached) => cached || fetch(request)));
+    const path = new URL(request.url).pathname;
+    if (path.endsWith('/') || path.endsWith('/index.html')) {
+      event.respondWith(caches.match('./', { cacheName: CACHE, ignoreVary: true }).then((cached) => cached || fetch(request)));
+    }
     return;
   }
 

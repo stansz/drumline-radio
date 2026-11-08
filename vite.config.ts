@@ -60,6 +60,12 @@ function serviceWorker(): Plugin {
 export default defineConfig({
   base,
   plugins: [serviceWorker()],
+  // Two pages: the radio, and the instrument page (instruments.html), which the radio doesn't link.
+  build: {
+    rolldownOptions: {
+      input: { main: 'index.html', instruments: 'instruments.html' },
+    },
+  },
   define: {
     __BUILD_COMMIT__: JSON.stringify(commitId()),
     __BUILD_TIME__: JSON.stringify(new Date().toISOString()),

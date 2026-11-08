@@ -255,6 +255,17 @@ is rendered once by `src/audio/strings.ts` and cached. The string goes through t
 filter, and envelope, and it can sit under oscillators, as `string-bass` does with a sine. A patch
 with an empty `oscs` list is a pure plucked string.
 
+### Hearing and levelling a patch
+
+The instrument page, `instruments.html` (`npm run dev`, then `/drumline-radio/instruments.html`;
+the radio doesn't link it), lists every bank patch with its techniques and the styles that use it.
+Clicking one plays a short phrase in its family's register through a style's effects and master
+chain. Its data comes from `src/ui/audition.ts`, so a new bank patch shows up there by itself.
+
+Before a style swaps a new patch in for an old one, level-match them with
+`node tools/browser/levels.mjs old-id:60,new-id:60` (see `tools/README.md`) and set the new patch's
+`gain` so its RMS is within about 1 dB, so the songs that use the style keep their mix.
+
 ## Saving a song
 
 `renderSong` in `engine.ts` renders a song offline with an `OfflineAudioContext` at 44.1 kHz stereo,

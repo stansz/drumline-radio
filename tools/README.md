@@ -8,7 +8,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 | `midi/` | Converts a score's MIDI file into song bars (`midi2song.mjs`) |
 | `check/` | Parses every song and reports note clashes |
 | `analysis/` | Reports one song's density, register, dynamics and energy; reads a reference MIDI's groove |
-| `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, patch timbre, late notes, offline, screenshots |
+| `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, patch levels, patch timbre, late notes, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
 
 ## Arranger
@@ -293,6 +293,11 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   few beats) RMS reads low because most of the 4 s window is silence, so compare peaks there. A note
   that started before the seek point isn't heard, so seek to just before a long held note to
   measure it. Add a style id at the end to remix the song into it first.
+- **levels:** renders the same four-note phrase on each bank patch offline and prints its RMS and
+  peak, to level-match a new patch to the one it replaces before a style swaps it in. Match RMS
+  within about 1 dB; for a plucked or struck patch that rings out, split the difference with the
+  peak. Like timbre, it needs `npm run dev`:
+  `node tools/browser/levels.mjs harp:60,concert-harp:60` (bank ids, each with a MIDI note).
 - **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
   that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`
   instead of the preview server, because it imports the audio code from `src/`:

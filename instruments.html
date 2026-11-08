@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-style="synthwave">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14101f" />
+    <meta name="description" content="Every instrument in Drumline Radio's synth bank, to click and hear." />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <title>Instruments · Drumline Radio</title>
+  </head>
+  <body>
+    <main class="lab">
+      <header class="lab-head">
+        <h1>Instruments</h1>
+        <p class="lab-intro">
+          Every instrument in the bank. Click one to hear a short phrase; click it again to stop. It plays
+          through a style's effects and master chain: by default a style that uses it.
+        </p>
+        <div class="lab-controls">
+          <label>Room <select id="lab-style"></select></label>
+          <input id="lab-filter" type="search" placeholder="Filter by name, id, or technique" aria-label="Filter instruments" />
+          <a class="lab-back" href="./">Back to the radio</a>
+        </div>
+      </header>
+      <div id="lab-families"></div>
+    </main>
+    <script type="module" src="/src/lab.ts"></script>
+  </body>
+</html>

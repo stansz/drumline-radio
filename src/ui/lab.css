@@ -1,0 +1,139 @@
+/* The instrument page. Colours come from the style tokens in style.css, so the page takes on the
+   look of the style an instrument is playing in. */
+
+.lab {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.lab-head h1 {
+  margin: 0 0 6px;
+  font-family: var(--readout-font);
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--glow) 50%, transparent);
+}
+
+.lab-intro {
+  margin: 0 0 14px;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.lab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.lab-controls select,
+.lab-controls input {
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--text);
+  font: inherit;
+}
+
+.lab-controls label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.lab-controls input {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.lab-back {
+  color: var(--accent-2);
+}
+
+.lab-family h2 {
+  margin: 28px 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.lab-card:hover,
+.lab-card:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  outline: none;
+}
+
+.lab-card.playing {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--glow) 45%, transparent);
+}
+
+.lab-card.playing .lab-name::before {
+  content: '▶ ';
+  color: var(--accent);
+}
+
+.lab-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lab-id {
+  font-size: 12px;
+  color: var(--accent-2);
+}
+
+.lab-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.lab-tag {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.lab-uses {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
