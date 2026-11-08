@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | — | — | Mix: bass 10 dB over lead |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
 | Fathom | Techno | Qwen3.8 Flash | — | — | Mix: stabs buried |
 | The Silent Keep | Cinematic | DeepSeek V4 Flash | — | — | Mix: strings buried |
@@ -28,6 +29,26 @@ Claude's own originals (Midnight Arcade, Night Shift, Save Point, Underpass, Ivo
 Stop) aren't listed.
 
 ## Entries
+
+### Dusk Over Dunmere — MiMo v2.6 Pro (2026-11-08)
+
+- **Brief:** slow wistful fantasy RPG theme, Chiptune, 88 BPM, 3/4, D minor with Dorian B naturals
+  (the same brief as Wayfarer's Rest, written fresh without opening that file).
+- **Cost:** —.
+- **Followed well:** the form (arp intro, A, A with the counter, B lifting to F with a light march
+  snare, a quiet arp-and-bass bridge ending on a dominant B, the E minor statement, a stepped
+  ritardando outro to the lone arp); registers held apart (lead mostly octave 5, counter B4–F#5
+  never crossing the lead, arp and pad octave 4, bass octaves 2–3); both early and late
+  microtiming on the lead and counter; per-note uneven arp velocities; 0 clashes.
+- **Missed:** the triangle bass sat 9–11 dB over the lead until `npm run balance` caught it. Six
+  early (−N) microtiming offsets pulled notes under the *previous* bar's held pad tone (an F under
+  an E, a B under a Bb) and were turned late to clear the clash check.
+- **Fixed after:** bass volume 0.35 → 0.1, lead, arp, and pad up slightly, counter and drums
+  trimmed so the lead stays on top.
+- **Tool changes from it:** — (ideas left for later: a parse error that says a whole-bar shortcut
+  merged with a neighbour when a line has no `|`; a note in composing.md that early offsets can
+  overlap the ending pad of the bar before; a balance flag for an arp buried under the lead, which
+  the docs care about but the tool doesn't check).
 
 ### Wayfarer's Rest — Gemini 3.8 Flash (2026-11-08)
 

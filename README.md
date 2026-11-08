@@ -89,6 +89,12 @@ Originals by SZ (and AI):
   it opens with no kick (a pad, then a hypnotic FM counter-line) before the kick and a rolling sub
   bass drop in together; warm chord stabs, a breakdown where the kick drops and the hook surfaces
   over the pad and chords, and two drops.
+- **Dusk Over Dunmere** (Chiptune), by MiMo v2.6 Pro & SZ. A 3:04 wistful fantasy RPG theme at
+  88 BPM in 3/4: a singing pulse lead with long held notes over rolling pulse-arp broken chords in
+  place of drums, a walking triangle bass, a square counter-melody answering the lead's holds,
+  square pad fifths holding the bigger moments, a lift to F major that builds with a light march
+  snare, a quiet bridge of just arp and bass, a last statement up a step in E minor, and an outro
+  that ritards down to the lone arp.
 - **Save Point** (Chiptune)
 - **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
