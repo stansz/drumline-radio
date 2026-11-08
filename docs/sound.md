@@ -104,13 +104,16 @@ that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-ba
 | Role | Patch |
 | --- | --- |
 | lead | Strings |
-| lead2 | Brass |
+| lead2 | FM brass |
 | counter | Woodwind |
 | pad | String pad |
-| chords | Harp |
+| chords | Concert harp |
 | bass | Low strings |
-| arp | Bells |
+| arp | Glockenspiel |
 | drums | Timpani & cymbals |
+
+Songs can also reach `inst=tubular-bells` (FM bells that ring long) and `inst=pizzicato` (short
+plucked strings).
 
 ### Techno
 
@@ -127,12 +130,12 @@ that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-ba
 
 ### Lo-fi
 
-The Lo-fi style is mellow keys, a round bass, and a dusty swung kit. Its tape wobble comes from the
+The Lo-fi style is mellow keys (an FM electric piano whose soft notes are mellower), a round bass, and a dusty swung kit. Its tape wobble comes from the
 slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
 `fx.crackle`. Songs can reach the extra `Dusty sample` patch with `inst=dusty-sample`: a detuned saw
 and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
-lead. Last Stop uses one more extra, `inst=upright-bass`: a plucked upright bass (triangle, sine, and
-a little saw, a quick filter thump, a short decay) that sounds an octave below the written note, so
+lead. Last Stop uses one more extra, `inst=upright-bass`: a plucked string bass (a Karplus-Strong string
+with a sine under it, a quick filter thump) that sounds an octave below the written note, so
 a lead track can play the melody on it. Shortwave's melody uses `inst=radio-lead`: a saw and a narrow
 pulse, plucked so it decays instead of holding, driven hard, and band-passed wide around 1.8 kHz,
 like a lead through a small radio speaker. It has no vibrato on purpose: in a lead's register, a

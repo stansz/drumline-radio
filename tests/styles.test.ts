@@ -41,7 +41,7 @@ describe('styles', () => {
   });
 
   it('resolves an inst before the role and falls back to the role', () => {
-    expect(resolvePatch(STYLE_DEFS.orchestral, { role: 'lead', inst: 'brass' }).name).toBe('Brass');
+    expect(resolvePatch(STYLE_DEFS.orchestral, { role: 'lead', inst: 'brass' }).name).toBe('FM brass');
     expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'brass' }).name).toBe('Acid');
     expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: null }).name).toBe('Acid');
   });
