@@ -204,12 +204,13 @@ export const KEYS: Record<string, Patch> = {
     string: { octave: -1, level: 1, decay: 2, brightness: 0.25, pick: 0.45 },
     env: env(0.05, 1.5, 0.35, 0.45), filter: { type: 'bandpass', hz: 1000, q: 0.3, envAmount: 1, envDecay: 0.25 },
     drive: 0.1, gain: 0.52, sends: { reverb: 0.9, delay: 1.4 } }),
-  // Alt rock: a clean electric guitar, the Cinematic lead guitar with almost no drive, a milder
-  // vibrato, a little less sustain, and small reverb and delay sends. It sounds an octave below the
+  // Alt rock: a clean electric guitar, from the Cinematic lead guitar: no drive, a triangle in place
+  // of its buzzy square, less saw, a softer and lower filter, a milder vibrato, a little less
+  // sustain, and small reverb and delay sends. It sounds an octave below the
   // written note, like a real guitar.
-  'clean-electric': synth({ name: 'Clean electric', oscs: [osc('sawtooth', -1, 0, 0.6), osc('square', -1, 4, 0.25), osc('sine', -2, 0, 0.15)],
-    env: env(0.008, 0.8, 0.5, 0.5), filter: { type: 'lowpass', hz: 2600, q: 1.2, envAmount: 1.6, envDecay: 0.25 },
-    vibrato: { rate: 5.2, cents: 10, delay: 0.45 }, drive: 0.1, gain: 0.13, sends: { reverb: 0.6, delay: 0.8 } }),
+  'clean-electric': synth({ name: 'Clean electric', oscs: [osc('sawtooth', -1, 0, 0.35), osc('triangle', -1, 4, 0.5), osc('sine', -2, 0, 0.15)],
+    env: env(0.008, 0.8, 0.5, 0.5), filter: { type: 'lowpass', hz: 2000, q: 0.7, envAmount: 1.4, envDecay: 0.25 },
+    vibrato: { rate: 5.2, cents: 10, delay: 0.45 }, gain: 0.35, sends: { reverb: 0.6, delay: 0.8 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },
@@ -363,7 +364,8 @@ export const KITS: Record<string, Patch> = {
     name: 'Timpani & cymbals',
     kick: { wave: 'sine', hz: 70, sweep: 1.15, sweepTime: 0.08, decay: 1.1, click: 0 },
     snare: { noise: 'white', filter: 'bandpass', hz: 2500, toneHz: 200, decay: 0.18 },
-    hat: { noise: 'white', hz: 8000, decay: 0.06 },
+    // A light tap on a suspended cymbal rather than a drum-kit hi-hat: metallic, lower, longer.
+    hat: { noise: 'metal', hz: 5500, decay: 0.12 },
     crashDecay: 2.5,
     gain: 0.85,
     sends: { reverb: 1.2, delay: 0 },

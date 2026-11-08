@@ -178,7 +178,8 @@ plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean 
 indie arpeggios: a warm, darkly filtered plucked string at the written pitch, with a deep, slow
 chorus wobble and a moderate reverb and delay send that makes its notes echo on the style's
 dotted-eighth delay. `inst=clean-electric` is the Cinematic lead guitar made
-clean: almost no drive, a milder vibrato, less sustain, and small reverb and delay sends, an octave
+clean: no drive, a triangle in place of its buzzy square, less saw, a softer and lower filter, a
+milder vibrato, less sustain, and small reverb and delay sends, an octave
 below the written note. Porch Light uses `clean-electric` and `shimmer-guitar`.
 
 ### Studio
