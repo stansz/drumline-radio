@@ -21,9 +21,9 @@ const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
 // counter-line avoids any note a half step above a pad or bass tone (G and Db over Fm, and so on).
 const CH = {
   Fm: { stab: [56, 60, 65], padA: [41, 44, 48], padB: [44, 48, 53], padC: [41, 48, 53], root: 29, cell: [72, 70, 68] },
-  Db: { stab: [56, 61, 65], padA: [37, 41, 44], padB: [41, 44, 49], padC: [37, 44, 49], root: 37, cell: [73, 70, 68] },
+  Db: { stab: [56, 61, 65], padA: [37, 41, 44], padB: [41, 44, 49], padC: [37, 44, 49], root: 25, cell: [73, 70, 68] },
   Ab: { stab: [56, 60, 63], padA: [44, 48, 51], padB: [48, 51, 56], padC: [44, 51, 56], root: 32, cell: [72, 70, 68] },
-  Eb: { stab: [58, 63, 67], padA: [39, 43, 46], padB: [43, 46, 51], padC: [39, 46, 51], root: 39, cell: [75, 73, 70] },
+  Eb: { stab: [58, 63, 67], padA: [39, 43, 46], padB: [43, 46, 51], padC: [39, 46, 51], root: 27, cell: [75, 73, 70] },
   Bbm: { stab: [58, 61, 65], padA: [46, 49, 53], padB: [49, 53, 58], padC: [46, 53, 58], root: 34, cell: [73, 70, 68] },
 };
 
@@ -73,7 +73,8 @@ const m3 = (c, v) => {
 };
 
 // The stabs: three syncopated patterns, every hit nudged late and a little uneven in level.
-const stab = (c, v, kind) => {
+const stab = (c, v0, kind) => {
+  const v = Math.min(121, v0 + 10); // lifted so the chords aren't buried under the counter-line
   const N = chordOf(CH[c].stab);
   if (kind === 'A')
     return `r/8. ${N}/16+22:${v + 4} r/8 ${N}/8+16:${v - 4} r/8 ${N}/8+24:${v + 2} r/16 ${N}/16+18:${v - 6} r/8`;
@@ -81,7 +82,8 @@ const stab = (c, v, kind) => {
     return `r/8 ${N}/16+20:${v} r/16 ${N}/8+26:${v - 6} r/8 ${N}/16+18:${v + 2} r/16 ${N}/8+24:${v - 4} r/8 ${N}/16+14:${v - 8} r/16`;
   return `r/8 ${N}/8+22:${v} r/4 ${N}/8+18:${v - 6} r/4 ${N}/8+26:${v - 2}`; // C: sparse
 };
-const stabBeat = (c, v) => {
+const stabBeat = (c, v0) => {
+  const v = Math.min(121, v0 + 10);
   const N = chordOf(CH[c].stab);
   return `${N}/4:${v} ${N}/4:${v + 2} ${N}/4:${v + 4} ${N}/4:${v + 6}`;
 };
@@ -92,6 +94,7 @@ const padHold = (set, c, v) => `${chordOf(CH[c][set])}/1:${v}~`; // tied over tw
 const padRest = (set, c) => `${chordOf(CH[c][set])}/1`;
 
 // The rolling sub bass: offbeat eighths, sixteenth rolls, rolls with an octave pop, and held roots.
+// Every root sits in the low sub octave (D-flat and E-flat too), so it hits deep under the kick.
 const b8 = (c, v) => {
   const x = nm(CH[c].root);
   return `r/8 ${x}/8:${v} r/8 ${x}/8:${v - 6} r/8 ${x}/8:${v - 2} r/8 ${x}/8:${v - 8}`;
@@ -398,16 +401,16 @@ key: F minor
 tempo: 124
 time: 4/4
 
-track melody role=counter vol=0.8
+track melody role=counter vol=0.6
 ${block('melody')}
 
 track stabs role=chords vol=1 pan=-0.15
 ${block('stabs')}
 
-track pad role=pad vol=0.75
+track pad role=pad vol=1
 ${block('pad')}
 
-track bass role=bass vol=0.4
+track bass role=bass vol=0.3
 ${block('bass')}
 
 track drums role=drums vol=0.78
