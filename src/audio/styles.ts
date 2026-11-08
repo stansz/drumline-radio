@@ -243,6 +243,7 @@ const RECIPES: StyleRecipe[] = [
       'shimmer-guitar': 'shimmer-guitar',
       'acoustic-guitar': 'acoustic-guitar',
       'plugged-acoustic': 'plugged-acoustic',
+      'soft-guitar': 'soft-guitar',
       'crunch-guitar': 'crunch-guitar',
     },
     fx: { reverbSeconds: 1.4, reverbSend: 0.18, delayBeats: 0.75, delaySend: 0.08, delayFeedback: 0.25, crush: 0, lowpassHz: 16000, crackle: 0 },

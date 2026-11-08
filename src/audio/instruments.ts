@@ -204,6 +204,13 @@ export const KEYS: Record<string, Patch> = {
     string: { octave: -1, level: 1, decay: 2, brightness: 0.25, pick: 0.45 },
     env: env(0.05, 1.5, 0.35, 0.45), filter: { type: 'bandpass', hz: 1000, q: 0.3, envAmount: 1, envDecay: 0.25 },
     drive: 0.1, gain: 0.52, sends: { reverb: 0.9, delay: 1.4 } }),
+  // Alt rock: a soft guitar built from the harp: smooth detuned triangles with a soft octave above,
+  // plucked and fading to nothing, plus a little saw through a gentle low-pass for a hint of string,
+  // a soft attack, and a slight chorus. No drive and no resonant filter, so it never buzzes. It
+  // sounds an octave below the written note, like a real guitar.
+  'soft-guitar': synth({ name: 'Soft guitar', oscs: [osc('triangle', -1, -3, 0.5), osc('triangle', -1, 3, 0.35), osc('sine', 0, 0, 0.15), osc('sawtooth', -1, 0, 0.12)],
+    env: env(0.015, 1.6, 0, 0.5), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1.5, envDecay: 0.25 },
+    vibrato: { rate: 0.8, cents: 5, delay: 0 }, gain: 0.2, sends: { reverb: 1, delay: 1 } }),
   // Alt rock: a driven plucked electric guitar for crunchy parts.
   'crunch-guitar': synth({ name: 'Crunch guitar', oscs: [],
     string: { octave: -1, level: 1, decay: 2, brightness: 0.7, pick: 0.12 },

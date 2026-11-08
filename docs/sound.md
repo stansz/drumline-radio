@@ -148,7 +148,7 @@ and its long delay send and the style's 3.2 s reverb give it a big hall. Songs c
 
 ### Alt rock
 
-The Alt rock style is guitar-band rock: punk, pop punk, and indie. Its eleven instruments are all new
+The Alt rock style is guitar-band rock: punk, pop punk, and indie. Its twelve instruments are all new
 in the bank.
 
 | Role | Patch |
@@ -167,7 +167,7 @@ chugging, and Guitar wall holds for a chorus. Clean guitar is a jangly plucked s
 and counter-lines, an octave below the written note. Pick bass has a little drive for driving eighth notes. The style has a small
 room (1.4 s reverb), little delay, and no crush.
 
-Alt rock has five extras that no role maps to. `inst=indie-lead` is a warm, muffled plucked string,
+Alt rock has six extras that no role maps to. `inst=indie-lead` is a warm, muffled plucked string,
 picked toward the middle and darkly filtered so it isn't twangy, an octave below the written note,
 with a short ring, a deep, slow chorus, and moderate reverb and delay. `inst=acoustic-guitar`
 is a plucked acoustic, open, with a soft pick attack and a moderate ring, `inst=plugged-acoustic` is the same kind of string
@@ -177,8 +177,11 @@ some reverb and echo, and `inst=crunch-guitar` is a driven
 plucked electric for crunchy parts. `inst=shimmer-guitar` is a shimmering clean guitar for
 indie arpeggios: a warm, darkly filtered plucked string at the written pitch, with a deep, slow
 chorus wobble and a moderate reverb and delay send that makes its notes echo on the style's
-dotted-eighth delay. Porch Light uses
-`plugged-acoustic` and `shimmer-guitar`.
+dotted-eighth delay. `inst=soft-guitar` starts from the Orchestral harp:
+smooth detuned triangles and a soft octave, plucked and fading to nothing, with a little saw through
+a gentle low-pass for a hint of string, a soft attack, and a slight chorus, an octave below the
+written note; it has no drive or resonant filter, so it never buzzes. Porch Light uses `soft-guitar`
+and `shimmer-guitar`.
 
 ### Studio
 
