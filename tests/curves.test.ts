@@ -8,6 +8,7 @@ import {
   CRUSH_POINTS,
   crushCurve,
   driveCurve,
+  driveMakeup,
   fmIndex,
   MIN_OSC_HZ,
   noteGain,
@@ -157,5 +158,15 @@ describe('crackleSamples', () => {
       loudest = Math.max(loudest, Math.abs(value));
     }
     expect(loudest).toBeGreaterThan(0.2);
+  });
+});
+
+describe('driveMakeup', () => {
+  it('undoes the drive curve slope at zero, so quiet input keeps its level', () => {
+    for (const amount of [0, 0.05, 0.3, 1]) {
+      const curve = driveCurve(amount, 4097);
+      const slope = (curve[2049] - curve[2047]) / (4 / 4096);
+      expect(slope * driveMakeup(amount)).toBeCloseTo(1, 2);
+    }
   });
 });

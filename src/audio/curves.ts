@@ -52,6 +52,12 @@ export function driveCurve(amount: number, samples = 1024): Float32Array<ArrayBu
   return curve;
 }
 
+/** The gain that undoes driveCurve's boost of quiet signals (its slope at zero is k / tanh(k)). */
+export function driveMakeup(amount: number): number {
+  const k = 1 + Math.max(0, Math.min(1, amount)) * 20;
+  return Math.tanh(k) / k;
+}
+
 /** Fourier coefficients of a pulse wave with the given duty cycle. */
 export function pulseCoefficients(
   duty: number,

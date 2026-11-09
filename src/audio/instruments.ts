@@ -403,16 +403,14 @@ export const BASSES: Record<string, Patch> = {
 };
 
 export const KITS: Record<string, Patch> = {
-  // Synthwave drums: an 80s electronic kit.
-  'gated-kit': drums({
-    name: 'Gated kit',
-    kick: { wave: 'sine', hz: 55, sweep: 3, sweepTime: 0.12, decay: 0.45, click: 0.3 },
-    snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 180, decay: 0.25 },
-    hat: { noise: 'white', hz: 7000, decay: 0.05 },
-    crashDecay: 1.6,
-    gain: 0.9,
-    sends: { reverb: 1.3, delay: 0 },
-  }),
+  // Synthwave drums: an 80s electronic kit, with a gated snare and big sweeping toms.
+  'gated-kit': drums({ name: 'Gated kit',
+    kick: { wave: 'sine', hz: 50, sweep: 3.5, sweepTime: 0.1, decay: 0.5, click: 0.3 },
+    snare: { noise: 'white', filter: 'bandpass', hz: 1500, toneHz: 0, tones: [180, 240], toneDecay: 0.12, decay: 0.3, gate: 0.22 },
+    hat: { noise: 'white', hz: 7500, decay: 0.05 },
+    toms: { hz: [80, 120, 170], sweep: 2.4, sweepTime: 0.18, decay: 0.5 },
+    clap: { hz: 1200, q: 1, decay: 0.25 },
+    crashDecay: 1.6, gain: 0.8, sends: { reverb: 1.3, delay: 0 } }),
   // Chiptune drums: crunchy noise-channel drums.
   'chip-kit': drums({
     name: 'Noise kit',
@@ -434,34 +432,35 @@ export const KITS: Record<string, Patch> = {
     gain: 0.85,
     sends: { reverb: 1.2, delay: 0 },
   }),
-  // Techno drums: a 909-style kit.
-  '909-kit': drums({
-    name: '909 kit',
-    kick: { wave: 'sine', hz: 50, sweep: 4, sweepTime: 0.08, decay: 0.38, click: 0.5 },
-    snare: { noise: 'white', filter: 'bandpass', hz: 2000, toneHz: 190, decay: 0.2 },
+  // Techno drums: a 909-style kit, a clicky kick and a snappy two-tone snare.
+  '909-kit': drums({ name: '909 kit',
+    kick: { wave: 'sine', hz: 48, sweep: 4, sweepTime: 0.07, decay: 0.4, click: 0.55 },
+    snare: { noise: 'white', filter: 'highpass', hz: 2500, toneHz: 0, tones: [185, 330], toneDecay: 0.08, decay: 0.18 },
     hat: { noise: 'metal', hz: 8000, decay: 0.04 },
-    crashDecay: 1.6,
-    gain: 0.9,
-    sends: { reverb: 0.4, delay: 0 },
-  }),
-  // Lo-fi drums: a dusty, swung kit.
+    toms: { hz: [100, 140, 200], sweep: 1.4, sweepTime: 0.05, decay: 0.3 },
+    clap: { hz: 1400, q: 1.5, decay: 0.22 },
+    drive: 0.05, crashDecay: 1.6, gain: 1, sends: { reverb: 0.4, delay: 0 } }),
+  // Lo-fi drums: a dusty, swung kit, dark and saturated like a sampled record.
   'dusty-kit': drums({ name: 'Dusty kit',
-    kick: { wave: 'sine', hz: 50, sweep: 2, sweepTime: 0.08, decay: 0.35, click: 0.1 },
-    snare: { noise: 'white', filter: 'bandpass', hz: 1400, toneHz: 0, decay: 0.18 },
+    kick: { wave: 'sine', hz: 52, sweep: 1.8, sweepTime: 0.08, decay: 0.3, click: 0.05 },
+    snare: { noise: 'white', filter: 'bandpass', hz: 1300, toneHz: 0, tones: [170], toneDecay: 0.06, decay: 0.16 },
     hat: { noise: 'white', hz: 6000, decay: 0.03 },
-    crashDecay: 1.2, gain: 0.75, sends: { reverb: 0.6, delay: 0 } }),
-  // Cinematic and Studio drums: an organic studio kit.
+    toms: { hz: [90, 125, 170], sweep: 1.3, sweepTime: 0.06, decay: 0.3 },
+    drive: 0.1, lowpassHz: 5000, crashDecay: 1.2, gain: 1.25, sends: { reverb: 0.6, delay: 0 } }),
+  // Cinematic and Studio drums: a clean, natural studio kit with a little shell in the kick.
   'studio-kit': drums({ name: 'Studio kit',
-    kick: { wave: 'sine', hz: 55, sweep: 2.2, sweepTime: 0.06, decay: 0.5, click: 0.25 },
-    snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 180, decay: 0.22 },
-    hat: { noise: 'white', hz: 7000, decay: 0.05 },
-    crashDecay: 2.4, gain: 0.8, sends: { reverb: 0.9, delay: 0 } }),
-  // Alt rock: a punchy kit in a small room, with a big snare and a washy crash.
+    kick: { wave: 'sine', hz: 56, sweep: 2, sweepTime: 0.05, decay: 0.45, click: 0.2, body: { hz: 80, decay: 0.12, level: 0.3 } },
+    snare: { noise: 'white', filter: 'bandpass', hz: 1900, toneHz: 0, tones: [190], toneDecay: 0.1, decay: 0.22 },
+    hat: { noise: 'white', hz: 8500, decay: 0.05 },
+    toms: { hz: [95, 135, 190], sweep: 1.25, sweepTime: 0.05, decay: 0.45 },
+    crashDecay: 2.4, gain: 0.9, sends: { reverb: 0.9, delay: 0 } }),
+  // Alt rock: a punchy, driven kit in a small room: a kick with a thud, a snare with long wires, resonant toms.
   'rock-kit': drums({ name: 'Rock kit',
-    kick: { wave: 'sine', hz: 58, sweep: 2.6, sweepTime: 0.07, decay: 0.42, click: 0.4 },
-    snare: { noise: 'white', filter: 'bandpass', hz: 1600, toneHz: 200, decay: 0.28 },
+    kick: { wave: 'sine', hz: 58, sweep: 2.6, sweepTime: 0.07, decay: 0.42, click: 0.4, body: { hz: 90, decay: 0.15, level: 0.5 } },
+    snare: { noise: 'white', filter: 'bandpass', hz: 2200, toneHz: 0, tones: [200], toneDecay: 0.08, decay: 0.35 },
     hat: { noise: 'white', hz: 7500, decay: 0.07 },
-    crashDecay: 1.8, gain: 0.9, sends: { reverb: 0.8, delay: 0 } }),
+    toms: { hz: [85, 115, 160], sweep: 1.3, sweepTime: 0.04, decay: 0.55, wave: 'triangle' },
+    drive: 0.1, crashDecay: 1.8, gain: 1.45, sends: { reverb: 0.8, delay: 0 } }),
 };
 
 export const FAMILIES = { leads: LEADS, keys: KEYS, pads: PADS, basses: BASSES, kits: KITS };

@@ -110,6 +110,8 @@ export interface DrumKit {
     sweepTime: number;
     decay: number;
     click: number;
+    /** A second fixed-pitch sine for the drum shell's thud, mixed under the swept body. */
+    body?: { hz: number; decay: number; level: number };
   };
   snare: {
     noise: 'white' | 'chip';
@@ -117,11 +119,53 @@ export interface DrumKit {
     hz: number;
     toneHz: number;
     decay: number;
+    /** Tuned tones in Hz, one triangle each; when set it replaces `toneHz`. */
+    tones?: number[];
+    /** Seconds for the tones to fade; default `decay * 0.5`. */
+    toneDecay?: number;
+    /** Seconds the noise holds at full level before cutting to silence in 15 ms, instead of decaying. */
+    gate?: number;
   };
   hat: { noise: 'white' | 'chip' | 'metal'; hz: number; decay: number };
+  /** Low, mid, and high tom pitches (GM 41, 45, 50), with their shared sweep and decay. */
+  toms?: {
+    hz: [number, number, number];
+    sweep: number;
+    sweepTime: number;
+    decay: number;
+    wave?: 'sine' | 'triangle';
+  };
+  /** The hand-clap's noise band, sharpness, and decay. */
+  clap?: { hz: number; q: number; decay: number };
+  /** Distortion amount on every hit, 0 to 1: a tanh wave shaper. */
+  drive?: number;
+  /** A low-pass corner on every hit of the kit, in Hz. */
+  lowpassHz?: number;
   crashDecay: number;
   gain: number;
   sends: { reverb: number; delay: number };
+}
+
+/** The toms a kit gets when it names none. */
+export const DEFAULT_TOMS = {
+  hz: [90, 130, 180] as [number, number, number],
+  sweep: 1.6,
+  sweepTime: 0.06,
+  decay: 0.35,
+  wave: 'sine' as const,
+};
+
+/** The clap a kit gets when it names none. */
+export const DEFAULT_CLAP = { hz: 1100, q: 1.2, decay: 0.18 };
+
+/** The kit's toms, or the defaults. */
+export function kitToms(kit: DrumKit): Required<NonNullable<DrumKit['toms']>> {
+  return kit.toms ? { ...kit.toms, wave: kit.toms.wave ?? 'sine' } : { ...DEFAULT_TOMS };
+}
+
+/** The kit's clap, or the defaults. */
+export function kitClap(kit: DrumKit): NonNullable<DrumKit['clap']> {
+  return kit.clap ?? DEFAULT_CLAP;
 }
 
 export type Patch = SynthPatch | DrumKit;

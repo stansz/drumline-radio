@@ -283,6 +283,27 @@ breathes with the note instead of hissing beside it. A low `q` is wide and airy;
 whistle. A flute is a near-sine plus a little breath around 2–3 kHz: `woodwind` sets
 `{ level: 0.25, hz: 2500, q: 0.8 }`.
 
+### Drum kits
+
+A kit (`drums({...})` in `src/audio/instruments.ts`) sets each drum's body: the kick's `hz`,
+`sweep`, and `sweepTime` (a pitch drop from `sweep` × `hz` down to `hz` over `sweepTime`), `decay`,
+and `click` (a short noise burst over the beater), plus an optional `body` — a second, fixed sine
+under the sweep for the shell's thud; the snare's noise `noise` and `filter` band at `hz`, its `toneHz`
+or list of `tones` (one triangle each, fading over `toneDecay`), and an optional `gate` that holds the
+noise at full level for that many seconds and then cuts it in 15 ms instead of letting it decay; the
+hat's `noise` and `decay`; optional `toms` (low, mid, and high pitches for GM 41, 45, and 50, with a
+shared `sweep`, `sweepTime`, `decay`, and `wave`); an optional `clap` (band `hz`, `q`, `decay`); the
+crash's `crashDecay`; and the kit's own `drive` (0 to 1, a tanh wave shaper on every hit, with a
+makeup gain that keeps quiet hits at their level, so it adds grit and squashes peaks without making
+the kit louder; keep it small, 0.05 to 0.1) and `lowpassHz` (a low-pass on every hit). Level a kit
+by a whole groove, not single hits: drive and gates change how loud a pattern sounds. Every new field is optional, and the defaults are the old
+sound: a kit that sets none of them schedules exactly what it did before.
+
+Each kit is voiced for its style: `gated-kit` has an 80s gated snare and big sweeping toms;
+`909-kit` has a clicky kick and a snappy two-tone snare; `dusty-kit` is dark and saturated like a
+sampled record; `studio-kit` is clean and natural, with a little shell in the kick; and `rock-kit`
+is driven, with long snare wires and resonant toms.
+
 ### Hearing and levelling a patch
 
 The instrument page, `instruments.html` (`npm run dev`, then `/drumline-radio/instruments.html`;

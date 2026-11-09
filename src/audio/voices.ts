@@ -1,5 +1,6 @@
-import { attackTime, audibleOsc, bendGlide, driveCurve, fmIndex, pulseCoefficients } from './curves';
+import { attackTime, audibleOsc, bendGlide, driveCurve, driveMakeup, fmIndex, pulseCoefficients } from './curves';
 import { midiToFreq } from '../music/pitch';
+import { kitClap, kitToms } from './patches';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
 import { pluckSamples } from './strings';
 
@@ -376,8 +377,40 @@ export function playDrum(
   const collected = part();
   // Every drum voice goes through its own gain, so a hit cut short can fade instead of snapping off.
   const out = ctx.createGain();
-  out.connect(dest);
   collected.nodes.push(out);
+
+  // The kit's output chain: drive then low-pass, either or both. `out` stays the gain the voice
+  // fades through, and with neither stage set the chain is exactly out → dest.
+  let chain: AudioNode = out;
+  const drive = drums.drive ?? 0;
+  if (drive > 0) {
+    const shaper = ctx.createWaveShaper();
+    shaper.oversample = '2x';
+    let curve = kit.driveCurves.get(drive);
+    if (!curve) {
+      curve = driveCurve(drive);
+      kit.driveCurves.set(drive, curve);
+    }
+    shaper.curve = curve;
+    // The curve multiplies quiet input by k / tanh(k); undo that, so drive adds grit and squashes
+    // the peaks of a hit without making the whole kit louder.
+    const makeup = ctx.createGain();
+    makeup.gain.value = driveMakeup(drive);
+    chain.connect(shaper);
+    shaper.connect(makeup);
+    collected.nodes.push(shaper, makeup);
+    chain = makeup;
+  }
+  if (drums.lowpassHz !== undefined) {
+    const lowpass = ctx.createBiquadFilter();
+    lowpass.type = 'lowpass';
+    lowpass.frequency.value = drums.lowpassHz;
+    lowpass.Q.value = 0.7;
+    chain.connect(lowpass);
+    collected.nodes.push(lowpass);
+    chain = lowpass;
+  }
+  chain.connect(dest);
 
   switch (gm) {
     case 36: {
@@ -394,6 +427,21 @@ export function playDrum(
       collected.nodes.push(osc, body);
       collected.sources.push({ node: osc });
       let longest = kick.decay;
+
+      // The shell's thud: a fixed sine under the swept body, at the kit's own pitch.
+      if (kick.body) {
+        const shell = ctx.createOscillator();
+        shell.type = 'sine';
+        shell.frequency.value = kick.body.hz;
+        const shellGain = ctx.createGain();
+        shellGain.gain.setValueAtTime(clampLevel(level * kick.body.level), time);
+        shellGain.gain.exponentialRampToValueAtTime(0.001, time + kick.body.decay);
+        shell.connect(shellGain);
+        shellGain.connect(out);
+        collected.nodes.push(shell, shellGain);
+        collected.sources.push({ node: shell });
+        longest = Math.max(longest, kick.body.decay);
+      }
 
       if (kick.click > 0) {
         const noise = noiseSpec(kit, 'white');
@@ -420,27 +468,37 @@ export function playDrum(
       filter.frequency.value = snare.hz;
       filter.Q.value = 0.8;
       const body = ctx.createGain();
-      body.gain.setValueAtTime(clampLevel(level * 0.8), time);
-      body.gain.exponentialRampToValueAtTime(0.001, time + snare.decay);
+      // A gated snare holds at full level, then cuts to silence in 15 ms; a plain one decays.
+      const bodyLength = snare.gate !== undefined ? snare.gate + 0.015 : snare.decay;
+      if (snare.gate !== undefined) {
+        body.gain.setValueAtTime(clampLevel(level * 0.8), time);
+        body.gain.setValueAtTime(clampLevel(level * 0.8), time + snare.gate);
+        body.gain.linearRampToValueAtTime(0.0001, time + snare.gate + 0.015);
+      } else {
+        body.gain.setValueAtTime(clampLevel(level * 0.8), time);
+        body.gain.exponentialRampToValueAtTime(0.001, time + snare.decay);
+      }
       noise.node.connect(filter);
       filter.connect(body);
       body.connect(out);
       collected.nodes.push(filter, body);
       collected.sources.push(noise);
-      let longest = snare.decay;
+      let longest = bodyLength;
 
-      if (snare.toneHz > 0) {
+      const tones = snare.tones ?? (snare.toneHz > 0 ? [snare.toneHz] : []);
+      const toneDecay = snare.toneDecay ?? snare.decay * 0.5;
+      for (const toneHz of tones) {
         const tone = ctx.createOscillator();
         tone.type = 'triangle';
-        tone.frequency.value = snare.toneHz;
+        tone.frequency.value = toneHz;
         const toneGain = ctx.createGain();
-        toneGain.gain.setValueAtTime(clampLevel(level * 0.5), time);
-        toneGain.gain.exponentialRampToValueAtTime(0.001, time + snare.decay * 0.5);
+        toneGain.gain.setValueAtTime(clampLevel(level * 0.5 / Math.sqrt(tones.length)), time);
+        toneGain.gain.exponentialRampToValueAtTime(0.001, time + toneDecay);
         tone.connect(toneGain);
         toneGain.connect(out);
         collected.nodes.push(tone, toneGain);
         collected.sources.push({ node: tone });
-        longest = Math.max(longest, snare.decay * 0.5);
+        longest = Math.max(longest, toneDecay);
       }
       return makeVoice(time + longest + 0.05, out, collected, time);
     }
@@ -504,26 +562,28 @@ export function playDrum(
     case 41:
     case 45:
     case 50: {
-      const hz = gm === 41 ? 90 : gm === 45 ? 130 : 180;
+      const toms = kitToms(drums);
+      const hz = gm === 41 ? toms.hz[0] : gm === 45 ? toms.hz[1] : toms.hz[2];
       const osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(hz * 1.6, time);
-      osc.frequency.exponentialRampToValueAtTime(hz, time + 0.06);
+      osc.type = toms.wave;
+      osc.frequency.setValueAtTime(hz * toms.sweep, time);
+      osc.frequency.exponentialRampToValueAtTime(hz, time + toms.sweepTime);
       const body = ctx.createGain();
       body.gain.setValueAtTime(level, time);
-      body.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
+      body.gain.exponentialRampToValueAtTime(0.001, time + toms.decay);
       osc.connect(body);
       body.connect(out);
       collected.nodes.push(osc, body);
       collected.sources.push({ node: osc });
-      return makeVoice(time + 0.4, out, collected, time);
+      return makeVoice(time + toms.decay + 0.05, out, collected, time);
     }
     case 39: {
+      const clap = kitClap(drums);
       const noise = noiseSpec(kit, 'white');
       const bandpass = ctx.createBiquadFilter();
       bandpass.type = 'bandpass';
-      bandpass.frequency.value = 1100;
-      bandpass.Q.value = 1.2;
+      bandpass.frequency.value = clap.hz;
+      bandpass.Q.value = clap.q;
       const body = ctx.createGain();
       const peak = clampLevel(level);
       body.gain.setValueAtTime(peak * 0.7, time);
@@ -533,13 +593,13 @@ export function playDrum(
       body.gain.setValueAtTime(peak * 0.7, time + 0.02);
       body.gain.exponentialRampToValueAtTime(peak * 0.07, time + 0.028);
       body.gain.setValueAtTime(peak * 0.7, time + 0.03);
-      body.gain.exponentialRampToValueAtTime(0.001, time + 0.18);
+      body.gain.exponentialRampToValueAtTime(0.001, time + clap.decay);
       noise.node.connect(bandpass);
       bandpass.connect(body);
       body.connect(out);
       collected.nodes.push(bandpass, body);
       collected.sources.push(noise);
-      return makeVoice(time + 0.23, out, collected, time);
+      return makeVoice(time + clap.decay + 0.05, out, collected, time);
     }
     case 37: {
       // A rimshot: a short, narrow burst of noise for the stick on the rim, plus a quick low knock
