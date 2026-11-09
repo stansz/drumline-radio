@@ -82,8 +82,14 @@ Originals by SZ (and AI):
 - **Midnight Arcade** (Synthwave)
 - **Starlight Drive** (Synthwave), by Ling 3.1 Flash & SZ. A 4:04 italo-disco original at 118 BPM in
   Bb major: a wordless vox-lead hook over four-on-the-floor gated drums, an octave-bouncing bass,
-  bright offbeat stabs, a pluck arp, and swelled choirs, with a kick-less breakdown and a last
-  chorus up a whole step.
+  bright offbeat stabs, a shimmer-guitar arp, a saw riff, and ooh and aah choirs that trade bars in
+  the verses and sing together in the choruses, with a kick-less breakdown and a last chorus up a
+  whole step.
+- **Sunliner** (Synthwave), by Arena Agent & SZ. A 4:04 italo-disco original at 118 BPM in D major:
+  a wordless vox-lead hook answered by a saw lead between phrases, four-on-the-floor gated drums
+  with open hats on the off-beats and claps on two and four, an octave-bouncing eighths bass, bright
+  poly-stab chords, a pluck arp, ooh under the verses and aah lifting the choruses, a kick-less
+  breakdown where the choirs and pad carry the hook, and a last chorus up a whole step to E.
 - **Fathom** (Techno), by Qwen3.8 Flash & SZ. A 5:09 dub techno original at 118 BPM in G minor: one
   chord stab and nothing else melodic, voiced eight ways, its repeats written as extra stabs that
   land later and softer each time. It opens on the lone echoing chord with no kick, builds a rumbling

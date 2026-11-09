@@ -14,6 +14,7 @@ than guessing.
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
+| Sunliner | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
@@ -31,6 +32,38 @@ Claude's own originals (Midnight Arcade, Night Shift, Save Point, Underpass, Ivo
 Stop) aren't listed.
 
 ## Entries
+
+### Sunliner — Arena Agent (2026-11-09)
+
+- **Brief:** the same italo-disco synthwave brief as Starlight Drive: 118 BPM, a major key, 3:45-4:15,
+  a wordless vox-lead hook (mostly A3-A4, never above C5) as the star, choir-ooh under the verses and
+  choir-aah lifting the choruses and the breakdown, an octave-bouncing eighth-note bass,
+  four-on-the-floor gated kit with open hats on the off-beats and claps on 2 and 4, poly stabs, a
+  pluck arp, and a saw lead answering between phrases. Sunny and danceable, not moody; clearly
+  different from Midnight Arcade (98 BPM, E minor) and Underpass (124 BPM, F minor); pop-dance form
+  with a kick-less breakdown and a last chorus up a whole step.
+- **Followed well:** D major at 118 on the offbeat-stab side of the style rather than Starlight
+  Drive's Bb shimmer; one chord map declared in `# chords:` lines, 0 clashes and 0 off-chord; an
+  eleven-section 120-bar form (intro, verse, pre, chorus, verse, pre, chorus, breakdown, build, last
+  chorus, outro) with something new every 8 or 16 bars; registers kept apart (bass in octaves 1-2,
+  choirs and stabs in the middle, the hook A3-B4 with the saw answers D5-G5); the saw only plays the
+  bars the hook rests in, never doubling it; microtiming on the hook, the stabs, the hats and the
+  bass's off-beats, uneven hat and arp velocities.
+- **Missed at first:** a lot. Three rounds of parse errors from short bars (the held two-bar hooks
+  and the saw answers), then 12 off-chord notes where the hook's held colour tones sat over plain
+  triads, then the mix: the choirs and pad about 11 dB under the hook, the arp 25 dB under it in the
+  breakdown, and the bass a shade loud.
+- **Fixed by itself before handing over:** declared the sevenths the hook implies (F#m7, G#m7, Bm7)
+  in the chord map instead of flattening the melody, re-voiced the intro pickup and the verse answers
+  onto them, raised the pad, both choirs and the arp and dropped the bass, and brought the arp back
+  through the breakdown's second half; `npm run balance` then reported no flags.
+- **Firsts:** the first song to declare seventh chords in its `# chords:` map (the m7 aliases in
+  `src/music/chords.ts` were already there), and the first Synthwave original with a 120-bar form
+  built from a bespoke generator under `tools/arranger/`, so it is in `tests/drift.test.ts`. Its own
+  `tests/sunliner.test.ts` pins the header, the 120-bar form, the hook's A3-B4 ceiling, the whole-step
+  final chorus, the saw's rests and the breakdown, and nothing outside the song. The credit is the
+  harness's own name, Arena Agent (Arena's Agent Mode); the run does not disclose which model was
+  behind it, so no model id is claimed and the price fields stay "—".
 
 ### Starlight Drive — Ling 3.1 Flash (2026-11-09)
 

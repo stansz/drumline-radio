@@ -4,7 +4,7 @@ import { HIDDEN_IDS, LIBRARY, LIBRARY_ERRORS } from '../src/music/library';
 describe('library', () => {
   it('parses every song', () => {
     expect(LIBRARY_ERRORS).toEqual([]);
-    expect(LIBRARY.length).toBe(38);
+    expect(LIBRARY.length).toBe(39);
     expect(HIDDEN_IDS).toEqual([
       'can-can',
       'eine-kleine-nachtmusik',
@@ -28,6 +28,7 @@ describe('library', () => {
       'moonlight',
       'midnight-arcade',
       'starlight-drive',
+      'sunliner',
       'underpass',
       'dusk-over-dunmere',
       'save-point',
@@ -62,7 +63,7 @@ describe('library', () => {
       LIBRARY.filter((entry) => entry.song.meta.category === category).length;
     expect(count('carols')).toBe(9);
     expect(count('classics')).toBe(10);
-    expect(count('originals')).toBe(19);
+    expect(count('originals')).toBe(20);
   });
 
   it('keeps each song in its own style', () => {
@@ -77,6 +78,7 @@ describe('library', () => {
       'orchestral',
       'cinematic',
       'cinematic',
+      'synthwave',
       'synthwave',
       'synthwave',
       'synthwave',

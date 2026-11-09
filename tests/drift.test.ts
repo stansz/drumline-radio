@@ -27,6 +27,7 @@ const SCRIPT = [
   'tools/arranger/clair-de-lune.mjs',
   'tools/arranger/exit-sign.mjs',
   'tools/arranger/the-silent-keep.mjs',
+  'tools/arranger/sunliner.mjs',
 ];
 
 describe('the song generators', () => {
