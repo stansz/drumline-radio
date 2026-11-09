@@ -22,6 +22,31 @@ cabinet.
 The cabinet, display and strips are CSS only, so they're a cheap first step. The pages and the
 keypad are new code in `src/ui/jukebox.ts`.
 
+## A mixer and composing GUI (a "Studio" or "Pro" tab)
+
+A separate tab where the listener shapes a song themselves, instead of asking Claude to change
+instruments and levels in the song files. A first version:
+
+- **Per-track instrument:** pick any bank instrument for any track, from the same list as the
+  instrument page, and hear it straight away.
+- **Per-track volume** (and maybe pan and mute or solo), with the meters showing each track.
+- **Save:** keep the changes as the listener's own version of the song.
+
+Later, it could grow into writing tracks too: editing notes, adding tracks, and building a song from
+scratch, turning the app into a small DAW.
+
+What it can build on: song files already set each track's instrument and volume (`inst=` and
+`vol=` on the track line), the bank lists every instrument, the engine has a channel per track,
+and `npm run balance` measures the levels a mixer would show.
+
+Open questions:
+
+- Where a saved version lives: on the device only, as a share link, or exported as `.song` text
+  that can be committed as the song's new mix.
+- Whether a saved version replaces the original in Radio and Jukebox or sits beside it.
+- How it relates to Drumline Studio, the sibling step-sequencer app, which is already a grid
+  editor.
+
 ## Smaller ideas
 
 - **Safe-notes helper for composers:** list the notes that fit each chord of a song's `# chords:`
