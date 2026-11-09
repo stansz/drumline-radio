@@ -535,7 +535,7 @@ track stabs role=chords vol=0.55 pan=-0.28
 | [E3 G3 C4]/2+10:92 r/2 |
 | R |
 
-track arp role=arp vol=0.7 pan=0.3
+track arp role=arp inst=bank:shimmer-guitar vol=0.35 pan=0.3
 # Intro: drums and bass, then the arp (bars 1-8)
 | R*4 |
 | G3/16:94 Bb3/16:67 D4/16:79 G4/16:68 D4/16:90 Bb3/16:63 G3/16:76 Bb3/16:67 G3/16:95 Bb3/16:68 D4/16:81 G4/16:70 D4/16:86 Bb3/16:65 G3/16:77 Bb3/16:72 |
