@@ -80,6 +80,10 @@ Originals by SZ (and AI):
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave)
+- **Starlight Drive** (Synthwave), by Ling 3.1 Flash & SZ. A 4:04 italo-disco original at 118 BPM in
+  Bb major: a wordless vox-lead hook over four-on-the-floor gated drums, an octave-bouncing bass,
+  bright offbeat stabs, a pluck arp, and swelled choirs, with a kick-less breakdown and a last
+  chorus up a whole step.
 - **Fathom** (Techno), by Qwen3.8 Flash & SZ. A 5:09 dub techno original at 118 BPM in G minor: one
   chord stab and nothing else melodic, voiced eight ways, its repeats written as extra stabs that
   land later and softer each time. It opens on the lone echoing chord with no kick, builds a rumbling

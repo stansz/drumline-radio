@@ -82,7 +82,7 @@ export function marqueeTiming(overflowPx: number): { shift: number; seconds: num
 
 // Model families named in originals' credits. The app shows the family, so "Gemini 3.8 Flash"
 // reads as "Gemini"; the song file keeps the exact model.
-const MODEL_FAMILIES = ['Claude', 'DeepSeek', 'Gemini', 'GLM', 'GPT', 'Grok', 'HY', 'Kimi', 'MiMo', 'MiniMax', 'Qwen'];
+const MODEL_FAMILIES = ['Claude', 'DeepSeek', 'Gemini', 'GLM', 'GPT', 'Grok', 'HY', 'Kimi', 'Ling', 'MiMo', 'MiniMax', 'Qwen'];
 const FAMILY_PATTERNS = MODEL_FAMILIES.map((family) => ({
   family,
   pattern: new RegExp(`(^|\\s)${family}(?![A-Za-z])`),

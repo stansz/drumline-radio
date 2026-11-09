@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| Starlight Drive | Synthwave | Ling 3.1 Flash | — | — | Mix: choirs, pad, and arp under the hook |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
@@ -31,7 +32,31 @@ Stop) aren't listed.
 
 ## Entries
 
-### Signal Fire — MiniMax M3.1 Flash (2026-11-08)
+### Starlight Drive — Ling 3.1 Flash (2026-11-09)
+
+- **Brief:** an upbeat italo-disco synthwave track in the spirit of Mitch Murder and early Giorgio
+  Moroder: 118 BPM, Bb major, 3:45-4:15, a wordless vox-lead hook (mostly A3-A4) as the star,
+  choir-ooh under the verses and choir-aah lifting the choruses and a kick-less breakdown,
+  octave-bouncing eighth-note bass, four-on-the-floor gated kit with open hats and claps on 2 and 4,
+  poly stabs, a pluck arp, and a saw lead answering between phrases. Pop-dance form with a last
+  chorus up a whole step.
+- **Followed well:** major-key disco groove, clearly different from Midnight Arcade (98 BPM, E minor,
+  moody) and Underpass (124 BPM, F minor, heroic); one chord map declared in `# chords:` lines,
+  0 off-chord, 0 clashes; registers kept apart (bass in octaves 1-2, choirs and stabs in the middle,
+  the hook Bb3-A4 with the saw answers above it); microtiming on the hook (+14 late phrase starts,
+  -4/-6 pushes inside the phrases), stabs (+10 to +24), and hats (-6), a push on the bass's off-beats,
+  uneven hat/arp/clap velocities; the claps on their own track so they drag behind the beat while the
+  kick stays on the grid; both chorus halves and the repeated choruses are exact copies, so the hook
+  stays put.
+- **Missed at first:** the mix. The first `npm run balance` had the choirs and pad 11 dB under the
+  hook and the arp peaking 14 dB under it.
+- **Fixed by itself before handing over:** choirs, pad, and arp up, claps down a touch; the balance
+  then reported no flags.
+- **Firsts:** the first song to use the bank's choir-aah and choir-ooh, and the first Synthwave
+  original to reach bank instruments with `inst=bank:` (the vox lead and both choirs): no style maps
+  a local name to them, so plain `inst=vox-lead` in Synthwave would fall back to the style's lead
+  patch. The credit is the harness's own model report (PI_MODEL=inclusionai/ling-3.1-flash), written
+  as Ling 3.1 Flash; Ling went onto MODEL_FAMILIES in `src/ui/view.ts`.
 
 - **Brief:** a peak-time dance anthem, Techno, 132 BPM, F# minor, 4:00-4:30: a chopped vocal hook
   on the bank `vox-lead`, a rolling off-beat sub, punchy stabs, a dark pad in the breakdowns, a
