@@ -122,6 +122,15 @@ describe('withBankInstruments', () => {
   });
 });
 
+describe('inst.<style>', () => {
+  it('plays its instrument in that style only, from the style or the bank', () => {
+    const track = { role: 'lead', inst: 'bank:vox-lead', styleInst: { techno: 'analog-synth', altrock: 'clean-guitar' } } as const;
+    expect(resolvePatch(STYLE_DEFS.techno, track)).toBe(INSTRUMENTS['analog-synth']);
+    expect(resolvePatch(STYLE_DEFS.altrock, track)).toBe(STYLE_DEFS.altrock.patches['clean-guitar']);
+    expect(resolvePatch(STYLE_DEFS.synthwave, track)).toBe(INSTRUMENTS['vox-lead']);
+  });
+});
+
 describe('trackVolume', () => {
   it("uses a track's per-style volume in that style and its vol= elsewhere", () => {
     const track = { vol: 0.5, styleVol: { altrock: 0.2 } };

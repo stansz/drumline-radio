@@ -198,14 +198,16 @@ function report(result) {
     if (needs.size > 0) {
       // A raise in one section can make the part too loud in another, so run again after a change.
       // In a remix the change goes in `vol.<style>=`, so the home mix stays as it is.
-      const key = result.style === result.home ? 'vol' : `vol.${result.style}`;
+      const remix = result.style !== result.home;
+      const key = remix ? `vol.${result.style}` : 'vol';
+      const top = remix ? 4 : 1;
       console.log('\nSuggested track volumes (then run again):');
       for (const [i, dB] of needs) {
         const t = tracks[i];
         const want = t.vol * 10 ** (dB / 20);
         const sign = dB > 0 ? '+' : '';
-        const note = want > 1 ? ' (vol tops out at 1: raise the velocities or lower the lead instead)' : '';
-        console.log(`  ${t.id}: ${key}=${t.vol} -> ${key}=${Math.min(1, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
+        const note = want > top ? ` (${key} tops out at ${top}: raise the velocities or lower the lead instead)` : '';
+        console.log(`  ${t.id}: ${key}=${t.vol} -> ${key}=${Math.min(top, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
       }
     }
     console.log('\nFor a sparse part (stabs, hits), compare peaks: RMS reads low when most of a section is silent.');

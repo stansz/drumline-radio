@@ -52,7 +52,7 @@ tempo: 118
 time: 4/4
 about: A sunny italo-disco drive: a wordless vocal hook over four-on-the-floor gated drums, an octave-bouncing bass, bright off-beat stabs, a pluck arp, and choirs swelling under it, with a kick-less breakdown and a last chorus up a whole step.
 
-track vox role=lead inst=vox-lead vol=1 pan=0
+track vox role=lead inst=vox-lead inst.techno=analog-synth vol=1 vol.techno=2.8 pan=0
 # Intro: drums and bass, then the arp
 | R | R | R | R |
 | R | R | R | R |
@@ -353,7 +353,7 @@ track arp role=arp vol=1 vol.altrock=0.5 pan=0.3
 | E4/16:84 B4/16:77 E5/16:87 G#5/16:80 E4/16:86 B4/16:78 E5/16:88 G#5/16:79 E4/16:84 B4/16:77 E5/16:87 G#5/16:80 E4/16:86 B4/16:78 E5/16:88 G#5/16:79 | B3/16:82 F#4/16:75 B4/16:85 D#5/16:78 B3/16:84 F#4/16:76 B4/16:86 D#5/16:77 B3/16:82 F#4/16:75 B4/16:85 D#5/16:78 B3/16:84 F#4/16:76 B4/16:86 D#5/16:77 | C#4/16:80 G#4/16:73 C#5/16:83 E5/16:76 C#4/16:82 G#4/16:74 C#5/16:84 E5/16:75 C#4/16:80 G#4/16:73 C#5/16:83 E5/16:76 C#4/16:82 G#4/16:74 C#5/16:84 E5/16:75 | A3/16:78 E4/16:71 A4/16:81 C#5/16:74 A3/16:80 E4/16:72 A4/16:82 C#5/16:73 A3/16:78 E4/16:71 A4/16:81 C#5/16:74 A3/16:80 E4/16:72 A4/16:82 C#5/16:73 |
 | E4/8:76 B4/8:69 E5/8:79 B4/8:72 E4/8:78 B4/8:70 E5/8:80 B4/8:71 | B3/8:74 F#4/8:67 B4/8:77 F#4/8:70 B3/8:76 F#4/8:68 B4/8:78 F#4/8:69 | R | R |
 
-track bass role=bass vol=0.44 vol.altrock=0.085 vol.orchestral=0.28 pan=0
+track bass role=bass vol=0.44 vol.altrock=0.085 vol.orchestral=0.28 vol.techno=0.155 pan=0
 # Intro: drums and bass, then the arp
 | D1/8:100 D2/8-6:82 D1/8-4:100 D2/8-6:82 D1/8:100 D2/8-6:82 D1/8-4:100 D2/8-6:82 | D1/8:102 D2/8-6:84 D1/8-4:102 D2/8-6:84 D1/8:102 D2/8-6:84 D1/8-4:102 D2/8-6:84 | G1/8:104 G2/8-6:86 G1/8-4:104 G2/8-6:86 G1/8:104 G2/8-6:86 G1/8-4:104 G2/8-6:86 | A1/8:106 A2/8-6:88 A1/8-4:106 A2/8-6:88 A1/8:106 A2/8-6:88 A1/8-4:106 A2/8-6:88 |
 | D1/8:108 D2/8-6:90 D1/8-4:108 D2/8-6:90 D1/8:108 D2/8-6:90 D1/8-4:108 D2/8-6:90 | D1/8:110 D2/8-6:92 D1/8-4:110 D2/8-6:92 D1/8:110 D2/8-6:92 D1/8-4:110 D2/8-6:92 | G1/8:112 G2/8-6:94 G1/8-4:112 G2/8-6:94 G1/8:112 G2/8-6:94 G1/8-4:112 G2/8-6:94 | A1/8:114 A2/8-6:96 A1/8-4:114 A2/8-6:96 A1/8:114 A1/8-10:114 E2/8-4:106 A2/8-4:110 |

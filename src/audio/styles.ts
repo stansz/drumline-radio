@@ -333,16 +333,30 @@ export function trackVolume(track: Pick<Track, 'vol' | 'styleVol'>, style: Style
   return track.styleVol?.[style] ?? track.vol;
 }
 
-export function patchKey(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): string {
-  if (bankId(track.inst) !== null) return track.inst as string;
-  if (track.inst !== null && Object.prototype.hasOwnProperty.call(style.patches, track.inst)) {
-    return track.inst;
+type PatchTrack = Pick<Track, 'role' | 'inst' | 'styleInst'>;
+
+/**
+ * The instrument a track asks for in a style: its `inst.<style>=` when it sets one (a name the style
+ * lacks but the bank has plays the bank instrument), else its `inst=`.
+ */
+function instIn(style: StyleDef, track: PatchTrack): string | null {
+  const own = track.styleInst?.[style.id];
+  if (own === undefined) return track.inst;
+  if (own.startsWith(BANK_PREFIX) || Object.prototype.hasOwnProperty.call(style.patches, own)) return own;
+  return Object.prototype.hasOwnProperty.call(INSTRUMENTS, own) ? BANK_PREFIX + own : own;
+}
+
+export function patchKey(style: StyleDef, track: PatchTrack): string {
+  const inst = instIn(style, track);
+  if (bankId(inst) !== null) return inst as string;
+  if (inst !== null && Object.prototype.hasOwnProperty.call(style.patches, inst)) {
+    return inst;
   }
   return style.roles[track.role];
 }
 
-export function resolvePatch(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): Patch {
-  const id = bankId(track.inst);
+export function resolvePatch(style: StyleDef, track: PatchTrack): Patch {
+  const id = bankId(instIn(style, track));
   if (id !== null) return style.bankSwaps[id] ?? INSTRUMENTS[id];
   return style.patches[patchKey(style, track)];
 }

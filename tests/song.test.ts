@@ -266,16 +266,18 @@ describe('the checker', () => {
   it('rejects a bad volume or pan', () => {
     expect(errorsFor('track a role=lead vol=1.5\n| C4/1 |').some((e) => e.includes('vol'))).toBe(true);
     expect(errorsFor('track a role=lead pan=-2\n| C4/1 |').some((e) => e.includes('pan'))).toBe(true);
-    expect(errorsFor('track a role=lead vol.altrock=2\n| C4/1 |').some((e) => e.includes('vol.altrock'))).toBe(true);
+    expect(errorsFor('track a role=lead vol.altrock=5\n| C4/1 |').some((e) => e.includes('vol.altrock'))).toBe(true);
     expect(errorsFor('track a role=lead vol.polka=0.5\n| C4/1 |').some((e) => e.includes('unknown style'))).toBe(true);
   });
 
   it('reads per-style volumes, and leaves them out when a track has none', () => {
-    const result = parseSong(`${HEADER}\ntrack a role=lead vol=0.5 vol.altrock=0.2 vol.lofi=0\n| C4/1 |\ntrack b role=bass\n| C2/1 |`);
+    const result = parseSong(`${HEADER}\ntrack a role=lead vol=0.5 vol.altrock=0.2 vol.lofi=0 inst.techno=analog-synth\n| C4/1 |\ntrack b role=bass\n| C2/1 |`);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     expect(result.song.tracks[0].styleVol).toEqual({ altrock: 0.2, lofi: 0 });
+    expect(result.song.tracks[0].styleInst).toEqual({ techno: 'analog-synth' });
     expect('styleVol' in result.song.tracks[1]).toBe(false);
+    expect('styleInst' in result.song.tracks[1]).toBe(false);
   });
 
   it('rejects a bad velocity', () => {

@@ -52,6 +52,8 @@ export interface Track {
   vol: number;
   /** Per-style volumes from `vol.<style>=`, present only when the track sets one. */
   styleVol?: Partial<Record<StyleId, number>>;
+  /** Per-style instruments from `inst.<style>=`, present only when the track sets one. */
+  styleInst?: Partial<Record<StyleId, string>>;
   pan: number;
   notes: Note[];
 }
@@ -344,6 +346,7 @@ interface RawTrack {
   inst: string | null;
   vol: number;
   styleVol?: Partial<Record<StyleId, number>>;
+  styleInst?: Partial<Record<StyleId, string>>;
   pan: number;
   tokens: SourceToken[];
 }
@@ -408,12 +411,17 @@ export function parseSong(text: string): ParseResult {
         } else {
           track.vol = volume;
         }
+      } else if (key.startsWith('inst.')) {
+        const style = key.slice(5);
+        if (!isStyle(style)) err(lineNumber, `unknown style in '${key}'`);
+        else if (!/^(bank:)?[a-z0-9-]+$/.test(value)) err(lineNumber, `invalid ${key} '${value}'`);
+        else track.styleInst = { ...track.styleInst, [style]: value };
       } else if (key.startsWith('vol.')) {
         const style = key.slice(4);
         const volume = Number(value);
         if (!isStyle(style)) {
           err(lineNumber, `unknown style in '${key}'`);
-        } else if (!/^\d+(\.\d+)?$/.test(value) || volume > 1) {
+        } else if (!/^\d+(\.\d+)?$/.test(value) || volume > 4) {
           err(lineNumber, `invalid ${key} '${value}'`);
         } else {
           track.styleVol = { ...track.styleVol, [style]: volume };
@@ -1028,6 +1036,7 @@ export function parseSong(text: string): ParseResult {
       inst: raw.inst,
       vol: raw.vol,
       ...(raw.styleVol ? { styleVol: raw.styleVol } : {}),
+      ...(raw.styleInst ? { styleInst: raw.styleInst } : {}),
       pan: raw.pan,
       notes,
     });
