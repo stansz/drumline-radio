@@ -38,7 +38,7 @@ track flute role=counter vol=0.75 pan=0.2
 | D6/4. D6/8. C#6/16 B5/8 | A5/4 F#5/8 D5/8. E5/16 F#5/8 | G5/4 E5/8 E5/8. Eb5/16 E5/8 | F#5/4 Eb5/8 B4/4 r/8 |
 | D6/4. D6/8. C6/16 B5/8 | A5/4 F#5/8 D5/8. E5/16 F#5/8 | G5/8. F#5/16 E5/8 Eb5/8. C#5/16 Eb5/8 | E5/2. |
 
-track violins role=lead vol=0.65
+track violins role=lead vol=0.9
 | r/8 |
 # Verse 1: the flute over harp and cellos
 | R | R | R | R |
@@ -84,7 +84,7 @@ track harp role=chords vol=0.7 pan=-0.2
 | B3/8 F#4/8 D5/8 D4/8 B4/8 D5/8 | D4/8 F#4/8 A4/8 F#3/8 D4/8 D4/8 | G3/8 B3/8 G4/8 A3/8 A3/8 E4/8 | B3/8 Eb4/8 F#4/8 B3/8 B3/8 B3/8 |
 | B3/8 F#4/8 D5/8 D4/8 B4/8 D5/8 | D4/8 F#4/8 A4/8 F#3/8 D4/8 D4/8 | G3/8 B3/8 G4/8 F#3/8 B3/8 Eb4/8 | [E3 G3 B3 E4]/2. |
 
-track strings role=pad vol=0.45
+track strings role=pad vol=0.86
 | r/8 |
 # Verse 1: the flute over harp and cellos
 | R | R | R | R |
@@ -107,7 +107,7 @@ track strings role=pad vol=0.45
 | [B3 F#4]/4. [D4 B4]/4. | [D4 F#4]/4. [F#3 D4]/4. | [G3 B3]/4. [A3 A3]/4. | [B3 Eb4]/4. [B3 B3]/4. |
 | [B3 F#4]/4. [D4 B4]/4. | [D4 F#4]/4. [F#3 D4]/4. | [G3 B3]/4. [F#3 B3]/4. | [G3 B3]/2. |
 
-track cellos role=bass vol=0.65
+track cellos role=bass vol=0.13
 | v=84 E2/8 |
 # Verse 1: the flute over harp and cellos
 | v=84 E2/4 F#2/8 G2/4 G2/8 | D2/4 D2/8 D2/4 Eb2/8 | E2/4 E2/8 C2/4 C2/8 | B1/4. B1/4 E2/8 |

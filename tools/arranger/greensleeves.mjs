@@ -203,16 +203,16 @@ pickup: /8
 track flute role=counter vol=0.75 pan=0.2
 ${block('flute', `v=70 ${pickup('Soprano', 12)}`)}
 
-track violins role=lead vol=0.65
+track violins role=lead vol=0.9
 ${block('violins', 'r/8')}
 
 track harp role=chords vol=0.7 pan=-0.2
 ${block('harp', 'r/8')}
 
-track strings role=pad vol=0.45
+track strings role=pad vol=0.86
 ${block('strings', 'r/8')}
 
-track cellos role=bass vol=0.65
+track cellos role=bass vol=0.13
 ${block('cellos', `v=84 ${pickup('Bass', -12)}`)}
 
 track timpani role=drums vol=0.5
