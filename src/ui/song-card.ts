@@ -4,7 +4,7 @@ import { encodeWav } from '../audio/wav';
 import { buildTimeline } from '../music/timing';
 import type { LibraryEntry } from '../music/library';
 import type { StyleId } from '../music/roles';
-import { categoryLabel, songFacts } from './view';
+import { categoryLabel, shownComposer, songFacts } from './view';
 import { formatShareTime, songHash } from './share';
 import { linkUrl, sendLink } from './links';
 import { required } from './dom';
@@ -43,7 +43,7 @@ export function createSongCard(deps: SongCardDeps): SongCard {
     const { meta } = entry.song;
     cardTitle.textContent = meta.title;
     cardByline.textContent =
-      meta.arranger === null ? meta.composer : `${meta.composer} · arr. ${meta.arranger}`;
+      meta.arranger === null ? shownComposer(meta) : `${shownComposer(meta)} · arr. ${meta.arranger}`;
     cardFacts.textContent = '';
     const facts = songFacts(
       meta,

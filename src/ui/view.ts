@@ -80,6 +80,23 @@ export function marqueeTiming(overflowPx: number): { shift: number; seconds: num
   };
 }
 
+// Model families named in originals' credits. The app shows the family, so "Gemini 3.8 Flash"
+// reads as "Gemini"; the song file keeps the exact model.
+const MODEL_FAMILIES = ['Claude', 'DeepSeek', 'Gemini', 'GLM', 'GPT', 'Grok', 'HY', 'Kimi', 'MiMo', 'MiniMax', 'Qwen'];
+const FAMILY_PATTERNS = MODEL_FAMILIES.map((family) => ({
+  family,
+  pattern: new RegExp(`(^|\\s)${family}(?![A-Za-z])`),
+}));
+
+/** The composer as the app shows it: an original's model names without versions. */
+export function shownComposer(meta: { composer: string; source: 'public-domain' | 'original' }): string {
+  if (meta.source !== 'original') return meta.composer;
+  return meta.composer
+    .split(/(, | & )/)
+    .map((part) => FAMILY_PATTERNS.find(({ pattern }) => pattern.test(part))?.family ?? part)
+    .join('');
+}
+
 /** The label/value rows on a song card, in display order. */
 export function songFacts(
   meta: { year: string; key: string; tempo: number; time: [number, number] },

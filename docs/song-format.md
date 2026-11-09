@@ -16,7 +16,7 @@ Every key may appear once, and no other keys are allowed.
 | Key        | Required | Rules                                            |
 | ---------- | -------- | ------------------------------------------------ |
 | `title`    | yes      | Any non-empty text.                              |
-| `composer` | yes      | Any non-empty text.                              |
+| `composer` | yes      | Any non-empty text. For originals the app shows model families without versions (`Gemini 3.8 Flash & SZ` shows as `Gemini & SZ`; see docs/composing.md). |
 | `arranger` | no       | Any non-empty text. Shown after the composer as "arr. …". |
 | `about`    | no       | One line of plain text: the song's story, shown on its song card. |
 | `hidden`   | no       | `true` leaves the song out of the library; it is still parsed and checked. |

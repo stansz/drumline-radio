@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
+import { LIBRARY } from '../src/music/library';
 import type { Category, Song } from '../src/music/song';
 import type { StyleId } from '../src/music/roles';
 import {
@@ -24,6 +25,7 @@ import {
   prevAction,
   scrubTarget,
   shouldStartSaver,
+  shownComposer,
   songFacts,
   stationLabel,
   stationsIn,
@@ -277,5 +279,31 @@ describe('style filter', () => {
     expect(parseStyleFilter('lofi')).toBe('lofi');
     expect(parseStyleFilter(null)).toBe('all');
     expect(parseStyleFilter('jazz')).toBe('all');
+  });
+});
+
+describe('shownComposer', () => {
+  const original = (composer: string) => shownComposer({ composer, source: 'original' });
+
+  it('shows model families without versions', () => {
+    expect(original('Gemini 3.8 Flash & SZ')).toBe('Gemini & SZ');
+    expect(original('Qwen3.8 Flash & SZ')).toBe('Qwen & SZ');
+    expect(original('DeepSeek V4 Flash & SZ')).toBe('DeepSeek & SZ');
+    expect(original('GPT-6.1-sol & SZ')).toBe('GPT & SZ');
+    expect(original('MiMo v2.6 Pro & SZ')).toBe('MiMo & SZ');
+    expect(original('MiniMax M3.1 Flash & SZ')).toBe('MiniMax & SZ');
+    expect(original('Tencent HY 4, Claude & SZ')).toBe('HY, Claude & SZ');
+    expect(original('GLM, Claude & SZ')).toBe('GLM, Claude & SZ');
+  });
+
+  it('leaves public-domain composers and unknown names alone', () => {
+    expect(shownComposer({ composer: 'Claude Debussy', source: 'public-domain' })).toBe('Claude Debussy');
+    expect(original('Someone New 2 & SZ')).toBe('Someone New 2 & SZ');
+  });
+
+  it('shows no version numbers on any original in the library', () => {
+    for (const { song } of LIBRARY) {
+      if (song.meta.source === 'original') expect(shownComposer(song.meta), song.meta.title).not.toMatch(/\d/);
+    }
   });
 });

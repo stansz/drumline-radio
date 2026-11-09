@@ -21,6 +21,7 @@ import {
   prevAction,
   scrubTarget,
   shouldStartSaver,
+  shownComposer,
   stationsIn,
   stepStation,
   stylesIn,
@@ -193,8 +194,8 @@ export function startUi(): void {
     const remix = style !== song.meta.style ? ' (remix)' : '';
     const byline =
       song.meta.arranger === null
-        ? song.meta.composer
-        : `${song.meta.composer}, arr. ${song.meta.arranger}`;
+        ? shownComposer(song.meta)
+        : `${shownComposer(song.meta)}, arr. ${song.meta.arranger}`;
     const at = playlistView.at;
     const position =
       at === null ? '' : ` · ${at + 1}/${playlistView.entries.length}`;

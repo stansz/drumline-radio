@@ -3,7 +3,7 @@ import { STYLES } from '../music/roles';
 import type { StyleId } from '../music/roles';
 import { STYLE_DEFS } from '../audio/styles';
 import { buildTimeline } from '../music/timing';
-import { categoryLabel, CATEGORY_FILTERS, formatTime, nextStyleFilter, stationsIn, stylesIn } from './view';
+import { categoryLabel, CATEGORY_FILTERS, formatTime, nextStyleFilter, shownComposer, stationsIn, stylesIn } from './view';
 import type { CategoryFilter, StyleFilter } from './view';
 import {
   addEntry,
@@ -167,7 +167,7 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
       title.textContent = song.meta.title;
       const meta = document.createElement('span');
       meta.className = 'pl-song-meta';
-      meta.textContent = `${song.meta.composer} · ${formatTime(songDurations[index])}`;
+      meta.textContent = `${shownComposer(song.meta)} · ${formatTime(songDurations[index])}`;
       text.append(title, meta);
 
       const select = document.createElement('select');

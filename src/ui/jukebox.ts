@@ -4,7 +4,7 @@ import type { StyleId } from '../music/roles';
 import type { Category } from '../music/song';
 import { STYLE_DEFS } from '../audio/styles';
 import { buildTimeline } from '../music/timing';
-import { formatTime } from './view';
+import { formatTime, shownComposer } from './view';
 import { load, required, save } from './dom';
 
 const SORT_KEY = 'drumline-radio-jukebox-sort';
@@ -123,7 +123,8 @@ export function createJukebox(deps: JukeboxDeps): Jukebox {
   const countEl = required<HTMLElement>('#jb-count');
   const sortEl = required<HTMLElement>('#jb-sort');
   const wallEl = required<HTMLElement>('#jb-wall');
-  const songs = LIBRARY.map((entry) => entry.song.meta);
+  // Grouped and shown by the credit the app shows, so one model's songs share a group.
+  const songs = LIBRARY.map((entry) => ({ ...entry.song.meta, composer: shownComposer(entry.song.meta) }));
   // Durations are fixed for the session, so the wall never recomputes them.
   const durations = LIBRARY.map((entry) => buildTimeline(entry.song).duration);
   let sort = parseJukeboxSort(load(SORT_KEY));
@@ -209,7 +210,7 @@ export function createJukebox(deps: JukeboxDeps): Jukebox {
         const meta = document.createElement('span');
         meta.className = 'jb-meta';
         meta.textContent =
-          `${song.meta.composer} · ${STYLE_DEFS[song.meta.style].name} · ` +
+          `${songs[slot.index].composer} · ${STYLE_DEFS[song.meta.style].name} · ` +
           formatTime(durations[slot.index]);
 
         play.append(code, title, meta);
