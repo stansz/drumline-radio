@@ -260,7 +260,7 @@ track choir-aah role=pad inst=bank:choir-aah vol=0.8 pan=-0.12
 | [G2 C3 E3]/1:90~ |
 | [G2 C3 E3]/1 |
 
-track choir-ooh role=pad inst=bank:choir-ooh vol=0.65 pan=0.12
+track choir-ooh role=pad inst=bank:choir-ooh vol=1 pan=0.12
 # Intro: drums and bass, then the arp (bars 1-8)
 | R*8 |
 # Verse 1 (bars 9-16)
@@ -312,7 +312,7 @@ track choir-ooh role=pad inst=bank:choir-ooh vol=0.65 pan=0.12
 # Outro (bars 113-120)
 | R*8 |
 
-track pad role=pad vol=0.62 pan=0
+track pad role=pad vol=1 pan=0
 # Intro: drums and bass, then the arp (bars 1-8)
 | R*8 |
 # Verse 1 (bars 9-16)
