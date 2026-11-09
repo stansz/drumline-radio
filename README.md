@@ -70,7 +70,7 @@ Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy,
 Originals by SZ (and AI):
 
 - **Exit Sign** (Alt rock), by GPT-6.1-sol & SZ. A 2:57 guitar-band original: palm-muted verses, a twelve-bar vocal-style hook, a half-time bridge, and a final double chorus.
-- **A Match in the Static** (Alt rock), by Arena.ai Agent (exact model name unavailable) & SZ. A 3:44, 120 BPM E-minor stomp: eight solo shimmer-guitar bars grow into picked-bass verses and crunchy pre-choruses, then burst into a fuzz-hook/guitar-wall chorus; a quiet bridge rebuilds into a final double chorus and a ringing E-minor outro.
+- **A Match in the Static** (Alt rock), by Arena Agent & SZ. A 3:44, 120 BPM E-minor stomp: eight solo shimmer-guitar bars grow into picked-bass verses with a quiet clean-electric melody and crunchy pre-choruses, then burst into a fuzz-hook/guitar-wall chorus; a quiet bridge rebuilds into a final double chorus and a ringing E-minor outro.
 - **Porch Light** (Alt rock), by Grok, Claude & SZ. A 4:40 slow, emo indie original at 72 BPM: a laid-back clean electric guitar lead, shimmering arpeggios, a Ben Folds-style piano, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
 - **Ivory and Ash** (Cinematic). A 128 BPM club mix, Ivory and Ash (128 Mix), is hidden for now.
 - **The Silent Keep** (Cinematic), by DeepSeek V4 Flash & SZ. A 6:06 heavy-metal ballad-epic in E minor:
