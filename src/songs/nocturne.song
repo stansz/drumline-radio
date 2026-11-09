@@ -65,7 +65,7 @@ track piano role=chords inst=bank:grand-piano vol=0.6 pan=-0.2
 # The last chords
 | v=50 r/8 Bb3/8 Bb2/8 r/8 Bb3/8 Bb2/8 r/8 Bb3/8 Bb2/8 r/8 Bb3/8 Bb2/8 | v=50 [Eb3 Bb3]/4. [Eb4 Bb4]/4. [Eb2 Bb2]/2. |
 
-track strings role=pad vol=0.8
+track strings role=pad vol=1
 | r/8 |
 # The theme
 | R | R | R | R |

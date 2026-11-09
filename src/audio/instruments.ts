@@ -279,12 +279,13 @@ export const PADS: Record<string, Patch> = {
     formants: [{ hz: 450, q: 2, gain: 0.2 }, { hz: 1500, q: 1, gain: 0.6 }, { hz: 3000, q: 0.7, gain: 1 }],
     env: env(0.08, 0.4, 0.85, 0.5), filter: { type: 'lowpass', hz: 7000, q: 0.5, envAmount: 1, envDecay: 0.3 },
     vibrato: { rate: 5.5, cents: 16, delay: 0.25 }, gain: 0.24, sends: { reverb: 1.2, delay: 0 } }),
-  // Orchestral pad: a soft string ensemble. Four widely detuned saws, dark and still, with no vibrato:
+  // Orchestral pad: a soft string ensemble. Four widely detuned saws, warm and still, with no vibrato:
   // in a big section the players' vibratos blur into a chorus.
   'string-pad': synth({ name: 'String pad',
     oscs: [osc('sawtooth', 0, -13, 0.25), osc('sawtooth', 0, -5, 0.25), osc('sawtooth', 0, 5, 0.25), osc('sawtooth', 0, 13, 0.25)],
-    env: env(0.6, 1, 0.85, 1.2), filter: { type: 'lowpass', hz: 1400, q: 0.4, envAmount: 1, envDecay: 1 },
-    gain: 0.24, sends: { reverb: 1.3, delay: 0 } }),
+    env: env(0.6, 1, 0.85, 1.2), filter: { type: 'lowpass', hz: 2400, q: 0.4, envAmount: 1, envDecay: 1 },
+    formants: [{ hz: 1200, q: 0.8, gain: 1 }, { hz: 300, q: 1, gain: 0.5 }],
+    gain: 0.35, sends: { reverb: 1.3, delay: 0 } }),
   // Techno pad: a dark, evolving bed.
   'dark-pad': synth({
     name: 'Dark pad',

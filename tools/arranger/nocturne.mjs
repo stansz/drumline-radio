@@ -216,7 +216,7 @@ ${block('v=80 Bb4/8', violins)}
 track piano role=chords inst=bank:grand-piano vol=0.6 pan=-0.2
 ${block('r/8', harp)}
 
-track strings role=pad vol=0.8
+track strings role=pad vol=1
 ${block('r/8', pad)}
 
 track cellos role=bass vol=0.3
