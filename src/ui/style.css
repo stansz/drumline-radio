@@ -1183,17 +1183,23 @@ body::before {
   flex-wrap: wrap;
 }
 
-/* Playlist view: the stage, presets, dial and style bands make way for the queue and library. */
+/* Playlist and jukebox views: the stage, presets, dial and style bands make way for them. */
 :root[data-view='playlist'] .stage,
 :root[data-view='playlist'] .tuner .presets,
 :root[data-view='playlist'] .dial-wrap,
 :root[data-view='playlist'] .bands,
-:root[data-view='playlist'] .style-toggle {
+:root[data-view='playlist'] .style-toggle,
+:root[data-view='jukebox'] .stage,
+:root[data-view='jukebox'] .tuner .presets,
+:root[data-view='jukebox'] .dial-wrap,
+:root[data-view='jukebox'] .bands,
+:root[data-view='jukebox'] .style-toggle {
   display: none;
 }
 
-/* The playlist can be long, so keep the transport in reach at the bottom of the screen. */
-:root[data-view='playlist'] .tuner {
+/* These views can be long, so keep the transport in reach at the bottom of the screen. */
+:root[data-view='playlist'] .tuner,
+:root[data-view='jukebox'] .tuner {
   position: sticky;
   bottom: 8px;
   z-index: 2;
@@ -1377,6 +1383,109 @@ body::before {
 
 .pl-incoming .pl-actions {
   flex-wrap: wrap;
+}
+
+/* The jukebox: a wall of coded title strips for the original songs. */
+.jukebox-view {
+  flex: 1;
+  min-height: 240px;
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.jukebox-view[hidden] {
+  display: none;
+}
+
+.jb-group {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin: 12px 0 6px;
+  font-weight: normal;
+}
+
+.jb-slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px;
+}
+
+.jb-slot {
+  display: flex;
+  min-height: 44px;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.jb-play {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: center;
+  padding: 6px 8px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jb-code {
+  grid-row: span 2;
+  min-width: 2.4em;
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.jb-title,
+.jb-meta {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.jb-meta {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.jb-add {
+  flex: none;
+  width: 40px;
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.jb-slot.playing {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.jb-slot.playing .jb-title {
+  color: var(--accent);
 }
 
 :focus-visible {
@@ -1662,13 +1771,41 @@ body::before {
     grid-template-columns: 1fr;
   }
 
+  .jb-slots {
+    grid-template-columns: 1fr;
+  }
+
   .pl-list,
   .pl-songs {
     max-height: none;
   }
 
+  /* Three views don't fit beside the brand on a phone, so the switch gets its own full-width row. */
+  .brand {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 6px;
+  }
+
+  .brand span {
+    margin-left: 0.5em;
+  }
+
+  .install,
+  .install[hidden] + .info-btn {
+    margin-left: auto;
+  }
+
+  .views {
+    order: 1;
+    flex: 1 1 100%;
+    margin-left: 0;
+  }
+
   .view-btn {
-    padding: 2px 6px;
+    flex: 1;
+    padding: 4px 0;
     letter-spacing: 0.06em;
   }
 }

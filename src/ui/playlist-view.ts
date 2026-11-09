@@ -8,6 +8,7 @@ import type { CategoryFilter, StyleFilter } from './view';
 import {
   addEntry,
   moveEntry,
+  nextView,
   parsePlaylist,
   parseView,
   removeEntry,
@@ -35,6 +36,8 @@ export interface PlaylistView {
   readonly loop: boolean;
   readonly view: AppView;
   selectView(next: AppView): void;
+  /** Appends an entry; false when the playlist is full. */
+  add(entry: PlaylistEntry): boolean;
   showIncoming(entries: PlaylistEntry[]): void;
   stop(): void;
   init(): void;
@@ -45,6 +48,7 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
   const root = document.documentElement;
   const viewsEl = required<HTMLElement>('#views');
   const playlistViewEl = required<HTMLElement>('#playlist-view');
+  const jukeboxViewEl = required<HTMLElement>('#jukebox-view');
   const playlistCount = required<HTMLElement>('#pl-count');
   const playlistStart = required<HTMLButtonElement>('#pl-start');
   const playlistLoop = required<HTMLButtonElement>('#pl-loop');
@@ -105,9 +109,17 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
     renderPlaylist();
   }
 
+  /** Appends an entry; false when the playlist is full. */
+  function appendEntry(entry: PlaylistEntry): boolean {
+    if (playlist.length >= PLAYLIST_MAX) return false;
+    setPlaylist(addEntry(playlist, entry));
+    return true;
+  }
+
   function applyView(): void {
     root.dataset.view = view;
     playlistViewEl.hidden = view !== 'playlist';
+    jukeboxViewEl.hidden = view !== 'jukebox';
     for (const button of viewButtons) {
       button.setAttribute('aria-checked', String(button.dataset.view === view));
     }
@@ -175,15 +187,8 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
       add.setAttribute('aria-label', `Add ${song.meta.title} to playlist`);
       add.textContent = '+';
       add.addEventListener('click', () => {
-        if (playlist.length >= PLAYLIST_MAX) {
-          add.textContent = 'Full';
-          window.setTimeout(() => {
-            add.textContent = '+';
-          }, 900);
-          return;
-        }
-        setPlaylist(addEntry(playlist, { song: entry.id, style: select.value as StyleId }));
-        add.textContent = '✓';
+        const added = appendEntry({ song: entry.id, style: select.value as StyleId });
+        add.textContent = added ? '✓' : 'Full';
         window.setTimeout(() => {
           add.textContent = '+';
         }, 900);
@@ -290,7 +295,7 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
     event.stopPropagation();
-    selectView(view === 'radio' ? 'playlist' : 'radio');
+    selectView(nextView(view, event.key === 'ArrowRight' ? 1 : -1));
   });
   playlistStart.addEventListener('click', () => deps.playEntry(0));
   playlistLoop.addEventListener('click', () => {
@@ -352,6 +357,9 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
       return view;
     },
     selectView,
+    add(entry: PlaylistEntry): boolean {
+      return appendEntry(entry);
+    },
     showIncoming(entries: PlaylistEntry[]): void {
       incoming = entries;
       incomingText.textContent = `Shared playlist: ${incoming.length} songs`;

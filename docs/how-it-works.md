@@ -54,6 +54,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 - `ui.ts` is the player core: engine, tuning, styles, transport, keyboard, the frame loop.
 - `settings.ts` is volume, mute, repeat, dim, flash, the screensaver timer, and the info panel.
 - `playlist-view.ts` is the playlist view and the library list.
+- `jukebox.ts` is the jukebox view, the wall of coded title strips for the originals, and keeps its codes and grouping as pure exported functions.
 - `song-card.ts` is the song card.
 - `links.ts` sends a link and reads a link from the address bar.
 - `dom.ts` has the storage and element helpers.

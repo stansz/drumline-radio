@@ -9,7 +9,9 @@ export interface PlaylistEntry {
 
 export const PLAYLIST_MAX = 200;
 
-export type AppView = 'radio' | 'playlist';
+export type AppView = 'radio' | 'jukebox' | 'playlist';
+
+export const VIEWS: readonly AppView[] = ['radio', 'jukebox', 'playlist'];
 
 const KNOWN_STYLES: readonly string[] = STYLES;
 
@@ -104,5 +106,11 @@ export function prevInPlaylist(at: number, length: number): number {
 
 /** Reads the saved view; anything other than the exact word means the radio screen. */
 export function parseView(stored: string | null): AppView {
-  return stored === 'playlist' ? 'playlist' : 'radio';
+  return stored === 'jukebox' || stored === 'playlist' ? stored : 'radio';
+}
+
+/** The view `delta` steps along VIEWS from `view`, wrapping. */
+export function nextView(view: AppView, delta: 1 | -1): AppView {
+  const at = VIEWS.indexOf(view);
+  return VIEWS[(at + delta + VIEWS.length) % VIEWS.length];
 }

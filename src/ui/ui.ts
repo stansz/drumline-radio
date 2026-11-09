@@ -31,6 +31,7 @@ import { nextInPlaylist, prevInPlaylist } from './playlist';
 import type { ShareLink } from './share';
 import { createSettings } from './settings';
 import { createPlaylistView } from './playlist-view';
+import { createJukebox } from './jukebox';
 import { createSongCard } from './song-card';
 import { takeHash } from './links';
 import { load, required, save } from './dom';
@@ -122,6 +123,12 @@ export function startUi(): void {
       titleMarquee.refit();
       subtitleMarquee.refit();
     },
+  });
+
+  const jukebox = createJukebox({
+    playSong: (index) => startSong(index, LIBRARY[index].song.meta.style, null),
+    addToPlaylist: (index) =>
+      playlistView.add({ song: LIBRARY[index].id, style: LIBRARY[index].song.meta.style }),
   });
 
   const songCard = createSongCard({
@@ -276,6 +283,7 @@ export function startUi(): void {
       updateBands(entry.song.meta.style);
       root.dataset.style = entry.song.meta.style;
       dial.select(current, false);
+      jukebox.setCurrent(current);
       return;
     }
 
@@ -292,6 +300,7 @@ export function startUi(): void {
     seekEl.value = '0';
     if (wasPlaying && resume) engine.play();
     updatePlayButton();
+    jukebox.setCurrent(current);
   }
 
   function shareStyle(): StyleId {
@@ -447,21 +456,28 @@ export function startUi(): void {
     if (!item) return;
     const index = LIBRARY.findIndex((entry) => entry.id === item.song);
     if (index < 0) return;
+    startSong(index, item.style, at);
+  }
+
+  /** Plays a library song from the top in a style; `at` is its playlist entry, or null to leave the playlist. */
+  function startSong(index: number, style: StyleId, at: number | null): void {
+    if (at === null) playlistView.stop();
     if (!visible().includes(index)) clearFilters(); // before playlistAt is set
     const fresh = engine === null;
     current = index;
+    jukebox.setCurrent(current);
     const active = ensureEngine();
     if (!active) return;
     // Load without resuming, so no note is booked in the song's own style before the entry's style is set.
     if (!fresh) loadSong(index, false);
-    const changed = lastStyle !== null && lastStyle !== item.style;
-    playlistView.at = at;
-    active.setStyle(item.style);
-    root.dataset.style = item.style;
-    if (changed && !fresh) showBanner(item.style);
-    lastStyle = item.style;
-    updateReadout(item.style);
-    updateBands(item.style);
+    const changed = lastStyle !== null && lastStyle !== style;
+    if (at !== null) playlistView.at = at;
+    active.setStyle(style);
+    root.dataset.style = style;
+    if (changed && !fresh) showBanner(style);
+    lastStyle = style;
+    updateReadout(style);
+    updateBands(style);
     dial.select(current, false);
     active.play();
     updatePlayButton();
@@ -590,7 +606,11 @@ export function startUi(): void {
       return;
     }
     if (event.key === 'p' || event.key === 'P') {
-      playlistView.selectView(playlistView.view === 'radio' ? 'playlist' : 'radio');
+      playlistView.selectView(playlistView.view === 'playlist' ? 'radio' : 'playlist');
+      return;
+    }
+    if (event.key === 'j' || event.key === 'J') {
+      playlistView.selectView(playlistView.view === 'jukebox' ? 'radio' : 'jukebox');
       return;
     }
     if (event.key === 'c' || event.key === 'C') {
@@ -681,6 +701,7 @@ export function startUi(): void {
   }
 
   playlistView.init();
+  jukebox.init();
 
   if (LIBRARY.length === 0) {
     titleMarquee.set('Drumline Radio');
