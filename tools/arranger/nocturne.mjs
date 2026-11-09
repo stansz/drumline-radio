@@ -1,6 +1,6 @@
 // Nocturne in E-flat, Op. 9 No. 2 (Chopin, 1832), arranged for the Orchestral style. The notes follow
 // Chopin's score bar for bar (checked against the Mutopia Project engraving of the 1881 Schirmer
-// edition): the violins play the right hand, the cellos the left hand's bass notes, and the harp its
+// edition): the violins play the right hand, the cellos the left hand's bass notes, and the piano its
 // chords. A soft string pad holds each chord, and the cadenza runs up and down before the last chords.
 // The bass sits an octave low where Chopin's is high, so it also hits hard when remixed into Techno.
 // The tempo is an eighth at 108 (quarter 54), slower than Chopin's marked 132, like most recordings.
@@ -99,7 +99,7 @@ const RH = [
   'e1', 'e2', // 36-37: the last chords
 ].map((k) => M[k]);
 
-// Splits the left hand into the cellos' bass notes, the harp's chords, and a pad chord per beat.
+// Splits the left hand into the cellos' bass notes, the piano's chords, and a pad chord per beat.
 const lowBass = (n) => (midi(n) >= 48 ? nm(midi(n) - 12) : n); // keep the bass at B2 or lower
 const notes = (ev) => ev.split('.');
 const chordText = (ev) => (notes(ev).length > 1 ? `[${notes(ev).join(' ')}]` : ev);
@@ -163,7 +163,7 @@ const padBars = [
 ];
 const cellos = shaped(cellosBars, [[1, 8, 96], [9, 24, 100], [25, 29, 94], [30, 32, 112], [36, 37, 90]]);
 const harp = shaped(harpBars, [[1, 8, 60], [9, 24, 64], [25, 29, 58], [30, 32, 76], [36, 37, 50]]);
-const pad = shaped(padBars, [[5, 24, 40], [25, 29, 38], [30, 31, 58], [33, 35, 42], [36, 37, 34]]);
+const pad = shaped(padBars, [[5, 24, 64], [25, 29, 61], [30, 31, 93], [33, 35, 67], [36, 37, 54]]);
 // Soft timpani only at the climaxes, so the Techno remix gets a beat there too.
 const drumBars = rep(R, 37);
 drumBars[15] = 'k/4. r/4. r/4. r/4.';
@@ -192,7 +192,7 @@ const block = (pickup, bars) => {
 };
 
 const text = `# Nocturne in E-flat, Op. 9 No. 2 by Frédéric Chopin (1832), arranged by Claude and SZ for the
-# Orchestral style. Chopin's notes bar for bar: violins on the right hand, cellos and harp on the left.
+# Orchestral style. Chopin's notes bar for bar: violins on the right hand, cellos and piano on the left.
 title: Nocturne in E-flat
 composer: Frédéric Chopin
 arranger: Claude & SZ
@@ -213,13 +213,13 @@ pickup: /8
 track violins role=lead vol=0.9
 ${block('v=80 Bb4/8', violins)}
 
-track piano role=chords inst=bank:grand-piano vol=0.42 pan=-0.2
+track piano role=chords inst=bank:grand-piano vol=0.6 pan=-0.2
 ${block('r/8', harp)}
 
-track strings role=pad vol=0.55
+track strings role=pad vol=0.8
 ${block('r/8', pad)}
 
-track cellos role=bass vol=0.7
+track cellos role=bass vol=0.3
 ${block('r/8', cellos)}
 
 track drums role=drums vol=0.6

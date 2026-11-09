@@ -1,5 +1,5 @@
 # Nocturne in E-flat, Op. 9 No. 2 by Frédéric Chopin (1832), arranged by Claude and SZ for the
-# Orchestral style. Chopin's notes bar for bar: violins on the right hand, cellos and harp on the left.
+# Orchestral style. Chopin's notes bar for bar: violins on the right hand, cellos and piano on the left.
 title: Nocturne in E-flat
 composer: Frédéric Chopin
 arranger: Claude & SZ
@@ -41,7 +41,7 @@ track violins role=lead vol=0.9
 # The last chords
 | v=64 [G4 Eb5]/8 Bb4/8 G5/8 [G4 Eb5]/8 Bb4/8 G5/8 [G4 Eb5]/8 Bb4/8 G5/8 [G4 Eb5]/8 Bb4/8 G5/8 | v=56 [G4 Eb5]/4. [G5 Eb6]/4. [G3 Eb4]/2. |
 
-track piano role=chords inst=bank:grand-piano vol=0.42 pan=-0.2
+track piano role=chords inst=bank:grand-piano vol=0.6 pan=-0.2
 | r/8 |
 # The theme
 | v=60 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 r/8 [Ab3 D4]/8 [B3 D4 Ab4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 | v=60 r/8 [G3 E4]/8 [Bb3 E4 G4]/8 r/8 [G3 E4]/8 [C4 E4 Bb4]/8 r/8 [F3 C#4]/8 [Bb3 C#4 E4]/8 r/8 [F3 C4]/8 [Ab3 C4 F4]/8 | v=60 r/8 [F3 D4]/8 [Bb3 D4 Ab4]/8 r/8 [G3 F4]/8 [D4 F4 G4]/8 r/8 [G3 Eb4]/8 [C4 Eb4 G4]/8 r/8 [F#3 Eb4]/8 [C4 Eb4 F#4]/8 | v=60 r/8 [F3 Eb4]/8 [Bb3 Eb4 Ab4]/8 r/8 [F3 D4]/8 [Bb3 Ab4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 |
@@ -65,31 +65,31 @@ track piano role=chords inst=bank:grand-piano vol=0.42 pan=-0.2
 # The last chords
 | v=50 r/8 Bb3/8 Bb2/8 r/8 Bb3/8 Bb2/8 r/8 Bb3/8 Bb2/8 r/8 Bb3/8 Bb2/8 | v=50 [Eb3 Bb3]/4. [Eb4 Bb4]/4. [Eb2 Bb2]/2. |
 
-track strings role=pad vol=0.55
+track strings role=pad vol=0.8
 | r/8 |
 # The theme
 | R | R | R | R |
 # The theme, ornamented
-| v=40 [Bb3 Eb4 G4]/4. [B3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=40 [Bb3 E4 G4]/4. [C4 E4 Bb4]/4. [Bb3 C#4 E4]/4. [Ab3 C4 F4]/4. | v=40 [Bb3 D4 Ab4]/4. [D4 F4 G4]/4. [C4 Eb4 G4]/4. [C4 Eb4 F#4]/4. | v=40 [Bb3 Eb4 Ab4]/4. [Bb3 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
+| v=64 [Bb3 Eb4 G4]/4. [B3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=64 [Bb3 E4 G4]/4. [C4 E4 Bb4]/4. [Bb3 C#4 E4]/4. [Ab3 C4 F4]/4. | v=64 [Bb3 D4 Ab4]/4. [D4 F4 G4]/4. [C4 Eb4 G4]/4. [C4 Eb4 F#4]/4. | v=64 [Bb3 Eb4 Ab4]/4. [Bb3 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
 # The second theme
-| v=40 [Bb3 D4 F4]/4. [Bb3 D4 F4]/4. [C4 F4]/4. [C4 F4]/4. | v=40 [Ab3 C4 Eb4]/4. [Ab3 B3 Eb4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=40 [Bb3 C#4 G4]/4. [Bb3 C4 G4]/4. [C4 Eb4 F4]/4. [Bb3 D4 G4]/4. | v=40 [C4 Eb4 G4]/4. [C4 Eb4 F4]/4. r/4. [Bb3 F4]/4. |
+| v=64 [Bb3 D4 F4]/4. [Bb3 D4 F4]/4. [C4 F4]/4. [C4 F4]/4. | v=64 [Ab3 C4 Eb4]/4. [Ab3 B3 Eb4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=64 [Bb3 C#4 G4]/4. [Bb3 C4 G4]/4. [C4 Eb4 F4]/4. [Bb3 D4 G4]/4. | v=64 [C4 Eb4 G4]/4. [C4 Eb4 F4]/4. r/4. [Bb3 F4]/4. |
 # The theme
-| v=40 [Bb3 Eb4 G4]/4. [Bb3 D4 Ab4]/4. [Bb3 G4]/4. [Bb3 Eb4 G4]/4. | v=40 [Bb3 E4 G4]/4. [C4 E4 Bb4]/4. [Bb3 C#4 E4]/4. [Ab3 C4 F4]/4. | v=40 [Bb3 D4 Ab4]/4. [D4 F4 G4]/4. [C4 Eb4 G4]/4. [C4 Eb4 F#4]/4. | v=40 [Bb3 Eb4 Ab4]/4. [Bb3 D4 Ab4]/4. [Bb3 G4]/4. [Bb3 G4]/4. |
+| v=64 [Bb3 Eb4 G4]/4. [Bb3 D4 Ab4]/4. [Bb3 G4]/4. [Bb3 Eb4 G4]/4. | v=64 [Bb3 E4 G4]/4. [C4 E4 Bb4]/4. [Bb3 C#4 E4]/4. [Ab3 C4 F4]/4. | v=64 [Bb3 D4 Ab4]/4. [D4 F4 G4]/4. [C4 Eb4 G4]/4. [C4 Eb4 F#4]/4. | v=64 [Bb3 Eb4 Ab4]/4. [Bb3 D4 Ab4]/4. [Bb3 G4]/4. [Bb3 G4]/4. |
 # The second theme
-| v=40 [Bb3 D4 F4]/4. [Bb3 D4 F4]/4. [C4 F4]/4. [C4 F4]/4. | v=40 [Ab3 C4 Eb4]/4. [Ab3 B3 Eb4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=40 [Bb3 C#4 G4]/4. [Bb3 C4 G4]/4. [C4 Eb4 A4]/4. [Bb3 D4 Bb4]/4. | v=40 [C4 Eb4 G4]/4. [C4 Eb4 F4]/4. r/4. [Bb3 F4]/4. |
+| v=64 [Bb3 D4 F4]/4. [Bb3 D4 F4]/4. [C4 F4]/4. [C4 F4]/4. | v=64 [Ab3 C4 Eb4]/4. [Ab3 B3 Eb4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=64 [Bb3 C#4 G4]/4. [Bb3 C4 G4]/4. [C4 Eb4 A4]/4. [Bb3 D4 Bb4]/4. | v=64 [C4 Eb4 G4]/4. [C4 Eb4 F4]/4. r/4. [Bb3 F4]/4. |
 # The theme
-| v=40 [Bb3 Eb4 G4]/4. [Bb3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=40 [Bb3 E4 G4]/4. [C4 E4 Bb4]/4. [Bb3 C#4 E4]/4. [Ab3 C4 F4]/4. | v=40 [Bb3 D4 Ab4]/4. [D4 F4 G4]/4. [C4 Eb4 G4]/4. [C4 Eb4 F#4]/4. | v=40 [Bb3 Eb4 Ab4]/4. [Bb3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
+| v=64 [Bb3 Eb4 G4]/4. [Bb3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=64 [Bb3 E4 G4]/4. [C4 E4 Bb4]/4. [Bb3 C#4 E4]/4. [Ab3 C4 F4]/4. | v=64 [Bb3 D4 Ab4]/4. [D4 F4 G4]/4. [C4 Eb4 G4]/4. [C4 Eb4 F#4]/4. | v=64 [Bb3 Eb4 Ab4]/4. [Bb3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
 # Coda
-| v=38 [B3 Eb4 Ab4]/4. [B3 Eb4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=38 [B3 Eb4 Ab4]/4. [B3 Eb4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=38 [Bb3 Ab4]/4. [Bb3 Ab4]/4. [Bb3 G4]/4. [C4 Eb4 F4]/4. | v=38 [Bb3 Eb4 Ab4]/4. [Bb3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
-| v=38 [Ab3 B3 Eb4]/4. [Eb3 Ab3 B3]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
+| v=61 [B3 Eb4 Ab4]/4. [B3 Eb4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=61 [B3 Eb4 Ab4]/4. [B3 Eb4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. | v=61 [Bb3 Ab4]/4. [Bb3 Ab4]/4. [Bb3 G4]/4. [C4 Eb4 F4]/4. | v=61 [Bb3 Eb4 Ab4]/4. [Bb3 D4 Ab4]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
+| v=61 [Ab3 B3 Eb4]/4. [Eb3 Ab3 B3]/4. [Bb3 Eb4 G4]/4. [Bb3 Eb4 G4]/4. |
 # The climax
-| v=58 [Ab3 B3 Eb4]/4. [Eb3 Ab3 B3]/4. [Bb3 Eb4 G4]/4. [B3 Eb4 F4]/4. | v=58 [Bb3 Eb4 Ab4]/4. [D4 F4 G4]/4. [C4 G4]/4. [C4 Eb4 F4]/4. |
+| v=93 [Ab3 B3 Eb4]/4. [Eb3 Ab3 B3]/4. [Bb3 Eb4 G4]/4. [B3 Eb4 F4]/4. | v=93 [Bb3 Eb4 Ab4]/4. [D4 F4 G4]/4. [C4 G4]/4. [C4 Eb4 F4]/4. |
 # Cadenza
-| R | v=42 [Bb2 F3 Ab3 D4]/1. | v=42 [Bb2 F3 Ab3 D4]/1. | v=42 [Bb2 F3 Ab3 D4]/1. |
+| R | v=67 [Bb2 F3 Ab3 D4]/1. | v=67 [Bb2 F3 Ab3 D4]/1. | v=67 [Bb2 F3 Ab3 D4]/1. |
 # The last chords
-| v=34 [Eb3 G3 Bb3]/1. | v=34 [Eb3 G3 Bb3]/1. |
+| v=54 [Eb3 G3 Bb3]/1. | v=54 [Eb3 G3 Bb3]/1. |
 
-track cellos role=bass vol=0.7
+track cellos role=bass vol=0.3
 | r/8 |
 # The theme
 | v=96 Eb2/4. Eb2/4. Eb2/4. D2/4. | v=96 C2/4. C2/4. F2/4. F2/4. | v=96 Bb2/4. B2/4. C2/4. A2/4. | v=96 Bb2/4. Bb1/4. Eb2/4. Eb2/4. |
