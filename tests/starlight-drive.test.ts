@@ -118,14 +118,13 @@ describe('Starlight Drive', () => {
       }
       expect(sings(call, first + 6) && sings(answer, first + 6)).toBe(true);
     }
-    // Choruses: aah on beat 1, ooh on beat 3 under the hook; both together where the saw answers.
-    for (const first of [25, 57, 97]) {
-      for (let bar = first; bar < first + 16; bar++) {
-        const beat = (id: string) => (inBars(id, bar, bar)[0].tick - song.bars[bar - 1].startTick) / 960;
-        const answering = (bar - first) % 8 >= 6;
-        expect([beat('choir-aah'), beat('choir-ooh')], `bar ${bar}`).toEqual(answering ? [0, 0] : [0, 2]);
-      }
+    // Choruses and the breakdown: both choirs held together, a chord a bar.
+    for (let bar = 25; bar <= 112; bar++) {
+      if ((bar >= 41 && bar <= 56) || (bar >= 89 && bar <= 96)) continue;
+      expect(sings('choir-aah', bar) && sings('choir-ooh', bar), `bar ${bar}`).toBe(true);
     }
+    // The saw riff plays over the verses and the outro too.
+    for (const [a, b] of [[9, 16], [41, 48], [113, 120]]) expect(inBars('saw', a, b).length).toBeGreaterThan(0);
     // The saw plays only between the hook phrases, never with it.
     for (const [a, b] of [[25, 30], [33, 38], [57, 62], [65, 70], [73, 88], [97, 102], [105, 110]]) {
       expect(inBars('saw', a, b)).toHaveLength(0);

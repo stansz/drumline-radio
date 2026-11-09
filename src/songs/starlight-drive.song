@@ -1,12 +1,11 @@
 # Starlight Drive, by Ling 3.1 Flash and SZ. An original italo-disco synthwave dance track for the
 # Synthwave style: a wordless vox-lead hook (the bank vox-lead) over four-on-the-floor gated drums,
 # an octave-bouncing synth bass on eighth notes, bright poly-stab chords on the off-beats, an
-# arpeggio on the shimmer guitar, and the bank choirs trading back and forth: ooh and aah answer each
-# other a bar apart in the verses and half a bar apart under the chorus hook, and sing together at
-# the joins and in the breakdown.
-# The saw lead answers the hook between phrases instead of doubling it. 118 BPM in Bb major; the
-# last chorus goes up a whole step to C major. Midnight Arcade stays moody and Underpass heroic;
-# this one is major-key, sunny, and made to dance.
+# arpeggio on the shimmer guitar, and the bank choirs: ooh and aah answer each other a bar apart in
+# the verses and pre-choruses and sing together under the chorus hook and in the breakdown.
+# The saw lead plays a riff over the verses and the outro and answers the hook between phrases
+# instead of doubling it. 118 BPM in Bb major; the last chorus goes up a whole step to C major.
+# Midnight Arcade stays moody and Underpass heroic; this one is major-key, sunny, and made to dance.
 #
 # The chord map, one symbol a bar: two-bar cells in the intro and verses, a rising Cm-Dm-Eb-F
 # pre-chorus, the chorus on Bb-F-Gm-Eb, a build that ends on G (the dominant of the new key), and
@@ -24,16 +23,16 @@
 # chords @113: C C G G F F C C
 #
 # Form 1-8: intro - drums and bass, then the arp
-# Form 9-16: verse - ooh calls and aah answers a bar later, stabs under the groove
+# Form 9-16: verse - ooh calls and aah answers a bar later, the saw riff over them
 # Form 17-24: pre - the pad swells in, the arp turns to sixteenths, a snare roll
-# Form 25-40: chorus - the vox hook over aah on beats 1-2 and ooh on 3-4, the saw answering between phrases
-# Form 41-48: verse2 - aah calls and ooh answers this time, the arp back
+# Form 25-40: chorus - the vox hook over both choirs, the saw answering between phrases
+# Form 41-48: verse2 - aah calls and ooh answers this time, the saw riff and the arp back
 # Form 49-56: pre2 - the same build, louder
 # Form 57-72: chorus2 - the hook again, wider
-# Form 73-88: breakdown - the kick and bass drop; both choirs held together, then trading again
+# Form 73-88: breakdown - the kick and bass drop; both choirs held together under the hook
 # Form 89-96: build - the kick returns, the roll climbs, the harmony rises to G
 # Form 97-112: final - the whole hook up a whole step in C major
-# Form 113-120: outro - the groove winds down to one last hit
+# Form 113-120: outro - the saw riff once more as the groove winds down to one last hit
 #
 # Human feel: the vox hook sits a few ticks behind the beat with some early pushes inside the
 # phrases, the stabs land +10 to +24 late, the off-beat hats push 6 ticks early, the bass nudges
@@ -47,7 +46,7 @@ style: synthwave
 key: Bb major
 tempo: 118
 time: 4/4
-about: A sunny italo-disco cruise: a wordless vocal hook over four-on-the-floor gated drums, an octave-bouncing bass, bright offbeat stabs, a shimmering guitar arp, and ooh and aah choirs trading back and forth, with a kick-less breakdown and a last chorus up a whole step.
+about: A sunny italo-disco cruise: a wordless vocal hook over four-on-the-floor gated drums, an octave-bouncing bass, bright offbeat stabs, a shimmering guitar arp, ooh and aah choirs, a saw riff, with a kick-less breakdown and a last chorus up a whole step.
 
 track vox role=lead inst=bank:vox-lead vol=0.8 pan=0
 # Intro: drums and bass, then the arp (bars 1-8)
@@ -128,8 +127,15 @@ track vox role=lead inst=bank:vox-lead vol=0.8 pan=0
 track saw role=lead2 inst=saw-lead vol=0.5 pan=0.18
 # Intro: drums and bass, then the arp (bars 1-8)
 | R*8 |
-# Verse 1 (bars 9-16)
-| R*8 |
+# Verse 1: the saw plays a riff over the choirs, a call in the first bar of each chord (bars 9-16)
+| r/8 D5/8+6:92 F5/8-4:86 D5/8+4:90 Bb4/4+8:96 F5/4+6:94 |
+| D5/2.:92 r/4 |
+| r/8 D5/8+6:92 G5/8-4:86 D5/8+4:90 Bb4/4+8:96 G5/4+6:94 |
+| D5/2.:90 r/4 |
+| r/8 Eb5/8+6:94 G5/8-4:88 Eb5/8+4:92 Bb4/4+8:98 G5/4+6:96 |
+| G5/2.:94 r/4 |
+| r/8 A4/8+6:94 C5/8-4:88 F5/8+4:92 A5/4+8:100 F5/4+6:96 |
+| C5/2.:92 r/4 |
 # Pre-chorus 1 (bars 17-24)
 | R*8 |
 # Chorus 1 (bars 25-40)
@@ -139,8 +145,15 @@ track saw role=lead2 inst=saw-lead vol=0.5 pan=0.18
 | R*6 |
 | Bb4/4:100 G4/4+4:96 Eb5/2:104 |
 | A4/4:100 C5/4+4:104 F5/2:108 |
-# Verse 2 (bars 41-48)
-| R*8 |
+# Verse 2: the saw riff again (bars 41-48)
+| r/8 D5/8+6:92 F5/8-4:86 D5/8+4:90 Bb4/4+8:96 F5/4+6:94 |
+| D5/2.:92 r/4 |
+| r/8 D5/8+6:92 G5/8-4:86 D5/8+4:90 Bb4/4+8:96 G5/4+6:94 |
+| D5/2.:90 r/4 |
+| r/8 Eb5/8+6:94 G5/8-4:88 Eb5/8+4:92 Bb4/4+8:98 G5/4+6:96 |
+| G5/2.:94 r/4 |
+| r/8 A4/8+6:94 C5/8-4:88 F5/8+4:92 A5/4+8:100 F5/4+6:96 |
+| C5/2.:92 r/4 |
 # Pre-chorus 2 (bars 49-56)
 | R*8 |
 # Chorus 2 (bars 57-72)
@@ -161,8 +174,15 @@ track saw role=lead2 inst=saw-lead vol=0.5 pan=0.18
 | R*6 |
 | C5/4:104 A4/4+4:100 F5/2:108 |
 | B4/4:104 D5/4+4:108 G5/2:112 |
-# Outro (bars 113-120)
-| R*8 |
+# Outro: the saw riff once more in C, then it fades on a held C (bars 113-120)
+| r/8 E5/8+6:92 G5/8-4:86 E5/8+4:90 C5/4+8:96 G5/4+6:94 |
+| E5/2.:90 r/4 |
+| r/8 D5/8+6:88 G5/8-4:82 D5/8+4:86 B4/4+8:92 G5/4+6:90 |
+| D5/2.:86 r/4 |
+| r/8 C5/8+6:84 F5/8-4:78 C5/8+4:82 A4/4+8:88 F5/4+6:86 |
+| C5/2.:82 r/4 |
+| G5/1:78~ |
+| G5/1 |
 
 track choir-aah role=pad inst=bank:choir-aah vol=1 pan=-0.12
 # Intro: drums and bass, then the arp; the ooh swells in under the last two bars (bars 1-8)
@@ -171,75 +191,62 @@ track choir-aah role=pad inst=bank:choir-aah vol=1 pan=-0.12
 | R |
 # Verse 1: ooh calls, aah answers a bar later, both together on F (bars 9-16)
 | R |
-| [Bb3 D4 F4]/1:92 |
+| [Bb3 D4 F4]/1:82 |
 | R |
-| [Bb3 D4 G4]/1:96 |
+| [Bb3 D4 G4]/1:86 |
 | R |
-| [Bb3 Eb4 G4]/1:100 |
-| [A3 C4 F4]/1:98~ |
+| [Bb3 Eb4 G4]/1:90 |
+| [A3 C4 F4]/1:92~ |
 | [A3 C4 F4]/1 |
 # Pre-chorus 1: trading a bar each, then together and rising (bars 17-24)
 | R |
-| [A3 D4 F4]/1:94 |
+| [A3 D4 F4]/1:84 |
 | R |
-| [A3 C4 F4]/1:98 |
-| [C4 Eb4 G4]/1:100 |
-| [A3 D4 F4]/1:102 |
-| [Bb3 Eb4 G4]/1:104 |
-| [A3 C4 F4]/1:106 |
-# Chorus 1: aah on beats 1-2, ooh answers on 3-4; together where the saw answers (bars 25-40)
-| [Bb3 D4 F4]/2:92 r/2 |
-| [A3 C4 F4]/2:93 r/2 |
-| [Bb3 D4 G4]/2:94 r/2 |
-| [Bb3 Eb4 G4]/2:95 r/2 |
-| [Bb3 D4 F4]/2:96 r/2 |
-| [A3 C4 F4]/2:97 r/2 |
-| [Bb3 D4 G4]/1:96 |
-| [Bb3 Eb4 G4]/1:96 |
-| [Bb3 D4 F4]/2:100 r/2 |
-| [A3 C4 F4]/2:101 r/2 |
-| [Bb3 D4 G4]/2:102 r/2 |
-| [Bb3 Eb4 G4]/2:103 r/2 |
-| [Bb3 D4 F4]/2:104 r/2 |
-| [A3 C4 F4]/2:105 r/2 |
-| [Bb3 Eb4 G4]/1:100 |
+| [A3 C4 F4]/1:88 |
+| [C4 Eb4 G4]/1:94 |
+| [A3 D4 F4]/1:96 |
+| [Bb3 Eb4 G4]/1:98 |
 | [A3 C4 F4]/1:100 |
+# Chorus 1: both choirs held together under the hook (bars 25-40)
+| [Bb3 D4 F4]/1:74 |
+| [A3 C4 F4]/1:75 |
+| [Bb3 D4 G4]/1:76 |
+| [Bb3 Eb4 G4]/1:77 |
+| [Bb3 D4 F4]/1:78 |
+| [A3 C4 F4]/1:79 |
+| [Bb3 D4 G4]/1:80 |
+| [Bb3 Eb4 G4]/1:81 |
+| [Bb3 D4 F4]/1:82 |
+| [A3 C4 F4]/1:83 |
+| [Bb3 D4 G4]/1:84 |
+| [Bb3 Eb4 G4]/1:85 |
+| [Bb3 D4 F4]/1:86 |
+| [A3 C4 F4]/1:87 |
+| [Bb3 Eb4 G4]/1:88 |
+| [A3 C4 F4]/1:89 |
 # Verse 2: aah calls this time, ooh answers (bars 41-48)
-| [Bb3 D4 F4]/1:92 |
+| [Bb3 D4 F4]/1:82 |
 | R |
-| [Bb3 D4 G4]/1:96 |
+| [Bb3 D4 G4]/1:86 |
 | R |
-| [Bb3 Eb4 G4]/1:100 |
+| [Bb3 Eb4 G4]/1:90 |
 | R |
-| [A3 C4 F4]/1:100~ |
+| [A3 C4 F4]/1:94~ |
 | [A3 C4 F4]/1 |
 # Pre-chorus 2: aah first, then together and rising (bars 49-56)
-| [C4 Eb4 G4]/1:94 |
+| [C4 Eb4 G4]/1:84 |
 | R |
-| [Bb3 Eb4 G4]/1:98 |
+| [Bb3 Eb4 G4]/1:88 |
 | R |
-| [C4 Eb4 G4]/1:102 |
-| [A3 D4 F4]/1:104 |
-| [Bb3 Eb4 G4]/1:106 |
-| [A3 C4 F4]/1:108 |
-# Chorus 2 (bars 57-72)
-| [Bb3 D4 F4]/2:94 r/2 |
-| [A3 C4 F4]/2:95 r/2 |
-| [Bb3 D4 G4]/2:96 r/2 |
-| [Bb3 Eb4 G4]/2:97 r/2 |
-| [Bb3 D4 F4]/2:98 r/2 |
-| [A3 C4 F4]/2:99 r/2 |
-| [Bb3 D4 G4]/1:98 |
-| [Bb3 Eb4 G4]/1:98 |
-| [Bb3 D4 F4]/2:102 r/2 |
-| [A3 C4 F4]/2:103 r/2 |
-| [Bb3 D4 G4]/2:104 r/2 |
-| [Bb3 Eb4 G4]/2:105 r/2 |
-| [Bb3 D4 F4]/2:106 r/2 |
-| [A3 C4 F4]/2:107 r/2 |
-| [Bb3 Eb4 G4]/1:102 |
+| [C4 Eb4 G4]/1:96 |
+| [A3 D4 F4]/1:98 |
+| [Bb3 Eb4 G4]/1:100 |
 | [A3 C4 F4]/1:102 |
-# Breakdown: no kick; both choirs held together, then the swap returns softly (bars 73-88)
+# Chorus 2 (bars 57-72)
+| [Bb3 D4 F4]/1:76 |
+| [A3 C4 F4]/1:77 |
+| [Bb3 D4 G4]/1:78 |
+| [Bb3 Eb4 G4]/1:79 |
 | [Bb3 D4 F4]/1:80 |
 | [A3 C4 F4]/1:81 |
 | [Bb3 D4 G4]/1:82 |
@@ -248,48 +255,61 @@ track choir-aah role=pad inst=bank:choir-aah vol=1 pan=-0.12
 | [A3 C4 F4]/1:85 |
 | [Bb3 D4 G4]/1:86 |
 | [Bb3 Eb4 G4]/1:87 |
-| [Bb3 D4 F4]/2:84 r/2 |
-| [A3 C4 F4]/2:85 r/2 |
-| [Bb3 D4 G4]/2:86 r/2 |
-| [Bb3 Eb4 G4]/2:87 r/2 |
-| [Bb3 D4 F4]/2:88 r/2 |
-| [A3 C4 F4]/2:89 r/2 |
+| [Bb3 D4 F4]/1:88 |
+| [A3 C4 F4]/1:89 |
 | [Bb3 Eb4 G4]/1:90 |
-| [A3 C4 F4]/1:90 |
+| [A3 C4 F4]/1:91 |
+# Breakdown: no kick; both choirs held together (bars 73-88)
+| [Bb3 D4 F4]/1:74 |
+| [A3 C4 F4]/1:75 |
+| [Bb3 D4 G4]/1:76 |
+| [Bb3 Eb4 G4]/1:76 |
+| [Bb3 D4 F4]/1:77 |
+| [A3 C4 F4]/1:78 |
+| [Bb3 D4 G4]/1:79 |
+| [Bb3 Eb4 G4]/1:79 |
+| [Bb3 D4 F4]/1:80 |
+| [A3 C4 F4]/1:81 |
+| [Bb3 D4 G4]/1:82 |
+| [Bb3 Eb4 G4]/1:82 |
+| [Bb3 D4 F4]/1:83 |
+| [A3 C4 F4]/1:84 |
+| [Bb3 Eb4 G4]/1:85 |
+| [A3 C4 F4]/1:85 |
 # Build: trading bars, then together and swelling into G (bars 89-96)
 | R |
-| [A3 D4 F4]/1:94 |
+| [A3 D4 F4]/1:84 |
 | R |
-| [A3 C4 F4]/1:98 |
-| [C4 Eb4 G4]/1:96 |
-| [A3 D4 F4]/1:98 |
-| [B3 D4 G4]/1:102~ |
+| [A3 C4 F4]/1:88 |
+| [C4 Eb4 G4]/1:90 |
+| [A3 D4 F4]/1:92 |
+| [B3 D4 G4]/1:96~ |
 | [B3 D4 G4]/1 |
 # Final chorus: up a whole step (bars 97-112)
-| [C4 E4 G4]/2:98 r/2 |
-| [B3 D4 G4]/2:99 r/2 |
-| [C4 E4 A4]/2:100 r/2 |
-| [A3 C4 F4]/2:101 r/2 |
-| [C4 E4 G4]/2:102 r/2 |
-| [B3 D4 G4]/2:103 r/2 |
-| [C4 E4 A4]/1:102 |
-| [A3 C4 F4]/1:102 |
-| [C4 E4 G4]/2:106 r/2 |
-| [B3 D4 G4]/2:107 r/2 |
-| [C4 E4 A4]/2:108 r/2 |
-| [A3 C4 F4]/2:109 r/2 |
-| [C4 E4 G4]/2:110 r/2 |
-| [B3 D4 G4]/2:111 r/2 |
-| [A3 C4 F4]/1:106 |
-| [B3 D4 G4]/1:106 |
+| [C4 E4 G4]/1:78 |
+| [B3 D4 G4]/1:79 |
+| [C4 E4 A4]/1:80 |
+| [A3 C4 F4]/1:81 |
+| [C4 E4 G4]/1:82 |
+| [B3 D4 G4]/1:83 |
+| [C4 E4 A4]/1:84 |
+| [A3 C4 F4]/1:85 |
+| [C4 E4 G4]/1:86 |
+| [B3 D4 G4]/1:87 |
+| [C4 E4 A4]/1:88 |
+| [A3 C4 F4]/1:89 |
+| [C4 E4 G4]/1:90 |
+| [B3 D4 G4]/1:91 |
+| [A3 C4 F4]/1:92 |
+| [B3 D4 G4]/1:93 |
 # Outro: ooh and aah trade bars again, then fade out together (bars 113-120)
 | R |
-| [C4 E4 G4]/1:94 |
+| [C4 E4 G4]/1:84 |
 | R |
-| [B3 D4 G4]/1:90 |
+| [B3 D4 G4]/1:80 |
 | R |
-| [A3 C4 F4]/1:86 |
-| [C4 E4 G4]/1:80~ |
+| [A3 C4 F4]/1:76 |
+| [C4 E4 G4]/1:74~ |
 | [C4 E4 G4]/1 |
 
 track choir-ooh role=pad inst=bank:choir-ooh vol=1 pan=0.12
@@ -315,23 +335,23 @@ track choir-ooh role=pad inst=bank:choir-ooh vol=1 pan=0.12
 | [F3 A3 D4]/1:106 |
 | [G3 Bb3 Eb4]/1:108 |
 | [F3 A3 C4]/1:110 |
-# Chorus 1: aah on beats 1-2, ooh answers on 3-4; together where the saw answers (bars 25-40)
-| r/2 [F3 Bb3 D4]/2:94 |
-| r/2 [F3 A3 C4]/2:95 |
-| r/2 [G3 Bb3 D4]/2:96 |
-| r/2 [G3 Bb3 Eb4]/2:97 |
-| r/2 [F3 Bb3 D4]/2:98 |
-| r/2 [F3 A3 C4]/2:99 |
-| [G3 Bb3 D4]/1:100 |
-| [G3 Bb3 Eb4]/1:100 |
-| r/2 [F3 Bb3 D4]/2:102 |
-| r/2 [F3 A3 C4]/2:103 |
-| r/2 [G3 Bb3 D4]/2:104 |
-| r/2 [G3 Bb3 Eb4]/2:105 |
-| r/2 [F3 Bb3 D4]/2:106 |
-| r/2 [F3 A3 C4]/2:107 |
-| [G3 Bb3 Eb4]/1:104 |
-| [F3 A3 C4]/1:104 |
+# Chorus 1: both choirs held together under the hook (bars 25-40)
+| [F3 Bb3 D4]/1:84 |
+| [F3 A3 C4]/1:85 |
+| [G3 Bb3 D4]/1:86 |
+| [G3 Bb3 Eb4]/1:87 |
+| [F3 Bb3 D4]/1:88 |
+| [F3 A3 C4]/1:89 |
+| [G3 Bb3 D4]/1:90 |
+| [G3 Bb3 Eb4]/1:91 |
+| [F3 Bb3 D4]/1:92 |
+| [F3 A3 C4]/1:93 |
+| [G3 Bb3 D4]/1:94 |
+| [G3 Bb3 Eb4]/1:95 |
+| [F3 Bb3 D4]/1:96 |
+| [F3 A3 C4]/1:97 |
+| [G3 Bb3 Eb4]/1:98 |
+| [F3 A3 C4]/1:99 |
 # Verse 2: aah calls this time, ooh answers (bars 41-48)
 | R |
 | [F3 Bb3 D4]/1:94 |
@@ -351,39 +371,39 @@ track choir-ooh role=pad inst=bank:choir-ooh vol=1 pan=0.12
 | [G3 Bb3 Eb4]/1:110 |
 | [F3 A3 C4]/1:112 |
 # Chorus 2 (bars 57-72)
-| r/2 [F3 Bb3 D4]/2:96 |
-| r/2 [F3 A3 C4]/2:97 |
-| r/2 [G3 Bb3 D4]/2:98 |
-| r/2 [G3 Bb3 Eb4]/2:99 |
-| r/2 [F3 Bb3 D4]/2:100 |
-| r/2 [F3 A3 C4]/2:101 |
-| [G3 Bb3 D4]/1:102 |
-| [G3 Bb3 Eb4]/1:102 |
-| r/2 [F3 Bb3 D4]/2:104 |
-| r/2 [F3 A3 C4]/2:105 |
-| r/2 [G3 Bb3 D4]/2:106 |
-| r/2 [G3 Bb3 Eb4]/2:107 |
-| r/2 [F3 Bb3 D4]/2:108 |
-| r/2 [F3 A3 C4]/2:109 |
-| [G3 Bb3 Eb4]/1:106 |
-| [F3 A3 C4]/1:106 |
-# Breakdown: no kick; both choirs held together, then the swap returns softly (bars 73-88)
+| [F3 Bb3 D4]/1:86 |
+| [F3 A3 C4]/1:87 |
+| [G3 Bb3 D4]/1:88 |
+| [G3 Bb3 Eb4]/1:89 |
+| [F3 Bb3 D4]/1:90 |
+| [F3 A3 C4]/1:91 |
+| [G3 Bb3 D4]/1:92 |
+| [G3 Bb3 Eb4]/1:93 |
+| [F3 Bb3 D4]/1:94 |
+| [F3 A3 C4]/1:95 |
+| [G3 Bb3 D4]/1:96 |
+| [G3 Bb3 Eb4]/1:97 |
+| [F3 Bb3 D4]/1:98 |
+| [F3 A3 C4]/1:99 |
+| [G3 Bb3 Eb4]/1:100 |
+| [F3 A3 C4]/1:101 |
+# Breakdown: no kick; both choirs held together (bars 73-88)
 | [F3 Bb3 D4]/1:84 |
 | [F3 A3 C4]/1:85 |
 | [G3 Bb3 D4]/1:86 |
-| [G3 Bb3 Eb4]/1:87 |
-| [F3 Bb3 D4]/1:88 |
-| [F3 A3 C4]/1:89 |
-| [G3 Bb3 D4]/1:90 |
-| [G3 Bb3 Eb4]/1:91 |
-| r/2 [F3 Bb3 D4]/2:86 |
-| r/2 [F3 A3 C4]/2:87 |
-| r/2 [G3 Bb3 D4]/2:88 |
-| r/2 [G3 Bb3 Eb4]/2:89 |
-| r/2 [F3 Bb3 D4]/2:90 |
-| r/2 [F3 A3 C4]/2:91 |
-| [G3 Bb3 Eb4]/1:94 |
+| [G3 Bb3 Eb4]/1:86 |
+| [F3 Bb3 D4]/1:87 |
+| [F3 A3 C4]/1:88 |
+| [G3 Bb3 D4]/1:89 |
+| [G3 Bb3 Eb4]/1:89 |
+| [F3 Bb3 D4]/1:90 |
+| [F3 A3 C4]/1:91 |
+| [G3 Bb3 D4]/1:92 |
+| [G3 Bb3 Eb4]/1:92 |
+| [F3 Bb3 D4]/1:93 |
 | [F3 A3 C4]/1:94 |
+| [G3 Bb3 Eb4]/1:95 |
+| [F3 A3 C4]/1:95 |
 # Build: trading bars, then together and swelling into G (bars 89-96)
 | [G3 C4 Eb4]/1:92 |
 | R |
@@ -394,22 +414,22 @@ track choir-ooh role=pad inst=bank:choir-ooh vol=1 pan=0.12
 | [G3 B3 D4]/1:106~ |
 | [G3 B3 D4]/1 |
 # Final chorus: up a whole step (bars 97-112)
-| r/2 [G3 C4 E4]/2:100 |
-| r/2 [G3 B3 D4]/2:101 |
-| r/2 [A3 C4 E4]/2:102 |
-| r/2 [F3 A3 C4]/2:103 |
-| r/2 [G3 C4 E4]/2:104 |
-| r/2 [G3 B3 D4]/2:105 |
-| [A3 C4 E4]/1:106 |
-| [F3 A3 C4]/1:106 |
-| r/2 [G3 C4 E4]/2:108 |
-| r/2 [G3 B3 D4]/2:109 |
-| r/2 [A3 C4 E4]/2:110 |
-| r/2 [F3 A3 C4]/2:111 |
-| r/2 [G3 C4 E4]/2:112 |
-| r/2 [G3 B3 D4]/2:113 |
-| [F3 A3 C4]/1:110 |
-| [G3 B3 D4]/1:110 |
+| [G3 C4 E4]/1:88 |
+| [G3 B3 D4]/1:89 |
+| [A3 C4 E4]/1:90 |
+| [F3 A3 C4]/1:91 |
+| [G3 C4 E4]/1:92 |
+| [G3 B3 D4]/1:93 |
+| [A3 C4 E4]/1:94 |
+| [F3 A3 C4]/1:95 |
+| [G3 C4 E4]/1:96 |
+| [G3 B3 D4]/1:97 |
+| [A3 C4 E4]/1:98 |
+| [F3 A3 C4]/1:99 |
+| [G3 C4 E4]/1:100 |
+| [G3 B3 D4]/1:101 |
+| [F3 A3 C4]/1:102 |
+| [G3 B3 D4]/1:103 |
 # Outro: ooh and aah trade bars again, then fade out together (bars 113-120)
 | [G3 C4 E4]/1:96 |
 | R |
