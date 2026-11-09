@@ -295,10 +295,12 @@ export const PADS: Record<string, Patch> = {
     gain: 0.2,
     sends: { reverb: 1.5, delay: 0.5 },
   }),
-  // Lo-fi pad: a warm pad with tape wobble.
-  'tape-pad': synth({ name: 'Tape pad', oscs: [osc('sawtooth', 0, -10, 0.3), osc('sawtooth', 0, 10, 0.3), osc('triangle', -1, 0, 0.4)],
-    env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 1, envDecay: 1 },
-    vibrato: { rate: 0.5, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1.4, delay: 0.3 } }),
+  // Lo-fi pad: soft and warbly like worn tape. Detuned triangles and sines instead of saws, so it has
+  // no buzz, with a slow, wide wobble.
+  'tape-pad': synth({ name: 'Tape pad',
+    oscs: [osc('triangle', 0, -8, 0.4), osc('triangle', 0, 8, 0.4), osc('sine', -1, 0, 0.3), osc('sine', 1, 0, 0.12)],
+    env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 2200, q: 0.5, envAmount: 1, envDecay: 1 },
+    vibrato: { rate: 0.55, cents: 14, delay: 0 }, gain: 0.14, sends: { reverb: 1.4, delay: 0.3 } }),
   // Cinematic pad: a big string section. The wide ensemble plus a quiet octave-down layer for weight,
   // with a body resonance and some bow brightness.
   'string-section': synth({ name: 'String section',
@@ -314,10 +316,13 @@ export const PADS: Record<string, Patch> = {
     formants: [{ hz: 220, q: 1.5, gain: 0.8 }, { hz: 600, q: 1.5, gain: 0.6 }, { hz: 1600, q: 2, gain: 0.4 }],
     env: env(0.15, 0.5, 0.85, 0.6), filter: { type: 'lowpass', hz: 3000, q: 0.6, envAmount: 1, envDecay: 0.3 },
     vibrato: { rate: 5, cents: 18, delay: 0.35 }, gain: 0.39, sends: { reverb: 1.2, delay: 0 } }),
-  // A slow analog pad: detuned saws with a long swell, for Studio.
-  'synth-pad': synth({ name: 'Analog pad', oscs: [osc('sawtooth', 0, -12, 0.5), osc('sawtooth', 0, 12, 0.5)],
-    env: env(1.2, 1.5, 0.8, 2), filter: { type: 'lowpass', hz: 1100, q: 1, envAmount: 1.5, envDecay: 2 },
-    vibrato: { rate: 0.4, cents: 6, delay: 0 }, gain: 0.16, sends: { reverb: 1.5, delay: 0.4 } }),
+  // A glass pad: two detuned sines with 3:1 FM that swells in and settles to a soft shimmer, slow
+  // and bell-like rather than buzzy. Cinematic reaches it as inst=synth-pad.
+  'synth-pad': synth({ name: 'Glass pad',
+    oscs: [osc('sine', 0, -6, 0.5), osc('sine', 0, 6, 0.5), osc('sine', 1, 0, 0.15)],
+    fm: { ratio: 3, index: 2, attack: 1.2, decay: 2.5, sustain: 0.5, targets: [0, 1] },
+    env: env(1.2, 1.5, 0.85, 2), vibrato: { rate: 0.4, cents: 6, delay: 0 },
+    gain: 0.1, sends: { reverb: 1.5, delay: 0.4 } }),
   // Alt rock: a held wall of distorted rhythm guitar for the chorus.
   'guitar-wall': synth({ name: 'Guitar wall', oscs: [osc('sawtooth', 0, -10, 0.4), osc('sawtooth', 0, 10, 0.4), osc('square', -1, 0, 0.2)],
     env: env(0.01, 0.5, 0.8, 0.25), filter: { type: 'lowpass', hz: 2200, q: 0.8, envAmount: 1, envDecay: 0.3 },
