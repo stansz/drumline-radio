@@ -78,23 +78,23 @@ track keys role=chords vol=0.75
 # Outro
 | v=58 [C3 Eb3 G3 Bb3]/4.+25 r/8 r/8 [C3 Eb3 G3 Bb3]/8+90:50 r/4 | [Ab2 Eb3 G3 Bb3]/4.+25 r/8 r/8 [Ab2 Eb3 G3 Bb3]/8+90:50 r/4 | [F2 C3 Eb3 G3]/4.+25 r/8 r/8 [F2 C3 Eb3 G3]/8+90:50 r/4 | v=52 [C3 Eb3 G3 Bb3 D4]/1 |
 
-track pad role=pad vol=0.4
+track pad role=pad vol=1
 # Intro
-| v=54 [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
+| v=81 [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
 # Verse 1
 | R*8 |
 # Hook
 | [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 | [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
 # Static break: the pad's moment
-| v=62 [Eb2 Bb2]/1 | [D3 Ab3]/1 | [C3 G3]/1 | [G2 C3]/1 |
+| v=93 [Eb2 Bb2]/1 | [D3 Ab3]/1 | [C3 G3]/1 | [G2 C3]/1 |
 # Verse 2
 | R*8 |
 # Hook
-| v=56 [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 | [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
+| v=84 [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 | [C2 G2]/1~ | [C2 G2]/1 | [F2 C3]/1 | [G2 D3]/1 |
 # Outro
 | [C2 G2]/1 | [Ab2 Eb3]/1 | [F2 C3]/1 | [C2 G2 C3]/1 |
 
-track bass role=bass vol=0.45
+track bass role=bass vol=0.32
 # Intro
 | R | R | F1/1 | G1/2 A1/4 G1/4 |
 # Verse 1: root, octave pop on the two-and, home on the three-and

@@ -295,11 +295,11 @@ export const PADS: Record<string, Patch> = {
     gain: 0.2,
     sends: { reverb: 1.5, delay: 0.5 },
   }),
-  // Lo-fi pad: soft and warbly like worn tape. Detuned triangles and sines instead of saws, so it has
-  // no buzz, with a slow, wide wobble.
+  // Lo-fi pad: soft and warbly like worn tape. Detuned triangles with an octave-up layer instead of
+  // saws, so it has no buzz but still carries when written low, with a slow, wide wobble.
   'tape-pad': synth({ name: 'Tape pad',
-    oscs: [osc('triangle', 0, -8, 0.4), osc('triangle', 0, 8, 0.4), osc('sine', -1, 0, 0.3), osc('sine', 1, 0, 0.12)],
-    env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 2200, q: 0.5, envAmount: 1, envDecay: 1 },
+    oscs: [osc('triangle', 0, -8, 0.35), osc('triangle', 0, 8, 0.35), osc('triangle', 1, 0, 0.3), osc('sine', 1, 0, 0.1)],
+    env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 2600, q: 0.5, envAmount: 1, envDecay: 1 },
     vibrato: { rate: 0.55, cents: 14, delay: 0 }, gain: 0.14, sends: { reverb: 1.4, delay: 0.3 } }),
   // Cinematic pad: a big string section. The wide ensemble plus a quiet octave-down layer for weight,
   // with a body resonance and some bow brightness.
