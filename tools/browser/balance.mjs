@@ -2,7 +2,8 @@
 // every section, so a buried or overpowering part shows up without seeking or timing. One command:
 // it starts its own Vite server on a free port, renders in headless Edge, and stops both when done.
 // For each track and section it prints RMS / peak in dB, plus the level below 150 Hz for the bass and
-// drums, then flags common problems: a pad or chords part more than 10 dB under the lead, an arp
+// drums, then flags common problems: a pad or chords part more than 10 dB under the lead (on both
+// RMS and peak, since sparse parts read low by RMS), an arp
 // peaking more than 8 dB under the lead's peak, a bass louder than the lead, and a bass whose low
 // end is louder than the kick's.
 //   npm run balance -- <song name or path> [style] [bars per section, default 8]
@@ -129,8 +130,11 @@ try {
       const lead = at('lead').sort((a, b) => b.l.rms - a.l.rms)[0];
       const where = `bars ${s.from}-${s.to}`;
       if (lead) {
+        // Sparse parts (stabs, a chopped hook) read low by RMS, so a part is buried only when it is
+        // more than 10 dB under on both RMS and peak.
         for (const x of [...at('pad'), ...at('chords')]) {
-          if (lead.l.rms - x.l.rms > 10) flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(lead.l.rms - x.l.rms)} dB under ${lead.t.id}`);
+          const gap = Math.min(lead.l.rms - x.l.rms, lead.l.peak - x.l.peak);
+          if (gap > 10) flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (RMS and peak)`);
         }
         // An arp is short plucks, so its RMS reads low; compare peaks.
         // A buried arp's RMS can sit under the playing threshold, so find it by its peak.
@@ -142,8 +146,8 @@ try {
           if (x.l.rms > lead.l.rms) flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(x.l.rms - lead.l.rms)} dB over ${lead.t.id}`);
         }
       }
-      // Only a kit with a real low end (a kick) is compared with the bass.
-      const drums = at('drums').filter((x) => x.l.low > PLAYING).sort((a, b) => b.l.low - a.l.low)[0];
+      // Only a kit with a real low end (a kick playing through the section) is compared with the bass.
+      const drums = at('drums').filter((x) => x.l.low > -45).sort((a, b) => b.l.low - a.l.low)[0];
       for (const x of at('bass')) {
         if (drums && x.l.low > drums.l.low) flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
       }

@@ -1,66 +1,110 @@
 ## Goal
 
-Two small composing aids: (1) when a bar's length is wrong, the parse error lists every token in
-that bar with the ticks it got, so a sticky-duration mistake is obvious; (2) `npm run check:songs`
-can check a single song.
+A chord-map check: a song can declare its chord progression in a comment, and `npm run check:songs`
+reports long notes that start on a beat and aren't in that bar's chord. It is a report, like the
+clash count, not a failure.
 
 ## Files to touch
 
-- `src/music/song.ts`
-- `tests/song.test.ts`
+- `src/music/chords.ts` (new)
+- `tests/chords.test.ts` (new)
 - `tools/check/songs.check.ts`
+- `docs/composing.md`
 - `tools/README.md`
+- `AGENTS.md`
 
 ## Steps
 
-1. `src/music/song.ts`, in the loop over `assembledBar.tokens` that accumulates `barTicks`:
-   - Keep a list `barParts: string[]`, reset with `barTicks` for each bar. Whenever a rest or note
-     token adds to `barTicks`, push `` `${token.text} ${parsed.ticks}` `` (the token as written,
-     then the ticks it got, including a duration inherited from the sticky duration).
-   - Change the bar-length error to:
+1. Create `src/music/chords.ts`, free of the DOM and Web Audio, exporting:
 
-     ```ts
-     `track ${raw.id} bar ${barInfo.number} is ${barTicks} ticks, expected ${barInfo.ticks} ` +
-       `(${Math.abs(barInfo.ticks - barTicks)} ${barTicks < barInfo.ticks ? 'short' : 'over'}): ` +
-       barParts.join(', ')
-     ```
+   ```ts
+   /** Pitch classes (0 = C … 11 = B) of a chord symbol, or null for no chord ("-" or "N.C.").
+    *  Throws an Error naming the symbol if it can't be read. */
+   export function chordTones(symbol: string): number[] | null
 
-     Example: `track beat bar 44 is 2400 ticks, expected 2880 (480 short): h/4 960, s/8' 480, s/8' 480, h 480`.
-   - Change nothing else in the parser.
+   export interface ChordMap {
+     /** The chord symbol for a 1-based bar number, or null when the song declares no chord there. */
+     chordAt(bar: number): string | null;
+   }
 
-2. `tests/song.test.ts`: the existing assertion
-   `expect(errors).toContain('line 11: track a bar 1 is 4800 ticks, expected 3840');` must be updated
-   to the new full message for that test's bar (work out the token list from the test's own song
-   text). Add one test: a 4/4 drums track with the bar `| k/4 s/8 s h |` (2 × 480 + 960 + ... —
-   compute it) gives an error containing `(` + the shortfall + ` short): k/4 960, s/8 480, s 480, h 480`.
-   Use whatever header and track lines the file's other tests use for a minimal valid song.
+   /** Reads the `# chords:` comment lines of a song's text. Returns null when there are none.
+    *  Throws an Error naming the line for a bad line or symbol. */
+   export function parseChordMap(text: string): ChordMap | null
+   ```
 
-3. `tools/check/songs.check.ts`: support an optional `SONG` environment variable.
-   - If `SONG` is set, check only that song: its name is `basename(SONG)` without a trailing
-     `.song`, and its folder is `dirname(SONG)` when `SONG` contains a `/` or `\`, otherwise `DIR`.
-     So `SONG=wayfarers-rest`, `SONG=wayfarers-rest.song`, and `SONG=src/songs/wayfarers-rest.song`
-     all check `src/songs/wayfarers-rest.song`.
-   - If no file matches, the test fails with a message naming the path it looked for.
-   - Update the usage comment at the top of the file with the `SONG=` form.
-   - With `SONG` unset, behaviour is unchanged.
+   - Chord symbols: a root `[A-G]` with an optional `#` or `b`, then an optional quality, then an
+     optional `/X` bass note (ignored except that X is a valid root). Qualities and their intervals
+     in semitones from the root:
+     - none: 0 4 7; `m`: 0 3 7; `dim`: 0 3 6; `aug`: 0 4 8; `sus2`: 0 2 7; `sus4` or `sus`: 0 5 7;
+     - `7`: 0 4 7 10; `maj7`: 0 4 7 11; `m7`: 0 3 7 10; `m7b5`: 0 3 6 10; `dim7`: 0 3 6 9;
+     - `6`: 0 4 7 9; `m6`: 0 3 7 9; `add9`: 0 2 4 7; `madd9`: 0 2 3 7; `9`: 0 2 4 7 10;
+       `m9`: 0 2 3 7 10; `maj9`: 0 2 4 7 11.
+     Return the pitch classes `(root + interval) % 12`, sorted ascending, without duplicates.
+   - Chord-map lines: a line whose trimmed text starts with `# chords` is one of:
+     - `# chords: <symbols>` — the symbols, separated by spaces, one per bar starting at bar 1;
+     - `# chords @<N>: <symbols>` — the same, starting at bar N (N ≥ 1).
+     Each line's symbols repeat in a cycle from its start bar until the next line's start bar (or the
+     end of the song). Lines must be in increasing start-bar order; a `# chords:` line without `@`
+     counts as `@1`. `|` tokens among the symbols are ignored, so `# chords: F#m | D | A | E` works.
+     Bars before the first line's start have no chord (null).
+   - Validate every symbol with `chordTones` while parsing.
 
-4. `tools/README.md`: in the section describing `npm run check:songs`, add one sentence: set `SONG`
-   to a song's name or path (for example `SONG=wayfarers-rest npm run check:songs`) to check only
-   that song. Also mention that a bar-length parse error lists each token with its ticks.
+2. Create `tests/chords.test.ts` (Vitest, importing only `../src/music/chords`):
+   - `chordTones('C')` → `[0, 4, 7]`; `chordTones('F#m')` → `[1, 6, 9]`; `chordTones('Bb7')` →
+     `[2, 5, 8, 10]`; `chordTones('Dm9')` → `[0, 2, 4, 5, 9]`; `chordTones('G/B')` → `[2, 7, 11]`;
+     `chordTones('-')` and `chordTones('N.C.')` → `null`; `chordTones('H')` throws.
+   - `parseChordMap('no chords here')` → `null`.
+   - For text `"# chords: F#m D A E\n# chords @9: Bm | G\n"`: `chordAt(1)` is `F#m`, `chordAt(4)` is
+     `E`, `chordAt(5)` is `F#m`, `chordAt(8)` is `E`, `chordAt(9)` is `Bm`, `chordAt(10)` is `G`,
+     `chordAt(11)` is `Bm`.
+   - For `"# chords @5: C\n"`: `chordAt(4)` is `null`, `chordAt(5)` is `C`.
+   - `parseChordMap("# chords: C Xm\n")` throws; `parseChordMap("# chords @9: C\n# chords @5: D\n")`
+     throws.
+
+3. `tools/check/songs.check.ts`: after the clash count for a song, if `parseChordMap(text)` returns a
+   map (catch a thrown error and report it as `CHORD MAP ERROR <message>` on the song's line, counting
+   as a failure like a parse error):
+   - For every track whose role is not `drums`, and every note in `song.tracks[i].notes`: find its bar
+     (the last `song.bars` entry with `startTick <= note.tick`), its offset in the bar
+     (`note.tick - bar.startTick`), and its length in seconds
+     (`tickToSeconds(song, note.tick + note.ticks) - tickToSeconds(song, note.tick)`).
+   - Count it as off-chord when: the bar has a chord (not null); the length is at least
+     `MIN_SECONDS` (0.3 s); the offset is a multiple of the beat (`TICKS_PER_WHOLE / bar.time[1]`,
+     using `TICKS_PER_WHOLE` from `src/music/song.ts`); and any of its pitches' pitch class is not in
+     `chordTones(chord)`.
+   - Append to the song's line ` · <n> off-chord` (or ` · 0 off-chord`) only for songs with a chord
+     map, with a per-track breakdown in the same style as the clash breakdown when n > 0.
+   - With `CHECK_DETAIL=1`, list each off-chord note:
+     `  off-chord bar <N> (<chord>) <track> <note name> (<length>s) at <start seconds>s`.
+   - Songs without `# chords` lines print exactly as before.
+   - Update the usage comment at the top of the file.
+
+4. `docs/composing.md`, the bullet that starts "**Write the chord progression once,**": add that a
+   hand-written song should declare it as `# chords:` comment lines (one symbol per bar, cycling,
+   `# chords @N:` to change from bar N, `-` for no chord), and that `npm run check:songs` then counts
+   long on-beat notes outside the bar's chord ("off-chord"); like clashes, it is a report: a held 9th
+   or a suspension is fine if the chord symbol says so (`Dm9`, `Asus4`) or the commit explains it.
+
+5. `tools/README.md`, in the `npm run check:songs` section: one or two sentences describing the
+   `# chords:` lines and the off-chord count, with the supported chord qualities listed briefly.
+
+6. `AGENTS.md`: in the rule listing files free of the DOM and audio, add `src/music/chords.ts` is
+   already covered by "everything in `src/music/`" — so instead add nothing there; in the rule that
+   starts "`npm run check:songs` reports half-step clashes", add one sentence: songs with `# chords:`
+   lines also get an off-chord count, which is a report too.
 
 ## Acceptance
 
-- `npm run test:sandbox` exits 0, and its output shows `tests/song.test.ts` passing.
+- `npm run test:sandbox` exits 0, and its output shows `tests/chords.test.ts` passing.
 - `git diff --stat` and `git status --porcelain` list only files from **Files to touch** (plus
   `.handoff/` files).
-- `git grep -n "short' : 'over'" -- src/music/song.ts` prints one line.
-- `git grep -n "SONG" -- tools/check/songs.check.ts` prints at least two lines.
+- `git grep -n "off-chord" -- tools/check/songs.check.ts` prints at least two lines.
+- `git diff -- src/songs` prints nothing.
 
 Verifier only:
 - `npm test` exits 0.
 - `npm run typecheck` exits 0.
-- `SONG=wayfarers-rest npm run check:songs` exits 0 and its output names only `wayfarers-rest.song`.
-- `npm run check:songs` exits 0 and lists every song.
+- `npm run check:songs` exits 0, and its output is unchanged for songs without `# chords` lines.
 
 ## Parallel work
 
@@ -70,7 +114,7 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Do not change any song file, any other parse error message, or parsing behaviour.
+- Do not change any song file, the parser (`src/music/song.ts`), or the clash check's results.
 - Files use LF line endings, UTF-8, and 2-space indents.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and
   report it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past
@@ -78,7 +122,7 @@ None — do it sequentially.
 
 ## Out of scope
 
-- A balance tool, pitch-class reports, browser checks, `docs/composing.md`.
+- Adding `# chords:` lines to songs, a "safe notes" helper, browser checks, the balance tool.
 
 ## If blocked
 

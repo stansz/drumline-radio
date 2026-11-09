@@ -224,7 +224,9 @@ together into one bar and fail with "a whole-bar shortcut must be the only thing
 - `%` repeats the previous bar of this track exactly, after its shortcuts are expanded. `%` as the
   first bar is an error.
 - `{` starts a group and `}*n` ends it. The bars between, separated by `|`, are repeated n times
-  (`n` from 1 to 64). Groups may not nest.
+  (`n` from 1 to 64). Groups may not nest. The count is of passes, not bars: `{ one bar }*4` is 4
+  bars, and a 4-bar group `*4` is 16. If a track comes out short, the checker reports that the
+  tracks have different numbers of bars.
 
 ```
 | { [k h]/8 h [s h] h [k h] h [s h] h }*2 | % | k/4 s/4 [k cr]/4 |

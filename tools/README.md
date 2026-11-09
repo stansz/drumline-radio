@@ -215,7 +215,12 @@ also lists each song's length and any long note in a pitched part (every track e
 and drums) a semitone away from the pad or bass under them. That count is a report, not a failure:
 passing notes and a maj7 against its root are fine, but a new spike is worth a listen. Each clash
 line names its track, and the summary breaks the count down by track. Set `CHECK_DETAIL=1` to list
-every clash with its time, the track, note, and its length, and the pad or bass note under it.
+every clash with its time, the track, note, and its length, and the pad or bass note under it. Songs
+that declare their progression in `# chords:` comment lines (one symbol per bar, cycling;
+`# chords @N:` changes from bar N, `-` is no chord) also get an off-chord count: long notes that
+start on a beat with a pitch outside the bar's chord. The supported qualities are major, `m`,
+`dim`, `aug`, `sus2`, `sus4`/`sus`, `7`, `maj7`, `m7`, `m7b5`, `dim7`, `6`, `m6`, `add9`, `madd9`,
+`9`, `m9`, and `maj9`, with an optional `/` bass note. That count is a report too.
 
 ## Song report
 

@@ -2,14 +2,19 @@
 // pitched part a semitone away from the pad or bass under it (a minor 2nd or 9th). Every pitched
 // part except the pad and bass is checked against them. Clashes are a report, not a failure: some
 // are intended (passing notes, a maj7 against its root). Parse errors fail.
+// A song may declare its chord progression in `# chords:` comment lines (one symbol per bar,
+// cycling, `# chords @N:` to change from bar N); the checker then also counts long on-beat notes
+// outside the bar's chord ("off-chord"). That count is a report too, not a failure.
 //   npm run check:songs                      (checks src/songs)
 //   CHECK_DIR=out npm run check:songs        (checks another folder, e.g. arranger output)
 //   SONG=wayfarers-rest npm run check:songs  (checks one song by name, file name, or path)
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { expect, it } from 'vitest';
-import { parseSong } from '../../src/music/song';
-import { buildTimeline } from '../../src/music/timing';
+import { chordTones, parseChordMap } from '../../src/music/chords';
+import type { ChordMap } from '../../src/music/chords';
+import { parseSong, TICKS_PER_WHOLE } from '../../src/music/song';
+import { buildTimeline, tickToSeconds } from '../../src/music/timing';
 
 const DIR = process.env.CHECK_DIR ?? 'src/songs';
 // SONG narrows the check to one song. A name or file name is looked up in DIR; a path brings its
@@ -39,7 +44,8 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     failed += 1;
   }
   for (const file of files) {
-    const result = parseSong(readFileSync(join(FOLDER, file), 'utf8'));
+    const text = readFileSync(join(FOLDER, file), 'utf8');
+    const result = parseSong(text);
     if (!result.ok) {
       failed += 1;
       lines.push(`${file}: PARSE ERROR ${result.errors.slice(0, 3).join('; ')}`);
@@ -79,14 +85,71 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
         }
       }
     }
+    let chordMap: ChordMap | null = null;
+    let chordError: string | null = null;
+    try {
+      chordMap = parseChordMap(text);
+    } catch (error) {
+      failed += 1;
+      chordError = error instanceof Error ? error.message : String(error);
+    }
+    const offDetails: string[] = [];
+    const offPerTrack = new Map<number, number>();
+    let offChord = 0;
+    if (chordMap) {
+      for (let trackIndex = 0; trackIndex < song.tracks.length; trackIndex++) {
+        const track = song.tracks[trackIndex];
+        if (track.role === 'drums') continue;
+        for (const note of track.notes) {
+          // The bar is the last one that starts at or before the note.
+          let bar = song.bars[0];
+          for (const candidate of song.bars) {
+            if (candidate.startTick > note.tick) break;
+            bar = candidate;
+          }
+          if (!bar) continue;
+          const chord = chordMap.chordAt(bar.number);
+          if (chord === null) continue;
+          const tones = chordTones(chord);
+          if (!tones) continue;
+          const length =
+            tickToSeconds(song, note.tick + note.ticks) - tickToSeconds(song, note.tick);
+          if (length < MIN_SECONDS) continue;
+          const beat = TICKS_PER_WHOLE / bar.time[1];
+          if ((note.tick - bar.startTick) % beat !== 0) continue;
+          const offending = note.pitches.find(
+            (pitch) => !tones.includes(((pitch % 12) + 12) % 12),
+          );
+          if (offending === undefined) continue;
+          offChord += 1;
+          offPerTrack.set(trackIndex, (offPerTrack.get(trackIndex) ?? 0) + 1);
+          if (DETAIL) {
+            const start = tickToSeconds(song, note.tick);
+            offDetails.push(
+              `  off-chord bar ${bar.number} (${chord}) ${track.id} ${noteName(offending)} (${length.toFixed(2)}s) at ${start.toFixed(1)}s`,
+            );
+          }
+        }
+      }
+    }
     const total = Math.round(timeline.duration);
     const mins = `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
     const breakdown = [...perTrack.entries()]
       .sort(([x], [y]) => x - y)
       .map(([track, count]) => `${song.tracks[track].id} ${count}`);
     const clashText = breakdown.length ? `${clashes} clashes [${breakdown.join(', ')}]` : `${clashes} clashes`;
-    lines.push(`${file.padEnd(30)} ${mins.padStart(5)}  ${clashText}${where.length ? ` (at ${where.join(', ')})` : ''}`);
+    const offBreakdown = [...offPerTrack.entries()]
+      .sort(([x], [y]) => x - y)
+      .map(([track, count]) => `${song.tracks[track].id} ${count}`);
+    const offText = chordMap
+      ? ` · ${offChord} off-chord${offBreakdown.length ? ` [${offBreakdown.join(', ')}]` : ''}`
+      : '';
+    const errorText = chordError ? ` CHORD MAP ERROR ${chordError}` : '';
+    lines.push(
+      `${file.padEnd(30)} ${mins.padStart(5)}  ${clashText}${where.length ? ` (at ${where.join(', ')})` : ''}${offText}${errorText}`,
+    );
     lines.push(...details);
+    lines.push(...offDetails);
   }
   console.log(lines.join('\n'));
   expect(failed).toBe(0);

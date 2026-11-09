@@ -28,7 +28,11 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
   script, and make every pitched part follow it bar by bar. Lantern Ward's harp and bells first
   repeated a 2-bar `{ Dm | Bb }*4` loop over an 8-bar progression, so they played Bb major against
   the strings' A major at every cadence. A repeat that is shorter than the progression is the usual
-  cause of wrong notes.
+  cause of wrong notes. A hand-written song should declare the progression as `# chords:` comment
+  lines: one symbol per bar, cycling, `# chords @N:` to change from bar N, and `-` for no chord.
+  `npm run check:songs` then also counts long on-beat notes outside the bar's chord ("off-chord").
+  Like clashes, that is a report: a held 9th or a suspension is fine if the chord symbol says so
+  (`Dm9`, `Asus4`) or the commit explains it.
 - **Repeated sections are copies.** In a hand-written song, a change to the hook has to be made in
   every copy of it. When a song has many repeats and will keep changing, write it as a script in
   `tools/arranger/` (like `last-stop.mjs`) and add it to `tests/drift.test.ts`.

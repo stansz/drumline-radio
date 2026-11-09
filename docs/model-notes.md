@@ -48,7 +48,15 @@ Stop) aren't listed.
   drops), the bass down to 0.3 so it sits under the kick, the drums down to 0.58, the hook up to
   full velocity; the claps moved to their own track so they can sit behind the beat while the kick
   stays dead on the grid; a test for the song's own notes, form and header.
-- **Fixed after:** nothing.
+- **Fixed after:** nothing by me. Later, at SZ's ask: the chord stabs up about 3 dB, and the
+  `vox-lead` patch reworked (it sounded like a flute; see Tool changes).
+- **Tool changes from it:** a chord-map check (`# chords:` comment lines, and an off-chord count in
+  `npm run check:songs`; Signal Fire now declares `F#m D A E` and has 0 off-chord); `npm run
+  balance` compares pads and chords on both RMS and peak, so sparse stabs stop reading as buried;
+  a song-format line that a group's count is of passes, not bars. Its hook also showed that the
+  narrow vowel formants sound like a flute above C5, so `vox-lead` now uses wide soprano bands.
+  Left out: section renders or spectrograms (a model can't hear them), a kick-on-grid check, and a
+  build-shape check.
 
 ### Dusk Over Dunmere — MiMo v2.6 Pro (2026-11-08)
 

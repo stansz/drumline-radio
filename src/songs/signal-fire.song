@@ -4,6 +4,7 @@
 #
 # The chord loop is F# minor - D - A - E, one chord a bar, for all 136 bars. The hook is four bars,
 # one bar a chord: three rising chops, a gap, then the tail. Everything else follows that map.
+# chords: F#m D A E
 #
 # Form 1-16: intro - drums and bass
 # Form 17-32: groove - the chord stabs join
