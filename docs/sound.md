@@ -108,7 +108,7 @@ that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-ba
 | --- | --- |
 | lead | Strings |
 | lead2 | FM brass |
-| counter | Woodwind |
+| counter | Concert flute |
 | pad | String pad |
 | chords | Concert harp |
 | bass | Low strings |
@@ -116,7 +116,9 @@ that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-ba
 | drums | Timpani & cymbals |
 
 Songs can also reach `inst=tubular-bells` (FM bells that ring long), `inst=pizzicato` (short
-plucked strings), and `inst=oboe` (a formant oboe, more cutting than the flute (woodwind)).
+plucked strings), and `inst=oboe` (a formant oboe, more cutting than the flute). The counter-line
+is the concert flute (`concert-flute`): Lo-fi's breathy flute (`woodwind`) with more triangle body
+and only a touch of breath, so it doesn't sound lo-fi in a hall.
 
 ### Techno
 
@@ -233,7 +235,7 @@ bank patch has a one-line comment saying what it is for, and every `SynthPatch` 
 | Slap and DX bass | FM | `dx-bass` |
 | Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
 | Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `oboe` |
-| Flute, breathy parts | oscillators + breath | `woodwind` |
+| Flute, breathy parts | oscillators + breath | `woodwind`, `concert-flute` |
 
 ### FM
 

@@ -152,7 +152,7 @@ const RECIPES: StyleRecipe[] = [
     instruments: {
       strings: 'strings',
       brass: 'fm-brass',
-      woodwind: 'woodwind',
+      woodwind: 'concert-flute',
       oboe: 'oboe',
       'string-pad': 'string-pad',
       harp: 'concert-harp',

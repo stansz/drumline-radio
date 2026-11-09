@@ -15,7 +15,7 @@ pickup: /8
 
 @bars 61-64 tempo=72..50
 
-track flute role=counter vol=0.75 pan=0.2
+track flute role=counter vol=0.6 pan=0.2
 | v=70 E5/8 |
 # Verse 1: the flute over harp and cellos
 | v=70 G5/4 A5/8 B5/8. C6/16 B5/8 | A5/4 F#5/8 D5/8. E5/16 F#5/8 | G5/4 E5/8 E5/8. Eb5/16 E5/8 | F#5/4. B4/4 E5/8 |

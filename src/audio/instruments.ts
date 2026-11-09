@@ -38,12 +38,19 @@ export const LEADS: Record<string, Patch> = {
     env: env(0.002, 0.1, 0.7, 0.05),
     gain: 0.16,
   }),
-  // Orchestral counter-line: a flute. A near-sine with a soft octave and breath noise for the air.
+  // Lo-fi counter-line: a breathy flute. A near-sine with a soft octave and breath noise for the air.
   woodwind: synth({ name: 'Flute',
     oscs: [osc('sine', 0, 0, 0.8), osc('triangle', 0, 0, 0.15), osc('sine', 1, 0, 0.12)],
     breath: { level: 0.25, hz: 2500, q: 0.8 },
     env: env(0.06, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 14, delay: 0.25 },
     gain: 0.21 }),
+  // Orchestral counter-line: a concert flute. The breathy flute with more triangle body and only a
+  // touch of breath, so it stays clear in a hall instead of hissing like a lo-fi flute.
+  'concert-flute': synth({ name: 'Concert flute',
+    oscs: [osc('sine', 0, 0, 0.65), osc('triangle', 0, 0, 0.3), osc('sine', 1, 0, 0.12)],
+    breath: { level: 0.06, hz: 2500, q: 0.8 },
+    env: env(0.06, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 14, delay: 0.25 },
+    gain: 0.22 }),
   // Techno lead: a resonant, squelchy acid line.
   acid: synth({
     name: 'Acid',

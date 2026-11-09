@@ -200,7 +200,7 @@ pickup: /8
 
 @bars ${total - 3}-${total} tempo=72..50
 
-track flute role=counter vol=0.75 pan=0.2
+track flute role=counter vol=0.6 pan=0.2
 ${block('flute', `v=70 ${pickup('Soprano', 12)}`)}
 
 track violins role=lead vol=0.9
