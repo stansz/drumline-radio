@@ -144,27 +144,27 @@ function section(name, n, p) {
 section('Verse 1: the flute over harp and cellos', 16, {
   flute: v(70, verse('Soprano', 12)),
   harp: v(56, harpBars(0)),
-  cellos: v(84, verse('Bass', -12)),
+  cellos: v(84, verse('Bass', 0)),
 });
 section('Verse 2: the violins over the strings', 16, {
   violins: v(80, verse('Soprano', 12)),
   flute: v(52, verse('Alto', 12)),
   strings: v(46, padBars()),
-  cellos: v(90, verse('Bass', -12)),
+  cellos: v(90, verse('Bass', 0)),
 });
 section('Verse 3: everyone', 16, {
   violins: v(92, verse('Soprano', 12)),
   flute: v(64, verse('Alto', 12)),
   harp: v(66, harpBars(0)),
   strings: v(58, padBars()),
-  cellos: v(100, verse('Bass', -12)),
+  cellos: v(100, verse('Bass', 0)),
   timpani: v(60, Array.from({ length: 16 }, (_, i) => (i % 4 === 0 ? 'k/4. r/4.' : R))),
 });
 section('Verse 4: the flute again, slowing to the end', 16, {
   flute: v(80, verse('Soprano', 12, true)),
   harp: v(60, [...harpBars(0).slice(0, 15), '[E3 G3 B3 E4]/2.']),
   strings: v(38, [...padBars().slice(0, 15), '[G3 B3]/2.']),
-  cellos: v(80, verse('Bass', -12, true)),
+  cellos: v(80, verse('Bass', 0, true)),
 });
 
 const total = parts.flute.length;
@@ -212,8 +212,8 @@ ${block('harp', 'r/8')}
 track strings role=pad vol=0.86
 ${block('strings', 'r/8')}
 
-track cellos role=bass vol=0.13
-${block('cellos', `v=84 ${pickup('Bass', -12)}`)}
+track cellos role=bass vol=0.1
+${block('cellos', `v=84 ${pickup('Bass', 0)}`)}
 
 track timpani role=drums vol=0.5
 ${block('timpani', 'r/8')}
