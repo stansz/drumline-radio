@@ -41,7 +41,7 @@ track violins role=lead vol=0.9
 # The last chords
 | v=64 [G4 Eb5]/8 Bb4/8 G5/8 [G4 Eb5]/8 Bb4/8 G5/8 [G4 Eb5]/8 Bb4/8 G5/8 [G4 Eb5]/8 Bb4/8 G5/8 | v=56 [G4 Eb5]/4. [G5 Eb6]/4. [G3 Eb4]/2. |
 
-track harp role=chords vol=0.75 pan=-0.2
+track piano role=chords inst=bank:grand-piano vol=0.42 pan=-0.2
 | r/8 |
 # The theme
 | v=60 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 r/8 [Ab3 D4]/8 [B3 D4 Ab4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 | v=60 r/8 [G3 E4]/8 [Bb3 E4 G4]/8 r/8 [G3 E4]/8 [C4 E4 Bb4]/8 r/8 [F3 C#4]/8 [Bb3 C#4 E4]/8 r/8 [F3 C4]/8 [Ab3 C4 F4]/8 | v=60 r/8 [F3 D4]/8 [Bb3 D4 Ab4]/8 r/8 [G3 F4]/8 [D4 F4 G4]/8 r/8 [G3 Eb4]/8 [C4 Eb4 G4]/8 r/8 [F#3 Eb4]/8 [C4 Eb4 F#4]/8 | v=60 r/8 [F3 Eb4]/8 [Bb3 Eb4 Ab4]/8 r/8 [F3 D4]/8 [Bb3 Ab4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 r/8 [G3 Eb4]/8 [Bb3 Eb4 G4]/8 |

@@ -213,7 +213,7 @@ pickup: /8
 track violins role=lead vol=0.9
 ${block('v=80 Bb4/8', violins)}
 
-track harp role=chords vol=0.75 pan=-0.2
+track piano role=chords inst=bank:grand-piano vol=0.42 pan=-0.2
 ${block('r/8', harp)}
 
 track strings role=pad vol=0.55
