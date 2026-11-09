@@ -293,12 +293,15 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   afterwards. Only notes up to 0.3 s late may play late; the rest of the gap is skipped, so there is
   no burst: `node tools/browser/stall.mjs`.
 - **balance:** the standard balance check. `npm run balance -- wayfarers-rest` (a song name or
-  path, then optionally a style and the bars per section, default 8) starts its own Vite server on a
+  path, then optionally a style, or `all` for every style in one run, and the bars per section,
+  default 8) starts its own Vite server on a
   free port, renders the whole song offline in headless Edge through the real engine with each
   track tapped separately, prints every track's RMS / peak per section (and the level below 150 Hz
   for bass and drums), flags a pad or chords part more than 10 dB under the lead, an arp peaking
   more than 8 dB under the lead, a bass louder than the lead, and a bass low end louder than the kick's, then stops the server and browser.
-  About 10 seconds for a 3-minute song; no seeking, so held notes are measured too.
+  Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB
+  to spare (in a remix it says to fix the style's patches instead, since a `vol=` change moves the
+  home mix too). About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).

@@ -5,10 +5,13 @@
 // drums, then flags common problems: a pad or chords part more than 10 dB under the lead (on both
 // RMS and peak, since sparse parts read low by RMS), an arp
 // peaking more than 8 dB under the lead's peak, a bass louder than the lead, and a bass whose low
-// end is louder than the kick's.
-//   npm run balance -- <song name or path> [style] [bars per section, default 8]
+// end is louder than the kick's. Under the flags it suggests a `vol=` for each flagged track that
+// clears its worst flag (track volume is linear gain, so the step is exact unless it would pass 1).
+// The style `all` renders the song in every style in one run.
+//   npm run balance -- <song name or path> [style or all] [bars per section, default 8]
 //   npm run balance -- wayfarers-rest
 //   npm run balance -- src/songs/riverfront.song lofi 16
+//   npm run balance -- sunliner all
 import { readFileSync, existsSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 import { createServer } from 'vite';
@@ -16,7 +19,7 @@ import { openEdge } from './cdp.mjs';
 
 const [arg, style = '', perArg = '8'] = process.argv.slice(2);
 if (!arg) {
-  console.log('usage: npm run balance -- <song name or path> [style] [bars per section]');
+  console.log('usage: npm run balance -- <song name or path> [style or all] [bars per section]');
   process.exit(1);
 }
 const path = existsSync(arg) ? arg : `src/songs/${basename(arg).replace(/\.song$/, '')}.song`;
@@ -39,7 +42,20 @@ try {
   page = await openEdge();
   await page.goto(url, 2500);
   const base = new URL(url).pathname;
-  const result = await page.ev(`(async () => {
+  const styles = style === 'all'
+    ? await page.ev(`import(${JSON.stringify(base + 'src/music/roles.ts')}).then((m) => [...m.STYLES])`)
+    : [style];
+  for (const [n, one] of styles.entries()) {
+    if (n > 0) console.log('\n' + '-'.repeat(60) + '\n');
+    report(await page.ev(render(base, one)));
+  }
+} finally {
+  page?.close();
+  await server.close();
+}
+
+function render(base, style) {
+  return `(async () => {
     try {
       const { parseSong } = await import(${JSON.stringify(base + 'src/music/song.ts')});
       const { tickToSeconds, buildTimeline } = await import(${JSON.stringify(base + 'src/music/timing.ts')});
@@ -98,10 +114,12 @@ try {
           return { rms: db(Math.sqrt(sq / len)), peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null };
         });
       });
-      return { style, tracks: tracks.map((t) => ({ id: t.id, role: t.role })), sections, levels };
+      return { style, home: song.meta.style, tracks: tracks.map((t) => ({ id: t.id, role: t.role, vol: t.vol })), sections, levels };
     } catch (e) { return { error: String(e && e.stack || e) }; }
-  })()`);
+  })()`;
+}
 
+function report(result) {
   if (!result || result.error) {
     console.error('balance failed:', result ? result.error : 'no result');
     process.exitCode = 1;
@@ -115,6 +133,13 @@ try {
     const widths = tracks.map((t, i) => Math.max(cols[i].length, t.role === 'bass' || t.role === 'drums' ? 15 : 9) + 2);
     console.log('bars       time  ' + cols.map((c, i) => c.padStart(widths[i])).join(''));
     const flags = [];
+    // The dB change each flagged track needs to clear its worst flag, with a 2 dB margin.
+    const MARGIN = 2;
+    const needs = new Map();
+    const need = (i, dB) => {
+      const prev = needs.get(i);
+      if (prev === undefined || Math.abs(dB) > Math.abs(prev)) needs.set(i, dB);
+    };
     sections.forEach((s, j) => {
       const cells = tracks.map((t, i) => {
         const l = levels[i][j];
@@ -129,7 +154,7 @@ try {
       const PLAYING = -55;
       const loudest = Math.max(...tracks.map((t, i) => levels[i][j].rms));
       const present = (l) => l.rms > Math.max(PLAYING, loudest - 25);
-      const at = (role) => tracks.map((t, i) => ({ t, l: levels[i][j] })).filter((x) => x.t.role === role && present(x.l));
+      const at = (role) => tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === role && present(x.l));
       const lead = at('lead').sort((a, b) => b.l.rms - a.l.rms)[0];
       const where = `bars ${s.from}-${s.to}`;
       if (lead) {
@@ -137,28 +162,52 @@ try {
         // more than 10 dB under on both RMS and peak.
         for (const x of [...at('pad'), ...at('chords')]) {
           const gap = Math.min(lead.l.rms - x.l.rms, lead.l.peak - x.l.peak);
-          if (gap > 10) flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (RMS and peak)`);
+          if (gap > 10) {
+            flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (RMS and peak)`);
+            need(x.i, gap - 10 + MARGIN);
+          }
         }
         // An arp is short plucks, so its RMS reads low; compare peaks.
         // A buried arp's RMS can sit under the playing threshold, so find it by its peak.
-        const arps = tracks.map((t, i) => ({ t, l: levels[i][j] })).filter((x) => x.t.role === 'arp' && x.l.peak > -45);
+        const arps = tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === 'arp' && x.l.peak > -45);
         for (const x of arps) {
-          if (lead.l.peak - x.l.peak > 8) flags.push(`${where}: ${x.t.id} (arp) peaks ${Math.round(lead.l.peak - x.l.peak)} dB under ${lead.t.id}`);
+          const gap = lead.l.peak - x.l.peak;
+          if (gap > 8) {
+            flags.push(`${where}: ${x.t.id} (arp) peaks ${Math.round(gap)} dB under ${lead.t.id}`);
+            need(x.i, gap - 8 + MARGIN);
+          }
         }
         for (const x of at('bass')) {
-          if (x.l.rms > lead.l.rms) flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(x.l.rms - lead.l.rms)} dB over ${lead.t.id}`);
+          if (x.l.rms > lead.l.rms) {
+            flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(x.l.rms - lead.l.rms)} dB over ${lead.t.id}`);
+            need(x.i, -(x.l.rms - lead.l.rms + MARGIN));
+          }
         }
       }
       // Only a kit with a real low end (a kick playing through the section) is compared with the bass.
       const drums = at('drums').filter((x) => x.l.low > -45).sort((a, b) => b.l.low - a.l.low)[0];
       for (const x of at('bass')) {
-        if (drums && x.l.low > drums.l.low + 1) flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
+        if (drums && x.l.low > drums.l.low + 1) {
+          flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
+          need(x.i, -(x.l.low - drums.l.low - 1 + MARGIN));
+        }
       }
     });
     console.log(flags.length ? `\nFlags:\n  ${flags.join('\n  ')}` : '\nNo flags.');
+    if (needs.size > 0 && result.style !== result.home) {
+      // In a remix the gaps come from the other style's patch levels, not the song's mix.
+      console.log(`\nThis is a remix: a vol change would also move the ${result.home} mix, so fix level gaps here in the style's patches instead.`);
+    } else if (needs.size > 0) {
+      // A raise in one section can make the part too loud in another, so run again after a change.
+      console.log('\nSuggested track volumes (then run again):');
+      for (const [i, dB] of needs) {
+        const t = tracks[i];
+        const want = t.vol * 10 ** (dB / 20);
+        const sign = dB > 0 ? '+' : '';
+        const note = want > 1 ? ' (vol tops out at 1: raise the velocities or lower the lead instead)' : '';
+        console.log(`  ${t.id}: vol=${t.vol} -> vol=${Math.min(1, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
+      }
+    }
     console.log('\nFor a sparse part (stabs, hits), compare peaks: RMS reads low when most of a section is silent.');
   }
-} finally {
-  page?.close();
-  await server.close();
 }
