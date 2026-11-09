@@ -12,6 +12,7 @@ describe('library', () => {
       'eine-kleine-nachtmusik',
       'ivory-and-ash-128',
       'ode-to-joy',
+      'starlight-drive',
       'when-the-saints',
     ]);
   });

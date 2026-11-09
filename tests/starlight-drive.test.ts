@@ -1,12 +1,14 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { chordTones, parseChordMap } from '../src/music/chords';
-import { LIBRARY } from '../src/music/library';
-import type { Note } from '../src/music/song';
+import { parseSong } from '../src/music/song';
+import type { Note, Song } from '../src/music/song';
 import { buildTimeline, tickToSeconds } from '../src/music/timing';
 
-const song = LIBRARY.find((entry) => entry.id === 'starlight-drive')!.song;
+// The song is hidden, so it is read from its file rather than from the library.
 const text = readFileSync(new URL('../src/songs/starlight-drive.song', import.meta.url), 'utf8');
+const parsed = parseSong(text);
+const song = (parsed.ok ? parsed.song : null) as Song;
 const track = (id: string) => song.tracks.find((part) => part.id === id)!;
 const inBars = (id: string, first: number, last: number): Note[] => {
   const start = song.bars[first - 1].startTick;
@@ -24,7 +26,7 @@ describe('Starlight Drive', () => {
   it('is a credited Synthwave original with the intended length, form, and roles', () => {
     expect(song.meta).toMatchObject({
       title: 'Starlight Drive', composer: 'Ling 3.1 Flash & SZ', source: 'original',
-      category: 'originals', style: 'synthwave', key: 'Bb major', tempo: 118, hidden: false,
+      category: 'originals', style: 'synthwave', key: 'Bb major', tempo: 118, hidden: true,
     });
     expect(song.bars).toHaveLength(120);
     expect(buildTimeline(song).duration).toBeCloseTo(244.068, 1);

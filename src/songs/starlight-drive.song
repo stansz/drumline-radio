@@ -42,6 +42,7 @@ composer: Ling 3.1 Flash & SZ
 year: 2026
 source: original
 category: originals
+hidden: true
 style: synthwave
 key: Bb major
 tempo: 118
