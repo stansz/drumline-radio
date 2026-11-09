@@ -509,7 +509,7 @@ const TRACKS = [
   ['ooh', 'track ooh role=pad inst=choir-ooh vol=0.95 pan=0.12'],
   ['pad', 'track pad role=pad vol=0.95 vol.altrock=0.6 pan=0'],
   ['stabs', 'track stabs role=chords vol=0.6 pan=-0.26'],
-  ['arp', 'track arp role=arp vol=1 vol.altrock=0.4 pan=0.3'],
+  ['arp', 'track arp role=arp vol=1 vol.altrock=0.5 pan=0.3'],
   ['bass', 'track bass role=bass vol=0.44 vol.altrock=0.085 vol.orchestral=0.28 pan=0'],
   ['drums', 'track drums role=drums vol=0.85 vol.altrock=0.38 vol.orchestral=0.54 pan=0'],
 ];
