@@ -108,15 +108,24 @@ describe('Starlight Drive', () => {
     }
   });
 
-  it('keeps the choirs in their sections, and the saw answering above the hook', () => {
-    for (const [a, b] of [[1, 8], [25, 40], [57, 72], [73, 88], [97, 112], [113, 120]]) {
-      expect(inBars('choir-ooh', a, b)).toHaveLength(0);
+  it('has the choirs trading back and forth, and the saw answering above the hook', () => {
+    const sings = (id: string, bar: number) => inBars(id, bar, bar).length > 0;
+    // Verses: ooh calls and aah answers a bar later (aah first in verse 2), together on the last F.
+    for (const [first, call, answer] of [[9, 'choir-ooh', 'choir-aah'], [41, 'choir-aah', 'choir-ooh']] as const) {
+      for (let bar = first; bar < first + 6; bar += 2) {
+        expect(sings(call, bar) && !sings(answer, bar), `bar ${bar}`).toBe(true);
+        expect(sings(answer, bar + 1) && !sings(call, bar + 1), `bar ${bar + 1}`).toBe(true);
+      }
+      expect(sings(call, first + 6) && sings(answer, first + 6)).toBe(true);
     }
-    for (const [a, b] of [[1, 24], [41, 56]]) {
-      expect(inBars('choir-aah', a, b)).toHaveLength(0);
+    // Choruses: aah on beat 1, ooh on beat 3 under the hook; both together where the saw answers.
+    for (const first of [25, 57, 97]) {
+      for (let bar = first; bar < first + 16; bar++) {
+        const beat = (id: string) => (inBars(id, bar, bar)[0].tick - song.bars[bar - 1].startTick) / 960;
+        const answering = (bar - first) % 8 >= 6;
+        expect([beat('choir-aah'), beat('choir-ooh')], `bar ${bar}`).toEqual(answering ? [0, 0] : [0, 2]);
+      }
     }
-    expect(inBars('choir-ooh', 9, 16).length).toBe(4); // one tied pair per two bars
-    expect(inBars('choir-aah', 25, 40).length).toBe(16);
     // The saw plays only between the hook phrases, never with it.
     for (const [a, b] of [[25, 30], [33, 38], [57, 62], [65, 70], [73, 88], [97, 102], [105, 110]]) {
       expect(inBars('saw', a, b)).toHaveLength(0);
