@@ -108,6 +108,14 @@ describe('withBankInstruments', () => {
     expect(resolvePatch(STYLE_DEFS.chiptune, result.tracks[0]).name).toBe(INSTRUMENTS['vox-lead'].name);
   });
 
+  it('plays the vox lead on the lead patch in alt rock, orchestral and cinematic', () => {
+    const vox = track('bank:vox-lead');
+    expect(resolvePatch(STYLE_DEFS.altrock, vox).name).toBe(STYLE_DEFS.altrock.patches['fuzz-lead'].name);
+    expect(resolvePatch(STYLE_DEFS.orchestral, vox).name).toBe(STYLE_DEFS.orchestral.patches.strings.name);
+    expect(resolvePatch(STYLE_DEFS.cinematic, vox).name).toBe(STYLE_DEFS.cinematic.patches.guitar.name);
+    expect(resolvePatch(STYLE_DEFS.synthwave, vox)).toBe(INSTRUMENTS['vox-lead']);
+  });
+
   it("leaves the home style's own names, bank: names, unknown names and no inst alone", () => {
     const input = song('synthwave', 'sub-bass', 'bank:oboe', 'nothing-here', null);
     expect(withBankInstruments(input)).toBe(input);

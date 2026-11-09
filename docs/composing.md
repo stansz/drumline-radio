@@ -62,7 +62,8 @@ one in two ways:
   into a style without it, the track falls back to that style's patch for its role. Prefer this:
   each style keeps its own sound.
 - **`inst=bank:<id>`** picks a bank instrument in every style, so the part sounds the same in every
-  remix. Use it only when that sound is the point of the part, for example a signature lead. If
+  remix, except where a style swaps it (the vox lead plays the lead in Alt rock, Orchestral and
+  Cinematic). Use it only when that sound is the point of the part, for example a signature lead. If
   every song reaches for the same favourite this way, the styles start to sound alike.
 
 A song whose home style is Studio can use any bank instrument with plain `inst=`, and its remixes

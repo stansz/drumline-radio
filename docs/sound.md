@@ -36,7 +36,9 @@ under its own local names, and sets its role map and effects.
 
 A track picks its patch in this order:
 
-1. `inst=bank:<id>` names a bank instrument: the track uses it in every style.
+1. `inst=bank:<id>` names a bank instrument: the track uses it in every style, unless that style
+   swaps it for one of its own patches (`bankSwaps` in `src/audio/styles.ts`). Alt rock, Orchestral
+   and Cinematic play the vox lead on their own lead: the fuzz lead, the strings, and the guitar.
 2. `inst=<name>` and the current style has an instrument with that local name: the track uses it.
 3. Otherwise the patch for the track's `role`.
 

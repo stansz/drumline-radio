@@ -11,6 +11,8 @@ export interface StyleDef {
   blurb: string;
   roles: Record<Role, string>;
   patches: Record<string, Patch>;
+  /** Bank instruments this style plays as one of its own patches instead (bank id -> patch). */
+  bankSwaps: Record<string, Patch>;
   fx: {
     reverbSeconds: number;
     reverbSend: number;
@@ -25,19 +27,27 @@ export interface StyleDef {
 }
 
 /** A style as written: its instruments as local name -> bank id, everything else as in StyleDef. */
-interface StyleRecipe extends Omit<StyleDef, 'patches'> {
+interface StyleRecipe extends Omit<StyleDef, 'patches' | 'bankSwaps'> {
   instruments: Record<string, string>;
+  /** Bank id -> one of this style's local names, and a gain that matches its level to the bank's. */
+  bankSwaps?: Record<string, { patch: string; gain: number }>;
 }
 
 function buildStyle(recipe: StyleRecipe): StyleDef {
-  const { instruments, ...rest } = recipe;
+  const { instruments, bankSwaps = {}, ...rest } = recipe;
   const patches: Record<string, Patch> = {};
   for (const [local, id] of Object.entries(instruments)) {
     const patch = INSTRUMENTS[id];
     if (!patch) throw new Error(`style '${recipe.id}' uses unknown instrument '${id}'`);
     patches[local] = patch;
   }
-  return { ...rest, patches };
+  const swaps: Record<string, Patch> = {};
+  for (const [id, { patch: local, gain }] of Object.entries(bankSwaps)) {
+    const patch = patches[local];
+    if (!patch) throw new Error(`style '${recipe.id}' swaps to unknown patch '${local}'`);
+    swaps[id] = { ...patch, gain: patch.gain * gain };
+  }
+  return { ...rest, patches, bankSwaps: swaps };
 }
 
 /** Removed bank patches and the patch each one's name now plays. */
@@ -152,6 +162,8 @@ const RECIPES: StyleRecipe[] = [
       pizzicato: 'pizzicato',
       'orchestra-kit': 'orchestra-kit',
     },
+    // A wordless vocal hook plays on the strings here.
+    bankSwaps: { 'vox-lead': { patch: 'strings', gain: 1.8 } },
     fx: {
       reverbSeconds: 3.5,
       reverbSend: 0.45,
@@ -238,6 +250,8 @@ const RECIPES: StyleRecipe[] = [
       'synth-pad': 'synth-pad',
       'studio-kit': 'studio-kit',
     },
+    // A wordless vocal hook plays on the soaring guitar here.
+    bankSwaps: { 'vox-lead': { patch: 'guitar', gain: 0.35 } },
     fx: { reverbSeconds: 3.2, reverbSend: 0.35, delayBeats: 0.75, delaySend: 0.22, delayFeedback: 0.38, crush: 0, lowpassHz: 15000, crackle: 0 },
     lanes: ['#f2b55a', '#9ec3ff', '#e86a5c', '#c9d6df', '#8f7ad8', '#6fd3b5'],
   },
@@ -260,6 +274,8 @@ const RECIPES: StyleRecipe[] = [
       'clean-electric': 'clean-electric',
       'crunch-guitar': 'crunch-guitar',
     },
+    // A wordless vocal hook plays on the fuzz lead here.
+    bankSwaps: { 'vox-lead': { patch: 'fuzz-lead', gain: 0.35 } },
     fx: { reverbSeconds: 1.4, reverbSend: 0.18, delayBeats: 0.75, delaySend: 0.08, delayFeedback: 0.25, crush: 0, lowpassHz: 16000, crackle: 0 },
     lanes: ['#ff4136', '#ffd23f', '#3fa7ff', '#f4e9d8', '#7ee081', '#ff8fc7'],
   },
@@ -322,6 +338,6 @@ export function patchKey(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): 
 
 export function resolvePatch(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): Patch {
   const id = bankId(track.inst);
-  if (id !== null) return INSTRUMENTS[id];
+  if (id !== null) return style.bankSwaps[id] ?? INSTRUMENTS[id];
   return style.patches[patchKey(style, track)];
 }
