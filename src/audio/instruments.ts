@@ -110,7 +110,7 @@ export const LEADS: Record<string, Patch> = {
     formants: [{ hz: 900, q: 3, gain: 1 }, { hz: 1300, q: 3.5, gain: 0.8 }, { hz: 2900, q: 4, gain: 0.5 },
       { hz: 3800, q: 5, gain: 0.25 }],
     env: env(0.06, 0.3, 0.9, 0.3),
-    vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.3, sends: { reverb: 1, delay: 0.6 } }),
+    vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.42, sends: { reverb: 1, delay: 0.6 } }),
   // An oboe: a square and saw through two broad formant bands, for a nasal double-reed body.
   'oboe': synth({ name: 'Oboe', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
     formants: [{ hz: 1200, q: 3, gain: 1 }, { hz: 2700, q: 5, gain: 0.35 }],
