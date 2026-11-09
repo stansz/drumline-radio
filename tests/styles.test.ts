@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { ROLES, STYLES } from '../src/music/roles';
-import { resolvePatch, STYLE_DEFS } from '../src/audio/styles';
+import { resolvePatch, STYLE_DEFS, withBankInstruments } from '../src/audio/styles';
+import type { Song } from '../src/music/song';
+import type { StyleId } from '../src/music/roles';
 import { INSTRUMENTS } from '../src/audio/instruments';
 
 describe('styles', () => {
@@ -92,5 +94,22 @@ describe('styles', () => {
     expect(STYLE_DEFS.chiptune.patches['square-lead'].name).toBe('Square');
     expect(STYLE_DEFS.techno.patches['sub-bass']).toBe(INSTRUMENTS['techno-sub']);
     expect(STYLE_DEFS.cinematic.patches.strings.name).toBe('String section');
+  });
+});
+
+describe('withBankInstruments', () => {
+  const track = (inst: string | null) => ({ id: 't', role: 'lead', inst }) as unknown as Song['tracks'][number];
+  const song = (style: StyleId, ...insts: (string | null)[]) =>
+    ({ meta: { style }, tracks: insts.map(track) }) as unknown as Song;
+
+  it('plays a bank instrument the home style lacks', () => {
+    const result = withBankInstruments(song('synthwave', 'vox-lead', 'choir-aah'));
+    expect(result.tracks.map((t) => t.inst)).toEqual(['bank:vox-lead', 'bank:choir-aah']);
+    expect(resolvePatch(STYLE_DEFS.chiptune, result.tracks[0]).name).toBe(INSTRUMENTS['vox-lead'].name);
+  });
+
+  it("leaves the home style's own names, bank: names, unknown names and no inst alone", () => {
+    const input = song('synthwave', 'sub-bass', 'bank:oboe', 'nothing-here', null);
+    expect(withBankInstruments(input)).toBe(input);
   });
 });

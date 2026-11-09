@@ -69,8 +69,9 @@ track mel role=lead inst=saw-lead vol=0.7 pan=-0.25
 - `id` follows `track` and matches `^[a-z0-9-]+$`. Track ids must be unique.
 - `role` is required and is one of the roles below.
 - `inst` is optional and matches `^(bank:)?[a-z0-9-]+$`; a plain name picks the current style's
-  instrument of that name, `bank:<id>` picks a bank instrument in every style (see
-  [sound.md](sound.md)). It defaults to none.
+  instrument of that name; when the song's home style has no instrument of that name, it plays the
+  bank instrument of that name instead (so `inst=vox-lead` works in any song). `bank:<id>` picks a
+  bank instrument in every style (see [sound.md](sound.md)). It defaults to none.
 - `vol` is optional, from 0 to 1, default 0.8.
 - `pan` is optional, from -1 to 1, default 0.
 

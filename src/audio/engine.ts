@@ -1,7 +1,7 @@
 import { crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
 import type { StyleId } from '../music/roles';
 import type { Song, Track } from '../music/song';
-import { resolvePatch, STYLE_DEFS } from './styles';
+import { resolvePatch, STYLE_DEFS, withBankInstruments } from './styles';
 import { buildTimeline, notesBetween } from '../music/timing';
 import type { ScheduledNote, Timeline } from '../music/timing';
 import { createVoiceKit, playDrum, playSynth } from './voices';
@@ -197,7 +197,8 @@ export class Engine {
     return this.timelineValue?.duration ?? 0;
   }
 
-  load(song: Song): void {
+  load(loaded: Song): void {
+    const song = withBankInstruments(loaded);
     this.stopAll();
     this.playingValue = false;
     this.positionValue = 0;

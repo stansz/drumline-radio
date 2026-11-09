@@ -1,5 +1,5 @@
 import type { Role, StyleId } from '../music/roles';
-import type { Track } from '../music/song';
+import type { Song, Track } from '../music/song';
 import type { Patch } from './patches';
 import { INSTRUMENTS } from './instruments';
 
@@ -291,6 +291,25 @@ export function bankId(inst: string | null): string | null {
   if (inst === null || !inst.startsWith(BANK_PREFIX)) return null;
   const id = inst.slice(BANK_PREFIX.length);
   return Object.prototype.hasOwnProperty.call(INSTRUMENTS, id) ? id : null;
+}
+
+/**
+ * The song with every plain `inst=<id>` that its home style lacks but the bank has turned into
+ * `inst=bank:<id>`, so `inst=vox-lead` plays the vox lead in any song instead of the role's default.
+ * Names the home style has are left alone, so remixes still swap them for the other style's patches.
+ */
+export function withBankInstruments(song: Song): Song {
+  const home = STYLE_DEFS[song.meta.style];
+  let changed = false;
+  const tracks = song.tracks.map((track) => {
+    const inst = track.inst;
+    if (inst === null || inst.startsWith(BANK_PREFIX)) return track;
+    if (Object.prototype.hasOwnProperty.call(home.patches, inst)) return track;
+    if (!Object.prototype.hasOwnProperty.call(INSTRUMENTS, inst)) return track;
+    changed = true;
+    return { ...track, inst: BANK_PREFIX + inst };
+  });
+  return changed ? { ...song, tracks } : song;
 }
 
 export function patchKey(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): string {
