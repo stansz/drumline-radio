@@ -272,30 +272,19 @@ export const PADS: Record<string, Patch> = {
     env: env(0.02, 0.3, 0.6, 0.2),
     gain: 0.1,
   }),
-  // Orchestral lead: a bowed string section (the violins).
-  strings: synth({
-    name: 'Strings',
-    oscs: [
-      osc('sawtooth', 0, -7, 0.34),
-      osc('sawtooth', 0, 0, 0.33),
-      osc('sawtooth', 0, 7, 0.33),
-    ],
-    env: env(0.12, 0.4, 0.85, 0.5),
-    filter: { type: 'lowpass', hz: 2400, q: 0.5, envAmount: 1, envDecay: 0.3 },
-    vibrato: { rate: 5, cents: 14, delay: 0.3 },
-    gain: 0.24,
-    sends: { reverb: 1.2, delay: 0 },
-  }),
-  // Orchestral pad: soft sustained strings.
-  'string-pad': synth({
-    name: 'String pad',
-    oscs: [osc('sawtooth', 0, -9, 0.5), osc('sawtooth', 0, 9, 0.5)],
-    env: env(0.5, 1, 0.85, 1.2),
-    filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1, envDecay: 1 },
-    vibrato: { rate: 4.5, cents: 10, delay: 0.4 },
-    gain: 0.2,
-    sends: { reverb: 1.3, delay: 0 },
-  }),
+  // Orchestral lead: a bowed violin section. Formant bands give it a light body, a presence lift, and
+  // the bright 3 kHz edge of a bow, with an expressive vibrato, so it cuts as a lead.
+  strings: synth({ name: 'Strings',
+    oscs: [osc('sawtooth', 0, -6, 0.34), osc('sawtooth', 0, 0, 0.33), osc('sawtooth', 0, 6, 0.33)],
+    formants: [{ hz: 450, q: 2, gain: 0.2 }, { hz: 1500, q: 1, gain: 0.6 }, { hz: 3000, q: 0.7, gain: 1 }],
+    env: env(0.08, 0.4, 0.85, 0.5), filter: { type: 'lowpass', hz: 7000, q: 0.5, envAmount: 1, envDecay: 0.3 },
+    vibrato: { rate: 5.5, cents: 16, delay: 0.25 }, gain: 0.24, sends: { reverb: 1.2, delay: 0 } }),
+  // Orchestral pad: a soft string ensemble. Four widely detuned saws, dark and still, with no vibrato:
+  // in a big section the players' vibratos blur into a chorus.
+  'string-pad': synth({ name: 'String pad',
+    oscs: [osc('sawtooth', 0, -13, 0.25), osc('sawtooth', 0, -5, 0.25), osc('sawtooth', 0, 5, 0.25), osc('sawtooth', 0, 13, 0.25)],
+    env: env(0.6, 1, 0.85, 1.2), filter: { type: 'lowpass', hz: 1400, q: 0.4, envAmount: 1, envDecay: 1 },
+    gain: 0.24, sends: { reverb: 1.3, delay: 0 } }),
   // Techno pad: a dark, evolving bed.
   'dark-pad': synth({
     name: 'Dark pad',
@@ -309,14 +298,21 @@ export const PADS: Record<string, Patch> = {
   'tape-pad': synth({ name: 'Tape pad', oscs: [osc('sawtooth', 0, -10, 0.3), osc('sawtooth', 0, 10, 0.3), osc('triangle', -1, 0, 0.4)],
     env: env(0.8, 1.2, 0.8, 1.5), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 1, envDecay: 1 },
     vibrato: { rate: 0.5, cents: 8, delay: 0 }, gain: 0.18, sends: { reverb: 1.4, delay: 0.3 } }),
-  // Cinematic pad: a full string section.
-  'string-section': synth({ name: 'String section', oscs: [osc('sawtooth', 0, -9, 0.34), osc('sawtooth', 0, 0, 0.33), osc('sawtooth', 0, 9, 0.33)],
-    env: env(0.6, 1, 0.85, 1.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1, envDecay: 1 },
-    vibrato: { rate: 4.5, cents: 10, delay: 0.4 }, gain: 0.19, sends: { reverb: 1.4, delay: 0 } }),
-  // Cinematic counter-line: a solo cello.
-  cello: synth({ name: 'Solo strings', oscs: [osc('sawtooth', 0, -4, 0.5), osc('sawtooth', 0, 4, 0.5)],
-    env: env(0.18, 0.5, 0.85, 0.6), filter: { type: 'lowpass', hz: 1900, q: 0.6, envAmount: 1, envDecay: 0.3 },
-    vibrato: { rate: 5, cents: 14, delay: 0.3 }, gain: 0.22, sends: { reverb: 1.2, delay: 0 } }),
+  // Cinematic pad: a big string section. The wide ensemble plus a quiet octave-down layer for weight,
+  // with a body resonance and some bow brightness.
+  'string-section': synth({ name: 'String section',
+    oscs: [osc('sawtooth', 0, -14, 0.22), osc('sawtooth', 0, -6, 0.22), osc('sawtooth', 0, 6, 0.22), osc('sawtooth', 0, 14, 0.22),
+      osc('sawtooth', -1, 0, 0.2)],
+    formants: [{ hz: 400, q: 1, gain: 0.6 }, { hz: 2200, q: 0.8, gain: 0.8 }],
+    env: env(0.6, 1, 0.85, 1.4), filter: { type: 'lowpass', hz: 3800, q: 0.5, envAmount: 1, envDecay: 1 },
+    vibrato: { rate: 4.5, cents: 8, delay: 0.4 }, gain: 0.32, sends: { reverb: 1.4, delay: 0 } }),
+  // Cinematic counter-line: a solo cello. One player (two barely detuned saws), a dark wooden body from
+  // formant bands, and a slow, wide vibrato.
+  cello: synth({ name: 'Solo strings',
+    oscs: [osc('sawtooth', 0, 0, 0.6), osc('sawtooth', 0, -3, 0.4)],
+    formants: [{ hz: 220, q: 1.5, gain: 0.8 }, { hz: 600, q: 1.5, gain: 0.6 }, { hz: 1600, q: 2, gain: 0.4 }],
+    env: env(0.15, 0.5, 0.85, 0.6), filter: { type: 'lowpass', hz: 3000, q: 0.6, envAmount: 1, envDecay: 0.3 },
+    vibrato: { rate: 5, cents: 18, delay: 0.35 }, gain: 0.39, sends: { reverb: 1.2, delay: 0 } }),
   // A slow analog pad: detuned saws with a long swell, for Studio.
   'synth-pad': synth({ name: 'Analog pad', oscs: [osc('sawtooth', 0, -12, 0.5), osc('sawtooth', 0, 12, 0.5)],
     env: env(1.2, 1.5, 0.8, 2), filter: { type: 'lowpass', hz: 1100, q: 1, envAmount: 1.5, envDecay: 2 },
@@ -366,15 +362,12 @@ export const BASSES: Record<string, Patch> = {
     gain: 0.5,
     sends: { reverb: 0.3, delay: 0 },
   }),
-  // Orchestral bass: cellos and basses.
-  'low-strings': synth({
-    name: 'Low strings',
+  // Orchestral bass: cellos and basses, with a low body resonance.
+  'low-strings': synth({ name: 'Low strings',
     oscs: [osc('sawtooth', 0, -5, 0.5), osc('sawtooth', 0, 5, 0.5)],
-    env: env(0.08, 0.3, 0.85, 0.35),
-    filter: { type: 'lowpass', hz: 900, q: 0.7, envAmount: 1, envDecay: 0.3 },
-    gain: 0.36,
-    sends: { reverb: 0.8, delay: 0 },
-  }),
+    formants: [{ hz: 200, q: 1.2, gain: 0.9 }, { hz: 800, q: 1.5, gain: 0.5 }],
+    env: env(0.08, 0.3, 0.85, 0.35), filter: { type: 'lowpass', hz: 1000, q: 0.7, envAmount: 1, envDecay: 0.3 },
+    gain: 0.64, sends: { reverb: 0.8, delay: 0 } }),
   // Techno bass: a rolling sub bass that sits under the kick.
   'techno-sub': synth({
     name: 'Sub bass',
