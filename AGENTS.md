@@ -15,6 +15,7 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - Writing or reworking a song: [docs/composing.md](docs/composing.md), including its checks before committing
 - Asking another model for a song: the prompt template in [docs/song-prompt.md](docs/song-prompt.md),
   and the record of past model songs in [docs/model-notes.md](docs/model-notes.md)
+- Ideas discussed but not built yet: [docs/ideas.md](docs/ideas.md)
 - Sound, styles, or patches, including building a new patch with FM or a plucked string: [docs/sound.md](docs/sound.md)
 
 ## Rules
