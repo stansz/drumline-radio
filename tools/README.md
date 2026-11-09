@@ -319,8 +319,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   instead of the preview server, because it imports the audio code from `src/`:
   `node tools/browser/timbre.mjs lofi soft-flute,radio-lead` (style, patches, optional MIDI note).
 
-`browser/cdp.mjs` is the shared helper. It launches headless Edge (set `EDGE_PATH` to use another
-Chromium) and talks to it over the DevTools protocol with Node's built-in WebSocket. Scripts that use
+`browser/cdp.mjs` is the shared helper. It launches headless Edge, or on Linux and macOS the first
+Chromium or Chrome it finds (set `EDGE_PATH` to pick another), and talks to it over the DevTools
+protocol with the built-in WebSocket of Node 22 or later. Scripts that use
 its default page (the preview server on port 4173) can be pointed at another server with
 `RADIO_URL`, for example `RADIO_URL=http://localhost:5173/drumline-radio/`.
 

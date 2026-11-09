@@ -2,11 +2,17 @@
 // Node's built-in WebSocket. No Playwright or Puppeteer needed.
 // Edge always runs with --mute-audio, because these checks play music.
 import { spawn } from 'node:child_process';
-import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 
-export const EDGE = process.env.EDGE_PATH ?? 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+// Edge on Windows; elsewhere the first Chromium-family browser found (EDGE_PATH overrides both).
+const BROWSERS = [
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  '/usr/bin/microsoft-edge', '/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome',
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+];
+export const EDGE = process.env.EDGE_PATH ?? BROWSERS.find((path) => existsSync(path)) ?? BROWSERS[0];
 export const DEFAULT_URL = process.env.RADIO_URL ?? 'http://localhost:4173/drumline-radio/';
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

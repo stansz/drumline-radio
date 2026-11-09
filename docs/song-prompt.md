@@ -42,8 +42,8 @@ Rules:
 - Credit yourself by your own model name in the composer field, the file's first comment,
   and the README entry (for example "<your name> & SZ"). If you are not sure of your exact
   model name, say so instead of guessing.
-- Add the song to README.md and update the song counts in tests/library.test.ts. If a script
-  in tools/arranger/ generates the song, add it to tests/drift.test.ts.
+- Add the song to README.md. If a script in tools/arranger/ generates the song, add it to
+  tests/drift.test.ts.
 - Don't change shared code (styles, instruments, engine, arranger). If you add a test for
   this song, it must check only this song's own notes, form, and header.
 - Run npm test and npm run check:songs; both must pass. Aim for 0 clashes; explain any that

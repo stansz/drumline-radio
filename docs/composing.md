@@ -104,8 +104,7 @@ depends on it.
 
 ## Before committing
 
-1. `npm test` passes. A new song changes the counts and orders in `tests/library.test.ts`; update
-   them, but never change notes just to make a test pass.
+1. `npm test` passes. Never change notes just to make a test pass.
 2. `CHECK_DETAIL=1 npm run check:songs` lists every half-step clash between a pitched part (leads,
    counter-lines, arpeggios, chords) and the pad or bass. Fix each one, or say in the commit why it
    stays (a short passing note or a deliberate suspension is fine). A song with ten clashes is not
