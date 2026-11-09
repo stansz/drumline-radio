@@ -18,6 +18,11 @@ export function createWakeLock(): { set(wanted: boolean): void } {
         .request('screen')
         .then((sentinel) => {
           requesting = false;
+          // Playback stopped (or the page hid) while the request was pending.
+          if (!wanted || document.visibilityState !== 'visible') {
+            sentinel.release().catch(() => {});
+            return;
+          }
           held = sentinel;
           sentinel.addEventListener('release', () => {
             if (held !== sentinel) return;

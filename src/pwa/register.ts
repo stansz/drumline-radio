@@ -3,7 +3,8 @@ import { CACHE_PREFIX } from './precache';
 // Registers the service worker and keeps the app up to date. Each time the app opens or comes back
 // to the front it asks the server, past every cache, which build is current. If the cached app is
 // older, it updates the worker; if that hasn't taken over within HEAL_MS (a browser holding on to an
-// old worker), it unregisters the worker and drops its cache so the next load is fresh.
+// old worker), it unregisters the worker and drops its cache so the next load is fresh. The heal runs
+// only if the server still answers then, so a connection lost mid-update never drops the offline copy.
 // When a new build takes over, a page that already had one reloads to pick it up: at once if it was
 // just opened or brought back, otherwise the next time it is hidden, so music isn't cut off.
 const FRESH_MS = 8000;
@@ -49,7 +50,8 @@ export function registerServiceWorker(): void {
       await (await sw.getRegistration())?.update().catch(() => undefined);
       window.setTimeout(() => {
         void (async () => {
-          if (!(await installed(want))) {
+          // serverCache() throws when offline, which skips the heal and keeps the working cache.
+          if (!(await installed(want)) && (await serverCache()) === want) {
             for (const registration of await sw.getRegistrations()) {
               if (registration.scope === scope) await registration.unregister();
             }

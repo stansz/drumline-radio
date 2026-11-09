@@ -139,9 +139,12 @@ function makeVoice(
   };
 }
 
+// Noise loops, so a tail longer than the one-second buffer (a crash's decay) never runs out; every
+// voice stops its sources at its end.
 function noiseSpec(kit: VoiceKit, kind: 'white' | 'chip' | 'metal', offsetMax = 0.5): SourceSpec {
   const node = kit.ctx.createBufferSource();
   node.buffer = kit.noise[kind];
+  node.loop = true;
   return { node, offset: Math.random() * offsetMax };
 }
 
@@ -298,7 +301,6 @@ export function playSynth(
   const breath = patch.breath;
   if (breath && breath.level > 0) {
     const spec = noiseSpec(kit, 'white');
-    (spec.node as AudioBufferSourceNode).loop = true;
     const band = ctx.createBiquadFilter();
     band.type = 'bandpass';
     band.frequency.value = breath.hz;

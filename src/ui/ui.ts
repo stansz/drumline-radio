@@ -584,8 +584,9 @@ export function startUi(): void {
   });
 
   document.addEventListener('keydown', (event) => {
-    // A key while the screensaver is up only dismisses it.
+    // A key while the screensaver is up only dismisses it, without also pressing a focused button.
     if (saver.visible) {
+      event.preventDefault();
       saver.hide();
       updatePlayButton();
       return;
@@ -624,6 +625,8 @@ export function startUi(): void {
       return;
     }
     if (event.key === ' ' || event.code === 'Space') {
+      // Space on a focused button or field does its usual job; elsewhere it plays and pauses.
+      if (event.target instanceof HTMLElement && event.target.closest('button, input, textarea, [contenteditable="true"]')) return;
       event.preventDefault();
       togglePlay();
       return;
