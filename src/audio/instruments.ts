@@ -38,14 +38,12 @@ export const LEADS: Record<string, Patch> = {
     env: env(0.002, 0.1, 0.7, 0.05),
     gain: 0.16,
   }),
-  // Orchestral counter-line: a soft, flute-like triangle and sine with vibrato.
-  woodwind: synth({
-    name: 'Woodwind',
-    oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
-    env: env(0.05, 0.2, 0.8, 0.15),
-    vibrato: { rate: 5.5, cents: 16, delay: 0.2 },
-    gain: 0.3,
-  }),
+  // Orchestral counter-line: a flute. A near-sine with a soft octave and breath noise for the air.
+  woodwind: synth({ name: 'Flute',
+    oscs: [osc('sine', 0, 0, 0.8), osc('triangle', 0, 0, 0.15), osc('sine', 1, 0, 0.12)],
+    breath: { level: 0.25, hz: 2500, q: 0.8 },
+    env: env(0.06, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 14, delay: 0.25 },
+    gain: 0.21 }),
   // Techno lead: a resonant, squelchy acid line.
   acid: synth({
     name: 'Acid',
@@ -55,14 +53,12 @@ export const LEADS: Record<string, Patch> = {
     gain: 0.24,
     sends: { reverb: 0.6, delay: 1 },
   }),
-  // Lo-fi lead: a mellow, filtered voice with tape-like wobble.
-  'soft-lead': synth({ name: 'Soft lead', oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
-    env: env(0.02, 0.4, 0.6, 0.4), filter: { type: 'lowpass', hz: 1800, q: 0.5, envAmount: 1.2, envDecay: 0.3 },
-    vibrato: { rate: 0.7, cents: 9, delay: 0 }, gain: 0.3, sends: { reverb: 1, delay: 0.8 } }),
-  // Lo-fi counter-line: a breathy, flute-like near-sine.
-  'soft-flute': synth({ name: 'Soft flute', oscs: [osc('sine', 0, 0, 0.7), osc('triangle', 0, 3, 0.3)],
-    env: env(0.05, 0.3, 0.7, 0.3), filter: { type: 'lowpass', hz: 2000, q: 0.5, envAmount: 1, envDecay: 0.2 },
-    vibrato: { rate: 0.7, cents: 10, delay: 0 }, gain: 0.22 }),
+  // Lo-fi lead: a muted trumpet. A saw and square through nasal formant bands, like a horn with a mute.
+  'soft-lead': synth({ name: 'Muted trumpet',
+    oscs: [osc('sawtooth', 0, 0, 0.7), osc('square', 0, 3, 0.3)],
+    formants: [{ hz: 700, q: 2, gain: 0.35 }, { hz: 1500, q: 2.5, gain: 1 }, { hz: 3000, q: 3, gain: 0.45 }],
+    env: env(0.03, 0.25, 0.8, 0.15), filter: { type: 'lowpass', hz: 3500, q: 0.5, envAmount: 1, envDecay: 0.2 },
+    vibrato: { rate: 5, cents: 8, delay: 0.3 }, gain: 0.56, sends: { reverb: 1, delay: 0.8 } }),
   // A lead through a small radio speaker: saw and a narrow pulse, plucked so it decays instead of
   // holding, driven hard, and band-passed wide around the speaker's mids. No vibrato: a held,
   // smooth, wobbling tone in this register reads as a flute.

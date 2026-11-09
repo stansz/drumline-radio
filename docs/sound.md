@@ -27,7 +27,7 @@ pan, and effects cover all of its notes.
 ## Patches and styles
 
 A style is a set of patches plus the settings of the shared effects. A patch is either a synth
-(oscillators, a plucked string, formants, envelope, filter,
+(oscillators, a plucked string, formants, breath, envelope, filter,
 vibrato, FM, drive, and send levels) or a drum kit
 (kick, snare, hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every
 patch, once, under a unique id, grouped into leads, keys, pads, basses, and kits.
@@ -114,7 +114,7 @@ that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-ba
 | drums | Timpani & cymbals |
 
 Songs can also reach `inst=tubular-bells` (FM bells that ring long), `inst=pizzicato` (short
-plucked strings), and `inst=oboe` (a formant oboe, more cutting than the flute-like woodwind).
+plucked strings), and `inst=oboe` (a formant oboe, more cutting than the flute (woodwind)).
 
 ### Techno
 
@@ -131,7 +131,9 @@ plucked strings), and `inst=oboe` (a formant oboe, more cutting than the flute-l
 
 ### Lo-fi
 
-The Lo-fi style is mellow keys (an FM electric piano whose soft notes are mellower), a round bass, and a dusty swung kit. Its tape wobble comes from the
+The Lo-fi style is a muted trumpet lead (a saw and square through nasal formant bands), a breathy
+flute counter-line (the `woodwind` bank patch), mellow keys (an FM electric piano whose soft notes
+are mellower), a round bass, and a dusty swung kit. Its tape wobble comes from the
 slow vibrato on its patches, and its vinyl bed is a looping crackle buffer whose level is the style's
 `fx.crackle`. Songs can reach the extra `Dusty sample` patch with `inst=dusty-sample`: a detuned saw
 and triangle through drive and a short low-passed envelope, with no vibrato, for a chopped-record
@@ -229,6 +231,7 @@ bank patch has a one-line comment saying what it is for, and every `SynthPatch` 
 | Slap and DX bass | FM | `dx-bass` |
 | Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
 | Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `oboe` |
+| Flute, breathy parts | oscillators + breath | `woodwind` |
 
 ### FM
 
@@ -271,6 +274,15 @@ part: a narrow band passes only the one harmonic that falls inside it, so above 
 `VOWELS` bands leave one or two harmonics and the part sounds like a flute. `vox-lead` uses wide
 (low `q`), soprano-placed bands for that reason; the narrow `VOWELS` suit pads and lower parts.
 
+### Breath
+
+`breath` adds a band of noise mixed in with the oscillators and the plucked string. The noise is
+band-passed at a fixed `hz` (whatever note is played) with sharpness `q`, mixed in at `level` (0 to 1,
+like an oscillator's), and it passes through the same formants, drive, filter, and envelope, so it
+breathes with the note instead of hissing beside it. A low `q` is wide and airy; a high one is a thin
+whistle. A flute is a near-sine plus a little breath around 2–3 kHz: `woodwind` sets
+`{ level: 0.25, hz: 2500, q: 0.8 }`.
+
 ### Hearing and levelling a patch
 
 The instrument page, `instruments.html` (`npm run dev`, then `/drumline-radio/instruments.html`;
@@ -280,7 +292,11 @@ chain. Its data comes from `src/ui/audition.ts`, so a new bank patch shows up th
 
 Before a style swaps a new patch in for an old one, level-match them with
 `node tools/browser/levels.mjs old-id:60,new-id:60` (see `tools/README.md`) and set the new patch's
-`gain` so its RMS is within about 1 dB, so the songs that use the style keep their mix.
+`gain` so its RMS is within about 1 dB, so the songs that use the style keep their mix. Compare the
+energy split it prints too, not just the RMS: a patch can match another by RMS and still be buried if
+more of its energy sits under 300 Hz than the one it replaces. The string pad and tape pad re-voices
+matched by RMS but moved energy under 300 Hz or into a darker band, and the cellos, piano, or bass
+masked them.
 
 ## Saving a song
 
@@ -294,8 +310,8 @@ It books notes 2 s ahead in steps while rendering, so a long song never holds ev
 When a patch is replaced by a better one, the old one leaves the bank and its name keeps working:
 `REPLACED` in `src/audio/styles.ts` points it at the replacement in Studio (and the styles that used
 the name point at it too). So far: `brass` → `fm-brass`, `harp` → `concert-harp`, `bells` →
-`glockenspiel`, `tine-keys` → `fm-rhodes`, `upright-bass` → `string-bass`, and `indie-lead` →
-`shimmer-guitar`.
+`glockenspiel`, `tine-keys` → `fm-rhodes`, `upright-bass` → `string-bass`, `indie-lead` →
+`shimmer-guitar`, and `soft-flute` → `woodwind`.
 
 ## Adding a patch or a style
 

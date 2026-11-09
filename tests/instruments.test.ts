@@ -9,8 +9,17 @@ describe('the instrument bank', () => {
       (sum, family) => sum + Object.keys(family).length,
       0,
     );
-    expect(total).toBe(68);
+    expect(total).toBe(67);
     expect(Object.keys(INSTRUMENTS).length).toBe(total);
+  });
+
+  it('gives the flute a breath layer and retires the old soft flute', () => {
+    const flute = INSTRUMENTS.woodwind;
+    expect(flute.kind).toBe('synth');
+    if (flute.kind !== 'synth') return;
+    expect(flute.breath).toBeDefined();
+    expect(flute.breath?.level).toBeGreaterThan(0);
+    expect(INSTRUMENTS['soft-flute']).toBeUndefined();
   });
 
   it('has drums only in the kits family', () => {

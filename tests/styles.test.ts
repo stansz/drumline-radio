@@ -83,6 +83,7 @@ describe('styles', () => {
     for (const id of Object.keys(INSTRUMENTS)) expect(STYLE_DEFS.studio.patches[id]).toBe(INSTRUMENTS[id]);
     expect(STYLE_DEFS.studio.patches['tine-keys']).toBe(INSTRUMENTS['fm-rhodes']);
     expect(STYLE_DEFS.studio.patches.harp).toBe(INSTRUMENTS['concert-harp']);
+    expect(STYLE_DEFS.studio.patches['soft-flute']).toBe(INSTRUMENTS.woodwind);
     expect(resolvePatch(STYLE_DEFS.studio, { role: 'lead', inst: 'radio-lead' }).name).toBe('Radio lead');
     expect(resolvePatch(STYLE_DEFS.studio, { role: 'bass', inst: 'techno-sub' })).toBe(INSTRUMENTS['techno-sub']);
   });

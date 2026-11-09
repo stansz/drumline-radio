@@ -310,7 +310,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **levels:** renders the same four-note phrase on each bank patch offline and prints its RMS and
   peak, to level-match a new patch to the one it replaces before a style swaps it in. Match RMS
   within about 1 dB; for a plucked or struck patch that rings out, split the difference with the
-  peak. Like timbre, it needs `npm run dev`:
+  peak. It also prints the energy split (low under 300 Hz, high above 3 kHz, and the mid between):
+  a patch can match by RMS and still be masked if more of its energy sits under 300 Hz than the one
+  it replaces, so compare that too. Like timbre, it needs `npm run dev`:
   `node tools/browser/levels.mjs woodwind:67,oboe:67` (bank ids, each with a MIDI note).
 - **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
   that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`

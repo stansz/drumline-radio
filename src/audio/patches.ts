@@ -85,6 +85,13 @@ export interface SynthPatch {
   /** Formant bands: the oscillators and string pass through these band-pass filters in parallel,
    *  summed, before drive, filter, and envelope. Fixed frequencies make a vowel or a reed body. */
   formants?: Formant[];
+  /** Breath: band-passed noise mixed in with the oscillators and string, through the same
+   *  formants, drive, filter, and envelope. A flute's air, a breathy pad. */
+  breath?: {
+    level: number; // mix level, 0 to 1, like Osc.level
+    hz: number;    // centre of the noise band in Hz, fixed whatever note is played
+    q: number;     // band sharpness: centre ÷ bandwidth; low is airy and wide
+  };
   /** Distortion amount, 0 to 1. A wave shaper with this much tanh drive. */
   drive?: number;
   /** Output level, 0 to 1, before the track channel and mix. */

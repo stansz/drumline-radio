@@ -292,6 +292,25 @@ export function playSynth(
     detuneTargets.push(source.detune);
   }
 
+  // Breath: band-passed white noise mixed in with the oscillators and string, through the same
+  // formants, drive, filter, and envelope, for a flute's air or a breathy pad.
+  const breath = patch.breath;
+  if (breath && breath.level > 0) {
+    const spec = noiseSpec(kit, 'white');
+    (spec.node as AudioBufferSourceNode).loop = true;
+    const band = ctx.createBiquadFilter();
+    band.type = 'bandpass';
+    band.frequency.value = breath.hz;
+    band.Q.value = breath.q;
+    const level = ctx.createGain();
+    level.gain.value = breath.level;
+    spec.node.connect(band);
+    band.connect(level);
+    level.connect(oscTarget);
+    collected.nodes.push(band, level);
+    collected.sources.push(spec);
+  }
+
   if (patch.vibrato) {
     const lfo = ctx.createOscillator();
     lfo.frequency.value = patch.vibrato.rate;

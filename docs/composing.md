@@ -81,19 +81,20 @@ depends on it.
 
 - **The flute problem.** A held, smooth tone with few harmonics and slow wobble, in a lead's
   register (about G4 to E5), sounds like a flute whatever it was meant to be. Lo-fi is prone to it:
-  its patches are dark and its master chain cuts the highs. The user has flagged `soft-lead` and a
-  first version of `radio-lead` for this. Fixes that work: a plucked envelope (a hard attack that
-  decays), real buzz from drive or a pulse wave, no vibrato, or a lower octave (Last Stop's upright
-  bass).
+  its patches are dark and its master chain cuts the highs. The user has flagged the old `soft-lead`
+  (now a formant muted trumpet) and a first version of `radio-lead` for this. Fixes that work: a
+  plucked envelope (a hard attack that decays), real buzz from drive or a pulse wave, no vibrato, or
+  a lower octave (Last Stop's upright bass).
 - **Measure a lead before using it.** With `npm run dev` running:
 
   ```bash
-  node tools/browser/timbre.mjs lofi soft-flute,radio-lead,dusty-sample
+  node tools/browser/timbre.mjs lofi soft-lead,radio-lead,dusty-sample
   ```
 
   It prints how many harmonics sit within 30 dB of the loudest. One to three, with a centroid near
-  the fundamental, is a near-sine (`soft-flute` 1, `soft-lead` 3); a lead that cuts through has
-  eight or more (`saw-lead` 8, `radio-lead` 17).
+  the fundamental, is a near-sine; a lead that cuts through has eight or more (`saw-lead` 8,
+  `radio-lead` 17). The Lo-fi lead (`soft-lead`) is now a formant muted trumpet, and its counter
+  (`soft-flute`, playing `woodwind`) is the breathy flute.
 - **Lo-fi notes:** `round-bass` reads as rounded and jazzy, so it suits a walking line more than a
   boom-bap one. `tine-keys` plays both lead2 and chords, so a tine-keys lead blurs into the chords.
   The extras are `dusty-sample` (a chopped-record lead), `upright-bass` (a plucked string bass, an octave below

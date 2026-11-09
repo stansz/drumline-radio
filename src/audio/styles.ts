@@ -48,6 +48,7 @@ const REPLACED: Record<string, string> = {
   'tine-keys': 'fm-rhodes',
   'upright-bass': 'string-bass',
   'indie-lead': 'shimmer-guitar',
+  'soft-flute': 'woodwind',
 };
 
 const RECIPES: StyleRecipe[] = [
@@ -209,7 +210,7 @@ const RECIPES: StyleRecipe[] = [
     instruments: {
       'soft-lead': 'soft-lead',
       'tine-keys': 'fm-rhodes',
-      'soft-flute': 'soft-flute',
+      'soft-flute': 'woodwind',
       'radio-lead': 'radio-lead',
       'tape-pad': 'tape-pad',
       'round-bass': 'round-bass',

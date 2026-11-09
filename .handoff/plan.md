@@ -1,110 +1,124 @@
 ## Goal
 
-A chord-map check: a song can declare its chord progression in a comment, and `npm run check:songs`
-reports long notes that start on a beat and aren't in that bar's chord. It is a report, like the
-clash count, not a failure.
+Re-voice the soft winds: add an optional breath-noise layer to synth patches, make `woodwind` a
+flute with breath, make `soft-lead` (the Lo-fi lead) a formant muted trumpet, merge `soft-flute`
+into `woodwind`, and make `tools/browser/levels.mjs` report where each patch's energy sits. Patch
+gains are first guesses; they are level-matched later in a browser by the verifier.
 
 ## Files to touch
 
-- `src/music/chords.ts` (new)
-- `tests/chords.test.ts` (new)
-- `tools/check/songs.check.ts`
+- `src/audio/patches.ts`
+- `src/audio/voices.ts`
+- `src/audio/instruments.ts`
+- `src/audio/styles.ts`
+- `tests/instruments.test.ts`
+- `tests/styles.test.ts`
+- `tools/browser/levels.mjs`
+- `docs/sound.md`
 - `docs/composing.md`
 - `tools/README.md`
-- `AGENTS.md`
 
 ## Steps
 
-1. Create `src/music/chords.ts`, free of the DOM and Web Audio, exporting:
+1. `src/audio/patches.ts`: add to `SynthPatch`, after `formants`:
 
    ```ts
-   /** Pitch classes (0 = C … 11 = B) of a chord symbol, or null for no chord ("-" or "N.C.").
-    *  Throws an Error naming the symbol if it can't be read. */
-   export function chordTones(symbol: string): number[] | null
-
-   export interface ChordMap {
-     /** The chord symbol for a 1-based bar number, or null when the song declares no chord there. */
-     chordAt(bar: number): string | null;
-   }
-
-   /** Reads the `# chords:` comment lines of a song's text. Returns null when there are none.
-    *  Throws an Error naming the line for a bad line or symbol. */
-   export function parseChordMap(text: string): ChordMap | null
+   /** Breath: band-passed noise mixed in with the oscillators and string, through the same
+    *  formants, drive, filter, and envelope. A flute's air, a breathy pad. */
+   breath?: {
+     level: number; // mix level, 0 to 1, like Osc.level
+     hz: number;    // centre of the noise band in Hz, fixed whatever note is played
+     q: number;     // band sharpness: centre ÷ bandwidth; low is airy and wide
+   };
    ```
 
-   - Chord symbols: a root `[A-G]` with an optional `#` or `b`, then an optional quality, then an
-     optional `/X` bass note (ignored except that X is a valid root). Qualities and their intervals
-     in semitones from the root:
-     - none: 0 4 7; `m`: 0 3 7; `dim`: 0 3 6; `aug`: 0 4 8; `sus2`: 0 2 7; `sus4` or `sus`: 0 5 7;
-     - `7`: 0 4 7 10; `maj7`: 0 4 7 11; `m7`: 0 3 7 10; `m7b5`: 0 3 6 10; `dim7`: 0 3 6 9;
-     - `6`: 0 4 7 9; `m6`: 0 3 7 9; `add9`: 0 2 4 7; `madd9`: 0 2 3 7; `9`: 0 2 4 7 10;
-       `m9`: 0 2 3 7 10; `maj9`: 0 2 4 7 11.
-     Return the pitch classes `(root + interval) % 12`, sorted ascending, without duplicates.
-   - Chord-map lines: a line whose trimmed text starts with `# chords` is one of:
-     - `# chords: <symbols>` — the symbols, separated by spaces, one per bar starting at bar 1;
-     - `# chords @<N>: <symbols>` — the same, starting at bar N (N ≥ 1).
-     Each line's symbols repeat in a cycle from its start bar until the next line's start bar (or the
-     end of the song). Lines must be in increasing start-bar order; a `# chords:` line without `@`
-     counts as `@1`. `|` tokens among the symbols are ignored, so `# chords: F#m | D | A | E` works.
-     Bars before the first line's start have no chord (null).
-   - Validate every symbol with `chordTones` while parsing.
+2. `src/audio/voices.ts`, `playSynth`: after the plucked-string block and before the vibrato block,
+   if `patch.breath` is set and `patch.breath.level > 0`:
+   - `const spec = noiseSpec(kit, 'white');` set `(spec.node as AudioBufferSourceNode).loop = true`.
+   - Create a `BiquadFilterNode` (`type = 'bandpass'`, `frequency.value = breath.hz`,
+     `Q.value = breath.q`) and a `GainNode` (`gain.value = breath.level`).
+   - Connect `source → band-pass → gain → oscTarget` (the same node the oscillators connect to).
+   - Push the filter and gain into `collected.nodes` and `spec` into `collected.sources`.
+   - Nothing else changes; a patch without `breath` builds the same graph as before.
 
-2. Create `tests/chords.test.ts` (Vitest, importing only `../src/music/chords`):
-   - `chordTones('C')` → `[0, 4, 7]`; `chordTones('F#m')` → `[1, 6, 9]`; `chordTones('Bb7')` →
-     `[2, 5, 8, 10]`; `chordTones('Dm9')` → `[0, 2, 4, 5, 9]`; `chordTones('G/B')` → `[2, 7, 11]`;
-     `chordTones('-')` and `chordTones('N.C.')` → `null`; `chordTones('H')` throws.
-   - `parseChordMap('no chords here')` → `null`.
-   - For text `"# chords: F#m D A E\n# chords @9: Bm | G\n"`: `chordAt(1)` is `F#m`, `chordAt(4)` is
-     `E`, `chordAt(5)` is `F#m`, `chordAt(8)` is `E`, `chordAt(9)` is `Bm`, `chordAt(10)` is `G`,
-     `chordAt(11)` is `Bm`.
-   - For `"# chords @5: C\n"`: `chordAt(4)` is `null`, `chordAt(5)` is `C`.
-   - `parseChordMap("# chords: C Xm\n")` throws; `parseChordMap("# chords @9: C\n# chords @5: D\n")`
-     throws.
+3. `src/audio/instruments.ts`:
+   - Replace `woodwind` (keep the id) with, and its comment with
+     `// Orchestral counter-line: a flute. A near-sine with a soft octave and breath noise for the air.`:
 
-3. `tools/check/songs.check.ts`: after the clash count for a song, if `parseChordMap(text)` returns a
-   map (catch a thrown error and report it as `CHORD MAP ERROR <message>` on the song's line, counting
-   as a failure like a parse error):
-   - For every track whose role is not `drums`, and every note in `song.tracks[i].notes`: find its bar
-     (the last `song.bars` entry with `startTick <= note.tick`), its offset in the bar
-     (`note.tick - bar.startTick`), and its length in seconds
-     (`tickToSeconds(song, note.tick + note.ticks) - tickToSeconds(song, note.tick)`).
-   - Count it as off-chord when: the bar has a chord (not null); the length is at least
-     `MIN_SECONDS` (0.3 s); the offset is a multiple of the beat (`TICKS_PER_WHOLE / bar.time[1]`,
-     using `TICKS_PER_WHOLE` from `src/music/song.ts`); and any of its pitches' pitch class is not in
-     `chordTones(chord)`.
-   - Append to the song's line ` · <n> off-chord` (or ` · 0 off-chord`) only for songs with a chord
-     map, with a per-track breakdown in the same style as the clash breakdown when n > 0.
-   - With `CHECK_DETAIL=1`, list each off-chord note:
-     `  off-chord bar <N> (<chord>) <track> <note name> (<length>s) at <start seconds>s`.
-   - Songs without `# chords` lines print exactly as before.
-   - Update the usage comment at the top of the file.
+     ```ts
+     woodwind: synth({ name: 'Flute',
+       oscs: [osc('sine', 0, 0, 0.8), osc('triangle', 0, 0, 0.15), osc('sine', 1, 0, 0.12)],
+       breath: { level: 0.25, hz: 2500, q: 0.8 },
+       env: env(0.06, 0.2, 0.85, 0.15), vibrato: { rate: 5, cents: 14, delay: 0.25 },
+       gain: 0.3 }),
+     ```
 
-4. `docs/composing.md`, the bullet that starts "**Write the chord progression once,**": add that a
-   hand-written song should declare it as `# chords:` comment lines (one symbol per bar, cycling,
-   `# chords @N:` to change from bar N, `-` for no chord), and that `npm run check:songs` then counts
-   long on-beat notes outside the bar's chord ("off-chord"); like clashes, it is a report: a held 9th
-   or a suspension is fine if the chord symbol says so (`Dm9`, `Asus4`) or the commit explains it.
+   - Replace `soft-lead` (keep the id) with, and its comment with
+     `// Lo-fi lead: a muted trumpet. A saw and square through nasal formant bands, like a horn with a mute.`:
 
-5. `tools/README.md`, in the `npm run check:songs` section: one or two sentences describing the
-   `# chords:` lines and the off-chord count, with the supported chord qualities listed briefly.
+     ```ts
+     'soft-lead': synth({ name: 'Muted trumpet',
+       oscs: [osc('sawtooth', 0, 0, 0.7), osc('square', 0, 3, 0.3)],
+       formants: [{ hz: 700, q: 2, gain: 0.35 }, { hz: 1500, q: 2.5, gain: 1 }, { hz: 3000, q: 3, gain: 0.45 }],
+       env: env(0.03, 0.25, 0.8, 0.15), filter: { type: 'lowpass', hz: 3500, q: 0.5, envAmount: 1, envDecay: 0.2 },
+       vibrato: { rate: 5, cents: 8, delay: 0.3 }, gain: 0.5, sends: { reverb: 1, delay: 0.8 } }),
+     ```
 
-6. `AGENTS.md`: in the rule listing files free of the DOM and audio, add `src/music/chords.ts` is
-   already covered by "everything in `src/music/`" — so instead add nothing there; in the rule that
-   starts "`npm run check:songs` reports half-step clashes", add one sentence: songs with `# chords:`
-   lines also get an off-chord count, which is a report too.
+   - Delete `soft-flute` and its comment line.
+
+4. `src/audio/styles.ts`:
+   - In the Lo-fi recipe's `instruments`, change `'soft-flute': 'soft-flute'` to
+     `'soft-flute': 'woodwind'` (the role map keeps the local name `soft-flute`).
+   - Add `'soft-flute': 'woodwind'` to `REPLACED`.
+
+5. `tests/instruments.test.ts`: bank total 68 → 67. Add a test: `INSTRUMENTS.woodwind` is a synth
+   patch with a `breath` whose `level` is above 0, and `INSTRUMENTS['soft-flute']` is undefined.
+   `tests/styles.test.ts`: in the Studio test, add
+   `expect(STYLE_DEFS.studio.patches['soft-flute']).toBe(INSTRUMENTS.woodwind);`.
+
+6. `tools/browser/levels.mjs`: after measuring each patch's phrase, also measure where its energy
+   sits. Render the same phrase buffer twice more through filters in new `OfflineAudioContext`s of
+   the same length and rate (an `AudioBufferSourceNode` playing the rendered buffer): once through a
+   `lowpass` at 300 Hz (Q 0.7), once through a `highpass` at 3000 Hz (Q 0.7). With `total`, `low`, and
+   `high` the sums of squares over the same 2 s window, print after the peak:
+   `  energy low/mid/high NN/NN/NN%` where low = low/total, high = high/total, mid = the rest
+   (never below 0), each rounded to a whole percent. Update the header comment: a patch level-matched
+   by RMS can still be buried if more of its energy sits under 300 Hz than the patch it replaces, so
+   compare the energy split too.
+
+7. `docs/sound.md`:
+   - In `## Building a patch`, add a table row `| Flute, breathy parts | oscillators + breath |
+     \`woodwind\` |` and a `### Breath` subsection after `### Formants`: what the field does (band-passed
+     noise through the same formants, drive, filter, and envelope; fixed band; low `q` is airy; a
+     flute is a near-sine plus a little breath around 2-3 kHz).
+   - In `### Hearing and levelling a patch`, add: compare the energy split `levels.mjs` prints, not
+     just RMS; the string pad and tape pad re-voices matched by RMS but moved energy under 300 Hz or
+     into a darker band and were masked by the cellos, piano, or bass.
+   - Where the Orchestral extras are described (`inst=oboe` "more cutting than the flute-like
+     woodwind"), say "than the flute (woodwind)".
+   - Add `soft-flute` → `woodwind` to the `## Removed patches` list.
+   - In the Lo-fi section, if it describes the lead, say it is a muted trumpet.
+8. `docs/composing.md`: the lines that mention `soft-flute` and `soft-lead` as near-sines describe
+   the old patches. Rewrite them to say the Lo-fi lead is now a formant muted trumpet and the counter
+   is the breathy flute (woodwind); keep the advice about timbre.mjs, using
+   `node tools/browser/timbre.mjs lofi soft-lead,radio-lead,dusty-sample` as the example.
+9. `tools/README.md`: in the levels entry, mention the energy split.
 
 ## Acceptance
 
-- `npm run test:sandbox` exits 0, and its output shows `tests/chords.test.ts` passing.
+- `npm run test:sandbox` exits 0, and its output shows `tests/instruments.test.ts` and
+  `tests/styles.test.ts` passing.
 - `git diff --stat` and `git status --porcelain` list only files from **Files to touch** (plus
   `.handoff/` files).
-- `git grep -n "off-chord" -- tools/check/songs.check.ts` prints at least two lines.
+- `git grep -n "'soft-flute': synth" -- src/audio/instruments.ts` prints nothing.
+- `git grep -n "breath" -- src/audio/voices.ts` prints at least two lines.
 - `git diff -- src/songs` prints nothing.
 
 Verifier only:
 - `npm test` exits 0.
 - `npm run typecheck` exits 0.
-- `npm run check:songs` exits 0, and its output is unchanged for songs without `# chords` lines.
+- `npm run build` exits 0.
+- `node tools/browser/levels.mjs woodwind:72,soft-lead:67` (with a dev server) prints an energy line.
 
 ## Parallel work
 
@@ -114,7 +128,8 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Do not change any song file, the parser (`src/music/song.ts`), or the clash check's results.
+- Do not change any song, any other patch, or playback scheduling.
+- Keep `src/audio/patches.ts` free of DOM and Web Audio.
 - Files use LF line endings, UTF-8, and 2-space indents.
 - Do not run the `Verifier only:` commands. If any command fails with `spawn EPERM`, stop and
   report it. Do not request wider sandbox access, set `NODE_OPTIONS`, or stub modules to get past
@@ -122,7 +137,7 @@ None — do it sequentially.
 
 ## Out of scope
 
-- Adding `# chords:` lines to songs, a "safe notes" helper, browser checks, the balance tool.
+- Level-matching or tuning the new patches, browser checks, drum kits, other patches.
 
 ## If blocked
 
