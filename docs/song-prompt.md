@@ -18,8 +18,6 @@ Write a new original song for Drumline Radio (this repo) in the <Style> style.
 
 Read first: AGENTS.md, docs/composing.md (including its checks before committing),
 docs/song-format.md, and docs/sound.md (the <Style> section and the instrument bank).
-Read each of those once and nothing else whole: grep other files for what you need, and
-don't re-read files. Write the .song file directly, not a script that generates it.
 
 Brief:
 - <Genre and feel in one line, with one or two reference artists, e.g. "melodic Detroit-style
