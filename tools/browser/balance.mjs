@@ -124,9 +124,12 @@ try {
       });
       console.log(`${String(s.from).padStart(3)}-${String(s.to).padEnd(4)} ${time(s.start).padStart(6)}  ${cells.join('')}`);
 
-      // A part counts as playing in a section only when it is clearly there, not a stray tail.
+      // A part counts as playing in a section only when it is clearly there, not a stray tail: above
+      // -55 dB and within 25 dB of the section's loudest track.
       const PLAYING = -55;
-      const at = (role) => tracks.map((t, i) => ({ t, l: levels[i][j] })).filter((x) => x.t.role === role && x.l.rms > PLAYING);
+      const loudest = Math.max(...tracks.map((t, i) => levels[i][j].rms));
+      const present = (l) => l.rms > Math.max(PLAYING, loudest - 25);
+      const at = (role) => tracks.map((t, i) => ({ t, l: levels[i][j] })).filter((x) => x.t.role === role && present(x.l));
       const lead = at('lead').sort((a, b) => b.l.rms - a.l.rms)[0];
       const where = `bars ${s.from}-${s.to}`;
       if (lead) {
@@ -149,7 +152,7 @@ try {
       // Only a kit with a real low end (a kick playing through the section) is compared with the bass.
       const drums = at('drums').filter((x) => x.l.low > -45).sort((a, b) => b.l.low - a.l.low)[0];
       for (const x of at('bass')) {
-        if (drums && x.l.low > drums.l.low) flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
+        if (drums && x.l.low > drums.l.low + 1) flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
       }
     });
     console.log(flags.length ? `\nFlags:\n  ${flags.join('\n  ')}` : '\nNo flags.');
