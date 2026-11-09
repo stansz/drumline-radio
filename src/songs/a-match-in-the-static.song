@@ -327,7 +327,7 @@ track bass role=bass inst=pick-bass vol=0.23 vol.chiptune=0.07 vol.lofi=0.15 vol
 | C2/2':54 G1/2':48 | D2/2':54 A1/2':48 | E1/2':55 B1/2':48 | E1/2':55 B1/2':48 |
 | C2/2':54 G1/2':48 | D2/2':54 A1/2':48 | E1/1':58 | E1/1':64 |
 
-track kit role=drums inst=rock-kit vol=0.50 pan=0
+track kit role=drums inst=rock-kit vol=0.35 pan=0
 # Intro A — lone shimmer guitar (bars 1-8)
 | R | R | R | R |
 | R | R | R | R |
@@ -369,7 +369,7 @@ track kit role=drums inst=rock-kit vol=0.50 pan=0
 | k/4:80 r/4 rim/4+18:72 r/4 | k/2:70 r/2 | rim/2+18:66 r/2 | k/4:64 r/4 rim/4+18:58 r/4 |
 | k/4:52 r/4 r/2 | k/4:50 r/4 r/2 | k/4:48 r/4 r/2 | R |
 
-track hats role=drums inst=rock-kit vol=1 pan=-0.16
+track hats role=drums inst=rock-kit vol=0.7 pan=-0.16
 # Intro A — lone shimmer guitar (bars 1-8)
 | R | R | R | R |
 | R | R | R | R |
