@@ -13,7 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| Starlight Drive | Synthwave | Ling 3.1 Flash | — | — | Mix: choirs, pad, and arp under the hook |
+| Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
@@ -57,6 +57,13 @@ Stop) aren't listed.
   a local name to them, so plain `inst=vox-lead` in Synthwave would fall back to the style's lead
   patch. The credit is the harness's own model report (PI_MODEL=inclusionai/ling-3.1-flash), written
   as Ling 3.1 Flash; Ling went onto MODEL_FAMILIES in `src/ui/view.ts`.
+- **Cost:** about $2, the dearest run per token by far: at $0.045 / $0.135 per 1M it read about
+  40M tokens over a very long run. By its own account it read whole files instead of searching
+  them, wrote a 500-line generator for the score, threw it away and wrote it again, read the
+  1,000-line result in eight chunks, and took two rounds each of test and balance fixes. It also
+  dropped the Signal Fire heading from this file (restored).
+
+### Signal Fire — MiniMax M3.1 Flash (2026-11-08)
 
 - **Brief:** a peak-time dance anthem, Techno, 132 BPM, F# minor, 4:00-4:30: a chopped vocal hook
   on the bank `vox-lead`, a rolling off-beat sub, punchy stabs, a dark pad in the breakdowns, a
