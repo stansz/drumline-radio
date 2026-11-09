@@ -224,7 +224,7 @@ track ooh role=pad inst=choir-ooh vol=0.95 pan=0.12
 | [G#3 B3 E4]/1:74 | [F#3 B3 D#4]/1:72 | [G#3 C#4 E4]/1:70 | [E3 A3 C#4]/1:68 |
 | [G#3 B3 E4]/1:66 | [F#3 B3 D#4]/1:64 | [E3 A3 C#4]/1:62 | [G#3 B3 E4]/1:60 |
 
-track pad role=pad vol=0.95 vol.altrock=0.6 pan=0
+track pad role=pad vol=0.95 vol.altrock=0.45 pan=0
 # Intro: drums and bass, then the arp
 | R | R | R | R |
 | [D3 A3]/1:60 | [D3 A3]/1:62 | [G2 D3]/1:64 | [A2 E3]/1:66 |
