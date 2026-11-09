@@ -148,7 +148,8 @@ master filter already takes off the top. No role maps to these three.
 The Cinematic style is a grand piano, an overdriven lead guitar, a solo cello, a warm bass, a string
 section, an analog synth, and an organic studio kit. The guitar's `drive` gives it the distortion,
 and its long delay send and the style's 3.2 s reverb give it a big hall. Songs can reach the extra
-`Analog pad` patch with `inst=synth-pad`; no role maps to it.
+`Glass pad` patch with `inst=synth-pad` (FM sines that swell into a soft, bell-like shimmer); no
+role maps to it.
 
 ### Alt rock
 
