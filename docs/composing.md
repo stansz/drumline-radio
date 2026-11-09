@@ -72,8 +72,7 @@ from several styles; give each track the role it plays, since remixes fall back 
 Read the bank before picking: every patch in `src/audio/instruments.ts` has a one-line comment saying
 what it is for, and many are in no style's role map, so a song only gets them by asking. Among them:
 choirs (`choir-aah`, `choir-ooh`), a wordless vocal lead (`vox-lead`), `oboe`, `tubular-bells`
-(as `fm-bells`), `pizzicato`, `nylon-guitar`, `dx-bass`, and the older oscillator `brass`, `harp`,
-`bells`, `tine-keys`, and `upright-bass`. Orchestral also reaches `oboe`, `tubular-bells`, and
+(as `fm-bells`), `pizzicato`, `nylon-guitar`, and `dx-bass`. Orchestral also reaches `oboe`, `tubular-bells`, and
 `pizzicato` by plain `inst=`.
 
 A new instrument goes into the bank under a new unique id (see
@@ -97,8 +96,8 @@ depends on it.
   eight or more (`saw-lead` 8, `radio-lead` 17).
 - **Lo-fi notes:** `round-bass` reads as rounded and jazzy, so it suits a walking line more than a
   boom-bap one. `tine-keys` plays both lead2 and chords, so a tine-keys lead blurs into the chords.
-  The extras are `dusty-sample` (a chopped-record lead), `upright-bass` (sounds an octave below the
-  written note) and `radio-lead` (a buzzy plucked lead).
+  The extras are `dusty-sample` (a chopped-record lead), `upright-bass` (a plucked string bass, an octave below
+  the written note) and `radio-lead` (a buzzy plucked lead).
 - **Low notes:** an oscillator below 30 Hz is skipped, so a patch's sub-octave layer drops out under
   very low notes. Check a low bass line in every style it might be remixed into, Techno above all.
 

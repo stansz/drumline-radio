@@ -79,8 +79,10 @@ describe('styles', () => {
     expect(resolvePatch(STYLE_DEFS.techno, { role: 'lead', inst: 'radio-lead' }).name).toBe('Acid');
   });
 
-  it('gives Studio every bank instrument under its bank id', () => {
-    expect(Object.keys(STYLE_DEFS.studio.patches)).toEqual(Object.keys(INSTRUMENTS));
+  it('gives Studio every bank instrument under its bank id, and old names to their replacements', () => {
+    for (const id of Object.keys(INSTRUMENTS)) expect(STYLE_DEFS.studio.patches[id]).toBe(INSTRUMENTS[id]);
+    expect(STYLE_DEFS.studio.patches['tine-keys']).toBe(INSTRUMENTS['fm-rhodes']);
+    expect(STYLE_DEFS.studio.patches.harp).toBe(INSTRUMENTS['concert-harp']);
     expect(resolvePatch(STYLE_DEFS.studio, { role: 'lead', inst: 'radio-lead' }).name).toBe('Radio lead');
     expect(resolvePatch(STYLE_DEFS.studio, { role: 'bass', inst: 'techno-sub' })).toBe(INSTRUMENTS['techno-sub']);
   });

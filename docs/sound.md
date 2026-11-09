@@ -171,9 +171,8 @@ chugging, and Guitar wall holds for a chorus. Clean guitar is a jangly plucked s
 and counter-lines, an octave below the written note. Pick bass has a little drive for driving eighth notes. The style has a small
 room (1.4 s reverb), little delay, and no crush.
 
-Alt rock has six extras that no role maps to. `inst=indie-lead` is a warm, muffled plucked string,
-picked toward the middle and darkly filtered so it isn't twangy, an octave below the written note,
-with a short ring, a deep, slow chorus, and moderate reverb and delay. `inst=acoustic-guitar`
+Alt rock has six extras that no role maps to. `inst=indie-lead` is an old name that now plays the
+shimmer guitar (a warm, darkly filtered plucked string with a slow chorus). `inst=acoustic-guitar`
 is a plucked acoustic, open, with a soft pick attack and a moderate ring, `inst=plugged-acoustic` is the same kind of string
 heard through a pickup and an amp: a wide band-pass for the direct, mid-forward piezo tone, light
 drive for compression, a soft fingerpicked attack that fades in over 50 ms, and an open ring into
@@ -243,8 +242,8 @@ velocity-zero note gets no FM, at 0 velocity has no effect. `attack` adds second
 swell from the floor to the peak, which is what makes `fm-brass` open up like a horn. `targets` names
 which oscillators the modulator drives (indexes into `oscs`), so a patch can keep an oscillator
 unmodulated as a clean layer under the FM, as `fm-rhodes` does with its second sine. The modulator
-never drives the plucked string. The defaults keep older FM patches unchanged, so `bells`, `fm-pluck`,
-and `tine-keys` sound exactly as before.
+never drives the plucked string. The defaults keep older FM patches unchanged, so `fm-pluck` sounds
+exactly as before.
 
 ### Plucked string
 
@@ -288,6 +287,14 @@ Before a style swaps a new patch in for an old one, level-match them with
 through the same engine, voices, and master chain as live play, plus a 3 s tail for reverb and delay.
 It books notes 2 s ahead in steps while rendering, so a long song never holds every voice at once.
 `src/audio/wav.ts` encodes the result as 16-bit PCM WAV.
+
+## Removed patches
+
+When a patch is replaced by a better one, the old one leaves the bank and its name keeps working:
+`REPLACED` in `src/audio/styles.ts` points it at the replacement in Studio (and the styles that used
+the name point at it too). So far: `brass` → `fm-brass`, `harp` → `concert-harp`, `bells` →
+`glockenspiel`, `tine-keys` → `fm-rhodes`, `upright-bass` → `string-bass`, and `indie-lead` →
+`shimmer-guitar`.
 
 ## Adding a patch or a style
 

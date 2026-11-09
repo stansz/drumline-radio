@@ -40,6 +40,16 @@ function buildStyle(recipe: StyleRecipe): StyleDef {
   return { ...rest, patches };
 }
 
+/** Removed bank patches and the patch each one's name now plays. */
+const REPLACED: Record<string, string> = {
+  brass: 'fm-brass',
+  harp: 'concert-harp',
+  bells: 'glockenspiel',
+  'tine-keys': 'fm-rhodes',
+  'upright-bass': 'string-bass',
+  'indie-lead': 'shimmer-guitar',
+};
+
 const RECIPES: StyleRecipe[] = [
   {
     id: 'synthwave',
@@ -242,7 +252,7 @@ const RECIPES: StyleRecipe[] = [
       'power-chords': 'power-chords',
       'pick-bass': 'pick-bass',
       'rock-kit': 'rock-kit',
-      'indie-lead': 'indie-lead',
+      'indie-lead': 'shimmer-guitar',
       'shimmer-guitar': 'shimmer-guitar',
       'acoustic-guitar': 'acoustic-guitar',
       'plugged-acoustic': 'plugged-acoustic',
@@ -260,7 +270,12 @@ const RECIPES: StyleRecipe[] = [
     name: 'Studio',
     blurb: 'Every instrument in the bank, through a clean, neutral mix.',
     roles: { lead: 'saw-lead', lead2: 'grand-piano', counter: 'woodwind', pad: 'warm-pad', chords: 'grand-piano', bass: 'warm-bass', arp: 'pluck', drums: 'studio-kit' },
-    instruments: Object.fromEntries(Object.keys(INSTRUMENTS).map((id) => [id, id])),
+    // Every bank instrument under its own id, plus the names of patches that were replaced, so an old
+    // inst= name still plays: it now reaches the replacement.
+    instruments: {
+      ...Object.fromEntries(Object.keys(INSTRUMENTS).map((id) => [id, id])),
+      ...REPLACED,
+    },
     fx: { reverbSeconds: 2, reverbSend: 0.2, delayBeats: 0.75, delaySend: 0.12, delayFeedback: 0.3, crush: 0, lowpassHz: 20000, crackle: 0 },
     lanes: ['#5ee0c1', '#f4f4f0', '#ff8a5c', '#8fb3ff', '#ffd166', '#c79bff'],
   },

@@ -4,7 +4,7 @@
 // that rings out, RMS reads low, so split the difference with the peak instead of matching RMS.
 // Needs the dev server (`npm run dev`), because it imports the audio modules straight from src/.
 //   node tools/browser/levels.mjs <bank-id:midi,bank-id:midi,...> [url]
-//   node tools/browser/levels.mjs harp:60,concert-harp:60,upright-bass:40,string-bass:40
+//   node tools/browser/levels.mjs woodwind:67,oboe:67,round-bass:40,string-bass:40
 import { openEdge } from './cdp.mjs';
 
 const [list, url = 'http://localhost:5173/drumline-radio/'] = process.argv.slice(2);

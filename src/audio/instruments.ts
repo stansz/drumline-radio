@@ -38,15 +38,6 @@ export const LEADS: Record<string, Patch> = {
     env: env(0.002, 0.1, 0.7, 0.05),
     gain: 0.16,
   }),
-  // An older brass: filtered saws that open on each note (Orchestral now uses fm-brass).
-  brass: synth({
-    name: 'Brass',
-    oscs: [osc('sawtooth', 0, 0, 0.7), osc('sawtooth', 0, 5, 0.3)],
-    env: env(0.06, 0.3, 0.8, 0.25),
-    filter: { type: 'lowpass', hz: 1200, q: 1, envAmount: 3, envDecay: 0.25 },
-    vibrato: { rate: 5, cents: 8, delay: 0.4 },
-    gain: 0.26,
-  }),
   // Orchestral counter-line: a soft, flute-like triangle and sine with vibrato.
   woodwind: synth({
     name: 'Woodwind',
@@ -90,14 +81,6 @@ export const LEADS: Record<string, Patch> = {
   'fuzz-lead': synth({ name: 'Fuzz guitar', oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', 0, 6, 0.3), osc('sawtooth', -1, 0, 0.1)],
     env: env(0.005, 0.6, 0.75, 0.3), filter: { type: 'lowpass', hz: 2800, q: 1, envAmount: 1.4, envDecay: 0.2 },
     vibrato: { rate: 5.5, cents: 15, delay: 0.5 }, drive: 0.85, gain: 0.2, sends: { reverb: 0.7, delay: 0.6 } }),
-  // Alt rock: a warm, muffled indie lead guitar built on a plucked string (Karplus-Strong): picked
-  // toward the middle of the string and darkly filtered so it isn't twangy, with a short ring, a
-  // deep, slow chorus, and moderate reverb and delay. It sounds an
-  // octave below the written note, as a real guitar does (guitar music is written an octave up).
-  'indie-lead': synth({ name: 'Indie lead', oscs: [],
-    string: { octave: -1, level: 1, decay: 1.2, brightness: 0.2, pick: 0.38 },
-    env: env(0.004, 0.9, 0.25, 0.3), filter: { type: 'lowpass', hz: 1500, q: 0.6, envAmount: 1.2, envDecay: 0.2 },
-    vibrato: { rate: 0.7, cents: 9, delay: 0 }, drive: 0.1, gain: 1, sends: { reverb: 1.2, delay: 1.4 } }),
   // A bright brass lead: FM with an index attack swell, so the tone opens up like a horn.
   'fm-brass': synth({ name: 'FM brass', oscs: [osc('sine', 0, 0, 1)],
     fm: { ratio: 1, index: 3.5, attack: 0.07, decay: 0.5, sustain: 0.45, velocity: 0.7 },
@@ -149,21 +132,6 @@ export const KEYS: Record<string, Patch> = {
     env: env(0.001, 0.08, 0, 0.03),
     gain: 0.16,
   }),
-  // An older harp: a triangle and sine pluck (Orchestral now uses concert-harp).
-  harp: synth({
-    name: 'Harp',
-    oscs: [osc('triangle', 0, 0, 0.8), osc('sine', 1, 0, 0.2)],
-    env: env(0.002, 1.2, 0, 0.6),
-    gain: 0.3,
-  }),
-  // An older bell: FM that rings and decays (Orchestral now uses glockenspiel).
-  bells: synth({
-    name: 'Bells',
-    oscs: [osc('sine', 0, 0, 1)],
-    fm: { ratio: 3.5, index: 2, decay: 1.5 },
-    env: env(0.002, 1.8, 0, 1),
-    gain: 0.2,
-  }),
   // Techno second lead: a short square stab.
   'square-stab': synth({
     name: 'Square stab',
@@ -197,10 +165,6 @@ export const KEYS: Record<string, Patch> = {
     filter: { type: 'lowpass', hz: 900, q: 10, envAmount: 5, envDecay: 0.08 },
     gain: 0.18,
   }),
-  // An older electric piano: plain FM tines (Lo-fi now uses fm-rhodes).
-  'tine-keys': synth({ name: 'Tine keys', oscs: [osc('sine', 0, 0, 1)], fm: { ratio: 1, index: 1.2, decay: 0.8 },
-    env: env(0.005, 1.2, 0.25, 0.5), filter: { type: 'lowpass', hz: 2200, q: 0.5, envAmount: 1, envDecay: 0.3 },
-    vibrato: { rate: 0.6, cents: 7, delay: 0 }, gain: 0.26, sends: { reverb: 1, delay: 0.5 } }),
   // Lo-fi arp: a soft, muted pluck with a long delay send.
   'muted-pluck': synth({ name: 'Muted pluck', oscs: [osc('triangle', 0, 0, 1)],
     env: env(0.003, 0.25, 0, 0.2), filter: { type: 'lowpass', hz: 1600, q: 1, envAmount: 2, envDecay: 0.12 },
@@ -424,10 +388,6 @@ export const BASSES: Record<string, Patch> = {
   'round-bass': synth({ name: 'Round bass', oscs: [osc('sine', 0, 0, 0.75), osc('triangle', 0, 0, 0.25)],
     env: env(0.01, 0.3, 0.7, 0.12), filter: { type: 'lowpass', hz: 600, q: 0.7, envAmount: 1.5, envDecay: 0.1 },
     gain: 0.5, sends: { reverb: 0.1, delay: 0 } }),
-  // A plucked upright bass that sounds an octave below the written note, so it can carry a melody.
-  'upright-bass': synth({ name: 'Upright bass', oscs: [osc('triangle', -1, 0, 0.55), osc('sine', -1, 0, 0.3), osc('sawtooth', -1, 0, 0.15)],
-    env: env(0.004, 0.7, 0.15, 0.15), filter: { type: 'lowpass', hz: 700, q: 1.2, envAmount: 2.5, envDecay: 0.06 },
-    gain: 0.6, sends: { reverb: 0.4, delay: 0.1 } }),
   // Cinematic bass: a warm sine and saw bass.
   'warm-bass': synth({ name: 'Warm bass', oscs: [osc('sine', 0, 0, 0.6), osc('sawtooth', 0, 0, 0.4)],
     env: env(0.01, 0.4, 0.75, 0.2), filter: { type: 'lowpass', hz: 650, q: 0.8, envAmount: 1.8, envDecay: 0.12 },

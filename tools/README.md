@@ -311,7 +311,7 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   peak, to level-match a new patch to the one it replaces before a style swaps it in. Match RMS
   within about 1 dB; for a plucked or struck patch that rings out, split the difference with the
   peak. Like timbre, it needs `npm run dev`:
-  `node tools/browser/levels.mjs harp:60,concert-harp:60` (bank ids, each with a MIDI note).
+  `node tools/browser/levels.mjs woodwind:67,oboe:67` (bank ids, each with a MIDI note).
 - **timbre:** renders one note per patch offline and counts its strong harmonics, to catch a lead
   that will sound like a flute (one to three harmonics is a near-sine). It needs `npm run dev`
   instead of the preview server, because it imports the audio code from `src/`:
