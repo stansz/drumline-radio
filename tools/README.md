@@ -300,8 +300,7 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   for bass and drums), flags a pad or chords part more than 10 dB under the lead, an arp peaking
   more than 8 dB under the lead, a bass louder than the lead, and a bass low end louder than the kick's, then stops the server and browser.
   Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB
-  to spare (in a remix it says to fix the style's patches instead, since a `vol=` change moves the
-  home mix too). About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
+  to spare (in a remix it suggests `vol.<style>=`, which changes the track in that style only). About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).

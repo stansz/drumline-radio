@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ROLES, STYLES } from '../src/music/roles';
-import { resolvePatch, STYLE_DEFS, withBankInstruments } from '../src/audio/styles';
+import { resolvePatch, STYLE_DEFS, trackVolume, withBankInstruments } from '../src/audio/styles';
 import type { Song } from '../src/music/song';
 import type { StyleId } from '../src/music/roles';
 import { INSTRUMENTS } from '../src/audio/instruments';
@@ -119,5 +119,14 @@ describe('withBankInstruments', () => {
   it("leaves the home style's own names, bank: names, unknown names and no inst alone", () => {
     const input = song('synthwave', 'sub-bass', 'bank:oboe', 'nothing-here', null);
     expect(withBankInstruments(input)).toBe(input);
+  });
+});
+
+describe('trackVolume', () => {
+  it("uses a track's per-style volume in that style and its vol= elsewhere", () => {
+    const track = { vol: 0.5, styleVol: { altrock: 0.2 } };
+    expect(trackVolume(track, 'altrock')).toBe(0.2);
+    expect(trackVolume(track, 'synthwave')).toBe(0.5);
+    expect(trackVolume({ vol: 0.7 }, 'altrock')).toBe(0.7);
   });
 });

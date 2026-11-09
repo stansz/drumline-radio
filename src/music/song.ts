@@ -50,6 +50,8 @@ export interface Track {
   role: Role;
   inst: string | null;
   vol: number;
+  /** Per-style volumes from `vol.<style>=`, present only when the track sets one. */
+  styleVol?: Partial<Record<StyleId, number>>;
   pan: number;
   notes: Note[];
 }
@@ -341,6 +343,7 @@ interface RawTrack {
   role: Role;
   inst: string | null;
   vol: number;
+  styleVol?: Partial<Record<StyleId, number>>;
   pan: number;
   tokens: SourceToken[];
 }
@@ -404,6 +407,16 @@ export function parseSong(text: string): ParseResult {
           err(lineNumber, `invalid vol '${value}'`);
         } else {
           track.vol = volume;
+        }
+      } else if (key.startsWith('vol.')) {
+        const style = key.slice(4);
+        const volume = Number(value);
+        if (!isStyle(style)) {
+          err(lineNumber, `unknown style in '${key}'`);
+        } else if (!/^\d+(\.\d+)?$/.test(value) || volume > 1) {
+          err(lineNumber, `invalid ${key} '${value}'`);
+        } else {
+          track.styleVol = { ...track.styleVol, [style]: volume };
         }
       } else if (key === 'pan') {
         const pan = Number(value);
@@ -1014,6 +1027,7 @@ export function parseSong(text: string): ParseResult {
       role: raw.role,
       inst: raw.inst,
       vol: raw.vol,
+      ...(raw.styleVol ? { styleVol: raw.styleVol } : {}),
       pan: raw.pan,
       notes,
     });

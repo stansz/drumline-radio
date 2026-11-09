@@ -1,7 +1,7 @@
 import { crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
 import type { StyleId } from '../music/roles';
 import type { Song, Track } from '../music/song';
-import { resolvePatch, STYLE_DEFS, withBankInstruments } from './styles';
+import { resolvePatch, STYLE_DEFS, trackVolume, withBankInstruments } from './styles';
 import { buildTimeline, notesBetween } from '../music/timing';
 import type { ScheduledNote, Timeline } from '../music/timing';
 import { createVoiceKit, playDrum, playSynth } from './voices';
@@ -364,7 +364,7 @@ export class Engine {
 
     for (const track of song.tracks) {
       const gain = this.ctx.createGain();
-      gain.gain.value = track.vol;
+      gain.gain.value = trackVolume(track, song.meta.style);
       const pan = this.ctx.createStereoPanner();
       pan.pan.value = track.pan;
       gain.connect(pan);
@@ -403,6 +403,7 @@ export class Engine {
     this.crackleGain.gain.setTargetAtTime(fx.crackle, now, 0.05);
 
     for (const channel of this.channels) {
+      channel.gain.gain.setTargetAtTime(trackVolume(channel.track, this.styleValue), now, 0.05);
       const patch = resolvePatch(def, channel.track);
       channel.reverbSend.gain.setTargetAtTime(fx.reverbSend * patch.sends.reverb, now, 0.05);
       channel.delaySend.gain.setTargetAtTime(fx.delaySend * patch.sends.delay, now, 0.05);

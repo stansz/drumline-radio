@@ -328,6 +328,11 @@ export function withBankInstruments(song: Song): Song {
   return changed ? { ...song, tracks } : song;
 }
 
+/** A track's volume in a style: its `vol.<style>=` when it sets one, else its `vol=`. */
+export function trackVolume(track: Pick<Track, 'vol' | 'styleVol'>, style: StyleId): number {
+  return track.styleVol?.[style] ?? track.vol;
+}
+
 export function patchKey(style: StyleDef, track: Pick<Track, 'role' | 'inst'>): string {
   if (bankId(track.inst) !== null) return track.inst as string;
   if (track.inst !== null && Object.prototype.hasOwnProperty.call(style.patches, track.inst)) {

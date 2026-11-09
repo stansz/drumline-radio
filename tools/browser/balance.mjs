@@ -6,7 +6,8 @@
 // RMS and peak, since sparse parts read low by RMS), an arp
 // peaking more than 8 dB under the lead's peak, a bass louder than the lead, and a bass whose low
 // end is louder than the kick's. Under the flags it suggests a `vol=` for each flagged track that
-// clears its worst flag (track volume is linear gain, so the step is exact unless it would pass 1).
+// clears its worst flag (track volume is linear gain, so the step is exact unless it would pass 1);
+// in a remix it suggests `vol.<style>=`, which changes the track in that style only.
 // The style `all` renders the song in every style in one run.
 //   npm run balance -- <song name or path> [style or all] [bars per section, default 8]
 //   npm run balance -- wayfarers-rest
@@ -114,7 +115,7 @@ function render(base, style) {
           return { rms: db(Math.sqrt(sq / len)), peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null };
         });
       });
-      return { style, home: song.meta.style, tracks: tracks.map((t) => ({ id: t.id, role: t.role, vol: t.vol })), sections, levels };
+      return { style, home: song.meta.style, tracks: tracks.map((t) => ({ id: t.id, role: t.role, vol: t.styleVol?.[style] ?? t.vol })), sections, levels };
     } catch (e) { return { error: String(e && e.stack || e) }; }
   })()`;
 }
@@ -194,18 +195,17 @@ function report(result) {
       }
     });
     console.log(flags.length ? `\nFlags:\n  ${flags.join('\n  ')}` : '\nNo flags.');
-    if (needs.size > 0 && result.style !== result.home) {
-      // In a remix the gaps come from the other style's patch levels, not the song's mix.
-      console.log(`\nThis is a remix: a vol change would also move the ${result.home} mix, so fix level gaps here in the style's patches instead.`);
-    } else if (needs.size > 0) {
+    if (needs.size > 0) {
       // A raise in one section can make the part too loud in another, so run again after a change.
+      // In a remix the change goes in `vol.<style>=`, so the home mix stays as it is.
+      const key = result.style === result.home ? 'vol' : `vol.${result.style}`;
       console.log('\nSuggested track volumes (then run again):');
       for (const [i, dB] of needs) {
         const t = tracks[i];
         const want = t.vol * 10 ** (dB / 20);
         const sign = dB > 0 ? '+' : '';
         const note = want > 1 ? ' (vol tops out at 1: raise the velocities or lower the lead instead)' : '';
-        console.log(`  ${t.id}: vol=${t.vol} -> vol=${Math.min(1, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
+        console.log(`  ${t.id}: ${key}=${t.vol} -> ${key}=${Math.min(1, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
       }
     }
     console.log('\nFor a sparse part (stabs, hits), compare peaks: RMS reads low when most of a section is silent.');

@@ -74,6 +74,9 @@ track mel role=lead inst=saw-lead vol=0.7 pan=-0.25
   bank instrument in every style, except where a style swaps it for its own patch (see
   [sound.md](sound.md)). It defaults to none.
 - `vol` is optional, from 0 to 1, default 0.8.
+- `vol.<style>` is optional, from 0 to 1, for example `vol.altrock=0.2`: the track's volume when
+  the song plays in that style, in place of `vol`. Use it when a remix makes a part too loud or too
+  quiet; `npm run balance -- <song> <style>` suggests the number.
 - `pan` is optional, from -1 to 1, default 0.
 
 Options may come in any order. Every non-blank line after the `track` line, until the next `track`
