@@ -255,6 +255,9 @@ Start from the closest bank patch in `src/audio/instruments.ts` and change one t
 bank patch has a one-line comment saying what it is for, and every `SynthPatch` field is commented in
 `src/audio/patches.ts` with what it does and its unit (seconds, Hz, cents, 0–1, octaves).
 
+For a measured audit of the bank's timbres and the proposed changes, see
+[sound-audit.md](sound-audit.md).
+
 | Sound | Technique | Start from |
 | --- | --- | --- |
 | Leads, pads, synth basses | oscillators + filter | `saw-lead`, `warm-pad`, `synth-bass` |

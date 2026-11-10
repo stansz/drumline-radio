@@ -67,7 +67,8 @@ The first three are small; the two decks are a real project.
 - **Safe-notes helper for composers:** list the notes that fit each chord of a song's `# chords:`
   map, so model-written songs clash less.
 - **Stabs and basses:** re-voice the near-duplicate stab and bass patches, as was done for pads,
-  strings, winds and drum kits.
+  strings, winds and drum kits. [sound-audit.md](sound-audit.md) has the measured audit and the
+  proposed changes, including a chorus stage, high-passed pads and stabs, and velocity-to-filter.
 - **Older songs' mixes:** `npm run balance` still flags Ivory and Ash, Exit Sign,
   Save Point, The Silent Keep, Night Shift and Shortwave's pluck.
 - **Instrument page link:** link the instrument page (`instruments.html`) from the ⓘ panel.
