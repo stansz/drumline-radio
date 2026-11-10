@@ -27,5 +27,5 @@ const playing = await page.ev(`document.querySelector('#play').getAttribute('ari
 const ok = sw === 'activated' && install.length === 0 && offline.stations > 0 && playing;
 console.log(`offline: ${offline.stations} stations, "${offline.title}", playing: ${playing}`);
 console.log(ok ? 'ok' : 'FAIL');
-page.close();
+await page.close();
 process.exit(ok ? 0 : 1);

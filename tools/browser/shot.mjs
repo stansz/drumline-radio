@@ -11,5 +11,5 @@ await page.ev(`document.querySelector('#play').click()`);
 if (style) await page.ev(`document.querySelector('.band[data-style="${style}"]').click()`);
 await sleep(4000); // let the banner fade and the score fill in
 await page.screenshot(out);
-page.close();
+await page.close();
 console.log(`saved ${out}`);

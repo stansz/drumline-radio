@@ -71,4 +71,4 @@ for (let i = 0; i < titles.length; i += 1) {
     );
   }
 }
-page.close();
+await page.close();

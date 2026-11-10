@@ -53,7 +53,7 @@ try {
     report(await page.ev(render(base, one)));
   }
 } finally {
-  page?.close();
+  await page?.close();
   await server.close();
 }
 

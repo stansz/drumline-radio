@@ -69,4 +69,4 @@ for (const [k, v] of Object.entries(out)) {
   else console.log(k.padEnd(22), 'rms', v.rms.padStart(6), 'dB   peak', v.peak.padStart(6),
     'dB   energy low/mid/high', `${v.low}/${v.mid}/${v.high}%`);
 }
-b.close();
+await b.close();

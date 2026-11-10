@@ -50,4 +50,4 @@ for (const [name, v] of Object.entries(out)) {
   if (!v) console.log(name.padEnd(14), 'not a synth patch in this style');
   else console.log(name.padEnd(14), 'harmonics', String(v.rich).padStart(2), ' centroid', String(v.centroid).padStart(5), 'Hz  ', v.first12);
 }
-b.close();
+await b.close();

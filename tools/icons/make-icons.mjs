@@ -60,4 +60,4 @@ for (const [svg, size, file] of [
   await page.screenshot(`public/icons/${file}`, { x: 0, y: 0, width: size, height: size });
   console.log(`public/icons/${file}`);
 }
-page.close();
+await page.close();

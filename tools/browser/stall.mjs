@@ -24,4 +24,4 @@ await b.ev('window.__late = { n: 0, late: 0, min: 1 }');
 await b.ev('(() => { const t = performance.now(); while (performance.now() - t < 1500) {} })()');
 await sleep(1000);
 console.log(JSON.stringify(await b.ev('window.__late')));
-b.close();
+await b.close();

@@ -22,4 +22,4 @@ await b.ev('window.__late = { n: 0, late: 0, min: 1 }');
 for (const f of [0.3, 0.6, 0.47, 0.8, 0.2]) { await seek(f); await sleep(600); }
 for (const t of ['Greensleeves', 'Underpass', 'Für Elise', 'Last Stop']) { await pick(t); await sleep(800); }
 console.log(JSON.stringify(await b.ev('window.__late')));
-b.close();
+await b.close();

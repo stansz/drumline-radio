@@ -2,7 +2,7 @@
 // Node's built-in WebSocket. No Playwright or Puppeteer needed.
 // Edge always runs with --mute-audio, because these checks play music.
 import { spawn } from 'node:child_process';
-import { existsSync, mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 
@@ -23,6 +23,13 @@ export async function openEdge({ port = 9400 + Math.floor(Math.random() * 400) }
     '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
     '--mute-audio', '--autoplay-policy=no-user-gesture-required', '--no-first-run', 'about:blank',
   ], { stdio: 'ignore' });
+  // Each profile is about 30 MB; delete it once Edge has exited and released its files.
+  const exited = new Promise((resolve) => edge.once('exit', resolve));
+  const quit = async () => {
+    edge.kill();
+    await exited;
+    rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
+  };
 
   let targets;
   for (let i = 0; i < 50 && !targets; i += 1) {
@@ -32,7 +39,10 @@ export async function openEdge({ port = 9400 + Math.floor(Math.random() * 400) }
       await sleep(200);
     }
   }
-  if (!targets) throw new Error(`Edge did not start (${EDGE})`);
+  if (!targets) {
+    await quit();
+    throw new Error(`Edge did not start (${EDGE})`);
+  }
   const ws = new WebSocket(targets.find((t) => t.type === 'page').webSocketDebuggerUrl);
   await new Promise((resolve) => ws.addEventListener('open', resolve));
 
@@ -81,9 +91,10 @@ export async function openEdge({ port = 9400 + Math.floor(Math.random() * 400) }
       mkdirSync(dirname(path), { recursive: true });
       writeFileSync(path, Buffer.from(shot.result.data, 'base64'));
     },
-    close: () => {
+    /** Stops Edge and deletes its profile; await it before process.exit(). */
+    close: async () => {
       ws.close();
-      edge.kill();
+      await quit();
     },
   };
 }

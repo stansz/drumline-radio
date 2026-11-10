@@ -26,5 +26,5 @@ for (const [width, height, name] of SIZES) {
   console.log(`${ok ? 'ok  ' : 'FAIL'} ${name.padEnd(17)} ${width}x${height}`, ok ? '' : JSON.stringify(result));
   await page.screenshot(join(out, `${name}.png`));
 }
-page.close();
+await page.close();
 console.log(`screenshots in ${out}`);

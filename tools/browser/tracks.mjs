@@ -43,4 +43,4 @@ const r = await b.ev(`(async () => {
   return { dB: sq.map(db), low: sqLow.map(db), peak: peaks.map((p) => (20 * Math.log10(p + 1e-6)).toFixed(1)) };
 })()`);
 list.forEach((name, i) => console.log(name.padEnd(8), r.dB[i], 'dB   low', r.low[i], 'dB   peak', r.peak[i], 'dB'));
-b.close();
+await b.close();
