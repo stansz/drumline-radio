@@ -3,7 +3,7 @@ import { STYLES } from '../music/roles';
 import type { StyleId } from '../music/roles';
 import { STYLE_DEFS } from '../audio/styles';
 import { buildTimeline } from '../music/timing';
-import { categoryLabel, CATEGORY_FILTERS, formatTime, nextStyleFilter, shownComposer, stationsIn, stylesIn } from './view';
+import { categoryLabel, CATEGORY_FILTERS, formatTime, shownComposer, stationsIn, stylesIn } from './view';
 import type { CategoryFilter, StyleFilter } from './view';
 import {
   addEntry,
@@ -17,6 +17,7 @@ import {
 } from './playlist';
 import type { AppView, PlaylistEntry } from './playlist';
 import { playlistHash } from './share';
+import { attachFilterMenu } from './filter-menu';
 import { linkUrl, sendLink } from './links';
 import { load, required, save } from './dom';
 
@@ -97,11 +98,16 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
   const styleCycle = document.createElement('button');
   styleCycle.type = 'button';
   styleCycle.className = 'preset style-cycle';
-  styleCycle.addEventListener('click', () => {
-    libraryStyle = nextStyleFilter(libraryStyle, stylesIn(libraryCategories, libraryStyles, libraryFilter));
-    renderLibrary();
-  });
   playlistFilters.append(styleCycle);
+  attachFilterMenu(
+    styleCycle,
+    () => ['all', ...stylesIn(libraryCategories, libraryStyles, libraryFilter)],
+    () => libraryStyle,
+    (filter) => {
+      libraryStyle = filter;
+      renderLibrary();
+    },
+  );
 
   function setPlaylist(list: PlaylistEntry[]): void {
     playlist = list;
@@ -152,7 +158,7 @@ export function createPlaylistView(deps: PlaylistViewDeps): PlaylistView {
     styleCycle.textContent = styleName;
     styleCycle.classList.toggle('on', libraryStyle !== 'all');
     styleCycle.dataset.style = libraryStyle;
-    styleCycle.setAttribute('aria-label', `Style filter: ${styleName}. Press for the next style.`);
+    styleCycle.setAttribute('aria-label', `Style filter: ${styleName}. Opens the filter menu.`);
     const rows = stationsIn(libraryCategories, libraryFilter, libraryStyles, libraryStyle);
     for (const index of rows) {
       const entry = LIBRARY[index];

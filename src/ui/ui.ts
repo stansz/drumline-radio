@@ -35,6 +35,7 @@ import { createPlaylistView } from './playlist-view';
 import { createJukebox } from './jukebox';
 import { createSongCard } from './song-card';
 import { takeHash } from './links';
+import { attachFilterMenu } from './filter-menu';
 import { load, required, save } from './dom';
 
 const CATEGORY_KEY = 'drumline-radio-category';
@@ -164,12 +165,21 @@ export function startUi(): void {
     presetButtons.push(button);
   }
 
-  // One button cycles the dial through the home styles under the current preset.
+  // One button opens a menu of the home styles under the current preset (G cycles through them).
   const styleCycle = document.createElement('button');
   styleCycle.type = 'button';
   styleCycle.className = 'preset style-cycle';
-  styleCycle.addEventListener('click', cycleStyle);
   presetsEl.append(styleCycle);
+  attachFilterMenu(
+    styleCycle,
+    () => ['all', ...stylesIn(libraryCategories, libraryStyles, category)],
+    () => styleFilter,
+    (filter) => {
+      styleFilter = filter;
+      save(STYLE_FILTER_KEY, styleFilter);
+      applyFilters();
+    },
+  );
 
   const visible = (): number[] => stationsIn(libraryCategories, category, libraryStyles, styleFilter);
 
@@ -178,7 +188,7 @@ export function startUi(): void {
     styleCycle.textContent = name;
     styleCycle.classList.toggle('on', styleFilter !== 'all');
     styleCycle.dataset.style = styleFilter;
-    styleCycle.setAttribute('aria-label', `Style filter: ${name}. Press for the next style.`);
+    styleCycle.setAttribute('aria-label', `Style filter: ${name}. Opens the filter menu.`);
   }
 
   function songStyle(): StyleId {
