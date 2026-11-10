@@ -118,6 +118,10 @@ Originals by SZ (and AI):
 - **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
 - **Underpass** (Synthwave)
+- **Midnight Underpass** (Synthwave). Midnight Arcade and Underpass as one track: the arcade winds
+  down in E minor at 98 BPM, a snare roll under the breakdown ramps the tempo to 124 and a C7 pivots
+  up a half step, and the underpass takes over in F minor: the heroic theme from half-time to four on
+  the floor, and out on the fading pulse.
 - **Wayfarer's Rest** (Chiptune), by Gemini 3.8 Flash & SZ. A 3:19 wistful fantasy RPG theme at 88 BPM in 3/4: a singing pulse lead over rolling pulse-arp broken chords in D Dorian, a walking triangle bass, an answering square counter-melody, a warm major-key lift in F, a quiet bridge, a final heroic statement up a step in E minor, and an outro that winds down to the lone arp.
 
 ## How it works
