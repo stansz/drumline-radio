@@ -1,5 +1,5 @@
 // Confetti Cannon: an original peak-time electro-house track for the Techno style, by Claude Fable 5
-// and SZ. One bouncing two-bar riff in G major carries the song: a call that climbs root-3-5-6 in a
+// and SZ, its sung opening reworked by GLM 5.3. One bouncing two-bar riff in G major carries the song: a call that climbs root-3-5-6 in a
 // 3+3+2 rhythm and an answer that jumps to the octave, leaves a hole, and falls back. It plays on
 // the acid lead, doubled in fuzz (inst=fuzz-lead) in the full sections, over a 909, a sub on the
 // off-beats, off-beat stabs, a dark pad, and a chopped wordless vocal (inst=vox-lead) that answers
@@ -41,9 +41,9 @@ const BUILD = ['C', 'C', 'C', 'C', 'D', 'D', 'D', 'D'];
 
 // The form, in 8-bar sections.
 const FORM = [
-  ['intro1', MAIN, 'DJ intro: the kick alone, then the hats'],
-  ['intro2', MAIN, 'the sub drops in on the off-beats, then open hats'],
-  ['tease1', MAIN, 'the riff teased: only its call, quiet'],
+  ['intro1', MAIN, 'the vocal sings the riff over a bare kick pulse'],
+  ['intro2', MAIN, 'the beat and sub join under the vocal'],
+  ['tease1', MAIN, 'the vocal hands the tune to the riff: only its call, quiet'],
   ['tease2', MAIN, 'the whole riff, louder every two bars; the pad and claps join'],
   ['groove1', MAIN, 'first groove: riff, off-beat stabs, claps, 16th hats'],
   ['groove2', MAIN, 'first groove: the fuzz double joins'],
@@ -67,16 +67,16 @@ const total = FORM.length * 8;
 // Call (the first bar of a chord): root. root 3rd 5th. colour. 5th 3rd 2nd, in 3+1+2+3+3+2+1+1.
 // Answer (the second bar): 5th. 5th colour octave, a hole, octave colour 5th 3rd.
 // Climb (the answer at the end of a 16-bar unit): the answer's start, then a run up to the octave.
-const call = (c, v, r) => {
+const call = (c, v, r, up = 0) => {
   const { root: o, third, colour } = CH[c];
   const steps = [[o, '/8.', 8], [o, '/16', -8], [o + third, '/8', 0], [o + 7, '/8.', 4], [o + colour, '/8.', 12], [o + 7, '/8', -2], [o + third, '/16', -8], [o + 2, '/16', -4]];
-  return steps.map(([n, d, a]) => `${nm(n)}${d}:${clamp(v + a + r(-3, 3))}`).join(' ');
+  return steps.map(([n, d, a]) => `${nm(n + up)}${d}:${clamp(v + a + r(-3, 3))}`).join(' ');
 };
-const answer = (c, v, r) => {
+const answer = (c, v, r, up = 0) => {
   const { root: o, third, colour } = CH[c];
   const head = [[o + 7, '/8.', 8], [o + 7, '/16', -8], [o + colour, '/8', 0], [o + 12, '/8', 12]];
   const tail = [[o + 12, '/16', 4], [o + colour, '/16', -6], [o + 7, '/8', 0], [o + third, '/8', -6]];
-  const say = (list) => list.map(([n, d, a]) => `${nm(n)}${d}:${clamp(v + a + r(-3, 3))}`).join(' ');
+  const say = (list) => list.map(([n, d, a]) => `${nm(n + up)}${d}:${clamp(v + a + r(-3, 3))}`).join(' ');
   return `${say(head)} r/8 ${say(tail)}`;
 };
 const climb = (c, v, r) => {
@@ -120,8 +120,12 @@ const riffBars = (scale) => {
 };
 
 // --- The vocal ------------------------------------------------------------------------------------
-// The chop: two pickup notes at the end of the call bar, then a long top note on the answer's
+// The tune opens sung: the vocal sings the riff's call and answer an octave up over the bare pulse
+// (VOX_FULL), thins to calls as the beat joins (VOX_CALL), and hands the tune to the acid at the
+// tease. The chop: two pickup notes at the end of the call bar, then a long top note on the answer's
 // downbeat and two notes falling through the riff's hole. Slightly behind the beat, like a singer.
+const VOX_FULL = { intro1: [96, 102] };
+const VOX_CALL = { intro2: [84, 72] };
 const VOX_CHOP = { break1b: 88, drop1b: 114, finalA1: 114, finalA2: 116 };
 // The long line, for the rising progression: one two-bar phrase per chord, climbing with it.
 const LINE = {
@@ -136,6 +140,15 @@ const voxBars = () => {
   const r = stream(11);
   return FORM.flatMap(([name, prog]) => {
     if (VOX_LINE[name]) return prog.map((c, i) => `v=${VOX_LINE[name] + r(-3, 3)} ${LINE[c][i % 2]}`);
+    // up = 24 puts the sung tune an octave above the riff in the file; the writer drops it one.
+    const full = VOX_FULL[name];
+    if (full) {
+      return prog.map((c, i) => (i % 2 === 0 ? call : answer)(c, clamp(full[0] + ((full[1] - full[0]) * i) / 7), r, 24));
+    }
+    const sung = VOX_CALL[name];
+    if (sung) {
+      return prog.map((c, i) => (i % 2 === 0 ? call(c, clamp(sung[0] + ((sung[1] - sung[0]) * i) / 7), r, 24) : 'R'));
+    }
     const v = VOX_CHOP[name];
     if (!v) return Array(8).fill('R');
     return prog.map((c, i) => {
@@ -175,6 +188,7 @@ const stabBars = () => {
 // --- The pad --------------------------------------------------------------------------------------
 // Root and fifth only, held two bars a chord, so the riff's 6ths and the vocal never rub a third.
 const PAD = {
+  intro1: 64,
   tease2: 74, groove1: 82, groove2: 82, break1a: 104, break1b: 104, build1: 96, drop1a: 86, drop1b: 86,
   break2: 106, build2: 98, finalA1: 88, finalA2: 88, finalB1: 92, finalB2: 92, outro1: 72,
 };
@@ -239,12 +253,12 @@ const riserBars = () =>
 // The kick holds the grid (a drum machine). The off-beat hats swing a few ticks late, the 16th
 // before each beat later still, and no two hats share a velocity.
 const DRUMS = {
-  intro1: 'intro', intro2: 'offhat', tease1: 'open', tease2: 'open', groove1: 'full', groove2: 'full',
+  intro1: 'pulse', intro2: 'offhat', tease1: 'open', tease2: 'open', groove1: 'full', groove2: 'full',
   break1a: 'none', break1b: 'hats', build1: 'build', drop1a: 'full', drop1b: 'full', break2: 'tick',
   build2: 'build', finalA1: 'full', finalA2: 'full', finalB1: 'ride', finalB2: 'ride', outro1: 'full', outro2: 'offhat',
 };
-const CRASH = new Set(['tease2', 'groove1', 'drop1a', 'finalA1', 'finalB1', 'outro1']);
-const FILL = new Set(['tease2', 'groove1', 'groove2', 'drop1a', 'drop1b', 'finalA1', 'finalA2', 'finalB1', 'finalB2']);
+const CRASH = new Set(['intro2', 'tease2', 'groove1', 'drop1a', 'finalA1', 'finalB1', 'outro1']);
+const FILL = new Set(['intro1', 'tease2', 'groove1', 'groove2', 'drop1a', 'drop1b', 'finalA1', 'finalA2', 'finalB1', 'finalB2']);
 
 const drumBars = () => {
   const r = stream(29);
@@ -257,6 +271,8 @@ const drumBars = () => {
         const k8 = b === 0 ? first('/8') : `k/8:${kick()}`;
         const k16 = b === 0 ? first('/16') : `k/16:${kick()}`;
         if (kind === 'none') return 'r/4';
+        // 'pulse': the kick on 1 and 3 under the sung tune; hats on the off-beats of 2 and 4 later.
+        if (kind === 'pulse') return b % 2 === 0 ? `k/4:${kick()}` : (i < 4 ? 'r/4' : `r/8 h/8+${r(6, 12)}:${clamp(58 + r(-8, 8))}`);
         if (kind === 'intro') return i < 4 ? `k/4:${kick()}` : `${k8} h/8+${r(6, 12)}:${clamp(62 + r(-8, 8))}`;
         if (kind === 'offhat') return name === 'intro2' && i >= 4 ? `${k8} oh/8+${r(8, 14)}:${clamp(72 + r(-7, 7))}` : `${k8} h/8+${r(6, 12)}:${clamp(66 + r(-8, 8))}`;
         if (kind === 'open') return `${k8} oh/8+${r(8, 14)}:${clamp(78 + r(-7, 7))}`;
@@ -333,13 +349,15 @@ FORM.forEach(([, prog], s) => {
   if (s === 0 || FORM[s - 1][1] !== prog) chordLines.push(`# chords${s === 0 ? '' : ` @${s * 8 + 1}`}: ${symbols(prog).join(' ')}`);
 });
 
-const text = `# Confetti Cannon, by Claude Fable 5 and SZ. An original peak-time electro-house track for the
+const text = `# Confetti Cannon, by Claude Fable 5, GLM 5.3 and SZ. An original peak-time electro-house track for the
 # Techno style, in G major: brighter and sillier than the other Techno originals. One two-bar riff
 # carries it. The call climbs root-3-5-6 in a 3+3+2 bounce; the answer jumps to the octave, leaves a
-# hole, and falls back. It sits low (every root is between C3 and G3) on the acid lead, doubled in
-# fuzz (inst=fuzz-lead) in the full sections, over a 909, a sub that only ever plays off the kick,
-# off-beat stabs just above the riff, and an open root-and-fifth dark pad. A chopped wordless vocal
-# (inst=vox-lead) answers in the riff's hole in the drops.
+# hole, and falls back. The tune opens sung: the vocal sings the riff an octave up over a bare kick
+# pulse, the beat joins under it, and the vocal hands the tune to the acid lead at the tease. It sits
+# low (every root is between C3 and G3) on the acid lead, doubled in fuzz (inst=fuzz-lead) in the
+# full sections, over a 909, a sub that only ever plays off the kick, off-beat stabs just above the
+# riff, and an open root-and-fifth dark pad. The chopped wordless vocal (inst=vox-lead) answers in
+# the riff's hole in the drops.
 #
 # The loop is G - Em - C - D, two bars a chord; the riff's answer bar adds the 6th (the 7th on Em).
 # The second breakdown and the last 16 bars of the final drop turn it around into a rising
@@ -353,7 +371,7 @@ ${FORM.map(([, , about], s) => `# Form ${s * 8 + 1}-${s * 8 + 8}: ${about}`).joi
 # 14 ticks late and the 16th before each beat 12 to 20, the claps drag 8 to 16, the stabs land 12
 # to 22 late, the vocal sits behind the beat, and every hat, clap and stab has its own velocity.
 title: Confetti Cannon
-composer: Claude Fable 5 & SZ
+composer: Claude Fable 5, GLM 5.3 & SZ
 about: Peak-time electro house at 126 in G major: one bouncing bass riff on the acid lead, doubled in fuzz, over an off-beat sub and a 909, with a chopped vocal answering in the drops and a rising lift at the end.
 year: 2026
 source: original

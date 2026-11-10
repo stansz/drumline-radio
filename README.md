@@ -122,13 +122,15 @@ Originals by SZ (and AI):
   written echoes and a chopped wordless vocal sings over the pad, the final drop runs 32 bars with
   the vocal echoing the cascade, a rolling sub with octave pops, 16th hats, and the riff doubled an
   octave up for the last 16 bars before a stripped outro.
-- **Confetti Cannon** (Techno), by Claude Fable 5 & SZ. A 4:50 peak-time electro-house original at
+- **Confetti Cannon** (Techno), by Claude Fable 5, GLM 5.3 & SZ. A 4:50 peak-time electro-house original at
   126 BPM in G major, the brightest of the Techno songs: one bouncing two-bar bass riff (a call
   that climbs root-3-5-6 in a 3+3+2 rhythm, an answer that jumps to the octave and leaves a hole)
   on the acid lead, doubled in fuzz in the full sections, over a 909 and a sub that only plays off
-  the kick. A kick-and-hats DJ intro, the riff teased by its call alone, a first groove with
-  off-beat stabs, a breakdown and a snare-roll build into the first drop, where a chopped wordless
-  vocal answers in the riff's hole; then a second breakdown that turns the G-Em-C-D loop into a
+  the kick. The tune opens sung: the vocal sings the riff an octave up over a bare kick pulse, the
+  beat and sub join under it, and the vocal hands the tune to the acid at the tease; then a first
+  groove with off-beat stabs, a breakdown and a snare-roll build into the first drop, where a
+  chopped wordless vocal answers in the riff's hole; then a second breakdown that turns the
+  G-Em-C-D loop into a
   rising C-D-Em-G, a faster build, and a 32-bar final drop whose last 16 bars take that lift with
   the vocal singing one long climbing line, before a stripped outro. Built by
   `tools/arranger/confetti-cannon.mjs`.
