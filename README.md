@@ -82,7 +82,11 @@ Originals by SZ (and AI):
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
 - **Last Stop** (Lo-fi)
-- **Midnight Arcade** (Synthwave)
+- **Midnight Arcade** (Synthwave). A 2:56 synthwave original at 98 BPM in E minor, built around its
+  saw lead and melody: the chorus hook opens the song bare, the verses keep the arp out of the
+  melody's way while a counter-line answers under it, the choruses double the melody an octave down
+  over a bass that ducks the sub on every kick, and the breakdown and the outro leave the melody
+  alone.
 - **Starlight Drive** (Synthwave), by Ling 3.1 Flash & SZ. A 4:04 italo-disco original at 118 BPM in
   Bb major: a wordless vox-lead hook over four-on-the-floor gated drums, an octave-bouncing bass,
   bright offbeat stabs, a shimmer-guitar arp, a saw riff, and ooh and aah choirs that trade bars in

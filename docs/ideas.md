@@ -53,6 +53,6 @@ Open questions:
   map, so model-written songs clash less.
 - **Stabs and basses:** re-voice the near-duplicate stab and bass patches, as was done for pads,
   strings, winds and drum kits.
-- **Older songs' mixes:** `npm run balance` still flags Midnight Arcade, Ivory and Ash, Exit Sign,
+- **Older songs' mixes:** `npm run balance` still flags Ivory and Ash, Exit Sign,
   Save Point, The Silent Keep, Night Shift and Shortwave's pluck.
 - **Instrument page link:** link the instrument page (`instruments.html`) from the ⓘ panel.
