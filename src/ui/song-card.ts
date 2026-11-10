@@ -109,13 +109,23 @@ export function createSongCard(deps: SongCardDeps): SongCard {
     const style = deps.style();
     saving = true;
     cardSave.disabled = true;
-    cardSave.textContent = 'Rendering 0%';
+    cardSave.textContent = 'Rendering…';
+    // Browsers that can't pause an offline render report no progress until it's done, so show
+    // the seconds elapsed until a percentage arrives.
+    const started = Date.now();
+    let percent = false;
+    const ticker = window.setInterval(() => {
+      if (!percent) cardSave.textContent = `Rendering… ${Math.round((Date.now() - started) / 1000)}s`;
+    }, 1000);
     const restore = (): void => {
+      window.clearInterval(ticker);
       cardSave.textContent = 'Save as WAV';
       cardSave.disabled = false;
       saving = false;
     };
     void renderSong(entry.song, style, (fraction) => {
+      if (fraction <= 0) return;
+      percent = true;
       cardSave.textContent = `Rendering ${Math.round(fraction * 100)}%`;
     })
       .then((buffer) => {
@@ -137,6 +147,7 @@ export function createSongCard(deps: SongCardDeps): SongCard {
       })
       .catch((error: unknown) => {
         console.error(error);
+        window.clearInterval(ticker);
         cardSave.textContent = "Couldn't save";
         setTimeout(restore, 3_000);
       });
