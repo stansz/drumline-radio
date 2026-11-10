@@ -30,6 +30,7 @@ import type { CategoryFilter, StyleFilter } from './view';
 import { createMarquee } from './marquee';
 import { nextInPlaylist, prevInPlaylist } from './playlist';
 import type { ShareLink } from './share';
+import { songHash } from './share';
 import { createSettings } from './settings';
 import { createPlaylistView } from './playlist-view';
 import { createJukebox } from './jukebox';
@@ -207,6 +208,7 @@ export function startUi(): void {
   }
 
   function updateReadout(style: StyleId): void {
+    noteReloadHash(style);
     const entry = LIBRARY[current];
     if (!entry) return;
     const song = entry.song;
@@ -253,6 +255,10 @@ export function startUi(): void {
     // Keep the screen awake whenever music plays: the phone pauses the synth when it locks.
     wake.set(playing);
     root.dataset.playing = String(playing); // read by the service worker's update reload
+    if (playing && linkHash !== '') {
+      linkHash = '';
+      if (engine) noteReloadHash(engine.style);
+    }
   }
 
   function showBanner(style: StyleId): void {
@@ -360,9 +366,22 @@ export function startUi(): void {
     playlistView.showIncoming(link.entries);
   }
 
+  // What an update reload should reopen (register.ts puts it in the address before reloading): the
+  // share link the app was opened with until music plays, then whatever is tuned.
+  let linkHash = '';
+  function noteReloadHash(style: StyleId): void {
+    const entry = LIBRARY[current];
+    root.dataset.reloadHash = linkHash || (entry ? songHash(entry.id, style, null) : '');
+  }
+
   function consumeHash(): void {
+    const hash = location.hash;
     const link = takeHash(LIBRARY.map((entry) => entry.id));
-    if (link) applyShareLink(link);
+    if (link) {
+      linkHash = hash;
+      root.dataset.reloadHash = hash;
+      applyShareLink(link);
+    }
   }
 
   function handleEnded(): void {

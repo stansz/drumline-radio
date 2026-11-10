@@ -115,8 +115,10 @@ track lead role=lead
 
 Every deploy changes the cache version. An open copy checks for a newer build each time it opens or
 comes back, and reloads into it as soon as it has installed, at once if nothing is playing and
-otherwise the next time the page is hidden. A share link to a song the cached build doesn't know
-stays in the address, so the new build opens it.
+otherwise the next time the page is hidden. The reload reopens the share link the page was opened
+with (until music plays), or else the song and style tuned, so an update never drops you on the
+first song; a link to a song the cached build doesn't know also stays in the address for the new
+build.
 
 Live sites: https://radio.ogsapps.cc/ (Cloudflare Pages, also at https://drumline-radio.pages.dev/) and
 https://stansz.github.io/drumline-radio/

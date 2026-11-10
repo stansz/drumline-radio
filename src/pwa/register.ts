@@ -7,7 +7,8 @@ import { CACHE_PREFIX } from './precache';
 // only if the server still answers then, so a connection lost mid-update never drops the offline copy.
 // When a new build takes over, a page that already had one reloads to pick it up: at once if nothing
 // is playing (ui.ts marks the page with data-playing), otherwise the next time it is hidden, so music
-// isn't cut off. A share link to a song only the new build knows stays in the address for it.
+// isn't cut off. The reload reopens the link the page was opened with, or the song tuned (ui.ts
+// keeps it in data-reload-hash), so an update never drops you on the first song.
 const HEAL_MS = 15000;
 
 export function registerServiceWorker(): void {
@@ -21,9 +22,22 @@ export function registerServiceWorker(): void {
   let reloadWhenHidden = false;
   let healing = false;
 
+  // The reload reopens what the page had: ui.ts keeps the share link it was opened with, or the
+  // song now tuned, in data-reload-hash, and it goes back in the address first.
+  const reloadNow = (): void => {
+    const keep = document.documentElement.dataset.reloadHash;
+    if (keep && location.hash === '') {
+      try {
+        history.replaceState(null, '', location.pathname + location.search + keep);
+      } catch {
+        // Without history the reload just opens the app's last song.
+      }
+    }
+    window.location.reload();
+  };
   const reload = (): void => {
     if (document.documentElement.dataset.playing === 'true') reloadWhenHidden = true;
-    else window.location.reload();
+    else reloadNow();
   };
 
   // The build the server has now, read from sw.js (its cache name holds the build's hash).
@@ -70,7 +84,7 @@ export function registerServiceWorker(): void {
   });
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
-      if (reloadWhenHidden) window.location.reload();
+      if (reloadWhenHidden) reloadNow();
       return;
     }
     void checkForUpdate();
