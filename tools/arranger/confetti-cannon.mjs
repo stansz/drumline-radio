@@ -1,5 +1,5 @@
 // Confetti Cannon: an original peak-time electro-house track for the Techno style, by Claude Fable 5
-// and SZ, its sung opening reworked by GLM 5.3. One bouncing two-bar riff in G major carries the song: a call that climbs root-3-5-6 in a
+// and SZ, its sung opening reworked by MiMo v2.6 Pro. One bouncing two-bar riff in G major carries the song: a call that climbs root-3-5-6 in a
 // 3+3+2 rhythm and an answer that jumps to the octave, leaves a hole, and falls back. It plays on
 // the acid lead, doubled in fuzz (inst=fuzz-lead) in the full sections, over a 909, a sub on the
 // off-beats, off-beat stabs, a dark pad, and a chopped wordless vocal (inst=vox-lead) that answers
@@ -349,7 +349,7 @@ FORM.forEach(([, prog], s) => {
   if (s === 0 || FORM[s - 1][1] !== prog) chordLines.push(`# chords${s === 0 ? '' : ` @${s * 8 + 1}`}: ${symbols(prog).join(' ')}`);
 });
 
-const text = `# Confetti Cannon, by Claude Fable 5, GLM 5.3 and SZ. An original peak-time electro-house track for the
+const text = `# Confetti Cannon, by Claude Fable 5, MiMo v2.6 Pro and SZ. An original peak-time electro-house track for the
 # Techno style, in G major: brighter and sillier than the other Techno originals. One two-bar riff
 # carries it. The call climbs root-3-5-6 in a 3+3+2 bounce; the answer jumps to the octave, leaves a
 # hole, and falls back. The tune opens sung: the vocal sings the riff an octave up over a bare kick
@@ -371,7 +371,7 @@ ${FORM.map(([, , about], s) => `# Form ${s * 8 + 1}-${s * 8 + 8}: ${about}`).joi
 # 14 ticks late and the 16th before each beat 12 to 20, the claps drag 8 to 16, the stabs land 12
 # to 22 late, the vocal sits behind the beat, and every hat, clap and stab has its own velocity.
 title: Confetti Cannon
-composer: Claude Fable 5, GLM 5.3 & SZ
+composer: Claude Fable 5, MiMo v2.6 Pro & SZ
 about: Peak-time electro house at 126 in G major: one bouncing bass riff on the acid lead, doubled in fuzz, over an off-beat sub and a 909, with a chopped vocal answering in the drops and a rising lift at the end.
 year: 2026
 source: original
