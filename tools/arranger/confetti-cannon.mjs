@@ -370,7 +370,7 @@ track grit role=lead2 inst=fuzz-lead vol=0.42 pan=0.15
 ${block(riffBars(true))}
 
 track vox role=counter inst=vox-lead vol=0.9 pan=0.1
-${block(voxBars())}
+${block(voxBars().map((bar) => bar.replace(/([A-G][#b]?)(\d)/g, (m, n, o) => `${n}${o - 1}`)))}
 
 track stabs role=chords vol=0.95 pan=-0.15
 ${block(stabBars())}
@@ -378,16 +378,16 @@ ${block(stabBars())}
 track pad role=pad vol=0.95
 ${block(padBars())}
 
-track sub role=bass vol=0.27
+track sub role=bass inst=dx-bass vol=0.3
 ${block(subBars())}
 
 track riser role=arp vol=1 pan=-0.2
 ${block(riserBars())}
 
-track drums role=drums vol=0.6
+track drums role=drums inst=electro-kit vol=0.6
 ${block(drumBars())}
 
-track claps role=drums vol=0.85 pan=0.12
+track claps role=drums inst=electro-kit vol=1 pan=0.12
 ${block(clapBars())}
 `;
 writeFileSync(join(out, 'confetti-cannon.song'), text);
