@@ -425,7 +425,7 @@ export const KITS: Record<string, Patch> = {
   // Synthwave drums: an 80s electronic kit, with a gated snare and big sweeping toms.
   'gated-kit': drums({ name: 'Gated kit',
     kick: { wave: 'sine', hz: 50, sweep: 3.5, sweepTime: 0.1, decay: 0.5, click: 0.3 },
-    snare: { noise: 'white', filter: 'bandpass', hz: 1500, toneHz: 0, tones: [180, 240], toneDecay: 0.12, decay: 0.3, gate: 0.22 },
+    snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 0, tones: [180, 240], toneDecay: 0.12, decay: 0.14, gate: 0.25 },
     hat: { noise: 'white', hz: 7500, decay: 0.05 },
     toms: { hz: [80, 120, 170], sweep: 2.4, sweepTime: 0.18, decay: 0.5 },
     clap: { hz: 1200, q: 1, decay: 0.25 },

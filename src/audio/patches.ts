@@ -123,7 +123,7 @@ export interface DrumKit {
     tones?: number[];
     /** Seconds for the tones to fade; default `decay * 0.5`. */
     toneDecay?: number;
-    /** Seconds the noise holds at full level before cutting to silence in 15 ms, instead of decaying. */
+    /** Adds an 80s gated-reverb tail under the crack: darker noise that holds this many seconds, then cuts in 40 ms. */
     gate?: number;
   };
   hat: { noise: 'white' | 'chip' | 'metal'; hz: number; decay: number };

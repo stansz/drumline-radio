@@ -321,8 +321,9 @@ A kit (`drums({...})` in `src/audio/instruments.ts`) sets each drum's body: the 
 `sweep`, and `sweepTime` (a pitch drop from `sweep` × `hz` down to `hz` over `sweepTime`), `decay`,
 and `click` (a short noise burst over the beater), plus an optional `body` — a second, fixed sine
 under the sweep for the shell's thud; the snare's noise `noise` and `filter` band at `hz`, its `toneHz`
-or list of `tones` (one triangle each, fading over `toneDecay`), and an optional `gate` that holds the
-noise at full level for that many seconds and then cuts it in 15 ms instead of letting it decay; the
+or list of `tones` (one triangle each, fading over `toneDecay`), and an optional `gate` that adds an
+80s gated-reverb tail under the crack (darker noise, 400 Hz to 3.5 kHz, that blooms in, holds a little
+under the crack for that many seconds, then is cut in 40 ms), the way a gate cuts a big reverb; the
 hat's `noise` and `decay`; optional `toms` (low, mid, and high pitches for GM 41, 45, and 50, with a
 shared `sweep`, `sweepTime`, `decay`, and `wave`); an optional `clap` (band `hz`, `q`, `decay`); the
 crash's `crashDecay`; and the kit's own `drive` (0 to 1, a tanh wave shaper on every hit, with a

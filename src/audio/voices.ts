@@ -470,22 +470,39 @@ export function playDrum(
       filter.frequency.value = snare.hz;
       filter.Q.value = 0.8;
       const body = ctx.createGain();
-      // A gated snare holds at full level, then cuts to silence in 15 ms; a plain one decays.
-      const bodyLength = snare.gate !== undefined ? snare.gate + 0.015 : snare.decay;
-      if (snare.gate !== undefined) {
-        body.gain.setValueAtTime(clampLevel(level * 0.8), time);
-        body.gain.setValueAtTime(clampLevel(level * 0.8), time + snare.gate);
-        body.gain.linearRampToValueAtTime(0.0001, time + snare.gate + 0.015);
-      } else {
-        body.gain.setValueAtTime(clampLevel(level * 0.8), time);
-        body.gain.exponentialRampToValueAtTime(0.001, time + snare.decay);
-      }
+      // The crack: band-passed noise that decays naturally.
+      body.gain.setValueAtTime(clampLevel(level * 0.8), time);
+      body.gain.exponentialRampToValueAtTime(0.001, time + snare.decay);
       noise.node.connect(filter);
       filter.connect(body);
       body.connect(out);
       collected.nodes.push(filter, body);
       collected.sources.push(noise);
-      let longest = bodyLength;
+      let longest = snare.decay;
+
+      // A gated snare adds the 80s gated-reverb tail under the crack: darker noise (400 Hz to 3.5 kHz)
+      // that blooms in, holds a little under the crack, then is cut off by the "gate" over 40 ms.
+      if (snare.gate !== undefined) {
+        const tailNoise = noiseSpec(kit, 'white');
+        const highpass = ctx.createBiquadFilter();
+        highpass.type = 'highpass';
+        highpass.frequency.value = 400;
+        const lowpass = ctx.createBiquadFilter();
+        lowpass.type = 'lowpass';
+        lowpass.frequency.value = 3500;
+        const tail = ctx.createGain();
+        tail.gain.setValueAtTime(0.0001, time);
+        tail.gain.linearRampToValueAtTime(clampLevel(level * 0.32), time + 0.012);
+        tail.gain.linearRampToValueAtTime(clampLevel(level * 0.24), time + snare.gate);
+        tail.gain.linearRampToValueAtTime(0.0001, time + snare.gate + 0.04);
+        tailNoise.node.connect(highpass);
+        highpass.connect(lowpass);
+        lowpass.connect(tail);
+        tail.connect(out);
+        collected.nodes.push(highpass, lowpass, tail);
+        collected.sources.push(tailNoise);
+        longest = Math.max(longest, snare.gate + 0.04);
+      }
 
       const tones = snare.tones ?? (snare.toneHz > 0 ? [snare.toneHz] : []);
       const toneDecay = snare.toneDecay ?? snare.decay * 0.5;
