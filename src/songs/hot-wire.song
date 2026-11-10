@@ -230,7 +230,7 @@ track pad role=pad vol=0.8
 # Final drop and outro: out
 | R*48 |
 
-track sub role=bass vol=0.3
+track sub role=bass inst=dx-bass vol=0.28
 # DJ intro: kick and hats alone first, the sub drops in at bar 9 on the off-beats
 | R*8 |
 | { v=88 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
@@ -280,7 +280,7 @@ track riser role=arp vol=0.5 pan=-0.15
 | v=116 B5/16 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 |
 | R*48 |
 
-track drums role=drums vol=0.58
+track drums role=drums inst=electro-kit vol=0.58
 # DJ intro: the kick alone, then the hats join
 | v=96 k/4 k k k |
 | v=98 k/4 k k k |
@@ -394,7 +394,7 @@ track drums role=drums vol=0.58
 | v=88 k/4 k k k |
 | v=86 k/4 k k k |
 
-track claps role=drums vol=0.8 pan=0.12
+track claps role=drums inst=electro-kit vol=1 pan=0.12
 # The claps sit on their own track so they can drag behind the beat while the kick holds the grid
 | R*24 |
 # In with the crash at bar 25

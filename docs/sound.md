@@ -133,6 +133,11 @@ and only a touch of breath, so it doesn't sound lo-fi in a hall.
 | arp | Acid arp |
 | drums | 909 kit |
 
+For a club track that shouldn't share every Techno song's low end, `inst=electro-kit` is an
+electro-house kit (a big kick with a deep pitch drop and a long, slightly driven boom, a wide clap,
+and crisp white-noise hats, level-matched to the 909), and `inst=dx-bass` is a punchy FM bass in
+place of the smooth sub. Hot Wire uses both.
+
 ### Lo-fi
 
 The Lo-fi style is a muted trumpet lead (a saw and square through nasal formant bands), a breathy

@@ -459,6 +459,15 @@ export const KITS: Record<string, Patch> = {
     toms: { hz: [100, 140, 200], sweep: 1.4, sweepTime: 0.05, decay: 0.3 },
     clap: { hz: 1400, q: 1.5, decay: 0.22 },
     drive: 0.05, crashDecay: 1.6, gain: 1, sends: { reverb: 0.4, delay: 0 } }),
+  // Electro-house drums: a big kick with a deep pitch drop and a long, slightly driven boom, a wide
+  // clap that leads the backbeat, and crisp white-noise hats instead of the 909's metallic ones.
+  'electro-kit': drums({ name: 'Electro kit',
+    kick: { wave: 'sine', hz: 45, sweep: 5, sweepTime: 0.04, decay: 0.55, click: 0.35, body: { hz: 55, decay: 0.3, level: 0.4 } },
+    snare: { noise: 'white', filter: 'bandpass', hz: 1800, toneHz: 0, tones: [200], toneDecay: 0.06, decay: 0.15 },
+    hat: { noise: 'white', hz: 9500, decay: 0.03 },
+    toms: { hz: [95, 135, 190], sweep: 1.6, sweepTime: 0.04, decay: 0.28 },
+    clap: { hz: 1200, q: 0.9, decay: 0.3 },
+    drive: 0.2, crashDecay: 1.8, gain: 1.27, sends: { reverb: 0.5, delay: 0 } }),
   // Lo-fi drums: a dusty, swung kit, dark and saturated like a sampled record.
   'dusty-kit': drums({ name: 'Dusty kit',
     kick: { wave: 'sine', hz: 52, sweep: 1.8, sweepTime: 0.08, decay: 0.3, click: 0.05 },
