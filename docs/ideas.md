@@ -47,6 +47,21 @@ Open questions:
 - How it relates to Drumline Studio, the sibling step-sequencer app, which is already a grid
   editor.
 
+## A DJ mode
+
+The songs are scores, not audio files, so some DJ tricks come almost free. Save as WAV already
+exports any song in any style for a normal DJ setup; a DJ mode inside the app would add:
+
+- **Tempo:** a tempo control and a BPM display. Changing tempo just plays the notes faster, so there
+  is no pitch shift or time-stretch warble.
+- **Stems:** mute and solo per track. Every track already has its own channel in the engine.
+- **Loops:** hold a section (a drum intro, a breakdown) while mixing the next song in.
+- **Live remix:** style changes already work mid-song, so a set can fade a track from Techno into
+  Ambient in a breakdown.
+- **Two decks and a crossfader:** the biggest piece: two engines playing at once, beat-matched.
+
+The first three are small; the two decks are a real project.
+
 ## Smaller ideas
 
 - **Safe-notes helper for composers:** list the notes that fit each chord of a song's `# chords:`
