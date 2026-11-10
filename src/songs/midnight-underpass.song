@@ -7,6 +7,7 @@ composer: Claude & SZ
 year: 2026
 source: original
 category: originals
+hidden: true
 style: synthwave
 key: E minor to F minor
 tempo: 98

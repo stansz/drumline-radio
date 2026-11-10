@@ -11,8 +11,10 @@ describe('library', () => {
       'can-can',
       'eine-kleine-nachtmusik',
       'ivory-and-ash-128',
+      'midnight-underpass',
       'ode-to-joy',
       'starlight-drive',
+      'underpass',
       'when-the-saints',
     ]);
   });

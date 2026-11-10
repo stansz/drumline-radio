@@ -5,6 +5,7 @@ composer: Claude & SZ
 year: 2026
 source: original
 category: originals
+hidden: true
 key: F minor
 style: synthwave
 tempo: 124
