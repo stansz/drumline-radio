@@ -72,3 +72,22 @@ export function parseShareHash(hash: string, ids: readonly string[]): ShareLink 
   const tParam = params.get('t');
   return { kind: 'song', song, style, t: tParam === null ? null : parseShareTime(tParam) };
 }
+
+/**
+ * Whether this build knows every song and style a share hash names. An older cached build opened on a
+ * link to a newer song must leave the hash in place, so the new build it reloads into can read it.
+ */
+export function hashFullyKnown(hash: string, ids: readonly string[]): boolean {
+  const params = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash);
+  const known = (song: string | undefined, style: string | null | undefined) =>
+    song !== undefined && ids.includes(song) && (style == null || KNOWN_STYLES.includes(style));
+  if (params.has('list')) {
+    const items = (params.get('list') ?? '').split(',').slice(0, PLAYLIST_MAX);
+    return items.every((item) => {
+      const [song, style] = item.split('~');
+      return known(song, style ?? '');
+    });
+  }
+  if (params.has('song')) return known(params.get('song') ?? undefined, params.get('style'));
+  return true;
+}

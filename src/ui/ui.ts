@@ -230,6 +230,7 @@ export function startUi(): void {
     playButton.setAttribute('aria-label', playing ? 'Pause' : 'Play');
     // Keep the screen awake whenever music plays: the phone pauses the synth when it locks.
     wake.set(playing);
+    root.dataset.playing = String(playing); // read by the service worker's update reload
   }
 
   function showBanner(style: StyleId): void {

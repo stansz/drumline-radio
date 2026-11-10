@@ -1,4 +1,4 @@
-import { parseShareHash } from './share';
+import { hashFullyKnown, parseShareHash } from './share';
 import type { ShareLink } from './share';
 
 /** A share hash as a full URL the browser can open. */
@@ -31,10 +31,13 @@ export async function sendLink(
   }
 }
 
-/** Reads a share link from the address bar and clears the hash, leaving the app tuned. */
+/**
+ * Reads a share link from the address bar and clears the hash, leaving the app tuned. A hash naming a
+ * song or style this build doesn't know stays, for the newer build the update check reloads into.
+ */
 export function takeHash(ids: string[]): ShareLink | null {
   const link = parseShareHash(location.hash, ids);
-  if (location.hash !== '') {
+  if (location.hash !== '' && hashFullyKnown(location.hash, ids)) {
     try {
       history.replaceState(null, '', location.pathname + location.search);
     } catch {

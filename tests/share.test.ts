@@ -1,11 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  formatShareTime,
-  parseShareHash,
-  parseShareTime,
-  playlistHash,
-  songHash,
-} from '../src/ui/share';
+import { formatShareTime, hashFullyKnown, parseShareHash, parseShareTime, playlistHash, songHash } from '../src/ui/share';
 import type { PlaylistEntry } from '../src/ui/playlist';
 
 const IDS = ['third-rail', 'last-stop'];
@@ -134,5 +128,19 @@ describe('parseShareHash', () => {
       kind: 'list',
       entries: [entry('third-rail', 'lofi')],
     });
+  });
+});
+
+describe('hashFullyKnown', () => {
+  const ids = ['sunliner', 'riverfront'];
+  it('is true when every song and style is known, or there is no link', () => {
+    expect(hashFullyKnown('#song=sunliner&style=altrock&t=30', ids)).toBe(true);
+    expect(hashFullyKnown('#list=sunliner~techno,riverfront~lofi', ids)).toBe(true);
+    expect(hashFullyKnown('', ids)).toBe(true);
+  });
+  it('is false when a song or style is unknown to this build', () => {
+    expect(hashFullyKnown('#song=new-song', ids)).toBe(false);
+    expect(hashFullyKnown('#song=sunliner&style=polka', ids)).toBe(false);
+    expect(hashFullyKnown('#list=sunliner~techno,new-song~lofi', ids)).toBe(false);
   });
 });

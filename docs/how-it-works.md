@@ -113,7 +113,10 @@ track lead role=lead
 | Check the songs | `npm run check:songs` |
 | Publish | push to `main`. GitHub Pages and Cloudflare Pages both rebuild; a failing test blocks the GitHub deploy |
 
-Every deploy changes the cache version, so installed copies update on their next launch.
+Every deploy changes the cache version. An open copy checks for a newer build each time it opens or
+comes back, and reloads into it as soon as it has installed, at once if nothing is playing and
+otherwise the next time the page is hidden. A share link to a song the cached build doesn't know
+stays in the address, so the new build opens it.
 
 Live sites: https://radio.ogsapps.cc/ (Cloudflare Pages, also at https://drumline-radio.pages.dev/) and
 https://stansz.github.io/drumline-radio/
