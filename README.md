@@ -100,9 +100,9 @@ Originals by SZ (and AI):
   breakdown where the choirs and pad carry the hook, and a last chorus up a whole step to E.
 - **Afterglow Avenue** (Synthwave), by DeepSeek V4.1 Flash & SZ. A 4:27 sunset-cruise original at
   108 BPM in A minor, lifting to B minor for the last chorus: a saw-lead hook built on a rising
-  fourth (A-C-F-A), a square lead answering in the gaps, a 3+3+2 poly-stab groove, a broken-note
-  pluck arp, half-time verses that open into a four-on-the-floor chorus, and a bar-late square echo
-  in the bridge before the whole step up.
+  fourth (A-C-F-A), a square lead answering in the gaps, a 3+3+2 poly-stab groove, a syncopated
+  FM-pluck arp, half-time verses that open into a four-on-the-floor chorus, and a bar-late square
+  echo in the bridge before the whole step up.
 - **Fathom** (Techno), by Qwen3.8 Flash & SZ. A 5:09 dub techno original at 118 BPM in G minor: one
   chord stab and nothing else melodic, voiced eight ways, its repeats written as extra stabs that
   land later and softer each time. It opens on the lone echoing chord with no kick, builds a rumbling
