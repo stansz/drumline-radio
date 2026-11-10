@@ -7,7 +7,9 @@
 // peaking more than 8 dB under the lead's peak, a bass louder than the lead, and a bass whose low
 // end is louder than the kick's. Under the flags it suggests a `vol=` for each flagged track that
 // clears its worst flag (track volume is linear gain, so the step is exact unless it would pass 1);
-// in a remix it suggests `vol.<style>=`, which changes the track in that style only.
+// in a remix it suggests `vol.<style>=`, which changes the track in that style only. When a track's
+// flags are confined to fewer than half the sections it plays in, it names those bars and says to
+// change the track's velocities there instead of its volume.
 // The style `all` renders the song in every style in one run.
 //   npm run balance -- <song name or path> [style or all] [bars per section, default 8]
 //   npm run balance -- wayfarers-rest
@@ -137,9 +139,14 @@ function report(result) {
     // The dB change each flagged track needs to clear its worst flag, with a 2 dB margin.
     const MARGIN = 2;
     const needs = new Map();
-    const need = (i, dB) => {
+    // The section indexes each flagged track got a flag in, in section order.
+    const flaggedIn = new Map();
+    const need = (i, j, dB) => {
       const prev = needs.get(i);
       if (prev === undefined || Math.abs(dB) > Math.abs(prev)) needs.set(i, dB);
+      const flagged = flaggedIn.get(i);
+      if (flagged === undefined) flaggedIn.set(i, [j]);
+      else if (!flagged.includes(j)) flagged.push(j);
     };
     sections.forEach((s, j) => {
       const cells = tracks.map((t, i) => {
@@ -165,7 +172,7 @@ function report(result) {
           const gap = Math.min(lead.l.rms - x.l.rms, lead.l.peak - x.l.peak);
           if (gap > 10) {
             flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (RMS and peak)`);
-            need(x.i, gap - 10 + MARGIN);
+            need(x.i, j, gap - 10 + MARGIN);
           }
         }
         // An arp is short plucks, so its RMS reads low; compare peaks.
@@ -175,13 +182,13 @@ function report(result) {
           const gap = lead.l.peak - x.l.peak;
           if (gap > 8) {
             flags.push(`${where}: ${x.t.id} (arp) peaks ${Math.round(gap)} dB under ${lead.t.id}`);
-            need(x.i, gap - 8 + MARGIN);
+            need(x.i, j, gap - 8 + MARGIN);
           }
         }
         for (const x of at('bass')) {
           if (x.l.rms > lead.l.rms) {
             flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(x.l.rms - lead.l.rms)} dB over ${lead.t.id}`);
-            need(x.i, -(x.l.rms - lead.l.rms + MARGIN));
+            need(x.i, j, -(x.l.rms - lead.l.rms + MARGIN));
           }
         }
       }
@@ -190,7 +197,7 @@ function report(result) {
       for (const x of at('bass')) {
         if (drums && x.l.low > drums.l.low + 1) {
           flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
-          need(x.i, -(x.l.low - drums.l.low - 1 + MARGIN));
+          need(x.i, j, -(x.l.low - drums.l.low - 1 + MARGIN));
         }
       }
     });
@@ -204,6 +211,15 @@ function report(result) {
       console.log('\nSuggested track volumes (then run again):');
       for (const [i, dB] of needs) {
         const t = tracks[i];
+        // The sections the track plays in, and the sections it got a flag in. When the flags sit in
+        // fewer than half of them, the fix is those sections' velocities, not the whole track's volume.
+        const plays = levels[i].filter((l) => l.rms > -55).length;
+        const flagged = flaggedIn.get(i) ?? [];
+        if (flagged.length > 0 && flagged.length * 2 < plays) {
+          const bars = flagged.map((j) => `${sections[j].from}-${sections[j].to}`).join(', ');
+          console.log(`  ${t.id}: flagged only in bars ${bars}: change its velocities there, not its ${key}=`);
+          continue;
+        }
         const want = t.vol * 10 ** (dB / 20);
         const sign = dB > 0 ? '+' : '';
         const note = want > top ? ` (${key} tops out at ${top}: raise the velocities or lower the lead instead)` : '';

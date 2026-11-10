@@ -220,7 +220,8 @@ that declare their progression in `# chords:` comment lines (one symbol per bar,
 `# chords @N:` changes from bar N, `-` is no chord) also get an off-chord count: long notes that
 start on a beat with a pitch outside the bar's chord. The supported qualities are major, `m`,
 `dim`, `aug`, `sus2`, `sus4`/`sus`, `7`, `maj7`, `m7`, `m7b5`, `dim7`, `6`, `m6`, `add9`, `madd9`,
-`9`, `m9`, and `maj9`, with an optional `/` bass note. That count is a report too.
+`9`, `m9`, and `maj9`, with an optional `/` bass note. That count is a report too. `SIBLINGS=techno
+npm run check:songs` lists each song in a style with its key, tempo, bars, length, kit and bass.
 
 ## Song report
 
@@ -300,7 +301,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   for bass and drums), flags a pad or chords part more than 10 dB under the lead, an arp peaking
   more than 8 dB under the lead, a bass louder than the lead, and a bass low end louder than the kick's, then stops the server and browser.
   Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB
-  to spare (in a remix it suggests `vol.<style>=`, which changes the track in that style only). About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
+  to spare (in a remix it suggests `vol.<style>=`, which changes the track in that style only). When a
+  track's flags are confined to fewer than half the sections it plays in, it names those bars and
+  says to change its velocities there instead of its volume. About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).

@@ -8,9 +8,11 @@
 //   npm run check:songs                      (checks src/songs)
 //   CHECK_DIR=out npm run check:songs        (checks another folder, e.g. arranger output)
 //   SONG=wayfarers-rest npm run check:songs  (checks one song by name, file name, or path)
+//   SIBLINGS=techno npm run check:songs      (adds the report of each song in that style)
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { expect, it } from 'vitest';
+import { STYLE_DEFS, resolvePatch, withBankInstruments } from '../../src/audio/styles';
 import { chordTones, parseChordMap } from '../../src/music/chords';
 import type { ChordMap } from '../../src/music/chords';
 import { parseSong, TICKS_PER_WHOLE } from '../../src/music/song';
@@ -25,6 +27,9 @@ const NAME = SONG ? basename(SONG).replace(/\.song$/, '') : null;
 const MIN_SECONDS = 0.3;
 // CHECK_DETAIL=1 lists every clash: time, track, note, its length, and the pad or bass note under it.
 const DETAIL = Boolean(process.env.CHECK_DETAIL);
+// SIBLINGS=<style> adds a report of every song in that style: key, tempo, bars, length, kit and bass.
+const SIBLINGS = process.env.SIBLINGS;
+const siblingRows: string[] = [];
 const NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const noteName = (n: number) => `${NAMES[n % 12]}${Math.floor(n / 12) - 1}`;
 
@@ -134,6 +139,16 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     }
     const total = Math.round(timeline.duration);
     const mins = `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
+    if (SIBLINGS && song.meta.style === SIBLINGS) {
+      const withBank = withBankInstruments(song);
+      const patchName = (role: string) => {
+        const k = withBank.tracks.findIndex((t) => t.role === role);
+        return k < 0 ? '—' : resolvePatch(STYLE_DEFS[SIBLINGS], withBank.tracks[k]).name;
+      };
+      siblingRows.push(
+        `${file.padEnd(30)} ${song.meta.key.padEnd(5)} ${`${song.meta.tempo} BPM`.padEnd(8)} ${String(song.bars.length).padStart(4)}  ${mins.padStart(5)}  kit: ${patchName('drums').padEnd(18)}  bass: ${patchName('bass').padEnd(18)}${song.meta.hidden ? '  hidden' : ''}`,
+      );
+    }
     const breakdown = [...perTrack.entries()]
       .sort(([x], [y]) => x - y)
       .map(([track, count]) => `${song.tracks[track].id} ${count}`);
@@ -150,6 +165,11 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     );
     lines.push(...details);
     lines.push(...offDetails);
+  }
+  if (SIBLINGS) {
+    lines.push('');
+    lines.push(`Songs in ${SIBLINGS}:`);
+    lines.push(...siblingRows);
   }
   console.log(lines.join('\n'));
   expect(failed).toBe(0);

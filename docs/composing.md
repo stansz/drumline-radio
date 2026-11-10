@@ -110,7 +110,9 @@ depends on it.
    counter-lines, arpeggios, chords) and the pad or bass. Fix each one, or say in the commit why it
    stays (a short passing note or a deliberate suspension is fine). A song with ten clashes is not
    ready.
-3. Check the balance with `npm run balance -- <song>` (see [tools/README.md](../tools/README.md)).
+3. Before committing a new song, run `SIBLINGS=<style> npm run check:songs` and make sure it isn't
+   a twin of another song in its style (same key, tempo, kit and bass).
+4. Check the balance with `npm run balance -- <song>` (see [tools/README.md](../tools/README.md)).
    It renders the whole song offline in under a minute, prints every track's level in each
    8-bar section, and flags a pad or chords part more than 10 dB under the lead, an arp peaking more
    than 8 dB under the lead, a bass louder than the lead, and a bass whose low end is louder than the kick's. It also suggests a `vol=`
@@ -123,9 +125,10 @@ depends on it.
    level below 150 Hz in brackets; the bass's low level should sit a few dB under the drums' low level. For
    sparse parts like dub stabs, compare peaks, not RMS (Fathom's stabs read 20 dB down by RMS but
    12-16 dB by peak). Wayfarer's Rest's first version had its arp, the part that drives the song,
-   23 dB under the lead, and its bass louder than the lead.
-4. Add the song to the originals list in `README.md`.
-5. The user listens and decides; a passing check is not the same as sounding good.
+   23 dB under the lead, and its bass louder than the lead. When it says a track is flagged only in
+   some bars, change the velocities there instead of the track's `vol=`.
+5. Add the song to the originals list in `README.md`.
+6. The user listens and decides; a passing check is not the same as sounding good.
 
 ## Credits
 
