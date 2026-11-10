@@ -247,13 +247,13 @@ key: F minor
 style: synthwave
 tempo: 124
 time: 4/4`, s, [
-    ['lead', 'track lead role=lead vol=0.7'],
+    ['lead', 'track lead role=lead inst=guitar vol=0.35'],
     ['harmony', 'track harmony role=lead2 vol=0.45 pan=0.2'],
     ['hook', 'track hook role=counter vol=0.5 pan=-0.2'],
-    ['seq', 'track sequencer role=arp vol=0.55 pan=0.3'],
+    ['seq', 'track sequencer role=arp vol=1 pan=0.3'],
     ['ostinato', 'track ostinato role=chords vol=0.45 pan=-0.3'],
-    ['brass', 'track brass role=pad vol=0.5'],
-    ['bass', 'track bass role=bass vol=0.7'],
+    ['brass', 'track brass role=pad inst=fm-brass vol=0.5'],
+    ['bass', 'track bass role=bass vol=0.3'],
     ['drums', 'track drums role=drums vol=0.8'],
   ]);
 }

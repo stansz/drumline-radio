@@ -10,7 +10,7 @@ style: synthwave
 tempo: 124
 time: 4/4
 
-track lead role=lead vol=0.7
+track lead role=lead inst=guitar vol=0.35
 # The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
@@ -115,7 +115,7 @@ track hook role=counter vol=0.5 pan=-0.2
 | R | R | R | R |
 | R | R | R | R |
 
-track sequencer role=arp vol=0.55 pan=0.3
+track sequencer role=arp vol=1 pan=0.3
 # The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | R | R | R | R |
@@ -185,7 +185,7 @@ track ostinato role=chords vol=0.45 pan=-0.3
 | R | R | R | R |
 | R | R | R | R |
 
-track brass role=pad vol=0.5
+track brass role=pad inst=fm-brass vol=0.5
 # The grid wakes: the pulse alone, low hits
 | R | R | R | R |
 | v=50 [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
@@ -220,7 +220,7 @@ track brass role=pad vol=0.5
 | v=60 [F3 Ab3 C4]/1 | [F3 Ab3 C4]/1 | [C#3 F3 Ab3]/1 | [C#3 F3 Ab3]/1 |
 | [Ab2 C3 Eb3]/1 | [Ab2 C3 Eb3]/1 | [Eb3 G3 Bb3]/1 | [Eb3 G3 Bb3]/1 |
 
-track bass role=bass vol=0.7
+track bass role=bass vol=0.3
 # The grid wakes: the pulse alone, low hits
 | v=92 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 F1/16 F2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 | C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 C#1/16 C#2/16 |
 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 Ab1/16 Ab2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 | Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 Eb1/16 Eb2/16 |
