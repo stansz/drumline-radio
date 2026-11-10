@@ -22,6 +22,8 @@ export interface StyleDef {
     crush: number;
     lowpassHz: number;
     crackle: number;
+    /** A soft, slowly breathing noise bed under the music, like air or distant rain. */
+    air: number;
   };
   lanes: string[];
 }
@@ -95,6 +97,7 @@ const RECIPES: StyleRecipe[] = [
       crush: 0,
       lowpassHz: 18000,
       crackle: 0,
+      air: 0,
     },
     lanes: ['#ff4fa3', '#2de2e6', '#ffb347', '#b967ff', '#f9f871', '#ff6b6b'],
   },
@@ -131,6 +134,7 @@ const RECIPES: StyleRecipe[] = [
       crush: 0.2,
       lowpassHz: 12000,
       crackle: 0,
+      air: 0,
     },
     lanes: ['#7cff4f', '#4fd1ff', '#ffd84f', '#ff6f91', '#c792ff', '#ffffff'],
   },
@@ -173,6 +177,7 @@ const RECIPES: StyleRecipe[] = [
       crush: 0,
       lowpassHz: 14000,
       crackle: 0,
+      air: 0,
     },
     lanes: ['#e8c27a', '#c97b4a', '#8fb8a8', '#d9d2c3', '#a77fb0', '#7f9fd1'],
   },
@@ -210,6 +215,7 @@ const RECIPES: StyleRecipe[] = [
       crush: 0,
       lowpassHz: 20000,
       crackle: 0,
+      air: 0,
     },
     lanes: ['#c6ff00', '#ff2a2a', '#00e5ff', '#ff9100', '#f5f5f5', '#d500f9'],
   },
@@ -231,7 +237,7 @@ const RECIPES: StyleRecipe[] = [
       'upright-bass': 'string-bass',
       'dusty-kit': 'dusty-kit',
     },
-    fx: { reverbSeconds: 2.2, reverbSend: 0.25, delayBeats: 0.75, delaySend: 0.15, delayFeedback: 0.3, crush: 0.08, lowpassHz: 4200, crackle: 0.045 },
+    fx: { reverbSeconds: 2.2, reverbSend: 0.25, delayBeats: 0.75, delaySend: 0.15, delayFeedback: 0.3, crush: 0.08, lowpassHz: 4200, crackle: 0.045, air: 0 },
     lanes: ['#ffb37a', '#7fd1c7', '#e8a0bf', '#c3b1e1', '#f6d186', '#9ad0ec'],
   },
 
@@ -252,7 +258,7 @@ const RECIPES: StyleRecipe[] = [
     },
     // A wordless vocal hook plays on the soaring guitar here.
     bankSwaps: { 'vox-lead': { patch: 'guitar', gain: 0.35 } },
-    fx: { reverbSeconds: 3.2, reverbSend: 0.35, delayBeats: 0.75, delaySend: 0.22, delayFeedback: 0.38, crush: 0, lowpassHz: 15000, crackle: 0 },
+    fx: { reverbSeconds: 3.2, reverbSend: 0.35, delayBeats: 0.75, delaySend: 0.22, delayFeedback: 0.38, crush: 0, lowpassHz: 15000, crackle: 0, air: 0 },
     lanes: ['#f2b55a', '#9ec3ff', '#e86a5c', '#c9d6df', '#8f7ad8', '#6fd3b5'],
   },
   {
@@ -276,8 +282,28 @@ const RECIPES: StyleRecipe[] = [
     },
     // A wordless vocal hook plays on the fuzz lead here.
     bankSwaps: { 'vox-lead': { patch: 'fuzz-lead', gain: 0.35 } },
-    fx: { reverbSeconds: 1.4, reverbSend: 0.18, delayBeats: 0.75, delaySend: 0.08, delayFeedback: 0.25, crush: 0, lowpassHz: 16000, crackle: 0 },
+    fx: { reverbSeconds: 1.4, reverbSend: 0.18, delayBeats: 0.75, delaySend: 0.08, delayFeedback: 0.25, crush: 0, lowpassHz: 16000, crackle: 0, air: 0 },
     lanes: ['#ff4136', '#ffd23f', '#3fa7ff', '#f4e9d8', '#7ee081', '#ff8fc7'],
+  },
+  {
+    id: 'ambient',
+    name: 'Ambient',
+    blurb: 'A washed pad, a music box, and a soft sub, drifting in a long dark reverb over a bed of air.',
+    roles: { lead: 'music-box', lead2: 'fm-rhodes', counter: 'concert-flute', pad: 'ambient-pad', chords: 'synth-pad', bass: 'ambient-sub', arp: 'music-box', drums: 'dusty-kit' },
+    instruments: {
+      'music-box': 'music-box',
+      'fm-rhodes': 'fm-rhodes',
+      'concert-flute': 'concert-flute',
+      'ambient-pad': 'ambient-pad',
+      'synth-pad': 'synth-pad',
+      'ambient-sub': 'ambient-sub',
+      'dusty-kit': 'dusty-kit',
+      'grand-piano': 'grand-piano',
+      'fm-bells': 'fm-bells',
+      'choir-ooh': 'choir-ooh',
+    },
+    fx: { reverbSeconds: 5, reverbSend: 0.5, delayBeats: 1.5, delaySend: 0.22, delayFeedback: 0.45, crush: 0, lowpassHz: 9000, crackle: 0, air: 0.1 },
+    lanes: ['#9fd8cb', '#c9b8f0', '#f2d7a0', '#7fa8c9', '#e6e1d6', '#a8c99f'],
   },
   // The open style: every bank instrument under its bank id, through clean, neutral effects, so a
   // song written for it can pick any instrument with plain `inst=`. Remixes still fall back to the
@@ -293,7 +319,7 @@ const RECIPES: StyleRecipe[] = [
       ...Object.fromEntries(Object.keys(INSTRUMENTS).map((id) => [id, id])),
       ...REPLACED,
     },
-    fx: { reverbSeconds: 2, reverbSend: 0.2, delayBeats: 0.75, delaySend: 0.12, delayFeedback: 0.3, crush: 0, lowpassHz: 20000, crackle: 0 },
+    fx: { reverbSeconds: 2, reverbSend: 0.2, delayBeats: 0.75, delaySend: 0.12, delayFeedback: 0.3, crush: 0, lowpassHz: 20000, crackle: 0, air: 0 },
     lanes: ['#5ee0c1', '#f4f4f0', '#ff8a5c', '#8fb3ff', '#ffd166', '#c79bff'],
   },
 ];

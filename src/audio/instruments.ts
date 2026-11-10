@@ -234,6 +234,9 @@ export const KEYS: Record<string, Patch> = {
     fm: { ratio: 1.4, index: 4, decay: 2.5, sustain: 0.1, velocity: 0.5 },
     env: env(0.001, 3, 0, 2), gain: 0.22 }),
   // A glockenspiel: bright, high-ratio FM with a short metallic ring.
+  // Ambient: a music box. A sine with a soft fourth-harmonic tine that rings out and fades, no sustain.
+  'music-box': synth({ name: 'Music box', oscs: [osc('sine', 0, 0, 0.8), osc('sine', 2, 0, 0.18)],
+    env: env(0.002, 2.2, 0, 1.6), gain: 0.2, sends: { reverb: 1.4, delay: 0.5 } }),
   'glockenspiel': synth({ name: 'Glockenspiel', oscs: [osc('sine', 1, 0, 1)],
     fm: { ratio: 3.5, index: 1.5, decay: 0.3, sustain: 0.02, velocity: 0.6 },
     env: env(0.001, 1.4, 0, 1), gain: 0.22 }),
@@ -321,6 +324,12 @@ export const PADS: Record<string, Patch> = {
     vibrato: { rate: 5, cents: 18, delay: 0.35 }, gain: 0.39, sends: { reverb: 1.2, delay: 0 } }),
   // A glass pad: two detuned sines with 3:1 FM that swells in and settles to a soft shimmer, slow
   // and bell-like rather than buzzy. Cinematic reaches it as inst=synth-pad.
+  // Ambient: a washed pad. Detuned triangles and a soft saw an octave down, a dark filter, a slow
+  // swell and a long release, so chords drift into each other.
+  'ambient-pad': synth({ name: 'Washed pad',
+    oscs: [osc('triangle', 0, -8, 0.4), osc('triangle', 0, 8, 0.4), osc('sawtooth', -1, 0, 0.15)],
+    env: env(2.5, 2, 0.9, 4), filter: { type: 'lowpass', hz: 900, q: 0.5, envAmount: 0, envDecay: 0.5 },
+    vibrato: { rate: 0.25, cents: 5, delay: 0 }, gain: 0.16, sends: { reverb: 1.6, delay: 0.3 } }),
   'synth-pad': synth({ name: 'Glass pad',
     oscs: [osc('sine', 0, -6, 0.5), osc('sine', 0, 6, 0.5), osc('sine', 1, 0, 0.15)],
     fm: { ratio: 3, index: 2, attack: 1.2, decay: 2.5, sustain: 0.5, targets: [0, 1] },
@@ -355,6 +364,9 @@ export const BASSES: Record<string, Patch> = {
     sends: { reverb: 0.2, delay: 0 },
   }),
   // A deep sine sub bass with a little triangle on top.
+  // Ambient: a soft sub that swells in and fades slowly under the pad.
+  'ambient-sub': synth({ name: 'Soft sub', oscs: [osc('sine', 0, 0, 1)],
+    env: env(0.8, 1, 0.9, 2), gain: 0.4, sends: { reverb: 0.2, delay: 0 } }),
   'sub-bass': synth({
     name: 'Sub bass',
     oscs: [osc('sine', 0, 0, 0.85), osc('triangle', 1, 0, 0.15)],

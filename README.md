@@ -23,11 +23,11 @@ It looks like a hi-fi radio tuner and plays the songs with a Web Audio synth:
 - A repeat button that loops the current song (remembered between visits).
 - Long titles scroll in the readout. Tap the readout for a song card: credits, key, tempo, length, and a short story for each public-domain song.
 - An ⓘ panel with dim view and a black screensaver (auto-starts after 1 or 5 minutes without a touch) to save battery. The screen stays awake whenever music plays. Phones pause the live synth when the app is minimized, so keep it open.
-- Eight styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi, Cinematic, Alt rock, Studio) with remix by band button: switch the band
-  and the same notes play with that style's instruments. Studio is the open style: every instrument in the bank, through a clean mix. The styles fold into one button at the end of the transport, labelled with the style you are hearing (plus "remix" when it isn't the song's own); it opens them as a panel, four across on wider screens and two on a phone, with the selected style lit in its colour. The 1–8 keys still switch directly. On a phone the seek bar has its own full-width row above the transport.
+- Nine styles (Synthwave, Chiptune, Orchestral, Techno, Lo-fi, Cinematic, Alt rock, Ambient, Studio) with remix by band button: switch the band
+  and the same notes play with that style's instruments. Ambient is a washed pad, a music box and a soft sub in a long dark reverb, over a bed of air. Studio is the open style: every instrument in the bank, through a clean mix. The styles fold into one button at the end of the transport, labelled with the style you are hearing (plus "remix" when it isn't the song's own); it opens them as a panel, four across on wider screens and two on a phone, with the selected style lit in its colour. The 1–9 keys still switch directly. On a phone the seek bar has its own full-width row above the transport.
 - Each style has its own full-screen scene behind the player: a neon sunset and grid (Synthwave), an 8-bit night with pixel mountains (Chiptune), an evening concert hall with organ pipes, velvet drapes and drifting dust in the stage light (Orchestral), a warehouse with swaying lasers (Techno), a rainy window over city lights (Lo-fi), a widescreen sunrise over mountains with a lens flare (Cinematic), a brick-walled basement show under one spotlight (Alt rock), and a control room with acoustic panels and an on-air lamp (Studio). The lasers, rain and dust stop with reduced motion.
 - Techno flashes the screen gently on the kick, within the WCAG flash limits (at most 3 a second, a soft fade). It is off with reduced motion, and the ⓘ panel has a switch to turn it off.
-- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–8 styles, C category, G style filter, M mute, R repeat, S screensaver, J jukebox, P playlist view.
+- Keyboard shortcuts: Space play/pause, ←/→ previous/next station, 1–9 styles, C category, G style filter, M mute, R repeat, S screensaver, J jukebox, P playlist view.
 
 | Orchestral | Phone |
 |---|---|
@@ -69,6 +69,8 @@ Hidden for now, to be redone later: Can-Can, Eine kleine Nachtmusik, Ode to Joy,
 
 Originals by SZ (and AI):
 
+- **Pagoda Rain** (Ambient), by Claude & SZ. An 8:00 ambient piece at 64 BPM in D major, after the music in the Pagoda Garden toy: a washed pad and a soft sub changing chord every fifteen seconds, music-box notes picked from each chord, a slow Rhodes phrase and a rising glass pad in the middle, over the style's bed of air. Loops cleanly with repeat on.
+- **Temple Bells** (Ambient), by Claude & SZ. A 7:28 ambient piece at 60 BPM in A minor: a dark pad on Am9, Fmaj7, Cmaj7 and G6, music-box bells, a glass pad and a Rhodes in the middle, and the bed of air. Loops cleanly with repeat on.
 - **Exit Sign** (Alt rock), by GPT-6.1-sol & SZ. A 2:57 guitar-band original: palm-muted verses, a twelve-bar vocal-style hook, a half-time bridge, and a final double chorus.
 - **A Match in the Static** (Alt rock), by Arena Agent, Claude & SZ. A 3:44, 120 BPM E-minor stomp: eight solo shimmer-guitar bars grow into picked-bass verses with a quiet clean-electric melody and crunchy pre-choruses, then burst into a fuzz-hook/guitar-wall chorus; a quiet bridge rebuilds into a final double chorus and a ringing E-minor outro.
 - **Porch Light** (Alt rock), by Grok, Claude & SZ. A 4:40 slow, emo indie original at 72 BPM: a laid-back clean electric guitar lead, shimmering arpeggios, a Ben Folds-style piano, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.

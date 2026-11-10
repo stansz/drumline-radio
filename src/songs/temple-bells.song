@@ -1,0 +1,157 @@
+# Temple Bells, by Claude & SZ. An original ambient piece for the Ambient style, after the temple
+# mood in the Pagoda Garden toy: a dark washed pad on Am9, Fmaj7, Cmaj7 and G6, four bars each at
+# 60 BPM, music-box bells picked from each chord, a glass pad and a Rhodes in the middle, and the
+# style's bed of air. Made to loop: it ends on G6, which leads back into Am9.
+# chords: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# chords @17: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# chords @33: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# chords @49: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# chords @65: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# chords @81: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# chords @97: Am9 Am9 Am9 Am9 Fmaj7 Fmaj7 Fmaj7 Fmaj7 Cmaj7 Cmaj7 Cmaj7 Cmaj7 G6 G6 G6 G6
+# Form 1-16: open - the pad and a few bells
+# Form 17-48: bells - music-box bells over the pad and sub
+# Form 49-80: glass - glass pad and Rhodes join
+# Form 81-112: settle - the glass pad and Rhodes drop away
+title: Temple Bells
+composer: Claude & SZ
+year: 2026
+source: original
+category: originals
+style: ambient
+key: A minor
+tempo: 60
+time: 4/4
+about: Evening at a hillside temple: a dark pad turning slowly through four chords, bells picked out of each one, and a hush of air. Loops cleanly; turn on repeat for endless play.
+
+track box role=arp vol=0.8 pan=0.25
+# Opening: the pad and a few bells (bars 1-16)
+| r/2 A5/2+6:80 | r/2. C6/8+14:59 G5/8:79 | E5/2.+6:79 C5/4:76 | r/2. G5/4-6:73 |
+| r/2. r/8 C5/8+10:74 | F4/1:77 | r/8 C5/2.-6:66 F4/8:59 | r/2. A4/8+6:56 F4/8+14:75 |
+| r/2. r/8 C5/8-6:80 | r/4. E5/2+14:58~ E5/8 | R | r/2. r/8 G5/8-6:64 |
+| R | r/8 D5/2.-6:76~ D5/8 | r/4. E5/2+14:71~ E5/8 | r/8 D5/2.+6:75~ D5/8 |
+# Music-box bells over the pad and sub (bars 17-48)
+| r/2 r/8 C5/4.+14:78 | r/2 A4/2+6:57 | r/8 E4/8+14:75 G4/2+6:67 C5/4:72 | r/4. G5/4+6:75 E5/4.+14:59 |
+| A4/4+10:62 F4/2+6:67~ F4/8 A4/8:66 | r/2 r/8 F4/4-6:58 A4/8+6:62 | F4/2.+10:80~ F4/8 A4/8+14:65 | r/2. C5/4-6:72 |
+| r/2 G4/2:78 | r/2 r/8 E4/8:76 G4/4+10:72 | r/2. C5/4-6:75 | r/4 G4/2.:58 |
+| r/2. r/8 E4/8:56 | r/8 B4/4.+10:71 E5/2+6:69 | r/2. D5/4+14:76 | G4/1:79 |
+| r/2. C5/4+6:59 | r/2 E5/8:77 C5/4+6:66 E5/8+10:77 | r/2 A4/4.+14:71 E4/8+14:70 | R |
+| r/2 A4/2+14:76 | R | r/8 C5/2.+10:60~ C5/8 | r/8 A4/2.-6:75~ A4/8 |
+| r/8 E5/2+14:70 C5/4.-6:75 | r/2 G5/4.-6:66 C5/8:61 | r/4 G5/8-6:72 C6/2-6:67~ C6/8 | r/4. G5/2-6:64 C5/8:74 |
+| r/2 r/8 G5/4-6:60 B5/8+14:74 | r/8 G5/4.-6:69 E5/2-6:73 | G5/8+10:60 E5/2.+6:76~ E5/8 | R |
+# The glass pad and the Rhodes join; the bells keep ringing (bars 49-80)
+| r/2 A5/4.-6:77 E5/8-6:59 | r/4. G5/4+14:65 E5/4.:62 | r/2 C5/4+14:75 A4/4+14:61 | r/2 E5/8-6:59 A5/4.-6:66 |
+| r/4 C6/2.+10:73 | r/8 F5/2.+10:55 C6/8+10:76 | A5/4.-6:76 F5/8+14:54 C5/2+10:57 | r/4. A4/2+10:54 F4/8+14:58 |
+| E4/4-6:67 G4/2.+14:61 | r/2. r/8 E4/8+14:75 | r/8 G4/4+14:69 C5/2+10:69~ C5/8 | r/4 G4/2+10:65~ G4/8 C5/8:74 |
+| r/8 G5/2.+6:57 E5/8+10:62 | B4/8-6:72 D5/2.-6:75~ D5/8 | r/2 E5/8+6:67 D5/4.+14:77 | E5/2.+6:80 D5/4:70 |
+| A5/4-6:65 G5/2.-6:59 | A5/1:75 | r/8 G5/8-6:60 A5/2.+10:54 | r/4 C6/4-6:54 G5/4.+14:59 C6/8+6:60 |
+| r/4 F5/4.-6:61 C6/4+10:59 A5/8+6:72 | F5/4.+6:75 C6/2+6:57~ C6/8 | F5/8-6:75 C6/4.-6:74 A5/2+6:78 | r/4. C6/2-6:59~ C6/8 |
+| r/4 G5/2-6:71~ G5/8 C5/8+10:55 | r/2. r/8 E5/8+6:77 | r/8 G5/2:55~ G5/8 C6/4+10:72 | R*2 |
+| r/4. B5/2+14:61~ B5/8 | G5/2.+6:80~ G5/8 E5/8-6:64 | r/2 r/8 B5/4.-6:72 |
+# The glass pad and the Rhodes drop away; the bells thin out (bars 81-112)
+| R*2 | r/2 r/8 A5/4-6:77 E5/8+14:60 | R | r/8 F5/2+6:61 C5/4.+10:78 |
+| R | r/4. F4/8-6:58 C5/2:60 | r/2 r/8 F5/4.+10:70 | G5/2-6:76 C5/2+14:57 |
+| G5/1+14:61 | r/2 r/8 E5/4.:74 | R*4 | r/2 r/8 D5/4+6:68 G4/8-6:74 |
+| r/8 A4/8+6:58 E4/2.+10:79 | R | r/4. G4/2+6:68~ G4/8 | r/4. E4/2+14:54~ E4/8 |
+| r/8 F4/2.:71~ F4/8 | r/2. A4/4:78 | F4/1+6:78 | r/4. A4/8+6:61 C5/2+14:72 |
+| R*3 | r/2 r/8 E5/8+14:55 G5/4-6:55 | r/4 D5/2.:74 | R |
+| r/2. r/8 E5/8+6:70 | R |
+
+track keys role=lead2 vol=0.55 pan=-0.2
+# Opening: the pad and a few bells (bars 1-16)
+| R*16 |
+# Music-box bells over the pad and sub (bars 17-48)
+| R*32 |
+# The glass pad and the Rhodes join; the bells keep ringing (bars 49-80)
+| A4/2+8:70 E4/2+12:62 | r/4 C5/2.+10:66 | E4/4.+8:64 A4/4.+14:60 G4/4+10:58 | R |
+| A4/2+8:70 F4/2+12:62 | r/4 C5/2.+10:66 | F4/4.+8:64 A4/4.+14:60 F4/4+10:58 | R |
+| G4/2+8:70 E4/2+12:62 | r/4 C5/2.+10:66 | E4/4.+8:64 G4/4.+14:60 E4/4+10:58 | R |
+| G4/2+8:70 E4/2+12:62 | r/4 B4/2.+10:66 | E4/4.+8:64 G4/4.+14:60 E4/4+10:58 | R |
+| A4/2+8:70 E4/2+12:62 | r/4 C5/2.+10:66 | E4/4.+8:64 A4/4.+14:60 G4/4+10:58 | R |
+| A4/2+8:70 F4/2+12:62 | r/4 C5/2.+10:66 | F4/4.+8:64 A4/4.+14:60 F4/4+10:58 | R |
+| G4/2+8:70 E4/2+12:62 | r/4 C5/2.+10:66 | E4/4.+8:64 G4/4.+14:60 E4/4+10:58 | R |
+| G4/2+8:70 E4/2+12:62 | r/4 B4/2.+10:66 | E4/4.+8:64 G4/4.+14:60 E4/4+10:58 | R |
+# The glass pad and the Rhodes drop away; the bells thin out (bars 81-112)
+| R*32 |
+
+track glass role=chords vol=1 pan=0.1
+# Opening: the pad and a few bells (bars 1-16)
+| R*16 |
+# Music-box bells over the pad and sub (bars 17-48)
+| R*32 |
+# The glass pad and the Rhodes join; the bells keep ringing (bars 49-80)
+| [C4 E4 G4]/1:62~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1 |
+| [C4 F4 A4]/1:62~ | [C4 F4 A4]/1~ | [C4 F4 A4]/1~ | [C4 F4 A4]/1 |
+| [C4 E4 G4]/1:62~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1 |
+| [D4 E4 G4]/1:62~ | [D4 E4 G4]/1~ | [D4 E4 G4]/1~ | [D4 E4 G4]/1 |
+| [C4 E4 G4]/1:62~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1 |
+| [C4 F4 A4]/1:62~ | [C4 F4 A4]/1~ | [C4 F4 A4]/1~ | [C4 F4 A4]/1 |
+| [C4 E4 G4]/1:62~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1~ | [C4 E4 G4]/1 |
+| [D4 E4 G4]/1:62~ | [D4 E4 G4]/1~ | [D4 E4 G4]/1~ | [D4 E4 G4]/1 |
+# The glass pad and the Rhodes drop away; the bells thin out (bars 81-112)
+| R*32 |
+
+track pad role=pad vol=0.9 pan=0
+# Opening: the pad and a few bells (bars 1-16)
+| [C3 E3 G3 A3]/1:70~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:70~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:70~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:70~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+# Music-box bells over the pad and sub (bars 17-48)
+| [C3 E3 G3 A3]/1:74~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:74~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:74~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:74~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+| [C3 E3 G3 A3]/1:74~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:74~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:74~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:74~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+# The glass pad and the Rhodes join; the bells keep ringing (bars 49-80)
+| [C3 E3 G3 A3]/1:76~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:76~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:76~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:76~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+| [C3 E3 G3 A3]/1:76~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:76~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:76~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:76~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+# The glass pad and the Rhodes drop away; the bells thin out (bars 81-112)
+| [C3 E3 G3 A3]/1:72~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:72~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:72~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:72~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+| [C3 E3 G3 A3]/1:72~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1~ | [C3 E3 G3 A3]/1 |
+| [C3 F3 A3 C4]/1:72~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1~ | [C3 F3 A3 C4]/1 |
+| [C3 E3 G3 C4]/1:72~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1~ | [C3 E3 G3 C4]/1 |
+| [D3 E3 G3 B3]/1:72~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1~ | [D3 E3 G3 B3]/1 |
+
+track bass role=bass vol=0.2 pan=0
+# Opening: the pad and a few bells (bars 1-16)
+| R*16 |
+# Music-box bells over the pad and sub (bars 17-48)
+| A1/1:72~ | A1/1~ | A1/1~ | A1/1 |
+| A1/1:72~ | A1/1~ | A1/1~ | A1/1 |
+| C2/1:72~ | C2/1~ | C2/1~ | C2/1 |
+| B1/1:72~ | B1/1~ | B1/1~ | B1/1 |
+| A1/1:72~ | A1/1~ | A1/1~ | A1/1 |
+| A1/1:72~ | A1/1~ | A1/1~ | A1/1 |
+| C2/1:72~ | C2/1~ | C2/1~ | C2/1 |
+| B1/1:72~ | B1/1~ | B1/1~ | B1/1 |
+# The glass pad and the Rhodes join; the bells keep ringing (bars 49-80)
+| A1/1:74~ | A1/1~ | A1/1~ | A1/1 |
+| A1/1:74~ | A1/1~ | A1/1~ | A1/1 |
+| C2/1:74~ | C2/1~ | C2/1~ | C2/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+| A1/1:74~ | A1/1~ | A1/1~ | A1/1 |
+| A1/1:74~ | A1/1~ | A1/1~ | A1/1 |
+| C2/1:74~ | C2/1~ | C2/1~ | C2/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+# The glass pad and the Rhodes drop away; the bells thin out (bars 81-112)
+| A1/1:70~ | A1/1~ | A1/1~ | A1/1 |
+| A1/1:70~ | A1/1~ | A1/1~ | A1/1 |
+| C2/1:70~ | C2/1~ | C2/1~ | C2/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| A1/1:70~ | A1/1~ | A1/1~ | A1/1 |
+| A1/1:70~ | A1/1~ | A1/1~ | A1/1 |
+| C2/1:70~ | C2/1~ | C2/1~ | C2/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |

@@ -31,7 +31,7 @@ A style is a set of patches plus the settings of the shared effects. A patch is 
 vibrato, FM, drive, and send levels) or a drum kit
 (kick, snare, hats, cymbals, and toms). `src/audio/instruments.ts` is the instrument bank: every
 patch, once, under a unique id, grouped into leads, keys, pads, basses, and kits.
-`src/audio/styles.ts` holds the eight styles as recipes: each picks the bank instruments it uses,
+`src/audio/styles.ts` holds the nine styles as recipes: each picks the bank instruments it uses,
 under its own local names, and sets its role map and effects.
 
 A track picks its patch in this order:
@@ -191,6 +191,29 @@ dotted-eighth delay. `inst=clean-electric` is the Cinematic lead guitar made
 clean: no drive, a triangle in place of its buzzy square, less saw, a softer and lower filter, a
 milder vibrato, less sustain, and small reverb and delay sends, an octave
 below the written note. Porch Light uses `clean-electric` and `shimmer-guitar`.
+
+### Ambient
+
+The Ambient style is slow, chill music: a washed pad, a music box, and a soft sub in a long, dark
+reverb (5 s) with a slow dotted-half delay, over a bed of air.
+
+| Role | Patch |
+| --- | --- |
+| lead | Music box |
+| lead2 | FM Rhodes |
+| counter | Concert flute |
+| pad | Washed pad |
+| chords | Glass pad |
+| bass | Soft sub |
+| arp | Music box |
+| drums | Dusty kit |
+
+The washed pad (`ambient-pad`) swells in over 2.5 s and releases over 4 s, so held chords drift into
+each other; write it whole bars at a time. The music box (`music-box`) rings out and fades with no
+sustain, so sparse notes with space between them suit it. The soft sub (`ambient-sub`) swells in
+under the pad. The style's `air` effect is a soft pink-noise bed that slowly swells and settles,
+like wind or distant rain, playing under the whole song (`fx.air`, 0 in every other style). Songs
+can also reach `inst=grand-piano`, `inst=fm-bells`, and `inst=choir-ooh`.
 
 ### Studio
 

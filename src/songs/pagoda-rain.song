@@ -1,0 +1,182 @@
+# Pagoda Rain, by Claude & SZ. An original ambient piece for the Ambient style, after the music
+# in the Pagoda Garden toy: a washed pad and a soft sub that change chord every 15 seconds
+# (Dmaj9, Bm7, Gmaj7, Aadd9, four bars each at 64 BPM), sparse music-box notes picked from each
+# chord, a slow Rhodes phrase in the middle, and the style's bed of air under everything. Made
+# to loop: it ends on the chord before the first one, so repeat runs straight back in.
+# chords: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @17: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @33: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @49: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @65: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @81: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @97: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# chords @113: Dmaj9 Dmaj9 Dmaj9 Dmaj9 Bm7 Bm7 Bm7 Bm7 Gmaj7 Gmaj7 Gmaj7 Gmaj7 Aadd9 Aadd9 Aadd9 Aadd9
+# Form 1-32: open - pad and sub drift in; sparse music box
+# Form 33-64: keys - a slow Rhodes phrase on each chord
+# Form 65-96: glass - the glass pad rises; busier music box
+# Form 97-128: settle - back to the pad, the sub and a few notes
+title: Pagoda Rain
+composer: Claude & SZ
+year: 2026
+source: original
+category: originals
+style: ambient
+key: D major
+tempo: 64
+time: 4/4
+about: A slow drift for rainy days: a washed pad changing chord every fifteen seconds, a music box picking notes out of it, and a bed of air underneath. Loops cleanly; turn on repeat for endless play.
+
+track box role=arp vol=0.8 pan=0.25
+# Opening: the pad and the soft sub, a few music-box notes (bars 1-32)
+| A4/1+14:80 | r/8 F#4/2.:72~ F#4/8 | r/8 E4/2.:67~ E4/8 | r/4. D4/2-6:71~ D4/8 |
+| r/4. F#4/4+14:72 A4/4.+6:55 | F#4/1-6:63 | r/2 B4/2+6:80 | r/8 A4/2.:65~ A4/8 |
+| G4/1+14:69 | r/2. B4/4+14:68 | r/4. G4/4.+6:76 D4/4+10:72 | r/2. r/8 G4/8-6:77 |
+| r/8 C#5/2.+10:59~ C#5/8 | r/4 A4/8:75 C#5/4.+10:64 E5/4+14:69 | r/8 C#5/2.:69~ C#5/8 | E5/1+10:76 |
+| R*2 | r/2. F#5/4-6:54 | R*2 | D5/2.+10:78~ D5/8 B4/8+6:77 |
+| R | A4/2.-6:68~ A4/8 B4/8-6:58 | r/2. D5/4-6:75 | r/4. G4/2+6:56~ G4/8 |
+| D5/4.+10:59 B4/2+6:54~ B4/8 | r/2 D5/4+14:73 B4/4+14:58 | E5/4.-6:66 A5/2-6:57~ A5/8 | r/2. E5/4:60 |
+| r/8 B5/8:55 E5/2.+6:72 | r/8 C#5/2.:73~ C#5/8 |
+# The Rhodes joins with a slow phrase on each chord (bars 33-64)
+| r/8 D5/2+14:65~ D5/8 F#5/4:69 | r/8 E5/2-6:68~ E5/8 A5/4:63 | r/4. F#5/8+14:59 D5/2+14:60 | r/8 A4/2+14:78 F#4/4.:74 |
+| r/2 r/8 D4/4.+6:65 | r/2 r/8 F#4/4.+6:73 | r/8 B4/4+10:69 F#4/2+10:54~ F#4/8 | R |
+| r/2 r/8 G4/4.+10:79 | r/2 r/8 D4/4.:61 | r/4. G4/2+14:73~ G4/8 | D5/4.:65 G5/2-6:57~ G5/8 |
+| r/8 B5/2.+10:79 E5/8-6:79 | R*2 | r/8 B4/2+6:59 E4/4.+14:58 | r/4 A4/4+10:69 E4/2+14:71 |
+| r/4 D4/2.:54 | R | r/2. E4/4+6:80 | r/4. A4/4.+14:62 D5/4+6:80 |
+| F#5/1+14:68 | r/4 D5/4+14:70 A4/2+6:68 | F#4/1+6:59 | R |
+| B4/4+14:70 D5/2.:79 | r/4 G4/8:78 D5/2+14:68~ D5/8 | G4/1+10:68 | r/4. B4/2+14:68~ B4/8 |
+| r/2. r/8 A4/8+14:76 | r/8 E5/4.-6:58 A4/4.-6:66 C#5/8+6:56 | R |
+# The glass pad rises over the top; the music box fills in (bars 65-96)
+| r/2 F#4/4+6:78 A4/4+10:74 | r/4 E4/2+6:68~ E4/8 A4/8-6:57 | r/8 D5/4-6:70 F#5/2+6:67~ F#5/8 | r/4 D5/4.+10:77 A4/4.+14:64 |
+| r/2. B4/4+14:70 | r/2 F#4/4.+6:57 D4/8+10:56 | r/4 F#4/2-6:80~ F#4/8 B4/8+10:80 | r/8 F#5/4.+10:76 B4/8:62 A4/8:67 B4/4:54 |
+| D5/4.-6:57 G4/2+14:64~ G4/8 | r/4 D5/2:58 G5/4+6:76 | B5/8+10:74 G5/4.-6:63 D5/8+10:62 G4/4.:62 | D4/1+14:77 |
+| r/8 A4/2.-6:57 E5/8-6:71 | r/2 B4/8+10:61 A4/4.+6:80 | B4/1:54 | r/4. A4/8:55 E5/2+10:70 |
+| A5/1+6:59 | r/2 E5/2+10:54 | r/8 A4/2+6:63 F#4/4.:59 | r/4. D4/4+10:69 A4/4.+6:74 |
+| r/8 D4/8-6:58 F#4/2.:66 | r/4 D4/4+14:56 F#4/8+14:75 A4/4.+10:78 | r/2 F#4/8+14:55 B4/4.+14:67 | r/4 F#4/2.+14:80 |
+| D4/4.+6:55 G4/2-6:57~ G4/8 | r/2. r/8 D5/8:55 | r/2. r/8 B4/8-6:54 | r/8 G4/2.+14:75~ G4/8 |
+| B4/2+6:61 A4/4-6:77 E5/4:66 | r/2 r/8 C#5/4:78 E5/8+6:74 | r/2 C#5/8+14:73 A4/4.-6:54 | C#5/4.:75 E5/2-6:60~ E5/8 |
+# Everything settles back to the pad, the sub and a few last notes (bars 97-128)
+| r/2. r/8 A5/8:68 | r/4 D5/8:69 F#5/2:68~ F#5/8 | r/4 E5/2+6:60~ E5/8 A4/8:72 | R |
+| r/2 r/8 F#4/4.+14:73 | r/2 D4/2+10:76 | r/2. r/8 A4/8+6:54 | D5/4.+10:66 B4/2+10:67~ B4/8 |
+| r/2 r/8 G4/4.+10:64 | r/2. D4/4:60 | r/2 r/8 G4/4.-6:66 | R |
+| r/4. B4/4+10:55 E4/4.+10:55 | r/4 A4/2.-6:62 | R | r/2 r/8 E5/4.-6:54 |
+| r/4. A4/4-6:55 D5/4.+6:73 | R*3 | r/8 A5/8+10:67 F#5/2.+10:63 | r/2 B5/2+6:74 |
+| r/2. F#5/4+6:59 | r/8 B5/2.+6:71 A5/8-6:64 | R | r/4. D5/2+10:59~ D5/8 |
+| R | r/2 r/8 B4/4.+14:79 | r/2. E5/4+14:67 | r/4. A5/2+10:62~ A5/8 |
+| r/2 r/8 E5/4.+14:75 | R |
+
+track keys role=lead2 vol=0.55 pan=-0.2
+# Opening: the pad and the soft sub, a few music-box notes (bars 1-32)
+| R*32 |
+# The Rhodes joins with a slow phrase on each chord (bars 33-64)
+| A4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 A4/4.+14:60 F#4/4+10:58 | R |
+| B4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+| B4/2+8:70 G4/2+12:62 | r/4 D5/2.+10:66 | G4/4.+8:64 B4/4.+14:60 G4/4+10:58 | R |
+| B4/2+8:70 E4/2+12:62 | r/4 C#5/2.+10:66 | E4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+| A4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 A4/4.+14:60 F#4/4+10:58 | R |
+| B4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+| B4/2+8:70 G4/2+12:62 | r/4 D5/2.+10:66 | G4/4.+8:64 B4/4.+14:60 G4/4+10:58 | R |
+| B4/2+8:70 E4/2+12:62 | r/4 C#5/2.+10:66 | E4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+# The glass pad rises over the top; the music box fills in (bars 65-96)
+| A4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 A4/4.+14:60 F#4/4+10:58 | R |
+| B4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+| B4/2+8:70 G4/2+12:62 | r/4 D5/2.+10:66 | G4/4.+8:64 B4/4.+14:60 G4/4+10:58 | R |
+| B4/2+8:70 E4/2+12:62 | r/4 C#5/2.+10:66 | E4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+| A4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 A4/4.+14:60 F#4/4+10:58 | R |
+| B4/2+8:70 F#4/2+12:62 | r/4 D5/2.+10:66 | F#4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+| B4/2+8:70 G4/2+12:62 | r/4 D5/2.+10:66 | G4/4.+8:64 B4/4.+14:60 G4/4+10:58 | R |
+| B4/2+8:70 E4/2+12:62 | r/4 C#5/2.+10:66 | E4/4.+8:64 B4/4.+14:60 A4/4+10:58 | R |
+# Everything settles back to the pad, the sub and a few last notes (bars 97-128)
+| R*32 |
+
+track glass role=chords vol=1 pan=0.1
+# Opening: the pad and the soft sub, a few music-box notes (bars 1-32)
+| R*32 |
+# The Rhodes joins with a slow phrase on each chord (bars 33-64)
+| R*32 |
+# The glass pad rises over the top; the music box fills in (bars 65-96)
+| [D4 F#4 D5]/1:64~ | [D4 F#4 D5]/1~ | [D4 F#4 D5]/1~ | [D4 F#4 D5]/1 |
+| [D4 F#4 A4]/1:64~ | [D4 F#4 A4]/1~ | [D4 F#4 A4]/1~ | [D4 F#4 A4]/1 |
+| [D4 G4 B4]/1:64~ | [D4 G4 B4]/1~ | [D4 G4 B4]/1~ | [D4 G4 B4]/1 |
+| [E4 A4 B4]/1:64~ | [E4 A4 B4]/1~ | [E4 A4 B4]/1~ | [E4 A4 B4]/1 |
+| [D4 F#4 D5]/1:64~ | [D4 F#4 D5]/1~ | [D4 F#4 D5]/1~ | [D4 F#4 D5]/1 |
+| [D4 F#4 A4]/1:64~ | [D4 F#4 A4]/1~ | [D4 F#4 A4]/1~ | [D4 F#4 A4]/1 |
+| [D4 G4 B4]/1:64~ | [D4 G4 B4]/1~ | [D4 G4 B4]/1~ | [D4 G4 B4]/1 |
+| [E4 A4 B4]/1:64~ | [E4 A4 B4]/1~ | [E4 A4 B4]/1~ | [E4 A4 B4]/1 |
+# Everything settles back to the pad, the sub and a few last notes (bars 97-128)
+| R*32 |
+
+track pad role=pad vol=0.9 pan=0
+# Opening: the pad and the soft sub, a few music-box notes (bars 1-32)
+| [D3 E3 F#3 A3]/1:72~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:72~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:72~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:72~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+| [D3 E3 F#3 A3]/1:72~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:72~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:72~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:72~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+# The Rhodes joins with a slow phrase on each chord (bars 33-64)
+| [D3 E3 F#3 A3]/1:76~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:76~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:76~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:76~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+| [D3 E3 F#3 A3]/1:76~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:76~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:76~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:76~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+# The glass pad rises over the top; the music box fills in (bars 65-96)
+| [D3 E3 F#3 A3]/1:78~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:78~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:78~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:78~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+| [D3 E3 F#3 A3]/1:78~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:78~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:78~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:78~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+# Everything settles back to the pad, the sub and a few last notes (bars 97-128)
+| [D3 E3 F#3 A3]/1:72~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:72~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:72~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:72~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+| [D3 E3 F#3 A3]/1:72~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1~ | [D3 E3 F#3 A3]/1 |
+| [D3 F#3 A3 B3]/1:72~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1~ | [D3 F#3 A3 B3]/1 |
+| [D3 G3 B3 D4]/1:72~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1~ | [D3 G3 B3 D4]/1 |
+| [E3 A3 B3 C#4]/1:72~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1~ | [E3 A3 B3 C#4]/1 |
+
+track bass role=bass vol=0.2 pan=0
+# Opening: the pad and the soft sub, a few music-box notes (bars 1-32)
+| D2/1:70~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| D2/1:70~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+# The Rhodes joins with a slow phrase on each chord (bars 33-64)
+| D2/1:74~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+| D2/1:74~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:74~ | B1/1~ | B1/1~ | B1/1 |
+# The glass pad rises over the top; the music box fills in (bars 65-96)
+| D2/1:76~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:76~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:76~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:76~ | B1/1~ | B1/1~ | B1/1 |
+| D2/1:76~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:76~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:76~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:76~ | B1/1~ | B1/1~ | B1/1 |
+# Everything settles back to the pad, the sub and a few last notes (bars 97-128)
+| D2/1:70~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| D2/1:70~ | D2/1~ | D2/1~ | D2/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |
+| B1/1:70~ | B1/1~ | B1/1~ | B1/1 |

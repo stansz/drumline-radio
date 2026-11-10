@@ -108,6 +108,35 @@ export function audibleOsc(freq: number, octave: number): boolean {
   return freq * 2 ** octave >= MIN_OSC_HZ;
 }
 
+/**
+ * A loopable bed of air: soft pink-ish noise, darkened, that swells and settles twice over its
+ * length (two whole cycles, so the loop seam stays at the same level). Like wind or distant rain.
+ */
+export function airSamples(
+  length: number,
+  sampleRate: number,
+  random: () => number,
+): Float32Array<ArrayBuffer> {
+  const samples = new Float32Array(length);
+  let b0 = 0;
+  let b1 = 0;
+  let b2 = 0;
+  let low = 0;
+  const smooth = Math.exp((-2 * Math.PI * 1200) / sampleRate);
+  for (let i = 0; i < length; i += 1) {
+    const white = random() * 2 - 1;
+    b0 = 0.99765 * b0 + white * 0.099046;
+    b1 = 0.963 * b1 + white * 0.2965164;
+    b2 = 0.57 * b2 + white * 1.0526913;
+    const pink = (b0 + b1 + b2 + white * 0.1848) * 0.19;
+    low = low * smooth + pink * (1 - smooth);
+    const phase = (i / length) * 2 * Math.PI;
+    const swell = 0.6 + 0.3 * Math.sin(2 * phase) + 0.1 * Math.sin(6 * phase);
+    samples[i] = low * swell * 0.35;
+  }
+  return samples;
+}
+
 /** A loopable vinyl bed: faint hiss plus sparse clicks of random size. */
 export function crackleSamples(
   length: number,

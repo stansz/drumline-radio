@@ -1,4 +1,4 @@
-import { crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
+import { airSamples, crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
 import type { StyleId } from '../music/roles';
 import type { Song, Track } from '../music/song';
 import { resolvePatch, STYLE_DEFS, trackVolume, withBankInstruments } from './styles';
@@ -71,8 +71,10 @@ export class Engine {
   private startPos = 0;
   private scheduledUntil = 0;
   private timer: ReturnType<typeof setInterval> | null = null;
-  private crackleSource: AudioBufferSourceNode | null = null;
-  private crackleFade: GainNode | null = null;
+  private readonly airBuffer: AudioBuffer;
+  private readonly airGain: GainNode;
+  // The looping beds (vinyl crackle, air) while playing, each with the fade it starts and stops on.
+  private beds: { source: AudioBufferSourceNode; fade: GainNode }[] = [];
   /** Every sounding or booked voice, with the time it starts. */
   private readonly voices = new Map<Voice, number>();
 
@@ -88,6 +90,11 @@ export class Engine {
       this.crackleBuffer
         .getChannelData(channel)
         .set(crackleSamples(crackleLength, ctx.sampleRate, Math.random));
+    }
+    const airLength = Math.round(8 * ctx.sampleRate);
+    this.airBuffer = ctx.createBuffer(2, airLength, ctx.sampleRate);
+    for (let channel = 0; channel < 2; channel += 1) {
+      this.airBuffer.getChannelData(channel).set(airSamples(airLength, ctx.sampleRate, Math.random));
     }
 
     this.mix = ctx.createGain();
@@ -132,6 +139,10 @@ export class Engine {
     this.crackleGain = ctx.createGain();
     this.crackleGain.gain.value = 0;
     this.crackleGain.connect(this.clip);
+
+    this.airGain = ctx.createGain();
+    this.airGain.gain.value = 0;
+    this.airGain.connect(this.clip);
 
     this.volume = ctx.createGain();
     this.volume.gain.value = this.volumeValue;
@@ -243,12 +254,14 @@ export class Engine {
     this.startPos = 0;
     this.startCtx = 0;
 
-    const crackle = ctx.createBufferSource();
-    crackle.buffer = this.crackleBuffer;
-    crackle.loop = true;
-    crackle.connect(this.crackleGain);
-    crackle.start(0);
-    crackle.stop(ctx.length / ctx.sampleRate);
+    for (const [buffer, gain] of [[this.crackleBuffer, this.crackleGain], [this.airBuffer, this.airGain]] as const) {
+      const bed = ctx.createBufferSource();
+      bed.buffer = buffer;
+      bed.loop = true;
+      bed.connect(gain);
+      bed.start(0);
+      bed.stop(ctx.length / ctx.sampleRate);
+    }
 
     const book = (from: number, to: number): void => {
       for (const note of notesBetween(timeline, from, to)) this.scheduleNote(note);
@@ -292,20 +305,21 @@ export class Engine {
       // attack instead of starting late, already at full level, with a click.
       this.startCtx = this.ctx.currentTime + START_LEAD;
       this.scheduledUntil = this.startPos;
-      const crackle = this.ctx.createBufferSource();
-      crackle.buffer = this.crackleBuffer;
-      crackle.loop = true;
-      // The vinyl bed fades in and out with play so starting and stopping it never clicks.
-      const fade = this.ctx.createGain();
+      // The beds fade in and out with play so starting and stopping them never clicks.
       const now = this.ctx.currentTime;
-      fade.gain.setValueAtTime(0, now);
-      fade.gain.linearRampToValueAtTime(1, now + STOP_FADE);
-      crackle.connect(fade);
-      fade.connect(this.crackleGain);
-      crackle.onended = () => fade.disconnect();
-      crackle.start();
-      this.crackleSource = crackle;
-      this.crackleFade = fade;
+      for (const [buffer, gain] of [[this.crackleBuffer, this.crackleGain], [this.airBuffer, this.airGain]] as const) {
+        const source = this.ctx.createBufferSource();
+        source.buffer = buffer;
+        source.loop = true;
+        const fade = this.ctx.createGain();
+        fade.gain.setValueAtTime(0, now);
+        fade.gain.linearRampToValueAtTime(1, now + STOP_FADE);
+        source.connect(fade);
+        fade.connect(gain);
+        source.onended = () => fade.disconnect();
+        source.start();
+        this.beds.push({ source, fade });
+      }
       this.timer = setInterval(() => this.tick(), TICK_MS);
       this.tick();
     };
@@ -401,6 +415,7 @@ export class Engine {
     this.wetGain.gain.setTargetAtTime(fx.crush, now, 0.05);
     this.lowpass.frequency.setTargetAtTime(fx.lowpassHz, now, 0.05);
     this.crackleGain.gain.setTargetAtTime(fx.crackle, now, 0.05);
+    this.airGain.gain.setTargetAtTime(fx.air, now, 0.5);
 
     for (const channel of this.channels) {
       channel.gain.gain.setTargetAtTime(trackVolume(channel.track, this.styleValue), now, 0.05);
@@ -485,14 +500,13 @@ export class Engine {
       this.timer = null;
     }
     const now = this.ctx.currentTime;
-    if (this.crackleSource !== null && this.crackleFade !== null) {
-      this.crackleFade.gain.cancelScheduledValues(now);
-      this.crackleFade.gain.setValueAtTime(this.crackleFade.gain.value, now);
-      this.crackleFade.gain.linearRampToValueAtTime(0, now + STOP_FADE);
-      this.crackleSource.stop(now + STOP_FADE + 0.02);
-      this.crackleSource = null;
-      this.crackleFade = null;
+    for (const { source, fade } of this.beds) {
+      fade.gain.cancelScheduledValues(now);
+      fade.gain.setValueAtTime(fade.gain.value, now);
+      fade.gain.linearRampToValueAtTime(0, now + STOP_FADE);
+      source.stop(now + STOP_FADE + 0.02);
     }
+    this.beds = [];
     for (const voice of this.voices.keys()) voice.stop(now);
     this.voices.clear();
   }

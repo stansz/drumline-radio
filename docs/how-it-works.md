@@ -19,7 +19,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 |---|---|
 | `src/songs/` | One `.song` file per song. Plain text: header, then tracks of notes |
 | `src/music/` | Reads songs and does the timing math. No sound, no screen, so it's easy to test |
-| `src/audio/` | The synth: engine, instrument recipes, the eight styles |
+| `src/audio/` | The synth: engine, instrument recipes, the nine styles |
 | `src/ui/` | Everything on screen: the dial, the score view, meters, buttons, CSS |
 | `src/pwa/` | Offline support: the service worker template and the build step that lists every file to cache |
 | `tests/` | Vitest tests for the parts that don't need a browser |
@@ -45,7 +45,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 - `voices.ts` builds each note from scratch (oscillators, filters, envelopes, and noise for drums).
 - `instruments.ts` is the instrument bank: every patch once, by id, in families; `patches.ts`
   has the patch types and the `synth()`/`drums()` helpers.
-- `styles.ts` holds the eight styles as recipes. Each picks instruments from the bank and maps a
+- `styles.ts` holds the nine styles as recipes. Each picks instruments from the bank and maps a
   **role** to one.
 - `curves.ts` has small sound-shaping helpers (soft clip, bit-crush, velocity to loudness).
 

@@ -4,6 +4,7 @@ import {
   audibleOsc,
   BEND_GLIDE,
   bendGlide,
+  airSamples,
   crackleSamples,
   CRUSH_POINTS,
   crushCurve,
@@ -168,5 +169,25 @@ describe('driveMakeup', () => {
       const slope = (curve[2049] - curve[2047]) / (4 / 4096);
       expect(slope * driveMakeup(amount)).toBeCloseTo(1, 2);
     }
+  });
+});
+
+describe('airSamples', () => {
+  it('builds a soft, bounded, never-silent bed of air', () => {
+    let state = 999;
+    const seeded = (): number => {
+      state = (state * 1664525 + 1013904223) % 4294967296;
+      return state / 4294967296;
+    };
+    const samples = airSamples(48000 * 8, 48000, seeded);
+    expect(samples.length).toBe(48000 * 8);
+    let sum = 0;
+    for (const value of samples) {
+      expect(Math.abs(value)).toBeLessThan(0.5);
+      sum += value * value;
+    }
+    const rmsDb = 20 * Math.log10(Math.sqrt(sum / samples.length));
+    expect(rmsDb).toBeGreaterThan(-45);
+    expect(rmsDb).toBeLessThan(-15);
   });
 });

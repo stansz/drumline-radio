@@ -9,7 +9,7 @@ describe('the instrument bank', () => {
       (sum, family) => sum + Object.keys(family).length,
       0,
     );
-    expect(total).toBe(68);
+    expect(total).toBe(71);
     expect(Object.keys(INSTRUMENTS).length).toBe(total);
   });
 

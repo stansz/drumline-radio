@@ -90,6 +90,16 @@
   --glow: #ff4136;
 }
 
+:root[data-style='ambient'] {
+  --bg: #0b1418;
+  --panel: rgba(14, 24, 30, 0.86);
+  --text: #e9f1ee;
+  --muted: #8fa6a3;
+  --accent: #9fd8cb;
+  --accent-2: #c9b8f0;
+  --glow: #7fc4b6;
+}
+
 :root[data-style='studio'] {
   --bg: #15171a;
   --panel: rgba(24, 27, 31, 0.88);
@@ -324,6 +334,20 @@ body::before {
 :root[data-style='altrock'] body::after {
   background: radial-gradient(ellipse 85% 80% at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
   opacity: 1;
+}
+
+/* Ambient: a misty night garden. A soft moon, faint stars, and low mist over still water. */
+:root[data-style='ambient'] body {
+  background:
+    radial-gradient(circle at 78% 16%, rgba(233, 241, 238, 0.85) 0 2.2%, rgba(159, 216, 203, 0.22) 3.4%, transparent 11%) fixed,
+    radial-gradient(1px 1px at 12% 20%, rgba(255, 255, 255, 0.7), transparent) fixed,
+    radial-gradient(1px 1px at 31% 9%, rgba(255, 255, 255, 0.5), transparent) fixed,
+    radial-gradient(1px 1px at 52% 24%, rgba(255, 255, 255, 0.6), transparent) fixed,
+    radial-gradient(1px 1px at 64% 6%, rgba(255, 255, 255, 0.45), transparent) fixed,
+    radial-gradient(1px 1px at 90% 30%, rgba(255, 255, 255, 0.5), transparent) fixed,
+    radial-gradient(ellipse 120% 30% at 50% 78%, rgba(159, 216, 203, 0.14), transparent 70%) fixed,
+    radial-gradient(ellipse 90% 22% at 30% 92%, rgba(201, 184, 240, 0.1), transparent 70%) fixed,
+    linear-gradient(#08121a 0%, #0f2129 55%, #12262a 75%, #0a1416 100%) fixed;
 }
 
 /* Studio: a control room. Acoustic panels on the wall, a soft monitor glow, and a warm on-air lamp. */
@@ -960,6 +984,8 @@ body::before {
 .style-cycle[data-style='cinematic'] { --band: #f2b55a; }
 .band[data-style='altrock'],
 .style-cycle[data-style='altrock'] { --band: #ff4136; }
+.band[data-style='ambient'],
+.style-cycle[data-style='ambient'] { --band: #9fd8cb; }
 .band[data-style='studio'],
 .style-cycle[data-style='studio'] { --band: #5ee0c1; }
 
