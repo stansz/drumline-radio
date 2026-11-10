@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | None (it fixed its own parse and mix with `npm run balance`) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
 | Sunliner | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
@@ -32,6 +33,28 @@ Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### Afterglow Avenue — DeepSeek V4.1 Flash (2026-11-10)
+
+- **Brief:** a melody-first synthwave song, 3:30-4:30, clearly different from Midnight Arcade
+  (98 BPM, E minor) and Sunliner (118 BPM, D major): a hummable saw-lead hook with a clear motif, a
+  verse melody of its own, a chorus that lifts, and a last chorus up a key. Use the Synthwave roles,
+  keep the registers apart, add microtiming, and fix every balance flag.
+- **Followed well:** A minor at 108, between the two existing synthwave tempos; a 120-bar form
+  (intro, verse, pre, chorus, verse, pre, chorus, bridge, build, last chorus, outro); the hook's
+  rising fourth A-C-F-A and its descending answer; a separate verse melody; a 3+3+2 stab groove and
+  a broken-note arp with a 9th in its tail; the square lead answers in the gaps and echoes the lead
+  a bar late in the bridge; the last chorus up a whole step to B minor; 0 clashes and 0 off-chord.
+- **Missed at first:** parse errors from a few bars with a quarter rest where an eighth was needed
+  and from a ten-token half-time drum pattern; the balance check then flagged the arp 8-9 dB under
+  the lead in the second half.
+- **Fixed by itself before handing over:** corrected the bar lengths, named the colour tones in the
+  chord map (G6, F6, A6, Dm7, Em7, G7, Am9, F#sus4), dropped the pad chord tone that clashed with
+  a held lead note (the fifth of F6, the third of Am9), and raised the arp track and its velocities
+  until `npm run balance` printed no flags. The square lead was raised so its answers read above the pad. The song is hand-written,
+  so there is no generator and no drift entry.
+- **Credit:** the harness reports `deepseek-flash`; its model list names that id "DeepSeek V4.1
+  Flash", so that is the credit. The app shows the family, DeepSeek.
 
 ### Sunliner — Arena Agent (2026-11-09)
 
