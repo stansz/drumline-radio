@@ -910,18 +910,19 @@ body::before {
   content: ' ▾';
 }
 
-/* The styles fold away and open as a panel above the knobs. It opens quickly and, after a pick,
-   lingers a moment so the choice shows, then fades out. */
+/* The styles fold away and open as a panel above the style toggle: a heading, then the nine styles
+   in a three-by-three grid. It opens quickly and, after a pick, lingers a moment so the choice
+   shows, then fades out. */
 .bands {
   position: absolute;
-  left: 6px;
   right: 6px;
   bottom: 60px;
   z-index: 5;
+  width: min(480px, calc(100% - 12px));
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  padding: 12px;
+  padding: 12px 14px 14px;
   border: 1px solid var(--accent);
   border-radius: 12px;
   background: var(--bg);
@@ -951,6 +952,28 @@ body::before {
   padding: 14px 0;
   font-size: 13px;
   letter-spacing: 0.08em;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bands-title {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 2px 2px;
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.bands-hint {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: none;
 }
 
 .band {
@@ -1744,9 +1767,16 @@ body::before {
   #next { order: 8; }
   #style-toggle { order: 9; }
 
-  /* On phones the style panel is two columns of four. */
+  /* On phones the style panel spans the width, with smaller names so three fit across. */
   .bands {
-    grid-template-columns: repeat(2, 1fr);
+    left: 6px;
+    width: auto;
+  }
+
+  .bands .band {
+    padding: 14px 0;
+    font-size: 11px;
+    letter-spacing: 0.04em;
   }
 
   .knob {

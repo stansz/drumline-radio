@@ -139,6 +139,17 @@ export function startUi(): void {
     style: shareStyle,
   });
 
+  // The style panel's heading: what it is, and what the star means.
+  const bandsTitle = document.createElement('div');
+  bandsTitle.className = 'bands-title';
+  const bandsName = document.createElement('span');
+  bandsName.textContent = 'Style';
+  const bandsHint = document.createElement('span');
+  bandsHint.className = 'bands-hint';
+  bandsHint.textContent = "★ the song's own";
+  bandsTitle.append(bandsName, bandsHint);
+  bandsEl.append(bandsTitle);
+
   const bandButtons: HTMLButtonElement[] = [];
   for (let index = 0; index < STYLES.length; index += 1) {
     const id = STYLES[index];
