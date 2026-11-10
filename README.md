@@ -113,6 +113,14 @@ Originals by SZ (and AI):
   the kick drops and a chopped wordless vocal hook carries over a dark pad, a snare-roll build into
   the first drop, a short second breakdown, a bigger build, a 32-bar final drop with the hook
   doubled an octave up, and a 16-bar outro for the mixer.
+- **Hot Wire** (Techno), by GLM 5.3 & SZ. A 4:30 peak-time electro-house original at 128 BPM in
+  A minor: one gritty octave-bouncing riff on the acid lead (pairs of staccato sixteenths, an
+  octave pop, and a cheeky ninth) carries the song over Am-F-C-G. A DJ intro of kick, hats and a
+  sub locked to the kick filters the riff in, off-beat stab skanks and swung open hats build the
+  first groove, a snare-roll build drops into the full kick-and-stabs section, and after a second
+  breakdown where a chopped wordless vocal sings over the pad, the final drop runs 32 bars with
+  vocal chops, a rolling sub with octave pops, 16th hats, and the riff doubled an octave up for the
+  last 16 bars before a stripped outro.
 - **Dusk Over Dunmere** (Chiptune), by MiMo v2.6 Pro & SZ. A 3:04 wistful fantasy RPG theme at
   88 BPM in 3/4: a singing pulse lead with long held notes over rolling pulse-arp broken chords in
   place of drums, a walking triangle bass, a square counter-melody answering the lead's holds,

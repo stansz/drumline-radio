@@ -1,0 +1,443 @@
+# Hot Wire, by GLM 5.3 and SZ. An original peak-time electro-house track for the Techno style, in
+# the spirit of the filtered-riff club 12-inches: one gritty, instantly hummable riff carries the
+# whole song on the acid lead, over a 909 kit and a sub locked to the kick. Brighter and more
+# playful than the other Techno originals: the riff bounces octaves and cheeky ninths over an
+# Am - F - C - G loop, off-beat stab skanks and a dark pad fill the middle, and a chopped wordless
+# vocal (inst=vox-lead) answers the riff in the drops and sings over the second breakdown.
+#
+# The chord loop is Am - F - C - G, one chord a bar, for all 144 bars. The riff is one rhythmic
+# template per chord: a pair of staccato sixteenths, an octave pop on the "a" of beat 1, the root
+# on the "and" of 2, a pair on the third, and the ninth on the "and" of 4 resolving back to the
+# root. Every 8th bar the G bar climbs to the fifth instead.
+# chords: Am F C G
+#
+# Form 1-16: DJ intro - kick, then hats, then the sub
+# Form 17-32: the riff teased and filtered in (a velocity ramp), the pad under it
+# Form 33-48: first groove - riff, off-beat stabs, claps, open hats
+# Form 49-56: breakdown 1 - the kick drops, the pad and riff carry
+# Form 57-64: build 1 - snare roll quarters into eighths into sixteenths, an acid riser climbing
+# Form 65-80: drop 1 - everything, the vocal answering in the second half
+# Form 81-88: breakdown 2 - the kick drops again, the vocal sings over the pad and riff
+# Form 89-96: build 2 - the roll starts faster, the riser an octave up
+# Form 97-128: final drop - 16th hats, a rolling sub with octave pops, vocal chops, then the riff
+#              doubled an octave up on the square stab for the last 16 bars
+# Form 129-144: outro - drums, sub and stabs, then stripped to the kick for the mixer
+#
+# Human feel: the kick and riff stay on the grid (a sequencer), while the off-beat hats swing a
+# few ticks late in the grooves, the claps drag +11 to +16, the stabs land +14 to +22, and every
+# hat, clap and stab has an uneven velocity.
+title: Hot Wire
+composer: GLM 5.3 & SZ
+about: Peak-time electro house at 128 in A minor: one gritty octave-bouncing riff over a pumping sub and a 909, with chopped wordless vocals answering the drops.
+year: 2026
+source: original
+category: originals
+style: techno
+key: A minor
+tempo: 128
+time: 4/4
+
+track riff role=lead vol=0.85
+# DJ intro: drums and sub only
+| R*16 |
+# The riff teased and filtered in: louder every four bars
+| v=72 A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8' |
+| v=84 A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8' |
+| v=90 A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8' |
+| v=98 A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8' |
+# First groove: full voice, the octave pops accented, a climb every 8th bar
+| { v=104 A3/16' A3/16' r/16 A4/16':114 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':114 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':114 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':114 r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8'
+| A3/16' A3/16' r/16 A4/16':114 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':114 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':114 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':116 r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8':118 }*2 |
+# Breakdown 1: the riff pulls back to a filtered murmur
+| { v=76 A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8'
+| A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8' }*1 |
+# Build 1: the riff steps out for the roll and the riser
+| R*8 |
+# Drop 1: everything
+| { v=112 A3/16' A3/16' r/16 A4/16':120 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':120 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':120 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':120 r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8'
+| A3/16' A3/16' r/16 A4/16':120 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':120 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':120 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':122 r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8':124 }*2 |
+# Breakdown 2: quiet again under the vocal
+| { v=72 A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8'
+| A3/16' A3/16' r/16 A4/16' r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16' r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16' r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16' r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8' }*1 |
+# Build 2: out again
+| R*8 |
+# Final drop: first half plain loud
+| { v=116 A3/16' A3/16' r/16 A4/16':122 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':122 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':122 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':122 r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8'
+| A3/16' A3/16' r/16 A4/16':122 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':122 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':122 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':124 r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8':126 }*2 |
+# Final drop, last 16: the riff doubled an octave up joins (see riffup)
+| { v=118 A3/16' A3/16' r/16 A4/16':124 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':124 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':124 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':124 r/8 G3/8' r/8 B3/16' B3/16' r/16 A3/16' G3/8'
+| A3/16' A3/16' r/16 A4/16':124 r/8 A3/8' r/8 C4/16' C4/16' r/16 B3/16' A3/8'
+| F3/16' F3/16' r/16 F4/16':124 r/8 F3/8' r/8 A3/16' A3/16' r/16 G3/16' F3/8'
+| C4/16' C4/16' r/16 C5/16':124 r/8 C4/8' r/8 E4/16' E4/16' r/16 D4/16' C4/8'
+| G3/16' G3/16' r/16 G4/16':126 r/8 G3/8' r/8 B3/16' B3/16' r/16 D4/16' G4/8':127 }*2 |
+# Outro: drums, sub and stabs carry it out
+| R*16 |
+
+track riffup role=lead2 vol=0.58 pan=0.18
+# Silent until the last 16 bars of the final drop, where the riff is doubled an octave up
+| R*112 |
+| { v=104 A4/16' A4/16' r/16 A5/16':112 r/8 A4/8' r/8 C5/16' C5/16' r/16 B4/16' A4/8'
+| C5/16' C5/16' r/16 F5/16':112 r/8 C5/8' r/8 F4/16' F4/16' r/16 A4/16' C5/8'
+| C5/16' C5/16' r/16 C6/16':112 r/8 C5/8' r/8 E5/16' E5/16' r/16 D5/16' C5/8'
+| G4/16' G4/16' r/16 G5/16':112 r/8 G4/8' r/8 B4/16' B4/16' r/16 A4/16' G4/8'
+| A4/16' A4/16' r/16 A5/16':112 r/8 A4/8' r/8 C5/16' C5/16' r/16 B4/16' A4/8'
+| C5/16' C5/16' r/16 F5/16':112 r/8 C5/8' r/8 F4/16' F4/16' r/16 A4/16' C5/8'
+| C5/16' C5/16' r/16 C6/16':112 r/8 C5/8' r/8 E5/16' E5/16' r/16 D5/16' C5/8'
+| G4/16' G4/16' r/16 G5/16':114 r/8 G4/8' r/8 B4/16' B4/16' r/16 D5/16' G5/8':116 }*2 |
+| R*16 |
+
+track vox role=counter inst=vox-lead vol=0.8 pan=0.1
+# Silent until the second half of drop 1, where it answers the riff on the F and G bars
+| R*72 |
+| R
+| r/2. C5/8+12:104 A4/8+8:100 |
+| R
+| r/2. B4/8+12:104 D5/8+8:102 |
+| R
+| r/2. C5/8+14:106 A4/8+10:102 |
+| R
+| r/2. D5/8+12:108 G5/8+8:106 |
+# Breakdown 2: the vocal takes the tune, one chord tone a beat
+| { v=90 E5/4+12 C5/4+8 A4/2+6
+| C5/4+10 A4/4+6 C5/2+8
+| E5/4+12 G5/4+8 E5/2+10
+| D5/4+10 B4/4+6 D5/2+8 }*2 |
+# Build 2: out for the roll
+| R*8 |
+# Final drop: chops that mirror the riff's rhythm, answering on the F and G bars
+| { R
+| v=108 C5/16+10:108 C5/16:104 r/16 F5/16:114 r/8 C5/8:106 r/8 A4/16:100 A4/16:98 r/16 G4/16:94 A4/8:102
+| R
+| D5/16+10:108 D5/16:104 r/16 G5/16:114 r/8 D5/8:106 r/8 B4/16:100 B4/16:98 r/16 A4/16:94 B4/8:102 }*4 |
+# Last 16 of the drop: the octave doubling takes over, then the outro
+| R*32 |
+
+track stabs role=chords vol=0.95 pan=-0.12
+# Intro and tease: no stabs
+| R*32 |
+# First groove: the off-beat skank, hits on 1&, 3&, 4& and 4a, dragging behind the beat
+| { v=100 r/8 [A3 C4 E4]/8'+20:104 r/4 r/8 [A3 C4 E4]/8'+16:100 r/8 [A3 C4 E4]/16'+22:102 [A3 C4 E4]/16'+18:96
+| r/8 [A3 C4 F4]/8'+18:104 r/4 r/8 [A3 C4 F4]/8'+22:100 r/8 [A3 C4 F4]/16'+16:102 [A3 C4 F4]/16'+20:96
+| r/8 [G3 C4 E4]/8'+20:104 r/4 r/8 [G3 C4 E4]/8'+14:100 r/8 [G3 C4 E4]/16'+18:102 [G3 C4 E4]/16'+22:96
+| r/8 [G3 B3 D4]/8'+16:104 r/4 r/8 [G3 B3 D4]/8'+20:100 r/8 [G3 B3 D4]/16'+14:102 [G3 B3 D4]/16'+18:96
+| r/8 [A3 C4 E4]/8'+22:104 r/4 r/8 [A3 C4 E4]/8'+18:100 r/8 [A3 C4 E4]/16'+16:102 [A3 C4 E4]/16'+20:96
+| r/8 [A3 C4 F4]/8'+14:104 r/4 r/8 [A3 C4 F4]/8'+20:100 r/8 [A3 C4 F4]/16'+22:102 [A3 C4 F4]/16'+16:96
+| r/8 [G3 C4 E4]/8'+18:104 r/4 r/8 [G3 C4 E4]/8'+16:100 r/8 [G3 C4 E4]/16'+20:102 [G3 C4 E4]/16'+14:96
+| r/8 [G3 B3 D4]/8'+20:104 r/4 r/8 [G3 B3 D4]/8'+14:100 r/8 [G3 B3 D4]/16'+22:102 [G3 B3 D4]/16'+16:96 }*2 |
+# Breakdown 1: out
+| R*8 |
+# Build 1: back for the last four bars, rising with the roll
+| R*4 |
+| v=94 r/8 [A3 C4 E4]/8'+18:96 r/4 r/8 [A3 C4 E4]/8'+16:94 r/8 [A3 C4 E4]/16'+20:96 [A3 C4 E4]/16'+18:92 |
+| v=100 r/8 [A3 C4 F4]/8'+18:102 r/4 r/8 [A3 C4 F4]/8'+16:100 r/8 [A3 C4 F4]/16'+20:102 [A3 C4 F4]/16'+18:98 |
+| v=106 r/8 [G3 C4 E4]/8'+18:108 r/4 r/8 [G3 C4 E4]/8'+16:106 r/8 [G3 C4 E4]/16'+20:108 [G3 C4 E4]/16'+18:104 |
+| v=112 r/8 [G3 B3 D4]/8'+18:114 r/4 r/8 [G3 B3 D4]/8'+16:112 r/8 [G3 B3 D4]/16'+20:114 [G3 B3 D4]/16'+18:110 |
+# Drop 1: busier, every off-beat eighth plus the sixteenth pair into the next bar
+| { v=106 r/8 [A3 C4 E4]/8'+18:110 r/8 [A3 C4 E4]/8'+22:106 r/8 [A3 C4 E4]/8'+16:108 r/8 [A3 C4 E4]/16'+20:106 [A3 C4 E4]/16'+16:102
+| r/8 [A3 C4 F4]/8'+16:110 r/8 [A3 C4 F4]/8'+18:106 r/8 [A3 C4 F4]/8'+22:108 r/8 [A3 C4 F4]/16'+14:106 [A3 C4 F4]/16'+20:102
+| r/8 [G3 C4 E4]/8'+20:110 r/8 [G3 C4 E4]/8'+16:106 r/8 [G3 C4 E4]/8'+18:108 r/8 [G3 C4 E4]/16'+22:106 [G3 C4 E4]/16'+14:102
+| r/8 [G3 B3 D4]/8'+18:110 r/8 [G3 B3 D4]/8'+20:106 r/8 [G3 B3 D4]/8'+14:108 r/8 [G3 B3 D4]/16'+16:106 [G3 B3 D4]/16'+22:102
+| r/8 [A3 C4 E4]/8'+22:110 r/8 [A3 C4 E4]/8'+14:106 r/8 [A3 C4 E4]/8'+20:108 r/8 [A3 C4 E4]/16'+18:106 [A3 C4 E4]/16'+16:102
+| r/8 [A3 C4 F4]/8'+16:110 r/8 [A3 C4 F4]/8'+22:106 r/8 [A3 C4 F4]/8'+14:108 r/8 [A3 C4 F4]/16'+20:106 [A3 C4 F4]/16'+18:102
+| r/8 [G3 C4 E4]/8'+18:110 r/8 [G3 C4 E4]/8'+20:106 r/8 [G3 C4 E4]/8'+16:108 r/8 [G3 C4 E4]/16'+14:106 [G3 C4 E4]/16'+22:102
+| r/8 [G3 B3 D4]/8'+20:110 r/8 [G3 B3 D4]/8'+16:106 r/8 [G3 B3 D4]/8'+22:108 r/8 [G3 B3 D4]/16'+18:106 [G3 B3 D4]/16'+14:102 }*2 |
+# Breakdown 2: out
+| R*8 |
+# Build 2: the last four bars climb again, from the drop pattern
+| R*4 |
+| v=100 r/8 [A3 C4 E4]/8'+18:104 r/8 [A3 C4 E4]/8'+16:102 r/8 [A3 C4 E4]/8'+20:104 r/8 [A3 C4 E4]/16'+18:102 [A3 C4 E4]/16'+16:98 |
+| v=106 r/8 [A3 C4 F4]/8'+18:110 r/8 [A3 C4 F4]/8'+16:108 r/8 [A3 C4 F4]/8'+20:110 r/8 [A3 C4 F4]/16'+18:108 [A3 C4 F4]/16'+16:104 |
+| v=112 r/8 [G3 C4 E4]/8'+18:116 r/8 [G3 C4 E4]/8'+16:114 r/8 [G3 C4 E4]/8'+20:116 r/8 [G3 C4 E4]/16'+18:114 [G3 C4 E4]/16'+16:110 |
+| v=118 r/8 [G3 B3 D4]/8'+18:122 r/8 [G3 B3 D4]/8'+16:120 r/8 [G3 B3 D4]/8'+20:122 r/8 [G3 B3 D4]/16'+18:120 [G3 B3 D4]/16'+16:116 |
+# Final drop: the off-beats plus a sixteenth run through beat 4
+| { v=112 r/8 [A3 C4 E4]/8'+18:116 r/8 [A3 C4 E4]/8'+16:112 r/8 [A3 C4 E4]/8'+20:114 [A3 C4 E4]/16'+18:112 [A3 C4 E4]/16'+16:108 [A3 C4 E4]/16'+20:106 [A3 C4 E4]/16'+14:104
+| r/8 [A3 C4 F4]/8'+16:116 r/8 [A3 C4 F4]/8'+20:112 r/8 [A3 C4 F4]/8'+14:114 [A3 C4 F4]/16'+22:112 [A3 C4 F4]/16'+16:108 [A3 C4 F4]/16'+18:106 [A3 C4 F4]/16'+20:104
+| r/8 [G3 C4 E4]/8'+20:116 r/8 [G3 C4 E4]/8'+18:112 r/8 [G3 C4 E4]/8'+16:114 [G3 C4 E4]/16'+14:112 [G3 C4 E4]/16'+22:108 [G3 C4 E4]/16'+16:106 [G3 C4 E4]/16'+18:104
+| r/8 [G3 B3 D4]/8'+18:116 r/8 [G3 B3 D4]/8'+16:112 r/8 [G3 B3 D4]/8'+20:114 [G3 B3 D4]/16'+16:112 [G3 B3 D4]/16'+18:108 [G3 B3 D4]/16'+22:106 [G3 B3 D4]/16'+14:104 }*8 |
+# Outro: the groove skank for eight bars, then out
+| { v=100 r/8 [A3 C4 E4]/8'+20:104 r/4 r/8 [A3 C4 E4]/8'+16:100 r/8 [A3 C4 E4]/16'+22:102 [A3 C4 E4]/16'+18:96
+| r/8 [A3 C4 F4]/8'+18:104 r/4 r/8 [A3 C4 F4]/8'+22:100 r/8 [A3 C4 F4]/16'+16:102 [A3 C4 F4]/16'+20:96
+| r/8 [G3 C4 E4]/8'+20:104 r/4 r/8 [G3 C4 E4]/8'+14:100 r/8 [G3 C4 E4]/16'+18:102 [G3 C4 E4]/16'+22:96
+| r/8 [G3 B3 D4]/8'+16:104 r/4 r/8 [G3 B3 D4]/8'+20:100 r/8 [G3 B3 D4]/16'+14:102 [G3 B3 D4]/16'+18:96
+| r/8 [A3 C4 E4]/8'+22:104 r/4 r/8 [A3 C4 E4]/8'+18:100 r/8 [A3 C4 E4]/16'+16:102 [A3 C4 E4]/16'+20:96
+| r/8 [A3 C4 F4]/8'+14:104 r/4 r/8 [A3 C4 F4]/8'+20:100 r/8 [A3 C4 F4]/16'+22:102 [A3 C4 F4]/16'+16:96
+| r/8 [G3 C4 E4]/8'+18:104 r/4 r/8 [G3 C4 E4]/8'+16:100 r/8 [G3 C4 E4]/16'+20:102 [G3 C4 E4]/16'+14:96
+| r/8 [G3 B3 D4]/8'+20:104 r/4 r/8 [G3 B3 D4]/8'+14:100 r/8 [G3 B3 D4]/16'+22:102 [G3 B3 D4]/16'+16:96 }*1 |
+| R*8 |
+
+track pad role=pad vol=0.8
+# DJ intro: no pad
+| R*16 |
+# The tease: the dark pad arrives quietly under the filtered riff
+| { v=56 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*4 |
+# First groove and drop 1: the pad steps aside
+| R*16 |
+# Breakdown 1 and build 1: the pad carries the harmony, lifting into the build
+| { v=64 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*2 |
+| { v=68 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*1 |
+| { v=74 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*1 |
+# Drop 1: out
+| R*16 |
+# Breakdown 2 and build 2: back under the vocal, lifting again
+| { v=66 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*2 |
+| { v=72 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*1 |
+| { v=78 [A3 C4 E4]/1 | [F3 A3 C4]/1 | [G3 C4 E4]/1 | [G3 B3 D4]/1 }*1 |
+# Final drop and outro: out
+| R*48 |
+
+track sub role=bass vol=0.3
+# DJ intro: kick and hats alone first, the sub drops in at bar 9 on the off-beats
+| R*8 |
+| { v=88 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
+# The tease: the sub ducks while the riff filters in
+| { v=70 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
+| { v=80 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
+# First groove: steady
+| { v=94 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*4 |
+# Breakdown 1: the sub keeps a soft pulse under the pad
+| { v=64 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
+# Build 1: back up with the roll
+| { v=72 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
+# Drop 1: the rolling pump, a pair of sixteenths after each off-beat
+| { v=96 r/8 A1/8 r/8 A1/16 A1/16 r/8 A1/8 r/8 A1/16 A1/16 | r/8 F1/8 r/8 F1/16 F1/16 r/8 F1/8 r/8 F1/16 F1/16 | r/8 C2/8 r/8 C2/16 C2/16 r/8 C2/8 r/8 C2/16 C2/16 | r/8 G1/8 r/8 G1/16 G1/16 r/8 G1/8 r/8 G1/16 G1/16 }*4 |
+# Breakdown 2: soft again
+| { v=64 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*2 |
+# Build 2: the pump returns under the roll
+| { v=84 r/8 A1/8 r/8 A1/16 A1/16 r/8 A1/8 r/8 A1/16 A1/16 | r/8 F1/8 r/8 F1/16 F1/16 r/8 F1/8 r/8 F1/16 F1/16 | r/8 C2/8 r/8 C2/16 C2/16 r/8 C2/8 r/8 C2/16 C2/16 | r/8 G1/8 r/8 G1/16 G1/16 r/8 G1/8 r/8 G1/16 G1/16 }*2 |
+# Final drop: the pump with an octave pop at the end of every fourth bar
+| { v=100 r/8 A1/8 r/8 A1/16 A1/16 r/8 A1/8 r/8 A1/16 A1/16 | r/8 F1/8 r/8 F1/16 F1/16 r/8 F1/8 r/8 F1/16 F1/16 | r/8 C2/8 r/8 C2/16 C2/16 r/8 C2/8 r/8 C2/16 C2/16 | r/8 G1/8 r/8 G1/16 G1/16 r/8 G1/8 r/8 G1/16 G2/16 }*8 |
+# Outro: back to the plain off-beats, easing down, then out for the lone kick
+| { v=94 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*1 |
+| { v=92 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*1 |
+| { v=90 r/8 A1/8 r/8 A1/8 r/8 A1/8 r/8 A1/8 | r/8 F1/8 r/8 F1/8 r/8 F1/8 r/8 F1/8 | r/8 C2/8 r/8 C2/8 r/8 C2/8 r/8 C2/8 | r/8 G1/8 r/8 G1/8 r/8 G1/8 r/8 G1/8 }*1 |
+| R*4 |
+
+track riser role=arp vol=0.5 pan=-0.15
+# Nothing until the builds: an acid line that climbs the scale as its rhythm doubles
+| R*56 |
+| v=60 A3/4 A3 A3 A3 |
+| v=66 C4/4 C4 C4 C4 |
+| v=72 D4/8 D4 D4 D4 D4 D4 D4 D4 |
+| v=78 E4/8 E4 E4 E4 E4 E4 E4 E4 |
+| v=84 F4/16 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 |
+| v=90 G4/16 G4 G4 G4 G4 G4 G4 G4 G4 G4 G4 G4 G4 G4 G4 G4 |
+| v=96 A4/16 A4 A4 A4 A4 A4 A4 A4 A4 A4 A4 A4 A4 A4 A4 A4 |
+| v=102 B4/16 B4 B4 B4 B4 B4 B4 B4 B4 B4 B4 B4 B4 B4 B4 B4 |
+| R*24 |
+# Build 2: the same climb an octave up, starting on eighths
+| v=74 A4/8 A4 A4 A4 A4 A4 A4 A4 |
+| v=80 C5/8 C5 C5 C5 C5 C5 C5 C5 |
+| v=86 D5/16 D5 D5 D5 D5 D5 D5 D5 D5 D5 D5 D5 D5 D5 D5 D5 |
+| v=92 E5/16 E5 E5 E5 E5 E5 E5 E5 E5 E5 E5 E5 E5 E5 E5 E5 |
+| v=98 F5/16 F5 F5 F5 F5 F5 F5 F5 F5 F5 F5 F5 F5 F5 F5 F5 |
+| v=104 G5/16 G5 G5 G5 G5 G5 G5 G5 G5 G5 G5 G5 G5 G5 G5 G5 |
+| v=110 A5/16 A5 A5 A5 A5 A5 A5 A5 A5 A5 A5 A5 A5 A5 A5 A5 |
+| v=116 B5/16 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 B5 |
+| R*48 |
+
+track drums role=drums vol=0.58
+# DJ intro: the kick alone, then the hats join
+| v=96 k/4 k k k |
+| v=98 k/4 k k k |
+| v=100 k/4 k k k |
+| v=102 k/4 k k k |
+| v=100 k/8 h/8-8:58 k/8 h/8-5:64 k/8 h/8-9:60 k/8 h/8-6:68 |
+| k/8 h/8-6:62 k/8 h/8-8:66 k/8 h/8-4:60 k/8 h/8-7:70 |
+| k/8 h/8-7:60 k/8 h/8-4:68 k/8 h/8-6:62 k/8 h/8-8:72 |
+| k/8 h/8-5:64 k/8 h/8-7:66 k/8 h/8-8:62 k/8 h/16-5:70 h/16-7:64 |
+# The sub joins; the hats breathe a little more
+| v=102 k/8 h/8-7:64 k/8 h/8-5:68 k/8 h/8-8:62 k/8 h/8-6:72 |
+| k/8 h/8-8:62 k/8 h/8-6:70 k/8 h/8-5:66 k/8 h/8-7:74 |
+| k/8 h/8-4:66 k/8 h/8-8:68 k/8 h/8-7:64 k/8 h/8-5:74 |
+| k/8 h/8-6:68 k/8 h/8-4:70 k/8 h/8-8:66 k/8 h/8-5:72 |
+| k/8 h/8-7:66 k/8 h/8-4:70 k/8 h/8-6:64 k/8 h/8-8:74 |
+| k/8 h/8-5:64 k/8 h/8-7:72 k/8 h/8-4:66 k/8 h/8-6:76 |
+| k/8 h/8-8:66 k/8 h/8-5:70 k/8 h/8-7:64 k/8 h/8-4:76 |
+| k/8 h/8-6:68 k/8 h/8-4:70 k/8 h/8-8:66 k/8 h/16-6:72 h/16-4:66 |
+# The tease: sixteenth ticks arrive around the off-beats
+| v=102 k/8 h/8-7:64 k/8 h/16-4:66 h/16-6:58 k/8 h/8-9:68 k/8 h/16-5:70 h/16-7:60 |
+| k/8 h/8-5:66 k/8 h/16-6:68 h/16-4:60 k/8 h/8-7:70 k/8 h/16-8:72 h/16-5:62 |
+| k/8 h/8-8:62 k/8 h/16-5:70 h/16-7:64 k/8 h/8-4:72 k/8 h/16-6:74 h/16-8:66 |
+| k/8 h/8-6:68 k/8 h/16-8:70 h/16-5:62 k/8 h/8-5:72 k/8 h/16-4:74 h/16-7:66 |
+| k/8 h/8-4:66 k/8 h/16-7:68 h/16-5:60 k/8 h/8-8:70 k/8 h/16-6:72 h/16-4:62 |
+| k/8 h/8-7:70 k/8 h/16-4:72 h/16-8:64 k/8 h/8-5:74 k/8 h/16-7:76 h/16-5:66 |
+| k/8 h/8-5:64 k/8 h/16-6:72 h/16-4:66 k/8 h/8-7:72 k/8 h/16-5:74 h/16-8:68 |
+| k/8 h/8-8:68 k/8 h/16-5:72 h/16-7:62 k/8 h/8-6:74 k/8 h/16-8:76 h/16-4:68 |
+# Claps in, and a crash on the 25th bar
+| v=104 [k cr]/8 h/8-7:66 k/8 h/16-4:68 h/16-6:60 k/8 h/8-9:70 k/8 h/16-5:72 h/16-7:62 |
+| k/8 h/8-4:68 k/8 h/16-5:70 h/16-8:62 k/8 h/8-6:72 k/8 h/16-7:74 h/16-4:64 |
+| k/8 h/8-7:70 k/8 h/16-8:72 h/16-5:64 k/8 h/8-4:74 k/8 h/16-6:76 h/16-8:66 |
+| k/8 h/8-5:72 k/8 h/16-7:74 h/16-4:66 k/8 h/8-8:76 k/8 h/16-5:78 h/16-7:68 |
+| k/8 h/8-6:70 k/8 h/16-4:72 h/16-8:64 k/8 h/8-5:76 k/8 h/16-7:78 h/16-5:66 |
+| k/8 h/8-8:66 k/8 h/16-5:74 h/16-7:62 k/8 h/8-4:78 k/8 h/16-6:80 h/16-8:68 |
+| k/8 h/8-7:72 k/8 h/16-8:74 h/16-4:66 k/8 h/8-5:78 k/8 h/16-7:80 h/16-5:70 |
+| k/8 h/8-5:72 k/8 h/16-7:74 h/16-4:66 k/8 h/8-8:76 k/16:104 h/16-5:74 h/16-7:68 h/16-4:72 |
+# First groove: open hats on the off-beats, swung a few ticks late, a crash every 8 bars
+| { v=104 [k cr]/8 oh/8+8:72 k/8 oh/8+12:78 k/8 oh/8+9:70 k/8 oh/8+14:76
+| k/8 oh/8+10:74 k/8 oh/8+7:72 k/8 oh/8+12:76 k/8 oh/8+8:74
+| k/8 oh/8+9:70 k/8 oh/8+13:78 k/8 oh/8+8:72 k/8 oh/8+11:76
+| k/8 oh/8+12:76 k/8 oh/8+9:74 k/8 oh/8+13:72 k/8 oh/8+7:80
+| k/8 oh/8+8:74 k/8 oh/8+11:78 k/8 oh/8+9:76 k/8 oh/8+12:72
+| k/8 oh/8+13:72 k/8 oh/8+8:78 k/8 oh/8+10:74 k/8 oh/8+9:76
+| k/8 oh/8+9:78 k/8 oh/8+12:74 k/8 oh/8+8:76 k/8 oh/8+13:80
+| k/8 oh/8+11:76 k/8 oh/8+9:78 k/8 oh/8+12:74 k/8 oh/8+8:82 }*2 |
+# Breakdown 1: the kick drops out, hats tick over, dense and sparse bars alternating
+| { v=54 r/8 h/8-6:50 r/8 h/8-4:56 r/8 h/8-8:48 r/8 h/8-5:54
+| r/8 h/8-7:52 r/4 r/8 h/8-4:56 r/4
+| r/8 h/8-4:54 r/8 h/8-6:50 r/8 h/8-5:52 r/8 h/8-8:48
+| r/8 h/8-8:50 r/4 r/8 h/8-6:56 r/4 }*2 |
+# Build 1: the snare roll doubles its speed every two bars, the kick out of the last bar
+| v=74 [k s]/4 s s s |
+| v=80 [k s]/4 s s s |
+| v=86 [k s]/8 s s s s s s s |
+| v=92 [k s]/8 s s s s s s s |
+| v=98 [k s]/16 s s s s s s s s s s s s s s s |
+| v=102 [k s]/16 s s s s s s s s s s s s s s s |
+| v=106 [k s]/16 s s s s s s s s s s s s s s s |
+| v=112 s/16 s s s s s s s s s s s s s s s |
+# Drop 1: back to the off-beat open hats, straighter now, a crash every 8 bars
+| { v=106 [k cr]/8 oh/8-6:76 k/8 oh/8-4:82 k/8 oh/8-8:74 k/8 oh/8-5:80
+| k/8 oh/8-5:78 k/8 oh/8-7:76 k/8 oh/8-4:82 k/8 oh/8-6:78
+| k/8 oh/8-8:74 k/8 oh/8-5:80 k/8 oh/8-7:76 k/8 oh/8-4:82
+| k/8 oh/8-6:78 k/8 oh/8-4:80 k/8 oh/8-8:76 k/8 oh/8-5:84
+| k/8 oh/8-4:78 k/8 oh/8-6:82 k/8 oh/8-5:80 k/8 oh/8-8:76
+| k/8 oh/8-7:76 k/8 oh/8-4:84 k/8 oh/8-6:78 k/8 oh/8-5:82
+| k/8 oh/8-5:82 k/8 oh/8-8:78 k/8 oh/8-4:80 k/8 oh/8-7:84
+| k/8 oh/8-6:80 k/8 oh/8-5:82 k/8 oh/8-7:78 k/8 oh/8-4:86 }*2 |
+# Breakdown 2: hats only, dense and sparse bars alternating, thickening into the build
+| { v=52 r/8 h/8-6:50 r/4 r/8 h/8-4:54 r/4
+| r/8 h/8-4:52 r/8 h/8-6:56 r/8 h/8-8:50 r/8 h/8-5:54
+| r/8 h/8-7:50 r/4 r/8 h/8-5:56 r/4
+| r/8 h/8-5:54 r/8 h/8-4:58 r/8 h/8-6:52 r/8 h/8-8:56 }*1 |
+| v=54 r/8 h/8-6:52 r/4 r/8 h/8-4:56 r/4 |
+| r/8 h/8-5:54 r/8 h/8-6:56 r/8 h/8-8:52 r/8 h/8-4:58 |
+| r/8 h/8-7:52 r/4 r/8 h/8-5:58 r/4 |
+| r/8 h/8-6:56 r/8 h/16-5:62 h/16-7:58 r/8 h/8-4:64 r/8 h/16-5:66 h/16-7:60 |
+# Build 2: the roll starts on eighths and climbs higher
+| v=88 [k s]/8 s s s s s s s |
+| v=94 [k s]/8 s s s s s s s |
+| v=98 [k s]/16 s s s s s s s s s s s s s s s |
+| v=102 [k s]/16 s s s s s s s s s s s s s s s |
+| v=106 [k s]/16 s s s s s s s s s s s s s s s |
+| v=110 [k s]/16 s s s s s s s s s s s s s s s |
+| v=114 [k s]/16 s s s s s s s s s s s s s s s |
+| v=120 s/16 s s s s s s s s s s s s s s s |
+# Final drop: the full sixteenth grid, the open hat pushed late on the "a" of each beat
+| { v=108 [k cr]/16 h/16-5:74 h/16-7:64 oh/16+8:82 k/16:106 h/16-4:70 h/16-6:62 oh/16+10:80 k/16:108 h/16-8:66 h/16-4:68 oh/16+9:82 k/16:105 h/16-5:72 h/16-7:64 oh/16+11:80
+| k/16:107 h/16-4:70 h/16-6:62 oh/16+9:82 k/16:104 h/16-5:72 h/16-8:64 oh/16+12:80 k/16:108 h/16-6:66 h/16-4:68 oh/16+8:84 k/16:106 h/16-7:70 h/16-5:64 oh/16+10:82
+| k/16:105 h/16-6:68 h/16-8:62 oh/16+10:80 k/16:108 h/16-4:72 h/16-6:64 oh/16+8:82 k/16:104 h/16-5:70 h/16-7:66 oh/16+12:84 k/16:107 h/16-8:68 h/16-4:64 oh/16+9:80
+| k/16:106 h/16-5:70 h/16-7:62 oh/16+8:82 k/16:107 h/16-8:68 h/16-4:66 oh/16+11:80 k/16:105 h/16-6:70 h/16-5:64 oh/16+9:84 k/16:108 h/16-4:72 h/16-6:66 oh/16+12:82
+| k/16:104 h/16-7:68 h/16-5:62 oh/16+9:80 k/16:106 h/16-4:70 h/16-6:64 oh/16+12:82 k/16:107 h/16-5:68 h/16-8:66 oh/16+8:84 k/16:105 h/16-6:72 h/16-4:64 oh/16+10:80
+| k/16:108 h/16-6:66 h/16-4:64 oh/16+10:82 k/16:105 h/16-7:70 h/16-5:66 oh/16+8:80 k/16:106 h/16-8:68 h/16-6:62 oh/16+11:84 k/16:104 h/16-4:70 h/16-7:64 oh/16+9:82
+| k/16:106 h/16-5:70 h/16-7:64 oh/16+12:80 k/16:104 h/16-6:68 h/16-4:62 oh/16+9:82 k/16:108 h/16-5:72 h/16-7:66 oh/16+10:80 k/16:105 h/16-8:68 h/16-4:64 oh/16+8:84
+| k/16:107 h/16-8:66 h/16-5:64 oh/16+8:82 k/16:106 h/16-4:70 h/16-7:66 oh/16+12:80 k/16:104 h/16-6:68 h/16-5:62 oh/16+10:84 k/16:108 h/16-4:72 h/16-8:66 oh/16+9:82 }*4 |
+# Outro: the swung groove for eight bars, closed hats for four, then the kick alone
+| { v=100 [k cr]/8 oh/8+8:70 k/8 oh/8+12:76 k/8 oh/8+9:68 k/8 oh/8+14:74
+| k/8 oh/8+10:72 k/8 oh/8+7:70 k/8 oh/8+12:74 k/8 oh/8+8:72
+| k/8 oh/8+9:68 k/8 oh/8+13:76 k/8 oh/8+8:70 k/8 oh/8+11:74
+| k/8 oh/8+12:74 k/8 oh/8+9:72 k/8 oh/8+13:70 k/8 oh/8+7:78
+| k/8 oh/8+8:72 k/8 oh/8+11:76 k/8 oh/8+9:74 k/8 oh/8+12:70
+| k/8 oh/8+13:70 k/8 oh/8+8:76 k/8 oh/8+10:72 k/8 oh/8+9:74
+| k/8 oh/8+9:76 k/8 oh/8+12:72 k/8 oh/8+8:74 k/8 oh/8+13:78
+| k/8 oh/8+11:74 k/8 oh/8+9:76 k/8 oh/8+12:72 k/8 oh/8+8:80 }*1 |
+| v=98 k/8 h/8-6:66 k/8 h/8-4:70 k/8 h/8-8:64 k/8 h/8-5:72 |
+| v=96 k/8 h/8-7:64 k/8 h/8-5:68 k/8 h/8-8:62 k/8 h/8-6:70 |
+| v=94 k/8 h/8-5:62 k/8 h/8-7:66 k/8 h/8-4:60 k/8 h/8-8:68 |
+| v=92 k/8 h/8-6:60 k/8 h/8-4:64 k/8 h/8-7:58 k/8 h/16-5:68 h/16-7:62 |
+| v=92 k/4 k k k |
+| v=90 k/4 k k k |
+| v=88 k/4 k k k |
+| v=86 k/4 k k k |
+
+track claps role=drums vol=0.8 pan=0.12
+# The claps sit on their own track so they can drag behind the beat while the kick holds the grid
+| R*24 |
+# In with the crash at bar 25
+| { v=96 r/4 cl/4+14:100 r/4 cl/4+11:96
+| r/4 cl/4+12:102 r/4 cl/4+16:98
+| r/4 cl/4+15:98 r/4 cl/4+12:104
+| r/4 cl/4+11:102 r/4 cl/4+14:100 }*2 |
+# First groove
+| { v=102 r/4 cl/4+12:106 r/4 cl/4+15:102
+| r/4 cl/4+14:108 r/4 cl/4+11:104
+| r/4 cl/4+16:104 r/4 cl/4+13:108
+| r/4 cl/4+12:106 r/4 cl/4+15:104 }*4 |
+# Breakdown 1: out
+| R*8 |
+# Build 1: they keep the backbeat under the roll
+| { v=104 r/4 cl/4+13:108 r/4 cl/4+11:106
+| r/4 cl/4+15:110 r/4 cl/4+12:104
+| r/4 cl/4+11:106 r/4 cl/4+14:110
+| r/4 cl/4+16:108 r/4 cl/4+13:106 }*2 |
+# Drop 1
+| { v=106 r/4 cl/4+12:110 r/4 cl/4+15:106
+| r/4 cl/4+14:112 r/4 cl/4+11:108
+| r/4 cl/4+16:108 r/4 cl/4+13:112
+| r/4 cl/4+12:110 r/4 cl/4+15:108 }*4 |
+# Breakdown 2: out
+| R*8 |
+# Build 2
+| { v=108 r/4 cl/4+13:112 r/4 cl/4+11:110
+| r/4 cl/4+15:114 r/4 cl/4+12:108
+| r/4 cl/4+11:110 r/4 cl/4+14:114
+| r/4 cl/4+16:112 r/4 cl/4+13:110 }*2 |
+# Final drop: harder, with a sixteenth flam at the end of every second bar
+| { v=110 r/4 cl/4+12:114 r/4 cl/4+15:108
+| r/4 cl/4+14:116 r/4 cl/16+10:118 cl/16+18:112 r/8
+| r/4 cl/4+11:112 r/4 cl/4+16:110
+| r/4 cl/4+13:114 r/4 cl/16+12:116 cl/16+16:112 r/8
+| r/4 cl/4+15:116 r/4 cl/4+12:112
+| r/4 cl/4+11:114 r/4 cl/16+14:118 cl/16+12:112 r/8
+| r/4 cl/4+16:112 r/4 cl/4+13:116
+| r/4 cl/4+12:116 r/4 cl/16+10:120 cl/16+18:114 r/8 }*4 |
+# Outro: back to the groove level, then out
+| { v=100 r/4 cl/4+14:104 r/4 cl/4+11:100
+| r/4 cl/4+12:106 r/4 cl/4+16:102
+| r/4 cl/4+15:102 r/4 cl/4+12:106
+| r/4 cl/4+11:104 r/4 cl/4+14:100 }*2 |
+| R*8 |
