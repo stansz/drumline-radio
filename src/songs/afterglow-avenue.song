@@ -1,7 +1,8 @@
 # Afterglow Avenue, by DeepSeek V4.1 Flash and SZ. An original sunset-cruise synthwave song for the
 # Synthwave style: a saw-lead hook built on a rising fourth (A-C-F-A), a square lead answering in the
 # gaps, a 3+3+2 poly-stab groove, a syncopated FM-pluck arp, a warm pad, a syncopated synth bass, and
-# the gated kit. The arp is the bank fm-pluck, which no Synthwave role uses: five eighth-note hits per
+# the 909 kit in the home Synthwave mix (remixes keep their own style's kit). The arp is the bank
+# fm-pluck, which no Synthwave role uses: five eighth-note hits per
 # bar (root, fifth, octave, third, ninth) with rests between them, so it doesn't share the style's
 # continuous saw-pluck sixteenths. 108 BPM in A minor; the bridge and build lift the last
 # chorus a whole step to B minor. The verse is half-time and the chorus opens up to four on the floor,
@@ -615,7 +616,7 @@ track bass role=bass vol=0.44 pan=0
 | B1/1:76 |
 | B1/1:70 |
 
-track drums role=drums vol=0.9
+track drums role=drums inst.synthwave=909-kit vol=0.9
 # Intro: no kit until the saw arrives
 | R*4 |
 | [k h]/8:82 h/8:50 h/8:48 [s h]/8+10:34 [s h]/8:74 h/8:52 [k h]/8:80 oh/8:56 |
