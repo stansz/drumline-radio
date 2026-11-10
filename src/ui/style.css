@@ -851,14 +851,82 @@ body::before {
   accent-color: var(--accent);
 }
 
-/* The phone-only button that opens the style panel. */
-.style-toggle {
-  display: none;
+.tuner {
+  position: relative;
 }
 
+/* The style toggle, at the right end of the transport row, opens the styles as a panel. */
+.style-toggle {
+  display: block;
+  flex: 1 1 120px;
+  max-width: 150px;
+  min-width: 0;
+  margin-left: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 9px 6px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--accent);
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 0 8px var(--glow);
+  cursor: pointer;
+}
+
+.style-toggle::after {
+  content: ' ▴';
+}
+
+.style-toggle[aria-expanded='true']::after {
+  content: ' ▾';
+}
+
+/* The styles fold away and open as a panel above the knobs. It opens quickly and, after a pick,
+   lingers a moment so the choice shows, then fades out. */
 .bands {
-  display: flex;
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 60px;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow:
+    0 0 16px var(--glow),
+    0 -10px 40px rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.2s ease 0.14s,
+    transform 0.2s ease 0.14s,
+    visibility 0s linear 0.34s;
+}
+
+.bands.open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0s;
+}
+
+.bands .band {
+  padding: 14px 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
 }
 
 .band {
@@ -875,14 +943,6 @@ body::before {
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
-}
-
-/* Below desktop width the eight bands sit in two rows of four. */
-@media (max-width: 960px) {
-  .bands {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 /* Each band lights up in its own style's colour when selected, like the presets on a radio. */
@@ -1593,78 +1653,9 @@ body::before {
   #next { order: 8; }
   #style-toggle { order: 9; }
 
-  /* The knobs sit to the left; the style toggle sits at the right end of the row. */
-  .style-toggle {
-    display: block;
-    flex: 1 1 120px;
-    max-width: 150px;
-    min-width: 0;
-    margin-left: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 9px 6px;
-    border: 1px solid var(--accent);
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.45);
-    color: var(--accent);
-    font: inherit;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    box-shadow: 0 0 8px var(--glow);
-    cursor: pointer;
-  }
-
-  .style-toggle::after {
-    content: ' ▴';
-  }
-
-  .style-toggle[aria-expanded='true']::after {
-    content: ' ▾';
-  }
-
-  /* The styles fold away and open as a panel above the knobs. It opens quickly and, after a pick,
-     lingers a moment so the choice shows, then fades out. */
+  /* On phones the style panel is two columns of four. */
   .bands {
-    position: absolute;
-    left: 6px;
-    right: 6px;
-    bottom: 60px;
-    z-index: 5;
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    padding: 12px;
-    border: 1px solid var(--accent);
-    border-radius: 12px;
-    background: var(--bg);
-    box-shadow:
-      0 0 16px var(--glow),
-      0 -10px 40px rgba(0, 0, 0, 0.75);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition:
-      opacity 0.2s ease 0.14s,
-      transform 0.2s ease 0.14s,
-      visibility 0s linear 0.34s;
-  }
-
-  .bands.open {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    transition:
-      opacity 0.15s ease,
-      transform 0.15s ease,
-      visibility 0s;
-  }
-
-  .bands .band {
-    padding: 14px 0;
-    font-size: 13px;
-    letter-spacing: 0.08em;
   }
 
   .knob {

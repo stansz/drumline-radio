@@ -214,11 +214,12 @@ export function startUi(): void {
       button.textContent = `${own ? '★ ' : ''}${STYLE_DEFS[id].name}`;
       button.setAttribute('aria-checked', String(id === style));
     }
-    styleToggle.textContent = STYLE_DEFS[style].name;
-    styleToggle.setAttribute('aria-label', `Style: ${STYLE_DEFS[style].name}. Change style`);
+    const remix = songStyle() !== style ? ' · remix' : '';
+    styleToggle.textContent = `${STYLE_DEFS[style].name}${remix}`;
+    styleToggle.setAttribute('aria-label', `Style: ${STYLE_DEFS[style].name}${remix}. Change style`);
   }
 
-  // On phones the style buttons fold into one toggle that opens them as a panel.
+  // The style buttons fold into one toggle that opens them as a panel.
   function setStylePanel(open: boolean): void {
     bandsEl.classList.toggle('open', open);
     styleToggle.setAttribute('aria-expanded', String(open));
