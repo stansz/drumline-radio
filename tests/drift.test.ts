@@ -28,6 +28,7 @@ const SCRIPT = [
   'tools/arranger/exit-sign.mjs',
   'tools/arranger/the-silent-keep.mjs',
   'tools/arranger/sunliner.mjs',
+  'tools/arranger/confetti-cannon.mjs',
 ];
 
 describe('the song generators', () => {
