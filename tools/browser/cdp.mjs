@@ -16,6 +16,18 @@ export const EDGE = process.env.EDGE_PATH ?? BROWSERS.find((path) => existsSync(
 export const DEFAULT_URL = process.env.RADIO_URL ?? 'http://localhost:4173/drumline-radio/';
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Every Edge still open. If a check crashes or is stopped with Ctrl+C before it calls close(),
+// these handlers close them, so no Edge keeps running and no profile is left in the temp folder.
+const open = new Set();
+const bail = async (code, err) => {
+  if (err) console.error(err);
+  await Promise.allSettled([...open].map((quit) => quit()));
+  process.exit(code);
+};
+process.once('uncaughtException', (err) => bail(1, err));
+process.once('unhandledRejection', (err) => bail(1, err));
+process.once('SIGINT', () => bail(130));
+
 /** Launches headless Edge on a fresh profile and connects to its first page. */
 export async function openEdge({ port = 9400 + Math.floor(Math.random() * 400) } = {}) {
   const profile = mkdtempSync(join(tmpdir(), 'radio-edge-'));
@@ -26,10 +38,12 @@ export async function openEdge({ port = 9400 + Math.floor(Math.random() * 400) }
   // Each profile is about 30 MB; delete it once Edge has exited and released its files.
   const exited = new Promise((resolve) => edge.once('exit', resolve));
   const quit = async () => {
+    open.delete(quit);
     edge.kill();
     await exited;
     rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
   };
+  open.add(quit);
 
   let targets;
   for (let i = 0; i < 50 && !targets; i += 1) {
