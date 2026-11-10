@@ -28,8 +28,8 @@ than guessing.
 | Shortwave | Lo-fi | GLM (with Claude) | — | — | — |
 | Third Rail | Lo-fi | DeepSeek | — | — | — |
 
-Claude's own originals (Midnight Arcade, Night Shift, Save Point, Underpass, Ivory and Ash, Last
-Stop) aren't listed.
+Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
+Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
 

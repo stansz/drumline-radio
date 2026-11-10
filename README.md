@@ -82,7 +82,7 @@ Originals by SZ (and AI):
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
 - **Last Stop** (Lo-fi)
-- **Midnight Arcade** (Synthwave). A 3:36 synthwave original at 98 BPM in E minor, built around its
+- **Midnight Arcade** (Synthwave), by Claude, MiMo v2.6 Pro & SZ. A 3:36 synthwave original at 98 BPM in E minor, built around its
   saw lead and melody: the chorus hook opens the song bare with a dotted-eighth delay, the verses keep
   the arp out of the melody's way while a counter-line answers under it, the choruses double the
   melody an octave down over ghost-noted drums and a bass that ducks the sub on every kick, a
