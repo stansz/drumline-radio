@@ -203,10 +203,12 @@ describe('airSamples', () => {
     const samples = airSamples(48000 * 8, 48000, seeded);
     expect(samples.length).toBe(48000 * 8);
     let sum = 0;
+    let peak = 0;
     for (const value of samples) {
-      expect(Math.abs(value)).toBeLessThan(0.5);
+      peak = Math.max(peak, Math.abs(value));
       sum += value * value;
     }
+    expect(peak).toBeLessThan(0.5);
     const rmsDb = 20 * Math.log10(Math.sqrt(sum / samples.length));
     expect(rmsDb).toBeGreaterThan(-45);
     expect(rmsDb).toBeLessThan(-15);
