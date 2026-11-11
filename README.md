@@ -81,7 +81,6 @@ Originals by SZ (and AI):
   high E, and the fire dies back to a lone cello.
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
-- **Salt Meridian** (Orchestral), by Iceman Free & SZ. A 4:16 original at 138 BPM in F# minor and 7/8: an oboe traces a stark melody over a low drone and 2+2+3 pizzicato and timpani pulses, tubular bells mark the changes, brass cuts in with answering shards, the middle thins and fractures into a hocket before returning transformed, a hammered climax follows, and a long afterglow collapses to a lone bell and the oboe's last note.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave), by Claude, MiMo v2.6 Pro & SZ. A 3:36 synthwave original at 98 BPM in E minor, built around its
   saw lead and melody: the chorus hook opens the song bare with a dotted-eighth delay, the verses keep
