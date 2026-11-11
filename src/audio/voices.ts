@@ -1,4 +1,4 @@
-import { attackTime, audibleOsc, bendGlide, driveCurve, driveMakeup, fmIndex, pulseCoefficients } from './curves';
+import { attackTime, audibleOsc, bendGlide, driveCurve, driveMakeup, fmIndex, pulseCoefficients, velocityFilterAmount } from './curves';
 import { midiToFreq } from '../music/pitch';
 import { kitClap, kitToms } from './patches';
 import type { DrumKit, Osc, SynthPatch, Wave } from './styles';
@@ -266,7 +266,10 @@ export function playSynth(
     const filter = ctx.createBiquadFilter();
     filter.type = patch.filter.type;
     filter.Q.value = patch.filter.q;
-    filter.frequency.setValueAtTime(Math.min(patch.filter.hz * patch.filter.envAmount, 18000), time);
+    const envelope = patch.velFilter
+      ? velocityFilterAmount(patch.filter.envAmount, velocity, patch.velFilter)
+      : patch.filter.envAmount;
+    filter.frequency.setValueAtTime(Math.min(patch.filter.hz * envelope, 18000), time);
     filter.frequency.setTargetAtTime(patch.filter.hz, time, Math.max(0.001, patch.filter.envDecay / 3));
     filter.connect(env);
     collected.nodes.push(filter);

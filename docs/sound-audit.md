@@ -101,18 +101,16 @@ triangle or saw layer for body. Use it with `inst=` where a brighter arp is want
 
 **Impact:** low to medium. **Effort:** low.
 
-### 6. Velocity only changes gain
+### 6. Velocity only changes gain (built)
 
-The only velocity-aware parameter is the FM block's `velocity`; otherwise a soft note is just a
+The only velocity-aware parameter was the FM block's `velocity`; otherwise a soft note was just a
 quieter version of a hard one. Synth-pluck and stab references use velocity-to-filter-envelope
 amount for natural dynamics: soft notes darker, hard notes brighter.
 
-**Proposal:** add an optional `velFilter` (0–1) to `SynthPatch`, apply it to the filter envelope
-amount in `playSynth`, and set it on `pluck`, `poly-stab`, and `synth-bass`. Default it to 0 so every
-existing patch keeps its exact sound. A related optional `filterAttack` would let pads and strings
-open more slowly, but is less urgent.
-
-**Impact:** high for feel. **Effort:** medium.
+**Built:** `SynthPatch` has an optional `velFilter` (0–1), applied to the filter envelope amount in
+`playSynth`. The pure helper is `velocityFilterAmount` in `curves.ts`. `pluck` uses 0.6, `poly-stab`
+0.65, and `synth-bass` 0.5; every other patch keeps its exact old sound. A related optional
+`filterAttack` would let pads and strings open more slowly, but is still unbuilt.
 
 ### 7. `synth-bass` could use a pure sine sub and a little drive
 
@@ -138,8 +136,8 @@ bow edge. Leave this until the P1 and P2 changes are judged.
 
 1. **P1:** chorus/ensemble width (built); re-voice `warm-pad` (built); add presence to `choir-ooh`
    (built).
-2. **P2:** `poly-stab` high-pass (built); velocity-to-filter; `synth-bass` sine sub and light drive;
-   an FM pluck variant.
+2. **P2:** `poly-stab` high-pass (built); velocity-to-filter (built); `synth-bass` sine sub and
+   light drive; an FM pluck variant.
 3. **P3:** optional bow noise; filter attack.
 
 ## How to make the changes safely

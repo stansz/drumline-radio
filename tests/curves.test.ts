@@ -17,6 +17,7 @@ import {
   SOFT_CLIP_POINTS,
   softClipCurve,
   velocityGain,
+  velocityFilterAmount,
 } from '../src/audio/curves';
 
 describe('softClipCurve', () => {
@@ -63,6 +64,26 @@ describe('gain helpers', () => {
 
   it('divides a chord across its pitches', () => {
     expect(noteGain(0.5, 127, 4)).toBeCloseTo(0.25, 6);
+  });
+});
+
+describe('velocityFilterAmount', () => {
+  it('leaves the envelope unchanged when velocity-to-filter is off', () => {
+    expect(velocityFilterAmount(4, 0, 0)).toBe(4);
+    expect(velocityFilterAmount(4, 127, 0)).toBe(4);
+  });
+
+  it('closes the filter sweep for soft notes as the depth rises', () => {
+    expect(velocityFilterAmount(4, 0, 1)).toBe(1);
+    expect(velocityFilterAmount(4, 127, 1)).toBe(4);
+    expect(velocityFilterAmount(4, 64, 0.5)).toBeCloseTo(1 + 3 * (1 - 0.5 * (1 - 64 / 127)), 6);
+  });
+
+  it('clamps velocity and depth', () => {
+    expect(velocityFilterAmount(4, -10, 1)).toBe(1);
+    expect(velocityFilterAmount(4, 200, 1)).toBe(4);
+    expect(velocityFilterAmount(4, 127, 3)).toBe(4);
+    expect(velocityFilterAmount(4, 0, -1)).toBe(4);
   });
 });
 

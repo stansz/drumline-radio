@@ -63,6 +63,9 @@ export interface SynthPatch {
     /** Resonance in dB-ish units; 0.7 is gentle, higher is sharper. */
     q: number;
   };
+  /** 0–1: how much velocity controls the filter envelope. At 0 the envelope is fixed; at 1 a soft
+   *  note gets no filter sweep and a hard note gets the full envAmount. */
+  velFilter?: number;
   vibrato?: {
     /** LFO rate in Hz; around 5 is a singer's wobble, under 1 a slow drift. */
     rate: number;

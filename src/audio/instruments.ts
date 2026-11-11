@@ -111,6 +111,7 @@ export const KEYS: Record<string, Patch> = {
     env: env(0.005, 0.25, 0.3, 0.2),
     filter: { type: 'lowpass', hz: 1800, q: 3, envAmount: 3, envDecay: 0.15 },
     highpass: { hz: 320, q: 0.7 },
+    velFilter: 0.65,
     gain: 0.22,
   }),
   // Synthwave arp: a short plucked synth for fast arpeggios.
@@ -119,6 +120,7 @@ export const KEYS: Record<string, Patch> = {
     oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 1, 5, 0.25)],
     env: env(0.002, 0.15, 0, 0.1),
     filter: { type: 'lowpass', hz: 2600, q: 2, envAmount: 2, envDecay: 0.1 },
+    velFilter: 0.6,
     gain: 0.2,
     sends: { reverb: 1, delay: 1.5 },
   }),
@@ -366,6 +368,7 @@ export const BASSES: Record<string, Patch> = {
     oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', -1, 0, 0.4)],
     env: env(0.005, 0.2, 0.6, 0.05),
     filter: { type: 'lowpass', hz: 500, q: 2, envAmount: 4, envDecay: 0.12 },
+    velFilter: 0.5,
     gain: 0.4,
     sends: { reverb: 0.2, delay: 0 },
   }),

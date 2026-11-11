@@ -69,6 +69,11 @@ A patch can set `highpass: { hz, q }` to put a high-pass before its main filter.
 clears low-mid build-up; `poly-stab` uses 320 Hz so the chord stabs sit above the bass instead of
 competing with it. Use it when a part has too much root weight, not as a general brightener.
 
+A patch can set `velFilter` from 0 to 1 to let note velocity open its filter envelope. At 0 the
+envelope is fixed, as before; at 1 a soft note gets no filter sweep and a hard note gets the full
+`envAmount`. `pluck`, `poly-stab`, and `synth-bass` use it, so their soft notes are darker as well as
+quieter.
+
 A synth patch can also set `string` to add a plucked string (Karplus-Strong): a burst of fixed-seed
 noise, shaped by the pick position, circulates in a delay line one period long and is softened on
 each pass, so it rings and decays like a string. `decay`, `brightness`, and `pick` shape it, `octave`

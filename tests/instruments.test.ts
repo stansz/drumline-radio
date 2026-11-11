@@ -52,6 +52,14 @@ describe('the instrument bank', () => {
     }
   });
 
+  it('keeps every velocity-to-filter depth in range', () => {
+    for (const [id, patch] of Object.entries(INSTRUMENTS)) {
+      if (patch.kind !== 'synth' || patch.velFilter === undefined) continue;
+      expect(patch.velFilter, id).toBeGreaterThanOrEqual(0);
+      expect(patch.velFilter, id).toBeLessThanOrEqual(1);
+    }
+  });
+
   it('gives choir-ooh a broad presence band over the oo vowel', () => {
     const patch = INSTRUMENTS['choir-ooh'];
     expect(patch.kind).toBe('synth');

@@ -90,6 +90,27 @@ describe('high-pass', () => {
   });
 });
 
+describe('velocity-to-filter', () => {
+  it('is off unless a patch opts in, and keeps an explicit depth', () => {
+    const plain = synth({
+      name: 'Plain',
+      oscs: [],
+      env: env(0.01, 0.1, 0.8, 0.1),
+      gain: 1,
+    });
+    expect(plain.velFilter).toBeUndefined();
+
+    const expressive = synth({
+      name: 'Expressive',
+      oscs: [],
+      env: env(0.01, 0.1, 0.8, 0.1),
+      gain: 1,
+      velFilter: 0.6,
+    });
+    expect(expressive.velFilter).toBe(0.6);
+  });
+});
+
 describe('drum kit defaults', () => {
   it('has the old toms as defaults', () => {
     expect(DEFAULT_TOMS).toEqual({

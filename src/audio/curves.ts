@@ -75,6 +75,14 @@ export function velocityGain(velocity: number): number {
   return (velocity / 127) ** 1.6;
 }
 
+/** The filter envelope peak with optional velocity-to-filter. At velFilter 0 the envelope is
+ *  unchanged; at 1 a soft note gets no sweep and a hard note gets the full envAmount. */
+export function velocityFilterAmount(envAmount: number, velocity: number, velFilter = 0): number {
+  const vel = Math.max(0, Math.min(1, velocity / 127));
+  const depth = Math.max(0, Math.min(1, velFilter));
+  return 1 + (envAmount - 1) * (1 - depth * (1 - vel));
+}
+
 export function noteGain(patchGain: number, velocity: number, chordSize: number): number {
   return (patchGain * velocityGain(velocity)) / Math.sqrt(Math.max(1, chordSize));
 }
