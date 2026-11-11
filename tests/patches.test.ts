@@ -69,6 +69,27 @@ describe('chorus', () => {
   });
 });
 
+describe('high-pass', () => {
+  it('is off unless a patch opts in, and keeps explicit settings', () => {
+    const plain = synth({
+      name: 'Plain',
+      oscs: [],
+      env: env(0.01, 0.1, 0.8, 0.1),
+      gain: 1,
+    });
+    expect(plain.highpass).toBeUndefined();
+
+    const clear = synth({
+      name: 'Clear',
+      oscs: [],
+      env: env(0.01, 0.1, 0.8, 0.1),
+      gain: 1,
+      highpass: { hz: 320, q: 0.7 },
+    });
+    expect(clear.highpass).toEqual({ hz: 320, q: 0.7 });
+  });
+});
+
 describe('drum kit defaults', () => {
   it('has the old toms as defaults', () => {
     expect(DEFAULT_TOMS).toEqual({

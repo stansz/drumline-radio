@@ -110,6 +110,7 @@ export const KEYS: Record<string, Patch> = {
     oscs: [osc('sawtooth', 0, -6, 0.5), osc('sawtooth', 0, 6, 0.5)],
     env: env(0.005, 0.25, 0.3, 0.2),
     filter: { type: 'lowpass', hz: 1800, q: 3, envAmount: 3, envDecay: 0.15 },
+    highpass: { hz: 320, q: 0.7 },
     gain: 0.22,
   }),
   // Synthwave arp: a short plucked synth for fast arpeggios.

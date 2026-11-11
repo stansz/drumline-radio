@@ -20,7 +20,7 @@ notes, so use the split for relative comparison, not as exact percentages.
 | `string-pad` | 6 harmonics, 902 Hz centroid at G4; 45/51/4 low/mid/high at C4 | Balanced ensemble pad. |
 | `warm-pad` | 6 harmonics, 942 Hz centroid at G4; 16/82/2 low/mid/high at G4, 69/29/2 at C4, 33/65/2 at E4 | Re-voiced: less sub, more mid; no longer masks the bass. |
 | `choir-ooh` | 12 harmonics, 1185 Hz centroid at C4; 81/15/4 low/mid/high at A3 | Presence band added; no longer turns to mud under a verse. |
-| `poly-stab` | **77/18/5 low/mid/high at G3**, 99/0/3 at C3 | Low-mid build-up in the chord stabs. |
+| `poly-stab` | 55/40/5 low/mid/high at G3, 60/35/5 at C3, 43/51/6 at C4 | High-passed at 320 Hz; clears the low-mid build-up. |
 | `fm-pluck` | 2 harmonics half a second in at G4; 82/12 mid/high at C5, 54/46 at C6 | The FM character is in the attack; the tail is nearly a sine. |
 | `synth-bass` | 10 harmonics, 310 Hz centroid at E2 | Punchy and present; no clean sine sub layer. |
 
@@ -66,7 +66,7 @@ consistently recommend a high-pass around 200–400 Hz to stop a pad masking the
 `+1` octave saw. The low-pass moved from 1400 to 1700 Hz, and the gain was re-matched to 0.24. At G4
 the patch moved from 3 harmonics / 530 Hz to 6 / 942 Hz; at C4 the split moved from 84/15/1 to
 69/29/2, and at E4 from 67/32/1 to 33/65/2. Afterglow Avenue, Midnight Arcade, and Sunliner still
-balance with no flags. The optional high-pass field is still unbuilt and available for `poly-stab`.
+balance with no flags. The new high-pass field is used on `poly-stab` below.
 
 ### 3. `choir-ooh` is extremely dark (built)
 
@@ -78,16 +78,16 @@ become indistinguishable from the pad.
 split moved from 94/6/0 to 81/15/4, its centroid is now 1185 Hz, and Sunliner still balances cleanly.
 The upper three bands and the 3000 Hz low-pass are otherwise unchanged.
 
-### 4. `poly-stab` builds up low-mid
+### 4. `poly-stab` builds up low-mid (built)
 
-At G3, 77% of the energy is below 300 Hz; at C3 it is 99%. The patch is two detuned saws at the
-written pitch with a 1800 Hz low-pass; the low weight comes from the chord voicings themselves.
+The old patch measured 77% of its energy below 300 Hz at G3 and 99% at C3. It is two detuned saws at
+the written pitch with a 1800 Hz low-pass; the low weight came from the chord voicings themselves.
 
-**Proposal:** add a high-pass around 200–300 Hz, or re-voice the stab with a brighter +1 octave layer
-and less root weight. A high-pass is cleaner, but needs the new filter field. For a patch-only test,
-try a band-pass around 1200–1600 Hz with a low `q` and compare the mix.
-
-**Impact:** medium. **Effort:** low to medium.
+**Built:** `SynthPatch` now has an optional `highpass { hz, q }` before the main filter, and
+`poly-stab` uses 320 Hz. The split moved from 77/18/5 to 55/40/5 at G3, from 99/0/3 to 60/35/5 at C3,
+and from 49/45/6 to 43/51/6 at C4. Afterglow Avenue and Sunliner balance with no flags; Starlight
+Drive keeps only its localized arp breakdown flag. The stabs' peak rose a few dB because the
+high-pass exposes the transient; the mix still leaves them under the lead.
 
 ### 5. `fm-pluck` is attack-only
 
@@ -138,8 +138,8 @@ bow edge. Leave this until the P1 and P2 changes are judged.
 
 1. **P1:** chorus/ensemble width (built); re-voice `warm-pad` (built); add presence to `choir-ooh`
    (built).
-2. **P2:** velocity-to-filter; `synth-bass` sine sub and light drive; `poly-stab` high-pass; an
-   FM pluck variant.
+2. **P2:** `poly-stab` high-pass (built); velocity-to-filter; `synth-bass` sine sub and light drive;
+   an FM pluck variant.
 3. **P3:** optional bow noise; filter attack.
 
 ## How to make the changes safely

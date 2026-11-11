@@ -65,6 +65,10 @@ patches without it sound exactly as before. `warm-pad`, `choir-aah`, and `choir-
 lead patches leave it off so their balance stays put. Keep `depth` around 2–5 ms for a chorus; above
 that it reads as a wobble. The dry attack stays sharp; only the wet side is delayed.
 
+A patch can set `highpass: { hz, q }` to put a high-pass before its main filter. It is opt-in and
+clears low-mid build-up; `poly-stab` uses 320 Hz so the chord stabs sit above the bass instead of
+competing with it. Use it when a part has too much root weight, not as a general brightener.
+
 A synth patch can also set `string` to add a plucked string (Karplus-Strong): a burst of fixed-seed
 noise, shaped by the pick position, circulates in a delay line one period long and is softened on
 each pass, so it rings and decays like a string. `decay`, `brightness`, and `pick` shape it, `octave`

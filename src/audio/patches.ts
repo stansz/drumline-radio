@@ -56,6 +56,13 @@ export interface SynthPatch {
     /** Seconds for the filter envelope to fall back to `hz`. */
     envDecay: number;
   };
+  /** A high-pass before the main filter, for clearing low-mid build-up from chord stabs. */
+  highpass?: {
+    /** Corner frequency in Hz. */
+    hz: number;
+    /** Resonance in dB-ish units; 0.7 is gentle, higher is sharper. */
+    q: number;
+  };
   vibrato?: {
     /** LFO rate in Hz; around 5 is a singer's wobble, under 1 a slow drift. */
     rate: number;

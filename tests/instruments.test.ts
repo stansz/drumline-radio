@@ -44,6 +44,14 @@ describe('the instrument bank', () => {
     }
   });
 
+  it('keeps every high-pass setting usable', () => {
+    for (const [id, patch] of Object.entries(INSTRUMENTS)) {
+      if (patch.kind !== 'synth' || !patch.highpass) continue;
+      expect(patch.highpass.hz, id).toBeGreaterThan(0);
+      expect(patch.highpass.q, id).toBeGreaterThan(0);
+    }
+  });
+
   it('gives choir-ooh a broad presence band over the oo vowel', () => {
     const patch = INSTRUMENTS['choir-ooh'];
     expect(patch.kind).toBe('synth');

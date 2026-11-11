@@ -272,6 +272,15 @@ export function playSynth(
     collected.nodes.push(filter);
     destination = filter;
   }
+  if (patch.highpass) {
+    const highpass = ctx.createBiquadFilter();
+    highpass.type = 'highpass';
+    highpass.frequency.value = patch.highpass.hz;
+    highpass.Q.value = patch.highpass.q;
+    highpass.connect(destination);
+    collected.nodes.push(highpass);
+    destination = highpass;
+  }
 
   let oscTarget: AudioNode = destination;
   const drive = patch.drive ?? 0;
