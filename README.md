@@ -103,6 +103,13 @@ Originals by SZ (and AI):
   fourth (A-C-F-A), a square lead answering in the gaps, a 3+3+2 poly-stab groove, a syncopated
   FM-pluck arp, half-time verses that open into a four-on-the-floor chorus on the 909 kit, and a
   bar-late square echo in the bridge before the whole step up.
+- **Velvet Freeway** (Synthwave), by Arena Agent & SZ. A 4:19 melody-first sunset-cruise original
+  at 104 BPM in G major, up a whole step to A major for the last chorus and ritarding through the
+  outro: a saw-lead hook built on a two-note cell (B-D, B-D) that climbs the scale to a held
+  tonic, a square lead answering in the gaps the hook leaves, backbeat poly-stabs, an interleaved
+  pluck arp (0-2-1-3-0-2-3-1), a root-and-fifth pad, a cruising synth bass and the gated kit, with
+  the two-note cell walked up C-D-Em by the square in the bridge, taken into eighths by the saw in
+  the solo, and sung back by the ooh choir under the last chorus.
 - **Fathom** (Techno), by Qwen3.8 Flash & SZ. A 5:09 dub techno original at 118 BPM in G minor: one
   chord stab and nothing else melodic, voiced eight ways, its repeats written as extra stabs that
   land later and softer each time. It opens on the lone echoing chord with no kick, builds a rumbling

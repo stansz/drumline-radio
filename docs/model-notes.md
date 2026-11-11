@@ -16,6 +16,7 @@ than guessing.
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
 | Sunliner | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
+| Velvet Freeway | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
 | Wayfarer's Rest | Chiptune | Gemini 3.8 Flash | $0.75 / $3.75 | $1.25 | Mix: arp buried, bass too loud |
@@ -33,6 +34,32 @@ Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### Velvet Freeway — Arena Agent (2026-11-10)
+
+- **Brief:** a melody-first synthwave song, 3:30-4:30, clearly different from Midnight Arcade
+  (98 BPM, E minor) and Sunliner (118 BPM, D major): a hummable saw-lead hook with a motif that
+  repeats and develops, a verse melody of its own, a lifting chorus, a bridge or solo, a last
+  chorus that lifts, an outro on the motif, human microtiming, and only one extra bank instrument.
+- **What it wrote:** 4:19 at 104 BPM in G major, up a whole step to A major for the last chorus,
+  with a two-note cell (B-D, B-D) rising to the held tonic as the hook, vi-IV-I-V verses, an
+  Am-Bm-C-D pre-chorus, a bridge that walks the cell up C-D-Em on the square lead, a solo that turns
+  it into eighths and bends into the new key, and the ooh choir under the last chorus. It is a
+  generator, `tools/arranger/velvet-freeway.mjs`, added to `tests/drift.test.ts`.
+- **Followed well:** 0 clashes and 0 off-chord notes on the first full run, a distinct key and
+  tempo from every other synthwave song, uneven velocities and micro-offsets from the start, and
+  both `npm run balance` flags it found were fixed rather than explained away.
+- **Tool notes:** the balance check flags a bass "over the lead" in sections where the lead is
+  deliberately silent (the intro tease, the kick-less bridge), which reads as a false positive until
+  you see the lead's level in that row; the per-section table makes it clear, the flag text doesn't.
+  Levelling a melodic lead against a peak-based arp rule is also a squeeze when the lead has a wide
+  dynamic range: the fix was to lower the lead's `vol=` as well as raise the arp's velocities,
+  because the arp's `vol=` was already at 1.
+- **Ideas for the process:** a `--dry` mode for `balance` that prints the level table without
+  starting a browser; a per-bar version of the clash report's "explain this one" annotation, so a
+  deliberate suspension can be marked in the song instead of the commit message; and a check that a
+  new song's hook is not a near-twin of a sibling's (same hook rhythm plus same first three
+  intervals), which is the mistake the docs warn about and the clash check can't see.
 
 ### Afterglow Avenue — DeepSeek V4.1 Flash (2026-11-10)
 

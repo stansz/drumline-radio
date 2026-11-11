@@ -29,6 +29,7 @@ const SCRIPT = [
   'tools/arranger/the-silent-keep.mjs',
   'tools/arranger/sunliner.mjs',
   'tools/arranger/confetti-cannon.mjs',
+  'tools/arranger/velvet-freeway.mjs',
 ];
 
 describe('the song generators', () => {
