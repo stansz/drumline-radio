@@ -268,7 +268,8 @@ export const PADS: Record<string, Patch> = {
     ],
     env: env(0.6, 1, 0.8, 1.2),
     filter: { type: 'lowpass', hz: 1400, q: 0.7, envAmount: 1, envDecay: 1 },
-    gain: 0.22,
+    chorus: { rate: 0.32, depth: 4.2, mix: 0.42 },
+    gain: 0.24,
     sends: { reverb: 1.4, delay: 0.5 },
   }),
   // Chiptune pad: held square-wave chords.
@@ -344,13 +345,15 @@ export const PADS: Record<string, Patch> = {
     oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
     formants: VOWELS.ah, env: env(0.35, 1, 0.85, 0.9),
     filter: { type: 'lowpass', hz: 4000, q: 0.5, envAmount: 1, envDecay: 0.1 },
-    vibrato: { rate: 5, cents: 10, delay: 0.4 }, gain: 0.8, sends: { reverb: 1, delay: 0.3 } }),
+    vibrato: { rate: 5, cents: 10, delay: 0.4 }, chorus: { rate: 0.42, depth: 3.2, mix: 0.32 },
+    gain: 0.9, sends: { reverb: 1, delay: 0.3 } }),
   // A wordless choir singing "ooh": detuned saws through the "oo" formants, darker and rounder.
   'choir-ooh': synth({ name: 'Choir ooh',
     oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
     formants: VOWELS.oo, env: env(0.4, 1, 0.85, 1),
     filter: { type: 'lowpass', hz: 3000, q: 0.5, envAmount: 1, envDecay: 0.1 },
-    vibrato: { rate: 5, cents: 10, delay: 0.4 }, gain: 0.53, sends: { reverb: 1, delay: 0.3 } }),
+    vibrato: { rate: 5, cents: 10, delay: 0.4 }, chorus: { rate: 0.38, depth: 3.6, mix: 0.36 },
+    gain: 0.51, sends: { reverb: 1, delay: 0.3 } }),
 };
 
 export const BASSES: Record<string, Patch> = {

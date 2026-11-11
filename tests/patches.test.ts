@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_CLAP, DEFAULT_TOMS, drums, kitClap, kitToms, VOWELS } from '../src/audio/patches';
+import { DEFAULT_CLAP, DEFAULT_TOMS, drums, env, kitClap, kitToms, synth, VOWELS } from '../src/audio/patches';
 import type { DrumKit } from '../src/audio/patches';
 
 describe('vowel formants', () => {
@@ -47,6 +47,27 @@ function testKit(extra: Partial<Pick<DrumKit, 'toms' | 'clap'>> = {}): DrumKit {
     ...extra,
   });
 }
+
+describe('chorus', () => {
+  it('is off unless a patch opts in, and keeps explicit settings', () => {
+    const plain = synth({
+      name: 'Plain',
+      oscs: [],
+      env: env(0.01, 0.1, 0.8, 0.1),
+      gain: 1,
+    });
+    expect(plain.chorus).toBeUndefined();
+
+    const wide = synth({
+      name: 'Wide',
+      oscs: [],
+      env: env(0.01, 0.1, 0.8, 0.1),
+      gain: 1,
+      chorus: { rate: 0.4, depth: 3, mix: 0.3 },
+    });
+    expect(wide.chorus).toEqual({ rate: 0.4, depth: 3, mix: 0.3 });
+  });
+});
 
 describe('drum kit defaults', () => {
   it('has the old toms as defaults', () => {

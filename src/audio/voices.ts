@@ -152,6 +152,69 @@ function clampLevel(value: number): number {
   return Math.max(0.0001, value);
 }
 
+// A stereo chorus: two short delay lines modulated in opposite directions, panned left and right,
+// summed under a dry centre. The LFO is a source, so makeVoice starts and stops it with the note.
+function chorusStage(
+  ctx: BaseAudioContext,
+  input: AudioNode,
+  out: AudioNode,
+  settings: NonNullable<SynthPatch['chorus']>,
+  collected: Part,
+): void {
+  const mix = Math.max(0, Math.min(1, settings.mix));
+  const rate = Math.max(0.01, settings.rate);
+  const depth = Math.max(0, settings.depth) / 1000;
+  const base = 0.018;
+
+  const dry = ctx.createGain();
+  dry.gain.value = 1 - mix * 0.35;
+  const dryPan = ctx.createStereoPanner();
+  dryPan.pan.value = 0;
+  input.connect(dry);
+  dry.connect(dryPan);
+
+  const wet = ctx.createGain();
+  wet.gain.value = mix * 0.7;
+  const lfo = ctx.createOscillator();
+  lfo.type = 'sine';
+  lfo.frequency.value = rate;
+  const plus = ctx.createGain();
+  plus.gain.value = depth;
+  const minus = ctx.createGain();
+  minus.gain.value = -depth;
+  lfo.connect(plus);
+  lfo.connect(minus);
+
+  const delayL = ctx.createDelay(0.05);
+  const delayR = ctx.createDelay(0.05);
+  delayL.delayTime.value = base;
+  delayR.delayTime.value = base;
+  plus.connect(delayL.delayTime);
+  minus.connect(delayR.delayTime);
+  input.connect(delayL);
+  input.connect(delayR);
+
+  const panL = ctx.createStereoPanner();
+  panL.pan.value = -0.75;
+  const panR = ctx.createStereoPanner();
+  panR.pan.value = 0.75;
+  delayL.connect(panL);
+  delayR.connect(panR);
+  panL.connect(wet);
+  panR.connect(wet);
+
+  // The dry and wet panners each lose level when their stereo output is summed back to the track.
+  // This makeup keeps a chorus patch close to the same RMS as its unprocessed version.
+  const makeup = ctx.createGain();
+  makeup.gain.value = 1.45;
+  dryPan.connect(makeup);
+  wet.connect(makeup);
+  makeup.connect(out);
+
+  collected.nodes.push(dry, dryPan, wet, lfo, plus, minus, delayL, delayR, panL, panR, makeup);
+  collected.sources.push({ node: lfo });
+}
+
 export function playSynth(
   kit: VoiceKit,
   patch: SynthPatch,
@@ -193,7 +256,9 @@ export function playSynth(
   // A time constant of release/4 and a stop at 2 × release leave the voice at about 0.03% of its
   // level when it is cut, so notes end without a click.
   env.gain.setTargetAtTime(0, relStart, Math.max(0.001, release / 4));
-  env.connect(out);
+  // The chorus sits after the envelope, so the whole voice is widened, not just the raw source.
+  if (patch.chorus) chorusStage(ctx, env, out, patch.chorus, collected);
+  else env.connect(out);
   collected.nodes.push(env);
 
   let destination: AudioNode = env;

@@ -58,6 +58,13 @@ A synth patch can set `drive` from 0 to 1. That puts a tanh wave shaper between 
 the filter, so the patch distorts; the Cinematic lead guitar and the Lo-fi dusty sample and radio
 lead use it.
 
+A synth patch can also set `chorus`: two short delay lines (18 ms base) modulated in opposite
+directions by one sine LFO, panned left and right and summed under a dry centre. `rate` is the LFO in
+Hz, `depth` is the peak delay swing in milliseconds, and `mix` is the wet level. It is opt-in, so
+patches without it sound exactly as before. `warm-pad`, `choir-aah`, and `choir-ooh` use it; the
+lead patches leave it off so their balance stays put. Keep `depth` around 2–5 ms for a chorus; above
+that it reads as a wobble. The dry attack stays sharp; only the wet side is delayed.
+
 A synth patch can also set `string` to add a plucked string (Karplus-Strong): a burst of fixed-seed
 noise, shaped by the pick position, circulates in a delay line one period long and is softened on
 each pass, so it rings and decays like a string. `decay`, `brightness`, and `pick` shape it, `octave`
@@ -267,6 +274,7 @@ For a measured audit of the bank's timbres and the proposed changes, see
 | Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
 | Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `oboe` |
 | Flute, breathy parts | oscillators + breath | `woodwind`, `concert-flute` |
+| Stereo width | chorus | `warm-pad`, `choir-ooh` |
 
 ### FM
 

@@ -64,6 +64,15 @@ export interface SynthPatch {
     /** Seconds the vibrato waits before fading in. */
     delay: number;
   };
+  /** A stereo chorus/ensemble: two short modulated delay lines, one per side, around a dry centre. */
+  chorus?: {
+    /** LFO rate in Hz; 0.2–1 is a slow ensemble, 2–5 a wobble. */
+    rate: number;
+    /** Peak delay modulation in milliseconds; 2–5 ms is a classic chorus, 8+ a wide wobble. */
+    depth: number;
+    /** Wet level, 0–1; 0.15–0.3 is subtle, 0.4–0.6 is lush. */
+    mix: number;
+  };
   /** Two-operator FM: a sine modulator at note frequency × ratio wobbles the oscillators' pitch. */
   fm?: {
     ratio: number;     // modulator frequency ÷ note frequency; whole numbers are harmonic, others bell-like

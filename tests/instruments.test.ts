@@ -33,4 +33,14 @@ describe('the instrument bank', () => {
   it('names every bank id with lowercase letters, digits, and dashes', () => {
     for (const id of Object.keys(INSTRUMENTS)) expect(id).toMatch(/^[a-z0-9-]+$/);
   });
+
+  it('keeps every chorus setting inside a usable range', () => {
+    for (const [id, patch] of Object.entries(INSTRUMENTS)) {
+      if (patch.kind !== 'synth' || !patch.chorus) continue;
+      expect(patch.chorus.rate, id).toBeGreaterThan(0);
+      expect(patch.chorus.depth, id).toBeGreaterThan(0);
+      expect(patch.chorus.mix, id).toBeGreaterThan(0);
+      expect(patch.chorus.mix, id).toBeLessThanOrEqual(1);
+    }
+  });
 });

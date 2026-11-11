@@ -41,20 +41,21 @@ notes, so use the split for relative comparison, not as exact percentages.
 
 ## The real gaps
 
-### 1. No chorus, ensemble, or stereo spread
+### 1. Chorus/ensemble (built)
 
-`voices.ts` sums every oscillator into one mono target; stereo width comes only from the track pan,
-reverb, and delay. The Juno-style chorus is one of the defining synthwave ingredients: MusicRadar's
-Juno pad tutorial ends with chorus as the step that "fattens things up", and Futureproof's synthwave
-guide lists subtle chorus and detune under "analog warmth & imperfection". The current detuned
-oscillator pairs beat in mono; they do not spread.
+`voices.ts` used to sum every oscillator into one mono target; stereo width came only from the track
+pan, reverb, and delay. The Juno-style chorus is one of the defining synthwave ingredients:
+MusicRadar's Juno pad tutorial ends with chorus as the step that "fattens things up", and
+Futureproof's synthwave guide lists subtle chorus and detune under "analog warmth &
+imperfection".
 
-**Proposal:** add an optional chorus/ensemble stage to `SynthPatch` (rate, depth, mix) or a style
-effect, and apply it in `playSynth`. A cheaper first version is per-oscillator pan for detuned pairs,
-but a slow modulated delay is closer to the Juno sound. This is shared engine code and needs tests
-and level checks.
-
-**Impact:** high. **Effort:** medium.
+**Built:** `SynthPatch` now has an optional `chorus` (rate, depth, mix). It is two 18 ms delay lines
+modulated in opposite directions, panned left and right, under a dry centre. `warm-pad`,
+`choir-aah`, and `choir-ooh` opt in; everything else is unchanged. The lead patches stay dry for now:
+adding chorus to `saw-lead` and `vox-lead` pushed them over the balance thresholds in Midnight
+Arcade, Sunliner, and Starlight Drive, so the width lives on the pads and choirs until a per-song
+level pass is worth doing. See [sound.md](sound.md). The remaining P1 work is the `warm-pad` and
+`choir-ooh` re-voicing below.
 
 ### 2. `warm-pad` is bottom-heavy
 
@@ -138,7 +139,7 @@ bow edge. Leave this until the P1 and P2 changes are judged.
 
 ## Suggested order
 
-1. **P1:** chorus/ensemble width; re-voice `warm-pad`; add presence to `choir-ooh`.
+1. **P1:** chorus/ensemble width (built); re-voice `warm-pad`; add presence to `choir-ooh`.
 2. **P2:** velocity-to-filter; `synth-bass` sine sub and light drive; `poly-stab` high-pass; an
    FM pluck variant.
 3. **P3:** optional bow noise; filter attack.
