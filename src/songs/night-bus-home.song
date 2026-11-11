@@ -1,10 +1,10 @@
 # Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio
-# style at 132 BPM in Bb minor: a slow, floating wordless vocal hook someone can hum after one
-# listen - a pickup, a scoop up to a long-held peak, a fall that settles early, and a breath, two
-# bars to a phrase - over a busy, skippy groove, with a sparse chopped vocal riff where the vocal
-# rests. The verse has a more talkative tune of its own, and each pre-chorus
-# climbs to the song's high Eb before the hook. A breakdown drops the kick so the vocal sings the
-# hook bare, snare rolls build back up, and the final double chorus runs into a stripped outro.
+# style at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen - a pickup,
+# a scoop up to a long-held peak, a fall that settles early, and a breath - sung in half time so it
+# floats over a busy, skippy groove, with a sparse chopped vocal riff where the vocal rests. The
+# verse has a more talkative tune of its own, and each pre-chorus climbs to the song's high Eb
+# before the hook. A breakdown drops the kick so the vocal sings the hook bare, snare rolls build
+# back up, and the final chorus runs into a stripped outro.
 #
 # The groove: every part shares one swing (each second sixteenth of a beat lands 64 ticks late,
 # the eighths stay straight). The verses run on a 2-step kick (beat 1 and the "and" of 3), the
@@ -12,18 +12,19 @@
 # off-beat sixteenths, and the saw bass dodges the kick, dropping an octave with a bend at the end
 # of each loop.
 #
-# The chord loop is Bbm9 - Gbmaj7 - Dbmaj9 - Ab6, one chord a bar, except the two pre-choruses
-# (Gbmaj7 - Ab9 - Bbm9 - Bbm9 - Gbmaj7 - Dbmaj9 - Absus4 - Ab9). The pad holds root and fifth only,
-# so the melody's colour tones never sit a half step against it, and every long melody note is a
-# chord tone of its bar.
-# chords: Bbm9 Gbmaj7 Dbmaj9 Ab6
-# chords @25: Gbmaj7 Ab9 Bbm9 Bbm9 Gbmaj7 Dbmaj9 Absus4 Ab9
-# chords @33: Bbm9 Gbmaj7 Dbmaj9 Ab6
-# chords @65: Gbmaj7 Ab9 Bbm9 Bbm9 Gbmaj7 Dbmaj9 Absus4 Ab9
-# chords @73: Bbm9 Gbmaj7 Dbmaj9 Ab6
+# The chord loop is Bbm9 - Gbmaj7 - Dbmaj9 - Ab6, two bars to a chord to match the half-time vocal,
+# except the two pre-choruses (Gbmaj7 - Ab9 - Bbm9, two bars each, then Dbmaj9 - Absus4). The pad
+# holds root and fifth only, so the melody's colour tones never sit a half step against it. The
+# off-chord report lists the vocal's passing notes, which last a quarter in half time: 9ths, 6ths,
+# 11ths and 13ths, and one 4-3 suspension over Ab6, all clash-free.
+# chords: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
+# chords @25: Gbmaj7 Gbmaj7 Ab9 Ab9 Bbm9 Bbm9 Dbmaj9 Absus4
+# chords @33: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
+# chords @65: Gbmaj7 Gbmaj7 Ab9 Ab9 Bbm9 Bbm9 Dbmaj9 Absus4
+# chords @73: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
 title: Night Bus Home
 composer: MiMo v2.6 Pro, Claude & SZ
-about: UK garage at 132 in Bb minor: a slow, floating wordless vocal hook and a chopped vocal riff over skippy Rhodes, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
+about: UK garage at 132 in Bb minor: a half-time wordless vocal hook floating over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
 year: 2026
 source: original
 category: originals
@@ -37,225 +38,225 @@ track lead role=lead inst=garage-vox vol=0.95
 | R | R | R | R |
 | R | R | R | R |
 # Verse 1
-| r/8 Db5/8+6:86 Db5/8+10:88 F5/8.+4:92 r/8 C5/32+76:94^ Db5/4~ Db5/32 | r/8 Eb5/8+6:86 F5/8+10:88 Db5/8.+4:92 r/8 Bb4/4+76:94~ Bb4/16 | r/8 F5/8+6:86 Ab5/8+10:88 F5/8.+4:92 r/8 C5/32+76:94^ Db5/4~ Db5/32 | r/8 Eb5/8+6:86 F5/8+10:88 Eb5/8.+4:92 r/8 C5/4+76:94~ C5/16 |
-| r/8. Db5/16+70:86 F5/4+10:92 r/8 Eb5/8+4:88 Db5/4+12:94 | r/8. Eb5/16+70:86 F5/4+10:92 r/8 Db5/8+4:88 Bb4/4+12:94 | r/8. F5/16+70:86 Ab5/4+10:92 r/8 F5/8+4:88 Db5/4+12:94 | r/8. Eb5/16+70:86 F5/4+10:92 r/8 Ab5/8+4:88 Eb5/4+12:94 |
-| r/8 Db5/8+6:90 Db5/8+10:92 F5/8.+4:96 r/8 C5/32+76:98^ Db5/4~ Db5/32 | r/8 Eb5/8+6:90 F5/8+10:92 Db5/8.+4:96 r/8 Bb4/4+76:98~ Bb4/16 | r/8 F5/8+6:90 Ab5/8+10:92 F5/8.+4:96 r/8 C5/32+76:98^ Db5/4~ Db5/32 | r/8 Eb5/8+6:90 F5/8+10:92 Eb5/8.+4:96 r/8 C5/4+76:98~ C5/16 |
-| r/8. Db5/16+70:90 F5/4+10:96 r/8 Eb5/8+4:92 Db5/4+12:98 | r/8. Eb5/16+70:90 F5/4+10:96 r/8 Db5/8+4:92 Bb4/4+12:98 | r/8. F5/16+70:90 Ab5/4+10:96 r/8 F5/8+4:92 Db5/4+12:98 | r/8. Eb5/16+70:90 F5/4+10:96 r/8 Ab5/8+4:92 Eb5/4+12:98 |
+| r/4 Db5/4+6:88 Db5/4+10:90 F5/4+4:94~ | F5/8 r/4 C5/32+6:96^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:88 F5/4+10:90 Db5/4+4:94~ | Db5/8 r/4 Bb4/2+6:96~ Bb4/8 |
+| r/4 F5/4+6:88 Ab5/4+10:90 F5/4+4:94~ | F5/8 r/4 C5/32+6:96^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:88 F5/4+10:90 Eb5/4+4:94~ | Eb5/8 r/4 C5/2+6:96~ C5/8 |
+| r/4. Db5/8+6:88 F5/2+10:94 | r/4 Eb5/4+6:90 Db5/2+10:96 | r/4. Eb5/8+6:88 F5/2+10:94 | r/4 Db5/4+6:90 Bb4/2+10:96 |
+| r/4. F5/8+6:88 Ab5/2+10:94 | r/4 F5/4+6:90 Db5/2+10:96 | r/4. Eb5/8+6:88 F5/2+10:94 | r/4 Ab5/4+6:90 Eb5/2+10:96 |
 # Pre-chorus 1
-| Db5/8+6:88 r/8 Eb5/8+10:90 F5/2+4:98~ F5/8 | F5/8+6:88 r/8 Gb5/8+10:90 Ab5/2+4:98~ Ab5/8 | Ab5/8+6:88 r/8 Bb5/8+10:90 Bb5/32+4:98^ C6/2~ C6/16~ C6/32 | Bb5/4..+6:98^ Ab5/16 r/2 |
-| Db5/8+6:88 r/8 Eb5/8+10:90 F5/2+4:98~ F5/8 | Ab5/8+6:88 r/8 Bb5/8+10:90 C6/2+4:98~ C6/8 | C6/8+6:88 r/8 Db6/8+10:90 Db6/32+4:98^ Eb6/2~ Eb6/16~ Eb6/32 | r/8 Bb5/8+6:88 Ab5/8.+10:90^ Eb5/16 r/2 |
+| Db5/4+6:88 r/4 Eb5/4+10:90 F5/4+4:98~ | F5/1 | F5/4+6:88 r/4 Gb5/4+10:90 Ab5/4+4:98~ | Ab5/1 |
+| Ab5/4+6:88 r/4 Bb5/4+10:90 Bb5/32+4:98^ C6/8.~ C6/32~ | C6/1 | C6/4+6:88 r/4 Db6/4+10:90 Db6/32+4:98^ Eb6/8.~ Eb6/32~ | Eb6/1 |
 # Chorus 1
-| r/8 F5/8+6:94 Ab5/32+10:106^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:96 F5/8.+10:98 Db5/2+68:102~ Db5/16 | r/8 Ab5/8+6:94 Bb5/8+10:98 C6/32+4:106^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:96 Ab5/2+10:102~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:94 Ab5/32+10:106^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:96 F5/8.+10:98 Db5/2+68:102~ Db5/16 | r/8 Bb5/8+6:94 C6/8+10:98 Db6/32+4:106^ Eb6/2~ Eb6/16~ Eb6/32 | r/4 Db6/8+6:96 C6/2+10:102~ C6/16^ Ab5/16 |
-| r/8 F5/8+6:98 Ab5/32+10:110^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:100 F5/8.+10:102 Db5/2+68:106~ Db5/16 | r/8 Ab5/8+6:98 Bb5/8+10:102 C6/32+4:110^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:100 Ab5/2+10:106~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:98 Ab5/32+10:110^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:100 F5/8.+10:102 Db5/2+68:106~ Db5/16 | r/8 Bb5/8+6:98 C6/8+10:102 Db6/32+4:110^ Eb6/2~ Eb6/16~ Eb6/32 | r/4 Db6/8+6:100 C6/2+10:106~ C6/16^ Ab5/16 |
+| r/4 F5/4+6:96 Ab5/32+10:108^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:98 F5/4.+10:100 Db5/8+4:104~ | Db5/1 |
+| r/4 Ab5/4+6:96 Bb5/4+10:100 C6/32+4:108^ Db6/8.~ Db6/32~ | Db6/1 | r/2 C6/4+6:98 Ab5/4+10:104~ | Ab5/2.~ Ab5/8.^ F5/16 |
+| r/4 F5/4+6:96 Ab5/32+10:108^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:98 F5/4.+10:100 Db5/8+4:104~ | Db5/1 |
+| r/4 Bb5/4+6:96 C6/4+10:100 Db6/32+4:108^ Eb6/8.~ Eb6/32~ | Eb6/1 | r/2 Db6/4+6:98 C6/4+10:104~ | C6/2.~ C6/8.^ Ab5/16 |
 # Verse 2
-| r/8 Db5/8+6:90 Db5/8+10:92 F5/8.+4:96 r/8 C5/32+76:98^ Db5/4~ Db5/32 | r/8 Eb5/8+6:90 F5/8+10:92 Db5/8.+4:96 r/8 Bb4/4+76:98~ Bb4/16 | r/8 F5/8+6:90 Ab5/8+10:92 F5/8.+4:96 r/8 C5/32+76:98^ Db5/4~ Db5/32 | r/8 Eb5/8+6:90 F5/8+10:92 Eb5/8.+4:96 r/8 C5/4+76:98~ C5/16 |
-| r/8. Db5/16+70:90 F5/4+10:96 r/8 Eb5/8+4:92 Db5/4+12:98 | r/8. Eb5/16+70:90 F5/4+10:96 r/8 Db5/8+4:92 Bb4/4+12:98 | r/8. F5/16+70:90 Ab5/4+10:96 r/8 F5/8+4:92 Db5/4+12:98 | r/8. Eb5/16+70:90 F5/4+10:96 r/8 Ab5/8+4:92 Eb5/4+12:98 |
-| r/8 Db5/8+6:94 Db5/8+10:96 F5/8.+4:100 r/8 C5/32+76:102^ Db5/4~ Db5/32 | r/8 Eb5/8+6:94 F5/8+10:96 Db5/8.+4:100 r/8 Bb4/4+76:102~ Bb4/16 | r/8 F5/8+6:94 Ab5/8+10:96 F5/8.+4:100 r/8 C5/32+76:102^ Db5/4~ Db5/32 | r/8 Eb5/8+6:94 F5/8+10:96 Eb5/8.+4:100 r/8 C5/4+76:102~ C5/16 |
-| r/8. Db5/16+70:94 F5/4+10:100 r/8 Eb5/8+4:96 Db5/4+12:102 | r/8. Eb5/16+70:94 F5/4+10:100 r/8 Db5/8+4:96 Bb4/4+12:102 | r/8. F5/16+70:94 Ab5/4+10:100 r/8 F5/8+4:96 Db5/4+12:102 | r/8. Eb5/16+70:94 F5/4+10:100 r/8 Ab5/8+4:96 Eb5/4+12:102 |
+| r/4 Db5/4+6:92 Db5/4+10:94 F5/4+4:98~ | F5/8 r/4 C5/32+6:100^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:92 F5/4+10:94 Db5/4+4:98~ | Db5/8 r/4 Bb4/2+6:100~ Bb4/8 |
+| r/4 F5/4+6:92 Ab5/4+10:94 F5/4+4:98~ | F5/8 r/4 C5/32+6:100^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:92 F5/4+10:94 Eb5/4+4:98~ | Eb5/8 r/4 C5/2+6:100~ C5/8 |
+| r/4. Db5/8+6:92 F5/2+10:98 | r/4 Eb5/4+6:94 Db5/2+10:100 | r/4. Eb5/8+6:92 F5/2+10:98 | r/4 Db5/4+6:94 Bb4/2+10:100 |
+| r/4. F5/8+6:92 Ab5/2+10:98 | r/4 F5/4+6:94 Db5/2+10:100 | r/4. Eb5/8+6:92 F5/2+10:98 | r/4 Ab5/4+6:94 Eb5/2+10:100 |
 # Pre-chorus 2
-| Db5/8+6:92 r/8 Eb5/8+10:94 F5/2+4:102~ F5/8 | F5/8+6:92 r/8 Gb5/8+10:94 Ab5/2+4:102~ Ab5/8 | Ab5/8+6:92 r/8 Bb5/8+10:94 Bb5/32+4:102^ C6/2~ C6/16~ C6/32 | Bb5/4..+6:102^ Ab5/16 r/2 |
-| Db5/8+6:92 r/8 Eb5/8+10:94 F5/2+4:102~ F5/8 | Ab5/8+6:92 r/8 Bb5/8+10:94 C6/2+4:102~ C6/8 | C6/8+6:92 r/8 Db6/8+10:94 Db6/32+4:102^ Eb6/2~ Eb6/16~ Eb6/32 | r/8 Bb5/8+6:92 Ab5/8.+10:94^ Eb5/16 r/2 |
+| Db5/4+6:92 r/4 Eb5/4+10:94 F5/4+4:102~ | F5/1 | F5/4+6:92 r/4 Gb5/4+10:94 Ab5/4+4:102~ | Ab5/1 |
+| Ab5/4+6:92 r/4 Bb5/4+10:94 Bb5/32+4:102^ C6/8.~ C6/32~ | C6/1 | C6/4+6:92 r/4 Db6/4+10:94 Db6/32+4:102^ Eb6/8.~ Eb6/32~ | Eb6/1 |
 # Chorus 2
-| r/8 F5/8+6:98 Ab5/32+10:110^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:100 F5/8.+10:102 Db5/2+68:106~ Db5/16 | r/8 Ab5/8+6:98 Bb5/8+10:102 C6/32+4:110^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:100 Ab5/2+10:106~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:98 Ab5/32+10:110^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:100 F5/8.+10:102 Db5/2+68:106~ Db5/16 | r/8 Bb5/8+6:98 C6/8+10:102 Db6/32+4:110^ Eb6/2~ Eb6/16~ Eb6/32 | r/4 Db6/8+6:100 C6/2+10:106~ C6/16^ Ab5/16 |
-| r/8 F5/8+6:100 Ab5/32+10:112^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:102 F5/8.+10:104 Db5/2+68:108~ Db5/16 | r/8 Ab5/8+6:100 Bb5/8+10:104 C6/32+4:112^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:102 Ab5/2+10:108~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:100 Ab5/32+10:112^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:102 F5/8.+10:104 Db5/2+68:108~ Db5/16 | r/8 Bb5/8+6:100 C6/8+10:104 Db6/32+4:112^ Eb6/2~ Eb6/16~ Eb6/32 | r/4 Db6/8+6:102 C6/2+10:108~ C6/16^ Ab5/16 |
+| r/4 F5/4+6:99 Ab5/32+10:111^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:101 F5/4.+10:103 Db5/8+4:107~ | Db5/1 |
+| r/4 Ab5/4+6:99 Bb5/4+10:103 C6/32+4:111^ Db6/8.~ Db6/32~ | Db6/1 | r/2 C6/4+6:101 Ab5/4+10:107~ | Ab5/2.~ Ab5/8.^ F5/16 |
+| r/4 F5/4+6:99 Ab5/32+10:111^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:101 F5/4.+10:103 Db5/8+4:107~ | Db5/1 |
+| r/4 Bb5/4+6:99 C6/4+10:103 Db6/32+4:111^ Eb6/8.~ Eb6/32~ | Eb6/1 | r/2 Db6/4+6:101 C6/4+10:107~ | C6/2.~ C6/8.^ Ab5/16 |
 # Breakdown
-| r/8 F5/8+6:68 Ab5/32+10:80^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:70 F5/8.+10:72 Db5/2+68:76~ Db5/16 | r/8 Ab5/8+6:68 Bb5/8+10:72 C6/32+4:80^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:70 Ab5/2+10:76~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:76 Ab5/32+10:88^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:78 F5/8.+10:80 Db5/2+68:84~ Db5/16 | R | R |
+| r/4 F5/4+6:72 Ab5/32+10:84^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:74 F5/4.+10:76 Db5/8+4:80~ | Db5/1 |
+| r/4 Ab5/4+6:72 Bb5/4+10:76 C6/32+4:84^ Db6/8.~ Db6/32~ | Db6/1 | R | R |
 # Build
 | R | R | R | R |
-| r/8. F5/8+70:94 Ab5/8.+74:96 Bb5/8.+4:100 C6/4+76:102~ C6/16 | Db6/2+6:108 r/2 | r/8. Ab5/8+70:98 Bb5/8.+74:100 C6/8.+4:104 Db6/4+76:106~ Db6/16 | Eb6/2+6:112 r/2 |
+| r/4. Ab5/4+6:98 Bb5/4.+10:100 | C6/4.+6:104 Db6/2+10:106~ Db6/8 | Eb6/1+6:108 | r/1 |
 # Final chorus
-| r/8 F5/8+6:102 Ab5/32+10:114^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:104 F5/8.+10:106 Db5/2+68:110~ Db5/16 | r/8 Ab5/8+6:102 Bb5/8+10:106 C6/32+4:114^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:104 Ab5/2+10:110~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:102 Ab5/32+10:114^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:104 F5/8.+10:106 Db5/2+68:110~ Db5/16 | r/8 Bb5/8+6:102 C6/8+10:106 Db6/32+4:114^ Eb6/2~ Eb6/16~ Eb6/32 | r/4 Db6/8+6:104 C6/2+10:110~ C6/16^ Ab5/16 |
-| r/8 F5/8+6:104 Ab5/32+10:116^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:106 F5/8.+10:108 Db5/2+68:112~ Db5/16 | r/8 Ab5/8+6:104 Bb5/8+10:108 C6/32+4:116^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:106 Ab5/2+10:112~ Ab5/16^ F5/16 |
-| r/8 F5/8+6:104 Ab5/32+10:116^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:106 F5/8.+10:108 Db5/2+68:112~ Db5/16 | r/8 Bb5/8+6:104 C6/8+10:108 Db6/32+4:116^ Eb6/2~ Eb6/16~ Eb6/32 | r/4 Db6/8+6:106 C6/2+10:112~ C6/16^ Ab5/16 |
+| r/4 F5/4+6:103 Ab5/32+10:115^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:105 F5/4.+10:107 Db5/8+4:111~ | Db5/1 |
+| r/4 Ab5/4+6:103 Bb5/4+10:107 C6/32+4:115^ Db6/8.~ Db6/32~ | Db6/1 | r/2 C6/4+6:105 Ab5/4+10:111~ | Ab5/2.~ Ab5/8.^ F5/16 |
+| r/4 F5/4+6:103 Ab5/32+10:115^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:105 F5/4.+10:107 Db5/8+4:111~ | Db5/1 |
+| r/4 Bb5/4+6:103 C6/4+10:107 Db6/32+4:115^ Eb6/8.~ Eb6/32~ | Eb6/1 | r/2 Db6/4+6:105 C6/4+10:111~ | C6/2.~ C6/8.^ Ab5/16 |
 # Outro
-| r/8 F5/8+6:74 Ab5/32+10:86^ Bb5/2~ Bb5/8.~ Bb5/32 | r/8 Ab5/8+6:76 F5/8.+10:78 Db5/2+68:82~ Db5/16 | r/8 Ab5/8+6:74 Bb5/8+10:78 C6/32+4:86^ Db6/2~ Db6/16~ Db6/32 | r/4 C6/8+6:76 Ab5/2+10:82~ Ab5/16^ F5/16 |
+| r/4 F5/4+6:76 Ab5/32+10:88^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:78 F5/4.+10:80 Db5/8+4:84~ | Db5/1 |
 | R | R | R | R |
 
 track chops role=lead2 inst=vox-chop vol=0.9 pan=0.3
 # Intro
-| R | Bb5/16+2:76 r/8 Bb5/16+68:68 r/8 F5/8:72 r/4 Db5/8+3:74 r/8 | R | Ab5/16+2:80 r/8 Ab5/16+68:72 r/8 Eb5/8:76 r/4 C5/8+3:78 r/8 |
-| R | Bb5/16+2:84 r/8 Bb5/16+68:76 r/8 F5/8:80 r/4 Db5/8+3:82 r/8 | R | Ab5/16+2:88 r/8 Ab5/16+68:80 r/8 Eb5/8:84 r/4 C5/8+3:86 r/8 |
+| R | Bb5/16+2:76 r/8 Bb5/16+68:68 r/8 Ab5/8:72 r/4 F5/8+3:74 r/8 | R | Bb5/16+2:80 r/8 Bb5/16+68:72 r/8 F5/8:76 r/4 Db5/8+3:78 r/8 |
+| R | Ab5/16+2:84 r/8 Ab5/16+68:76 r/8 F5/8:80 r/4 Db5/8+3:82 r/8 | R | Ab5/16+2:88 r/8 Ab5/16+68:80 r/8 Eb5/8:84 r/4 C5/8+3:86 r/8 |
 # Verse 1
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 # Pre-chorus 1
-| R | R | R | r/2 r/8 Ab5/8+2:78 r/8 F5/8+4:80 |
+| R | R | R | R |
 | R | R | R | R |
 # Chorus 1
-| R | R | R | Ab5/16+2:80 r/8 Ab5/16+68:76 r/2. |
-| R | R | R | Ab5/16+2:80 r/8 Ab5/16+68:76 r/2. |
-| R | R | R | Ab5/16+2:80 r/8 Ab5/16+68:76 r/2. |
-| R | R | R | Ab5/16+2:80 r/8 Ab5/16+68:76 r/2. |
+| R | R | R | R |
+| R | R | Ab5/16+2:80 r/8 Ab5/16+68:76 r/2. | R |
+| R | R | R | R |
+| R | R | Ab5/16+2:80 r/8 Ab5/16+68:76 r/2. | R |
 # Verse 2
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
 # Pre-chorus 2
-| R | R | R | r/2 r/8 Ab5/8+2:82 r/8 F5/8+4:84 |
+| R | R | R | R |
 | R | R | R | R |
 # Chorus 2
-| R | R | R | Ab5/16+2:82 r/8 Ab5/16+68:78 r/2. |
-| R | R | R | Ab5/16+2:82 r/8 Ab5/16+68:78 r/2. |
-| R | R | R | Ab5/16+2:82 r/8 Ab5/16+68:78 r/2. |
-| R | R | R | Ab5/16+2:82 r/8 Ab5/16+68:78 r/2. |
+| R | R | R | R |
+| R | R | Ab5/16+2:82 r/8 Ab5/16+68:78 r/2. | R |
+| R | R | R | R |
+| R | R | Ab5/16+2:82 r/8 Ab5/16+68:78 r/2. | R |
 # Breakdown
-| R | R | R | Ab5/16+2:68 r/8 Ab5/16+68:64 r/2. |
-| R | R | Ab5/16+2:78 r/8 Ab5/16+68:70 r/8 F5/8:74 r/4 Db5/8+3:76 r/8 | Ab5/16+2:82 r/8 Ab5/16+68:74 r/8 Eb5/8:78 r/4 C5/8+3:80 r/8 |
+| R | R | R | R |
+| R | R | Ab5/16+2:78 r/8 Ab5/16+68:70 r/8 Eb5/8:74 r/4 C5/8+3:76 r/8 | Ab5/16+2:82 r/8 Ab5/16+68:74 r/8 Eb5/8:78 r/4 C5/8+3:80 r/8 |
 # Build
-| Bb5/16+2:78 r/8 Bb5/16+68:70 r/8 Ab5/8:74 r/4 F5/8+3:76 r/8 | R | Ab5/16+2:82 r/8 Ab5/16+68:74 r/8 F5/8:78 r/4 Db5/8+3:80 r/8 | R |
+| Bb5/16+2:78 r/8 Bb5/16+68:70 r/8 Ab5/8:74 r/4 F5/8+3:76 r/8 | R | Bb5/16+2:82 r/8 Bb5/16+68:74 r/8 F5/8:78 r/4 Db5/8+3:80 r/8 | R |
 | R | R | R | R |
 # Final chorus
-| R | R | R | Ab5/16+2:84 r/8 Ab5/16+68:80 r/2. |
-| R | R | R | Ab5/16+2:84 r/8 Ab5/16+68:80 r/2. |
-| r/2 r/8 Ab5/8+2:80 r/8 F5/8+4:82 | R | R | Ab5/16+2:84 r/8 Ab5/16+68:80 r/2. |
-| r/2 r/8 Ab5/8+2:80 r/8 F5/8+4:82 | R | R | Ab5/16+2:84 r/8 Ab5/16+68:80 r/2. |
+| R | R | R | R |
+| R | R | Ab5/16+2:84 r/8 Ab5/16+68:80 r/2. | R |
+| R | r/2 r/8 Ab5/8+2:80 r/8 F5/8+4:82 | R | R |
+| R | r/2 r/8 F5/8+2:80 r/8 Db5/8+4:82 | Ab5/16+2:84 r/8 Ab5/16+68:80 r/2. | R |
 # Outro
-| R | R | R | Ab5/16+2:76 r/8 Ab5/16+68:72 r/2. |
-| Bb5/16+2:76 r/8 Bb5/16+68:68 r/8 Ab5/8:72 r/4 F5/8+3:74 r/8 | R | Ab5/16+2:70 r/8 Ab5/16+68:62 r/8 F5/8:66 r/4 Db5/8+3:68 r/8 | R |
+| R | R | R | R |
+| Ab5/16+2:76 r/8 Ab5/16+68:68 r/8 F5/8:72 r/4 Db5/8+3:74 r/8 | R | Ab5/16+2:70 r/8 Ab5/16+68:62 r/8 Eb5/8:66 r/4 C5/8+3:68 r/8 | R |
 
 track keys role=chords inst=fm-rhodes vol=0.5 pan=-0.2
 # Intro
 | R | R | R | R |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:84 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+8:74 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+79:74 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+9:82 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:82 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+10:76 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [C4 Eb4 F4]/8+76:76 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:86 r/16 r/16 r/16 r/16 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:84 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+8:74 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:74 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+9:82 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [C4 Eb4 F4]/8+78:82 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+10:76 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [C4 Eb4 F4]/8+76:76 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:86 r/16 r/16 r/16 r/16 |
 # Verse 1
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 [Db4 F4 Ab4 C5]/8+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:76 [Bb3 Db4 F4]/8+79:84 r/16 r/16 [Bb3 Db4 F4]/8+72:78 r/16 r/16 [Bb3 Db4 F4]/8+79:88 r/16 [Bb3 Db4 F4]/8+14:74 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 [Db4 F4 Ab4 C5]/8+12:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:74 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+11:78 r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+11:88 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 [Db4 F4 Ab4 C5]/8+8:74 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:80 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:74 [Bb3 Db4 F4]/8+72:82 r/16 r/16 [Bb3 Db4 F4]/8+79:80 r/16 r/16 [Bb3 Db4 F4]/8+72:86 r/16 [Bb3 Db4 F4]/8+9:76 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 [Db4 F4 Ab4 C5]/8+10:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:76 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:80 r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:86 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 [Db4 F4 Ab4 C5]/8+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:76 [Bb3 Db4 F4]/8+79:84 r/16 r/16 [Bb3 Db4 F4]/8+72:78 r/16 r/16 [Bb3 Db4 F4]/8+79:88 r/16 [Bb3 Db4 F4]/8+14:74 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 [Db4 F4 Ab4 C5]/8+12:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:74 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+11:78 r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+11:88 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 [Db4 F4 Ab4 C5]/8+8:74 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:80 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:74 [Bb3 Db4 F4]/8+72:82 r/16 r/16 [Bb3 Db4 F4]/8+79:80 r/16 r/16 [Bb3 Db4 F4]/8+72:86 r/16 [Bb3 Db4 F4]/8+9:76 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 [Db4 F4 Ab4 C5]/8+10:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:76 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:80 r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:86 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 [Db4 F4 Ab4 C5]/8+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:78 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:76 [Db4 F4 Ab4 C5]/8+79:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:78 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:88 r/16 [Db4 F4 Ab4 C5]/8+14:74 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:84 r/16 [Bb3 Db4 F4]/8+12:78 r/16 r/16 [Bb3 Db4 F4]/16+10:88 r/16 r/16 [Bb3 Db4 F4]/8+80:74 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+11:78 r/16 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+11:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 [Db4 F4 Ab4 C5]/8+8:74 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:80 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:74 [Db4 F4 Ab4 C5]/8+72:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:80 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:86 r/16 [Db4 F4 Ab4 C5]/8+9:76 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:82 r/16 [C4 Eb4 F4]/8+10:80 r/16 r/16 [C4 Eb4 F4]/16+12:86 r/16 r/16 [C4 Eb4 F4]/8+75:76 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:80 r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:86 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 [Db4 F4 Ab4 C5]/8+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:78 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:76 [Db4 F4 Ab4 C5]/8+79:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:78 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:88 r/16 [Db4 F4 Ab4 C5]/8+14:74 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:84 r/16 [Bb3 Db4 F4]/8+12:78 r/16 r/16 [Bb3 Db4 F4]/16+10:88 r/16 r/16 [Bb3 Db4 F4]/8+80:74 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+11:78 r/16 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+11:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 [Db4 F4 Ab4 C5]/8+8:74 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:80 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:74 [Db4 F4 Ab4 C5]/8+72:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:80 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:86 r/16 [Db4 F4 Ab4 C5]/8+9:76 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:82 r/16 [C4 Eb4 F4]/8+10:80 r/16 r/16 [C4 Eb4 F4]/16+12:86 r/16 r/16 [C4 Eb4 F4]/8+75:76 r/16 | r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:80 r/16 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:86 |
 # Pre-chorus 1
-| r/16 r/16 r/16 [Bb3 Db4 F4]/8+80:90 r/16 [Bb3 Db4 F4]/8+15:80 r/16 r/16 [Bb3 Db4 F4]/16+8:88 r/16 r/16 [Bb3 Db4 F4]/8+73:82 r/16 | r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+9:80 [C4 Eb4 Gb4 Bb4]/8+79:88 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+72:82 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+79:92 r/16 [C4 Eb4 Gb4 Bb4]/8+14:78 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 [Db4 F4 Ab4 C5]/8+12:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:78 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+16:82 [Db4 F4 Ab4 C5]/8+76:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+74:78 r/16 r/16 [Db4 F4 Ab4 C5]/8+76:86 r/16 [Db4 F4 Ab4 C5]/8+11:84 |
-| r/16 r/16 r/16 [Bb3 Db4 F4]/8+75:92 r/16 [Bb3 Db4 F4]/8+8:78 r/16 r/16 [Bb3 Db4 F4]/16+15:86 r/16 r/16 [Bb3 Db4 F4]/8+78:84 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:78 [Db4 F4 Ab4 C5]/8+72:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:90 r/16 [Db4 F4 Ab4 C5]/8+9:80 | r/16 r/16 r/16 [Db4 Eb4 Ab4]/8+73:86 r/16 [Db4 Eb4 Ab4]/8+10:84 r/16 r/16 [Db4 Eb4 Ab4]/16+12:90 r/16 r/16 [Db4 Eb4 Ab4]/8+75:80 r/16 | r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+11:84 [C4 Eb4 Gb4 Bb4]/8+74:90 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+76:80 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+74:88 r/16 [C4 Eb4 Gb4 Bb4]/8+16:82 |
+| r/16 r/16 r/16 [Bb3 Db4 F4]/8+80:90 r/16 [Bb3 Db4 F4]/8+15:80 r/16 r/16 [Bb3 Db4 F4]/16+8:88 r/16 r/16 [Bb3 Db4 F4]/8+73:82 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:80 [Bb3 Db4 F4]/8+79:88 r/16 r/16 [Bb3 Db4 F4]/8+72:82 r/16 r/16 [Bb3 Db4 F4]/8+79:92 r/16 [Bb3 Db4 F4]/8+14:78 | r/16 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+78:88 r/16 [C4 Eb4 Gb4 Bb4]/8+12:82 r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+10:92 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+80:78 r/16 | r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+16:82 [C4 Eb4 Gb4 Bb4]/8+76:92 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+74:78 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+76:86 r/16 [C4 Eb4 Gb4 Bb4]/8+11:84 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:92 r/16 [Db4 F4 Ab4 C5]/8+8:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:78 [Db4 F4 Ab4 C5]/8+72:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:90 r/16 [Db4 F4 Ab4 C5]/8+9:80 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 [Db4 F4 Ab4 C5]/8+10:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:80 r/16 | r/16 r/16 [Db4 Eb4 Ab4]/16+11:84 [Db4 Eb4 Ab4]/8+74:90 r/16 r/16 [Db4 Eb4 Ab4]/8+76:80 r/16 r/16 [Db4 Eb4 Ab4]/8+74:88 r/16 [Db4 Eb4 Ab4]/8+16:82 |
 # Chorus 1
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:94 r/16 [Db4 F4 Ab4 C5]/8+15:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:84 [Bb3 Db4 F4]/8+79:92 r/16 r/16 [Bb3 Db4 F4]/8+72:86 r/16 r/16 [Bb3 Db4 F4]/8+79:96 r/16 [Bb3 Db4 F4]/8+14:82 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 [Db4 F4 Ab4 C5]/8+12:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:82 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:86 [C4 Eb4 F4]/8+76:96 r/16 r/16 [C4 Eb4 F4]/8+74:82 r/16 r/16 [C4 Eb4 F4]/8+76:90 r/16 [C4 Eb4 F4]/8+11:88 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:82 [Bb3 Db4 F4]/8+72:90 r/16 r/16 [Bb3 Db4 F4]/8+79:88 r/16 r/16 [Bb3 Db4 F4]/8+72:94 r/16 [Bb3 Db4 F4]/8+9:84 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 [Db4 F4 Ab4 C5]/8+10:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:84 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:88 [C4 Eb4 F4]/8+74:94 r/16 r/16 [C4 Eb4 F4]/8+76:84 r/16 r/16 [C4 Eb4 F4]/8+74:92 r/16 [C4 Eb4 F4]/8+16:86 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:94 r/16 [Db4 F4 Ab4 C5]/8+15:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:84 [Bb3 Db4 F4]/8+79:92 r/16 r/16 [Bb3 Db4 F4]/8+72:86 r/16 r/16 [Bb3 Db4 F4]/8+79:96 r/16 [Bb3 Db4 F4]/8+14:82 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 [Db4 F4 Ab4 C5]/8+12:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:82 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:86 [C4 Eb4 F4]/8+76:96 r/16 r/16 [C4 Eb4 F4]/8+74:82 r/16 r/16 [C4 Eb4 F4]/8+76:90 r/16 [C4 Eb4 F4]/8+11:88 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:82 [Bb3 Db4 F4]/8+72:90 r/16 r/16 [Bb3 Db4 F4]/8+79:88 r/16 r/16 [Bb3 Db4 F4]/8+72:94 r/16 [Bb3 Db4 F4]/8+9:84 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 [Db4 F4 Ab4 C5]/8+10:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:84 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:88 [C4 Eb4 F4]/8+74:94 r/16 r/16 [C4 Eb4 F4]/8+76:84 r/16 r/16 [C4 Eb4 F4]/8+74:92 r/16 [C4 Eb4 F4]/8+16:86 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:94 r/16 [Db4 F4 Ab4 C5]/8+15:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:84 [Db4 F4 Ab4 C5]/8+79:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:96 r/16 [Db4 F4 Ab4 C5]/8+14:82 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:92 r/16 [Bb3 Db4 F4]/8+12:86 r/16 r/16 [Bb3 Db4 F4]/16+10:96 r/16 r/16 [Bb3 Db4 F4]/8+80:82 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:86 [Bb3 Db4 F4]/8+76:96 r/16 r/16 [Bb3 Db4 F4]/8+74:82 r/16 r/16 [Bb3 Db4 F4]/8+76:90 r/16 [Bb3 Db4 F4]/8+11:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:82 [Db4 F4 Ab4 C5]/8+72:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:94 r/16 [Db4 F4 Ab4 C5]/8+9:84 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:90 r/16 [C4 Eb4 F4]/8+10:88 r/16 r/16 [C4 Eb4 F4]/16+12:94 r/16 r/16 [C4 Eb4 F4]/8+75:84 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:88 [C4 Eb4 F4]/8+74:94 r/16 r/16 [C4 Eb4 F4]/8+76:84 r/16 r/16 [C4 Eb4 F4]/8+74:92 r/16 [C4 Eb4 F4]/8+16:86 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:94 r/16 [Db4 F4 Ab4 C5]/8+15:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:84 [Db4 F4 Ab4 C5]/8+79:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:96 r/16 [Db4 F4 Ab4 C5]/8+14:82 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:92 r/16 [Bb3 Db4 F4]/8+12:86 r/16 r/16 [Bb3 Db4 F4]/16+10:96 r/16 r/16 [Bb3 Db4 F4]/8+80:82 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:86 [Bb3 Db4 F4]/8+76:96 r/16 r/16 [Bb3 Db4 F4]/8+74:82 r/16 r/16 [Bb3 Db4 F4]/8+76:90 r/16 [Bb3 Db4 F4]/8+11:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:82 [Db4 F4 Ab4 C5]/8+72:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:94 r/16 [Db4 F4 Ab4 C5]/8+9:84 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:90 r/16 [C4 Eb4 F4]/8+10:88 r/16 r/16 [C4 Eb4 F4]/16+12:94 r/16 r/16 [C4 Eb4 F4]/8+75:84 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:88 [C4 Eb4 F4]/8+74:94 r/16 r/16 [C4 Eb4 F4]/8+76:84 r/16 r/16 [C4 Eb4 F4]/8+74:92 r/16 [C4 Eb4 F4]/8+16:86 |
 # Verse 2
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:90 r/16 [Db4 F4 Ab4 C5]/8+15:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:80 [Bb3 Db4 F4]/8+79:88 r/16 r/16 [Bb3 Db4 F4]/8+72:82 r/16 r/16 [Bb3 Db4 F4]/8+79:92 r/16 [Bb3 Db4 F4]/8+14:78 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 [Db4 F4 Ab4 C5]/8+12:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:78 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:82 [C4 Eb4 F4]/8+76:92 r/16 r/16 [C4 Eb4 F4]/8+74:78 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 [C4 Eb4 F4]/8+11:84 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:92 r/16 [Db4 F4 Ab4 C5]/8+8:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:78 [Bb3 Db4 F4]/8+72:86 r/16 r/16 [Bb3 Db4 F4]/8+79:84 r/16 r/16 [Bb3 Db4 F4]/8+72:90 r/16 [Bb3 Db4 F4]/8+9:80 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 [Db4 F4 Ab4 C5]/8+10:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:80 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:84 [C4 Eb4 F4]/8+74:90 r/16 r/16 [C4 Eb4 F4]/8+76:80 r/16 r/16 [C4 Eb4 F4]/8+74:88 r/16 [C4 Eb4 F4]/8+16:82 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:90 r/16 [Db4 F4 Ab4 C5]/8+15:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:80 [Bb3 Db4 F4]/8+79:88 r/16 r/16 [Bb3 Db4 F4]/8+72:82 r/16 r/16 [Bb3 Db4 F4]/8+79:92 r/16 [Bb3 Db4 F4]/8+14:78 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 [Db4 F4 Ab4 C5]/8+12:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:78 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:82 [C4 Eb4 F4]/8+76:92 r/16 r/16 [C4 Eb4 F4]/8+74:78 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 [C4 Eb4 F4]/8+11:84 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:92 r/16 [Db4 F4 Ab4 C5]/8+8:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:78 [Bb3 Db4 F4]/8+72:86 r/16 r/16 [Bb3 Db4 F4]/8+79:84 r/16 r/16 [Bb3 Db4 F4]/8+72:90 r/16 [Bb3 Db4 F4]/8+9:80 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:86 r/16 [Db4 F4 Ab4 C5]/8+10:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:80 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:84 [C4 Eb4 F4]/8+74:90 r/16 r/16 [C4 Eb4 F4]/8+76:80 r/16 r/16 [C4 Eb4 F4]/8+74:88 r/16 [C4 Eb4 F4]/8+16:82 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:90 r/16 [Db4 F4 Ab4 C5]/8+15:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:80 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:92 r/16 [Db4 F4 Ab4 C5]/8+14:78 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:88 r/16 [Bb3 Db4 F4]/8+12:82 r/16 r/16 [Bb3 Db4 F4]/16+10:92 r/16 r/16 [Bb3 Db4 F4]/8+80:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:82 [Bb3 Db4 F4]/8+76:92 r/16 r/16 [Bb3 Db4 F4]/8+74:78 r/16 r/16 [Bb3 Db4 F4]/8+76:86 r/16 [Bb3 Db4 F4]/8+11:84 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:92 r/16 [Db4 F4 Ab4 C5]/8+8:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:78 [Db4 F4 Ab4 C5]/8+72:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:90 r/16 [Db4 F4 Ab4 C5]/8+9:80 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:86 r/16 [C4 Eb4 F4]/8+10:84 r/16 r/16 [C4 Eb4 F4]/16+12:90 r/16 r/16 [C4 Eb4 F4]/8+75:80 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:84 [C4 Eb4 F4]/8+74:90 r/16 r/16 [C4 Eb4 F4]/8+76:80 r/16 r/16 [C4 Eb4 F4]/8+74:88 r/16 [C4 Eb4 F4]/8+16:82 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:90 r/16 [Db4 F4 Ab4 C5]/8+15:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:80 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:92 r/16 [Db4 F4 Ab4 C5]/8+14:78 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:88 r/16 [Bb3 Db4 F4]/8+12:82 r/16 r/16 [Bb3 Db4 F4]/16+10:92 r/16 r/16 [Bb3 Db4 F4]/8+80:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:82 [Bb3 Db4 F4]/8+76:92 r/16 r/16 [Bb3 Db4 F4]/8+74:78 r/16 r/16 [Bb3 Db4 F4]/8+76:86 r/16 [Bb3 Db4 F4]/8+11:84 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:92 r/16 [Db4 F4 Ab4 C5]/8+8:78 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:84 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:78 [Db4 F4 Ab4 C5]/8+72:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:90 r/16 [Db4 F4 Ab4 C5]/8+9:80 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:86 r/16 [C4 Eb4 F4]/8+10:84 r/16 r/16 [C4 Eb4 F4]/16+12:90 r/16 r/16 [C4 Eb4 F4]/8+75:80 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:84 [C4 Eb4 F4]/8+74:90 r/16 r/16 [C4 Eb4 F4]/8+76:80 r/16 r/16 [C4 Eb4 F4]/8+74:88 r/16 [C4 Eb4 F4]/8+16:82 |
 # Pre-chorus 2
-| r/16 r/16 r/16 [Bb3 Db4 F4]/8+80:94 r/16 [Bb3 Db4 F4]/8+15:84 r/16 r/16 [Bb3 Db4 F4]/16+8:92 r/16 r/16 [Bb3 Db4 F4]/8+73:86 r/16 | r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+9:84 [C4 Eb4 Gb4 Bb4]/8+79:92 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+72:86 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+79:96 r/16 [C4 Eb4 Gb4 Bb4]/8+14:82 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 [Db4 F4 Ab4 C5]/8+12:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:82 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+16:86 [Db4 F4 Ab4 C5]/8+76:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+74:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+76:90 r/16 [Db4 F4 Ab4 C5]/8+11:88 |
-| r/16 r/16 r/16 [Bb3 Db4 F4]/8+75:96 r/16 [Bb3 Db4 F4]/8+8:82 r/16 r/16 [Bb3 Db4 F4]/16+15:90 r/16 r/16 [Bb3 Db4 F4]/8+78:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:82 [Db4 F4 Ab4 C5]/8+72:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:94 r/16 [Db4 F4 Ab4 C5]/8+9:84 | r/16 r/16 r/16 [Db4 Eb4 Ab4]/8+73:90 r/16 [Db4 Eb4 Ab4]/8+10:88 r/16 r/16 [Db4 Eb4 Ab4]/16+12:94 r/16 r/16 [Db4 Eb4 Ab4]/8+75:84 r/16 | r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+11:88 [C4 Eb4 Gb4 Bb4]/8+74:94 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+76:84 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+74:92 r/16 [C4 Eb4 Gb4 Bb4]/8+16:86 |
+| r/16 r/16 r/16 [Bb3 Db4 F4]/8+80:94 r/16 [Bb3 Db4 F4]/8+15:84 r/16 r/16 [Bb3 Db4 F4]/16+8:92 r/16 r/16 [Bb3 Db4 F4]/8+73:86 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:84 [Bb3 Db4 F4]/8+79:92 r/16 r/16 [Bb3 Db4 F4]/8+72:86 r/16 r/16 [Bb3 Db4 F4]/8+79:96 r/16 [Bb3 Db4 F4]/8+14:82 | r/16 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+78:92 r/16 [C4 Eb4 Gb4 Bb4]/8+12:86 r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+10:96 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+80:82 r/16 | r/16 r/16 [C4 Eb4 Gb4 Bb4]/16+16:86 [C4 Eb4 Gb4 Bb4]/8+76:96 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+74:82 r/16 r/16 [C4 Eb4 Gb4 Bb4]/8+76:90 r/16 [C4 Eb4 Gb4 Bb4]/8+11:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:82 [Db4 F4 Ab4 C5]/8+72:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:94 r/16 [Db4 F4 Ab4 C5]/8+9:84 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 [Db4 F4 Ab4 C5]/8+10:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:84 r/16 | r/16 r/16 [Db4 Eb4 Ab4]/16+11:88 [Db4 Eb4 Ab4]/8+74:94 r/16 r/16 [Db4 Eb4 Ab4]/8+76:84 r/16 r/16 [Db4 Eb4 Ab4]/8+74:92 r/16 [Db4 Eb4 Ab4]/8+16:86 |
 # Chorus 2
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:96 r/16 [Db4 F4 Ab4 C5]/8+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:88 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:86 [Bb3 Db4 F4]/8+79:94 r/16 r/16 [Bb3 Db4 F4]/8+72:88 r/16 r/16 [Bb3 Db4 F4]/8+79:98 r/16 [Bb3 Db4 F4]/8+14:84 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:94 r/16 [Db4 F4 Ab4 C5]/8+12:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:98 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:84 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:88 [C4 Eb4 F4]/8+76:98 r/16 r/16 [C4 Eb4 F4]/8+74:84 r/16 r/16 [C4 Eb4 F4]/8+76:92 r/16 [C4 Eb4 F4]/8+11:90 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:98 r/16 [Db4 F4 Ab4 C5]/8+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:90 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:84 [Bb3 Db4 F4]/8+72:92 r/16 r/16 [Bb3 Db4 F4]/8+79:90 r/16 r/16 [Bb3 Db4 F4]/8+72:96 r/16 [Bb3 Db4 F4]/8+9:86 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:92 r/16 [Db4 F4 Ab4 C5]/8+10:90 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:86 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:90 [C4 Eb4 F4]/8+74:96 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 r/16 [C4 Eb4 F4]/8+74:94 r/16 [C4 Eb4 F4]/8+16:88 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:96 r/16 [Db4 F4 Ab4 C5]/8+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:88 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:86 [Bb3 Db4 F4]/8+79:94 r/16 r/16 [Bb3 Db4 F4]/8+72:88 r/16 r/16 [Bb3 Db4 F4]/8+79:98 r/16 [Bb3 Db4 F4]/8+14:84 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:94 r/16 [Db4 F4 Ab4 C5]/8+12:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:98 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:84 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:88 [C4 Eb4 F4]/8+76:98 r/16 r/16 [C4 Eb4 F4]/8+74:84 r/16 r/16 [C4 Eb4 F4]/8+76:92 r/16 [C4 Eb4 F4]/8+11:90 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:98 r/16 [Db4 F4 Ab4 C5]/8+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:90 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:84 [Bb3 Db4 F4]/8+72:92 r/16 r/16 [Bb3 Db4 F4]/8+79:90 r/16 r/16 [Bb3 Db4 F4]/8+72:96 r/16 [Bb3 Db4 F4]/8+9:86 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:92 r/16 [Db4 F4 Ab4 C5]/8+10:90 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:86 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:90 [C4 Eb4 F4]/8+74:96 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 r/16 [C4 Eb4 F4]/8+74:94 r/16 [C4 Eb4 F4]/8+16:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:96 r/16 [Db4 F4 Ab4 C5]/8+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:86 [Db4 F4 Ab4 C5]/8+79:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:98 r/16 [Db4 F4 Ab4 C5]/8+14:84 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:94 r/16 [Bb3 Db4 F4]/8+12:88 r/16 r/16 [Bb3 Db4 F4]/16+10:98 r/16 r/16 [Bb3 Db4 F4]/8+80:84 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:88 [Bb3 Db4 F4]/8+76:98 r/16 r/16 [Bb3 Db4 F4]/8+74:84 r/16 r/16 [Bb3 Db4 F4]/8+76:92 r/16 [Bb3 Db4 F4]/8+11:90 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:98 r/16 [Db4 F4 Ab4 C5]/8+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:90 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:84 [Db4 F4 Ab4 C5]/8+72:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:96 r/16 [Db4 F4 Ab4 C5]/8+9:86 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:92 r/16 [C4 Eb4 F4]/8+10:90 r/16 r/16 [C4 Eb4 F4]/16+12:96 r/16 r/16 [C4 Eb4 F4]/8+75:86 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:90 [C4 Eb4 F4]/8+74:96 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 r/16 [C4 Eb4 F4]/8+74:94 r/16 [C4 Eb4 F4]/8+16:88 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:96 r/16 [Db4 F4 Ab4 C5]/8+15:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:86 [Db4 F4 Ab4 C5]/8+79:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:98 r/16 [Db4 F4 Ab4 C5]/8+14:84 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:94 r/16 [Bb3 Db4 F4]/8+12:88 r/16 r/16 [Bb3 Db4 F4]/16+10:98 r/16 r/16 [Bb3 Db4 F4]/8+80:84 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:88 [Bb3 Db4 F4]/8+76:98 r/16 r/16 [Bb3 Db4 F4]/8+74:84 r/16 r/16 [Bb3 Db4 F4]/8+76:92 r/16 [Bb3 Db4 F4]/8+11:90 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:98 r/16 [Db4 F4 Ab4 C5]/8+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:90 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:84 [Db4 F4 Ab4 C5]/8+72:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:96 r/16 [Db4 F4 Ab4 C5]/8+9:86 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:92 r/16 [C4 Eb4 F4]/8+10:90 r/16 r/16 [C4 Eb4 F4]/16+12:96 r/16 r/16 [C4 Eb4 F4]/8+75:86 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:90 [C4 Eb4 F4]/8+74:96 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 r/16 [C4 Eb4 F4]/8+74:94 r/16 [C4 Eb4 F4]/8+16:88 |
 # Breakdown
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:80 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+8:70 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+79:70 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+9:78 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:78 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+10:72 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [C4 Eb4 F4]/8+76:72 r/16 r/16 r/16 r/16 r/16 [C4 Eb4 F4]/8+16:82 r/16 r/16 r/16 r/16 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:82 r/16 [Db4 F4 Ab4 C5]/8+8:68 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:74 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:68 [Bb3 Db4 F4]/8+72:76 r/16 r/16 [Bb3 Db4 F4]/8+79:74 r/16 r/16 [Bb3 Db4 F4]/8+72:80 r/16 [Bb3 Db4 F4]/8+9:70 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:76 r/16 [Db4 F4 Ab4 C5]/8+10:74 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:80 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:70 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:74 [C4 Eb4 F4]/8+74:80 r/16 r/16 [C4 Eb4 F4]/8+76:70 r/16 r/16 [C4 Eb4 F4]/8+74:78 r/16 [C4 Eb4 F4]/8+16:72 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:80 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+8:70 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:70 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+9:78 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:78 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+10:72 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+76:72 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+16:82 r/16 r/16 r/16 r/16 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:82 r/16 [Db4 F4 Ab4 C5]/8+8:68 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:74 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:68 [Db4 F4 Ab4 C5]/8+72:76 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:74 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:80 r/16 [Db4 F4 Ab4 C5]/8+9:70 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:76 r/16 [C4 Eb4 F4]/8+10:74 r/16 r/16 [C4 Eb4 F4]/16+12:80 r/16 r/16 [C4 Eb4 F4]/8+75:70 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:74 [C4 Eb4 F4]/8+74:80 r/16 r/16 [C4 Eb4 F4]/8+76:70 r/16 r/16 [C4 Eb4 F4]/8+74:78 r/16 [C4 Eb4 F4]/8+16:72 |
 # Build
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 [Db4 F4 Ab4 C5]/8+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:78 [Bb3 Db4 F4]/8+79:86 r/16 r/16 [Bb3 Db4 F4]/8+72:80 r/16 r/16 [Bb3 Db4 F4]/8+79:90 r/16 [Bb3 Db4 F4]/8+14:76 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 [Db4 F4 Ab4 C5]/8+12:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:78 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:84 [C4 Eb4 F4]/8+76:94 r/16 r/16 [C4 Eb4 F4]/8+74:80 r/16 r/16 [C4 Eb4 F4]/8+76:88 r/16 [C4 Eb4 F4]/8+11:86 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:84 [Bb3 Db4 F4]/8+72:92 r/16 r/16 [Bb3 Db4 F4]/8+79:90 r/16 r/16 [Bb3 Db4 F4]/8+72:96 r/16 [Bb3 Db4 F4]/8+9:86 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:94 r/16 [Db4 F4 Ab4 C5]/8+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:98 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:94 [C4 Eb4 F4]/8+74:100 r/16 r/16 [C4 Eb4 F4]/8+76:90 r/16 r/16 [C4 Eb4 F4]/8+74:98 r/16 [C4 Eb4 F4]/8+16:92 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 [Db4 F4 Ab4 C5]/8+15:76 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:84 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:78 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:78 [Db4 F4 Ab4 C5]/8+79:86 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:80 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:90 r/16 [Db4 F4 Ab4 C5]/8+14:76 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:88 r/16 [Bb3 Db4 F4]/8+12:82 r/16 r/16 [Bb3 Db4 F4]/16+10:92 r/16 r/16 [Bb3 Db4 F4]/8+80:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:84 [Bb3 Db4 F4]/8+76:94 r/16 r/16 [Bb3 Db4 F4]/8+74:80 r/16 r/16 [Bb3 Db4 F4]/8+76:88 r/16 [Bb3 Db4 F4]/8+11:86 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:96 r/16 [Db4 F4 Ab4 C5]/8+8:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:84 [Db4 F4 Ab4 C5]/8+72:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:96 r/16 [Db4 F4 Ab4 C5]/8+9:86 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:94 r/16 [C4 Eb4 F4]/8+10:92 r/16 r/16 [C4 Eb4 F4]/16+12:98 r/16 r/16 [C4 Eb4 F4]/8+75:88 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:94 [C4 Eb4 F4]/8+74:100 r/16 r/16 [C4 Eb4 F4]/8+76:90 r/16 r/16 [C4 Eb4 F4]/8+74:98 r/16 [C4 Eb4 F4]/8+16:92 |
 # Final chorus
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:98 r/16 [Db4 F4 Ab4 C5]/8+15:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:88 [Bb3 Db4 F4]/8+79:96 r/16 r/16 [Bb3 Db4 F4]/8+72:90 r/16 r/16 [Bb3 Db4 F4]/8+79:100 r/16 [Bb3 Db4 F4]/8+14:86 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:96 r/16 [Db4 F4 Ab4 C5]/8+12:90 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:100 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:90 [C4 Eb4 F4]/8+76:100 r/16 r/16 [C4 Eb4 F4]/8+74:86 r/16 r/16 [C4 Eb4 F4]/8+76:94 r/16 [C4 Eb4 F4]/8+11:92 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:100 r/16 [Db4 F4 Ab4 C5]/8+8:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:86 [Bb3 Db4 F4]/8+72:94 r/16 r/16 [Bb3 Db4 F4]/8+79:92 r/16 r/16 [Bb3 Db4 F4]/8+72:98 r/16 [Bb3 Db4 F4]/8+9:88 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:94 r/16 [Db4 F4 Ab4 C5]/8+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:98 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:92 [C4 Eb4 F4]/8+74:98 r/16 r/16 [C4 Eb4 F4]/8+76:88 r/16 r/16 [C4 Eb4 F4]/8+74:96 r/16 [C4 Eb4 F4]/8+16:90 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:98 r/16 [Db4 F4 Ab4 C5]/8+15:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:88 [Bb3 Db4 F4]/8+79:96 r/16 r/16 [Bb3 Db4 F4]/8+72:90 r/16 r/16 [Bb3 Db4 F4]/8+79:100 r/16 [Bb3 Db4 F4]/8+14:86 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:96 r/16 [Db4 F4 Ab4 C5]/8+12:90 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:100 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:86 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:90 [C4 Eb4 F4]/8+76:100 r/16 r/16 [C4 Eb4 F4]/8+74:86 r/16 r/16 [C4 Eb4 F4]/8+76:94 r/16 [C4 Eb4 F4]/8+11:92 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:100 r/16 [Db4 F4 Ab4 C5]/8+8:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+14:86 [Bb3 Db4 F4]/8+72:94 r/16 r/16 [Bb3 Db4 F4]/8+79:92 r/16 r/16 [Bb3 Db4 F4]/8+72:98 r/16 [Bb3 Db4 F4]/8+9:88 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:94 r/16 [Db4 F4 Ab4 C5]/8+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/16+12:98 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:88 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:92 [C4 Eb4 F4]/8+74:98 r/16 r/16 [C4 Eb4 F4]/8+76:88 r/16 r/16 [C4 Eb4 F4]/8+74:96 r/16 [C4 Eb4 F4]/8+16:90 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:98 r/16 [Db4 F4 Ab4 C5]/8+15:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:88 [Db4 F4 Ab4 C5]/8+79:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:100 r/16 [Db4 F4 Ab4 C5]/8+14:86 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:96 r/16 [Bb3 Db4 F4]/8+12:90 r/16 r/16 [Bb3 Db4 F4]/16+10:100 r/16 r/16 [Bb3 Db4 F4]/8+80:86 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:90 [Bb3 Db4 F4]/8+76:100 r/16 r/16 [Bb3 Db4 F4]/8+74:86 r/16 r/16 [Bb3 Db4 F4]/8+76:94 r/16 [Bb3 Db4 F4]/8+11:92 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:100 r/16 [Db4 F4 Ab4 C5]/8+8:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:86 [Db4 F4 Ab4 C5]/8+72:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:98 r/16 [Db4 F4 Ab4 C5]/8+9:88 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:94 r/16 [C4 Eb4 F4]/8+10:92 r/16 r/16 [C4 Eb4 F4]/16+12:98 r/16 r/16 [C4 Eb4 F4]/8+75:88 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:92 [C4 Eb4 F4]/8+74:98 r/16 r/16 [C4 Eb4 F4]/8+76:88 r/16 r/16 [C4 Eb4 F4]/8+74:96 r/16 [C4 Eb4 F4]/8+16:90 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:98 r/16 [Db4 F4 Ab4 C5]/8+15:88 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:90 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:88 [Db4 F4 Ab4 C5]/8+79:96 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:90 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:100 r/16 [Db4 F4 Ab4 C5]/8+14:86 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:96 r/16 [Bb3 Db4 F4]/8+12:90 r/16 r/16 [Bb3 Db4 F4]/16+10:100 r/16 r/16 [Bb3 Db4 F4]/8+80:86 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:90 [Bb3 Db4 F4]/8+76:100 r/16 r/16 [Bb3 Db4 F4]/8+74:86 r/16 r/16 [Bb3 Db4 F4]/8+76:94 r/16 [Bb3 Db4 F4]/8+11:92 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+75:100 r/16 [Db4 F4 Ab4 C5]/8+8:86 r/16 r/16 [Db4 F4 Ab4 C5]/16+15:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:92 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+14:86 [Db4 F4 Ab4 C5]/8+72:94 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:98 r/16 [Db4 F4 Ab4 C5]/8+9:88 | r/16 r/16 r/16 [C4 Eb4 F4]/8+73:94 r/16 [C4 Eb4 F4]/8+10:92 r/16 r/16 [C4 Eb4 F4]/16+12:98 r/16 r/16 [C4 Eb4 F4]/8+75:88 r/16 | r/16 r/16 [C4 Eb4 F4]/16+11:92 [C4 Eb4 F4]/8+74:98 r/16 r/16 [C4 Eb4 F4]/8+76:88 r/16 r/16 [C4 Eb4 F4]/8+74:96 r/16 [C4 Eb4 F4]/8+16:90 |
 # Outro
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:90 r/16 [Db4 F4 Ab4 C5]/8+15:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+9:80 [Bb3 Db4 F4]/8+79:88 r/16 r/16 [Bb3 Db4 F4]/8+72:82 r/16 r/16 [Bb3 Db4 F4]/8+79:92 r/16 [Bb3 Db4 F4]/8+14:78 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+78:88 r/16 [Db4 F4 Ab4 C5]/8+12:82 r/16 r/16 [Db4 F4 Ab4 C5]/16+10:92 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:78 r/16 | r/16 r/16 [C4 Eb4 F4]/16+16:82 [C4 Eb4 F4]/8+76:92 r/16 r/16 [C4 Eb4 F4]/8+74:78 r/16 r/16 [C4 Eb4 F4]/8+76:86 r/16 [C4 Eb4 F4]/8+11:84 |
-| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:82 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+8:72 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+79:72 r/16 r/16 r/16 r/16 r/16 [Bb3 Db4 F4]/8+9:80 r/16 r/16 r/16 r/16 | R | R |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:90 r/16 [Db4 F4 Ab4 C5]/8+15:80 r/16 r/16 [Db4 F4 Ab4 C5]/16+8:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+73:82 r/16 | r/16 r/16 [Db4 F4 Ab4 C5]/16+9:80 [Db4 F4 Ab4 C5]/8+79:88 r/16 r/16 [Db4 F4 Ab4 C5]/8+72:82 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:92 r/16 [Db4 F4 Ab4 C5]/8+14:78 | r/16 r/16 r/16 [Bb3 Db4 F4]/8+78:88 r/16 [Bb3 Db4 F4]/8+12:82 r/16 r/16 [Bb3 Db4 F4]/16+10:92 r/16 r/16 [Bb3 Db4 F4]/8+80:78 r/16 | r/16 r/16 [Bb3 Db4 F4]/16+16:82 [Bb3 Db4 F4]/8+76:92 r/16 r/16 [Bb3 Db4 F4]/8+74:78 r/16 r/16 [Bb3 Db4 F4]/8+76:86 r/16 [Bb3 Db4 F4]/8+11:84 |
+| r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+80:82 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+8:72 r/16 r/16 r/16 r/16 | r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+79:72 r/16 r/16 r/16 r/16 r/16 [Db4 F4 Ab4 C5]/8+9:80 r/16 r/16 r/16 r/16 | R | R |
 
 track pad role=pad inst=warm-pad vol=0.75
 # Intro
-| [Bb2 F3]/1:66 | [Gb2 Db3]/1:68 | [Db3 Ab3]/1:70 | [Ab2 Eb3]/1:72 |
-| [Bb2 F3]/1:74 | [Gb2 Db3]/1:76 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:80 |
+| [Bb2 F3]/1:66 | [Bb2 F3]/1:68 | [Gb2 Db3]/1:70 | [Gb2 Db3]/1:72 |
+| [Db3 Ab3]/1:74 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:78 | [Ab2 Eb3]/1:80 |
 # Verse 1
-| [Bb2 F3]/1:74 | [Gb2 Db3]/1:74 | [Db3 Ab3]/1:74 | [Ab2 Eb3]/1:74 |
-| [Bb2 F3]/1:74 | [Gb2 Db3]/1:74 | [Db3 Ab3]/1:74 | [Ab2 Eb3]/1:74 |
-| [Bb2 F3]/1:74 | [Gb2 Db3]/1:74 | [Db3 Ab3]/1:74 | [Ab2 Eb3]/1:74 |
-| [Bb2 F3]/1:74 | [Gb2 Db3]/1:74 | [Db3 Ab3]/1:74 | [Ab2 Eb3]/1:74 |
+| [Bb2 F3]/1:74 | [Bb2 F3]/1:74 | [Gb2 Db3]/1:74 | [Gb2 Db3]/1:74 |
+| [Db3 Ab3]/1:74 | [Db3 Ab3]/1:74 | [Ab2 Eb3]/1:74 | [Ab2 Eb3]/1:74 |
+| [Bb2 F3]/1:74 | [Bb2 F3]/1:74 | [Gb2 Db3]/1:74 | [Gb2 Db3]/1:74 |
+| [Db3 Ab3]/1:74 | [Db3 Ab3]/1:74 | [Ab2 Eb3]/1:74 | [Ab2 Eb3]/1:74 |
 # Pre-chorus 1
-| [Gb2 Db3]/1:76 | [Ab2 Eb3]/1:76 | [Bb2 F3]/1:76 | [Bb2 F3]/1:76 |
-| [Gb2 Db3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 | [Ab2 Eb3]/1:76 |
+| [Gb2 Db3]/1:76 | [Gb2 Db3]/1:76 | [Ab2 Eb3]/1:76 | [Ab2 Eb3]/1:76 |
+| [Bb2 F3]/1:76 | [Bb2 F3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 |
 # Chorus 1
-| [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 |
-| [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 |
-| [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 |
-| [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 |
+| [Bb2 F3]/1:78 | [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Gb2 Db3]/1:78 |
+| [Db3 Ab3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 | [Ab2 Eb3]/1:78 |
+| [Bb2 F3]/1:78 | [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Gb2 Db3]/1:78 |
+| [Db3 Ab3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 | [Ab2 Eb3]/1:78 |
 # Verse 2
-| [Bb2 F3]/1:76 | [Gb2 Db3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 |
-| [Bb2 F3]/1:76 | [Gb2 Db3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 |
-| [Bb2 F3]/1:76 | [Gb2 Db3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 |
-| [Bb2 F3]/1:76 | [Gb2 Db3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 |
+| [Bb2 F3]/1:76 | [Bb2 F3]/1:76 | [Gb2 Db3]/1:76 | [Gb2 Db3]/1:76 |
+| [Db3 Ab3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 | [Ab2 Eb3]/1:76 |
+| [Bb2 F3]/1:76 | [Bb2 F3]/1:76 | [Gb2 Db3]/1:76 | [Gb2 Db3]/1:76 |
+| [Db3 Ab3]/1:76 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:76 | [Ab2 Eb3]/1:76 |
 # Pre-chorus 2
-| [Gb2 Db3]/1:78 | [Ab2 Eb3]/1:78 | [Bb2 F3]/1:78 | [Bb2 F3]/1:78 |
-| [Gb2 Db3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 | [Ab2 Eb3]/1:78 |
+| [Gb2 Db3]/1:78 | [Gb2 Db3]/1:78 | [Ab2 Eb3]/1:78 | [Ab2 Eb3]/1:78 |
+| [Bb2 F3]/1:78 | [Bb2 F3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 |
 # Chorus 2
-| [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 |
-| [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 |
-| [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 |
-| [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 |
+| [Bb2 F3]/1:80 | [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Gb2 Db3]/1:80 |
+| [Db3 Ab3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 | [Ab2 Eb3]/1:80 |
+| [Bb2 F3]/1:80 | [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Gb2 Db3]/1:80 |
+| [Db3 Ab3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 | [Ab2 Eb3]/1:80 |
 # Breakdown
-| [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 |
-| [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 |
+| [Bb2 F3]/1:82 | [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Gb2 Db3]/1:82 |
+| [Db3 Ab3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 | [Ab2 Eb3]/1:82 |
 # Build
-| [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 |
-| [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 |
+| [Bb2 F3]/1:80 | [Bb2 F3]/1:80 | [Gb2 Db3]/1:80 | [Gb2 Db3]/1:80 |
+| [Db3 Ab3]/1:80 | [Db3 Ab3]/1:80 | [Ab2 Eb3]/1:80 | [Ab2 Eb3]/1:80 |
 # Final chorus
-| [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 |
-| [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 |
-| [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 |
-| [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 |
+| [Bb2 F3]/1:82 | [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Gb2 Db3]/1:82 |
+| [Db3 Ab3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 | [Ab2 Eb3]/1:82 |
+| [Bb2 F3]/1:82 | [Bb2 F3]/1:82 | [Gb2 Db3]/1:82 | [Gb2 Db3]/1:82 |
+| [Db3 Ab3]/1:82 | [Db3 Ab3]/1:82 | [Ab2 Eb3]/1:82 | [Ab2 Eb3]/1:82 |
 # Outro
-| [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:78 |
-| [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Db3 Ab3]/1:76 | [Ab2 Eb3]/1:74 |
+| [Bb2 F3]/1:78 | [Bb2 F3]/1:78 | [Gb2 Db3]/1:78 | [Gb2 Db3]/1:78 |
+| [Db3 Ab3]/1:78 | [Db3 Ab3]/1:78 | [Ab2 Eb3]/1:76 | [Ab2 Eb3]/1:74 |
 
 track bass role=bass inst=synth-bass vol=0.75
 # Intro
 | R | R | R | R |
-| Bb1/2:76 r/8. F2/8+68:66 r/8. | Gb1/2:76 r/8. Db2/8+68:66 r/8. | Db2/2:76 r/8. Ab2/8+68:66 r/8. | Ab1/2:76 r/8. Eb2/8+68:66 r/8. |
+| Db2/2:76 r/8. Ab2/8+68:66 r/8. | Db2/2:76 r/8. Ab2/8+68:66 r/8. | Ab1/2:76 r/8. Eb2/8+68:66 r/8. | Ab1/2:76 r/8. Eb2/8+68:66 r/8. |
 # Verse 1
-| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab1/8+69:72 r/16 |
-| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab2/8+69:78^ Ab1/16 |
-| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab1/8+69:72 r/16 |
-| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab2/8+69:78^ Ab1/16 |
+| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 |
+| Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab1/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab2/8+69:78^ Ab1/16 |
+| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 |
+| Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab1/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab2/8+69:78^ Ab1/16 |
 # Pre-chorus 1
-| Gb1/8.:84 Gb2/16+68:72 r/8 Gb1/16+2:74 r/16 Gb1/8+6:82 r/16 Db2/8+67:78 Gb1/8+69:76 r/16 | Ab1/8.:84 Ab2/16+68:72 r/8 Ab1/16+2:74 r/16 Ab1/8+6:82 r/16 Eb2/8+67:78 Ab1/8+69:76 r/16 | Bb1/8.:84 Bb2/16+68:72 r/8 Bb1/16+2:74 r/16 Bb1/8+6:82 r/16 F2/8+67:78 Bb1/8+69:76 r/16 | Bb1/8.:84 Bb2/16+68:72 r/8 Bb1/16+2:74 r/16 Bb1/8+6:82 r/16 F2/8+67:78 Bb2/8+69:82^ Bb1/16 |
-| Gb1/8.:84 Gb2/16+68:72 r/8 Gb1/16+2:74 r/16 Gb1/8+6:82 r/16 Db2/8+67:78 Gb1/8+69:76 r/16 | Db2/8.:84 Db3/16+68:72 r/8 Db2/16+2:74 r/16 Db2/8+6:82 r/16 Ab2/8+67:78 Db2/8+69:76 r/16 | Ab1/8.:84 Ab2/16+68:72 r/8 Ab1/16+2:74 r/16 Ab1/8+6:82 r/16 Eb2/8+67:78 Ab1/8+69:76 r/16 | Ab1/8.:84 Ab2/16+68:72 r/8 Ab1/16+2:74 r/16 Ab1/8+6:82 r/16 Eb2/8+67:78 Ab1/8+69:76 r/16 |
+| Gb1/8.:84 Gb2/16+68:72 r/8 Gb1/16+2:74 r/16 Gb1/8+6:82 r/16 Db2/8+67:78 Gb1/8+69:76 r/16 | Gb1/8.:84 Gb2/16+68:72 r/8 Gb1/16+2:74 r/16 Gb1/8+6:82 r/16 Db2/8+67:78 Gb1/8+69:76 r/16 | Ab1/8.:84 Ab2/16+68:72 r/8 Ab1/16+2:74 r/16 Ab1/8+6:82 r/16 Eb2/8+67:78 Ab1/8+69:76 r/16 | Ab1/8.:84 Ab2/16+68:72 r/8 Ab1/16+2:74 r/16 Ab1/8+6:82 r/16 Eb2/8+67:78 Ab2/8+69:82^ Ab1/16 |
+| Bb1/8.:84 Bb2/16+68:72 r/8 Bb1/16+2:74 r/16 Bb1/8+6:82 r/16 F2/8+67:78 Bb1/8+69:76 r/16 | Bb1/8.:84 Bb2/16+68:72 r/8 Bb1/16+2:74 r/16 Bb1/8+6:82 r/16 F2/8+67:78 Bb1/8+69:76 r/16 | Db2/8.:84 Db3/16+68:72 r/8 Db2/16+2:74 r/16 Db2/8+6:82 r/16 Ab2/8+67:78 Db2/8+69:76 r/16 | Ab1/8.:84 Ab2/16+68:72 r/8 Ab1/16+2:74 r/16 Ab1/8+6:82 r/16 Eb2/8+67:78 Ab1/8+69:76 r/16 |
 # Chorus 1
-| r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb1/8+5:82 | r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab2/16+5:86^ Ab1/16 |
-| r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb1/8+5:82 | r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab2/16+5:86^ Ab1/16 |
-| r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb1/8+5:82 | r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab2/16+5:86^ Ab1/16 |
-| r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb1/8+5:82 | r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab2/16+5:86^ Ab1/16 |
+| r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb2/16+5:86^ Gb1/16 |
+| r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab1/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab2/16+5:86^ Ab1/16 |
+| r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Bb1/8:88 r/16 Bb1/16+68:78 Bb2/8+2:84 r/8 Bb1/8+6:86 r/16 F2/16+67:78 Bb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb1/8+5:82 | r/8 Gb1/8:88 r/16 Gb1/16+68:78 Gb2/8+2:84 r/8 Gb1/8+6:86 r/16 Db2/16+67:78 Gb2/16+5:86^ Gb1/16 |
+| r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Db2/8:88 r/16 Db2/16+68:78 Db3/8+2:84 r/8 Db2/8+6:86 r/16 Ab2/16+67:78 Db2/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab1/8+5:82 | r/8 Ab1/8:88 r/16 Ab1/16+68:78 Ab2/8+2:84 r/8 Ab1/8+6:86 r/16 Eb2/16+67:78 Ab2/16+5:86^ Ab1/16 |
 # Verse 2
-| Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb1/8+69:74 r/16 | Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab2/8+69:80^ Ab1/16 |
-| Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb1/8+69:74 r/16 | Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab2/8+69:80^ Ab1/16 |
-| Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb1/8+69:74 r/16 | Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab2/8+69:80^ Ab1/16 |
-| Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb1/8+69:74 r/16 | Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab2/8+69:80^ Ab1/16 |
+| Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb2/8+69:80^ Gb1/16 |
+| Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab1/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab2/8+69:80^ Ab1/16 |
+| Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Bb1/8.:82 Bb2/16+68:70 r/8 Bb1/16+2:72 r/16 Bb1/8+6:80 r/16 F2/8+67:76 Bb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb1/8+69:74 r/16 | Gb1/8.:82 Gb2/16+68:70 r/8 Gb1/16+2:72 r/16 Gb1/8+6:80 r/16 Db2/8+67:76 Gb2/8+69:80^ Gb1/16 |
+| Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Db2/8.:82 Db3/16+68:70 r/8 Db2/16+2:72 r/16 Db2/8+6:80 r/16 Ab2/8+67:76 Db2/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab1/8+69:74 r/16 | Ab1/8.:82 Ab2/16+68:70 r/8 Ab1/16+2:72 r/16 Ab1/8+6:80 r/16 Eb2/8+67:76 Ab2/8+69:80^ Ab1/16 |
 # Pre-chorus 2
-| Gb1/8.:86 Gb2/16+68:74 r/8 Gb1/16+2:76 r/16 Gb1/8+6:84 r/16 Db2/8+67:80 Gb1/8+69:78 r/16 | Ab1/8.:86 Ab2/16+68:74 r/8 Ab1/16+2:76 r/16 Ab1/8+6:84 r/16 Eb2/8+67:80 Ab1/8+69:78 r/16 | Bb1/8.:86 Bb2/16+68:74 r/8 Bb1/16+2:76 r/16 Bb1/8+6:84 r/16 F2/8+67:80 Bb1/8+69:78 r/16 | Bb1/8.:86 Bb2/16+68:74 r/8 Bb1/16+2:76 r/16 Bb1/8+6:84 r/16 F2/8+67:80 Bb2/8+69:84^ Bb1/16 |
-| Gb1/8.:86 Gb2/16+68:74 r/8 Gb1/16+2:76 r/16 Gb1/8+6:84 r/16 Db2/8+67:80 Gb1/8+69:78 r/16 | Db2/8.:86 Db3/16+68:74 r/8 Db2/16+2:76 r/16 Db2/8+6:84 r/16 Ab2/8+67:80 Db2/8+69:78 r/16 | Ab1/8.:86 Ab2/16+68:74 r/8 Ab1/16+2:76 r/16 Ab1/8+6:84 r/16 Eb2/8+67:80 Ab1/8+69:78 r/16 | Ab1/8.:86 Ab2/16+68:74 r/8 Ab1/16+2:76 r/16 Ab1/8+6:84 r/16 Eb2/8+67:80 Ab1/8+69:78 r/16 |
+| Gb1/8.:86 Gb2/16+68:74 r/8 Gb1/16+2:76 r/16 Gb1/8+6:84 r/16 Db2/8+67:80 Gb1/8+69:78 r/16 | Gb1/8.:86 Gb2/16+68:74 r/8 Gb1/16+2:76 r/16 Gb1/8+6:84 r/16 Db2/8+67:80 Gb1/8+69:78 r/16 | Ab1/8.:86 Ab2/16+68:74 r/8 Ab1/16+2:76 r/16 Ab1/8+6:84 r/16 Eb2/8+67:80 Ab1/8+69:78 r/16 | Ab1/8.:86 Ab2/16+68:74 r/8 Ab1/16+2:76 r/16 Ab1/8+6:84 r/16 Eb2/8+67:80 Ab2/8+69:84^ Ab1/16 |
+| Bb1/8.:86 Bb2/16+68:74 r/8 Bb1/16+2:76 r/16 Bb1/8+6:84 r/16 F2/8+67:80 Bb1/8+69:78 r/16 | Bb1/8.:86 Bb2/16+68:74 r/8 Bb1/16+2:76 r/16 Bb1/8+6:84 r/16 F2/8+67:80 Bb1/8+69:78 r/16 | Db2/8.:86 Db3/16+68:74 r/8 Db2/16+2:76 r/16 Db2/8+6:84 r/16 Ab2/8+67:80 Db2/8+69:78 r/16 | Ab1/8.:86 Ab2/16+68:74 r/8 Ab1/16+2:76 r/16 Ab1/8+6:84 r/16 Eb2/8+67:80 Ab1/8+69:78 r/16 |
 # Chorus 2
-| r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb1/8+5:84 | r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab2/16+5:88^ Ab1/16 |
-| r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb1/8+5:84 | r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab2/16+5:88^ Ab1/16 |
-| r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb1/8+5:84 | r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab2/16+5:88^ Ab1/16 |
-| r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb1/8+5:84 | r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab2/16+5:88^ Ab1/16 |
+| r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb2/16+5:88^ Gb1/16 |
+| r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab1/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab2/16+5:88^ Ab1/16 |
+| r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Bb1/8:90 r/16 Bb1/16+68:80 Bb2/8+2:86 r/8 Bb1/8+6:88 r/16 F2/16+67:80 Bb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb1/8+5:84 | r/8 Gb1/8:90 r/16 Gb1/16+68:80 Gb2/8+2:86 r/8 Gb1/8+6:88 r/16 Db2/16+67:80 Gb2/16+5:88^ Gb1/16 |
+| r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Db2/8:90 r/16 Db2/16+68:80 Db3/8+2:86 r/8 Db2/8+6:88 r/16 Ab2/16+67:80 Db2/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab1/8+5:84 | r/8 Ab1/8:90 r/16 Ab1/16+68:80 Ab2/8+2:86 r/8 Ab1/8+6:88 r/16 Eb2/16+67:80 Ab2/16+5:88^ Ab1/16 |
 # Breakdown
-| R | R | Db2/2:62 r/8. Ab2/8+68:52 r/8. | Ab1/2:64 r/8. Eb2/8+68:54 r/8. |
-| Bb1/2:66 r/8. F2/8+68:56 r/8. | Gb1/2:68 r/8. Db2/8+68:58 r/8. | Db2/8.:74 Db3/16+68:62 r/8 Db2/16+2:64 r/16 Db2/8+6:72 r/16 Ab2/8+67:68 Db2/8+69:66 r/16 | Ab1/8.:74 Ab2/16+68:62 r/8 Ab1/16+2:64 r/16 Ab1/8+6:72 r/16 Eb2/8+67:68 Ab1/8+69:66 r/16 |
+| R | R | Gb1/2:62 r/8. Db2/8+68:52 r/8. | Gb1/2:64 r/8. Db2/8+68:54 r/8. |
+| Db2/2:66 r/8. Ab2/8+68:56 r/8. | Db2/2:68 r/8. Ab2/8+68:58 r/8. | Ab1/8.:74 Ab2/16+68:62 r/8 Ab1/16+2:64 r/16 Ab1/8+6:72 r/16 Eb2/8+67:68 Ab1/8+69:66 r/16 | Ab1/8.:74 Ab2/16+68:62 r/8 Ab1/16+2:64 r/16 Ab1/8+6:72 r/16 Eb2/8+67:68 Ab1/8+69:66 r/16 |
 # Build
-| Bb1/2:70 r/8. F2/8+68:60 r/8. | Gb1/2:70 r/8. Db2/8+68:60 r/8. | Db2/2:70 r/8. Ab2/8+68:60 r/8. | Ab1/2:70 r/8. Eb2/8+68:60 r/8. |
-| Bb1/8.:80 Bb2/16+68:68 r/8 Bb1/16+2:70 r/16 Bb1/8+6:78 r/16 F2/8+67:74 Bb1/8+69:72 r/16 | Gb1/8.:80 Gb2/16+68:68 r/8 Gb1/16+2:70 r/16 Gb1/8+6:78 r/16 Db2/8+67:74 Gb1/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab2/8+69:78^ Ab1/16 |
+| Bb1/2:70 r/8. F2/8+68:60 r/8. | Bb1/2:70 r/8. F2/8+68:60 r/8. | Gb1/2:70 r/8. Db2/8+68:60 r/8. | Gb1/2:70 r/8. Db2/8+68:60 r/8. |
+| Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Db2/8.:80 Db3/16+68:68 r/8 Db2/16+2:70 r/16 Db2/8+6:78 r/16 Ab2/8+67:74 Db2/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab1/8+69:72 r/16 | Ab1/8.:80 Ab2/16+68:68 r/8 Ab1/16+2:70 r/16 Ab1/8+6:78 r/16 Eb2/8+67:74 Ab2/8+69:78^ Ab1/16 |
 # Final chorus
-| Bb1/8.:92 Bb2/16+68:80 r/8 Bb1/16+2:82 r/16 Bb1/8+6:90 r/16 F2/8+67:86 Bb1/8+69:84 r/16 | Gb1/8.:92 Gb2/16+68:80 r/8 Gb1/16+2:82 r/16 Gb1/8+6:90 r/16 Db2/8+67:86 Gb1/8+69:84 r/16 | Db2/8.:92 Db3/16+68:80 r/8 Db2/16+2:82 r/16 Db2/8+6:90 r/16 Ab2/8+67:86 Db2/8+69:84 r/16 | Ab1/8.:92 Ab2/16+68:80 r/8 Ab1/16+2:82 r/16 Ab1/8+6:90 r/16 Eb2/8+67:86 Ab2/8+69:90^ Ab1/16 |
-| Bb1/8.:92 Bb2/16+68:80 r/8 Bb1/16+2:82 r/16 Bb1/8+6:90 r/16 F2/8+67:86 Bb1/8+69:84 r/16 | Gb1/8.:92 Gb2/16+68:80 r/8 Gb1/16+2:82 r/16 Gb1/8+6:90 r/16 Db2/8+67:86 Gb1/8+69:84 r/16 | Db2/8.:92 Db3/16+68:80 r/8 Db2/16+2:82 r/16 Db2/8+6:90 r/16 Ab2/8+67:86 Db2/8+69:84 r/16 | Ab1/8.:92 Ab2/16+68:80 r/8 Ab1/16+2:82 r/16 Ab1/8+6:90 r/16 Eb2/8+67:86 Ab2/8+69:90^ Ab1/16 |
-| r/8 Bb1/8:92 r/16 Bb1/16+68:82 Bb2/8+2:88 r/8 Bb1/8+6:90 r/16 F2/16+67:82 Bb1/8+5:86 | r/8 Gb1/8:92 r/16 Gb1/16+68:82 Gb2/8+2:88 r/8 Gb1/8+6:90 r/16 Db2/16+67:82 Gb1/8+5:86 | r/8 Db2/8:92 r/16 Db2/16+68:82 Db3/8+2:88 r/8 Db2/8+6:90 r/16 Ab2/16+67:82 Db2/8+5:86 | r/8 Ab1/8:92 r/16 Ab1/16+68:82 Ab2/8+2:88 r/8 Ab1/8+6:90 r/16 Eb2/16+67:82 Ab2/16+5:90^ Ab1/16 |
-| r/8 Bb1/8:92 r/16 Bb1/16+68:82 Bb2/8+2:88 r/8 Bb1/8+6:90 r/16 F2/16+67:82 Bb1/8+5:86 | r/8 Gb1/8:92 r/16 Gb1/16+68:82 Gb2/8+2:88 r/8 Gb1/8+6:90 r/16 Db2/16+67:82 Gb1/8+5:86 | r/8 Db2/8:92 r/16 Db2/16+68:82 Db3/8+2:88 r/8 Db2/8+6:90 r/16 Ab2/16+67:82 Db2/8+5:86 | r/8 Ab1/8:92 r/16 Ab1/16+68:82 Ab2/8+2:88 r/8 Ab1/8+6:90 r/16 Eb2/16+67:82 Ab2/16+5:90^ Ab1/16 |
+| Bb1/8.:92 Bb2/16+68:80 r/8 Bb1/16+2:82 r/16 Bb1/8+6:90 r/16 F2/8+67:86 Bb1/8+69:84 r/16 | Bb1/8.:92 Bb2/16+68:80 r/8 Bb1/16+2:82 r/16 Bb1/8+6:90 r/16 F2/8+67:86 Bb1/8+69:84 r/16 | Gb1/8.:92 Gb2/16+68:80 r/8 Gb1/16+2:82 r/16 Gb1/8+6:90 r/16 Db2/8+67:86 Gb1/8+69:84 r/16 | Gb1/8.:92 Gb2/16+68:80 r/8 Gb1/16+2:82 r/16 Gb1/8+6:90 r/16 Db2/8+67:86 Gb2/8+69:90^ Gb1/16 |
+| Db2/8.:92 Db3/16+68:80 r/8 Db2/16+2:82 r/16 Db2/8+6:90 r/16 Ab2/8+67:86 Db2/8+69:84 r/16 | Db2/8.:92 Db3/16+68:80 r/8 Db2/16+2:82 r/16 Db2/8+6:90 r/16 Ab2/8+67:86 Db2/8+69:84 r/16 | Ab1/8.:92 Ab2/16+68:80 r/8 Ab1/16+2:82 r/16 Ab1/8+6:90 r/16 Eb2/8+67:86 Ab1/8+69:84 r/16 | Ab1/8.:92 Ab2/16+68:80 r/8 Ab1/16+2:82 r/16 Ab1/8+6:90 r/16 Eb2/8+67:86 Ab2/8+69:90^ Ab1/16 |
+| r/8 Bb1/8:92 r/16 Bb1/16+68:82 Bb2/8+2:88 r/8 Bb1/8+6:90 r/16 F2/16+67:82 Bb1/8+5:86 | r/8 Bb1/8:92 r/16 Bb1/16+68:82 Bb2/8+2:88 r/8 Bb1/8+6:90 r/16 F2/16+67:82 Bb1/8+5:86 | r/8 Gb1/8:92 r/16 Gb1/16+68:82 Gb2/8+2:88 r/8 Gb1/8+6:90 r/16 Db2/16+67:82 Gb1/8+5:86 | r/8 Gb1/8:92 r/16 Gb1/16+68:82 Gb2/8+2:88 r/8 Gb1/8+6:90 r/16 Db2/16+67:82 Gb2/16+5:90^ Gb1/16 |
+| r/8 Db2/8:92 r/16 Db2/16+68:82 Db3/8+2:88 r/8 Db2/8+6:90 r/16 Ab2/16+67:82 Db2/8+5:86 | r/8 Db2/8:92 r/16 Db2/16+68:82 Db3/8+2:88 r/8 Db2/8+6:90 r/16 Ab2/16+67:82 Db2/8+5:86 | r/8 Ab1/8:92 r/16 Ab1/16+68:82 Ab2/8+2:88 r/8 Ab1/8+6:90 r/16 Eb2/16+67:82 Ab1/8+5:86 | r/8 Ab1/8:92 r/16 Ab1/16+68:82 Ab2/8+2:88 r/8 Ab1/8+6:90 r/16 Eb2/16+67:82 Ab2/16+5:90^ Ab1/16 |
 # Outro
-| Bb1/8.:76 Bb2/16+68:64 r/8 Bb1/16+2:66 r/16 Bb1/8+6:74 r/16 F2/8+67:70 Bb1/8+69:68 r/16 | Gb1/8.:76 Gb2/16+68:64 r/8 Gb1/16+2:66 r/16 Gb1/8+6:74 r/16 Db2/8+67:70 Gb1/8+69:68 r/16 | Db2/8.:76 Db3/16+68:64 r/8 Db2/16+2:66 r/16 Db2/8+6:74 r/16 Ab2/8+67:70 Db2/8+69:68 r/16 | Ab1/8.:76 Ab2/16+68:64 r/8 Ab1/16+2:66 r/16 Ab1/8+6:74 r/16 Eb2/8+67:70 Ab2/8+69:74^ Ab1/16 |
-| Bb1/2:66 r/8. F2/8+68:56 r/8. | Gb1/2:62 r/8. Db2/8+68:52 r/8. | Db2/2:58 r/8. Ab2/8+68:48 r/8. | R |
+| Bb1/8.:76 Bb2/16+68:64 r/8 Bb1/16+2:66 r/16 Bb1/8+6:74 r/16 F2/8+67:70 Bb1/8+69:68 r/16 | Bb1/8.:76 Bb2/16+68:64 r/8 Bb1/16+2:66 r/16 Bb1/8+6:74 r/16 F2/8+67:70 Bb1/8+69:68 r/16 | Gb1/8.:76 Gb2/16+68:64 r/8 Gb1/16+2:66 r/16 Gb1/8+6:74 r/16 Db2/8+67:70 Gb1/8+69:68 r/16 | Gb1/8.:76 Gb2/16+68:64 r/8 Gb1/16+2:66 r/16 Gb1/8+6:74 r/16 Db2/8+67:70 Gb2/8+69:74^ Gb1/16 |
+| Db2/2:66 r/8. Ab2/8+68:56 r/8. | Db2/2:62 r/8. Ab2/8+68:52 r/8. | Ab1/2:58 r/8. Eb2/8+68:48 r/8. | R |
 
 track drums role=drums inst=909-kit vol=0.85
 # Intro
