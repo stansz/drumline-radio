@@ -1,13 +1,14 @@
-# Velvet Freeway, by Arena Agent and SZ. An original, melody-first synthwave song for the
+# Velvet Freeway, by Arena Agent, Claude and SZ. An original, melody-first synthwave song for the
 # Synthwave style: a sunset cruise at 104 BPM in G major, with the last chorus up a whole step in A
-# major and a ritard through the outro. The saw lead carries the tune; its hook is a two-note cell
+# major and the outro ending on one big hit. The saw lead carries the tune; its hook is a two-note cell
 # (B-D, B-D) that climbs to the tonic and holds, then a second phrase that reaches the sixth and
 # falls back. The verse has a tune of its own, low and phrased in four-bar breaths; the pre-chorus
 # climbs Am-Bm-C-D; the bridge states the cell in half time on the square lead, and the solo walks
 # it through the changes in eighths and bends into the new key. The square answers the hook in the
-# gaps rather than doubling it, the poly-stab chords chank on the backbeat, the pluck arp plays an
-# interleaved four-note figure (0-2-1-3-0-2-3-1, not a plain triad), the warm pad holds a root and
-# fifth so the hook's held 6ths and 9ths have room, and the synth bass cruises under the gated kit.
+# gaps rather than doubling it, the poly-stab chords push on beat 1 and the "and"s of 2 and 3 so they
+# are heard around the gated snare instead of under it, the pluck arp plays an interleaved four-note
+# figure (0-2-1-3-0-2-3-1, not a plain triad), the warm pad holds the full chord spread wide (root,
+# fifth, any 6th or flat 7th, and the third as a tenth), and the synth bass cruises under the gated kit.
 # One extra bank instrument: the ooh choir, from the bridge to the last chord, for the final lift.
 #
 # The harmony, one chord a bar. The verse is vi-IV-I-V, the pre-chorus Am-Bm-C-D, the chorus is
@@ -31,14 +32,14 @@
 # 1-8: Intro: the pad and the arp, then the lead quotes the hook and breaks off
 # 9-24: Verse 1: the cell low in the voice, the square answering at the phrase ends
 # 25-32: Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
-# 33-48: Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# 33-48: Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 # 49-56: Verse 2: the second verse, the arp driving in sixteenths
 # 57-64: Pre-chorus 2: the same climb, louder, into a roll
 # 65-80: Chorus 2: the hook again, the pad and arp wider
 # 81-84: Bridge: the kick drops, the square walks the cell up C-D-Em
 # 85-92: Solo: the cell in sixteenths, climbing to E major, the dominant of A
 # 93-108: Last chorus: the hook up a whole step in A major, the choir underneath
-# 109-112: Outro: the motif in A, slowing, one last A
+# 109-112: Outro: the motif in A, a snare roll, and one last hit on A
 #
 # Human feel: the lead's phrase starts lean in twelve ticks, its inner pushes come two to four
 # ticks early, and its held notes settle eight to twelve late; the stabs land twelve to twenty-two
@@ -47,7 +48,7 @@
 # every octave six ticks early; the arp's accents and the hats' velocities never repeat, and the
 # drums are quieter in the first verse than in the last chorus.
 title: Velvet Freeway
-composer: Arena Agent & SZ
+composer: Arena Agent, Claude & SZ
 year: 2026
 source: original
 category: originals
@@ -55,9 +56,8 @@ style: synthwave
 key: G major to A major
 tempo: 104
 time: 4/4
-about: A sunset-cruise synthwave tune at 104 BPM in G major: a saw-lead hook built on a two-note cell, a square lead answering in the gaps, backbeat stabs, an interleaved pluck arp and a gated kit, with the last chorus up a whole step in A major and a slowing outro.
+about: A sunset-cruise synthwave tune at 104 BPM in G major: a saw-lead hook built on a two-note cell, a square lead answering in the gaps, pushing stabs over full pad chords, an interleaved pluck arp and a gated kit, with the last chorus up a whole step in A major and a big final hit.
 
-@bars 109-112 tempo=104..92
 
 track lead role=lead inst=saw-lead vol=0.78 vol.altrock=1 vol.ambient=1.6 pan=-0.1
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
@@ -71,7 +71,7 @@ track lead role=lead inst=saw-lead vol=0.78 vol.altrock=1 vol.ambient=1.6 pan=-0
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
 | A4/8+12:100 C5/8-4:89 E5/4+8:100 D5/8-2:89 C5/8+2:94 A4/4+6:89 | B4/8+12:100 D5/8-4:89 F#5/4+8:100 E5/8-2:89 D5/8+2:94 B4/4+6:89 | C5/4+12:106 E5/4+6:95 G5/4+8:100 E5/4+4:89 | F#5/2+12:109 D5/4+6:95 A4/4+4:94 |
 | C5/8+12:100 D5/8-4:89 E5/4+8:100 G5/4+6:95 E5/4+4:94 | D5/8+12:100 E5/8-4:89 F#5/4+8:100 A5/4+6:95 F#5/4+4:94 | G5/4+12:106 A5/4+6:95 G5/4+8:100 E5/4+4:89 | F#5/4+12:106 E5/8-4:89 D5/8-2:94 D5/2+8:92 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 | B4/8+12:104 D5/8-4:93 B4/8+2:98 D5/8-2:93 E5/8+6:98 F#5/8+8:93 G5/4+10:98 | F#5/2+12:113 E5/8-4:93 D5/8-2:98 A4/4+8:93 | B4/8+12:104 D5/8-4:93 B4/8+2:98 D5/8-2:93 E5/4+6:104 G5/4+10:93 | A5/4+12:110 G5/8-4:93 E5/8-2:98 C5/2+8:96 |
 | B4/8+12:104 D5/8-4:93 E5/8-2:98 F#5/8+2:93 G5/4+8:104 G5/4+10:93 | F#5/2+12:113 E5/4+6:99 D5/4+4:98 | E5/8+12:104 G5/8-4:93 E5/8+2:98 G5/8-2:93 A5/4+8:104 G5/4+6:93 | F#5/2+12:113 r/2 |
 | B4/8+12:106 D5/8-4:95 B4/8+2:100 D5/8-2:95 E5/8+6:100 F#5/8+8:95 G5/4+10:100 | F#5/2+12:115 E5/8-4:95 D5/8-2:100 A4/4+8:95 | B4/8+12:106 D5/8-4:95 B4/8+2:100 D5/8-2:95 E5/4+6:106 G5/4+10:95 | A5/4+12:112 G5/8-4:95 E5/8-2:100 C5/2+8:98 |
@@ -97,8 +97,8 @@ track lead role=lead inst=saw-lead vol=0.78 vol.altrock=1 vol.ambient=1.6 pan=-0
 | C#5/8+12:110 E5/8-4:99 F#5/8-2:104 G#5/8+2:99 A5/4+8:110 A5/4+10:99 | G#5/2+12:119 F#5/4+6:105 E5/4+4:104 | F#5/8+12:110 A5/8-4:99 F#5/8+2:104 A5/8-2:99 B5/4+8:110 A5/4+6:99 | G#5/2+12:119 r/2 |
 | C#5/8+12:110 E5/8-4:99 C#5/8+2:104 E5/8-2:99 F#5/8+6:104 G#5/8+8:99 A5/4+10:104 | G#5/2+12:119 F#5/8-4:99 E5/8-2:104 B4/4+8:99 | C#5/8+12:110 E5/8-4:99 C#5/8+2:104 E5/8-2:99 F#5/4+6:110 A5/4+10:99 | B5/4+12:116 A5/8-4:99 F#5/8-2:104 D5/2+8:102 |
 | A5/8+12:112 B5/8-4:101 A5/8+2:106 G#5/8-2:101 A5/2+10:109 | B5/8+12:112 A5/8-4:101 G#5/4+6:112 E5/2+10:104 | F#5/8+12:112 A5/8-4:101 B5/4+8:112 A5/4+4:107 F#5/4+8:106 | G#5/4+12:118 F#5/8-4:101 E5/8-2:106 E5/2+8:104 |
-# Outro: the motif in A, slowing, one last A
-| C#5/8+12:104 E5/8-4:93 C#5/8:98 E5/8-2:93 F#5/8+6:98 G#5/8+8:93 A5/4+10:98 | A5/2+12:111 F#5/8-4:91 E5/8-2:96 C#5/4+8:91 | F#5/4+12:106 E5/8-4:89 D5/8-2:94 A4/2+8:92 | A4/1+10:103 |
+# Outro: the motif in A, a snare roll, and one last hit on A
+| C#5/8+12:104 E5/8-4:93 C#5/8:98 E5/8-2:93 F#5/8+6:98 G#5/8+8:93 A5/4+10:98 | A5/2+12:111 F#5/8-4:91 E5/8-2:96 C#5/4+8:91 | F#5/4+12:106 E5/8-4:89 D5/8-2:94 A4/2+8:92 | A4/2+10:107 r/2 |
 
 track answer role=lead2 inst=square-lead vol=0.42 vol.altrock=0.9 pan=0.34
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
@@ -112,7 +112,7 @@ track answer role=lead2 inst=square-lead vol=0.42 vol.altrock=0.9 pan=0.34
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
 | R | R | R | R |
 | R | R | G4/4+12:94 A4/4+6:83 G4/4+8:88 E4/4+4:77 | F#4/4+12:96 E4/8-4:79 D4/8-2:84 D4/2+8:82 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 | R | R | R | R |
 | R | R | R | r/2 D5/8+10:90 F#5/8-4:79 A5/4+6:84 |
 | R | R | R | R |
@@ -138,49 +138,49 @@ track answer role=lead2 inst=square-lead vol=0.42 vol.altrock=0.9 pan=0.34
 | R | R | R | r/2 E5/8+10:94 G#5/8-4:83 B5/4+6:88 |
 | R | R | R | R |
 | R | R | F#4/8+12:96 A4/8-4:85 B4/4+8:96 A4/4+4:91 F#4/4+8:90 | G#4/4+12:102 F#4/8-4:85 E4/8-2:90 E4/2+8:88 |
-# Outro: the motif in A, slowing, one last A
+# Outro: the motif in A, a snare roll, and one last hit on A
 | R | R | R | R |
 
 track pad role=pad vol=0.9 vol.altrock=0.5 pan=-0.16
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
-| [G3 D4]/1:56 | [D3 A3]/1:60 | [E3 B3]/1:64 | [C3 G3]/1:68 |
-| [G3 D4]/1:68 | [D3 A3]/1:68 | [E3 B3]/1:68 | [C3 G3]/1:68 |
+| [G3 D4 B4]/1:56 | [D3 A3 F#4]/1:60 | [E3 B3 G4]/1:64 | [C3 G3 A3 E4]/1:68 |
+| [G3 D4 B4]/1:68 | [D3 A3 F#4]/1:68 | [E3 B3 G4]/1:68 | [C3 G3 A3 E4]/1:68 |
 # Verse 1: the cell low in the voice, the square answering at the phrase ends
-| [E3 B3]/1:62 | [C3 G3]/1:63 | [G3 D4]/1:64 | [D3 A3]/1:65 |
-| [E3 B3]/1:66 | [C3 G3]/1:67 | [G3 D4]/1:68 | [D3 A3]/1:69 |
-| [E3 B3]/1:70 | [C3 G3]/1:71 | [G3 D4]/1:72 | [D3 A3]/1:72 |
-| [E3 B3]/1:72 | [C3 G3]/1:72 | [G3 D4]/1:72 | [D3 A3]/1:72 |
+| [E3 B3 G4]/1:62 | [C3 G3 A3 E4]/1:63 | [G3 D4 B4]/1:64 | [D3 A3 F#4]/1:65 |
+| [E3 B3 G4]/1:66 | [C3 G3 A3 E4]/1:67 | [G3 D4 B4]/1:68 | [D3 A3 F#4]/1:69 |
+| [E3 B3 D4 G4]/1:70 | [C3 G3 A3 E4]/1:71 | [G3 D4 B4]/1:72 | [D3 A3 F#4]/1:72 |
+| [E3 B3 G4]/1:72 | [C3 G3 A3 E4]/1:72 | [G3 D4 E4 B4]/1:72 | [D3 A3 F#4]/1:72 |
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
-| [A2 E3]/1:68 | [B2 F#3]/1:70 | [C3 G3]/1:72 | [D3 A3]/1:74 |
-| [A2 E3]/1:76 | [B2 F#3]/1:78 | [C3 G3]/1:80 | [D3 A3]/1:82 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
-| [G3 D4]/1:74 | [D3 A3]/1:75 | [E3 B3]/1:76 | [C3 G3]/1:77 |
-| [G3 D4]/1:74 | [D3 A3]/1:75 | [C3 G3]/1:76 | [D3 A3]/1:77 |
-| [G3 D4]/1:74 | [D3 A3]/1:75 | [E3 B3]/1:76 | [C3 G3]/1:77 |
-| [G3 D4]/1:74 | [D3 A3]/1:75 | [C3 G3]/1:76 | [D3 A3]/1:77 |
+| [A2 E3 C4]/1:68 | [B2 F#3 D4]/1:70 | [C3 G3 A3 E4]/1:72 | [D3 A3 F#4]/1:74 |
+| [A2 E3 G3 C4]/1:76 | [B2 F#3 A3 D4]/1:78 | [C3 G3 A3 E4]/1:80 | [D3 A3 F#4]/1:82 |
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
+| [G3 D4 B4]/1:74 | [D3 A3 F#4]/1:75 | [E3 B3 G4]/1:76 | [C3 G3 A3 E4]/1:77 |
+| [G3 D4 B4]/1:74 | [D3 A3 F#4]/1:75 | [C3 G3 A3 E4]/1:76 | [D3 A3 F#4]/1:77 |
+| [G3 D4 B4]/1:74 | [D3 A3 F#4]/1:75 | [E3 B3 G4]/1:76 | [C3 G3 A3 E4]/1:77 |
+| [G3 D4 B4]/1:74 | [D3 A3 F#4]/1:75 | [C3 G3 A3 E4]/1:76 | [D3 A3 F#4]/1:77 |
 # Verse 2: the second verse, the arp driving in sixteenths
-| [E3 B3]/1:66 | [C3 G3]/1:67 | [G3 D4]/1:68 | [D3 A3]/1:69 |
-| [E3 B3]/1:70 | [C3 G3]/1:71 | [G3 D4]/1:72 | [D3 A3]/1:73 |
+| [E3 B3 G4]/1:66 | [C3 G3 A3 E4]/1:67 | [G3 D4 B4]/1:68 | [D3 A3 F#4]/1:69 |
+| [E3 B3 G4]/1:70 | [C3 G3 A3 E4]/1:71 | [G3 D4 B4]/1:72 | [D3 A3 F#4]/1:73 |
 # Pre-chorus 2: the same climb, louder, into a roll
-| [A2 E3]/1:72 | [B2 F#3]/1:73 | [C3 G3]/1:74 | [D3 A3]/1:75 |
-| [A2 E3]/1:76 | [B2 F#3]/1:77 | [C3 G3]/1:78 | [D3 A3]/1:79 |
+| [A2 E3 C4]/1:72 | [B2 F#3 D4]/1:73 | [C3 G3 A3 E4]/1:74 | [D3 A3 F#4]/1:75 |
+| [A2 E3 G3 C4]/1:76 | [B2 F#3 A3 D4]/1:77 | [C3 G3 A3 E4]/1:78 | [D3 A3 F#4]/1:79 |
 # Chorus 2: the hook again, the pad and arp wider
-| [G3 D4]/1:76 | [D3 A3]/1:77 | [E3 B3]/1:78 | [C3 G3]/1:79 |
-| [G3 D4]/1:76 | [D3 A3]/1:77 | [C3 G3]/1:78 | [D3 A3]/1:79 |
-| [G3 D4]/1:76 | [D3 A3]/1:77 | [E3 B3]/1:78 | [C3 G3]/1:79 |
-| [G3 D4]/1:76 | [D3 A3]/1:77 | [C3 G3]/1:78 | [D3 A3]/1:79 |
+| [G3 D4 B4]/1:76 | [D3 A3 F#4]/1:77 | [E3 B3 G4]/1:78 | [C3 G3 A3 E4]/1:79 |
+| [G3 D4 B4]/1:76 | [D3 A3 F#4]/1:77 | [C3 G3 A3 E4]/1:78 | [D3 A3 F#4]/1:79 |
+| [G3 D4 B4]/1:76 | [D3 A3 F#4]/1:77 | [E3 B3 G4]/1:78 | [C3 G3 A3 E4]/1:79 |
+| [G3 D4 B4]/1:76 | [D3 A3 F#4]/1:77 | [C3 G3 A3 E4]/1:78 | [D3 A3 F#4]/1:79 |
 # Bridge: the kick drops, the square walks the cell up C-D-Em
-| [C3 G3]/1:84 | [D3 A3]/1:86 | [E3 B3]/1:88 | [E3 B3]/1:90 |
+| [C3 G3 A3 E4]/1:84 | [D3 A3 F#4]/1:86 | [E3 B3 G4]/1:88 | [E3 B3 D4 G4]/1:90 |
 # Solo: the cell in sixteenths, climbing to E major, the dominant of A
-| [C3 G3]/1:78 | [D3 A3]/1:79 | [E3 B3]/1:80 | [E3 B3]/1:81 |
-| [C3 G3]/1:82 | [D3 A3]/1:83 | [D3 A3]/1:84 | [E3 B3]/1:85 |
+| [C3 G3 A3 E4]/1:78 | [D3 A3 F#4]/1:79 | [E3 B3 D4 G4]/1:80 | [E3 B3 G4]/1:81 |
+| [C3 G3 A3 E4]/1:82 | [D3 A3 C4 F#4]/1:83 | [D3 A3 F#4]/1:84 | [E3 B3 C#4 G#4]/1:85 |
 # Last chorus: the hook up a whole step in A major, the choir underneath
-| [A3 E4]/1:78 | [E3 B3]/1:79 | [F#3 C#4]/1:80 | [D3 A3]/1:81 |
-| [A3 E4]/1:78 | [E3 B3]/1:79 | [D3 A3]/1:80 | [E3 B3]/1:81 |
-| [A3 E4]/1:78 | [E3 B3]/1:79 | [F#3 C#4]/1:80 | [D3 A3]/1:81 |
-| [A3 E4]/1:78 | [E3 B3]/1:79 | [D3 A3]/1:80 | [E3 B3]/1:81 |
-# Outro: the motif in A, slowing, one last A
-| [A3 E4]/1:78 | [F#3 C#4]/1:76 | [D3 A3]/1:74 | [A3 E4]/1:72 |
+| [A3 E4 C#5]/1:78 | [E3 B3 G#4]/1:79 | [F#3 C#4 A4]/1:80 | [D3 A3 B3 F#4]/1:81 |
+| [A3 E4 C#5]/1:78 | [E3 B3 G#4]/1:79 | [D3 A3 B3 F#4]/1:80 | [E3 B3 G#4]/1:81 |
+| [A3 E4 C#5]/1:78 | [E3 B3 G#4]/1:79 | [F#3 C#4 A4]/1:80 | [D3 A3 B3 F#4]/1:81 |
+| [A3 E4 C#5]/1:78 | [E3 B3 G#4]/1:79 | [D3 A3 B3 F#4]/1:80 | [E3 B3 G#4]/1:81 |
+# Outro: the motif in A, a snare roll, and one last hit on A
+| [A3 E4 C#5]/1:78 | [F#3 C#4 A4]/1:76 | [D3 A3 F#4]/1:74 | [A3 E4 C#5]/2:84 r/2 |
 
 track choir role=pad inst=choir-ooh vol=0.62 pan=0.2
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
@@ -194,7 +194,7 @@ track choir role=pad inst=choir-ooh vol=0.62 pan=0.2
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
 | R | R | R | R |
 | R | R | R | R |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 | R | R | R | R |
 | R | R | R | R |
 | R | R | R | R |
@@ -220,49 +220,49 @@ track choir role=pad inst=choir-ooh vol=0.62 pan=0.2
 | [A3 C#4 E4]/1:78 | [G#3 B3 E4]/1:79 | [A3 D4 F#4]/1:80 | [G#3 B3 E4]/1:81 |
 | [A3 C#4 E4]/1:82 | [G#3 B3 E4]/1:82 | [F#3 A3 C#4]/1:82 | [A3 D4 F#4]/1:82 |
 | [A3 C#4 E4]/1:82 | [G#3 B3 E4]/1:82 | [A3 D4 F#4]/1:82 | [G#3 B3 E4]/1:82 |
-# Outro: the motif in A, slowing, one last A
-| [A3 C#4 E4]/1:80 | [F#3 A3 C#4]/1:77 | [A3 D4 F#4]/1:74 | [A3 C#4 E4]/1:71 |
+# Outro: the motif in A, a snare roll, and one last hit on A
+| [A3 C#4 E4]/1:80 | [F#3 A3 C#4]/1:77 | [A3 D4 F#4]/1:74 | [A3 C#4 E4]/2:82 r/2 |
 
 track stabs role=chords vol=0.86 pan=-0.28
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
 | R | R | R | R |
-| R | R | r/8 r/8 [G3 B3 E4]/8+22:62 r/8 r/8 r/8 r/8 r/8 | r/8 r/8 [G3 C4 E4]/8+22:68 r/8 r/8 r/8 r/8 r/8 |
+| R | R | r/8 r/8 r/8 [G3 B3 E4]/8+14:62 r/8 r/8 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:68 r/8 [G3 C4 E4]/8+16:64 r/8 r/8 |
 # Verse 1: the cell low in the voice, the square answering at the phrase ends
-| r/8 r/8 [G3 B3 E4]/8+22:74 r/8 r/8 r/8 [G3 B3 E4]/8+12:80 r/8 | r/8 r/8 [G3 C4 E4]/8+22:76 r/8 r/8 r/8 [G3 C4 E4]/8+12:82 r/8 | r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:78 |
-| r/8 r/8 [G3 B3 E4]/8+22:74 r/8 r/8 r/8 [G3 B3 E4]/8+12:80 r/8 | r/8 r/8 [G3 C4 E4]/8+22:76 r/8 r/8 r/8 [G3 C4 E4]/8+12:82 r/8 | r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:78 |
-| r/8 r/8 [G3 B3 E4]/8+22:74 r/8 r/8 r/8 [G3 B3 E4]/8+12:80 r/8 | r/8 r/8 [G3 C4 E4]/8+22:76 r/8 r/8 r/8 [G3 C4 E4]/8+12:82 r/8 | r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:78 |
-| r/8 r/8 [G3 B3 E4]/8+22:74 r/8 r/8 r/8 [G3 B3 E4]/8+12:80 r/8 | r/8 r/8 [G3 C4 E4]/8+22:76 r/8 r/8 r/8 [G3 C4 E4]/8+12:82 r/8 | r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:78 |
+| r/8 r/8 r/8 [G3 B3 E4]/8+14:78 r/8 [G3 B3 E4]/8+16:74 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:80 r/8 [G3 C4 E4]/8+16:76 r/8 r/8 | r/8 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 |
+| r/8 r/8 r/8 [G3 B3 E4]/8+14:78 r/8 [G3 B3 E4]/8+16:74 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:80 r/8 [G3 C4 E4]/8+16:76 r/8 r/8 | r/8 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 |
+| r/8 r/8 r/8 [G3 B3 E4]/8+14:78 r/8 [G3 B3 E4]/8+16:74 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:80 r/8 [G3 C4 E4]/8+16:76 r/8 r/8 | r/8 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 |
+| r/8 r/8 r/8 [G3 B3 E4]/8+14:78 r/8 [G3 B3 E4]/8+16:74 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:80 r/8 [G3 C4 E4]/8+16:76 r/8 r/8 | r/8 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 |
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
-| [A3 C4 E4]/8+18:82 r/8 [A3 C4 E4]/8+22:78 r/8 [A3 C4 E4]/8+20:82 r/8 [A3 C4 E4]/8+12:80 r/8 | [B3 D4 F#4]/8+18:84 r/8 [B3 D4 F#4]/8+22:80 r/8 [B3 D4 F#4]/8+20:84 r/8 [B3 D4 F#4]/8+12:82 r/8 | [G3 C4 E4]/8+18:86 r/8 [G3 C4 E4]/8+22:82 r/8 [G3 C4 E4]/8+20:86 r/8 [G3 C4 E4]/8+12:84 r/8 | [A3 D4 F#4]/8+18:88 r/8 [A3 D4 F#4]/8+22:84 r/8 [A3 D4 F#4]/8+20:88 r/8 [A3 D4 F#4]/8+12:86 r/8 |
-| [A3 C4 E4]/8+18:90 r/8 [A3 C4 E4]/8+22:86 r/8 [A3 C4 E4]/8+20:90 r/8 [A3 C4 E4]/8+12:88 r/8 | [B3 D4 F#4]/8+18:92 r/8 [B3 D4 F#4]/8+22:88 r/8 [B3 D4 F#4]/8+20:92 r/8 [B3 D4 F#4]/8+12:90 r/8 | [G3 C4 E4]/8+18:94 r/8 [G3 C4 E4]/8+22:90 r/8 [G3 C4 E4]/8+20:94 r/8 [G3 C4 E4]/8+12:92 r/8 | [A3 D4 F#4]/8+18:96 r/8 [A3 D4 F#4]/8+22:92 r/8 [A3 D4 F#4]/8+20:96 r/8 [A3 D4 F#4]/8+12:94 r/8 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
-| r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:82 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:84 [A3 D4 F#4]/8+20:78 | r/8 r/8 [G3 B3 E4]/8+22:82 r/8 r/8 r/8 [G3 B3 E4]/8+12:86 r/8 | r/8 r/8 [G3 C4 E4]/8+22:84 r/8 r/8 r/8 [G3 C4 E4]/8+12:88 [G3 C4 E4]/8+20:82 |
-| r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:82 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:84 [A3 D4 F#4]/8+20:78 | r/8 r/8 [G3 C4 E4]/8+22:82 r/8 r/8 r/8 [G3 C4 E4]/8+12:86 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:84 r/8 r/8 r/8 [A3 D4 F#4]/8+12:88 [A3 D4 F#4]/8+20:82 |
-| r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:82 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:84 [A3 D4 F#4]/8+20:78 | r/8 r/8 [G3 B3 E4]/8+22:82 r/8 r/8 r/8 [G3 B3 E4]/8+12:86 r/8 | r/8 r/8 [G3 C4 E4]/8+22:84 r/8 r/8 r/8 [G3 C4 E4]/8+12:88 [G3 C4 E4]/8+20:82 |
-| r/8 r/8 [B3 D4 G4]/8+22:78 r/8 r/8 r/8 [B3 D4 G4]/8+12:82 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:80 r/8 r/8 r/8 [A3 D4 F#4]/8+12:84 [A3 D4 F#4]/8+20:78 | r/8 r/8 [G3 C4 E4]/8+22:82 r/8 r/8 r/8 [G3 C4 E4]/8+12:86 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:84 r/8 r/8 r/8 [A3 D4 F#4]/8+12:88 [A3 D4 F#4]/8+20:82 |
+| [A3 C4 E4]/8+18:82 [A3 C4 E4]/8+12:72 r/8 [A3 C4 E4]/8+14:78 [A3 C4 E4]/8+20:80 [A3 C4 E4]/8+16:72 r/8 [A3 C4 E4]/8+20:76 | [B3 D4 F#4]/8+18:84 [B3 D4 F#4]/8+12:74 r/8 [B3 D4 F#4]/8+14:80 [B3 D4 F#4]/8+20:82 [B3 D4 F#4]/8+16:74 r/8 [B3 D4 F#4]/8+20:78 | [G3 C4 E4]/8+18:86 [G3 C4 E4]/8+12:76 r/8 [G3 C4 E4]/8+14:82 [G3 C4 E4]/8+20:84 [G3 C4 E4]/8+16:76 r/8 [G3 C4 E4]/8+20:80 | [A3 D4 F#4]/8+18:88 [A3 D4 F#4]/8+12:78 r/8 [A3 D4 F#4]/8+14:84 [A3 D4 F#4]/8+20:86 [A3 D4 F#4]/8+16:78 r/8 [A3 D4 F#4]/8+20:82 |
+| [A3 C4 E4]/8+18:90 [A3 C4 E4]/8+12:80 r/8 [A3 C4 E4]/8+14:86 [A3 C4 E4]/8+20:88 [A3 C4 E4]/8+16:80 r/8 [A3 C4 E4]/8+20:84 | [B3 D4 F#4]/8+18:92 [B3 D4 F#4]/8+12:82 r/8 [B3 D4 F#4]/8+14:88 [B3 D4 F#4]/8+20:90 [B3 D4 F#4]/8+16:82 r/8 [B3 D4 F#4]/8+20:86 | [G3 C4 E4]/8+18:94 [G3 C4 E4]/8+12:84 r/8 [G3 C4 E4]/8+14:90 [G3 C4 E4]/8+20:92 [G3 C4 E4]/8+16:84 r/8 [G3 C4 E4]/8+20:88 | [A3 D4 F#4]/8+18:96 [A3 D4 F#4]/8+12:86 r/8 [A3 D4 F#4]/8+14:92 [A3 D4 F#4]/8+20:94 [A3 D4 F#4]/8+16:86 r/8 [A3 D4 F#4]/8+20:90 |
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
+| [B3 D4 G4]/8+18:80 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | [A3 D4 F#4]/8+18:82 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 | [G3 B3 E4]/8+18:84 r/8 r/8 [G3 B3 E4]/8+14:86 r/8 [G3 B3 E4]/8+16:82 r/8 r/8 | [G3 C4 E4]/8+18:86 r/8 r/8 [G3 C4 E4]/8+14:88 r/8 [G3 C4 E4]/8+16:84 r/8 [G3 C4 E4]/8+20:82 |
+| [B3 D4 G4]/8+18:80 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | [A3 D4 F#4]/8+18:82 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 | [G3 C4 E4]/8+18:84 r/8 r/8 [G3 C4 E4]/8+14:86 r/8 [G3 C4 E4]/8+16:82 r/8 r/8 | [A3 D4 F#4]/8+18:86 r/8 r/8 [A3 D4 F#4]/8+14:88 r/8 [A3 D4 F#4]/8+16:84 r/8 [A3 D4 F#4]/8+20:82 |
+| [B3 D4 G4]/8+18:80 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | [A3 D4 F#4]/8+18:82 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 | [G3 B3 E4]/8+18:84 r/8 r/8 [G3 B3 E4]/8+14:86 r/8 [G3 B3 E4]/8+16:82 r/8 r/8 | [G3 C4 E4]/8+18:86 r/8 r/8 [G3 C4 E4]/8+14:88 r/8 [G3 C4 E4]/8+16:84 r/8 [G3 C4 E4]/8+20:82 |
+| [B3 D4 G4]/8+18:80 r/8 r/8 [B3 D4 G4]/8+14:82 r/8 [B3 D4 G4]/8+16:78 r/8 r/8 | [A3 D4 F#4]/8+18:82 r/8 r/8 [A3 D4 F#4]/8+14:84 r/8 [A3 D4 F#4]/8+16:80 r/8 [A3 D4 F#4]/8+20:78 | [G3 C4 E4]/8+18:84 r/8 r/8 [G3 C4 E4]/8+14:86 r/8 [G3 C4 E4]/8+16:82 r/8 r/8 | [A3 D4 F#4]/8+18:86 r/8 r/8 [A3 D4 F#4]/8+14:88 r/8 [A3 D4 F#4]/8+16:84 r/8 [A3 D4 F#4]/8+20:82 |
 # Verse 2: the second verse, the arp driving in sixteenths
-| r/8 r/8 [G3 B3 E4]/8+22:78 r/8 r/8 r/8 [G3 B3 E4]/8+12:84 r/8 | r/8 r/8 [G3 C4 E4]/8+22:80 r/8 r/8 r/8 [G3 C4 E4]/8+12:86 r/8 | r/8 r/8 [B3 D4 G4]/8+22:82 r/8 r/8 r/8 [B3 D4 G4]/8+12:88 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:84 r/8 r/8 r/8 [A3 D4 F#4]/8+12:90 r/8 |
-| r/8 r/8 [G3 B3 E4]/8+22:78 r/8 r/8 r/8 [G3 B3 E4]/8+12:84 r/8 | r/8 r/8 [G3 C4 E4]/8+22:80 r/8 r/8 r/8 [G3 C4 E4]/8+12:86 r/8 | r/8 r/8 [B3 D4 G4]/8+22:82 r/8 r/8 r/8 [B3 D4 G4]/8+12:88 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:84 r/8 r/8 r/8 [A3 D4 F#4]/8+12:90 r/8 |
+| r/8 r/8 r/8 [G3 B3 E4]/8+14:82 r/8 [G3 B3 E4]/8+16:78 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:84 r/8 [G3 C4 E4]/8+16:80 r/8 r/8 | r/8 r/8 r/8 [B3 D4 G4]/8+14:86 r/8 [B3 D4 G4]/8+16:82 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:88 r/8 [A3 D4 F#4]/8+16:84 r/8 r/8 |
+| r/8 r/8 r/8 [G3 B3 E4]/8+14:82 r/8 [G3 B3 E4]/8+16:78 r/8 r/8 | r/8 r/8 r/8 [G3 C4 E4]/8+14:84 r/8 [G3 C4 E4]/8+16:80 r/8 r/8 | r/8 r/8 r/8 [B3 D4 G4]/8+14:86 r/8 [B3 D4 G4]/8+16:82 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:88 r/8 [A3 D4 F#4]/8+16:84 r/8 r/8 |
 # Pre-chorus 2: the same climb, louder, into a roll
-| [A3 C4 E4]/8+18:86 r/8 [A3 C4 E4]/8+22:82 r/8 [A3 C4 E4]/8+20:86 r/8 [A3 C4 E4]/8+12:84 r/8 | [B3 D4 F#4]/8+18:88 r/8 [B3 D4 F#4]/8+22:84 r/8 [B3 D4 F#4]/8+20:88 r/8 [B3 D4 F#4]/8+12:86 r/8 | [G3 C4 E4]/8+18:90 r/8 [G3 C4 E4]/8+22:86 r/8 [G3 C4 E4]/8+20:90 r/8 [G3 C4 E4]/8+12:88 r/8 | [A3 D4 F#4]/8+18:92 r/8 [A3 D4 F#4]/8+22:88 r/8 [A3 D4 F#4]/8+20:92 r/8 [A3 D4 F#4]/8+12:90 r/8 |
-| [A3 C4 E4]/8+18:94 r/8 [A3 C4 E4]/8+22:90 r/8 [A3 C4 E4]/8+20:94 r/8 [A3 C4 E4]/8+12:92 r/8 | [B3 D4 F#4]/8+18:96 r/8 [B3 D4 F#4]/8+22:92 r/8 [B3 D4 F#4]/8+20:96 r/8 [B3 D4 F#4]/8+12:94 r/8 | [G3 C4 E4]/8+18:98 r/8 [G3 C4 E4]/8+22:94 r/8 [G3 C4 E4]/8+20:98 r/8 [G3 C4 E4]/8+12:96 r/8 | [A3 D4 F#4]/8+18:100 r/8 [A3 D4 F#4]/8+22:96 r/8 [A3 D4 F#4]/8+20:100 r/8 [A3 D4 F#4]/8+12:98 r/8 |
+| [A3 C4 E4]/8+18:86 [A3 C4 E4]/8+12:76 r/8 [A3 C4 E4]/8+14:82 [A3 C4 E4]/8+20:84 [A3 C4 E4]/8+16:76 r/8 [A3 C4 E4]/8+20:80 | [B3 D4 F#4]/8+18:88 [B3 D4 F#4]/8+12:78 r/8 [B3 D4 F#4]/8+14:84 [B3 D4 F#4]/8+20:86 [B3 D4 F#4]/8+16:78 r/8 [B3 D4 F#4]/8+20:82 | [G3 C4 E4]/8+18:90 [G3 C4 E4]/8+12:80 r/8 [G3 C4 E4]/8+14:86 [G3 C4 E4]/8+20:88 [G3 C4 E4]/8+16:80 r/8 [G3 C4 E4]/8+20:84 | [A3 D4 F#4]/8+18:92 [A3 D4 F#4]/8+12:82 r/8 [A3 D4 F#4]/8+14:88 [A3 D4 F#4]/8+20:90 [A3 D4 F#4]/8+16:82 r/8 [A3 D4 F#4]/8+20:86 |
+| [A3 C4 E4]/8+18:94 [A3 C4 E4]/8+12:84 r/8 [A3 C4 E4]/8+14:90 [A3 C4 E4]/8+20:92 [A3 C4 E4]/8+16:84 r/8 [A3 C4 E4]/8+20:88 | [B3 D4 F#4]/8+18:96 [B3 D4 F#4]/8+12:86 r/8 [B3 D4 F#4]/8+14:92 [B3 D4 F#4]/8+20:94 [B3 D4 F#4]/8+16:86 r/8 [B3 D4 F#4]/8+20:90 | [G3 C4 E4]/8+18:98 [G3 C4 E4]/8+12:88 r/8 [G3 C4 E4]/8+14:94 [G3 C4 E4]/8+20:96 [G3 C4 E4]/8+16:88 r/8 [G3 C4 E4]/8+20:92 | [A3 D4 F#4]/8+18:100 [A3 D4 F#4]/8+12:90 r/8 [A3 D4 F#4]/8+14:96 [A3 D4 F#4]/8+20:98 [A3 D4 F#4]/8+16:90 r/8 [A3 D4 F#4]/8+20:94 |
 # Chorus 2: the hook again, the pad and arp wider
-| r/8 r/8 [B3 D4 G4]/8+22:80 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:82 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:80 | r/8 r/8 [G3 B3 E4]/8+22:84 r/8 r/8 r/8 [G3 B3 E4]/8+12:88 r/8 | r/8 r/8 [G3 C4 E4]/8+22:86 r/8 r/8 r/8 [G3 C4 E4]/8+12:90 [G3 C4 E4]/8+20:84 |
-| r/8 r/8 [B3 D4 G4]/8+22:80 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:82 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:80 | r/8 r/8 [G3 C4 E4]/8+22:84 r/8 r/8 r/8 [G3 C4 E4]/8+12:88 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:86 r/8 r/8 r/8 [A3 D4 F#4]/8+12:90 [A3 D4 F#4]/8+20:84 |
-| r/8 r/8 [B3 D4 G4]/8+22:80 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:82 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:80 | r/8 r/8 [G3 B3 E4]/8+22:84 r/8 r/8 r/8 [G3 B3 E4]/8+12:88 r/8 | r/8 r/8 [G3 C4 E4]/8+22:86 r/8 r/8 r/8 [G3 C4 E4]/8+12:90 [G3 C4 E4]/8+20:84 |
-| r/8 r/8 [B3 D4 G4]/8+22:80 r/8 r/8 r/8 [B3 D4 G4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:82 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:80 | r/8 r/8 [G3 C4 E4]/8+22:84 r/8 r/8 r/8 [G3 C4 E4]/8+12:88 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:86 r/8 r/8 r/8 [A3 D4 F#4]/8+12:90 [A3 D4 F#4]/8+20:84 |
+| [B3 D4 G4]/8+18:82 r/8 r/8 [B3 D4 G4]/8+14:84 r/8 [B3 D4 G4]/8+16:80 r/8 r/8 | [A3 D4 F#4]/8+18:84 r/8 r/8 [A3 D4 F#4]/8+14:86 r/8 [A3 D4 F#4]/8+16:82 r/8 [A3 D4 F#4]/8+20:80 | [G3 B3 E4]/8+18:86 r/8 r/8 [G3 B3 E4]/8+14:88 r/8 [G3 B3 E4]/8+16:84 r/8 r/8 | [G3 C4 E4]/8+18:88 r/8 r/8 [G3 C4 E4]/8+14:90 r/8 [G3 C4 E4]/8+16:86 r/8 [G3 C4 E4]/8+20:84 |
+| [B3 D4 G4]/8+18:82 r/8 r/8 [B3 D4 G4]/8+14:84 r/8 [B3 D4 G4]/8+16:80 r/8 r/8 | [A3 D4 F#4]/8+18:84 r/8 r/8 [A3 D4 F#4]/8+14:86 r/8 [A3 D4 F#4]/8+16:82 r/8 [A3 D4 F#4]/8+20:80 | [G3 C4 E4]/8+18:86 r/8 r/8 [G3 C4 E4]/8+14:88 r/8 [G3 C4 E4]/8+16:84 r/8 r/8 | [A3 D4 F#4]/8+18:88 r/8 r/8 [A3 D4 F#4]/8+14:90 r/8 [A3 D4 F#4]/8+16:86 r/8 [A3 D4 F#4]/8+20:84 |
+| [B3 D4 G4]/8+18:82 r/8 r/8 [B3 D4 G4]/8+14:84 r/8 [B3 D4 G4]/8+16:80 r/8 r/8 | [A3 D4 F#4]/8+18:84 r/8 r/8 [A3 D4 F#4]/8+14:86 r/8 [A3 D4 F#4]/8+16:82 r/8 [A3 D4 F#4]/8+20:80 | [G3 B3 E4]/8+18:86 r/8 r/8 [G3 B3 E4]/8+14:88 r/8 [G3 B3 E4]/8+16:84 r/8 r/8 | [G3 C4 E4]/8+18:88 r/8 r/8 [G3 C4 E4]/8+14:90 r/8 [G3 C4 E4]/8+16:86 r/8 [G3 C4 E4]/8+20:84 |
+| [B3 D4 G4]/8+18:82 r/8 r/8 [B3 D4 G4]/8+14:84 r/8 [B3 D4 G4]/8+16:80 r/8 r/8 | [A3 D4 F#4]/8+18:84 r/8 r/8 [A3 D4 F#4]/8+14:86 r/8 [A3 D4 F#4]/8+16:82 r/8 [A3 D4 F#4]/8+20:80 | [G3 C4 E4]/8+18:86 r/8 r/8 [G3 C4 E4]/8+14:88 r/8 [G3 C4 E4]/8+16:84 r/8 r/8 | [A3 D4 F#4]/8+18:88 r/8 r/8 [A3 D4 F#4]/8+14:90 r/8 [A3 D4 F#4]/8+16:86 r/8 [A3 D4 F#4]/8+20:84 |
 # Bridge: the kick drops, the square walks the cell up C-D-Em
-| r/8 r/8 [G3 C4 E4]/8+22:64 r/8 r/8 r/8 r/8 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:66 r/8 r/8 r/8 r/8 r/8 | r/8 r/8 [G3 B3 E4]/8+22:68 r/8 r/8 r/8 r/8 r/8 | r/8 r/8 [G3 B3 E4]/8+22:70 r/8 r/8 r/8 r/8 r/8 |
+| r/8 r/8 r/8 [G3 C4 E4]/8+14:64 r/8 r/8 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:66 r/8 r/8 r/8 r/8 | r/8 r/8 r/8 [G3 B3 E4]/8+14:68 r/8 r/8 r/8 r/8 | r/8 r/8 r/8 [G3 B3 E4]/8+14:70 r/8 r/8 r/8 r/8 |
 # Solo: the cell in sixteenths, climbing to E major, the dominant of A
-| r/8 r/8 [G3 C4 E4]/8+22:80 r/8 r/8 r/8 [G3 C4 E4]/8+12:84 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:82 r/8 r/8 r/8 [A3 D4 F#4]/8+12:86 [A3 D4 F#4]/8+20:80 | r/8 r/8 [G3 B3 E4]/8+22:84 r/8 r/8 r/8 [G3 B3 E4]/8+12:88 r/8 | r/8 r/8 [G3 B3 E4]/8+22:86 r/8 r/8 r/8 [G3 B3 E4]/8+12:90 [G3 B3 E4]/8+20:84 |
-| r/8 r/8 [G3 C4 E4]/8+22:88 r/8 r/8 r/8 [G3 C4 E4]/8+12:92 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:90 r/8 r/8 r/8 [A3 D4 F#4]/8+12:94 [A3 D4 F#4]/8+20:88 | r/8 r/8 [A3 D4 F#4]/8+22:92 r/8 r/8 r/8 [A3 D4 F#4]/8+12:96 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:94 r/8 r/8 r/8 [G#3 B3 E4]/8+12:98 [G#3 B3 E4]/8+20:92 |
+| [G3 C4 E4]/8+18:82 r/8 r/8 [G3 C4 E4]/8+14:84 r/8 [G3 C4 E4]/8+16:80 r/8 r/8 | [A3 D4 F#4]/8+18:84 r/8 r/8 [A3 D4 F#4]/8+14:86 r/8 [A3 D4 F#4]/8+16:82 r/8 [A3 D4 F#4]/8+20:80 | [G3 B3 E4]/8+18:86 r/8 r/8 [G3 B3 E4]/8+14:88 r/8 [G3 B3 E4]/8+16:84 r/8 r/8 | [G3 B3 E4]/8+18:88 r/8 r/8 [G3 B3 E4]/8+14:90 r/8 [G3 B3 E4]/8+16:86 r/8 [G3 B3 E4]/8+20:84 |
+| [G3 C4 E4]/8+18:90 r/8 r/8 [G3 C4 E4]/8+14:92 r/8 [G3 C4 E4]/8+16:88 r/8 r/8 | [A3 D4 F#4]/8+18:92 r/8 r/8 [A3 D4 F#4]/8+14:94 r/8 [A3 D4 F#4]/8+16:90 r/8 [A3 D4 F#4]/8+20:88 | [A3 D4 F#4]/8+18:94 r/8 r/8 [A3 D4 F#4]/8+14:96 r/8 [A3 D4 F#4]/8+16:92 r/8 r/8 | [G#3 B3 E4]/8+18:96 r/8 r/8 [G#3 B3 E4]/8+14:98 r/8 [G#3 B3 E4]/8+16:94 r/8 [G#3 B3 E4]/8+20:92 |
 # Last chorus: the hook up a whole step in A major, the choir underneath
-| r/8 r/8 [A3 C#4 E4]/8+22:84 r/8 r/8 r/8 [A3 C#4 E4]/8+12:88 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:86 r/8 r/8 r/8 [G#3 B3 E4]/8+12:90 [G#3 B3 E4]/8+20:84 | r/8 r/8 [F#3 A3 C#4]/8+22:88 r/8 r/8 r/8 [F#3 A3 C#4]/8+12:92 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:90 r/8 r/8 r/8 [A3 D4 F#4]/8+12:94 [A3 D4 F#4]/8+20:88 |
-| r/8 r/8 [A3 C#4 E4]/8+22:84 r/8 r/8 r/8 [A3 C#4 E4]/8+12:88 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:86 r/8 r/8 r/8 [G#3 B3 E4]/8+12:90 [G#3 B3 E4]/8+20:84 | r/8 r/8 [A3 D4 F#4]/8+22:88 r/8 r/8 r/8 [A3 D4 F#4]/8+12:92 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:90 r/8 r/8 r/8 [G#3 B3 E4]/8+12:94 [G#3 B3 E4]/8+20:88 |
-| r/8 r/8 [A3 C#4 E4]/8+22:84 r/8 r/8 r/8 [A3 C#4 E4]/8+12:88 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:86 r/8 r/8 r/8 [G#3 B3 E4]/8+12:90 [G#3 B3 E4]/8+20:84 | r/8 r/8 [F#3 A3 C#4]/8+22:88 r/8 r/8 r/8 [F#3 A3 C#4]/8+12:92 r/8 | r/8 r/8 [A3 D4 F#4]/8+22:90 r/8 r/8 r/8 [A3 D4 F#4]/8+12:94 [A3 D4 F#4]/8+20:88 |
-| r/8 r/8 [A3 C#4 E4]/8+22:84 r/8 r/8 r/8 [A3 C#4 E4]/8+12:88 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:86 r/8 r/8 r/8 [G#3 B3 E4]/8+12:90 [G#3 B3 E4]/8+20:84 | r/8 r/8 [A3 D4 F#4]/8+22:88 r/8 r/8 r/8 [A3 D4 F#4]/8+12:92 r/8 | r/8 r/8 [G#3 B3 E4]/8+22:90 r/8 r/8 r/8 [G#3 B3 E4]/8+12:94 [G#3 B3 E4]/8+20:88 |
-# Outro: the motif in A, slowing, one last A
-| r/8 r/8 [A3 C#4 E4]/8+22:80 r/8 r/8 r/8 r/8 r/8 | R | r/8 r/8 [A3 D4 F#4]/8+22:72 r/8 r/8 r/8 r/8 r/8 | R |
+| [A3 C#4 E4]/8+18:86 r/8 r/8 [A3 C#4 E4]/8+14:88 r/8 [A3 C#4 E4]/8+16:84 r/8 r/8 | [G#3 B3 E4]/8+18:88 r/8 r/8 [G#3 B3 E4]/8+14:90 r/8 [G#3 B3 E4]/8+16:86 r/8 [G#3 B3 E4]/8+20:84 | [F#3 A3 C#4]/8+18:90 r/8 r/8 [F#3 A3 C#4]/8+14:92 r/8 [F#3 A3 C#4]/8+16:88 r/8 r/8 | [A3 D4 F#4]/8+18:92 r/8 r/8 [A3 D4 F#4]/8+14:94 r/8 [A3 D4 F#4]/8+16:90 r/8 [A3 D4 F#4]/8+20:88 |
+| [A3 C#4 E4]/8+18:86 r/8 r/8 [A3 C#4 E4]/8+14:88 r/8 [A3 C#4 E4]/8+16:84 r/8 r/8 | [G#3 B3 E4]/8+18:88 r/8 r/8 [G#3 B3 E4]/8+14:90 r/8 [G#3 B3 E4]/8+16:86 r/8 [G#3 B3 E4]/8+20:84 | [A3 D4 F#4]/8+18:90 r/8 r/8 [A3 D4 F#4]/8+14:92 r/8 [A3 D4 F#4]/8+16:88 r/8 r/8 | [G#3 B3 E4]/8+18:92 r/8 r/8 [G#3 B3 E4]/8+14:94 r/8 [G#3 B3 E4]/8+16:90 r/8 [G#3 B3 E4]/8+20:88 |
+| [A3 C#4 E4]/8+18:86 r/8 r/8 [A3 C#4 E4]/8+14:88 r/8 [A3 C#4 E4]/8+16:84 r/8 r/8 | [G#3 B3 E4]/8+18:88 r/8 r/8 [G#3 B3 E4]/8+14:90 r/8 [G#3 B3 E4]/8+16:86 r/8 [G#3 B3 E4]/8+20:84 | [F#3 A3 C#4]/8+18:90 r/8 r/8 [F#3 A3 C#4]/8+14:92 r/8 [F#3 A3 C#4]/8+16:88 r/8 r/8 | [A3 D4 F#4]/8+18:92 r/8 r/8 [A3 D4 F#4]/8+14:94 r/8 [A3 D4 F#4]/8+16:90 r/8 [A3 D4 F#4]/8+20:88 |
+| [A3 C#4 E4]/8+18:86 r/8 r/8 [A3 C#4 E4]/8+14:88 r/8 [A3 C#4 E4]/8+16:84 r/8 r/8 | [G#3 B3 E4]/8+18:88 r/8 r/8 [G#3 B3 E4]/8+14:90 r/8 [G#3 B3 E4]/8+16:86 r/8 [G#3 B3 E4]/8+20:84 | [A3 D4 F#4]/8+18:90 r/8 r/8 [A3 D4 F#4]/8+14:92 r/8 [A3 D4 F#4]/8+16:88 r/8 r/8 | [G#3 B3 E4]/8+18:92 r/8 r/8 [G#3 B3 E4]/8+14:94 r/8 [G#3 B3 E4]/8+16:90 r/8 [G#3 B3 E4]/8+20:88 |
+# Outro: the motif in A, a snare roll, and one last hit on A
+| [A3 C#4 E4]/8+18:82 r/8 r/8 [A3 C#4 E4]/8+14:84 r/8 [A3 C#4 E4]/8+16:80 r/8 r/8 | r/8 r/8 r/8 [F#3 A3 C#4]/8+14:76 r/8 r/8 r/8 r/8 | r/8 r/8 r/8 [A3 D4 F#4]/8+14:72 r/8 r/8 r/8 r/8 | [A3 C#4 E4]/8+18:96 r/8 r/8 r/8 r/8 r/8 r/8 r/8 |
 
 track arp role=arp vol=0.95 vol.altrock=0.5 pan=0.28
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
@@ -276,7 +276,7 @@ track arp role=arp vol=0.95 vol.altrock=0.5 pan=0.28
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
 | A3/16:93 E4/16-3:77 C4/16+2:85 B4/16-2:89 A3/16:91 E4/16-3:75 B4/16+3:87 C4/16-2:83 C4/16:93 B4/16-3:77 E4/16+2:85 A3/16-2:89 B4/16:91 C4/16-3:75 E4/16+3:87 A3/16-2:83 | B3/16:95 F#4/16-3:79 D4/16+2:87 C#5/16-2:91 B3/16:93 F#4/16-3:77 C#5/16+3:89 D4/16-2:85 D4/16:95 C#5/16-3:79 F#4/16+2:87 B3/16-2:91 C#5/16:93 D4/16-3:77 F#4/16+3:89 B3/16-2:85 | C4/16:97 G4/16-3:81 E4/16+2:89 D5/16-2:93 C4/16:95 G4/16-3:79 D5/16+3:91 E4/16-2:87 E4/16:97 D5/16-3:81 G4/16+2:89 C4/16-2:93 D5/16:95 E4/16-3:79 G4/16+3:91 C4/16-2:87 | D4/16:99 A4/16-3:83 F#4/16+2:91 E5/16-2:95 D4/16:97 A4/16-3:81 E5/16+3:93 F#4/16-2:89 F#4/16:99 E5/16-3:83 A4/16+2:91 D4/16-2:95 E5/16:97 F#4/16-3:81 A4/16+3:93 D4/16-2:89 |
 | A3/16:101 E4/16-3:85 C4/16+2:93 G4/16-2:97 A3/16:99 E4/16-3:83 G4/16+3:95 C4/16-2:91 C4/16:101 G4/16-3:85 E4/16+2:93 A3/16-2:97 G4/16:99 C4/16-3:83 E4/16+3:95 A3/16-2:91 | B3/16:103 F#4/16-3:87 D4/16+2:95 A4/16-2:99 B3/16:101 F#4/16-3:85 A4/16+3:97 D4/16-2:93 D4/16:103 A4/16-3:87 F#4/16+2:95 B3/16-2:99 A4/16:101 D4/16-3:85 F#4/16+3:97 B3/16-2:93 | C4/16:105 G4/16-3:89 E4/16+2:97 D5/16-2:101 C4/16:103 G4/16-3:87 D5/16+3:99 E4/16-2:95 E4/16:105 D5/16-3:89 G4/16+2:97 C4/16-2:101 D5/16:103 E4/16-3:87 G4/16+3:99 C4/16-2:95 | D4/16:107 A4/16-3:91 F#4/16+2:99 E5/16-2:103 D4/16:105 A4/16-3:89 E5/16+3:101 F#4/16-2:97 F#4/16:107 E5/16-3:91 A4/16+2:99 D4/16-2:103 E5/16:105 F#4/16-3:89 A4/16+3:101 D4/16-2:97 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 | G4/16:97 D5/16-3:81 B4/16+2:89 A5/16-2:93 G4/16:95 D5/16-3:79 A5/16+3:91 B4/16-2:87 B4/16:97 A5/16-3:81 D5/16+2:89 G4/16-2:93 A5/16:95 B4/16-3:79 D5/16+3:91 G4/16-2:87 | D4/16:99 A4/16-3:83 F#4/16+2:91 E5/16-2:95 D4/16:97 A4/16-3:81 E5/16+3:93 F#4/16-2:89 F#4/16:99 E5/16-3:83 A4/16+2:91 D4/16-2:95 E5/16:97 F#4/16-3:81 A4/16+3:93 D4/16-2:89 | E4/16:101 B4/16-3:85 G4/16+2:93 F#5/16-2:97 E4/16:99 B4/16-3:83 F#5/16+3:95 G4/16-2:91 G4/16:101 F#5/16-3:85 B4/16+2:93 E4/16-2:97 F#5/16:99 G4/16-3:83 B4/16+3:95 E4/16-2:91 | C4/16:103 G4/16-3:87 E4/16+2:95 D5/16-2:99 C4/16:101 G4/16-3:85 D5/16+3:97 E4/16-2:93 E4/16:103 D5/16-3:87 G4/16+2:95 C4/16-2:99 D5/16:101 E4/16-3:85 G4/16+3:97 C4/16-2:93 |
 | G4/16:97 D5/16-3:81 B4/16+2:89 A5/16-2:93 G4/16:95 D5/16-3:79 A5/16+3:91 B4/16-2:87 B4/16:97 A5/16-3:81 D5/16+2:89 G4/16-2:93 A5/16:95 B4/16-3:79 D5/16+3:91 G4/16-2:87 | D4/16:99 A4/16-3:83 F#4/16+2:91 E5/16-2:95 D4/16:97 A4/16-3:81 E5/16+3:93 F#4/16-2:89 F#4/16:99 E5/16-3:83 A4/16+2:91 D4/16-2:95 E5/16:97 F#4/16-3:81 A4/16+3:93 D4/16-2:89 | C4/16:101 G4/16-3:85 E4/16+2:93 D5/16-2:97 C4/16:99 G4/16-3:83 D5/16+3:95 E4/16-2:91 E4/16:101 D5/16-3:85 G4/16+2:93 C4/16-2:97 D5/16:99 E4/16-3:83 G4/16+3:95 C4/16-2:91 | D4/16:103 A4/16-3:87 F#4/16+2:95 E5/16-2:99 D4/16:101 A4/16-3:85 E5/16+3:97 F#4/16-2:93 F#4/16:103 E5/16-3:87 A4/16+2:95 D4/16-2:99 E5/16:101 F#4/16-3:85 A4/16+3:97 D4/16-2:93 |
 | G4/16:97 D5/16-3:81 B4/16+2:89 A5/16-2:93 G4/16:95 D5/16-3:79 A5/16+3:91 B4/16-2:87 B4/16:97 A5/16-3:81 D5/16+2:89 G4/16-2:93 A5/16:95 B4/16-3:79 D5/16+3:91 G4/16-2:87 | D4/16:99 A4/16-3:83 F#4/16+2:91 E5/16-2:95 D4/16:97 A4/16-3:81 E5/16+3:93 F#4/16-2:89 F#4/16:99 E5/16-3:83 A4/16+2:91 D4/16-2:95 E5/16:97 F#4/16-3:81 A4/16+3:93 D4/16-2:89 | E4/16:101 B4/16-3:85 G4/16+2:93 F#5/16-2:97 E4/16:99 B4/16-3:83 F#5/16+3:95 G4/16-2:91 G4/16:101 F#5/16-3:85 B4/16+2:93 E4/16-2:97 F#5/16:99 G4/16-3:83 B4/16+3:95 E4/16-2:91 | C4/16:103 G4/16-3:87 E4/16+2:95 D5/16-2:99 C4/16:101 G4/16-3:85 D5/16+3:97 E4/16-2:93 E4/16:103 D5/16-3:87 G4/16+2:95 C4/16-2:99 D5/16:101 E4/16-3:85 G4/16+3:97 C4/16-2:93 |
@@ -302,7 +302,7 @@ track arp role=arp vol=0.95 vol.altrock=0.5 pan=0.28
 | A4/16:101 E5/16-3:85 C#5/16+2:93 B5/16-2:97 A4/16:99 E5/16-3:83 B5/16+3:95 C#5/16-2:91 C#5/16:101 B5/16-3:85 E5/16+2:93 A4/16-2:97 B5/16:99 C#5/16-3:83 E5/16+3:95 A4/16-2:91 | E4/16:103 B4/16-3:87 G#4/16+2:95 F#5/16-2:99 E4/16:101 B4/16-3:85 F#5/16+3:97 G#4/16-2:93 G#4/16:103 F#5/16-3:87 B4/16+2:95 E4/16-2:99 F#5/16:101 G#4/16-3:85 B4/16+3:97 E4/16-2:93 | D4/16:105 A4/16-3:89 F#4/16+2:97 E5/16-2:101 D4/16:103 A4/16-3:87 E5/16+3:99 F#4/16-2:95 F#4/16:105 E5/16-3:89 A4/16+2:97 D4/16-2:101 E5/16:103 F#4/16-3:87 A4/16+3:99 D4/16-2:95 | E4/16:107 B4/16-3:91 G#4/16+2:99 E5/16-2:103 E4/16:105 B4/16-3:89 E5/16+3:101 G#4/16-2:97 G#4/16:107 E5/16-3:91 B4/16+2:99 E4/16-2:103 E5/16:105 G#4/16-3:89 B4/16+3:101 E4/16-2:97 |
 | A4/16:101 E5/16-3:85 C#5/16+2:93 B5/16-2:97 A4/16:99 E5/16-3:83 B5/16+3:95 C#5/16-2:91 C#5/16:101 B5/16-3:85 E5/16+2:93 A4/16-2:97 B5/16:99 C#5/16-3:83 E5/16+3:95 A4/16-2:91 | E4/16:103 B4/16-3:87 G#4/16+2:95 E5/16-2:99 E4/16:101 B4/16-3:85 E5/16+3:97 G#4/16-2:93 G#4/16:103 E5/16-3:87 B4/16+2:95 E4/16-2:99 E5/16:101 G#4/16-3:85 B4/16+3:97 E4/16-2:93 | F#4/16:105 C#5/16-3:89 A4/16+2:97 G#5/16-2:101 F#4/16:103 C#5/16-3:87 G#5/16+3:99 A4/16-2:95 A4/16:105 G#5/16-3:89 C#5/16+2:97 F#4/16-2:101 G#5/16:103 A4/16-3:87 C#5/16+3:99 F#4/16-2:95 | D4/16:107 A4/16-3:91 F#4/16+2:99 E5/16-2:103 D4/16:105 A4/16-3:89 E5/16+3:101 F#4/16-2:97 F#4/16:107 E5/16-3:91 A4/16+2:99 D4/16-2:103 E5/16:105 F#4/16-3:89 A4/16+3:101 D4/16-2:97 |
 | A4/16:101 E5/16-3:85 C#5/16+2:93 B5/16-2:97 A4/16:99 E5/16-3:83 B5/16+3:95 C#5/16-2:91 C#5/16:101 B5/16-3:85 E5/16+2:93 A4/16-2:97 B5/16:99 C#5/16-3:83 E5/16+3:95 A4/16-2:91 | E4/16:103 B4/16-3:87 G#4/16+2:95 F#5/16-2:99 E4/16:101 B4/16-3:85 F#5/16+3:97 G#4/16-2:93 G#4/16:103 F#5/16-3:87 B4/16+2:95 E4/16-2:99 F#5/16:101 G#4/16-3:85 B4/16+3:97 E4/16-2:93 | D4/16:105 A4/16-3:89 F#4/16+2:97 E5/16-2:101 D4/16:103 A4/16-3:87 E5/16+3:99 F#4/16-2:95 F#4/16:105 E5/16-3:89 A4/16+2:97 D4/16-2:101 E5/16:103 F#4/16-3:87 A4/16+3:99 D4/16-2:95 | E4/16:107 B4/16-3:91 G#4/16+2:99 E5/16-2:103 E4/16:105 B4/16-3:89 E5/16+3:101 G#4/16-2:97 G#4/16:107 E5/16-3:91 B4/16+2:99 E4/16-2:103 E5/16:105 G#4/16-3:89 B4/16+3:101 E4/16-2:97 |
-# Outro: the motif in A, slowing, one last A
+# Outro: the motif in A, a snare roll, and one last hit on A
 | A4/8:95 E5/8-3:79 C#5/8+2:87 B5/8-2:91 A4/8:93 E5/8-3:77 B5/8+3:89 C#5/8-2:85 | F#4/8:91 C#5/8-3:75 A4/8+2:83 G#5/8-2:87 F#4/8:89 C#5/8-3:73 G#5/8+3:85 A4/8-2:81 | R | R |
 
 track bass role=bass vol=0.42 vol.altrock=0.09 vol.orchestral=0.26 vol.techno=0.16 pan=0
@@ -317,7 +317,7 @@ track bass role=bass vol=0.42 vol.altrock=0.09 vol.orchestral=0.26 vol.techno=0.
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
 | A1/8:100 A1/8:100 A1/8:100 A2/8-6:86 A1/8:100 A1/8:100 A1/8:100 A2/8-6:96 | B1/8:101 B1/8:101 B1/8:101 B2/8-6:87 B1/8:101 B1/8:101 B1/8:101 B2/8-6:97 | C2/8:102 C2/8:102 C2/8:102 C3/8-6:88 C2/8:102 C2/8:102 C2/8:102 C3/8-6:98 | D2/8:103 D2/8:103 D2/8:103 D3/8-6:89 D2/8:103 D2/8:103 D2/8:103 D3/8-6:99 |
 | A1/8:104 A1/8:104 A1/8:104 A2/8-6:90 A1/8:104 A1/8:104 E2/8-4:94 A2/8-6:100 | B1/8:105 B1/8:105 B1/8:105 B2/8-6:91 B1/8:105 B1/8:105 F#2/8-4:95 B2/8-6:101 | C2/8:106 C2/8:106 C2/8:106 C3/8-6:92 C2/8:106 C2/8:106 G2/8-4:96 C3/8-6:102 | D2/8:107 D2/8:107 D2/8:103 D3/8-6:97 D2/8:107 A2/8-4:97 D2/8:107 D3/8-6:101 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 | G2/8:104 G2/8:104 G2/8:104 G3/8-6:90 G2/8:104 G2/8:104 D3/8-4:94 G3/8-6:100 | D2/8:106 D2/8:106 D2/8:106 D3/8-6:92 D2/8:106 D2/8:106 A2/8-4:96 D3/8-6:102 | E2/8:108 E2/8:108 E2/8:108 E3/8-6:94 E2/8:108 E2/8:108 B2/8-4:98 E3/8-6:104 | C2/8:110 C2/8:110 C2/8:110 C3/8-6:96 C2/8:110 C2/8:110 G2/8-4:100 C3/8-6:106 |
 | G2/8:104 G2/8:104 G2/8:104 G3/8-6:90 G2/8:104 G2/8:104 D3/8-4:94 G3/8-6:100 | D2/8:106 D2/8:106 D2/8:106 D3/8-6:92 D2/8:106 D2/8:106 A2/8-4:96 D3/8-6:102 | C2/8:108 C2/8:108 C2/8:108 C3/8-6:94 C2/8:108 C2/8:108 G2/8-4:98 C3/8-6:104 | D2/8:110 D2/8:110 D2/8:110 D3/8-6:96 D2/8:110 D2/8:110 A2/8-4:100 D3/8-6:106 |
 | G2/8:104 G2/8:104 G2/8:104 G3/8-6:90 G2/8:104 G2/8:104 D3/8-4:94 G3/8-6:100 | D2/8:106 D2/8:106 D2/8:106 D3/8-6:92 D2/8:106 D2/8:106 A2/8-4:96 D3/8-6:102 | E2/8:108 E2/8:108 E2/8:108 E3/8-6:94 E2/8:108 E2/8:108 B2/8-4:98 E3/8-6:104 | C2/8:110 C2/8:110 C2/8:110 C3/8-6:96 C2/8:110 C2/8:110 G2/8-4:100 C3/8-6:106 |
@@ -343,8 +343,8 @@ track bass role=bass vol=0.42 vol.altrock=0.09 vol.orchestral=0.26 vol.techno=0.
 | A2/8:108 A2/8:108 A2/8:108 A3/8-6:94 A2/8:108 A2/8:108 E3/8-4:98 A3/8-6:104 | E2/8:110 E2/8:110 E2/8:110 E3/8-6:96 E2/8:110 E2/8:110 B2/8-4:100 E3/8-6:106 | D2/8:112 D2/8:112 D2/8:112 D3/8-6:98 D2/8:112 D2/8:112 A2/8-4:102 D3/8-6:108 | E2/8:114 E2/8:114 E2/8:114 E3/8-6:100 E2/8:114 E2/8:114 B2/8-4:104 E3/8-6:110 |
 | A2/8:108 A2/8:108 A2/8:108 A3/8-6:94 A2/8:108 A2/8:108 E3/8-4:98 A3/8-6:104 | E2/8:110 E2/8:110 E2/8:110 E3/8-6:96 E2/8:110 E2/8:110 B2/8-4:100 E3/8-6:106 | F#2/8:112 F#2/8:112 F#2/8:112 F#3/8-6:98 F#2/8:112 F#2/8:112 C#3/8-4:102 F#3/8-6:108 | D2/8:114 D2/8:114 D2/8:114 D3/8-6:100 D2/8:114 D2/8:114 A2/8-4:104 D3/8-6:110 |
 | A2/8:108 A2/8:108 A2/8:108 A3/8-6:94 A2/8:108 A2/8:108 E3/8-4:98 A3/8-6:104 | E2/8:110 E2/8:110 E2/8:110 E3/8-6:96 E2/8:110 E2/8:110 B2/8-4:100 E3/8-6:106 | D2/8:112 D2/8:112 D2/8:112 D3/8-6:98 D2/8:112 D2/8:112 A2/8-4:102 D3/8-6:108 | E2/8:114 E2/8:114 E2/8:110 E3/8-6:104 E2/8:114 B2/8-4:104 E2/8:114 E3/8-6:108 |
-# Outro: the motif in A, slowing, one last A
-| A2/1:104 | F#2/1:100 | D2/2:96 r/2 | A2/1:100 |
+# Outro: the motif in A, a snare roll, and one last hit on A
+| A2/1:104 | F#2/1:100 | D2/2:96 r/2 | A2/2:110 r/2 |
 
 track drums role=drums vol=0.85 vol.altrock=0.4 vol.orchestral=0.55 pan=0
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
@@ -358,7 +358,7 @@ track drums role=drums vol=0.85 vol.altrock=0.4 vol.orchestral=0.55 pan=0
 # Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths
 | [k h]/8:104 h/8-7:60 [s cl h]/8+10:96 h/8-6:66 [k h]/8:101 h/8-7:62 [s cl h]/8+12:98 oh/8-6:76 | [k h]/8:106 h/8-7:62 [s cl h]/8+10:98 h/8-6:68 [k h]/8:103 h/8-7:64 [s cl h]/8+12:100 oh/8-6:78 | [k h]/8:108 h/8-7:68 [s cl h]/8+10:102 [k oh]/8-6:84 [k h]/8:106 h/8-7:70 [s cl h]/8+12:104 oh/8-6:88 | [k h]/8:110 h/8-7:70 [s cl h]/8+10:104 [k oh]/8-6:86 [k h]/8:108 h/8-7:72 [s cl h]/8+12:106 oh/8-6:90 |
 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k s]/16:100 s/16:102 s/16:103 s/16:105 [k s]/16:107 s/16:109 s/16:110 s/16:112 [k s]/16:114 s/16:116 s/16:117 s/16:119 [k s]/16:121 s/16:123 s/16:124 s/16:126 | [k s]/16:110 [s]/16:114 [s]/16:118 [s]/16:112 [k s]/16:120 [s]/16:122 [s]/16:126 [s]/16:120 [th]/16:122 [th]/16:126 [tm]/16:126 [tm]/16:126 [tl]/16:126 [tl]/16:126 [k tl]/16:126 [k cr]/16:126 |
-# Chorus 1: the hook, the stabs on the backbeat, the square in the gap
+# Chorus 1: the hook, the stabs pushing around the snare, the square in the gap
 | [k cr]/8:112 oh/8-6:82 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:110 h/8-7:70 [s cl h]/8+10:104 [k oh]/8-6:86 [k h]/8:108 h/8-7:72 [s cl h]/8+12:106 oh/8-6:90 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:114 h/8-7:74 [s cl h]/8+10:108 [k oh]/8-6:90 [k h]/8:112 h/8-7:76 [s cl h]/8+12:110 oh/8-6:94 |
 | [k h]/8:108 h/8-7:68 [s cl h]/8+10:102 [k oh]/8-6:84 [k h]/8:106 h/8-7:70 [s cl h]/8+12:104 oh/8-6:88 | [k h]/8:110 h/8-7:70 [s cl h]/8+10:104 [k oh]/8-6:86 [k h]/8:108 h/8-7:72 [s cl h]/8+12:106 oh/8-6:90 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:114 h/8-7:74 [s cl h]/8+10:108 [k oh]/8-6:90 [k h]/8:112 h/8-7:76 [s cl h]/8+12:110 oh/8-6:94 |
 | [k cr]/8:112 oh/8-6:82 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:110 h/8-7:70 [s cl h]/8+10:104 [k oh]/8-6:86 [k h]/8:108 h/8-7:72 [s cl h]/8+12:106 oh/8-6:90 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:114 h/8-7:74 [s cl h]/8+10:108 [k oh]/8-6:90 [k h]/8:112 h/8-7:76 [s cl h]/8+12:110 oh/8-6:94 |
@@ -384,5 +384,5 @@ track drums role=drums vol=0.85 vol.altrock=0.4 vol.orchestral=0.55 pan=0
 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:114 h/8-7:74 [s cl h]/8+10:108 [k oh]/8-6:90 [k h]/8:112 h/8-7:76 [s cl h]/8+12:110 oh/8-6:94 | [k h]/8:116 h/8-7:76 [s cl h]/8+10:110 [k oh]/8-6:92 [k h]/8:114 h/8-7:78 [s cl h]/8+12:112 oh/8-6:96 | [k s]/16:112 [s]/16:116 [s]/16:120 [s]/16:114 [k s]/16:122 [s]/16:124 [s]/16:126 [s]/16:122 [th]/16:124 [th]/16:126 [tm]/16:126 [tm]/16:126 [tl]/16:126 [tl]/16:126 [k tl]/16:126 [k cr]/16:126 |
 | [k cr]/8:118 oh/8-6:88 [s cl h]/8+10:112 [k oh]/8-6:94 [k h]/8:116 h/8-7:80 [s cl h]/8+12:114 oh/8-6:98 | [k h]/8:114 h/8-7:74 [s cl h]/8+10:108 [k oh]/8-6:90 [k h]/8:112 h/8-7:76 [s cl h]/8+12:110 oh/8-6:94 | [k h]/8:116 h/8-7:76 [s cl h]/8+10:110 [k oh]/8-6:92 [k h]/8:114 h/8-7:78 [s cl h]/8+12:112 oh/8-6:96 | [k h]/8:118 h/8-7:78 [s cl h]/8+10:112 [k oh]/8-6:94 [k h]/8:116 h/8-7:80 [s cl h]/8+12:114 oh/8-6:98 |
 | [k h]/8:112 h/8-7:72 [s cl h]/8+10:106 [k oh]/8-6:88 [k h]/8:110 h/8-7:74 [s cl h]/8+12:108 oh/8-6:92 | [k h]/8:114 h/8-7:74 [s cl h]/8+10:108 [k oh]/8-6:90 [k h]/8:112 h/8-7:76 [s cl h]/8+12:110 oh/8-6:94 | [k h]/8:116 h/8-7:76 [s cl h]/8+10:110 [k oh]/8-6:92 [k h]/8:114 h/8-7:78 [s cl h]/8+12:112 oh/8-6:96 | [k s]/16:112 [s]/16:116 [s]/16:120 [s]/16:114 [k s]/16:122 [s]/16:124 [s]/16:126 [s]/16:122 [th]/16:124 [th]/16:126 [tm]/16:126 [tm]/16:126 [tl]/16:126 [tl]/16:126 [k tl]/16:126 [k cr]/16:126 |
-# Outro: the motif in A, slowing, one last A
-| cr/1:114 | [k h]/8:104 h/8-7:60 [s cl h]/8+10:96 h/8-6:66 [k h]/8:101 h/8-7:62 [s cl h]/8+12:98 oh/8-6:76 | h/4-7:52 [cl h]/4+10:78 h/4-7:48 [cl h]/4+12:82 | [k cr]/2:112 r/2 |
+# Outro: the motif in A, a snare roll, and one last hit on A
+| cr/1:114 | [k h]/8:104 h/8-7:60 [s cl h]/8+10:96 h/8-6:66 [k h]/8:101 h/8-7:62 [s cl h]/8+12:98 oh/8-6:76 | [k s]/16:92 s/16:94 s/16:95 s/16:97 [k s]/16:99 s/16:101 s/16:102 s/16:104 [k s]/16:106 s/16:108 s/16:109 s/16:111 [k s]/16:113 s/16:115 s/16:116 s/16:118 | [k cr]/2:118 r/2 |

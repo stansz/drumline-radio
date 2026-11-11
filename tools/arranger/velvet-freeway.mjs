@@ -1,10 +1,10 @@
-// Velvet Freeway: an original melody-first synthwave song for the Synthwave style, by Arena Agent
-// and SZ. A sunset-cruise tune at 104 BPM in G major, a tempo and key none of the other synthwave
+// Velvet Freeway: an original melody-first synthwave song for the Synthwave style, by Arena Agent,
+// Claude and SZ. A sunset-cruise tune at 104 BPM in G major, a tempo and key none of the other synthwave
 // songs use: the saw lead sings a chorus hook built on a repeated two-note cell (B-D, B-D, then a
 // leap to the held tonic), the square lead answers in the gaps the hook leaves and states the cell
-// in half time in the bridge, the poly-stab chords chank on the backbeat, the pluck arp plays a
-// four-note interleaved figure, the warm pad holds root and fifth, and the synth bass cruises under
-// a gated kick. The last chorus goes up a whole step to A major and the outro ritards on the motif.
+// in half time in the bridge, the poly-stab chords push on the off-beats around the snare, the pluck
+// arp plays a four-note interleaved figure, the warm pad holds the full chord, and the synth bass cruises under
+// a gated kick. The last chorus goes up a whole step to A major and the outro ends on one big hit.
 //
 // This script lays every part out bar by bar. The harmony is one map (FORM below, mirrored in the
 // song's `# chords:` lines), one chord a bar, and every pitched part follows it.
@@ -24,9 +24,9 @@ const vel = (v) => Math.max(1, Math.min(126, Math.round(v)));
 const n = (pitch, dur, v = 100, at = 0) => `${nm(pitch)}/${dur}${off(at)}:${vel(v)}`;
 const chd = (pitches, dur, v, at = 0) => `[${pitches.map(nm).join(' ')}]/${dur}${off(at)}:${vel(v)}`;
 
-// One row per chord: the bass root, the pad's open root-and-fifth, the stab's triad in the middle
-// (G3-E4), and the arp's four notes (C4-B5), which the figure interleaves rather than running up
-// and down. The pad stays open so the hook's held 6ths and 9ths have room.
+// One row per chord: the bass root, the pad's root and fifth (the rest of the pad's chord is built
+// from the chord's name by padVoicing), the stab's triad in the middle (G3-E4), and the arp's four
+// notes (C4-B5), which the figure interleaves rather than running up and down.
 const CH = {
   G: { bass: 43, pad: [55, 62], stab: [59, 62, 67], arp: [67, 71, 74, 81] },
   G6: { bass: 43, pad: [55, 62], stab: [59, 62, 67], arp: [67, 71, 74, 76] },
@@ -59,21 +59,21 @@ const FORM = [
   { name: 'Intro: the pad and the arp, then the lead quotes the hook and breaks off', bars: 'G D Em C6 G D Em C6' },
   { name: 'Verse 1: the cell low in the voice, the square answering at the phrase ends', bars: 'Em C6 G D Em C6 G D Em7 C6 G D Em C6 G6 D' },
   { name: 'Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths', bars: 'Am Bm C6 D Am7 Bm7 C6 D' },
-  { name: 'Chorus 1: the hook, the stabs on the backbeat, the square in the gap', bars: 'G D Em C6 G Dadd9 C6 D G D Em C6 G Dadd9 C6 D' },
+  { name: 'Chorus 1: the hook, the stabs pushing around the snare, the square in the gap', bars: 'G D Em C6 G Dadd9 C6 D G D Em C6 G Dadd9 C6 D' },
   { name: 'Verse 2: the second verse, the arp driving in sixteenths', bars: 'Em C6 G D Em C6 G D' },
   { name: 'Pre-chorus 2: the same climb, louder, into a roll', bars: 'Am Bm C6 D Am7 Bm7 C6 D' },
   { name: 'Chorus 2: the hook again, the pad and arp wider', bars: 'G D Em C6 G Dadd9 C6 D G D Em C6 G Dadd9 C6 D' },
   { name: 'Bridge: the kick drops, the square walks the cell up C-D-Em', bars: 'C6 D Em Em7' },
   { name: 'Solo: the cell in sixteenths, climbing to E major, the dominant of A', bars: 'C6 D Em7 Em9 C6 D7 D E6' },
   { name: 'Last chorus: the hook up a whole step in A major, the choir underneath', bars: 'A E F#m D6 A Eadd9 D6 E A E F#m D6 A Eadd9 D6 E' },
-  { name: 'Outro: the motif in A, slowing, one last A', bars: 'A F#m9 Dmaj9 A' },
+  { name: 'Outro: the motif in A, a snare roll, and one last hit on A', bars: 'A F#m9 Dmaj9 A' },
 ];
 
 const CHORDS = FORM.flatMap((section) => section.bars.split(' '));
 for (const name of CHORDS) {
   if (!CH[name]) throw new Error(`no voicing for chord '${name}'`);
 }
-const TOTAL = CHORDS.length; // 112 bars = about 4:19 at 104 BPM, plus the outro's ritard
+const TOTAL = CHORDS.length; // 112 bars = about 4:18 at 104 BPM
 const starts = FORM.map((_, index) =>
   1 + FORM.slice(0, index).reduce((sum, section) => sum + section.bars.split(' ').length, 0));
 const chordRange = (from, count) => CHORDS.slice(from - 1, from - 1 + count);
@@ -179,7 +179,7 @@ const OUTRO = [
   [[73, '8', 12], [76, '8', -4], [73, '8', 0], [76, '8', -2], [78, '8', 6], [80, '8', 8], [81, '4', 10]], // A
   [[81, '2', 12], [78, '8', -4], [76, '8', -2], [73, '4', 8]], //                                 F#m9
   [[78, '4', 12], [76, '8', -4], [74, '8', -2], [69, '2', 8]], //                                 Dmaj9
-  [[69, '1', 10]], //                                                                             A
+  [[69, '2', 10], [null, '2']], //                                                              A
 ];
 
 // The square lead's answers: beats 3-4 of a bar the hook or verse leaves open. They quote the cell's
@@ -223,9 +223,13 @@ const arpBar = (chordName, v0, note = '8') => {
     .join(' ');
 };
 
-// The stabs chank on the backbeat (beats 2 and 4), land late and never by the same amount twice, and
-// on the last sixteenth of the bar every other bar. The pre-chorus lifts them to every beat.
+// The stabs push on the off-beats around the snare instead of on it: beat 1, the "and" of 2 and the
+// "and" of 3, with the "and" of 4 pushing into the next bar every other bar. They land late and
+// never by the same amount twice. The pre-chorus pulses them on every eighth but the snare's.
 const STAB_AT = [18, 12, 22, 14, 20, 16, 12, 20];
+const PUSH = [[0, -2], [3, 0], [5, -4]];
+const PUSH_ON = [...PUSH, [7, -6]];
+const PULSE = [[0, 0], [1, -10], [3, -4], [4, -2], [5, -10], [7, -6]];
 const stabBar = (chordName, hits, v) => {
   const map = new Map(hits);
   const slots = [];
@@ -236,7 +240,17 @@ const stabBar = (chordName, hits, v) => {
   return slots.join(' ');
 };
 
-const padBar = (chordName, v, at = 0) => chd(CH[chordName].pad, '1', v, at);
+// The pad plays the whole chord, spread wide under the tune: the root and fifth low, the third an
+// octave up as a tenth, and a 6th or a flat 7th between the fifth and the tenth when the chord's name
+// asks for one. Major 7ths and 9ths stay in the arp, where they don't sit a half step under the
+// stabs' root or the minor tenth.
+const padVoicing = (chordName) => {
+  const root = CH[chordName].pad[0];
+  const minor = /^[A-G]#?m(?!aj)/.test(chordName);
+  const colour = /maj/.test(chordName) ? [] : /7/.test(chordName) ? [10] : /6/.test(chordName) ? [9] : [];
+  return [root, root + 7, ...colour.map((c) => root + c), root + 12 + (minor ? 3 : 4)];
+};
+const padBar = (chordName, v, at = 0) => chd(padVoicing(chordName), '1', v, at);
 const choirBar = (chordName, v) => chd(CH[chordName].stab.slice(0, 2).concat(CH[chordName].stab[2]), '1', v);
 
 // ---------------------------------------------------------------- drums
@@ -296,22 +310,22 @@ push('Intro: the pad and the arp, then the lead quotes the hook and breaks off',
   answer: [null, null, null, null, null, null, null, answerBar('intro', 82)],
   pad: chordBars(1, 8, (c, i) => padBar(c, i < 4 ? 56 + i * 4 : 68)),
   stabs: [null, null, null, null, null, null,
-    stabBar(CHORDS[6], [[2, -6]], 68), stabBar(CHORDS[7], [[2, -4]], 72)],
+    stabBar(CHORDS[6], [[3, -6]], 68), stabBar(CHORDS[7], [[3, -4], [5, -8]], 72)],
   arp: chordBars(1, 8, (c, i) => arpBar(c, i < 4 ? 66 + i * 4 : 78, i < 4 ? '8' : '16')),
   bass: [...rest(2), ...chordBars(3, 6, (c, i) => bassBar(c, { v: 74 + i * 2, fill: i === 5 }))],
   drums: [null, null, drums.lift(92), drums.lift(96), drums.crash(112), drums.verse(98),
     drums.verse(100), drums.fill(102)],
 });
 
-// --- 9-24: verse 1. The verse tune with the square answering at the phrase ends, the pad holding a
-// root and fifth, stabs on the backbeat only, and the arp turning to sixteenths in the second half.
+// --- 9-24: verse 1. The verse tune with the square answering at the phrase ends, the pad holding the
+// chord, light stabs on the "and"s of 2 and 3, and the arp turning to sixteenths in the second half.
 push('Verse 1: the cell low in the voice, the square answering at the phrase ends', {
   bars: 16,
   lead: verseBars(0, 16, 96),
   answer: [null, null, null, answerBar('verseA', 80, 'r/2.'), null, null, null, answerBar('verseB', 82, 'r/2.'),
     null, null, null, answerBar('verseA', 82, 'r/2.'), null, null, null, answerBar('verseB', 84, 'r/2.')],
   pad: chordBars(9, 16, (c, i) => padBar(c, 62 + Math.min(10, i))),
-  stabs: chordBars(9, 16, (c, i) => stabBar(c, i % 4 === 3 ? [[2, -6], [6, 0], [7, -8]] : [[2, -6], [6, 0]], 80 + (i % 4) * 2)),
+  stabs: chordBars(9, 16, (c, i) => stabBar(c, i % 4 === 3 ? [[3, -2], [5, -6], [7, -8]] : [[3, -2], [5, -6]], 80 + (i % 4) * 2)),
   arp: chordBars(9, 16, (c, i) => arpBar(c, 74 + (i % 4) * 3, i < 8 ? '8' : '16')),
   bass: chordBars(9, 16, (c, i) => bassBar(c, { v: 98 + (i % 4) * 2, fill: i === 15 })),
   drums: chordBars(9, 16, (c, i) => (i === 15 ? drums.fill(102) : drums.verse(98 + (i % 4) * 2))),
@@ -326,23 +340,23 @@ push('Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths', {
     line(PRE[6].map(([pitch, dur, at, dv = 0]) => [pitch - 12, dur, at, dv]), 84),
     line(PRE[7].map(([pitch, dur, at, dv = 0]) => [pitch - 12, dur, at, dv]), 86)],
   pad: chordBars(25, 8, (c, i) => padBar(c, 68 + i * 2)),
-  stabs: chordBars(25, 8, (c, i) => stabBar(c, [[0, 0], [2, -4], [4, 0], [6, -2]], 82 + i * 2)),
+  stabs: chordBars(25, 8, (c, i) => stabBar(c, PULSE, 82 + i * 2)),
   arp: chordBars(25, 8, (c, i) => arpBar(c, 78 + i * 2, '16')),
   bass: chordBars(25, 8, (c, i) => bassBar(c, { v: 100 + i, pattern: i < 4 ? 'cruise' : 'drive', fill: i === 7 })),
   drums: [drums.verse(104), drums.verse(106), drums.chorus(108), drums.chorus(110),
     drums.chorus(112), drums.chorus(112), drums.roll(100, 26), drums.fill(110)],
 });
 
-// --- 33-48: chorus 1. The hook twice, the square answering in the gap at bar 40, the stabs on the
-// backbeat, the bass rolling, and a crash on each eight.
-push('Chorus 1: the hook, the stabs on the backbeat, the square in the gap', {
+// --- 33-48: chorus 1. The hook twice, the square answering in the gap at bar 40, the stabs pushing
+// around the snare, the bass rolling, and a crash on each eight.
+push('Chorus 1: the hook, the stabs pushing around the snare, the square in the gap', {
   bars: 16,
   lead: [...HOOK.map((bar) => hookBar(bar, 100)), ...HOOK.slice(0, 4).map((bar) => hookBar(bar, 102)),
     ...TURN.map((bar, i) => hookBar(bar, 102 + i))],
   answer: [null, null, null, null, null, null, null, answerBar('chorus', 86),
     null, null, null, null, null, null, null, null],
   pad: chordBars(33, 16, (c, i) => padBar(c, 74 + (i % 4))),
-  stabs: chordBars(33, 16, (c, i) => stabBar(c, i % 2 === 0 ? [[2, -4], [6, 0]] : [[2, -4], [6, 0], [7, -6]], 82 + (i % 4) * 2)),
+  stabs: chordBars(33, 16, (c, i) => stabBar(c, i % 2 === 0 ? PUSH : PUSH_ON, 82 + (i % 4) * 2)),
   arp: chordBars(33, 16, (c, i) => arpBar(c, 82 + (i % 4) * 2, '16')),
   bass: chordBars(33, 16, (c, i) => bassBar(c, { v: 104 + (i % 4) * 2, pattern: 'drive', fill: i === 15 })),
   drums: chordBars(33, 16, (c, i) => (i === 15 ? drums.fill(108)
@@ -356,7 +370,7 @@ push('Verse 2: the second verse, the arp driving in sixteenths', {
   lead: verseBars(0, 8, 98),
   answer: [null, null, null, answerBar('verseA', 84, 'r/2.'), null, null, null, answerBar('verseB', 86, 'r/2.')],
   pad: chordBars(49, 8, (c, i) => padBar(c, 66 + i)),
-  stabs: chordBars(49, 8, (c, i) => stabBar(c, [[2, -6], [6, 0]], 84 + (i % 4) * 2)),
+  stabs: chordBars(49, 8, (c, i) => stabBar(c, [[3, -2], [5, -6]], 84 + (i % 4) * 2)),
   arp: chordBars(49, 8, (c, i) => arpBar(c, 80 + (i % 4) * 2, '16')),
   bass: chordBars(49, 8, (c, i) => bassBar(c, { v: 100 + (i % 4) * 2, fill: i === 7 })),
   drums: chordBars(49, 8, (c, i) => (i === 7 ? drums.fill(104) : drums.verse(100 + (i % 4) * 2))),
@@ -370,7 +384,7 @@ push('Pre-chorus 2: the same climb, louder, into a roll', {
     line(PRE[6].map(([pitch, dur, at, dv = 0]) => [pitch - 12, dur, at, dv]), 88),
     line(PRE[7].map(([pitch, dur, at, dv = 0]) => [pitch - 12, dur, at, dv]), 90)],
   pad: chordBars(57, 8, (c, i) => padBar(c, 72 + i)),
-  stabs: chordBars(57, 8, (c, i) => stabBar(c, [[0, 0], [2, -4], [4, 0], [6, -2]], 86 + i * 2)),
+  stabs: chordBars(57, 8, (c, i) => stabBar(c, PULSE, 86 + i * 2)),
   arp: chordBars(57, 8, (c, i) => arpBar(c, 82 + i * 2, '16')),
   bass: chordBars(57, 8, (c, i) => bassBar(c, { v: 104 + i, pattern: i < 4 ? 'cruise' : 'drive', fill: i === 7 })),
   drums: [drums.verse(108), drums.chorus(108), drums.chorus(110), drums.chorus(112),
@@ -385,7 +399,7 @@ push('Chorus 2: the hook again, the pad and arp wider', {
   answer: [null, null, null, null, null, null, null, answerBar('chorus', 88),
     null, null, null, null, null, null, null, null],
   pad: chordBars(65, 16, (c, i) => padBar(c, 76 + (i % 4))),
-  stabs: chordBars(65, 16, (c, i) => stabBar(c, i % 2 === 0 ? [[2, -4], [6, 0]] : [[2, -4], [6, 0], [7, -6]], 84 + (i % 4) * 2)),
+  stabs: chordBars(65, 16, (c, i) => stabBar(c, i % 2 === 0 ? PUSH : PUSH_ON, 84 + (i % 4) * 2)),
   arp: chordBars(65, 16, (c, i) => arpBar(c, 84 + (i % 4) * 2, '16')),
   bass: chordBars(65, 16, (c, i) => bassBar(c, { v: 106 + (i % 4) * 2, pattern: 'drive', fill: i === 15 })),
   drums: chordBars(65, 16, (c, i) => (i === 15 ? drums.fill(110)
@@ -400,7 +414,7 @@ push('Bridge: the kick drops, the square walks the cell up C-D-Em', {
   answer: BRIDGE.map((bar, i) => line(bar, 88 + i)),
   pad: chordBars(81, 4, (c, i) => padBar(c, 84 + i * 2)),
   choir: chordBars(81, 4, (c, i) => choirBar(c, 58 + i * 3)),
-  stabs: chordBars(81, 4, (c, i) => stabBar(c, [[2, -6]], 70 + i * 2)),
+  stabs: chordBars(81, 4, (c, i) => stabBar(c, [[3, -6]], 70 + i * 2)),
   arp: rest(4),
   bass: chordBars(81, 4, (c, i) => bassBar(c, { v: 84, pattern: 'hold' })),
   drums: [drums.crash(104), drums.bridge(84), drums.bridge(86), drums.roll(90, 24)],
@@ -414,7 +428,7 @@ push('Solo: the cell in sixteenths, climbing to E major, the dominant of A', {
   answer: rest(8),
   pad: chordBars(85, 8, (c, i) => padBar(c, 78 + i)),
   choir: chordBars(85, 8, (c, i) => choirBar(c, 66 + i * 2)),
-  stabs: chordBars(85, 8, (c, i) => stabBar(c, i % 2 === 0 ? [[2, -4], [6, 0]] : [[2, -4], [6, 0], [7, -6]], 84 + i * 2)),
+  stabs: chordBars(85, 8, (c, i) => stabBar(c, i % 2 === 0 ? PUSH : PUSH_ON, 84 + i * 2)),
   arp: chordBars(85, 8, (c, i) => arpBar(c, 84 + (i % 4) * 2, '16')),
   bass: chordBars(85, 8, (c, i) => bassBar(c, { v: 106 + i, pattern: 'drive', fill: i === 7 })),
   drums: chordBars(85, 8, (c, i) => (i === 7 ? drums.fill(112)
@@ -434,38 +448,40 @@ push('Last chorus: the hook up a whole step in A major, the choir underneath', {
     line(TURN[3].map(([pitch, dur, at, dv = 0]) => [pitch - 12 + 2, dur, at, dv]), 92)],
   pad: chordBars(93, 16, (c, i) => padBar(c, 78 + (i % 4))),
   choir: chordBars(93, 16, (c, i) => choirBar(c, 74 + Math.min(8, i))),
-  stabs: chordBars(93, 16, (c, i) => stabBar(c, i % 2 === 0 ? [[2, -4], [6, 0]] : [[2, -4], [6, 0], [7, -6]], 88 + (i % 4) * 2)),
+  stabs: chordBars(93, 16, (c, i) => stabBar(c, i % 2 === 0 ? PUSH : PUSH_ON, 88 + (i % 4) * 2)),
   arp: chordBars(93, 16, (c, i) => arpBar(c, 86 + (i % 4) * 2, '16')),
   bass: chordBars(93, 16, (c, i) => bassBar(c, { v: 108 + (i % 4) * 2, pattern: 'drive', fill: i === 15 })),
   drums: chordBars(93, 16, (c, i) => (i === 7 || i === 15 ? drums.fill(112)
     : i === 0 || i === 8 ? drums.crashChorus(118) : drums.chorus(112 + (i % 4) * 2))),
 });
 
-// --- 109-112: outro. The motif in A over the slowing tempo, the drums thinning out, one last A.
-push('Outro: the motif in A, slowing, one last A', {
+// --- 109-112: outro. The motif in A, the drums thinning to a snare roll, and everything hits the
+// last A together on the downbeat and lets it ring out.
+push('Outro: the motif in A, a snare roll, and one last hit on A', {
   bars: 4,
   lead: OUTRO.map((bar, i) => line(bar, 100 - i * 2)),
   answer: rest(4),
-  pad: chordBars(109, 4, (c, i) => padBar(c, 78 - i * 2)),
-  choir: chordBars(109, 4, (c, i) => choirBar(c, 80 - i * 3)),
-  stabs: [stabBar(CHORDS[108], [[2, -4]], 84), 'R', stabBar(CHORDS[110], [[2, -6]], 78), 'R'],
+  pad: chordBars(109, 4, (c, i) => (i === 3 ? `${chd(padVoicing(c), '2', 84)} r/2` : padBar(c, 78 - i * 2))),
+  choir: chordBars(109, 4, (c, i) => (i === 3 ? `${chd(CH[c].stab, '2', 82)} r/2` : choirBar(c, 80 - i * 3))),
+  stabs: [stabBar(CHORDS[108], PUSH, 84), stabBar(CHORDS[109], [[3, -4]], 80), stabBar(CHORDS[110], [[3, -6]], 78), stabBar(CHORDS[111], [[0, 4]], 92)],
   arp: [arpBar(CHORDS[108], 80, '8'), arpBar(CHORDS[109], 76, '8'), null, null],
   bass: [bassBar(CHORDS[108], { v: 104, pattern: 'hold' }), bassBar(CHORDS[109], { v: 100, pattern: 'hold' }),
-    `${nm(CH[CHORDS[110]].bass)}/2:${vel(96)} r/2`, `${nm(CH[CHORDS[111]].bass)}/1:${vel(100)}`],
-  drums: [drums.crash(114), drums.verse(104), drums.bridge(92), drums.final(112)],
+    `${nm(CH[CHORDS[110]].bass)}/2:${vel(96)} r/2`, `${nm(CH[CHORDS[111]].bass)}/2:${vel(110)} r/2`],
+  drums: [drums.crash(114), drums.verse(104), drums.roll(92, 26), drums.final(118)],
 });
 
 // ---------------------------------------------------------------- write the song
-const HEADER_NOTE = `# Velvet Freeway, by Arena Agent and SZ. An original, melody-first synthwave song for the
+const HEADER_NOTE = `# Velvet Freeway, by Arena Agent, Claude and SZ. An original, melody-first synthwave song for the
 # Synthwave style: a sunset cruise at 104 BPM in G major, with the last chorus up a whole step in A
-# major and a ritard through the outro. The saw lead carries the tune; its hook is a two-note cell
+# major and the outro ending on one big hit. The saw lead carries the tune; its hook is a two-note cell
 # (B-D, B-D) that climbs to the tonic and holds, then a second phrase that reaches the sixth and
 # falls back. The verse has a tune of its own, low and phrased in four-bar breaths; the pre-chorus
 # climbs Am-Bm-C-D; the bridge states the cell in half time on the square lead, and the solo walks
 # it through the changes in eighths and bends into the new key. The square answers the hook in the
-# gaps rather than doubling it, the poly-stab chords chank on the backbeat, the pluck arp plays an
-# interleaved four-note figure (0-2-1-3-0-2-3-1, not a plain triad), the warm pad holds a root and
-# fifth so the hook's held 6ths and 9ths have room, and the synth bass cruises under the gated kit.
+# gaps rather than doubling it, the poly-stab chords push on beat 1 and the "and"s of 2 and 3 so they
+# are heard around the gated snare instead of under it, the pluck arp plays an interleaved four-note
+# figure (0-2-1-3-0-2-3-1, not a plain triad), the warm pad holds the full chord spread wide (root,
+# fifth, any 6th or flat 7th, and the third as a tenth), and the synth bass cruises under the gated kit.
 # One extra bank instrument: the ooh choir, from the bridge to the last chord, for the final lift.
 #
 # The harmony, one chord a bar. The verse is vi-IV-I-V, the pre-chorus Am-Bm-C-D, the chorus is
@@ -489,7 +505,7 @@ const FEEL = `# Human feel: the lead's phrase starts lean in twelve ticks, its i
 
 const HEADER = [
   'title: Velvet Freeway',
-  'composer: Arena Agent & SZ',
+  'composer: Arena Agent, Claude & SZ',
   'year: 2026',
   'source: original',
   'category: originals',
@@ -497,7 +513,7 @@ const HEADER = [
   'key: G major to A major',
   'tempo: 104',
   'time: 4/4',
-  'about: A sunset-cruise synthwave tune at 104 BPM in G major: a saw-lead hook built on a two-note cell, a square lead answering in the gaps, backbeat stabs, an interleaved pluck arp and a gated kit, with the last chorus up a whole step in A major and a slowing outro.',
+  'about: A sunset-cruise synthwave tune at 104 BPM in G major: a saw-lead hook built on a two-note cell, a square lead answering in the gaps, pushing stabs over full pad chords, an interleaved pluck arp and a gated kit, with the last chorus up a whole step in A major and a big final hit.',
 ].join('\n');
 
 const TRACKS = [
@@ -541,7 +557,6 @@ ${formLines.join('\n')}
 ${FEEL}
 ${HEADER}
 
-@bars 109-112 tempo=104..92
 
 ${TRACKS.map(([key, head]) => `${head}\n${block(key)}`).join('\n\n')}
 `;
