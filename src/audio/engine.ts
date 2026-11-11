@@ -1,8 +1,8 @@
 import { airSamples, crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
 import type { StyleId } from '../music/roles';
 import type { Song, Track } from '../music/song';
-import { resolvePatch, STYLE_DEFS, trackVolume, withBankInstruments } from './styles';
-import { buildTimeline, notesBetween } from '../music/timing';
+import { resolvePatch, STYLE_DEFS, trackVolume, trackVolumeAt, withBankInstruments } from './styles';
+import { barAt, buildTimeline, notesBetween, secondsToTick, tickToSeconds } from '../music/timing';
 import type { ScheduledNote, Timeline } from '../music/timing';
 import { createVoiceKit, playDrum, playSynth } from './voices';
 import type { Voice, VoiceKit } from './voices';
@@ -222,11 +222,13 @@ export class Engine {
     this.styleValue = song.meta.style;
     this.buildChannels(song);
     this.applyStyleFx();
+    this.scheduleTrackVolumes(this.ctx.currentTime, 0, false);
   }
 
   setStyle(id: StyleId): void {
     this.styleValue = id;
     this.applyStyleFx();
+    this.scheduleTrackVolumes(this.ctx.currentTime, this.position, this.playingValue);
     this.rebook();
   }
 
@@ -253,6 +255,7 @@ export class Engine {
     const duration = timeline.duration;
     this.startPos = 0;
     this.startCtx = 0;
+    this.scheduleTrackVolumes(0, 0, true);
 
     for (const [buffer, gain] of [[this.crackleBuffer, this.crackleGain], [this.airBuffer, this.airGain]] as const) {
       const bed = ctx.createBufferSource();
@@ -305,6 +308,7 @@ export class Engine {
       // attack instead of starting late, already at full level, with a click.
       this.startCtx = this.ctx.currentTime + START_LEAD;
       this.scheduledUntil = this.startPos;
+      this.scheduleTrackVolumes(this.startCtx, this.startPos, true);
       // The beds fade in and out with play so starting and stopping them never clicks.
       const now = this.ctx.currentTime;
       for (const [buffer, gain] of [[this.crackleBuffer, this.crackleGain], [this.airBuffer, this.airGain]] as const) {
@@ -334,6 +338,7 @@ export class Engine {
     this.playingValue = false;
     this.scheduledUntil = this.positionValue;
     this.stopAll();
+    this.scheduleTrackVolumes(this.ctx.currentTime, this.positionValue, false);
   }
 
   seek(seconds: number): void {
@@ -344,6 +349,7 @@ export class Engine {
     this.scheduledUntil = clamped;
     this.stopAll();
     if (wasPlaying) this.play();
+    else this.scheduleTrackVolumes(this.ctx.currentTime, clamped, false);
   }
 
   setVolume(value: number): void {
@@ -398,6 +404,31 @@ export class Engine {
     }
   }
 
+  /** Schedules each track channel's volume at the bar boundaries in its `vol@N=` steps. */
+  private scheduleTrackVolumes(now: number, from: number, includeFuture: boolean): void {
+    const song = this.songValue;
+    if (!song) return;
+    const tick = secondsToTick(song, Math.min(Math.max(from, 0), this.duration));
+    const bar = barAt(song, tick).number;
+    for (const channel of this.channels) {
+      const gain = channel.gain.gain;
+      if (typeof gain.cancelAndHoldAtTime === 'function') gain.cancelAndHoldAtTime(now);
+      else {
+        gain.cancelScheduledValues(now);
+        gain.setValueAtTime(gain.value, now);
+      }
+      gain.setTargetAtTime(trackVolumeAt(channel.track, this.styleValue, bar), now, 0.02);
+      if (!includeFuture) continue;
+      for (const step of channel.track.volumeSteps ?? []) {
+        if (step.bar <= bar) continue;
+        const stepBar = song.bars.find((candidate) => candidate.number === step.bar);
+        if (!stepBar) continue;
+        const when = now + tickToSeconds(song, stepBar.startTick) - from;
+        if (when > now) gain.setTargetAtTime(step.volume, when, 0.015);
+      }
+    }
+  }
+
   private applyStyleFx(): void {
     const def = STYLE_DEFS[this.styleValue];
     const fx = def.fx;
@@ -418,7 +449,6 @@ export class Engine {
     this.airGain.gain.setTargetAtTime(fx.air, now, 0.5);
 
     for (const channel of this.channels) {
-      channel.gain.gain.setTargetAtTime(trackVolume(channel.track, this.styleValue), now, 0.05);
       const patch = resolvePatch(def, channel.track);
       channel.reverbSend.gain.setTargetAtTime(fx.reverbSend * patch.sends.reverb, now, 0.05);
       channel.delaySend.gain.setTargetAtTime(fx.delaySend * patch.sends.delay, now, 0.05);

@@ -50,6 +50,11 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
   the arp or chords spelling the full triad, leaves room for a held 9th, 4th, or 6th in the lead
   without a half-step clash against a pad third. Dusk Over Dunmere uses this to keep long melody
   notes clash-free.
+- **Move a track for a section, not just its notes.** `v=NN` changes note velocity, which is right
+  for phrase-level accents and also changes velocity-sensitive timbre. For a clean mix move, use
+  `vol@N=`: for example `vol=0.8 vol@9=0.55 vol@33=1` drops a track through the verse and brings it
+  back for the chorus. The step is applied at the bar line and overrides `vol`/`vol.<style>` from
+  there on.
 
 ## Picking instruments
 

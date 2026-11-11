@@ -52,6 +52,8 @@ export interface Track {
   vol: number;
   /** Per-style volumes from `vol.<style>=`, present only when the track sets one. */
   styleVol?: Partial<Record<StyleId, number>>;
+  /** Volume steps from `vol@N=`, sorted by bar; the track uses the last step at or before the bar. */
+  volumeSteps?: { bar: number; volume: number }[];
   /** Per-style instruments from `inst.<style>=`, present only when the track sets one. */
   styleInst?: Partial<Record<StyleId, string>>;
   pan: number;
@@ -346,6 +348,7 @@ interface RawTrack {
   inst: string | null;
   vol: number;
   styleVol?: Partial<Record<StyleId, number>>;
+  volumeSteps?: { bar: number; volume: number }[];
   styleInst?: Partial<Record<StyleId, string>>;
   pan: number;
   tokens: SourceToken[];
@@ -410,6 +413,24 @@ export function parseSong(text: string): ParseResult {
           err(lineNumber, `invalid vol '${value}'`);
         } else {
           track.vol = volume;
+        }
+      } else if (key.startsWith('vol@')) {
+        const barText = key.slice(4);
+        const bar = Number(barText);
+        const volume = Number(value);
+        if (
+          !/^[1-9]\d*$/.test(barText) ||
+          !/^\d+(\.\d+)?$/.test(value) ||
+          !Number.isFinite(volume) ||
+          volume > 1
+        ) {
+          err(lineNumber, `invalid ${key} '${value}'`);
+        } else if (track.volumeSteps?.some((step) => step.bar === bar)) {
+          err(lineNumber, `duplicate vol@${bar}`);
+        } else {
+          track.volumeSteps = [...(track.volumeSteps ?? []), { bar, volume }].sort(
+            (a, b) => a.bar - b.bar,
+          );
         }
       } else if (key.startsWith('inst.')) {
         const style = key.slice(5);
@@ -854,6 +875,14 @@ export function parseSong(text: string): ParseResult {
 
   const tracks: Track[] = [];
   for (const { raw, bars: trackBars } of assembled) {
+    for (const step of raw.volumeSteps ?? []) {
+      if (step.bar > numberedBarCount) {
+        err(
+          raw.headerLine,
+          `vol@${step.bar} is past the last bar (the song has ${numberedBarCount} bars)`,
+        );
+      }
+    }
     const notes: Note[] = [];
     let stickyDuration = TICKS_PER_QUARTER;
     let stickyVelocity = 100;
@@ -1036,6 +1065,7 @@ export function parseSong(text: string): ParseResult {
       inst: raw.inst,
       vol: raw.vol,
       ...(raw.styleVol ? { styleVol: raw.styleVol } : {}),
+      ...(raw.volumeSteps ? { volumeSteps: raw.volumeSteps } : {}),
       ...(raw.styleInst ? { styleInst: raw.styleInst } : {}),
       pan: raw.pan,
       notes,

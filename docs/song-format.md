@@ -78,6 +78,11 @@ track mel role=lead inst=saw-lead vol=0.7 pan=-0.25
   the song plays in that style, in place of `vol`. Use it when a remix makes a part too loud or too
   quiet; `npm run balance -- <song> <style>` suggests the number. Above 1 boosts a quiet part,
   such as an instrument swapped in with `inst.<style>`.
+- `vol@N` is optional, from 0 to 1, for example `vol@9=0.5 vol@33=1`: the track's volume from bar N
+  onward. It overrides `vol`/`vol.<style>` from that bar; before the first step the normal volume
+  applies. Steps are applied at the bar line with a short smoothing so a held note does not click.
+  N must be a bar in the song, and duplicate bars are errors. This is a clean track gain move, unlike
+  `v=`, which is note velocity and can also change timbre.
 - `inst.<style>` is optional, for example `inst.techno=analog-synth`: the track's instrument when
   the song plays in that style, in place of `inst`. A name the style doesn't have plays the bank
   instrument of that name.
@@ -263,7 +268,7 @@ Every track must have the same number of bars.
 - A directive that names a bar past the end of the song, or a ramp whose end bar is not after its
   start bar.
 - A track with an unknown role, an id that does not match `^[a-z0-9-]+$` or an instrument that does
-  not match `^(bank:)?[a-z0-9-]+$`, a bad `vol` or `pan`, or a duplicate id.
+  not match `^(bank:)?[a-z0-9-]+$`, a bad `vol`, `vol@N` step, or `pan`, or a duplicate id.
 - A drum name in a pitched track, or a note name in a drums track.
 - A pitch outside the role's range.
 - A bad velocity, either in `:VEL` or in `v=`.

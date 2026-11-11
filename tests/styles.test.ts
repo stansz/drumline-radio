@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ROLES, STYLES } from '../src/music/roles';
-import { resolvePatch, STYLE_DEFS, trackVolume, withBankInstruments } from '../src/audio/styles';
+import { resolvePatch, STYLE_DEFS, trackVolume, trackVolumeAt, withBankInstruments } from '../src/audio/styles';
 import type { Song } from '../src/music/song';
 import type { StyleId } from '../src/music/roles';
 import { INSTRUMENTS } from '../src/audio/instruments';
@@ -137,5 +137,24 @@ describe('trackVolume', () => {
     expect(trackVolume(track, 'altrock')).toBe(0.2);
     expect(trackVolume(track, 'synthwave')).toBe(0.5);
     expect(trackVolume({ vol: 0.7 }, 'altrock')).toBe(0.7);
+  });
+
+  it('applies volume steps from their bar onward', () => {
+    const track = {
+      vol: 0.5,
+      styleVol: { altrock: 0.2 },
+      volumeSteps: [
+        { bar: 5, volume: 0.8 },
+        { bar: 9, volume: 0 },
+      ],
+    };
+    expect(trackVolumeAt(track, 'synthwave', 1)).toBe(0.5);
+    expect(trackVolumeAt(track, 'synthwave', 4)).toBe(0.5);
+    expect(trackVolumeAt(track, 'synthwave', 5)).toBe(0.8);
+    expect(trackVolumeAt(track, 'synthwave', 8)).toBe(0.8);
+    expect(trackVolumeAt(track, 'synthwave', 9)).toBe(0);
+    expect(trackVolumeAt(track, 'altrock', 1)).toBe(0.2);
+    expect(trackVolumeAt(track, 'altrock', 5)).toBe(0.8);
+    expect(trackVolumeAt({ vol: 0.5 }, 'synthwave', 5)).toBe(0.5);
   });
 });
