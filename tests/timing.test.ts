@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
 import type { Song } from '../src/music/song';
-import { barAt, buildTimeline, notesBetween, secondsToTick, tickToSeconds } from '../src/music/timing';
+import { barAt, buildTimeline, notesBetween, secondsToTick, tickToSeconds, VOLUME_GLIDE, volumeAt, volumeCurve } from '../src/music/timing';
 
 function fixtureSong(): Song {
   const result = parseSong(fixture);
@@ -198,5 +198,59 @@ describe('bend times', () => {
     expect(plain).toBeDefined();
     expect(plain?.bends).toBeUndefined();
     expect('bends' in (plain as object)).toBe(false);
+  });
+});
+
+describe('volume curves', () => {
+  // 4/4 at 120 BPM with no pickup: every bar is 2 seconds, so bar N starts at 2 * (N - 1).
+  function song(volume: string): Song {
+    const bars = Array.from({ length: 8 }, () => '| C4/1 |').join('\n');
+    const text = `title: T\ncomposer: original\nyear: 2026\nsource: original\ncategory: originals\nstyle: chiptune\nkey: C major\ntempo: 120\ntime: 4/4\ntrack a role=lead ${volume}\n${bars}`;
+    const result = parseSong(text);
+    if (!result.ok) throw new Error(result.errors.join('; '));
+    return result.song;
+  }
+  const at = (volume: string, seconds: number): number => {
+    const s = song(volume);
+    return volumeAt(volumeCurve(s, s.tracks[0].volumeChanges), seconds);
+  };
+
+  it('is 1 everywhere with no changes', () => {
+    expect(volumeCurve(song(''))).toEqual([]);
+    expect(at('', 5)).toBe(1);
+  });
+
+  it('holds until a step, glides briefly, then holds the new level', () => {
+    expect(at('vol@3=0.5', 3.9)).toBe(1);
+    expect(at('vol@3=0.5', 4 + VOLUME_GLIDE / 2)).toBeCloseTo(0.75, 6);
+    expect(at('vol@3=0.5', 4 + VOLUME_GLIDE)).toBe(0.5);
+    expect(at('vol@3=0.5', 15)).toBe(0.5);
+  });
+
+  it('ramps from the start of its first bar to the end of its last', () => {
+    // vol@3-4 runs from 4 s to 8 s.
+    expect(at('vol@3-4=1..0', 4)).toBe(1);
+    expect(at('vol@3-4=1..0', 6)).toBeCloseTo(0.5, 6);
+    expect(at('vol@3-4=1..0', 8)).toBe(0);
+    expect(at('vol@3-4=1..0', 12)).toBe(0);
+  });
+
+  it('starts a fade-in from bar 1 silent, with no glide from full volume', () => {
+    expect(at('vol@1-2=0..1', 0)).toBe(0);
+    expect(at('vol@1-2=0..1', 2)).toBeCloseTo(0.5, 6);
+    expect(at('vol@1-2=0..1', 4)).toBe(1);
+  });
+
+  it('starts a later ramp at its own bar, not from the point before it', () => {
+    // Step to 0.5 at bar 2 (2 s), then ramp 0.5 -> 1 across bars 5-6 (8 s to 12 s).
+    expect(at('vol@2=0.5 vol@5-6=0.5..1', 7)).toBe(0.5);
+    expect(at('vol@2=0.5 vol@5-6=0.5..1', 8)).toBe(0.5);
+    expect(at('vol@2=0.5 vol@5-6=0.5..1', 10)).toBeCloseTo(0.75, 6);
+  });
+
+  it('glides into a ramp that starts away from the current level', () => {
+    expect(at('vol@3-4=0.2..1', 3.9)).toBe(1);
+    expect(at('vol@3-4=0.2..1', 4 + VOLUME_GLIDE)).toBeCloseTo(0.2, 6);
+    expect(at('vol@3-4=0.2..1', 8)).toBe(1);
   });
 });

@@ -78,11 +78,18 @@ track mel role=lead inst=saw-lead vol=0.7 pan=-0.25
   the song plays in that style, in place of `vol`. Use it when a remix makes a part too loud or too
   quiet; `npm run balance -- <song> <style>` suggests the number. Above 1 boosts a quiet part,
   such as an instrument swapped in with `inst.<style>`.
-- `vol@N` is optional, from 0 to 1, for example `vol@9=0.5 vol@33=1`: the track's volume from bar N
-  onward. It overrides `vol`/`vol.<style>` from that bar; before the first step the normal volume
-  applies. Steps are applied at the bar line with a short smoothing so a held note does not click.
-  N must be a bar in the song, and duplicate bars are errors. This is a clean track gain move, unlike
-  `v=`, which is note velocity and can also change timbre.
+- `vol@N=X` and `vol@N-M=A..B` are optional volume automation, each level from 0 to 1. They multiply
+  the track's volume in the current style (`vol` or `vol.<style>`), so a remix keeps its balance.
+  - `vol@N=X` is a step: the track plays at X times its volume from bar N onward. It glides over
+    20 ms so a held note does not click. For example `vol@9=0.5 vol@17=1` halves a track for
+    bars 9 to 16.
+  - `vol@N-M=A..B` is a ramp: a straight line from A at the start of bar N to B at the end of bar M,
+    then B holds. M may equal N for a one-bar swell. For example `vol@1-4=0..1` fades a track in
+    over the first four bars, and `vol@61-64=1..0` fades it out over the last four.
+  - Before the first change a track plays at its full volume. N and M must be bars in the song, and
+    two changes may not overlap: a change must start after the bar where the one before it ends.
+  - This changes level only, unlike `v=`, which is note velocity and also changes timbre. Use it for
+    what velocity can't do: swelling or fading a held note, and fades in and out.
 - `inst.<style>` is optional, for example `inst.techno=analog-synth`: the track's instrument when
   the song plays in that style, in place of `inst`. A name the style doesn't have plays the bank
   instrument of that name.
@@ -268,7 +275,7 @@ Every track must have the same number of bars.
 - A directive that names a bar past the end of the song, or a ramp whose end bar is not after its
   start bar.
 - A track with an unknown role, an id that does not match `^[a-z0-9-]+$` or an instrument that does
-  not match `^(bank:)?[a-z0-9-]+$`, a bad `vol`, `vol@N` step, or `pan`, or a duplicate id.
+  not match `^(bank:)?[a-z0-9-]+$`, a bad `vol`, `vol@` change, or `pan`, or a duplicate id.
 - A drum name in a pitched track, or a note name in a drums track.
 - A pitch outside the role's range.
 - A bad velocity, either in `:VEL` or in `v=`.

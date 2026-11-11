@@ -270,24 +270,34 @@ describe('the checker', () => {
     expect(errorsFor('track a role=lead vol.polka=0.5\n| C4/1 |').some((e) => e.includes('unknown style'))).toBe(true);
   });
 
-  it('reads track volume steps, sorts them, and rejects bad ones', () => {
-    const bars = Array.from({ length: 9 }, () => '| C4/1 |').join('\n');
-    const result = parseSong(`${HEADER}\ntrack a role=lead vol=0.5 vol@9=0.2 vol@5=0.8\n${bars}`);
+  it('reads vol@ steps and ramps, sorts them, and rejects bad ones', () => {
+    const bars = Array.from({ length: 12 }, () => '| C4/1 |').join('\n');
+    const result = parseSong(`${HEADER}\ntrack a role=lead vol=0.5 vol@9=0.2 vol@1-4=0..1 vol@5=0.8\n${bars}`);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
-    expect(result.song.tracks[0].volumeSteps).toEqual([
-      { bar: 5, volume: 0.8 },
-      { bar: 9, volume: 0.2 },
+    expect(result.song.tracks[0].volumeChanges).toEqual([
+      { bar: 1, endBar: 4, from: 0, to: 1 },
+      { bar: 5, to: 0.8 },
+      { bar: 9, to: 0.2 },
     ]);
     const plain = parseSong(`${HEADER}\ntrack a role=lead\n| C4/1 |`);
     expect(plain.ok).toBe(true);
     if (!plain.ok) return;
-    expect('volumeSteps' in plain.song.tracks[0]).toBe(false);
-    expect(errorsFor('track a role=lead vol@0=0.5\n| C4/1 |').some((e) => e.includes('vol@0'))).toBe(true);
-    expect(errorsFor('track a role=lead vol@9=1.5\n| C4/1 |').some((e) => e.includes('vol@9'))).toBe(true);
-    expect(errorsFor('track a role=lead vol@x=0.5\n| C4/1 |').some((e) => e.includes('vol@x'))).toBe(true);
-    expect(errorsFor('track a role=lead vol@5=0.5 vol@5=0.4\n| C4/1 |').some((e) => e.includes('duplicate vol@5'))).toBe(true);
-    expect(errorsFor('track a role=lead vol@9=0.5\n| C4/1 |').some((e) => e.includes('past the last bar'))).toBe(true);
+    expect('volumeChanges' in plain.song.tracks[0]).toBe(false);
+    const has = (body: string, text: string): boolean =>
+      errorsFor(`${body}\n${bars}`).some((e) => e.includes(text));
+    expect(has('track a role=lead vol@0=0.5', 'vol@0')).toBe(true);
+    expect(has('track a role=lead vol@9=1.5', 'vol@9')).toBe(true);
+    expect(has('track a role=lead vol@x=0.5', 'vol@x')).toBe(true);
+    expect(has('track a role=lead vol@5-3=0..1', 'vol@5-3')).toBe(true);
+    expect(has('track a role=lead vol@5-8=0.5', 'vol@5-8')).toBe(true);
+    expect(has('track a role=lead vol@5-8=0..1.5', 'vol@5-8')).toBe(true);
+    expect(has('track a role=lead vol@5=0.5 vol@5=0.4', 'overlaps')).toBe(true);
+    expect(has('track a role=lead vol@5-8=0..1 vol@8=0.4', 'overlaps')).toBe(true);
+    expect(has('track a role=lead vol@5-8=0..1 vol@7-10=1..0', 'overlaps')).toBe(true);
+    expect(has('track a role=lead vol@5-8=0..1 vol@9-10=1..0', 'overlaps')).toBe(false);
+    expect(has('track a role=lead vol@13=0.5', 'past the last bar')).toBe(true);
+    expect(has('track a role=lead vol@11-13=1..0', 'past the last bar')).toBe(true);
   });
   it('reads per-style volumes, and leaves them out when a track has none', () => {
     const result = parseSong(`${HEADER}\ntrack a role=lead vol=0.5 vol.altrock=0.2 vol.lofi=0 inst.techno=analog-synth\n| C4/1 |\ntrack b role=bass\n| C2/1 |`);

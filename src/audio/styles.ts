@@ -359,20 +359,6 @@ export function trackVolume(track: Pick<Track, 'vol' | 'styleVol'>, style: Style
   return track.styleVol?.[style] ?? track.vol;
 }
 
-/** The track volume at a 1-based bar, after any `vol@N=` steps. */
-export function trackVolumeAt(
-  track: Pick<Track, 'vol' | 'styleVol' | 'volumeSteps'>,
-  style: StyleId,
-  bar: number,
-): number {
-  let volume = trackVolume(track, style);
-  for (const step of track.volumeSteps ?? []) {
-    if (step.bar > bar) break;
-    volume = step.volume;
-  }
-  return volume;
-}
-
 type PatchTrack = Pick<Track, 'role' | 'inst' | 'styleInst'>;
 
 /**

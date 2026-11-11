@@ -52,8 +52,8 @@ export interface Track {
   vol: number;
   /** Per-style volumes from `vol.<style>=`, present only when the track sets one. */
   styleVol?: Partial<Record<StyleId, number>>;
-  /** Volume steps from `vol@N=`, sorted by bar; the track uses the last step at or before the bar. */
-  volumeSteps?: { bar: number; volume: number }[];
+  /** Volume automation from `vol@N=` steps and `vol@N-M=A..B` ramps, sorted by bar. */
+  volumeChanges?: VolumeChange[];
   /** Per-style instruments from `inst.<style>=`, present only when the track sets one. */
   styleInst?: Partial<Record<StyleId, string>>;
   pan: number;
@@ -341,6 +341,42 @@ interface AssembledBar {
   fill: boolean;
 }
 
+/**
+ * A `vol@` change on a track, as a multiplier on the track's volume in the current style. A step
+ * (`vol@N=X`) moves to `to` at the start of bar `bar`. A ramp (`vol@N-M=A..B`) moves in a straight
+ * line from `from` at the start of bar `bar` to `to` at the end of bar `endBar`.
+ */
+export interface VolumeChange {
+  bar: number;
+  endBar?: number;
+  from?: number;
+  to: number;
+}
+
+/** A `vol@` level: a plain number from 0 to 1. */
+function volumeLevel(text: string): number | null {
+  if (!/^\d+(\.\d+)?$/.test(text)) return null;
+  const level = Number(text);
+  return level <= 1 ? level : null;
+}
+
+/** Reads `N=X` or `N-M=A..B` (the part after `vol@`), or null when it is malformed. */
+function parseVolumeChange(bars: string, value: string): VolumeChange | null {
+  const range = /^([1-9]\d*)(?:-([1-9]\d*))?$/.exec(bars);
+  if (!range) return null;
+  const bar = Number(range[1]);
+  if (range[2] === undefined) {
+    const to = volumeLevel(value);
+    return to === null ? null : { bar, to };
+  }
+  const endBar = Number(range[2]);
+  const ends = value.split('..');
+  if (endBar < bar || ends.length !== 2) return null;
+  const from = volumeLevel(ends[0]);
+  const to = volumeLevel(ends[1]);
+  return from === null || to === null ? null : { bar, endBar, from, to };
+}
+
 interface RawTrack {
   headerLine: number;
   id: string;
@@ -348,7 +384,7 @@ interface RawTrack {
   inst: string | null;
   vol: number;
   styleVol?: Partial<Record<StyleId, number>>;
-  volumeSteps?: { bar: number; volume: number }[];
+  volumeChanges?: VolumeChange[];
   styleInst?: Partial<Record<StyleId, string>>;
   pan: number;
   tokens: SourceToken[];
@@ -415,22 +451,16 @@ export function parseSong(text: string): ParseResult {
           track.vol = volume;
         }
       } else if (key.startsWith('vol@')) {
-        const barText = key.slice(4);
-        const bar = Number(barText);
-        const volume = Number(value);
-        if (
-          !/^[1-9]\d*$/.test(barText) ||
-          !/^\d+(\.\d+)?$/.test(value) ||
-          !Number.isFinite(volume) ||
-          volume > 1
-        ) {
+        const change = parseVolumeChange(key.slice(4), value);
+        if (!change) {
           err(lineNumber, `invalid ${key} '${value}'`);
-        } else if (track.volumeSteps?.some((step) => step.bar === bar)) {
-          err(lineNumber, `duplicate vol@${bar}`);
         } else {
-          track.volumeSteps = [...(track.volumeSteps ?? []), { bar, volume }].sort(
-            (a, b) => a.bar - b.bar,
+          const changes = [...(track.volumeChanges ?? []), change].sort((a, b) => a.bar - b.bar);
+          const clash = changes.find(
+            (next, i) => i > 0 && next.bar <= (changes[i - 1].endBar ?? changes[i - 1].bar),
           );
+          if (clash) err(lineNumber, `vol@${clash.bar} overlaps another vol@ change`);
+          else track.volumeChanges = changes;
         }
       } else if (key.startsWith('inst.')) {
         const style = key.slice(5);
@@ -875,11 +905,12 @@ export function parseSong(text: string): ParseResult {
 
   const tracks: Track[] = [];
   for (const { raw, bars: trackBars } of assembled) {
-    for (const step of raw.volumeSteps ?? []) {
-      if (step.bar > numberedBarCount) {
+    for (const change of raw.volumeChanges ?? []) {
+      const last = change.endBar ?? change.bar;
+      if (last > numberedBarCount) {
         err(
           raw.headerLine,
-          `vol@${step.bar} is past the last bar (the song has ${numberedBarCount} bars)`,
+          `vol@${change.bar} reaches past the last bar (the song has ${numberedBarCount} bars)`,
         );
       }
     }
@@ -1065,7 +1096,7 @@ export function parseSong(text: string): ParseResult {
       inst: raw.inst,
       vol: raw.vol,
       ...(raw.styleVol ? { styleVol: raw.styleVol } : {}),
-      ...(raw.volumeSteps ? { volumeSteps: raw.volumeSteps } : {}),
+      ...(raw.volumeChanges ? { volumeChanges: raw.volumeChanges } : {}),
       ...(raw.styleInst ? { styleInst: raw.styleInst } : {}),
       pan: raw.pan,
       notes,

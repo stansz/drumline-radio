@@ -1,14 +1,16 @@
 import { airSamples, crackleSamples, crushCurve, noteGain, softClipCurve } from './curves';
 import type { StyleId } from '../music/roles';
 import type { Song, Track } from '../music/song';
-import { resolvePatch, STYLE_DEFS, trackVolume, trackVolumeAt, withBankInstruments } from './styles';
-import { barAt, buildTimeline, notesBetween, secondsToTick, tickToSeconds } from '../music/timing';
-import type { ScheduledNote, Timeline } from '../music/timing';
+import { resolvePatch, STYLE_DEFS, trackVolume, withBankInstruments } from './styles';
+import { buildTimeline, notesBetween, VOLUME_GLIDE, volumeAt, volumeCurve } from '../music/timing';
+import type { ScheduledNote, Timeline, VolumePoint } from '../music/timing';
 import { createVoiceKit, playDrum, playSynth } from './voices';
 import type { Voice, VoiceKit } from './voices';
 
 interface TrackChannel {
   track: Track;
+  /** The track's `vol@` automation in song seconds; the fader is its style volume times this. */
+  curve: VolumePoint[];
   gain: GainNode;
   pan: StereoPannerNode;
   reverbSend: GainNode;
@@ -383,8 +385,9 @@ export class Engine {
     this.channels = [];
 
     for (const track of song.tracks) {
+      const curve = volumeCurve(song, track.volumeChanges);
       const gain = this.ctx.createGain();
-      gain.gain.value = trackVolume(track, song.meta.style);
+      gain.gain.value = trackVolume(track, song.meta.style) * volumeAt(curve, 0);
       const pan = this.ctx.createStereoPanner();
       pan.pan.value = track.pan;
       gain.connect(pan);
@@ -400,31 +403,28 @@ export class Engine {
       gain.connect(delaySend);
       delaySend.connect(this.delay);
 
-      this.channels.push({ track, gain, pan, reverbSend, delaySend });
+      this.channels.push({ track, curve, gain, pan, reverbSend, delaySend });
     }
   }
 
-  /** Schedules each track channel's volume at the bar boundaries in its `vol@N=` steps. */
-  private scheduleTrackVolumes(now: number, from: number, includeFuture: boolean): void {
-    const song = this.songValue;
-    if (!song) return;
-    const tick = secondsToTick(song, Math.min(Math.max(from, 0), this.duration));
-    const bar = barAt(song, tick).number;
+  /**
+   * Sets each track's fader for song position `from` at context time `now`: its volume in the
+   * current style times its `vol@` curve. While playing it also books the rest of the curve.
+   */
+  private scheduleTrackVolumes(now: number, from: number, playing: boolean): void {
     for (const channel of this.channels) {
+      const volume = trackVolume(channel.track, this.styleValue);
       const gain = channel.gain.gain;
       if (typeof gain.cancelAndHoldAtTime === 'function') gain.cancelAndHoldAtTime(now);
       else {
         gain.cancelScheduledValues(now);
         gain.setValueAtTime(gain.value, now);
       }
-      gain.setTargetAtTime(trackVolumeAt(channel.track, this.styleValue, bar), now, 0.02);
-      if (!includeFuture) continue;
-      for (const step of channel.track.volumeSteps ?? []) {
-        if (step.bar <= bar) continue;
-        const stepBar = song.bars.find((candidate) => candidate.number === step.bar);
-        if (!stepBar) continue;
-        const when = now + tickToSeconds(song, stepBar.startTick) - from;
-        if (when > now) gain.setTargetAtTime(step.volume, when, 0.015);
+      gain.linearRampToValueAtTime(volume * volumeAt(channel.curve, from), now + VOLUME_GLIDE);
+      if (!playing) continue;
+      for (const point of channel.curve) {
+        if (point.time <= from + VOLUME_GLIDE) continue;
+        gain.linearRampToValueAtTime(volume * point.factor, now + point.time - from);
       }
     }
   }

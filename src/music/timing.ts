@@ -1,5 +1,5 @@
 import { TICKS_PER_QUARTER } from './song';
-import type { BarInfo, Song } from './song';
+import type { BarInfo, Song, VolumeChange } from './song';
 
 export interface ScheduledNote {
   track: number;
@@ -134,4 +134,68 @@ export function notesBetween(timeline: Timeline, from: number, to: number): Sche
     found.push(notes[index]);
   }
   return found;
+}
+
+/** Seconds a `vol@` step takes to move, so a held note does not click. */
+export const VOLUME_GLIDE = 0.02;
+
+/** A point on a track's volume curve: the factor reached at `time` seconds into the song. */
+export interface VolumePoint {
+  time: number;
+  factor: number;
+}
+
+/**
+ * A track's `vol@` changes as a curve in song seconds. The factor is 1 before the first point,
+ * moves in a straight line from each point to the next, and holds after the last.
+ */
+export function volumeCurve(song: Song, changes: readonly VolumeChange[] = []): VolumePoint[] {
+  const points: VolumePoint[] = [];
+  let factor = 1;
+  const barStart = (number: number): number | null => {
+    const bar = song.bars.find((candidate) => candidate.number === number);
+    return bar ? tickToSeconds(song, bar.startTick) : null;
+  };
+  // Holds the current factor up to `time`, then glides to `level`. At the very start of the song
+  // there is nothing sounding yet, so it starts at `level` with no glide.
+  const jump = (time: number, level: number): void => {
+    if (points.length === 0 && time <= 0) {
+      points.push({ time: 0, factor: level });
+    } else if (level !== factor) {
+      points.push({ time, factor }, { time: time + VOLUME_GLIDE, factor: level });
+    }
+  };
+
+  for (const change of changes) {
+    const start = barStart(change.bar);
+    if (start === null) continue;
+    if (change.endBar === undefined) {
+      jump(start, change.to);
+    } else {
+      const endBar = song.bars.find((candidate) => candidate.number === change.endBar);
+      if (!endBar) continue;
+      const from = change.from ?? factor;
+      jump(start, from);
+      // The ramp starts from `from` at its first bar, not from an earlier point.
+      const last = points[points.length - 1];
+      if (!last || last.time < start) points.push({ time: start, factor: from });
+      points.push({ time: tickToSeconds(song, endBar.startTick + endBar.ticks), factor: change.to });
+    }
+    factor = change.to;
+  }
+  return points;
+}
+
+/** The factor of a volume curve at `seconds` into the song. */
+export function volumeAt(points: readonly VolumePoint[], seconds: number): number {
+  if (points.length === 0) return 1;
+  if (seconds < points[0].time) return 1;
+  for (let i = 1; i < points.length; i++) {
+    const next = points[i];
+    if (seconds < next.time) {
+      const prev = points[i - 1];
+      return prev.factor + ((next.factor - prev.factor) * (seconds - prev.time)) / (next.time - prev.time);
+    }
+  }
+  return points[points.length - 1].factor;
 }

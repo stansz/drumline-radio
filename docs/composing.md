@@ -51,10 +51,10 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
   without a half-step clash against a pad third. Dusk Over Dunmere uses this to keep long melody
   notes clash-free.
 - **Move a track for a section, not just its notes.** `v=NN` changes note velocity, which is right
-  for phrase-level accents and also changes velocity-sensitive timbre. For a clean mix move, use
-  `vol@N=`: for example `vol=0.8 vol@9=0.55 vol@33=1` drops a track through the verse and brings it
-  back for the chorus. The step is applied at the bar line and overrides `vol`/`vol.<style>` from
-  there on.
+  for phrase-level accents and also changes velocity-sensitive timbre. For a clean level move, use
+  `vol@`: `vol@9=0.55 vol@33=1` drops a track through the verse and brings it back for the chorus,
+  and `vol@61-64=1..0` fades it out. These multiply the track's `vol`/`vol.<style>`, so remixes keep
+  their balance. Ramps are also the only way to swell or fade a held note.
 
 ## Picking instruments
 
