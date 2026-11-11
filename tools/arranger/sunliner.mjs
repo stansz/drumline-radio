@@ -401,7 +401,7 @@ push('Breakdown: the kick drops, choirs and pad under the slow hook', {
   aah: chordRange(81, 8).map((c, i) => choirBar('aah', c, 84 + i)),
   ooh: chordRange(81, 8).map((c, i) => choirBar('ooh', c, 78 + i)),
   pad: chordRange(81, 8).map((c, i) => padBar(c, 76 + i)),
-  stabs: chordRange(81, 8).map((c, i) => (i % 2 === 0 ? chd(CH[c].stab, '1', 62 + i) : 'R')),
+  stabs: chordRange(81, 8).map((c, i) => (i % 2 === 0 ? chd(CH[c].stab, '1', 74 + i) : 'R')),
   // the arp comes back in the breakdown's second half, eighths turning to sixteenths as the roll
   // climbs, so the build has something to land on
   arp: [...rest(4), arpBar(CHORDS[84], 72, [0, 1, 2, 1], '8'), arpBar(CHORDS[85], 76, [0, 1, 2, 1], '8'),
