@@ -43,4 +43,13 @@ describe('the instrument bank', () => {
       expect(patch.chorus.mix, id).toBeLessThanOrEqual(1);
     }
   });
+
+  it('gives choir-ooh a broad presence band over the oo vowel', () => {
+    const patch = INSTRUMENTS['choir-ooh'];
+    expect(patch.kind).toBe('synth');
+    if (patch.kind !== 'synth') return;
+    expect(
+      patch.formants?.some((formant) => formant.hz >= 1200 && formant.hz <= 2500 && formant.q < 5),
+    ).toBe(true);
+  });
 });

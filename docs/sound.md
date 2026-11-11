@@ -309,7 +309,8 @@ with an empty `oscs` list is a pure plucked string.
 string pass through in parallel (the bands are summed) before drive, filter, and envelope. The fixed
 peaks are what make a vowel, so the vowel stays the same whatever note is played. `VOWELS` in
 `src/audio/patches.ts` holds `ah`, `oh`, `oo`, and `ee` (use as `formants: VOWELS.ah`). A reed or a
-body is one or two broad bands (low `q`, as in `oboe`). Start from a bright source (saws, a
+body is one or two broad bands (low `q`, as in `oboe`). `choir-ooh` keeps the three `oo` bands and
+adds a broad 1.8 kHz band, so the dark vowel still carries under a mix. Start from a bright source (saws, a
 square, a pulse), since a band-pass only takes away. Narrow bands remove most of the energy, so
 formant patches need a higher `gain` than plain ones and should be level-matched with
 `tools/browser/levels.mjs`. It sounds like a synth choir, not real singers. Keep bands wide for a high

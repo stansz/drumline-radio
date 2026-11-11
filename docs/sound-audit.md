@@ -69,17 +69,15 @@ safer first experiment; the engine high-pass is reusable for `poly-stab` and oth
 
 **Impact:** medium-high. **Effort:** low for a patch re-voice, medium for a new filter field.
 
-### 3. `choir-ooh` is extremely dark
+### 3. `choir-ooh` is extremely dark (built)
 
 The "oo" vowel formants sit at 325, 700, and 2530 Hz and are narrow. At A3, 94% of the measured energy
 is below 300 Hz, against 7% for `choir-aah`. It is a useful dark colour, but under a verse it can
 become indistinguishable from the pad.
 
-**Proposal:** add a presence band around 1.2–2.5 kHz (broad `q`, low gain), widen the upper bands, or
-raise the patch's 3000 Hz low-pass. Compare the result with `choir-aah` and with the `vox-lead`
-formants, which were widened for exactly this reason.
-
-**Impact:** medium. **Effort:** low.
+**Built:** `choir-ooh` keeps the three `oo` bands and adds a broad 1.8 kHz presence band. At A3 the
+split moved from 94/6/0 to 81/15/4, its centroid is now 1185 Hz, and Sunliner still balances cleanly.
+The upper three bands and the 3000 Hz low-pass are otherwise unchanged.
 
 ### 4. `poly-stab` builds up low-mid
 

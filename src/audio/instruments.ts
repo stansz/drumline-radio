@@ -350,7 +350,8 @@ export const PADS: Record<string, Patch> = {
   // A wordless choir singing "ooh": detuned saws through the "oo" formants, darker and rounder.
   'choir-ooh': synth({ name: 'Choir ooh',
     oscs: [osc('sawtooth', 0, -9, 0.4), osc('sawtooth', 0, 9, 0.4), osc('sawtooth', 0, 0, 0.3)],
-    formants: VOWELS.oo, env: env(0.4, 1, 0.85, 1),
+    // The oo vowel is dark; a broad 2 kHz band adds presence without turning it into an ah.
+    formants: [...VOWELS.oo, { hz: 1800, q: 1.5, gain: 0.5 }], env: env(0.4, 1, 0.85, 1),
     filter: { type: 'lowpass', hz: 3000, q: 0.5, envAmount: 1, envDecay: 0.1 },
     vibrato: { rate: 5, cents: 10, delay: 0.4 }, chorus: { rate: 0.38, depth: 3.6, mix: 0.36 },
     gain: 0.51, sends: { reverb: 1, delay: 0.3 } }),
