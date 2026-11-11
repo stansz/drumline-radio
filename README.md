@@ -158,6 +158,14 @@ Originals by SZ (and AI):
 - **Underpass** (Synthwave). Hidden for now, with Midnight Underpass, a medley of it and Midnight
   Arcade.
 - **Wayfarer's Rest** (Chiptune), by Gemini 3.8 Flash & SZ. A 3:19 wistful fantasy RPG theme at 88 BPM in 3/4: a singing pulse lead over rolling pulse-arp broken chords in D Dorian, a walking triangle bass, an answering square counter-melody, a warm major-key lift in F, a quiet bridge, a final heroic statement up a step in E minor, and an outro that winds down to the lone arp.
+- **Night Bus Home** (Studio), by MiMo v2.6 Pro & SZ. A 4:02 UK garage house original at 127 BPM in
+  Bb minor: a wordless vocal hook someone can hum after one listen — a pickup, a rising fourth to a
+  held peak, a fall, and a breath — over off-beat FM Rhodes stabs, a 3+3+2 DX bass gallop under the
+  kick, and four-on-the-floor drums with shuffled hats and ghost snares. The verse has a chattier
+  tune of its own, each pre-chorus climbs to the song's high Eb before the hook lifts over the loop,
+  a breakdown drops the kick so the vocal sings the hook bare over the pad, snare rolls build into
+  the final double chorus, and a stripped outro leaves it to the mixer. Built by
+  `tools/arranger/night-bus-home.mjs`.
 
 ## How it works
 

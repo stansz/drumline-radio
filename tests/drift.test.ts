@@ -30,6 +30,7 @@ const SCRIPT = [
   'tools/arranger/sunliner.mjs',
   'tools/arranger/confetti-cannon.mjs',
   'tools/arranger/velvet-freeway.mjs',
+  'tools/arranger/night-bus-home.mjs',
 ];
 
 describe('the song generators', () => {
