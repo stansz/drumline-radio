@@ -32,6 +32,8 @@ if (!existsSync(path)) {
 }
 const text = readFileSync(path, 'utf8');
 const perSection = Math.max(1, Number(perArg) || 8);
+/** In CI, any flag is a failure; locally it only prints. */
+const STRICT = process.env.BALANCE_STRICT === '1';
 
 const server = await createServer({
   root: resolve(import.meta.dirname, '../..'),
@@ -165,7 +167,9 @@ function report(result) {
       const at = (role) => tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === role && present(x.l));
       const lead = at('lead').sort((a, b) => b.l.rms - a.l.rms)[0];
       const where = `bars ${s.from}-${s.to}`;
-      if (lead) {
+      // A lead under -45 dB is effectively silent here; comparing the bass to it only reports a
+      // false "bass over lead" in an intro, bridge, or outro where the lead is meant to rest.
+      if (lead && lead.l.rms > -45) {
         // Sparse parts (stabs, a chopped hook) read low by RMS, so a part is buried only when it is
         // more than 10 dB under on both RMS and peak.
         for (const x of [...at('pad'), ...at('chords')]) {
@@ -202,6 +206,7 @@ function report(result) {
       }
     });
     console.log(flags.length ? `\nFlags:\n  ${flags.join('\n  ')}` : '\nNo flags.');
+    if (STRICT && flags.length > 0) process.exitCode = 1;
     if (needs.size > 0) {
       // A raise in one section can make the part too loud in another, so run again after a change.
       // In a remix the change goes in `vol.<style>=`, so the home mix stays as it is.

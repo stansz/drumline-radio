@@ -286,7 +286,7 @@ For a measured audit of the bank's timbres and the proposed changes, see
 | Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
 | Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `oboe` |
 | Flute, breathy parts | oscillators + breath | `woodwind`, `concert-flute` |
-| Stereo width | chorus | `warm-pad`, `choir-ooh` |
+| Stereo width | chorus | `warm-pad`, `choir-aah`, `choir-ooh` |
 
 ### FM
 

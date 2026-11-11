@@ -8,7 +8,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 | `midi/` | Converts a score's MIDI file into song bars (`midi2song.mjs`) |
 | `check/` | Parses every song and reports note clashes |
 | `analysis/` | Reports one song's density, register, dynamics and energy; reads a reference MIDI's groove |
-| `browser/` | Checks the running app in headless Edge: layout, loudness, per-track levels, patch levels, patch timbre, late notes, offline, screenshots |
+| `browser/` | Checks the running app in headless Edge (or Chromium/Chrome on Linux): layout, loudness, per-track levels, patch levels, patch timbre, late notes, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
 
 ## Arranger
@@ -39,7 +39,7 @@ that get fuller each time, and a held ending.
 - **Chords:** major, `m`, `7`, `m7`, `maj7`, and `dim`, for example `C`, `Am`, `G7`, `Bbmaj7`.
 
 The simple `arrange()` covers most carols and classics. `arranger/songs.mjs` holds the recipes for
-the 16 arranged carols and classics, and `arranger/about.mjs` holds the story for each public-domain
+the 15 arranged carols and classics, and `arranger/about.mjs` holds the story for each public-domain
 song.
 
 ```bash
@@ -155,6 +155,11 @@ keeps its pace at 128 BPM. Night Shift has its own, `arranger/night-shift.mjs`, 
 and hook out over two drops, and so does Save Point (`arranger/save-point.mjs`: its two themes, a
 save-room interlude, an adventure section, all again up a step).
 
+Sunliner has its own script (`arranger/sunliner.mjs`: italo-disco with choirs, stabs and a
+four-on-the-floor kit), as do Confetti Cannon (`arranger/confetti-cannon.mjs`: peak-time
+electro-house) and Velvet Freeway (`arranger/velvet-freeway.mjs`: the 104 BPM sunset-cruise
+synthwave song). Each is in `tests/drift.test.ts`.
+
 ```bash
 node tools/arranger/club.mjs tmp/club
 ```
@@ -256,7 +261,7 @@ These need a server running. Start one first:
 npm run build && npx vite preview --port 4173
 ```
 
-Or pass the live site's URL instead. Edge always runs muted.
+Or pass the live site's URL instead. The headless browser always runs muted.
 
 ```bash
 node tools/browser/layout.mjs
@@ -296,14 +301,17 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
 - **balance:** the standard balance check. `npm run balance -- wayfarers-rest` (a song name or
   path, then optionally a style, or `all` for every style in one run, and the bars per section,
   default 8) starts its own Vite server on a
-  free port, renders the whole song offline in headless Edge through the real engine with each
+  free port, renders the whole song offline in headless Edge or Chromium/Chrome through the real engine with each
   track tapped separately, prints every track's RMS / peak per section (and the level below 150 Hz
   for bass and drums), flags a pad or chords part more than 10 dB under the lead, an arp peaking
   more than 8 dB under the lead, a bass louder than the lead, and a bass low end louder than the kick's, then stops the server and browser.
+  It skips the bass-over-lead check when the lead is effectively silent in a section, so a resting
+  intro or bridge does not produce a false "bass over lead" flag.
   Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB
   to spare (in a remix it suggests `vol.<style>=`, which changes the track in that style only). When a
   track's flags are confined to fewer than half the sections it plays in, it names those bars and
   says to change its velocities there instead of its volume. About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
+  Set `BALANCE_STRICT=1` to make any flag exit nonzero; CI runs it on Velvet Freeway.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).

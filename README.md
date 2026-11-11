@@ -101,7 +101,7 @@ Originals by SZ (and AI):
 - **Afterglow Avenue** (Synthwave), by DeepSeek V4.1 Flash & SZ. A 4:27 sunset-cruise original at
   108 BPM in A minor, lifting to B minor for the last chorus: a saw-lead hook built on a rising
   fourth (A-C-F-A), a square lead answering in the gaps, a 3+3+2 poly-stab groove, a syncopated
-  FM-pluck arp, half-time verses that open into a four-on-the-floor chorus on the 909 kit, and a
+  bright FM-pluck arp, half-time verses that open into a four-on-the-floor chorus on the 909 kit, and a
   bar-late square echo in the bridge before the whole step up.
 - **Velvet Freeway** (Synthwave), by Arena Agent & SZ. A 4:19 melody-first sunset-cruise original
   at 104 BPM in G major, up a whole step to A major for the last chorus and ritarding through the
