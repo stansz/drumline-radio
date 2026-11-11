@@ -159,9 +159,9 @@ Originals by SZ (and AI):
   Arcade.
 - **Wayfarer's Rest** (Chiptune), by Gemini 3.8 Flash & SZ. A 3:19 wistful fantasy RPG theme at 88 BPM in 3/4: a singing pulse lead over rolling pulse-arp broken chords in D Dorian, a walking triangle bass, an answering square counter-melody, a warm major-key lift in F, a quiet bridge, a final heroic statement up a step in E minor, and an outro that winds down to the lone arp.
 - **Night Bus Home** (Studio), by MiMo v2.6 Pro, Claude & SZ. A 3:53 UK garage original at 132 BPM
-  in Bb minor: a wordless vocal hook someone can hum after one listen — a pickup, a peak that lands a
-  swung sixteenth ahead of the beat, a skipping fall, and a breath — with chopped vocal stabs
-  answering in its gaps. Every part shares one sixteenth swing: the verses ride a 2-step kick that
+  in Bb minor: a slow, floating wordless vocal hook someone can hum after one listen — a pickup, a
+  scoop up to a long-held peak, a fall that settles early, and a breath, two bars to a phrase — sung
+  on an R&B garage vox over the busy groove, with a sparse chopped vocal riff where it rests. Every part shares one sixteenth swing: the verses ride a 2-step kick that
   skips beat 3, the choruses open into 4x4 speed-garage drums with open off-beat hats, FM Rhodes
   stabs skip on the off-beat sixteenths, and a saw bass dodges the kick and drops an octave with a
   bend at the end of each loop. Each pre-chorus climbs to the song's high Eb, a breakdown drops the

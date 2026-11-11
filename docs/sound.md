@@ -284,7 +284,7 @@ For a measured audit of the bank's timbres and the proposed changes, see
 | Brass | FM with an index swell | `fm-brass` |
 | Slap and DX bass | FM | `dx-bass` |
 | Guitars, harp, pizzicato, upright bass | plucked string | `clean-guitar`, `nylon-guitar`, `concert-harp`, `pizzicato`, `string-bass` |
-| Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `oboe` |
+| Choir, wordless vocals, reeds | formants | `choir-aah`, `choir-ooh`, `vox-lead`, `garage-vox`, `vox-chop`, `oboe` |
 | Flute, breathy parts | oscillators + breath | `woodwind`, `concert-flute` |
 | Stereo width | chorus | `warm-pad`, `choir-aah`, `choir-ooh` |
 
@@ -328,7 +328,10 @@ formant patches need a higher `gain` than plain ones and should be level-matched
 `tools/browser/levels.mjs`. It sounds like a synth choir, not real singers. Keep bands wide for a high
 part: a narrow band passes only the one harmonic that falls inside it, so above about C5 the
 `VOWELS` bands leave one or two harmonics and the part sounds like a flute. `vox-lead` uses wide
-(low `q`), soprano-placed bands for that reason; the narrow `VOWELS` suit pads and lower parts.
+(low `q`), soprano-placed bands for that reason; the narrow `VOWELS` suit pads and lower parts. `garage-vox` is
+the R&B counterpart: wide, mid-placed "eh" bands with a little breath, a 12 ms onset so swung
+sixteenths speak, and a short, late vibrato. `vox-chop` is a chopped vocal sample: its bands sit
+higher, as if the sample were sped up, and its envelope cuts each note short with no vibrato.
 
 ### Breath
 

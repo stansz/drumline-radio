@@ -97,6 +97,19 @@ export const LEADS: Record<string, Patch> = {
       { hz: 3800, q: 5, gain: 0.25 }],
     env: env(0.06, 0.3, 0.9, 0.3),
     vibrato: { rate: 5.5, cents: 18, delay: 0.25 }, gain: 0.42, sends: { reverb: 1, delay: 0.6 } }),
+  // A garage vocal: a saw and pulse through wide, mid-placed "eh" bands with a little air, a quick
+  // onset so swung sixteenths speak, and a short, late vibrato, for an R&B topline rather than a soprano.
+  'garage-vox': synth({ name: 'Garage vox', oscs: [osc('sawtooth', 0, 0, 0.65), osc('pulse25', 0, 5, 0.35)],
+    formants: [{ hz: 700, q: 2.5, gain: 1 }, { hz: 1700, q: 3, gain: 0.85 }, { hz: 2800, q: 3.5, gain: 0.5 },
+      { hz: 4200, q: 4, gain: 0.2 }],
+    breath: { level: 0.12, hz: 3200, q: 1 },
+    env: env(0.012, 0.35, 0.75, 0.14),
+    vibrato: { rate: 5.8, cents: 10, delay: 0.4 }, drive: 0.2, gain: 0.2, sends: { reverb: 0.45, delay: 0.5 } }),
+  // A chopped vocal sample: the garage vox's vowel pushed up as if the sample were sped up, cut hard
+  // with no vibrato and little reverb, so each sixteenth is a sharp syllable.
+  'vox-chop': synth({ name: 'Vox chop', oscs: [osc('sawtooth', 0, 0, 0.6), osc('pulse12', 0, 0, 0.4)],
+    formants: [{ hz: 1000, q: 2.5, gain: 1 }, { hz: 2200, q: 3, gain: 0.8 }, { hz: 3600, q: 3.5, gain: 0.4 }],
+    env: env(0.002, 0.09, 0.45, 0.03), drive: 0.35, gain: 0.23, sends: { reverb: 0.25, delay: 0.35 } }),
   // An oboe: a square and saw through two broad formant bands, for a nasal double-reed body.
   'oboe': synth({ name: 'Oboe', oscs: [osc('square', 0, 0, 0.6), osc('sawtooth', 0, 3, 0.3)],
     formants: [{ hz: 1200, q: 3, gain: 1 }, { hz: 2700, q: 5, gain: 0.35 }],
