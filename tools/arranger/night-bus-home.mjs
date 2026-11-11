@@ -1,8 +1,8 @@
 // Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio style
-// at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen (a pickup, a scoop
-// up to a long-held peak, a fall that settles early, and a breath) sung in half time, so it floats
-// over a busy, skippy groove; a more talkative verse melody of its own, also in half time; a
-// pre-chorus that climbs to the song's high Eb; and a sparse chopped vocal riff where the vocal rests.
+// at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen (a pickup, a peak,
+// a fall that lands early, and a breath) sung in half time as single short hits, so it punctuates a
+// busy, skippy groove instead of sitting on it; a more talkative verse melody of its own, sung the
+// same way; a pre-chorus that climbs to the song's high Eb; and a sparse chopped vocal riff.
 //   The groove is what makes it garage. Every part shares one swing: each second sixteenth of a
 //   beat lands SWING ticks late, while the eighths stay straight. The verses run on a 2-step kick
 //   (beat 1 and the "and" of 3, so beat 3 is skipped), and the choruses switch to 4x4 speed-garage
@@ -12,9 +12,7 @@
 //   The chord loop is Bbm9 - Gbmaj7 - Dbmaj9 - Ab6, two bars to a chord to match the half-time
 //   vocal, for every bar but the two pre-choruses, which climb Gbmaj7 - Ab9 - Bbm9 and hang on
 //   Dbmaj9 - Absus4. The pad holds root and fifth only, so the melody's colour tones never sit a
-//   half step against it. In half time the vocal's passing notes last a quarter and some fall on the
-//   beat, so the off-chord report lists them: 9ths, 6ths, 11ths and 13ths of their chords, and one
-//   4-3 suspension over Ab6, all clash-free.
+//   half step against it.
 //   Built by section over 128 bars: an 8-bar intro, the verse, a rising pre-chorus, the hook; the
 //   verse again; a second pre-chorus into a second hook; an 8-bar breakdown with no kick where the
 //   vocal sings the hook bare; a build with snare rolls into the final chorus, which starts in
@@ -292,15 +290,16 @@ const PADS = {
 const padBar = (chord, vel) => `${PADS[chord]}/1:${clamp(vel)}`;
 
 // --- the melodies -----------------------------------------------------------
-// The groove underneath is busy and skippy, so the vocal floats over it in half time: these bars
-// are written at the drums' pace and stretched to twice their length (see `stretch`), so it has few
-// notes, long holds, lots of space, and one note per phrase pushed an eighth early. It drifts a few
-// ticks behind the beat, scoops up into its peaks, and falls off the ends of phrases.
+// The groove underneath is busy and skippy, so the vocal stays out of its way in half time: these
+// bars are written at the drums' pace, stretched to twice their length (see `stretch`), and then
+// every note is cut to one short hit (see `hits`), so it has few notes, lots of space, and one note
+// per phrase pushed an eighth early. It drifts a few ticks behind the beat. The scoops and falls
+// written here shape the melody's line; as hits, each plays its main pitch.
 const LEAD_O = [6, 10, 4, 12, 8, 5, 11, 7];
 
-// The hook, two written bars (four played) to a phrase: a pickup and a scoop up to a peak held for three beats; a fall
-// that settles early (on the swung sixteenth before beat 2's "and") into a long note; a reach to the
-// top; and a fall off the end into the breath. The second half reaches up to the song's high Eb.
+// The hook, two written bars (four played) to a phrase: a pickup and a peak; a fall that lands early
+// (an eighth ahead of the bar line, once stretched); a reach to the top; and a last note into the
+// breath. The second half reaches up to the song's high Eb.
 const HOOK = [
   [[2, 'r'], [2, 'F5', -8], [12, 'Ab5>Bb5', 4]],
   [[2, 'r'], [2, 'Ab5', -6], [3, 'F5', -4], [9, 'Db5', 0]],
@@ -389,11 +388,30 @@ function section(name, n, parts) {
     for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? R);
   }
 }
-const lead = (rows, base) => rows.flatMap(stretch).map((bar) => seq(bar, base, LEAD_O));
+// The vocal hits each note once and lets go: every note is cut to an eighth and the rest of its
+// length becomes silence, so it punctuates the groove instead of sitting on it. A note tied over a
+// bar line is one hit, and its tail in the next bar is rest; scoops and falls, which need a held
+// note, play as their main pitch.
+const HIT = 2;
+function hits(bar) {
+  const out = [];
+  for (const [units, token, dv] of bar) {
+    if (token === 'r' || token.startsWith('=')) out.push([units, 'r']);
+    else {
+      const core = token.replace(/~$/, '');
+      const pitch = core.includes('>') ? core.split('>')[1] : core.split('_')[0];
+      const len = Math.min(units, HIT);
+      out.push([len, pitch, dv]);
+      if (units > len) out.push([units - len, 'r']);
+    }
+  }
+  return out;
+}
+const lead = (rows, base) => rows.flatMap(stretch).map((bar) => seq(hits(bar), base, LEAD_O));
 // The pre-chorus in half time keeps its four rising steps, the last one reaching the high Eb.
 const PRE_HALF = [PRE[0], PRE[1], PRE[2], PRE[6]];
 // In the choruses the chops only flick in the half-bar breath before each phrase's last note
-// (bars 7 and 15); the last chorus adds the riff's tail under the held peaks.
+// (bars 7 and 15); the last chorus adds the riff's tail in the bars the vocal leaves empty.
 const hookChops = (i, vel, busy = false) =>
   i % 8 === 6 ? chopBar(loop(i), vel, 'head') : busy && i % 4 === 1 ? chopBar(loop(i), vel - 6, 'tail') : R;
 
@@ -491,7 +509,7 @@ section('Build', 8, {
 });
 
 // 10. Bars 105-120. The final chorus: the first half back in 2-step, the second opening into the
-// 4x4, with the chop riff's tail under the held peaks.
+// 4x4, with the chop riff's tail in the bars the vocal leaves empty.
 section('Final chorus', 16, {
   lead: lead(HOOK, 111),
   drums: bars(16, (i) => (i < 8 ? twoStep(i, 108, { fill: i === 7, crash: i === 0 }) : fourFour(i, 108, { fill: i === 15, crash: i === 8 }))),
@@ -562,8 +580,8 @@ const block = (key) => {
 
 const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio
 # style at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen - a pickup,
-# a scoop up to a long-held peak, a fall that settles early, and a breath - sung in half time so it
-# floats over a busy, skippy groove, with a sparse chopped vocal riff where the vocal rests. The
+# a peak, a fall that lands early, and a breath - sung in half time as single short hits, so it
+# punctuates a busy, skippy groove, with a sparse chopped vocal riff where the vocal rests. The
 # verse has a more talkative tune of its own, and each pre-chorus climbs to the song's high Eb
 # before the hook. A breakdown drops the kick so the vocal sings the hook bare, snare rolls build
 # back up, and the final chorus runs into a stripped outro.
@@ -576,9 +594,7 @@ const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK 
 #
 # The chord loop is Bbm9 - Gbmaj7 - Dbmaj9 - Ab6, two bars to a chord to match the half-time vocal,
 # except the two pre-choruses (Gbmaj7 - Ab9 - Bbm9, two bars each, then Dbmaj9 - Absus4). The pad
-# holds root and fifth only, so the melody's colour tones never sit a half step against it. The
-# off-chord report lists the vocal's passing notes, which last a quarter in half time: 9ths, 6ths,
-# 11ths and 13ths, and one 4-3 suspension over Ab6, all clash-free.
+# holds root and fifth only, so the melody's colour tones never sit a half step against it.
 # chords: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
 # chords @25: Gbmaj7 Gbmaj7 Ab9 Ab9 Bbm9 Bbm9 Dbmaj9 Absus4
 # chords @33: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
@@ -586,7 +602,7 @@ const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK 
 # chords @73: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
 title: Night Bus Home
 composer: MiMo v2.6 Pro, Claude & SZ
-about: UK garage at 132 in Bb minor: a half-time wordless vocal hook floating over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
+about: UK garage at 132 in Bb minor: a half-time wordless vocal hook in single short hits over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
 year: 2026
 source: original
 category: originals
@@ -595,7 +611,7 @@ key: Bb minor
 tempo: 132
 time: 4/4
 
-track lead role=lead inst=garage-vox vol=0.95
+track lead role=lead inst=garage-vox vol=0.75
 ${block('lead')}
 
 track chops role=lead2 inst=vox-chop vol=0.9 pan=0.3

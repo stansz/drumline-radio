@@ -1,7 +1,7 @@
 # Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio
 # style at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen - a pickup,
-# a scoop up to a long-held peak, a fall that settles early, and a breath - sung in half time so it
-# floats over a busy, skippy groove, with a sparse chopped vocal riff where the vocal rests. The
+# a peak, a fall that lands early, and a breath - sung in half time as single short hits, so it
+# punctuates a busy, skippy groove, with a sparse chopped vocal riff where the vocal rests. The
 # verse has a more talkative tune of its own, and each pre-chorus climbs to the song's high Eb
 # before the hook. A breakdown drops the kick so the vocal sings the hook bare, snare rolls build
 # back up, and the final chorus runs into a stripped outro.
@@ -14,9 +14,7 @@
 #
 # The chord loop is Bbm9 - Gbmaj7 - Dbmaj9 - Ab6, two bars to a chord to match the half-time vocal,
 # except the two pre-choruses (Gbmaj7 - Ab9 - Bbm9, two bars each, then Dbmaj9 - Absus4). The pad
-# holds root and fifth only, so the melody's colour tones never sit a half step against it. The
-# off-chord report lists the vocal's passing notes, which last a quarter in half time: 9ths, 6ths,
-# 11ths and 13ths, and one 4-3 suspension over Ab6, all clash-free.
+# holds root and fifth only, so the melody's colour tones never sit a half step against it.
 # chords: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
 # chords @25: Gbmaj7 Gbmaj7 Ab9 Ab9 Bbm9 Bbm9 Dbmaj9 Absus4
 # chords @33: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
@@ -24,7 +22,7 @@
 # chords @73: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
 title: Night Bus Home
 composer: MiMo v2.6 Pro, Claude & SZ
-about: UK garage at 132 in Bb minor: a half-time wordless vocal hook floating over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
+about: UK garage at 132 in Bb minor: a half-time wordless vocal hook in single short hits over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
 year: 2026
 source: original
 category: originals
@@ -33,49 +31,49 @@ key: Bb minor
 tempo: 132
 time: 4/4
 
-track lead role=lead inst=garage-vox vol=0.95
+track lead role=lead inst=garage-vox vol=0.75
 # Intro
 | R | R | R | R |
 | R | R | R | R |
 # Verse 1
-| r/4 Db5/4+6:88 Db5/4+10:90 F5/4+4:94~ | F5/8 r/4 C5/32+6:96^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:88 F5/4+10:90 Db5/4+4:94~ | Db5/8 r/4 Bb4/2+6:96~ Bb4/8 |
-| r/4 F5/4+6:88 Ab5/4+10:90 F5/4+4:94~ | F5/8 r/4 C5/32+6:96^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:88 F5/4+10:90 Eb5/4+4:94~ | Eb5/8 r/4 C5/2+6:96~ C5/8 |
-| r/4. Db5/8+6:88 F5/2+10:94 | r/4 Eb5/4+6:90 Db5/2+10:96 | r/4. Eb5/8+6:88 F5/2+10:94 | r/4 Db5/4+6:90 Bb4/2+10:96 |
-| r/4. F5/8+6:88 Ab5/2+10:94 | r/4 F5/4+6:90 Db5/2+10:96 | r/4. Eb5/8+6:88 F5/2+10:94 | r/4 Ab5/4+6:90 Eb5/2+10:96 |
+| r/4 Db5/8+6:88 r/8 Db5/8+10:90 r/8 F5/8+4:94 r/8 | r/8 r/4 Db5/8+6:96 r/2 | r/4 Eb5/8+6:88 r/8 F5/8+10:90 r/8 Db5/8+4:94 r/8 | r/8 r/4 Bb4/8+6:96 r/2 |
+| r/4 F5/8+6:88 r/8 Ab5/8+10:90 r/8 F5/8+4:94 r/8 | r/8 r/4 Db5/8+6:96 r/2 | r/4 Eb5/8+6:88 r/8 F5/8+10:90 r/8 Eb5/8+4:94 r/8 | r/8 r/4 C5/8+6:96 r/2 |
+| r/4. Db5/8+6:88 F5/8+10:94 r/4. | r/4 Eb5/8+6:90 r/8 Db5/8+10:96 r/4. | r/4. Eb5/8+6:88 F5/8+10:94 r/4. | r/4 Db5/8+6:90 r/8 Bb4/8+10:96 r/4. |
+| r/4. F5/8+6:88 Ab5/8+10:94 r/4. | r/4 F5/8+6:90 r/8 Db5/8+10:96 r/4. | r/4. Eb5/8+6:88 F5/8+10:94 r/4. | r/4 Ab5/8+6:90 r/8 Eb5/8+10:96 r/4. |
 # Pre-chorus 1
-| Db5/4+6:88 r/4 Eb5/4+10:90 F5/4+4:98~ | F5/1 | F5/4+6:88 r/4 Gb5/4+10:90 Ab5/4+4:98~ | Ab5/1 |
-| Ab5/4+6:88 r/4 Bb5/4+10:90 Bb5/32+4:98^ C6/8.~ C6/32~ | C6/1 | C6/4+6:88 r/4 Db6/4+10:90 Db6/32+4:98^ Eb6/8.~ Eb6/32~ | Eb6/1 |
+| Db5/8+6:88 r/8 r/4 Eb5/8+10:90 r/8 F5/8+4:98 r/8 | r/1 | F5/8+6:88 r/8 r/4 Gb5/8+10:90 r/8 Ab5/8+4:98 r/8 | r/1 |
+| Ab5/8+6:88 r/8 r/4 Bb5/8+10:90 r/8 C6/8+4:98 r/8 | r/1 | C6/8+6:88 r/8 r/4 Db6/8+10:90 r/8 Eb6/8+4:98 r/8 | r/1 |
 # Chorus 1
-| r/4 F5/4+6:96 Ab5/32+10:108^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:98 F5/4.+10:100 Db5/8+4:104~ | Db5/1 |
-| r/4 Ab5/4+6:96 Bb5/4+10:100 C6/32+4:108^ Db6/8.~ Db6/32~ | Db6/1 | r/2 C6/4+6:98 Ab5/4+10:104~ | Ab5/2.~ Ab5/8.^ F5/16 |
-| r/4 F5/4+6:96 Ab5/32+10:108^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:98 F5/4.+10:100 Db5/8+4:104~ | Db5/1 |
-| r/4 Bb5/4+6:96 C6/4+10:100 Db6/32+4:108^ Eb6/8.~ Eb6/32~ | Eb6/1 | r/2 Db6/4+6:98 C6/4+10:104~ | C6/2.~ C6/8.^ Ab5/16 |
+| r/4 F5/8+6:96 r/8 Bb5/8+10:108 r/4. | r/1 | r/4 Ab5/8+6:98 r/8 F5/8+10:100 r/4 Db5/8+4:104 | r/1 |
+| r/4 Ab5/8+6:96 r/8 Bb5/8+10:100 r/8 Db6/8+4:108 r/8 | r/1 | r/2 C6/8+6:98 r/8 Ab5/8+10:104 r/8 | r/1 |
+| r/4 F5/8+6:96 r/8 Bb5/8+10:108 r/4. | r/1 | r/4 Ab5/8+6:98 r/8 F5/8+10:100 r/4 Db5/8+4:104 | r/1 |
+| r/4 Bb5/8+6:96 r/8 C6/8+10:100 r/8 Eb6/8+4:108 r/8 | r/1 | r/2 Db6/8+6:98 r/8 C6/8+10:104 r/8 | r/1 |
 # Verse 2
-| r/4 Db5/4+6:92 Db5/4+10:94 F5/4+4:98~ | F5/8 r/4 C5/32+6:100^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:92 F5/4+10:94 Db5/4+4:98~ | Db5/8 r/4 Bb4/2+6:100~ Bb4/8 |
-| r/4 F5/4+6:92 Ab5/4+10:94 F5/4+4:98~ | F5/8 r/4 C5/32+6:100^ Db5/2~ Db5/16~ Db5/32 | r/4 Eb5/4+6:92 F5/4+10:94 Eb5/4+4:98~ | Eb5/8 r/4 C5/2+6:100~ C5/8 |
-| r/4. Db5/8+6:92 F5/2+10:98 | r/4 Eb5/4+6:94 Db5/2+10:100 | r/4. Eb5/8+6:92 F5/2+10:98 | r/4 Db5/4+6:94 Bb4/2+10:100 |
-| r/4. F5/8+6:92 Ab5/2+10:98 | r/4 F5/4+6:94 Db5/2+10:100 | r/4. Eb5/8+6:92 F5/2+10:98 | r/4 Ab5/4+6:94 Eb5/2+10:100 |
+| r/4 Db5/8+6:92 r/8 Db5/8+10:94 r/8 F5/8+4:98 r/8 | r/8 r/4 Db5/8+6:100 r/2 | r/4 Eb5/8+6:92 r/8 F5/8+10:94 r/8 Db5/8+4:98 r/8 | r/8 r/4 Bb4/8+6:100 r/2 |
+| r/4 F5/8+6:92 r/8 Ab5/8+10:94 r/8 F5/8+4:98 r/8 | r/8 r/4 Db5/8+6:100 r/2 | r/4 Eb5/8+6:92 r/8 F5/8+10:94 r/8 Eb5/8+4:98 r/8 | r/8 r/4 C5/8+6:100 r/2 |
+| r/4. Db5/8+6:92 F5/8+10:98 r/4. | r/4 Eb5/8+6:94 r/8 Db5/8+10:100 r/4. | r/4. Eb5/8+6:92 F5/8+10:98 r/4. | r/4 Db5/8+6:94 r/8 Bb4/8+10:100 r/4. |
+| r/4. F5/8+6:92 Ab5/8+10:98 r/4. | r/4 F5/8+6:94 r/8 Db5/8+10:100 r/4. | r/4. Eb5/8+6:92 F5/8+10:98 r/4. | r/4 Ab5/8+6:94 r/8 Eb5/8+10:100 r/4. |
 # Pre-chorus 2
-| Db5/4+6:92 r/4 Eb5/4+10:94 F5/4+4:102~ | F5/1 | F5/4+6:92 r/4 Gb5/4+10:94 Ab5/4+4:102~ | Ab5/1 |
-| Ab5/4+6:92 r/4 Bb5/4+10:94 Bb5/32+4:102^ C6/8.~ C6/32~ | C6/1 | C6/4+6:92 r/4 Db6/4+10:94 Db6/32+4:102^ Eb6/8.~ Eb6/32~ | Eb6/1 |
+| Db5/8+6:92 r/8 r/4 Eb5/8+10:94 r/8 F5/8+4:102 r/8 | r/1 | F5/8+6:92 r/8 r/4 Gb5/8+10:94 r/8 Ab5/8+4:102 r/8 | r/1 |
+| Ab5/8+6:92 r/8 r/4 Bb5/8+10:94 r/8 C6/8+4:102 r/8 | r/1 | C6/8+6:92 r/8 r/4 Db6/8+10:94 r/8 Eb6/8+4:102 r/8 | r/1 |
 # Chorus 2
-| r/4 F5/4+6:99 Ab5/32+10:111^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:101 F5/4.+10:103 Db5/8+4:107~ | Db5/1 |
-| r/4 Ab5/4+6:99 Bb5/4+10:103 C6/32+4:111^ Db6/8.~ Db6/32~ | Db6/1 | r/2 C6/4+6:101 Ab5/4+10:107~ | Ab5/2.~ Ab5/8.^ F5/16 |
-| r/4 F5/4+6:99 Ab5/32+10:111^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:101 F5/4.+10:103 Db5/8+4:107~ | Db5/1 |
-| r/4 Bb5/4+6:99 C6/4+10:103 Db6/32+4:111^ Eb6/8.~ Eb6/32~ | Eb6/1 | r/2 Db6/4+6:101 C6/4+10:107~ | C6/2.~ C6/8.^ Ab5/16 |
+| r/4 F5/8+6:99 r/8 Bb5/8+10:111 r/4. | r/1 | r/4 Ab5/8+6:101 r/8 F5/8+10:103 r/4 Db5/8+4:107 | r/1 |
+| r/4 Ab5/8+6:99 r/8 Bb5/8+10:103 r/8 Db6/8+4:111 r/8 | r/1 | r/2 C6/8+6:101 r/8 Ab5/8+10:107 r/8 | r/1 |
+| r/4 F5/8+6:99 r/8 Bb5/8+10:111 r/4. | r/1 | r/4 Ab5/8+6:101 r/8 F5/8+10:103 r/4 Db5/8+4:107 | r/1 |
+| r/4 Bb5/8+6:99 r/8 C6/8+10:103 r/8 Eb6/8+4:111 r/8 | r/1 | r/2 Db6/8+6:101 r/8 C6/8+10:107 r/8 | r/1 |
 # Breakdown
-| r/4 F5/4+6:72 Ab5/32+10:84^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:74 F5/4.+10:76 Db5/8+4:80~ | Db5/1 |
-| r/4 Ab5/4+6:72 Bb5/4+10:76 C6/32+4:84^ Db6/8.~ Db6/32~ | Db6/1 | R | R |
+| r/4 F5/8+6:72 r/8 Bb5/8+10:84 r/4. | r/1 | r/4 Ab5/8+6:74 r/8 F5/8+10:76 r/4 Db5/8+4:80 | r/1 |
+| r/4 Ab5/8+6:72 r/8 Bb5/8+10:76 r/8 Db6/8+4:84 r/8 | r/1 | R | R |
 # Build
 | R | R | R | R |
-| r/4. Ab5/4+6:98 Bb5/4.+10:100 | C6/4.+6:104 Db6/2+10:106~ Db6/8 | Eb6/1+6:108 | r/1 |
+| r/4. Ab5/8+6:98 r/8 Bb5/8+10:100 r/4 | C6/8+6:104 r/4 Db6/8+10:106 r/2 | Eb6/8+6:108 r/2. r/8 | r/1 |
 # Final chorus
-| r/4 F5/4+6:103 Ab5/32+10:115^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:105 F5/4.+10:107 Db5/8+4:111~ | Db5/1 |
-| r/4 Ab5/4+6:103 Bb5/4+10:107 C6/32+4:115^ Db6/8.~ Db6/32~ | Db6/1 | r/2 C6/4+6:105 Ab5/4+10:111~ | Ab5/2.~ Ab5/8.^ F5/16 |
-| r/4 F5/4+6:103 Ab5/32+10:115^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:105 F5/4.+10:107 Db5/8+4:111~ | Db5/1 |
-| r/4 Bb5/4+6:103 C6/4+10:107 Db6/32+4:115^ Eb6/8.~ Eb6/32~ | Eb6/1 | r/2 Db6/4+6:105 C6/4+10:111~ | C6/2.~ C6/8.^ Ab5/16 |
+| r/4 F5/8+6:103 r/8 Bb5/8+10:115 r/4. | r/1 | r/4 Ab5/8+6:105 r/8 F5/8+10:107 r/4 Db5/8+4:111 | r/1 |
+| r/4 Ab5/8+6:103 r/8 Bb5/8+10:107 r/8 Db6/8+4:115 r/8 | r/1 | r/2 C6/8+6:105 r/8 Ab5/8+10:111 r/8 | r/1 |
+| r/4 F5/8+6:103 r/8 Bb5/8+10:115 r/4. | r/1 | r/4 Ab5/8+6:105 r/8 F5/8+10:107 r/4 Db5/8+4:111 | r/1 |
+| r/4 Bb5/8+6:103 r/8 C6/8+10:107 r/8 Eb6/8+4:115 r/8 | r/1 | r/2 Db6/8+6:105 r/8 C6/8+10:111 r/8 | r/1 |
 # Outro
-| r/4 F5/4+6:76 Ab5/32+10:88^ Bb5/4..~ Bb5/32~ | Bb5/1 | r/4 Ab5/4+6:78 F5/4.+10:80 Db5/8+4:84~ | Db5/1 |
+| r/4 F5/8+6:76 r/8 Bb5/8+10:88 r/4. | r/1 | r/4 Ab5/8+6:78 r/8 F5/8+10:80 r/4 Db5/8+4:84 | r/1 |
 | R | R | R | R |
 
 track chops role=lead2 inst=vox-chop vol=0.9 pan=0.3
