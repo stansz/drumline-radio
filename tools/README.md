@@ -261,7 +261,9 @@ These need a server running. Start one first:
 npm run build && npx vite preview --port 4173
 ```
 
-Or pass the live site's URL instead. The headless browser always runs muted.
+Or pass the live site's URL instead. The headless browser always runs muted. Each check runs the
+browser on a fresh profile in the temp folder and deletes it when the check ends, crashes, or is
+stopped. Each check also first deletes any profiles (`radio-edge-*`) that earlier runs left behind.
 
 ```bash
 node tools/browser/layout.mjs
