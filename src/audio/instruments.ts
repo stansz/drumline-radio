@@ -264,10 +264,11 @@ export const PADS: Record<string, Patch> = {
     oscs: [
       osc('sawtooth', 0, -12, 0.35),
       osc('sawtooth', 0, 12, 0.35),
-      osc('triangle', -1, 0, 0.3),
+      osc('triangle', 0, 0, 0.25),
+      osc('sawtooth', 1, -5, 0.12),
     ],
     env: env(0.6, 1, 0.8, 1.2),
-    filter: { type: 'lowpass', hz: 1400, q: 0.7, envAmount: 1, envDecay: 1 },
+    filter: { type: 'lowpass', hz: 1700, q: 0.7, envAmount: 1, envDecay: 1 },
     chorus: { rate: 0.32, depth: 4.2, mix: 0.42 },
     gain: 0.24,
     sends: { reverb: 1.4, delay: 0.5 },

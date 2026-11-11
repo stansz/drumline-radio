@@ -18,8 +18,8 @@ notes, so use the split for relative comparison, not as exact percentages.
 | `saw-lead` | 8 harmonics, 1081 Hz centroid at G4; 8/78/14 low/mid/high at A4, 4/79/17 at C5 | Bright enough to lead; don't brighten blindly. |
 | `strings` | 15 harmonics, 1961 Hz centroid at G4; 2/57/41 low/mid/high at G4 | Cuts well; the string work paid off. |
 | `string-pad` | 6 harmonics, 902 Hz centroid at G4; 45/51/4 low/mid/high at C4 | Balanced ensemble pad. |
-| `warm-pad` | 3 harmonics, 530 Hz centroid at G4; **93/6/1 low/mid/high at A3**, 67/32/1 at E4 | Too much sub and low-mid; likely muddies the bass. |
-| `choir-ooh` | **94/6/0 low/mid/high at A3** | Much darker than `choir-aah` (7/91/2); can turn to mud under a verse. |
+| `warm-pad` | 6 harmonics, 942 Hz centroid at G4; 16/82/2 low/mid/high at G4, 69/29/2 at C4, 33/65/2 at E4 | Re-voiced: less sub, more mid; no longer masks the bass. |
+| `choir-ooh` | 12 harmonics, 1185 Hz centroid at C4; 81/15/4 low/mid/high at A3 | Presence band added; no longer turns to mud under a verse. |
 | `poly-stab` | **77/18/5 low/mid/high at G3**, 99/0/3 at C3 | Low-mid build-up in the chord stabs. |
 | `fm-pluck` | 2 harmonics half a second in at G4; 82/12 mid/high at C5, 54/46 at C6 | The FM character is in the attack; the tail is nearly a sine. |
 | `synth-bass` | 10 harmonics, 310 Hz centroid at E2 | Punchy and present; no clean sine sub layer. |
@@ -54,20 +54,19 @@ modulated in opposite directions, panned left and right, under a dry centre. `wa
 `choir-aah`, and `choir-ooh` opt in; everything else is unchanged. The lead patches stay dry for now:
 adding chorus to `saw-lead` and `vox-lead` pushed them over the balance thresholds in Midnight
 Arcade, Sunliner, and Starlight Drive, so the width lives on the pads and choirs until a per-song
-level pass is worth doing. See [sound.md](sound.md). The remaining P1 work is the `warm-pad` and
-`choir-ooh` re-voicing below.
+level pass is worth doing. See [sound.md](sound.md). Both P1 re-voices are now built below.
 
-### 2. `warm-pad` is bottom-heavy
+### 2. `warm-pad` is bottom-heavy (built)
 
-Current patch: two saws at ±12 cents plus a triangle at `octave: -1`, a 1400 Hz low-pass, and no
-high-pass. At A3 the low band is 93% of the energy, and at E4 it is still 67%. Pad-mixing guides
+The old patch was two saws at ±12 cents plus a triangle at `octave: -1`, a 1400 Hz low-pass, and no
+high-pass. At A3 the low band was 93% of the energy, and at E4 it was still 67%. Pad-mixing guides
 consistently recommend a high-pass around 200–400 Hz to stop a pad masking the bass and low mids.
 
-**Proposal:** either re-voice the patch (drop or reduce the -1 triangle, add a quiet +1 octave layer,
-raise the filter slightly) or add an optional high-pass field to the patch format. Patch-only is the
-safer first experiment; the engine high-pass is reusable for `poly-stab` and other pads.
-
-**Impact:** medium-high. **Effort:** low for a patch re-voice, medium for a new filter field.
+**Built:** the sub-octave triangle is gone, replaced by a triangle at the written pitch and a quiet
+`+1` octave saw. The low-pass moved from 1400 to 1700 Hz, and the gain was re-matched to 0.24. At G4
+the patch moved from 3 harmonics / 530 Hz to 6 / 942 Hz; at C4 the split moved from 84/15/1 to
+69/29/2, and at E4 from 67/32/1 to 33/65/2. Afterglow Avenue, Midnight Arcade, and Sunliner still
+balance with no flags. The optional high-pass field is still unbuilt and available for `poly-stab`.
 
 ### 3. `choir-ooh` is extremely dark (built)
 
@@ -137,7 +136,8 @@ bow edge. Leave this until the P1 and P2 changes are judged.
 
 ## Suggested order
 
-1. **P1:** chorus/ensemble width (built); re-voice `warm-pad`; add presence to `choir-ooh`.
+1. **P1:** chorus/ensemble width (built); re-voice `warm-pad` (built); add presence to `choir-ooh`
+   (built).
 2. **P2:** velocity-to-filter; `synth-bass` sine sub and light drive; `poly-stab` high-pass; an
    FM pluck variant.
 3. **P3:** optional bow noise; filter attack.

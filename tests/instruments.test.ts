@@ -52,4 +52,12 @@ describe('the instrument bank', () => {
       patch.formants?.some((formant) => formant.hz >= 1200 && formant.hz <= 2500 && formant.q < 5),
     ).toBe(true);
   });
+
+  it('keeps warm-pad off the sub octave and adds an octave-up layer', () => {
+    const patch = INSTRUMENTS['warm-pad'];
+    expect(patch.kind).toBe('synth');
+    if (patch.kind !== 'synth') return;
+    expect(patch.oscs.some((oscillator) => oscillator.octave === 1)).toBe(true);
+    expect(patch.oscs.some((oscillator) => oscillator.octave === -1)).toBe(false);
+  });
 });
