@@ -9,7 +9,7 @@ describe('the instrument bank', () => {
       (sum, family) => sum + Object.keys(family).length,
       0,
     );
-    expect(total).toBe(72);
+    expect(total).toBe(73);
     expect(Object.keys(INSTRUMENTS).length).toBe(total);
   });
 
@@ -42,6 +42,32 @@ describe('the instrument bank', () => {
       expect(patch.chorus.mix, id).toBeGreaterThan(0);
       expect(patch.chorus.mix, id).toBeLessThanOrEqual(1);
     }
+  });
+
+  it('adds a brighter FM pluck variant', () => {
+    const patch = INSTRUMENTS['fm-pluck-bright'];
+    expect(patch.kind).toBe('synth');
+    if (patch.kind !== 'synth') return;
+    expect(patch.fm?.ratio).toBe(3);
+    expect(patch.oscs.length).toBe(2);
+  });
+
+  it('layers a clean sine sub and light drive on the synth bass', () => {
+    const patch = INSTRUMENTS['synth-bass'];
+    expect(patch.kind).toBe('synth');
+    if (patch.kind !== 'synth') return;
+    expect(
+      patch.oscs.some((oscillator) => oscillator.wave === 'sine' && oscillator.octave === -1),
+    ).toBe(true);
+    expect(patch.drive).toBeGreaterThan(0);
+  });
+
+  it('adds a quiet bow-noise breath to the strings', () => {
+    const patch = INSTRUMENTS.strings;
+    expect(patch.kind).toBe('synth');
+    if (patch.kind !== 'synth') return;
+    expect(patch.breath?.level).toBeGreaterThan(0);
+    expect(patch.breath?.level).toBeLessThanOrEqual(0.2);
   });
 
   it('keeps every high-pass setting usable', () => {

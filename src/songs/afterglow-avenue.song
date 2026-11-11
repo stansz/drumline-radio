@@ -1,8 +1,8 @@
 # Afterglow Avenue, by DeepSeek V4.1 Flash and SZ. An original sunset-cruise synthwave song for the
 # Synthwave style: a saw-lead hook built on a rising fourth (A-C-F-A), a square lead answering in the
-# gaps, a 3+3+2 poly-stab groove, a syncopated FM-pluck arp, a warm pad, a syncopated synth bass, and
+# gaps, a 3+3+2 poly-stab groove, a syncopated bright FM-pluck arp, a warm pad, a syncopated synth bass, and
 # the 909 kit in the home Synthwave mix (remixes keep their own style's kit). The arp is the bank
-# fm-pluck, which no Synthwave role uses: five eighth-note hits per
+# fm-pluck-bright, a brighter FM pluck that no Synthwave role uses: five eighth-note hits per
 # bar (root, fifth, octave, third, ninth) with rests between them, so it doesn't share the style's
 # continuous saw-pluck sixteenths. 108 BPM in A minor; the bridge and build lift the last
 # chorus a whole step to B minor. The verse is half-time and the chorus opens up to four on the floor,
@@ -47,7 +47,7 @@ style: synthwave
 key: A minor to B minor
 tempo: 108
 time: 4/4
-about: A sunset-cruise synthwave original at 108 BPM in A minor: a saw-lead hook built on a rising fourth, a square lead answering in the gaps, a 3+3+2 stab groove, a syncopated FM-pluck arp, half-time verses opening into a four-on-the-floor chorus, and a last chorus up a whole step to B minor.
+about: A sunset-cruise synthwave original at 108 BPM in A minor: a saw-lead hook built on a rising fourth, a square lead answering in the gaps, a 3+3+2 stab groove, a syncopated bright FM-pluck arp, half-time verses opening into a four-on-the-floor chorus, and a last chorus up a whole step to B minor.
 
 track lead role=lead vol=0.72
 # Intro: the hook, first on pluck, then on saw
@@ -230,7 +230,7 @@ track square role=lead2 vol=0.65 pan=-0.2
 | B4/4+10:74 F#4/4+8:70 D4/2+6:68 |
 | F#4/1+10:70 |
 
-track arp role=arp inst=fm-pluck vol=1 pan=0.24
+track arp role=arp inst=fm-pluck-bright vol=1 pan=0.24
 # Intro: the hook on the FM pluck, then a rest while the saw states it
 | A3/8:70 C4/8:66 F4/4:72 A4/4.:70 G4/8:66 |
 | E4/4:72 D4/8:66 C4/8:66 B3/2:70 |

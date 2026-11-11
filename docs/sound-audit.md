@@ -16,13 +16,14 @@ notes, so use the split for relative comparison, not as exact percentages.
 | Patch | Measurement | Read |
 | --- | --- | --- |
 | `saw-lead` | 8 harmonics, 1081 Hz centroid at G4; 8/78/14 low/mid/high at A4, 4/79/17 at C5 | Bright enough to lead; don't brighten blindly. |
-| `strings` | 15 harmonics, 1961 Hz centroid at G4; 2/57/41 low/mid/high at G4 | Cuts well; the string work paid off. |
+| `strings` | 18 harmonics, 1999 Hz centroid at G4; 4/54/42 low/mid/high at G4 | Bow-noise breath added; still cuts without hiss. |
 | `string-pad` | 6 harmonics, 902 Hz centroid at G4; 45/51/4 low/mid/high at C4 | Balanced ensemble pad. |
 | `warm-pad` | 6 harmonics, 942 Hz centroid at G4; 16/82/2 low/mid/high at G4, 69/29/2 at C4, 33/65/2 at E4 | Re-voiced: less sub, more mid; no longer masks the bass. |
 | `choir-ooh` | 12 harmonics, 1185 Hz centroid at C4; 81/15/4 low/mid/high at A3 | Presence band added; no longer turns to mud under a verse. |
 | `poly-stab` | 55/40/5 low/mid/high at G3, 60/35/5 at C3, 43/51/6 at C4 | High-passed at 320 Hz; clears the low-mid build-up. |
 | `fm-pluck` | 2 harmonics half a second in at G4; 82/12 mid/high at C5, 54/46 at C6 | The FM character is in the attack; the tail is nearly a sine. |
-| `synth-bass` | 10 harmonics, 310 Hz centroid at E2 | Punchy and present; no clean sine sub layer. |
+| `fm-pluck-bright` | 3 harmonics, 648 Hz centroid at G4; 5/84/11 at C5 | Brighter FM variant; Afterglow's arp uses it. |
+| `synth-bass` | 10 harmonics, 309 Hz centroid at E2; sine sub + light drive | Fuller low end; level-matched to the old bass. |
 
 ## What is healthy
 
@@ -89,17 +90,16 @@ and from 49/45/6 to 43/51/6 at C4. Afterglow Avenue and Sunliner balance with no
 Drive keeps only its localized arp breakdown flag. The stabs' peak rose a few dB because the
 high-pass exposes the transient; the mix still leaves them under the lead.
 
-### 5. `fm-pluck` is attack-only
+### 5. `fm-pluck` is attack-only (built)
 
 The FM index decays in 0.2 s, so half a second in the tone is nearly a sine. FM pluck references
 suggest 1:3 or 1:4 modulator ratios with a fast index decay for a more metallic or marimba-like
 attack. The current 1:2 ratio is the soft, harmonic option.
 
-**Proposal:** add a new bank patch rather than changing `fm-pluck` in place, because Techno uses it
-as a counter-line. Try ratio 3 or 4, index around 2.5–3, a shorter index decay, and a quiet
-triangle or saw layer for body. Use it with `inst=` where a brighter arp is wanted.
-
-**Impact:** low to medium. **Effort:** low.
+**Built:** `fm-pluck-bright` is a new bank patch with ratio 3, index 4, a 0.1 s index decay and a
+quiet clean triangle for body. Afterglow Avenue's arp uses it; Techno keeps the original `fm-pluck`
+as its counter-line. At G4 it measures 3 harmonics and a 648 Hz centroid, against 2 / 561 Hz for the
+old patch; the difference is mostly in the attack, which is the point.
 
 ### 6. Velocity only changes gain (built)
 
@@ -112,33 +112,32 @@ amount for natural dynamics: soft notes darker, hard notes brighter.
 0.65, and `synth-bass` 0.5; every other patch keeps its exact old sound. A related optional
 `filterAttack` would let pads and strings open more slowly, but is still unbuilt.
 
-### 7. `synth-bass` could use a pure sine sub and a little drive
+### 7. `synth-bass` could use a pure sine sub and a little drive (built)
 
-The patch is a saw plus a square an octave down through a 500 Hz low-pass with a strong filter
-envelope. It is punchy, but it has no clean sine sub layer, and synthwave bass guides commonly layer
+The patch was a saw plus a square an octave down through a 500 Hz low-pass with a strong filter
+envelope. It was punchy, but had no clean sine sub layer, and synthwave bass guides commonly layer
 saw/square with a sine sub and light saturation.
 
-**Proposal:** try a quiet sine at `octave: -1` and `drive: 0.05–0.1`. Check the low-end balance
-against the kick and against songs that already add `sub-bass`; the extra layer may make those songs
-too heavy.
+**Built:** `synth-bass` now layers a clean sine an octave down (level 0.25) under the saw and square,
+with `drive: 0.07`. The gain came down to 0.24 to keep the mix level. Sunliner and Starlight Drive
+keep their bass under the lead; Afterglow and Midnight Arcade balance with no flags.
 
-**Impact:** medium. **Effort:** low.
+### 8. Strings: optional bow noise (built)
 
-### 8. Strings: optional bow noise
+The strings already used formants and delayed vibrato. A very quiet `breath` band around 3�5 kHz
+could add bow rosin, but it risks hiss and the existing 3 kHz formant already supplies the bow edge.
 
-The current strings already use formants and delayed vibrato. A very quiet `breath` band around
-3–5 kHz could add bow rosin, but it risks hiss and the existing 3 kHz formant already supplies the
-bow edge. Leave this until the P1 and P2 changes are judged.
-
-**Impact:** low. **Effort:** low, but easy to overdo.
+**Built:** `strings` has a quiet `breath` band at 5 kHz (level 0.12, q 1.2). It moved the patch from
+15 to 18 harmonics and the centroid from 1961 to 1999 Hz without changing its level. The orchestral
+balance reports other, pre-existing parts, not the violins.
 
 ## Suggested order
 
 1. **P1:** chorus/ensemble width (built); re-voice `warm-pad` (built); add presence to `choir-ooh`
    (built).
 2. **P2:** `poly-stab` high-pass (built); velocity-to-filter (built); `synth-bass` sine sub and
-   light drive; an FM pluck variant.
-3. **P3:** optional bow noise; filter attack.
+   light drive (built); an FM pluck variant (built).
+3. **P3:** bow noise (built); filter attack remains unbuilt.
 
 ## How to make the changes safely
 

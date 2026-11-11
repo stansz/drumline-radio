@@ -103,7 +103,9 @@ on top.
 | drums | Gated kit |
 
 Synthwave also has an extra clean `sub-bass` patch, a sine sub with a little triangle at the octave,
-that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-bass`.
+that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-bass`. A brighter FM
+pluck is available as `inst=fm-pluck-bright`; Afterglow Avenue's arp uses it, while Techno keeps
+the softer `fm-pluck`. The synth bass layers a clean sine an octave down and a little drive.
 
 ### Chiptune
 
@@ -134,7 +136,8 @@ that no role maps to. Midnight Arcade's `sub` track reaches it with `inst=sub-ba
 Songs can also reach `inst=tubular-bells` (FM bells that ring long), `inst=pizzicato` (short
 plucked strings), and `inst=oboe` (a formant oboe, more cutting than the flute). The counter-line
 is the concert flute (`concert-flute`): Lo-fi's breathy flute (`woodwind`) with more triangle body
-and only a touch of breath, so it doesn't sound lo-fi in a hall.
+and only a touch of breath, so it doesn't sound lo-fi in a hall. The strings lead has a quiet
+bow-noise `breath` band at 5 kHz, so the section has some rosin under the bowed tone.
 
 ### Techno
 

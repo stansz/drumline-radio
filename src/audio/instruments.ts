@@ -154,6 +154,15 @@ export const KEYS: Record<string, Patch> = {
     env: env(0.002, 0.3, 0, 0.15),
     gain: 0.24,
   }),
+  // A brighter FM pluck: a higher ratio and a faster index decay for a metallic attack, with a
+  // quiet clean triangle under it for body. Afterglow Avenue's arp uses it; Techno keeps fm-pluck.
+  'fm-pluck-bright': synth({
+    name: 'Bright pluck',
+    oscs: [osc('sine', 0, 0, 0.9), osc('triangle', 0, 0, 0.12)],
+    fm: { ratio: 3, index: 4, decay: 0.1, sustain: 0.06, targets: [0] },
+    env: env(0.002, 0.28, 0, 0.12),
+    gain: 0.27,
+  }),
   // Techno chords: a detuned-saw chord stab.
   stab: synth({
     name: 'Chord stab',
@@ -288,6 +297,7 @@ export const PADS: Record<string, Patch> = {
   strings: synth({ name: 'Strings',
     oscs: [osc('sawtooth', 0, -6, 0.34), osc('sawtooth', 0, 0, 0.33), osc('sawtooth', 0, 6, 0.33)],
     formants: [{ hz: 450, q: 2, gain: 0.2 }, { hz: 1500, q: 1, gain: 0.6 }, { hz: 3000, q: 0.7, gain: 1 }],
+    breath: { level: 0.12, hz: 5000, q: 1.2 },
     env: env(0.08, 0.4, 0.85, 0.5), filter: { type: 'lowpass', hz: 7000, q: 0.5, envAmount: 1, envDecay: 0.3 },
     vibrato: { rate: 5.5, cents: 16, delay: 0.25 }, gain: 0.24, sends: { reverb: 1.2, delay: 0 } }),
   // Orchestral pad: a soft string ensemble. Four widely detuned saws, warm and still, with no vibrato:
@@ -365,11 +375,16 @@ export const BASSES: Record<string, Patch> = {
   // Synthwave bass: a punchy filtered saw bass.
   'synth-bass': synth({
     name: 'Synth bass',
-    oscs: [osc('sawtooth', 0, 0, 0.6), osc('square', -1, 0, 0.4)],
+    oscs: [
+      osc('sawtooth', 0, 0, 0.55),
+      osc('square', -1, 0, 0.3),
+      osc('sine', -1, 0, 0.25),
+    ],
     env: env(0.005, 0.2, 0.6, 0.05),
     filter: { type: 'lowpass', hz: 500, q: 2, envAmount: 4, envDecay: 0.12 },
     velFilter: 0.5,
-    gain: 0.4,
+    drive: 0.07,
+    gain: 0.24,
     sends: { reverb: 0.2, delay: 0 },
   }),
   // A deep sine sub bass with a little triangle on top.

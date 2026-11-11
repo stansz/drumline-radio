@@ -55,8 +55,8 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
   until `npm run balance` printed no flags. The square lead was raised so its answers read above the pad. The song is hand-written,
   so there is no generator and no drift entry.
 - **Reworked after listening:** the first version shared Midnight Arcade's saw-pluck arp texture,
-  so the arp moved to the bank `fm-pluck` and to a syncopated five-note eighth/rest figure (root,
-  fifth, octave, third, ninth). The home-style drums moved from the gated kit to the 909 kit, set
+  so the arp moved to a brighter bank `fm-pluck-bright` and to a syncopated five-note eighth/rest
+  figure (root, fifth, octave, third, ninth). The home-style drums moved from the gated kit to the 909 kit, set
   with `inst.synthwave=909-kit` so other styles keep their own kits. It no longer shares a patch or
   a rhythmic shape with another Synthwave arp; `check:songs` still reports 0 clashes and 0
   off-chord, and `balance` no flags.
