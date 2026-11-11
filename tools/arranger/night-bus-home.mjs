@@ -1,8 +1,9 @@
 // Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio style
 // at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen (a pickup, a peak,
-// a fall that lands early, and a breath) sung in half time as single short hits, so it punctuates a
-// busy, skippy groove instead of sitting on it; a more talkative verse melody of its own, sung the
-// same way; a pre-chorus that climbs to the song's high Eb; and a sparse chopped vocal riff.
+// a fall that lands early, and a breath) sung in half time. It starts as single short hits that
+// punctuate the busy, skippy groove, and its notes ring longer section by section until the last
+// chorus and the outro sing them in full. A more talkative verse melody of its own builds the same
+// way, a pre-chorus climbs to the song's high Eb, and a sparse chopped vocal riff answers.
 //   The groove is what makes it garage. Every part shares one swing: each second sixteenth of a
 //   beat lands SWING ticks late, while the eighths stay straight. The verses run on a 2-step kick
 //   (beat 1 and the "and" of 3, so beat 3 is skipped), and the choruses switch to 4x4 speed-garage
@@ -89,10 +90,21 @@ function seq(hits, base, drift = [0]) {
 // Half time: one written bar becomes two, every length doubled, and a note that crosses the new bar
 // line is tied over it. The chords change every two bars too, so each note keeps its chord, and the
 // melody rides at half the pace of the drums, bass and stabs.
-function stretch(bar) {
+//   `hold` caps how long a note sounds, in sixteenths after stretching: a longer note is cut to it
+// and the rest becomes silence. A cut note keeps its scoop when it lasts at least a quarter, and
+// drops its fall, which needs the end of the note.
+function cut(token, hold) {
+  const [from, to] = token.split(/[>_]/);
+  if (token.includes('>')) return hold >= 4 ? token : to;
+  return token.includes('_') ? from : token;
+}
+function stretch(bar, hold = Infinity) {
   const out = [[], []];
+  const items = bar.flatMap(([units, token, dv]) =>
+    token !== 'r' && units * 2 > hold ? [[hold / 2, cut(token, hold), dv], [units - hold / 2, 'r']] : [[units, token, dv]],
+  );
   let slot = 0;
-  for (const [units, token, dv] of bar) {
+  for (const [units, token, dv] of items) {
     const start = slot;
     const end = slot + units * 2;
     slot = end;
@@ -291,10 +303,10 @@ const padBar = (chord, vel) => `${PADS[chord]}/1:${clamp(vel)}`;
 
 // --- the melodies -----------------------------------------------------------
 // The groove underneath is busy and skippy, so the vocal stays out of its way in half time: these
-// bars are written at the drums' pace, stretched to twice their length (see `stretch`), and then
-// every note is cut to one short hit (see `hits`), so it has few notes, lots of space, and one note
-// per phrase pushed an eighth early. It drifts a few ticks behind the beat. The scoops and falls
-// written here shape the melody's line; as hits, each plays its main pitch.
+// bars are written at the drums' pace and stretched to twice their length (see `stretch`), so it has
+// few notes, lots of space, and one note per phrase pushed an eighth early. Each section caps how
+// long its notes ring (`HOLD`), from single hits up to full length, where the scoops and falls play.
+// It drifts a few ticks behind the beat.
 const LEAD_O = [6, 10, 4, 12, 8, 5, 11, 7];
 
 // The hook, two written bars (four played) to a phrase: a pickup and a peak; a fall that lands early
@@ -388,26 +400,11 @@ function section(name, n, parts) {
     for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? R);
   }
 }
-// The vocal hits each note once and lets go: every note is cut to an eighth and the rest of its
-// length becomes silence, so it punctuates the groove instead of sitting on it. A note tied over a
-// bar line is one hit, and its tail in the next bar is rest; scoops and falls, which need a held
-// note, play as their main pitch.
-const HIT = 2;
-function hits(bar) {
-  const out = [];
-  for (const [units, token, dv] of bar) {
-    if (token === 'r' || token.startsWith('=')) out.push([units, 'r']);
-    else {
-      const core = token.replace(/~$/, '');
-      const pitch = core.includes('>') ? core.split('>')[1] : core.split('_')[0];
-      const len = Math.min(units, HIT);
-      out.push([len, pitch, dv]);
-      if (units > len) out.push([units - len, 'r']);
-    }
-  }
-  return out;
-}
-const lead = (rows, base) => rows.flatMap(stretch).map((bar) => seq(hits(bar), base, LEAD_O));
+// The vocal builds through the song: it starts as single eighth-note hits that punctuate the groove,
+// and each section lets the notes ring a little longer (`hold`, in sixteenths), until the last
+// chorus's second half and the outro sing every note at full length with its scoops and falls.
+const HOLD = { hits: 2, quarter: 4, dotted: 6, half: 8, long: 12, full: Infinity };
+const lead = (rows, base, hold = HOLD.full) => rows.flatMap((bar) => stretch(bar, hold)).map((bar) => seq(bar, base, LEAD_O));
 // The pre-chorus in half time keeps its four rising steps, the last one reaching the high Eb.
 const PRE_HALF = [PRE[0], PRE[1], PRE[2], PRE[6]];
 // In the choruses the chops only flick in the half-bar breath before each phrase's last note
@@ -427,7 +424,7 @@ section('Intro', 8, {
 
 // 2. Bars 9-24. Verse 1: the vocal's own tune over the 2-step, with the chops out of its way.
 section('Verse 1', 16, {
-  lead: lead(VERSE, 96),
+  lead: lead(VERSE, 96, HOLD.hits),
   drums: bars(16, (i) => twoStep(i, 98, { fill: i % 8 === 7 })),
   bass: bars(16, (i) => bassBar(loop(i), 80, { drop: i % 8 === 7 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 84, i % 4 === 3 ? STABS.lift : stabFig(i))),
@@ -437,7 +434,7 @@ section('Verse 1', 16, {
 // 3. Bars 25-32. Pre-chorus 1: the vocal climbs over the 2-step, the stabs thicken, and the last
 // bars roll into the hook.
 section('Pre-chorus 1', 8, {
-  lead: lead(PRE_HALF, 96),
+  lead: lead(PRE_HALF, 96, HOLD.hits),
   drums: [...bars(6, (i) => twoStep(i, 100)), buildBar(6, 102, 1), buildBar(7, 104, 3)],
   bass: bars(8, (i) => bassBar(PRE_CHORDS[i], 84, { drop: i === 3 })),
   keys: bars(8, (i) => stabBar(PRE_CHORDS[i], i, 88, stabFig(i))),
@@ -447,7 +444,7 @@ section('Pre-chorus 1', 8, {
 // 4. Bars 33-48. Chorus 1: the hook once, in half time, over 4x4 speed-garage drums and the
 // pumping bass.
 section('Chorus 1', 16, {
-  lead: lead(HOOK, 104),
+  lead: lead(HOOK, 104, HOLD.hits),
   drums: bars(16, (i) => fourFour(i, 104, { fill: i % 8 === 7, crash: i === 0 })),
   bass: bars(16, (i) => bassBar(loop(i), 88, { feel: 'four', drop: i % 4 === 3 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 92, stabFig(i))),
@@ -457,7 +454,7 @@ section('Chorus 1', 16, {
 
 // 5. Bars 49-64. Verse 2: back to the 2-step, a little hotter.
 section('Verse 2', 16, {
-  lead: lead(VERSE, 100),
+  lead: lead(VERSE, 100, HOLD.quarter),
   drums: bars(16, (i) => twoStep(i, 100, { fill: i % 8 === 7 })),
   bass: bars(16, (i) => bassBar(loop(i), 82, { drop: i % 4 === 3 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 88, stabFig(i))),
@@ -466,7 +463,7 @@ section('Verse 2', 16, {
 
 // 6. Bars 65-72. Pre-chorus 2: the same climb, a touch hotter.
 section('Pre-chorus 2', 8, {
-  lead: lead(PRE_HALF, 100),
+  lead: lead(PRE_HALF, 100, HOLD.quarter),
   drums: [...bars(6, (i) => twoStep(i, 102)), buildBar(6, 104, 1), buildBar(7, 106, 3)],
   bass: bars(8, (i) => bassBar(PRE_CHORDS[i], 86, { drop: i === 3 })),
   keys: bars(8, (i) => stabBar(PRE_CHORDS[i], i, 92, stabFig(i))),
@@ -475,7 +472,7 @@ section('Pre-chorus 2', 8, {
 
 // 7. Bars 73-88. Chorus 2: the hook again, a little hotter.
 section('Chorus 2', 16, {
-  lead: lead(HOOK, 107),
+  lead: lead(HOOK, 107, HOLD.dotted),
   drums: bars(16, (i) => fourFour(i, 106, { fill: i % 8 === 7, crash: i === 0 })),
   bass: bars(16, (i) => bassBar(loop(i), 90, { feel: 'four', drop: i % 4 === 3 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 94, stabFig(i))),
@@ -486,7 +483,7 @@ section('Chorus 2', 16, {
 // 8. Bars 89-96. Breakdown: the kick drops out and the vocal sings the hook bare over the pad, the
 // stabs, the chops and soft hats; the bass slides back under the second half.
 section('Breakdown', 8, {
-  lead: [...lead(HOOK.slice(0, 3), 80), R, R],
+  lead: [...lead(HOOK.slice(0, 3), 80, HOLD.half), R, R],
   drums: [...bars(4, (i) => twoStep(i, 74, { kick: false, clap: i % 2 === 1, ghosts: false })), ...bars(3, (i) => twoStep(i, 82, { kick: false })), twoStep(7, 92, { kick: false, fill: true })],
   bass: [R, R, ...bars(4, (i) => bassBar(loop(i + 2), 62 + 2 * i, { feel: 'light' })), ...bars(2, (i) => bassBar(loop(i + 6), 74))],
   keys: bars(8, (i) => stabBar(loop(i), i, 78, i < 4 ? STABS.sparse : stabFig(i))),
@@ -499,7 +496,7 @@ section('Breakdown', 8, {
 section('Build', 8, {
   lead: [
     ...bars(4, () => R),
-    ...lead([[[3, 'r'], [2, 'Ab5', -6], [3, 'Bb5', -4], [3, 'C6', 0], [5, 'Db6', 2]], [[8, 'Eb6', 4], [8, 'r']]], 104),
+    ...lead([[[3, 'r'], [2, 'Ab5', -6], [3, 'Bb5', -4], [3, 'C6', 0], [5, 'Db6', 2]], [[8, 'Eb6', 4], [8, 'r']]], 104, HOLD.long),
   ],
   drums: [...bars(4, (i) => buildBar(i, 96, 0)), buildBar(4, 100, 0), buildBar(5, 100, 1), buildBar(6, 104, 2), buildBar(7, 108, 3)],
   bass: [...bars(4, (i) => bassBar(loop(i), 70, { feel: 'light' })), ...bars(4, (i) => bassBar(loop(i + 4), 80, { drop: i === 3 }))],
@@ -511,7 +508,7 @@ section('Build', 8, {
 // 10. Bars 105-120. The final chorus: the first half back in 2-step, the second opening into the
 // 4x4, with the chop riff's tail in the bars the vocal leaves empty.
 section('Final chorus', 16, {
-  lead: lead(HOOK, 111),
+  lead: [...lead(HOOK.slice(0, 4), 110, HOLD.long), ...lead(HOOK.slice(4), 112)],
   drums: bars(16, (i) => (i < 8 ? twoStep(i, 108, { fill: i === 7, crash: i === 0 }) : fourFour(i, 108, { fill: i === 15, crash: i === 8 }))),
   bass: bars(16, (i) => bassBar(loop(i), 92, { feel: i < 8 ? 'two' : 'four', drop: i % 4 === 3 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 96, stabFig(i))),
@@ -580,8 +577,9 @@ const block = (key) => {
 
 const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio
 # style at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen - a pickup,
-# a peak, a fall that lands early, and a breath - sung in half time as single short hits, so it
-# punctuates a busy, skippy groove, with a sparse chopped vocal riff where the vocal rests. The
+# a peak, a fall that lands early, and a breath - sung in half time, starting as single short hits
+# that punctuate a busy, skippy groove and ringing longer section by section until the last chorus
+# sings every note in full, with a sparse chopped vocal riff where the vocal rests. The
 # verse has a more talkative tune of its own, and each pre-chorus climbs to the song's high Eb
 # before the hook. A breakdown drops the kick so the vocal sings the hook bare, snare rolls build
 # back up, and the final chorus runs into a stripped outro.
@@ -602,7 +600,7 @@ const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK 
 # chords @73: Bbm9 Bbm9 Gbmaj7 Gbmaj7 Dbmaj9 Dbmaj9 Ab6 Ab6
 title: Night Bus Home
 composer: MiMo v2.6 Pro, Claude & SZ
-about: UK garage at 132 in Bb minor: a half-time wordless vocal hook in single short hits over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
+about: UK garage at 132 in Bb minor: a half-time wordless vocal hook that grows from short hits to long notes over skippy Rhodes and a chopped vocal riff, a 2-step that opens into 4x4 for the choruses, and a bass that ducks the kick.
 year: 2026
 source: original
 category: originals
