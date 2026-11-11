@@ -111,7 +111,7 @@ track lead role=lead
 | Run it locally | `npm run dev` |
 | Check everything | `npm test` and `npm run typecheck` |
 | Check the songs | `npm run check:songs` |
-| Publish | push to `main`. GitHub Pages and Cloudflare Pages both rebuild; a failing test, song check, or balance smoke check blocks the GitHub deploy |
+| Publish | push to `main`. GitHub Pages and Cloudflare Pages both rebuild; a failing test or song check blocks the GitHub deploy |
 
 Every deploy changes the cache version. An open copy checks for a newer build each time it opens or
 comes back, and reloads into it as soon as it has installed, at once if nothing is playing and

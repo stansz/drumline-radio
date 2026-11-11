@@ -311,7 +311,7 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   to spare (in a remix it suggests `vol.<style>=`, which changes the track in that style only). When a
   track's flags are confined to fewer than half the sections it plays in, it names those bars and
   says to change its velocities there instead of its volume. About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
-  Set `BALANCE_STRICT=1` to make any flag exit nonzero; CI runs it on Velvet Freeway.
+  Set `BALANCE_STRICT=1` to make any flag exit nonzero.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).
