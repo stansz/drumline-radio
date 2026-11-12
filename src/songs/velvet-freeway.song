@@ -100,7 +100,7 @@ track lead role=lead inst=saw-lead vol=0.78 vol.altrock=1 vol.ambient=1.6 pan=-0
 # Outro: the motif in A, a snare roll, and one last hit on A
 | C#5/8+12:104 E5/8-4:93 C#5/8:98 E5/8-2:93 F#5/8+6:98 G#5/8+8:93 A5/4+10:98 | A5/2+12:111 F#5/8-4:91 E5/8-2:96 C#5/4+8:91 | F#5/4+12:106 E5/8-4:89 D5/8-2:94 A4/2+8:92 | A4/2+10:107 r/2 |
 
-track answer role=lead2 inst=square-lead vol=0.42 vol.altrock=0.9 pan=0.34
+track answer role=lead2 inst=square-lead vol=0.84 vol.altrock=0.9 pan=0.34
 # Intro: the pad and the arp, then the lead quotes the hook and breaks off
 | R | R | R | R |
 | R | R | R | r/2 C5/8+10:86 E5/8-4:75 G5/4+6:80 |

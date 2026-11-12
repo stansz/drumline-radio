@@ -518,7 +518,7 @@ const HEADER = [
 
 const TRACKS = [
   ['lead', 'track lead role=lead inst=saw-lead vol=0.78 vol.altrock=1 vol.ambient=1.6 pan=-0.1'],
-  ['answer', 'track answer role=lead2 inst=square-lead vol=0.42 vol.altrock=0.9 pan=0.34'],
+  ['answer', 'track answer role=lead2 inst=square-lead vol=0.84 vol.altrock=0.9 pan=0.34'],
   ['pad', 'track pad role=pad vol=0.9 vol.altrock=0.5 pan=-0.16'],
   ['choir', 'track choir role=pad inst=choir-ooh vol=0.62 pan=0.2'],
   ['stabs', 'track stabs role=chords vol=0.86 pan=-0.28'],
