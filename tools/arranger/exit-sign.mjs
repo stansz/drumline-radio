@@ -4,6 +4,7 @@
 //   node tools/arranger/exit-sign.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 const repeat = (bars, times) => Array.from({ length: times }, () => bars).flat();
@@ -287,23 +288,7 @@ const HEADERS = {
 };
 
 function block(id) {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => {
-    if (row.length) lines.push(`| ${row.join(' | ')} |`);
-    row = [];
-  };
-  tracks[id].forEach((bar, i) => {
-    if (at.has(i)) {
-      flush();
-      lines.push(`# ${at.get(i)}`);
-    }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
+  return writeBlock(tracks[id], marks);
 }
 
 const total = tracks.melody.length;
