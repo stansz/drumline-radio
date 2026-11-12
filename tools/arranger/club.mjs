@@ -5,7 +5,6 @@
 //   node tools/arranger/club.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -102,7 +101,17 @@ function songBuilder(keys) {
       }
     },
     block(key) {
-      return writeBlock(tracks[key], marks);
+      const lines = [];
+      const at = new Map(marks);
+      let row = [];
+      const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
+      tracks[key].forEach((bar, i) => {
+        if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
+        row.push(bar);
+        if (row.length === 4) flush();
+      });
+      flush();
+      return lines.join('\n');
     },
     get length() { return tracks[keys[0]].length; },
   };
