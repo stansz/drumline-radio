@@ -23,7 +23,6 @@
 //   node tools/arranger/night-bus-home.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -537,15 +536,45 @@ section('Outro', 8, {
 // --- checks -----------------------------------------------------------------
 // Every bar must be exactly one 4/4 bar (3840 ticks). The builders guarantee it; this reads the
 // finished strings again so a hand-written bar can't slip past.
+const DUR_TICKS = { '/32': 120, '/1': 3840, '/2': 1920, '/2.': 2880, '/4': 960, '/4.': 1440, '/4..': 1680, '/8': 480, '/8.': 720, '/16': 240 };
+const barTicks = (bar) => {
+  if (bar === R) return 3840;
+  let sum = 0;
+  const tokens = bar.match(/\[[^\]]*\][^\s]*|[^\s]+/g) ?? [];
+  for (const token of tokens) {
+    const m = token.match(/\/\d+(?:\.\.|\.|t)?/);
+    if (!m) throw new Error(`no duration in token ${token}`);
+    sum += DUR_TICKS[m[0]];
+  }
+  return sum;
+};
 for (const key of keys) {
   tracks[key].forEach((bar, i) => {
-    const got = barLength(bar);
+    const got = barTicks(bar);
     if (got !== 3840) throw new Error(`track ${key} bar ${i + 1} is ${got} ticks: ${bar}`);
   });
 }
 
 const total = tracks.lead.length;
-const block = (key) => writeBlock(tracks[key], marks);
+const block = (key) => {
+  const lines = [];
+  const at = new Map(marks);
+  let row = [];
+  const flush = () => {
+    if (row.length) lines.push(`| ${row.join(' | ')} |`);
+    row = [];
+  };
+  tracks[key].forEach((bar, i) => {
+    if (at.has(i)) {
+      flush();
+      lines.push(`# ${at.get(i)}`);
+    }
+    row.push(bar);
+    if (row.length === 4) flush();
+  });
+  flush();
+  return lines.join('\n');
+};
 
 const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio
 # style at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen - a pickup,

@@ -6,7 +6,6 @@
 //   node tools/arranger/mountain-king.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -330,17 +329,22 @@ const SECTIONS = new Map([[1, 'The tune creeps in'], [18, 'Again, the march begi
   [50, 'Faster (più vivo)'], [86, 'The last chords']]);
 const DYN = [[1, 70], [18, 80], [26, 88], [42, 92], [50, 100], [66, 110], [86, 118]];
 const velAt = (n) => DYN.filter(([a]) => a <= n).pop()[1];
-const at = new Map([...SECTIONS].map(([n, text]) => [n - 1, text]));
-const velBars = (bars, sub) => {
+const block = (bars, sub = 0) => {
+  const lines = [];
+  let row = [];
   let last = null;
-  return bars.map((bar, i) => {
-    const vel = velAt(i + 1) - sub;
-    const text = bar !== 'R' && vel !== last ? `v=${vel} ${bar}` : bar;
+  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
+  bars.forEach((bar, i) => {
+    const n = i + 1;
+    if (SECTIONS.has(n)) { flush(); lines.push(`# ${SECTIONS.get(n)}`); }
+    const vel = velAt(n) - sub;
+    row.push(bar !== 'R' && vel !== last ? `v=${vel} ${bar}` : bar);
     if (bar !== 'R') last = vel;
-    return text;
+    if (row.length === 4) flush();
   });
+  flush();
+  return lines.join('\n');
 };
-const block = (bars, sub = 0) => writeBlock(velBars(bars, sub), at);
 
 const text = `# In the Hall of the Mountain King by Edvard Grieg, arranged by Claude and SZ for the Chiptune style.
 # Grieg's notes from his piano version, speeding up from start to finish.
