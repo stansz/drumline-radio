@@ -7,7 +7,7 @@
 //   node tools/arranger/confetti-cannon.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { clampVelocity, noteName, SHARPS, writeBlock } from './lib.mjs';
+import { clampVelocity, noteName, SHARPS } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -329,8 +329,16 @@ const clapBars = () => {
 
 // --- Writing the file -----------------------------------------------------------------------------
 // One comment per section, then its eight bars, two to a line.
-const marks = FORM.map(([, , about], s) => [s * 8, `${s * 8 + 1}-${s * 8 + 8}: ${about}`]);
-const block = (bars) => writeBlock(bars, marks, { perRow: 2, collapseRests: true });
+const block = (bars) => {
+  const lines = [];
+  FORM.forEach(([, , about], s) => {
+    lines.push(`# ${s * 8 + 1}-${s * 8 + 8}: ${about}`);
+    const eight = bars.slice(s * 8, s * 8 + 8);
+    if (eight.every((b) => b === 'R')) lines.push('| R*8 |');
+    else for (let i = 0; i < 8; i += 2) lines.push(`| ${eight[i]} | ${eight[i + 1]} |`);
+  });
+  return lines.join('\n');
+};
 
 // The chord map for the checker: one line per change of progression. The answer bars are named by
 // the colour the riff and the vocal add there (the 6th, or the 7th on E minor).

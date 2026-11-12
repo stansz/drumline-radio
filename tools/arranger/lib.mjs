@@ -8,30 +8,17 @@ const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
 
 // Returns the bars as song-file lines. `first`, when given, is written on its own line ahead of
 // them (a pickup bar). `marks` is an array of [barIndex, text] pairs or a Map of the same; each
-// mark flushes the pending row and writes a comment line before that bar. With `collapseRests`, a
-// marked section whose bars are all 'R' is written as one `R*<count>` line after its comment.
-export function writeBlock(bars, marks = [], { perRow = 4, first = null, collapseRests = false } = {}) {
+// mark flushes the pending row and writes a comment line before that bar.
+export function writeBlock(bars, marks = [], { perRow = 4, first = null } = {}) {
   const at = marks instanceof Map ? marks : new Map(marks);
-  const markAt = [...at.keys()].sort((a, b) => a - b);
   const lines = first === null ? [] : [`| ${first} |`];
   let row = [];
   const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  for (let i = 0; i < bars.length; i += 1) {
-    if (at.has(i)) {
-      flush();
-      lines.push(`# ${at.get(i)}`);
-      if (collapseRests) {
-        const end = markAt.find((mark) => mark > i) ?? bars.length;
-        if (bars.slice(i, end).every((bar) => bar === 'R')) {
-          lines.push(`| R*${end - i} |`);
-          i = end - 1;
-          continue;
-        }
-      }
-    }
-    row.push(bars[i]);
+  bars.forEach((bar, i) => {
+    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
+    row.push(bar);
     if (row.length === perRow) flush();
-  }
+  });
   flush();
   return lines.join('\n');
 }
