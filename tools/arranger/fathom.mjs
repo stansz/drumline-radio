@@ -13,7 +13,7 @@
 //   node tools/arranger/fathom.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, clampVelocity, durationText, FLATS, noteName, offsetText, sectionBuilder, writeBlock } from './lib.mjs';
+import { barLength, clampVelocity, FLATS, noteName, offsetText, sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -46,6 +46,8 @@ const D2 = nm(38); // its fifth, 73 Hz
 // --- the sixteenth grid -----------------------------------------------------
 // Every bar is built on sixteen slots (a sixteenth each, 240 ticks), so the arithmetic always lands
 // on 3840 ticks. A hit is [slot, spanInSixteenths, levelDelta, offsetTicks, token].
+const DUR = { 1: '/16', 2: '/8', 4: '/4', 8: '/2', 16: '/1' };
+
 function grid(token, hits, vel) {
   const at = new Map();
   const used = new Set();
@@ -68,7 +70,7 @@ function grid(token, hits, vel) {
     const [, span, dv, off, name] = hit;
     const shift = offsetText(off);
     // the floor keeps a fading echo a ghost rather than a silence
-    toks.push(`${name ?? token}${durationText(span * 240)}${shift}:${Math.max(18, clamp(vel + dv))}`);
+    toks.push(`${name ?? token}${DUR[span]}${shift}:${Math.max(18, clamp(vel + dv))}`);
   }
   return toks.join(' ');
 }
