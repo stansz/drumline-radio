@@ -3,12 +3,11 @@
 // alone over harp and cellos, the violins over the strings, everyone with the harp rolling the
 // chords, then the flute again, slowing to the last chord.
 //   node tools/arranger/greensleeves.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import {
+  entryVelocity, MIXED, noteMidi, noteName, outDir, R, saveSong, sectionBuilder, transpose,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // Bar 0 is the pickup; bars 1-16 are the verse. The last bar holds the final chord.
 const V = {
@@ -90,20 +89,13 @@ const V = {
  ]
 };
 
-const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const midi = (n) => {
-  const m = /^([A-G])(#|b)?(\d)$/.exec(n);
-  return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
-};
 const nm = (n) => noteName(n, MIXED);
-const shift = (bar, by) => (bar === 'R' ? bar : bar.replace(/\b[A-G](#|b)?\d\b/g, (n) => nm(midi(n) + by)));
-const R = 'R';
 const ends = (bar) => bar.replace(/ r\/8$/, '').replace(/\/4\. ([A-G][#b]?\d)\/4$/, '/4. $1/4.'); // last bar: hold the final chord
 
 // The verse with its final bar, and the pickup into the next verse taken from the last 8th.
 const verse = (voice, by, last) => {
-  const bars = V[voice].slice(1).map((b) => shift(b, by));
-  if (last) bars[15] = shift(V[voice][16].replace(/ [A-G][#b]?\d\/4 r\/8$/, '').replace(/\/4\.$/, '/2.'), by);
+  const bars = V[voice].slice(1).map((b) => transpose(b, by, nm));
+  if (last) bars[15] = transpose(V[voice][16].replace(/ [A-G][#b]?\d\/4 r\/8$/, '').replace(/\/4\.$/, '/2.'), by);
   return bars;
 };
 // The harp rolls the chord on each dotted-quarter beat: tenor, alto, soprano as three eighths.
@@ -122,7 +114,7 @@ function harpBars(by) {
   for (let bar = 1; bar <= 16; bar++) {
     const beats = [0, 1440].map((pos) => {
       const ns = ['Tenor', 'Alto', 'Soprano'].map((v) => at(v, bar, pos));
-      return ns.every(Boolean) ? ns.map((n) => `${nm(midi(n) + by)}/8`).join(' ') : 'r/4.';
+      return ns.every(Boolean) ? ns.map((n) => `${nm(noteMidi(n) + by)}/8`).join(' ') : 'r/4.';
     });
     bars.push(beats.join(' '));
   }
@@ -133,43 +125,37 @@ const padBars = () => harpBars(0).map((bar) => bar.split(' ').length === 6
   ? (() => { const t = bar.split(' '); return `[${t[0].split('/')[0]} ${t[1].split('/')[0]}]/4. [${t[3].split('/')[0]} ${t[4].split('/')[0]}]/4.`; })()
   : bar);
 
-const parts = { flute: [], violins: [], harp: [], strings: [], cellos: [], timpani: [] };
-const marks = [];
-const v = (vel, bars) => bars.map((b, i) => (b === R ? R : i === 0 ? `v=${vel} ${b}` : b));
-function section(name, n, p) {
-  marks.push([parts.flute.length, name]);
-  for (const key of Object.keys(parts)) for (let i = 0; i < n; i++) parts[key].push(p[key]?.[i] ?? R);
-}
+const keys = ['flute', 'violins', 'harp', 'strings', 'cellos', 'timpani'];
+const { tracks, section, block } = sectionBuilder(keys);
 
 section('Verse 1: the flute over harp and cellos', 16, {
-  flute: v(70, verse('Soprano', 12)),
-  harp: v(56, harpBars(0)),
-  cellos: v(84, verse('Bass', 0)),
+  flute: entryVelocity(70, verse('Soprano', 12), { afterRests: false }),
+  harp: entryVelocity(56, harpBars(0), { afterRests: false }),
+  cellos: entryVelocity(84, verse('Bass', 0), { afterRests: false }),
 });
 section('Verse 2: the violins over the strings', 16, {
-  violins: v(80, verse('Soprano', 12)),
-  flute: v(52, verse('Alto', 12)),
-  strings: v(46, padBars()),
-  cellos: v(90, verse('Bass', 0)),
+  violins: entryVelocity(80, verse('Soprano', 12), { afterRests: false }),
+  flute: entryVelocity(52, verse('Alto', 12), { afterRests: false }),
+  strings: entryVelocity(46, padBars(), { afterRests: false }),
+  cellos: entryVelocity(90, verse('Bass', 0), { afterRests: false }),
 });
 section('Verse 3: everyone', 16, {
-  violins: v(92, verse('Soprano', 12)),
-  flute: v(64, verse('Alto', 12)),
-  harp: v(66, harpBars(0)),
-  strings: v(58, padBars()),
-  cellos: v(100, verse('Bass', 0)),
-  timpani: v(60, Array.from({ length: 16 }, (_, i) => (i % 4 === 0 ? 'k/4. r/4.' : R))),
+  violins: entryVelocity(92, verse('Soprano', 12), { afterRests: false }),
+  flute: entryVelocity(64, verse('Alto', 12), { afterRests: false }),
+  harp: entryVelocity(66, harpBars(0), { afterRests: false }),
+  strings: entryVelocity(58, padBars(), { afterRests: false }),
+  cellos: entryVelocity(100, verse('Bass', 0), { afterRests: false }),
+  timpani: entryVelocity(60, Array.from({ length: 16 }, (_, i) => (i % 4 === 0 ? 'k/4. r/4.' : R)), { afterRests: false }),
 });
 section('Verse 4: the flute again, slowing to the end', 16, {
-  flute: v(80, verse('Soprano', 12, true)),
-  harp: v(60, [...harpBars(0).slice(0, 15), '[E3 G3 B3 E4]/2.']),
-  strings: v(38, [...padBars().slice(0, 15), '[G3 B3]/2.']),
-  cellos: v(80, verse('Bass', 0, true)),
+  flute: entryVelocity(80, verse('Soprano', 12, true), { afterRests: false }),
+  harp: entryVelocity(60, [...harpBars(0).slice(0, 15), '[E3 G3 B3 E4]/2.'], { afterRests: false }),
+  strings: entryVelocity(38, [...padBars().slice(0, 15), '[G3 B3]/2.'], { afterRests: false }),
+  cellos: entryVelocity(80, verse('Bass', 0, true), { afterRests: false }),
 });
 
-const total = parts.flute.length;
-const pickup = (voice, by) => shift(V[voice][0], by);
-const block = (key, pick) => writeBlock(parts[key], marks, { first: pick });
+const total = tracks.flute.length;
+const pickup = (voice, by) => transpose(V[voice][0], by, nm);
 
 const text = `# Greensleeves, arranged by Claude and SZ for the Orchestral style from a four-part setting of the
 # traditional tune: four verses, passing the melody between flute and violins.
@@ -189,22 +175,22 @@ pickup: /8
 @bars ${total - 3}-${total} tempo=72..50
 
 track flute role=counter vol=0.6 pan=0.2
-${block('flute', `v=70 ${pickup('Soprano', 12)}`)}
+${block('flute', { first: `v=70 ${pickup('Soprano', 12)}` })}
 
 track violins role=lead vol=0.9
-${block('violins', 'r/8')}
+${block('violins', { first: 'r/8' })}
 
 track harp role=chords vol=0.7 pan=-0.2
-${block('harp', 'r/8')}
+${block('harp', { first: 'r/8' })}
 
 track strings role=pad vol=0.86
-${block('strings', 'r/8')}
+${block('strings', { first: 'r/8' })}
 
 track cellos role=bass vol=0.1
-${block('cellos', `v=84 ${pickup('Bass', 0)}`)}
+${block('cellos', { first: `v=84 ${pickup('Bass', 0)}` })}
 
 track timpani role=drums vol=0.5
-${block('timpani', 'r/8')}
+${block('timpani', { first: 'r/8' })}
 `;
-writeFileSync(join(out, 'greensleeves.song'), text);
+saveSong(out, 'greensleeves.song', text);
 console.log(`wrote ${out}/greensleeves.song (${total} bars and a pickup)`);

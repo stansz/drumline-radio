@@ -3,20 +3,13 @@
 // piano edition of the suite): the oboe's theme over harp and strings, the build, the theme again for
 // full orchestra, the falling triplet lament, and a last fortissimo statement of the theme.
 //   node tools/arranger/swan-lake.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { noteName, SHARPS, writeBlock } from './lib.mjs';
+import {
+  eachChord, entryVelocity, noteName, outDir, R, saveSong, sectionBuilder, SHARPS, transpose,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
-const PC = { C: 0, 'C#': 1, D: 2, 'D#': 3, E: 4, F: 5, 'F#': 6, G: 7, 'G#': 8, A: 9, 'A#': 10, B: 11 };
-const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10] };
 const nm = (n) => noteName(n, SHARPS);
-const chord = (sym) => {
-  const m = /^([A-G]#?)(m|7)?$/.exec(sym);
-  return { pc: PC[m[1]], iv: QUALITY[m[2] ?? ''] };
-};
 
 // The oboe's melody, bar by bar.
 const M = {
@@ -51,93 +44,78 @@ const BUILD = ['b1', 'b2', 'b3', 'b4', 'b1', 'b2', 'b3', 'b8', 'b9'];
 const BUILD_B = ['b1', 'b2', 'b3', 'b4', 'b1', 'b2', 'b3'];
 const LAMENT = ['t1', 't2', 't3', 't4'];
 
-const spans = (bar) => H[bar].split(' ').map((s) => ({ c: chord(s), half: H[bar].split(' ').length === 2 }));
-const each = (bars, fn) => bars.map((bar) => spans(bar).map(({ c, half }) => fn(c, half)).join(' '));
 const T = {
   // strings hold the chord (Tchaikovsky's tremolo, smoothed)
-  pad: (c, half) => `[${c.iv.slice(0, 3).map((i) => nm(52 + ((c.pc + i - 4 + 12) % 12))).join(' ')}]${half ? '/2' : '/1'}`,
+  pad: (c, ticks) => `[${c.iv.slice(0, 3).map((i) => nm(52 + ((c.pc + i - 4 + 12) % 12))).join(' ')}]${ticks === 1920 ? '/2' : '/1'}`,
   // the harp rolls up through the chord in eighths
-  harp: (c, half) => {
+  harp: (c, ticks) => {
     const base = 36 + c.pc; // C2 .. B2
     const tones = [0, 1, 2, 3, 4, 5, 6, 7].map((k) => base + c.iv[k % 3] + 12 * Math.floor(k / 3));
-    return tones.slice(0, half ? 4 : 8).map((n) => `${nm(n)}/8`).join(' ');
+    return tones.slice(0, ticks === 1920 ? 4 : 8).map((n) => `${nm(n)}/8`).join(' ');
   },
   // cellos and basses on the root, low: twice a bar
-  bass: (c, half) => {
+  bass: (c, ticks) => {
     const r = 35 + ((c.pc - 11 + 12) % 12); // B1 .. A#2
-    return half ? `${nm(r)}/2` : `${nm(r)}/2 ${nm(r)}/2`;
+    return ticks === 1920 ? `${nm(r)}/2` : `${nm(r)}/2 ${nm(r)}/2`;
   },
 };
 
 const keys = ['oboe', 'violins', 'brass', 'harp', 'strings', 'basses', 'timpani'];
-const tracks = Object.fromEntries(keys.map((k) => [k, []]));
-const marks = [];
-const R = 'R';
-const v = (vel, bars) => bars.map((b, i) => (b === R ? R : i === 0 ? `v=${vel} ${b}` : b));
-const up = (bar, by) => bar.replace(/\b([A-G]#?)(\d)\b/g, (_, n, o) => nm((Number(o) + 1) * 12 + PC[n] + by));
-function section(name, bars, parts) {
-  marks.push([tracks.oboe.length, name]);
-  for (const key of keys) {
-    const list = parts[key] ?? [];
-    for (let i = 0; i < bars.length; i++) tracks[key].push(list[i] ?? R);
-  }
-}
-const mel = (bars, by = 0) => bars.map((b) => up(M[b], by));
+const { tracks, section, block } = sectionBuilder(keys);
+const mel = (bars, by = 0) => bars.map((b) => transpose(M[b], by, nm));
 const roll = (n) => Array.from({ length: n }, () => Array(16).fill('k/16').join(' '));
 
-section('Strings and harp set the lake', ['intro'], {
-  harp: v(52, each(['intro'], T.harp)),
-  strings: v(44, each(['intro'], T.pad)),
-  basses: v(80, each(['intro'], T.bass)),
+section('Strings and harp set the lake', 1, {
+  harp: entryVelocity(52, eachChord(['intro'].map((b) => H[b]), T.harp), { afterRests: false }),
+  strings: entryVelocity(44, eachChord(['intro'].map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(80, eachChord(['intro'].map((b) => H[b]), T.bass), { afterRests: false }),
 });
-section('The oboe sings the swan theme', THEME, {
-  oboe: v(84, mel(THEME)),
-  harp: v(56, each(THEME, T.harp)),
-  strings: v(46, each(THEME, T.pad)),
-  basses: v(88, each(THEME, T.bass)),
+section('The oboe sings the swan theme', THEME.length, {
+  oboe: entryVelocity(84, mel(THEME), { afterRests: false }),
+  harp: entryVelocity(56, eachChord(THEME.map((b) => H[b]), T.harp), { afterRests: false }),
+  strings: entryVelocity(46, eachChord(THEME.map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(88, eachChord(THEME.map((b) => H[b]), T.bass), { afterRests: false }),
 });
-section('The theme climbs', BUILD, {
-  oboe: v(92, mel(BUILD)),
-  harp: v(62, each(BUILD, T.harp)),
-  strings: v(56, each(BUILD, T.pad)),
-  basses: v(96, each(BUILD, T.bass)),
-  timpani: [...Array(7).fill(R), ...v(66, roll(2))],
+section('The theme climbs', BUILD.length, {
+  oboe: entryVelocity(92, mel(BUILD), { afterRests: false }),
+  harp: entryVelocity(62, eachChord(BUILD.map((b) => H[b]), T.harp), { afterRests: false }),
+  strings: entryVelocity(56, eachChord(BUILD.map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(96, eachChord(BUILD.map((b) => H[b]), T.bass), { afterRests: false }),
+  timpani: [...Array(7).fill(R), ...entryVelocity(66, roll(2), { afterRests: false })],
 });
-section('Full orchestra: the theme fortissimo', THEME_B, {
-  violins: v(108, mel(THEME_B, 12)),
-  brass: v(84, mel(THEME_B)),
-  harp: v(70, each(THEME_B, T.harp)),
-  strings: v(70, each(THEME_B, T.pad)),
-  basses: v(110, each(THEME_B, T.bass)),
-  timpani: v(76, ['[k cr]/2 k/2', R, R, 'k/2 k/2', '[k cr]/2 k/2', R, R, 'k/2 k/2']),
+section('Full orchestra: the theme fortissimo', THEME_B.length, {
+  violins: entryVelocity(108, mel(THEME_B, 12), { afterRests: false }),
+  brass: entryVelocity(84, mel(THEME_B), { afterRests: false }),
+  harp: entryVelocity(70, eachChord(THEME_B.map((b) => H[b]), T.harp), { afterRests: false }),
+  strings: entryVelocity(70, eachChord(THEME_B.map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(110, eachChord(THEME_B.map((b) => H[b]), T.bass), { afterRests: false }),
+  timpani: entryVelocity(76, ['[k cr]/2 k/2', R, R, 'k/2 k/2', '[k cr]/2 k/2', R, R, 'k/2 k/2'], { afterRests: false }),
 });
-section('It climbs again', BUILD_B, {
-  violins: v(104, mel(BUILD_B)),
-  oboe: v(80, mel(BUILD_B, -12)),
-  harp: v(66, each(BUILD_B, T.harp)),
-  strings: v(64, each(BUILD_B, T.pad)),
-  basses: v(104, each(BUILD_B, T.bass)),
+section('It climbs again', BUILD_B.length, {
+  violins: entryVelocity(104, mel(BUILD_B), { afterRests: false }),
+  oboe: entryVelocity(80, mel(BUILD_B, -12), { afterRests: false }),
+  harp: entryVelocity(66, eachChord(BUILD_B.map((b) => H[b]), T.harp), { afterRests: false }),
+  strings: entryVelocity(64, eachChord(BUILD_B.map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(104, eachChord(BUILD_B.map((b) => H[b]), T.bass), { afterRests: false }),
 });
-section('The lament falls away', LAMENT, {
-  oboe: v(90, mel(LAMENT)),
-  violins: v(84, mel(LAMENT, 12)),
-  strings: v(60, each(LAMENT, T.pad)),
-  basses: v(100, each(LAMENT, T.bass)),
-  timpani: [R, R, ...v(70, roll(2))],
+section('The lament falls away', LAMENT.length, {
+  oboe: entryVelocity(90, mel(LAMENT), { afterRests: false }),
+  violins: entryVelocity(84, mel(LAMENT, 12), { afterRests: false }),
+  strings: entryVelocity(60, eachChord(LAMENT.map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(100, eachChord(LAMENT.map((b) => H[b]), T.bass), { afterRests: false }),
+  timpani: [R, R, ...entryVelocity(70, roll(2), { afterRests: false })],
 });
-section('The swan theme, one last time', [...THEME_B.slice(0, 7), 'end'], {
-  violins: v(116, mel([...THEME_B.slice(0, 7), 'end'], 12)),
-  brass: v(96, mel([...THEME_B.slice(0, 7), 'end'])),
-  oboe: v(90, mel([...THEME_B.slice(0, 7), 'end'])),
-  harp: v(76, each([...THEME_B.slice(0, 7), 'end'], T.harp)),
-  strings: v(76, each([...THEME_B.slice(0, 7), 'end'], T.pad)),
-  basses: v(116, each([...THEME_B.slice(0, 7), 'end'], T.bass)),
-  timpani: v(88, ['[k cr]/2 k/2', R, R, 'k/2 k/2', '[k cr]/2 k/2', R, ...roll(1), '[k cr]/1']),
+section('The swan theme, one last time', [...THEME_B.slice(0, 7), 'end'].length, {
+  violins: entryVelocity(116, mel([...THEME_B.slice(0, 7), 'end'], 12), { afterRests: false }),
+  brass: entryVelocity(96, mel([...THEME_B.slice(0, 7), 'end']), { afterRests: false }),
+  oboe: entryVelocity(90, mel([...THEME_B.slice(0, 7), 'end']), { afterRests: false }),
+  harp: entryVelocity(76, eachChord([...THEME_B.slice(0, 7), 'end'].map((b) => H[b]), T.harp), { afterRests: false }),
+  strings: entryVelocity(76, eachChord([...THEME_B.slice(0, 7), 'end'].map((b) => H[b]), T.pad), { afterRests: false }),
+  basses: entryVelocity(116, eachChord([...THEME_B.slice(0, 7), 'end'].map((b) => H[b]), T.bass), { afterRests: false }),
+  timpani: entryVelocity(88, ['[k cr]/2 k/2', R, R, 'k/2 k/2', '[k cr]/2 k/2', R, ...roll(1), '[k cr]/1'], { afterRests: false }),
 });
 
 const total = tracks.oboe.length;
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `# Swan Lake, arranged by Claude and SZ for the Orchestral style: the Scène from Act II, with the
 # oboe's swan theme bar for bar, the theme for full orchestra, the lament, and a last fortissimo.
 title: Swan Lake
@@ -175,5 +153,5 @@ ${block('basses')}
 track timpani role=drums vol=0.6
 ${block('timpani')}
 `;
-writeFileSync(join(out, 'swan-lake.song'), text);
+saveSong(out, 'swan-lake.song', text);
 console.log(`wrote ${out}/swan-lake.song (${total} bars)`);

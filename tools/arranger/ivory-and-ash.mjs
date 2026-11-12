@@ -2,28 +2,14 @@
 // The piano and the guitar trade phrases, so the melodies are written out by hand here; this script
 // fills in the accompaniment (piano arpeggios, strings, bass, drums) from each section's chords.
 //   node tools/arranger/ivory-and-ash.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { durationText, fillUnits, MIXED, noteName, sectionBuilder, writeBlock } from './lib.mjs';
+import {
+  durationText, eachChord, entryVelocity, fillUnits, MIXED, noteName, outDir, repeatBar,
+  saveSong, sectionBuilder,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
-const PC = { C: 0, 'C#': 1, Db: 1, D: 2, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
-const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
 const nm = (n) => noteName(n, MIXED);
-
-// 'Cm', 'Abmaj7', 'G7', 'Ddim', 'Cm/Bb' -> { pc, iv, bass }
-function chord(sym) {
-  const [main, slash] = sym.split('/');
-  const m = /^([A-G](?:#|b)?)(maj7|m|7|dim)?$/.exec(main);
-  if (!m) throw new Error(`bad chord ${sym}`);
-  const pc = PC[m[1]];
-  return { pc, iv: QUALITY[m[2] ?? ''], bass: slash ? PC[slash] : pc };
-}
-// One bar of chords ('Ddim G7') -> [{ c, ticks }]
-const spans = (bar) => bar.split(' ').map((s) => ({ c: chord(s), ticks: 3840 / bar.split(' ').length }));
-const each = (bars, fn) => bars.map((bar) => spans(bar).map(({ c, ticks }) => fn(c, ticks)).join(' '));
 
 // Micro-timing (ticks, 960 per quarter). Moves each note's start, never its written length.
 // The first note of a tie or bend chain owns the offset, so continuations (even across a bar line)
@@ -86,7 +72,7 @@ const T = {
 // A slow counter-line of chord tones for the solo strings, moving as little as possible.
 function counterLine(bars, start = 55) {
   let prev = start;
-  return each(bars, (c, t) => {
+  return eachChord(bars, (c, t) => {
     const pool = [];
     for (let n = 48; n <= 67; n++) if (c.iv.includes((((n - c.pc) % 12) + 12) % 12)) pool.push(n);
     prev = pool.reduce((best, n) => (Math.abs(n - prev) < Math.abs(best - prev) ? n : best), pool[0]);
@@ -138,88 +124,85 @@ const GUITAR_SOLO = [
   'F6/4. Eb6/8 D6/4 Ab5/4', 'B5/8^ C6/8^ B5/4 D6/4 F6/4', 'Eb6/8^ F6/8^ G6/2.~', 'G6/2. r/4',
 ];
 
-const R = 'R';
 const keys = ['guitar', 'piano', 'keys', 'cello', 'strings', 'synth', 'arp', 'bass', 'drums', 'cym'];
-const { tracks, marks, section } = sectionBuilder(keys);
-const v = (vel, bars) => bars.map((bar, i) => (bar === null || bar === R ? R : i === 0 || (bars[i - 1] ?? R) === R ? `v=${vel} ${bar}` : bar));
-const rep = (bar, n) => Array(n).fill(bar);
+const { tracks, section, block } = sectionBuilder(keys);
 const pick = (list, idx) => list.map((bar, i) => (idx.includes(i) ? bar : null));
 
 section('Intro: piano alone, strings join', 8, {
-  piano: v(64, PIANO_THEME),
-  keys: v(48, each(THEME, T.lh)),
-  strings: [null, null, null, null, ...v(44, each(THEME.slice(4), T.pad))],
+  piano: entryVelocity(64, PIANO_THEME),
+  keys: entryVelocity(48, eachChord(THEME, T.lh)),
+  strings: [null, null, null, null, ...entryVelocity(44, eachChord(THEME.slice(4), T.pad))],
 });
 
 section('The guitar answers', 8, {
-  piano: v(70, pick(PIANO_THEME, [0, 1, 4, 5])),
-  guitar: v(84, lay(THEME.map((_, i) => GUITAR_ANSWER[i] ?? null), GUITAR_LAG)),
-  keys: v(52, each(THEME, T.lh)),
-  strings: v(52, each(THEME, T.pad)),
-  bass: v(62, each(THEME, T.hold)),
+  piano: entryVelocity(70, pick(PIANO_THEME, [0, 1, 4, 5])),
+  guitar: entryVelocity(84, lay(THEME.map((_, i) => GUITAR_ANSWER[i] ?? null), GUITAR_LAG)),
+  keys: entryVelocity(52, eachChord(THEME, T.lh)),
+  strings: entryVelocity(52, eachChord(THEME, T.pad)),
+  bass: entryVelocity(62, eachChord(THEME, T.hold)),
 });
 
 section('The build', 8, {
-  guitar: v(92, lay(GUITAR_BUILD, GUITAR_LAG)),
-  keys: v(66, each(BUILD, T.arp8)),
-  strings: v(62, each(BUILD, T.pad)),
-  synth: v(50, each(BUILD, T.pad)),
-  bass: v(78, each(BUILD, T.halves)),
-  drums: v(72, [...rep(DRUMS.light, 7), DRUMS.fill]),
+  guitar: entryVelocity(92, lay(GUITAR_BUILD, GUITAR_LAG)),
+  keys: entryVelocity(66, eachChord(BUILD, T.arp8)),
+  strings: entryVelocity(62, eachChord(BUILD, T.pad)),
+  synth: entryVelocity(50, eachChord(BUILD, T.pad)),
+  bass: entryVelocity(78, eachChord(BUILD, T.halves)),
+  drums: entryVelocity(72, [...repeatBar(DRUMS.light, 7), DRUMS.fill]),
 });
 
 section('First crescendo', 8, {
-  guitar: v(104, lay(GUITAR_RISE, GUITAR_LAG)),
-  keys: v(82, each(RISE, T.arp8)),
-  cello: v(78, lay(counterLine(RISE), CELLO_LAG)),
-  strings: v(84, each(RISE, T.pad)),
-  synth: v(66, each(RISE, T.pad)),
-  arp: v(58, each(RISE, T.synth16)),
-  bass: v(96, each(RISE, T.rock)),
-  drums: v(96, [...rep(DRUMS.full, 7), DRUMS.stop]),
+  guitar: entryVelocity(104, lay(GUITAR_RISE, GUITAR_LAG)),
+  keys: entryVelocity(82, eachChord(RISE, T.arp8)),
+  cello: entryVelocity(78, lay(counterLine(RISE), CELLO_LAG)),
+  strings: entryVelocity(84, eachChord(RISE, T.pad)),
+  synth: entryVelocity(66, eachChord(RISE, T.pad)),
+  arp: entryVelocity(58, eachChord(RISE, T.synth16)),
+  bass: entryVelocity(96, eachChord(RISE, T.rock)),
+  drums: entryVelocity(96, [...repeatBar(DRUMS.full, 7), DRUMS.stop]),
   cym: ['v=90 cr/1', null, null, null, 'cr/1', null, null, null],
 });
 
 section('Quiet: piano and cello', 4, {
-  piano: v(56, PIANO_THEME.slice(0, 4)),
-  keys: v(42, each(THEME.slice(0, 4), T.lh)),
-  cello: v(58, lay(counterLine(THEME.slice(0, 4), 51), CELLO_LAG)),
-  strings: v(36, each(THEME.slice(0, 4), T.pad)),
+  piano: entryVelocity(56, PIANO_THEME.slice(0, 4)),
+  keys: entryVelocity(42, eachChord(THEME.slice(0, 4), T.lh)),
+  cello: entryVelocity(58, lay(counterLine(THEME.slice(0, 4), 51), CELLO_LAG)),
+  strings: entryVelocity(36, eachChord(THEME.slice(0, 4), T.pad)),
 });
 
 section('Piano and guitar trade', 8, {
-  piano: v(80, TRADE_PIANO),
-  guitar: v(96, lay(TRADE_GUITAR, GUITAR_LAG)),
-  keys: v(58, each(THEME, T.lh)),
-  strings: v(60, each(THEME, T.pad)),
-  synth: v(52, each(THEME, T.pad)),
-  bass: v(84, each(THEME, T.halves)),
-  drums: v(82, [...rep(DRUMS.ride, 7), DRUMS.fill]),
+  piano: entryVelocity(80, TRADE_PIANO),
+  guitar: entryVelocity(96, lay(TRADE_GUITAR, GUITAR_LAG)),
+  keys: entryVelocity(58, eachChord(THEME, T.lh)),
+  strings: entryVelocity(60, eachChord(THEME, T.pad)),
+  synth: entryVelocity(52, eachChord(THEME, T.pad)),
+  bass: entryVelocity(84, eachChord(THEME, T.halves)),
+  drums: entryVelocity(82, [...repeatBar(DRUMS.ride, 7), DRUMS.fill]),
   cym: ['v=80 cr/1', null, null, null, null, null, null, null],
 });
 
 section('Final crescendo', 8, {
-  guitar: v(112, lay(GUITAR_SOLO, GUITAR_LAG)),
-  keys: v(90, [...each(RISE.slice(0, 7), T.arp16), each(['Cm'], T.chord)[0]]),
-  cello: v(90, lay(counterLine(RISE), CELLO_LAG)),
-  strings: v(98, [...each(RISE.slice(0, 7), T.pad), each(['Cm'], T.pad)[0]]),
-  synth: v(80, [...each(RISE.slice(0, 7), T.pad), each(['Cm'], T.pad)[0]]),
-  arp: v(66, [...each(RISE.slice(0, 7), T.synth16), null]),
-  bass: v(104, [...each(RISE.slice(0, 7), T.rock), each(['Cm'], T.hold)[0]]),
-  drums: v(106, [...rep(DRUMS.full, 6), DRUMS.fill, DRUMS.hit]),
+  guitar: entryVelocity(112, lay(GUITAR_SOLO, GUITAR_LAG)),
+  keys: entryVelocity(90, [...eachChord(RISE.slice(0, 7), T.arp16), eachChord(['Cm'], T.chord)[0]]),
+  cello: entryVelocity(90, lay(counterLine(RISE), CELLO_LAG)),
+  strings: entryVelocity(98, [...eachChord(RISE.slice(0, 7), T.pad), eachChord(['Cm'], T.pad)[0]]),
+  synth: entryVelocity(80, [...eachChord(RISE.slice(0, 7), T.pad), eachChord(['Cm'], T.pad)[0]]),
+  arp: entryVelocity(66, [...eachChord(RISE.slice(0, 7), T.synth16), null]),
+  bass: entryVelocity(104, [...eachChord(RISE.slice(0, 7), T.rock), eachChord(['Cm'], T.hold)[0]]),
+  drums: entryVelocity(106, [...repeatBar(DRUMS.full, 6), DRUMS.fill, DRUMS.hit]),
   cym: ['v=100 cr/1', null, null, null, 'cr/1', null, null, 'cr/1'],
 });
 
 section('Piano reprise', 4, {
-  piano: v(46, PIANO_THEME.slice(0, 4)),
-  keys: v(36, each(THEME.slice(0, 4), T.lh)),
-  strings: [...v(32, each(THEME.slice(0, 2), T.pad)), null, null],
+  piano: entryVelocity(46, PIANO_THEME.slice(0, 4)),
+  keys: entryVelocity(36, eachChord(THEME.slice(0, 4), T.lh)),
+  strings: [...entryVelocity(32, eachChord(THEME.slice(0, 2), T.pad)), null, null],
 });
 
 section('One last note', 2, {
-  guitar: v(80, ['C5/1~', 'C5/1']),
-  keys: v(40, ['[C3 G3 C4 Eb4 G4]/1', null]),
-  strings: v(34, rep('[C4 Eb4 G4]/1', 2)),
+  guitar: entryVelocity(80, ['C5/1~', 'C5/1']),
+  keys: entryVelocity(40, ['[C3 G3 C4 Eb4 G4]/1', null]),
+  strings: entryVelocity(34, repeatBar('[C4 Eb4 G4]/1', 2)),
 });
 
 const total = tracks.guitar.length;
@@ -235,8 +218,6 @@ const HEADER = [
   ['drums', 'track drums role=drums vol=0.75'],
   ['cym', 'track cymbals role=drums vol=0.45'],
 ];
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `# Ivory and Ash, by Claude and SZ. A cinematic prog-rock piece: a Romantic piano and a soaring
 # blues guitar trade phrases, building through two crescendos to a fragile piano reprise.
 title: Ivory and Ash
@@ -253,5 +234,5 @@ time: 4/4
 
 ${HEADER.map(([key, head]) => `${head}\n${block(key)}`).join('\n\n')}
 `;
-writeFileSync(join(out, 'ivory-and-ash.song'), text);
+saveSong(out, 'ivory-and-ash.song', text);
 console.log(`wrote ${out}/ivory-and-ash.song (${total} bars)`);

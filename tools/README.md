@@ -67,12 +67,19 @@ generated song by hand.
 it. A recipe with `hidden: true` gets a `hidden: true` header, which keeps its song out of the
 library while it is still parsed and checked.
 
-`arranger/lib.mjs` holds plumbing shared by the generators (`writeBlock`, `barLength`,
-`durationText`, `splitDuration`, `fillUnits` and `DURATIONS`, `noteName` with
-`SHARPS`/`FLATS`/`MIXED`, `offsetText`, `clampVelocity`, `sectionBuilder`), and only
-plumbing: melodies, chords, voicings, grooves and every other musical choice stay in each song's
-own script, so a new song starts from a blank musical slate. `writeBlock` takes `perRow`, `first`
-(a pickup line) and `collapseRests` (a marked section of only rests is written as one `R*n` line).
+`arranger/lib.mjs` holds plumbing shared by every generator, and only plumbing: melodies,
+chords, voicings, grooves and every other musical choice stay in each song's own script, so a new
+song starts from a blank musical slate. Its exports, by group:
+
+- text: `writeBlock` (which takes `perRow`, `first` for a pickup line, and `collapseRests`, so a
+  marked section of only rests is written as one `R*n` line), `barLength`, `TICKS`, `DURATIONS`,
+  `durationText`, `splitDuration`, `fillUnits`, `noteName` with `SHARPS`/`FLATS`/`MIXED`,
+  `noteMidi`, `chordText`, `transpose`, `offsetText`, `clampVelocity`.
+- chords: `PITCH_CLASS`, `CHORD_QUALITY`, `parseChord`, `chordSpans`, `eachChord`.
+- bars: `R`, `times`, `repeatBar`, `repeatBars`, `cycle`, `entryVelocity`, `valueAt`, `barMarks`.
+- layout: `sectionBuilder` (with `label`, `exact`, and a section's `map` and `block`, plus the
+  `sections` list) and `formHeader`.
+- files: `outDir`, `saveSong`.
 
 Ride of the Valkyries and Midnight Arcade are hand-written. Edit their `.song` files directly.
 

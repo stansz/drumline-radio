@@ -3,30 +3,15 @@
 //   ivory-and-ash-128.song   Ivory and Ash at 128 BPM: the same melodies with every note doubled in
 //                            length, so the tune keeps its pace over a four-on-the-floor beat
 //   node tools/arranger/club.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { durationText, fillUnits, MIXED, noteName, splitDuration, writeBlock } from './lib.mjs';
+import {
+  cycle, eachChord, entryVelocity, fillUnits, MIXED, noteMidi, noteName, outDir,
+  parseChord, R, repeatBar, saveSong, splitDuration, TICKS, writeBlock,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
-const PC = { C: 0, 'C#': 1, Db: 1, D: 2, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
-const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
 const nm = (n) => noteName(n, MIXED);
-const midi = (n) => {
-  const m = /^([A-G](?:#|b)?)(\d)$/.exec(n);
-  return (Number(m[2]) + 1) * 12 + PC[m[1]];
-};
 const BAR = 3840;
-
-// 'Cm', 'Abmaj7', 'G7', 'Ddim', 'Cm/Bb' -> { pc, iv, bass }
-function chord(sym) {
-  const [main, slash] = sym.split('/');
-  const m = /^([A-G](?:#|b)?)(maj7|m|7|dim)?$/.exec(main);
-  if (!m) throw new Error(`bad chord ${sym}`);
-  const pc = PC[m[1]];
-  return { pc, iv: QUALITY[m[2] ?? ''], bass: slash ? PC[slash] : pc };
-}
 const bassNote = (c) => (c.bass >= 8 ? 24 + c.bass : 36 + c.bass); // Ab1-G2
 const stabChord = (c) => `[${c.iv.slice(0, 3).map((i) => nm(60 + c.pc + i - (c.pc >= 7 ? 12 : 0))).join(' ')}]`;
 
@@ -61,9 +46,6 @@ const T = {
     return fillUnits(BAR, 240, (i, d) => `${nm(seq[i % 16])}${d}`);
   },
 };
-// Bars of chord symbols (one chord per bar here) through a texture.
-const each = (chords, fn) => chords.map((sym) => fn(chord(sym)));
-
 const beat = (i, clap) => `[k${clap && i % 2 ? ' cl' : ''} h]/16 h/16 oh/16 h/16`;
 const DRUMS = {
   four: 'k/4 k/4 k/4 k/4',
@@ -78,11 +60,6 @@ const PERC = {
   roll: ['v=60 s/4 s/4 s/4 s/4', 'v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8', `v=88 ${fillUnits(BAR, 240, () => 's/16')}`,
     `v=104 ${fillUnits(1920, 240, () => 's/16')} r/2`],
 };
-
-const R = 'R';
-const rep = (bar, n) => Array(n).fill(bar);
-const v = (vel, bars) => bars.map((bar, i) => (bar === null || bar === R ? R : i === 0 || (bars[i - 1] ?? R) === R ? `v=${vel} ${bar}` : bar));
-const cyc = (list, n) => Array.from({ length: n }, (_, i) => list[i % list.length]);
 
 // A song is a list of tracks, each filled section by section; parts not named in a section rest.
 function songBuilder(keys) {
@@ -105,7 +82,7 @@ function songBuilder(keys) {
   };
 }
 const write = (file, head, song, header) => {
-  writeFileSync(join(out, file), `${head}\n\n${header.map(([key, line]) => `${line}\n${song.block(key)}`).join('\n\n')}\n`);
+  saveSong(out, file, `${head}\n\n${header.map(([key, line]) => `${line}\n${song.block(key)}`).join('\n\n')}\n`);
   console.log(`wrote ${out}/${file} (${song.length} bars)`);
 };
 
@@ -128,9 +105,9 @@ const write = (file, head, song, header) => {
   ];
   // A second voice under the melody: the nearest chord tone at least a minor third below each note.
   const under = (bar, sym) => {
-    const c = chord(sym);
+    const c = parseChord(sym);
     return bar.replace(/\b([A-G](?:#|b)?)(\d)\b/g, (n) => {
-      let m = midi(n) - 3;
+      let m = noteMidi(n) - 3;
       while (!c.iv.includes((((m - c.pc) % 12) + 12) % 12)) m -= 1;
       return nm(m);
     });
@@ -163,65 +140,65 @@ const write = (file, head, song, header) => {
   const halfBars = (n) => Array.from({ length: n }, (_, i) => (i % 8 === 7 ? D2.halfFill : D2.half));
   const keys = ['lead', 'harmony', 'hook', 'seq', 'ostinato', 'brass', 'bass', 'drums'];
   const s = songBuilder(keys);
-  const loop = (n) => cyc(LOOP, n);
+  const loop = (n) => cycle(LOOP, n);
 
   s.section('The grid wakes: the pulse alone, low hits', 8, {
-    bass: v(92, each(loop(8), T2.pulse)),
-    brass: [...rep(null, 4), ...v(50, each(loop(8).slice(4), T2.brass))],
-    drums: v(96, [D2.hit, null, D2.hit, null, D2.hit, null, D2.hit, null]),
+    bass: entryVelocity(92, eachChord(loop(8), T2.pulse)),
+    brass: [...repeatBar(null, 4), ...entryVelocity(50, eachChord(loop(8).slice(4), T2.brass))],
+    drums: entryVelocity(96, [D2.hit, null, D2.hit, null, D2.hit, null, D2.hit, null]),
   });
   s.section('The sequencer starts, half-time drums', 8, {
-    seq: v(70, each(loop(8), T2.seq)),
-    bass: v(96, each(loop(8), T2.pulse)),
-    brass: v(56, each(loop(8), T2.brass)),
-    drums: v(100, halfBars(8)),
+    seq: entryVelocity(70, eachChord(loop(8), T2.seq)),
+    bass: entryVelocity(96, eachChord(loop(8), T2.pulse)),
+    brass: entryVelocity(56, eachChord(loop(8), T2.brass)),
+    drums: entryVelocity(100, halfBars(8)),
   });
   s.section('The theme, half-time', 16, {
-    lead: v(96, cyc(THEME, 16)),
-    seq: v(66, each(loop(16), T2.seq)),
-    ostinato: [...rep(null, 8), ...v(70, each(loop(8), T2.ost))],
-    brass: v(62, each(loop(16), T2.brass)),
-    bass: v(100, each(loop(16), T2.pulse)),
-    drums: v(104, halfBars(16)),
+    lead: entryVelocity(96, cycle(THEME, 16)),
+    seq: entryVelocity(66, eachChord(loop(16), T2.seq)),
+    ostinato: [...repeatBar(null, 8), ...entryVelocity(70, eachChord(loop(8), T2.ost))],
+    brass: entryVelocity(62, eachChord(loop(16), T2.brass)),
+    bass: entryVelocity(100, eachChord(loop(16), T2.pulse)),
+    drums: entryVelocity(104, halfBars(16)),
   });
   s.section('Build', 8, {
-    seq: v(74, each(loop(8), T2.seq)),
-    ostinato: v(76, each(loop(8), T2.ost)),
-    brass: v(66, each(loop(8), T2.brass)),
-    bass: v(104, [...each(loop(7), T2.pulse), null]),
-    drums: v(104, [...halfBars(4), ...PERC.roll]),
+    seq: entryVelocity(74, eachChord(loop(8), T2.seq)),
+    ostinato: entryVelocity(76, eachChord(loop(8), T2.ost)),
+    brass: entryVelocity(66, eachChord(loop(8), T2.brass)),
+    bass: entryVelocity(104, [...eachChord(loop(7), T2.pulse), null]),
+    drums: entryVelocity(104, [...halfBars(4), ...PERC.roll]),
   });
   s.section('Drop: four on the floor, the theme up high', 16, {
-    lead: v(108, cyc(THEME, 16).map((b) => b.replace(/\b([A-G](?:#|b)?)(\d)\b/g, (n) => (midi(n) + 12 <= 96 ? nm(midi(n) + 12) : n)))),
-    harmony: v(84, cyc(THEME, 16)),
-    seq: v(70, each(loop(16), T2.seq)),
-    ostinato: v(80, each(loop(16), T2.ost)),
-    brass: v(70, each(loop(16), T2.brass)),
-    bass: v(112, each(loop(16), T2.pulse)),
-    drums: v(112, fourBars(16)),
+    lead: entryVelocity(108, cycle(THEME, 16).map((b) => b.replace(/\b([A-G](?:#|b)?)(\d)\b/g, (n) => (noteMidi(n) + 12 <= 96 ? nm(noteMidi(n) + 12) : n)))),
+    harmony: entryVelocity(84, cycle(THEME, 16)),
+    seq: entryVelocity(70, eachChord(loop(16), T2.seq)),
+    ostinato: entryVelocity(80, eachChord(loop(16), T2.ost)),
+    brass: entryVelocity(70, eachChord(loop(16), T2.brass)),
+    bass: entryVelocity(112, eachChord(loop(16), T2.pulse)),
+    drums: entryVelocity(112, fourBars(16)),
   });
   s.section('Breakdown: the old stab hook over the brass', 12, {
-    hook: [...rep(null, 4), ...v(84, cyc(HOOK, 8))],
-    seq: v(58, each(cyc(BREAK, 12), T2.seq)),
-    brass: v(66, each(cyc(BREAK, 12), T2.brass)),
-    bass: v(90, each(cyc(BREAK, 12), T2.pulseHalf)),
-    drums: v(90, [D2.hit, null, null, null, D2.hit, null, null, null, ...PERC.roll]),
+    hook: [...repeatBar(null, 4), ...entryVelocity(84, cycle(HOOK, 8))],
+    seq: entryVelocity(58, eachChord(cycle(BREAK, 12), T2.seq)),
+    brass: entryVelocity(66, eachChord(cycle(BREAK, 12), T2.brass)),
+    bass: entryVelocity(90, eachChord(cycle(BREAK, 12), T2.pulseHalf)),
+    drums: entryVelocity(90, [D2.hit, null, null, null, D2.hit, null, null, null, ...PERC.roll]),
   });
   s.section('Final: everything, the theme in two voices', 24, {
-    lead: v(112, cyc(THEME, 24)),
-    harmony: v(88, cyc(THEME, 24).map((bar, i) => under(bar, LOOP[i % 8]))),
-    hook: [...rep(null, 16), ...v(80, cyc(HOOK, 8))],
-    seq: v(74, each(loop(24), T2.seq)),
-    ostinato: v(84, each(loop(24), T2.ost)),
-    brass: v(74, each(loop(24), T2.brass)),
-    bass: v(116, each(loop(24), T2.pulse)),
-    drums: v(116, fourBars(24)),
+    lead: entryVelocity(112, cycle(THEME, 24)),
+    harmony: entryVelocity(88, cycle(THEME, 24).map((bar, i) => under(bar, LOOP[i % 8]))),
+    hook: [...repeatBar(null, 16), ...entryVelocity(80, cycle(HOOK, 8))],
+    seq: entryVelocity(74, eachChord(loop(24), T2.seq)),
+    ostinato: entryVelocity(84, eachChord(loop(24), T2.ost)),
+    brass: entryVelocity(74, eachChord(loop(24), T2.brass)),
+    bass: entryVelocity(116, eachChord(loop(24), T2.pulse)),
+    drums: entryVelocity(116, fourBars(24)),
   });
   s.section('Outro: the pulse fades', 8, {
-    seq: v(60, each(loop(4), T2.seq)),
-    brass: v(60, each(loop(8), T2.brass)),
-    bass: v(100, [...each(loop(6), T2.pulse), ...each(loop(1), T2.pulseHalf)]),
-    drums: v(100, [...halfBars(4), D2.hit, null, null, D2.end]),
+    seq: entryVelocity(60, eachChord(loop(4), T2.seq)),
+    brass: entryVelocity(60, eachChord(loop(8), T2.brass)),
+    bass: entryVelocity(100, [...eachChord(loop(6), T2.pulse), ...eachChord(loop(1), T2.pulseHalf)]),
+    drums: entryVelocity(100, [...halfBars(4), D2.hit, null, null, D2.end]),
   });
 
   write('underpass.song', `# Underpass, by Claude and SZ. Synthwave in the manner of a synth film score: an octave-pulse bass,
@@ -250,7 +227,6 @@ time: 4/4`, s, [
 // ---------------------------------------------------------------------------------------------
 // Ivory and Ash (128 Mix): C minor, 128 BPM. The melodies come from ivory-and-ash.mjs.
 
-const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240 };
 // One bar of song text -> two bars with every duration doubled; notes crossing the bar line are tied.
 function stretchText(bar) {
   if (bar === null) return [null, null];
@@ -315,67 +291,67 @@ const stretchChords = (bars) => bars.flatMap((bar) => { const c = bar.split(' ')
   const s = songBuilder(keys);
 
   s.section('Intro: the beat and the theme chords', 16, {
-    pad: v(54, each(THEME, T.pad)),
-    arp: [...rep(null, 8), ...v(44, each(THEME.slice(8), T.arp16))],
-    sub: [...rep(null, 8), ...v(90, each(THEME.slice(8), T.off8))],
-    drums: v(100, [...rep(DRUMS.four, 4), ...rep(DRUMS.hats, 8), ...rep(DRUMS.clap, 4)]),
-    perc: [...rep(null, 4), ...v(70, rep(PERC.groove, 12))],
+    pad: entryVelocity(54, eachChord(THEME, T.pad)),
+    arp: [...repeatBar(null, 8), ...entryVelocity(44, eachChord(THEME.slice(8), T.arp16))],
+    sub: [...repeatBar(null, 8), ...entryVelocity(90, eachChord(THEME.slice(8), T.off8))],
+    drums: entryVelocity(100, [...repeatBar(DRUMS.four, 4), ...repeatBar(DRUMS.hats, 8), ...repeatBar(DRUMS.clap, 4)]),
+    perc: [...repeatBar(null, 4), ...entryVelocity(70, repeatBar(PERC.groove, 12))],
   });
   s.section('The piano theme, the guitar answers', 16, {
-    piano: v(84, stretchAll(PIANO_THEME.map((bar, i) => (GUITAR_ANSWER[i] ? null : bar)))),
-    guitar: v(90, stretchAll(GUITAR_ANSWER)),
-    stabs: v(92, each(THEME, T.stabs)),
-    pad: v(50, each(THEME, T.pad)),
-    sub: v(102, each(THEME, T.roll)),
-    drums: v(106, rep(DRUMS.clap, 16)),
-    perc: v(74, rep(PERC.groove, 16)),
+    piano: entryVelocity(84, stretchAll(PIANO_THEME.map((bar, i) => (GUITAR_ANSWER[i] ? null : bar)))),
+    guitar: entryVelocity(90, stretchAll(GUITAR_ANSWER)),
+    stabs: entryVelocity(92, eachChord(THEME, T.stabs)),
+    pad: entryVelocity(50, eachChord(THEME, T.pad)),
+    sub: entryVelocity(102, eachChord(THEME, T.roll)),
+    drums: entryVelocity(106, repeatBar(DRUMS.clap, 16)),
+    perc: entryVelocity(74, repeatBar(PERC.groove, 16)),
     cym: ['v=90 cr/1'],
   });
   s.section('The build, snare roll', 16, {
-    guitar: v(96, stretchAll(GUITAR_BUILD)),
-    arp: v(56, each(BUILD, T.arp16)),
-    stabs: v(94, each(BUILD, T.stabs)),
-    pad: v(56, each(BUILD, T.pad)),
-    sub: v(104, [...each(BUILD.slice(0, 15), T.roll), null]),
-    drums: v(106, [...rep(DRUMS.clap, 12), ...rep(DRUMS.four, 3), null]),
-    perc: [...v(74, rep(PERC.groove, 12)), ...PERC.roll],
+    guitar: entryVelocity(96, stretchAll(GUITAR_BUILD)),
+    arp: entryVelocity(56, eachChord(BUILD, T.arp16)),
+    stabs: entryVelocity(94, eachChord(BUILD, T.stabs)),
+    pad: entryVelocity(56, eachChord(BUILD, T.pad)),
+    sub: entryVelocity(104, [...eachChord(BUILD.slice(0, 15), T.roll), null]),
+    drums: entryVelocity(106, [...repeatBar(DRUMS.clap, 12), ...repeatBar(DRUMS.four, 3), null]),
+    perc: [...entryVelocity(74, repeatBar(PERC.groove, 12)), ...PERC.roll],
   });
   s.section('Drop: the guitar rises', 16, {
-    guitar: v(108, stretchAll(GUITAR_RISE)),
-    arp: v(64, each(RISE, T.arp16)),
-    stabs: v(106, each(RISE, T.stabs)),
-    pad: v(60, each(RISE, T.pad)),
-    sub: v(114, each(RISE, T.rollPop)),
-    drums: v(114, rep(DRUMS.clap, 16)),
-    perc: v(82, rep(PERC.groove, 16)),
-    cym: ['v=100 cr/1', ...rep(null, 7), 'cr/1'],
+    guitar: entryVelocity(108, stretchAll(GUITAR_RISE)),
+    arp: entryVelocity(64, eachChord(RISE, T.arp16)),
+    stabs: entryVelocity(106, eachChord(RISE, T.stabs)),
+    pad: entryVelocity(60, eachChord(RISE, T.pad)),
+    sub: entryVelocity(114, eachChord(RISE, T.rollPop)),
+    drums: entryVelocity(114, repeatBar(DRUMS.clap, 16)),
+    perc: entryVelocity(82, repeatBar(PERC.groove, 16)),
+    cym: ['v=100 cr/1', ...repeatBar(null, 7), 'cr/1'],
   });
   s.section('Breakdown: the piano alone with the pad', 16, {
-    piano: v(80, stretchAll(PIANO_THEME)),
-    pad: v(60, each(THEME, T.pad)),
-    sub: [...rep(null, 8), ...v(84, each(THEME.slice(8), T.hold))],
-    arp: [...rep(null, 8), ...v(46, each(THEME.slice(8), T.arp16))],
-    perc: [...rep(null, 12), ...PERC.roll],
+    piano: entryVelocity(80, stretchAll(PIANO_THEME)),
+    pad: entryVelocity(60, eachChord(THEME, T.pad)),
+    sub: [...repeatBar(null, 8), ...entryVelocity(84, eachChord(THEME.slice(8), T.hold))],
+    arp: [...repeatBar(null, 8), ...entryVelocity(46, eachChord(THEME.slice(8), T.arp16))],
+    perc: [...repeatBar(null, 12), ...PERC.roll],
   });
   s.section('Second drop: the guitar solo', 16, {
-    guitar: v(114, stretchAll(GUITAR_SOLO)),
-    piano: v(70, each(RISE, T.sweep)),
-    arp: v(62, each(RISE, T.arp16)),
-    stabs: v(104, each(RISE, T.stabs)),
-    pad: v(62, each(RISE, T.pad)),
-    sub: v(116, each(RISE, T.rollPop)),
-    drums: v(116, rep(DRUMS.clap, 16)),
-    perc: v(84, rep(PERC.groove, 16)),
-    cym: ['v=104 cr/1', ...rep(null, 7), 'cr/1'],
+    guitar: entryVelocity(114, stretchAll(GUITAR_SOLO)),
+    piano: entryVelocity(70, eachChord(RISE, T.sweep)),
+    arp: entryVelocity(62, eachChord(RISE, T.arp16)),
+    stabs: entryVelocity(104, eachChord(RISE, T.stabs)),
+    pad: entryVelocity(62, eachChord(RISE, T.pad)),
+    sub: entryVelocity(116, eachChord(RISE, T.rollPop)),
+    drums: entryVelocity(116, repeatBar(DRUMS.clap, 16)),
+    perc: entryVelocity(84, repeatBar(PERC.groove, 16)),
+    cym: ['v=104 cr/1', ...repeatBar(null, 7), 'cr/1'],
   });
   s.section('Outro: piano and guitar trade', 16, {
-    piano: v(80, stretchAll(TRADE_PIANO)),
-    guitar: v(94, stretchAll(TRADE_GUITAR)),
-    stabs: v(92, each(THEME.slice(0, 8), T.stabs)),
-    pad: v(54, each(THEME, T.pad)),
-    sub: [...v(104, each(THEME.slice(0, 8), T.roll)), ...v(90, each(THEME.slice(8, 12), T.off8)), ...v(84, each(THEME.slice(12, 15), T.hold))],
-    drums: v(104, [...rep(DRUMS.clap, 8), ...rep(DRUMS.hats, 4), ...rep(DRUMS.four, 3), DRUMS.end]),
-    perc: v(74, rep(PERC.groove, 12)),
+    piano: entryVelocity(80, stretchAll(TRADE_PIANO)),
+    guitar: entryVelocity(94, stretchAll(TRADE_GUITAR)),
+    stabs: entryVelocity(92, eachChord(THEME.slice(0, 8), T.stabs)),
+    pad: entryVelocity(54, eachChord(THEME, T.pad)),
+    sub: [...entryVelocity(104, eachChord(THEME.slice(0, 8), T.roll)), ...entryVelocity(90, eachChord(THEME.slice(8, 12), T.off8)), ...entryVelocity(84, eachChord(THEME.slice(12, 15), T.hold))],
+    drums: entryVelocity(104, [...repeatBar(DRUMS.clap, 8), ...repeatBar(DRUMS.hats, 4), ...repeatBar(DRUMS.four, 3), DRUMS.end]),
+    perc: entryVelocity(74, repeatBar(PERC.groove, 12)),
   });
 
   write('ivory-and-ash-128.song', `# Ivory and Ash (128 Mix), by Claude and SZ. The Ivory and Ash melodies at 128 BPM: every note is

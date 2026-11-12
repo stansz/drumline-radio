@@ -2,12 +2,9 @@
 // like a sampled record: chopped Rhodes, a lazy straight kick and rim click, and an upright bass playing the
 // melody in short repeating phrases (it doubles as the bass line). Written out by hand here.
 //   node tools/arranger/last-stop.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { sectionBuilder, writeBlock } from './lib.mjs';
+import { entryVelocity, outDir, repeatBars, saveSong, sectionBuilder } from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // The loop: Fm7 | Eb | Db | Eb. A modal loop with no dominant chord, so it never resolves; Third
 // Rail's i-iv-VI-V7 turnaround does, which keeps the two songs apart.
@@ -41,44 +38,42 @@ const HOOK = ['F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12', 'Db4/4+12
   'F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12', 'C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4'];
 
 const keys = ['lead', 'keys', 'drums'];
-const { tracks, marks, section } = sectionBuilder(keys);
-const v = (vel, bars) => bars.map((bar, i) => (bar === null ? null : i === 0 ? `v=${vel} ${bar}` : bar));
-const loop = (bars, times) => Array.from({ length: times }, () => bars).flat();
+const { tracks, section, block } = sectionBuilder(keys);
 
 section('Intro: the record starts', 4, {
-  keys: v(60, KEYS.chop),
+  keys: entryVelocity(60, KEYS.chop),
 });
 section('The beat drops in', 4, {
-  keys: v(64, KEYS.chop),
-  drums: v(92, [DRUMS.hats, DRUMS.kickHats, DRUMS.kickHats, DRUMS.fill]),
+  keys: entryVelocity(64, KEYS.chop),
+  drums: entryVelocity(92, [DRUMS.hats, DRUMS.kickHats, DRUMS.kickHats, DRUMS.fill]),
 });
 section('Verse', 8, {
-  lead: v(84, loop(VERSE, 2)),
-  keys: v(66, loop(KEYS.chop, 2)),
-  drums: v(100, groove(8)),
+  lead: entryVelocity(84, repeatBars(VERSE, 2)),
+  keys: entryVelocity(66, repeatBars(KEYS.chop, 2)),
+  drums: entryVelocity(100, groove(8)),
 });
 section('Hook', 8, {
-  lead: v(90, loop(HOOK, 2)),
-  keys: v(68, loop(KEYS.stab, 2)),
-  drums: v(104, groove(8)),
+  lead: entryVelocity(90, repeatBars(HOOK, 2)),
+  keys: entryVelocity(68, repeatBars(KEYS.stab, 2)),
+  drums: entryVelocity(104, groove(8)),
 });
 section('Break: keys and crackle', 4, {
-  lead: v(70, [VERSE[0], VERSE[1], null, null]),
-  keys: v(54, KEYS.hold),
+  lead: entryVelocity(70, [VERSE[0], VERSE[1], null, null]),
+  keys: entryVelocity(54, KEYS.hold),
 });
 section('Verse 2', 8, {
-  lead: v(86, loop(VERSE, 2)),
-  keys: v(66, loop(KEYS.chop, 2)),
-  drums: v(100, groove(8)),
+  lead: entryVelocity(86, repeatBars(VERSE, 2)),
+  keys: entryVelocity(66, repeatBars(KEYS.chop, 2)),
+  drums: entryVelocity(100, groove(8)),
 });
 section('Last hook', 8, {
-  lead: v(92, loop(HOOK, 2)),
-  keys: v(70, loop(KEYS.stab, 2)),
-  drums: v(106, groove(8)),
+  lead: entryVelocity(92, repeatBars(HOOK, 2)),
+  keys: entryVelocity(70, repeatBars(KEYS.stab, 2)),
+  drums: entryVelocity(106, groove(8)),
 });
 section('Outro: the record runs out', 4, {
-  keys: v(58, [...KEYS.chop.slice(0, 3), '[F3 Ab3 C4 Eb4]/1']),
-  drums: v(84, [DRUMS.a, DRUMS.b, DRUMS.kickHats, 'k/1']),
+  keys: entryVelocity(58, [...KEYS.chop.slice(0, 3), '[F3 Ab3 C4 Eb4]/1']),
+  drums: entryVelocity(84, [DRUMS.a, DRUMS.b, DRUMS.kickHats, 'k/1']),
 });
 
 const total = tracks.lead.length;
@@ -87,8 +82,6 @@ const HEADER = [
   ['keys', 'track keys role=chords vol=0.9 pan=-0.15'],
   ['drums', 'track drums role=drums vol=0.9'],
 ];
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `# Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
 # keys, a lazy kick and rim click, and an upright bass playing short phrases.
 title: Last Stop
@@ -106,5 +99,5 @@ about: The last bus home, half asleep: one dusty loop, a lazy kick and rim click
 
 ${HEADER.map(([key, head]) => `${head}\n${block(key)}`).join('\n\n')}
 `;
-writeFileSync(join(out, 'last-stop.song'), text);
+saveSong(out, 'last-stop.song', text);
 console.log(`wrote ${out}/last-stop.song (${total} bars)`);

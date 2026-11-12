@@ -2,11 +2,10 @@
 // building up to a final chorus a step higher. It is a demo, not a song in the app.
 //   node tools/arranger/examples/form-demo.mjs [outDir]
 //   CHECK_DIR=tmp/demo npm run check:songs
-import { mkdirSync } from 'node:fs';
 import { arrangeForm } from '../arranger.mjs';
+import { outDir } from '../lib.mjs';
 
-const [out = 'tmp/demo'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir('tmp/demo');
 
 arrangeForm(out, {
   file: 'form-demo.song',

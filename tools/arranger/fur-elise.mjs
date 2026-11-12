@@ -4,12 +4,11 @@
 // The repeats are played as written. Two bars drop grace notes, and the big arpeggio's top bars drop
 // an octave to stay inside the lead's range.
 //   node tools/arranger/fur-elise.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import {
+  MIXED, noteMidi, noteName, outDir, saveSong, transpose, valueAt, writeBlock,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // Bars by number as converted from the score (0 is the pickup); the fixes below replace a few.
 const MEL = {
@@ -227,13 +226,7 @@ const LH = {
   105: '[A1 A2]/8 r/4',
 };
 
-const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const midi = (n) => {
-  const m = /^([A-G])(#|b)?(\d)$/.exec(n);
-  return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
-};
 const nm = (n) => noteName(n, MIXED);
-const shift = (bar, by) => bar.replace(/\b[A-G](#|b)?\d\b/g, (n) => nm(midi(n) + by));
 
 // The first ending: the closing A with the pickup that starts the repeat.
 MEL[8] = 'A4/4 E5/16 Eb5/16';
@@ -242,7 +235,7 @@ LH[8] = 'A2/16 E3/16 A3/16 r/8.';
 MEL[24] = 'A4/8 r/16 [E4 C5]/16 [F4 C5]/16 [E4 G4 C5]/16';
 MEL[28] = 'Bb4/8 A4/8 A4/32 G4/32 A4/32 Bb4/32';
 // The arpeggio's top: an octave down from here on, so it stays at or under C7.
-for (const n of [81, 82, 83]) MEL[n] = shift(MEL[n], -12);
+for (const n of [81, 82, 83]) MEL[n] = transpose(MEL[n], -12, nm);
 
 // The order bars are played in, repeats unfolded.
 const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
@@ -256,7 +249,6 @@ const SECTIONS = new Map([[0, 'The theme, twice'], [16, 'The second part, twice'
   [81, 'The pedal and the arpeggio'], [103, 'The theme, to the end']]);
 // Velocity by position in ORDER: [first index, velocity].
 const DYN = [[0, 88], [16, 94], [44, 100], [56, 106], [62, 94], [81, 110], [99, 116], [103, 90]];
-const velAt = (i) => DYN.filter(([a]) => a <= i).pop()[1];
 
 // The left hand split by register: low notes to the bass, high notes to the keys.
 function splitLh(bar) {
@@ -268,8 +260,8 @@ function splitLh(bar) {
     const [, pitch, dur, tie] = m;
     if (pitch === 'r') { low.push(`r${dur}`); high.push(`r${dur}`); continue; }
     const ps = pitch.replace(/[[\]]/g, '').split(' ');
-    const lo = ps.filter((p) => midi(p) <= 60);
-    const hi = ps.filter((p) => midi(p) > 60);
+    const lo = ps.filter((p) => noteMidi(p) <= 60);
+    const hi = ps.filter((p) => noteMidi(p) > 60);
     const fmt = (list) => (list.length === 0 ? `r${dur}` : `${list.length > 1 ? `[${list.join(' ')}]` : list[0]}${dur}${tie}`);
     low.push(fmt(lo)); high.push(fmt(hi));
   }
@@ -280,7 +272,7 @@ function splitLh(bar) {
 const tracks = { melody: [], bass: [], keys: [] };
 let prevVel = { melody: null, bass: null, keys: null };
 const push = (key, bar, i) => {
-  const vel = velAt(i);
+  const vel = valueAt(DYN, i);
   const text = bar !== 'R' && prevVel[key] !== vel ? `v=${key === 'melody' ? vel : vel - 10} ${bar}` : bar;
   if (bar !== 'R') prevVel[key] = vel;
   tracks[key].push(text);
@@ -321,5 +313,5 @@ ${block('keys', 'r/8')}
 track bass role=bass vol=0.8
 ${block('bass', 'r/8')}
 `;
-writeFileSync(join(out, 'fur-elise.song'), text);
+saveSong(out, 'fur-elise.song', text);
 console.log(`wrote ${out}/fur-elise.song (${total} bars and a pickup)`);

@@ -1,31 +1,16 @@
 // The arranger: turns a melody plus chords into a full .song file (intro, passes, ending) with
 // named bass lines and drum grooves. Used by songs.mjs; see tools/README.md.
-import { writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { durationText, noteName, SHARPS, writeBlock } from './lib.mjs';
+import {
+  durationText, noteMidi, noteName, parseChord, saveSong, SHARPS, transpose, writeBlock,
+} from './lib.mjs';
 
-const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-export const midi = (n) => {
-  const m = /^([A-G])(#|b)?(\d)$/.exec(n);
-  return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
-};
 export const nm = (n) => noteName(n, SHARPS);
-const tr = (bar, s) => (s === 0 ? bar : bar.replace(/\b([A-G])(#|b)?(\d)\b/g, (x) => nm(midi(x) + s)));
-const notesIn = (bar) => (bar.match(/\b[A-G](#|b)?\d\b/g) ?? []).map(midi);
-
-const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], m7: [0, 3, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
-function chord(sym, shift = 0) {
-  const m = /^([A-G])(#|b)?(maj7|m7|m|7|dim)?$/.exec(sym);
-  if (!m) throw new Error('bad chord ' + sym);
-  const pc = (LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0) + shift + 24) % 12;
-  return { pc, iv: QUALITY[m[3] ?? ''] };
-}
-const dur = durationText;
+const notesIn = (bar) => (bar.match(/\b[A-G](#|b)?\d\b/g) ?? []).map(noteMidi);
 const barTicks = ([n, d]) => (n * 3840) / d;
 
 function padSpan(c, ticks, voices = 3) {
   const notes = c.iv.slice(0, voices).map((i) => nm(48 + c.pc + i));
-  return `[${notes.join(' ')}]${dur(ticks)}`;
+  return `[${notes.join(' ')}]${durationText(ticks)}`;
 }
 function fill(ticks, unit, fn) {
   if (ticks % unit !== 0) unit = 480;
@@ -40,13 +25,13 @@ function bassSpan(kind, c, ticks) {
   const root = 36 + c.pc;
   const third = root + c.iv[1];
   const fifth = root + 7;
-  const N = (n, u) => `${nm(n)}${dur(u)}`;
+  const N = (n, u) => `${nm(n)}${durationText(u)}`;
   switch (kind) {
     case 'octave8': return fill(ticks, 480, (i, u) => N(i % 2 ? root + 12 : root, u));
     case 'root5': return fill(ticks, 960, (i, u) => N(i % 2 ? root + 7 : root + 12, u));
-    case 'offbeat8': return fill(ticks, 480, (i, u) => (i % 2 ? N(root, u) : `r${dur(u)}`));
+    case 'offbeat8': return fill(ticks, 480, (i, u) => (i % 2 ? N(root, u) : `r${durationText(u)}`));
     case 'pulse16': return fill(ticks, 240, (i, u) => N(i % 4 === 3 ? root + 12 : root, u));
-    case 'oompah': return fill(ticks, 960, (i, u) => (i % 2 ? `r${dur(u)}` : N(i % 4 === 0 ? root : fifth - 12, u)));
+    case 'oompah': return fill(ticks, 960, (i, u) => (i % 2 ? `r${durationText(u)}` : N(i % 4 === 0 ? root : fifth - 12, u)));
     case 'walk': return fill(ticks, 960, (i, u) => N([root, third, fifth, root + 9][i % 4], u));
     case 'gallop': return fill(ticks, 960, () => `${nm(root)}/8 ${nm(root)}/16 ${nm(root + 12)}/16`);
     case 'syncop':
@@ -66,7 +51,7 @@ function bassSpan(kind, c, ticks) {
 function arpSpan(unitTicks, c, ticks) {
   const tones = [...c.iv.slice(0, 3).map((i) => 60 + c.pc + i), 72 + c.pc];
   const order = [0, 1, 2, 3, 2, 1];
-  return fill(ticks, unitTicks, (i, u) => `${nm(tones[order[i % order.length]])}${dur(u)}`);
+  return fill(ticks, unitTicks, (i, u) => `${nm(tones[order[i % order.length]])}${durationText(u)}`);
 }
 
 // Drum grooves by name: [verse, fuller] per time signature.
@@ -124,7 +109,7 @@ function writeSong(out, spec, { T, comment, tracks, style, ts }) {
   const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
   const text = `${spec.head.trim()}\n${hidden}style: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +
     tracks.map(([h, k]) => `${h}\n${block(k)}`).join('\n\n') + '\n';
-  writeFileSync(join(out, spec.file), text);
+  saveSong(out, spec.file, text);
 }
 
 /**
@@ -149,7 +134,7 @@ export function arrange(out, spec) {
   const comment = { lead: [], harm: [], arp: [], pad: [], bass: [], drums: [], cym: [] };
   const mark = (name) => { for (const k in T) comment[k].push([T[k].length, name]); };
   const spans = (chordBar, shift) => {
-    const cs = chordBar.split(' ').map((s) => chord(s, shift));
+    const cs = chordBar.split(' ').map((s) => parseChord(s, shift));
     return { cs, span: BT / cs.length };
   };
   const accomp = (chordBar, shift, level, arpOn) => {
@@ -187,28 +172,28 @@ export function arrange(out, spec) {
     for (let b = 0; b < n; b++) {
       let mel = spec.melody[b];
       if (b === n - 1) mel = last ? spec.final ?? mel : spec.link ?? mel;
-      const melody = tr(mel, shift);
+      const melody = transpose(mel, shift);
       T.lead.push(melody);
       if (full) {
         const ns = notesIn(melody);
         const up = ns.every((x) => x + 12 <= 96);
         const down = ns.every((x) => x - 12 >= 48);
-        T.harm.push(ns.length === 0 ? melody : up ? tr(melody, 12) : down ? tr(melody, -12) : 'R');
+        T.harm.push(ns.length === 0 ? melody : up ? transpose(melody, 12) : down ? transpose(melody, -12) : 'R');
       } else T.harm.push('R');
       accomp(last && b === n - 1 && spec.finalChord ? spec.finalChord : spec.chords[b], shift, full ? 2 : 1, full);
-      T.cym.push(b === 0 && full ? `cr${dur(BT)}` : 'R');
+      T.cym.push(b === 0 && full ? `cr${durationText(BT)}` : 'R');
     }
   }
 
   mark('Ending');
-  const endChord = chord(spec.finalChord ?? spec.chords[n - 1].split(' ').pop(), keyUp);
+  const endChord = parseChord(spec.finalChord ?? spec.chords[n - 1].split(' ').pop(), keyUp);
   T.lead.push('R');
   T.harm.push('R');
   T.arp.push('R');
   T.pad.push(padSpan(endChord, BT, voices));
-  T.bass.push(`${nm(36 + endChord.pc)}${dur(BT)}`);
-  T.drums.push(`k${dur(BT)}`);
-  T.cym.push(`cr${dur(BT)}`);
+  T.bass.push(`${nm(36 + endChord.pc)}${durationText(BT)}`);
+  T.drums.push(`k${durationText(BT)}`);
+  T.cym.push(`cr${durationText(BT)}`);
 
   const P = spec.parts;
   const tracks = [
@@ -250,14 +235,14 @@ const LEVEL_VELOCITY = [60, 78, 92, 105];
 function arpShaped(shape, unitTicks, c, ticks) {
   const tones = [...c.iv.slice(0, 3).map((i) => 60 + c.pc + i), 72 + c.pc];
   const order = ARP_SHAPES[shape];
-  return fill(ticks, unitTicks, (i, u) => `${nm(tones[order[i % order.length]])}${dur(u)}`);
+  return fill(ticks, unitTicks, (i, u) => `${nm(tones[order[i % order.length]])}${durationText(u)}`);
 }
 
 function padTextured(texture, c, ticks, voices) {
   const ch = `[${c.iv.slice(0, voices).map((i) => nm(48 + c.pc + i)).join(' ')}]`;
   if (texture === 'stabs' && ticks === 3840) return `${ch}/8 r/8 r/8 ${ch}/8 r/2`;
-  if (texture === 'offbeat') return fill(ticks, 480, (i, u) => (i % 2 ? `${ch}${dur(u)}` : `r${dur(u)}`));
-  return `${ch}${dur(ticks)}`;
+  if (texture === 'offbeat') return fill(ticks, 480, (i, u) => (i % 2 ? `${ch}${durationText(u)}` : `r${durationText(u)}`));
+  return `${ch}${durationText(ticks)}`;
 }
 
 // A counter-line of long chord tones under the melody, moving as little as possible between chords.
@@ -300,7 +285,7 @@ export function arrangeForm(out, spec) {
   const comment = { lead: [], harm: [], arp: [], pad: [], bass: [], drums: [], cym: [] };
   const mark = (name) => { for (const k in T) comment[k].push([T[k].length, name]); };
   const spans = (chordBar, shift) => {
-    const cs = chordBar.split(' ').map((s) => chord(s, shift));
+    const cs = chordBar.split(' ').map((s) => parseChord(s, shift));
     return { cs, span: BT / cs.length };
   };
   let counterPrev = 64;
@@ -342,19 +327,19 @@ export function arrangeForm(out, spec) {
       const vel = `v=${Math.max(1, Math.min(127, v))} `;
       const { cs, span } = spans(sec.chords[b], shift);
 
-      const mel = tr(b === n - 1 && entry.last ? entry.last : sec.melody[b], shift);
+      const mel = transpose(b === n - 1 && entry.last ? entry.last : sec.melody[b], shift);
       const playMelody = entry.melody ?? true;
       T.lead.push(playMelody ? vel + mel : 'R');
 
       if (level === 3 && harmMode !== 'off' && playMelody) {
         if (harmMode === 'octave') {
           const ns = notesIn(mel);
-          T.harm.push(ns.length > 0 && ns.every((x) => x + 12 <= 96) ? vel + tr(mel, 12) : 'R');
+          T.harm.push(ns.length > 0 && ns.every((x) => x + 12 <= 96) ? vel + transpose(mel, 12) : 'R');
         } else {
           const lowest = Math.min(...notesIn(mel), 96);
           T.harm.push(vel + cs.map((c) => {
             counterPrev = counterNote(c, lowest, counterPrev);
-            return `${nm(counterPrev)}${dur(span)}`;
+            return `${nm(counterPrev)}${durationText(span)}`;
           }).join(' '));
         }
       } else T.harm.push('R');
@@ -365,21 +350,21 @@ export function arrangeForm(out, spec) {
       const isFill = b === n - 1 && fillLast && FILLS[ts];
       const drumBar = isFill ? FILLS[ts] : level === 0 ? 'R' : groove(spec.drums, ts, level >= 2 ? 2 : 1);
       T.drums.push(drumBar === 'R' ? 'R' : vel + drumBar);
-      T.cym.push(b === 0 && crashFirst ? `cr${dur(BT)}` : 'R');
+      T.cym.push(b === 0 && crashFirst ? `cr${durationText(BT)}` : 'R');
     }
   });
 
   mark('Ending');
   const lastEntry = spec.form[spec.form.length - 1];
   const lastSec = spec.sections[lastEntry.section];
-  const endChord = chord(spec.finalChord ?? lastSec.chords[lastSec.chords.length - 1].split(' ').pop(), lastEntry.shift ?? 0);
+  const endChord = parseChord(spec.finalChord ?? lastSec.chords[lastSec.chords.length - 1].split(' ').pop(), lastEntry.shift ?? 0);
   T.lead.push('R');
   T.harm.push('R');
   T.arp.push('R');
   T.pad.push(padTextured('hold', endChord, BT, voices));
-  T.bass.push(`${nm(36 + endChord.pc)}${dur(BT)}`);
-  T.drums.push(`k${dur(BT)}`);
-  T.cym.push(`cr${dur(BT)}`);
+  T.bass.push(`${nm(36 + endChord.pc)}${durationText(BT)}`);
+  T.drums.push(`k${durationText(BT)}`);
+  T.cym.push(`cr${durationText(BT)}`);
 
   const P = spec.parts;
   const tracks = [

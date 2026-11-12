@@ -5,18 +5,12 @@
 // The bass sits an octave low where Chopin's is high, so it also hits hard when remixed into Techno.
 // The tempo is an eighth at 108 (quarter 54), slower than Chopin's marked 132, like most recordings.
 //   node tools/arranger/nocturne.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import {
+  barMarks, MIXED, noteMidi, noteName, outDir, R, repeatBar, saveSong, writeBlock,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
-const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const midi = (n) => {
-  const m = /^([A-G])(#|b)?(\d)$/.exec(n);
-  return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
-};
 const nm = (n) => noteName(n, MIXED);
 
 // The left hand, bar by bar: twelve eighths, chord notes joined with dots. A single note on a beat
@@ -100,7 +94,7 @@ const RH = [
 ].map((k) => M[k]);
 
 // Splits the left hand into the cellos' bass notes, the piano's chords, and a pad chord per beat.
-const lowBass = (n) => (midi(n) >= 48 ? nm(midi(n) - 12) : n); // keep the bass at B2 or lower
+const lowBass = (n) => (noteMidi(n) >= 48 ? nm(noteMidi(n) - 12) : n); // keep the bass at B2 or lower
 const notes = (ev) => ev.split('.');
 const chordText = (ev) => (notes(ev).length > 1 ? `[${notes(ev).join(' ')}]` : ev);
 function splitBar(bar) {
@@ -126,8 +120,6 @@ function splitBar(bar) {
 const left = LH.map(splitBar);
 const lh = (part, from, to) => left.slice(from - 1, to).map((bar) => bar[part]);
 
-const R = 'R';
-const rep = (bar, n) => Array(n).fill(bar);
 // Velocity per bar range: [first bar, last bar, velocity].
 function shaped(bars, ranges) {
   return bars.map((bar, i) => {
@@ -156,7 +148,7 @@ const harpBars = [
   '[Eb3 Bb3]/4. [Eb4 Bb4]/4. [Eb2 Bb2]/2.',
 ];
 const padBars = [
-  ...rep(R, 4),
+  ...repeatBar(R, 4),
   ...lh('pad', 5, 31),
   R, '[Bb2 F3 Ab3 D4]/1.', '[Bb2 F3 Ab3 D4]/1.', '[Bb2 F3 Ab3 D4]/1.',
   '[Eb3 G3 Bb3]/1.', '[Eb3 G3 Bb3]/1.',
@@ -165,7 +157,7 @@ const cellos = shaped(cellosBars, [[1, 8, 96], [9, 24, 100], [25, 29, 94], [30, 
 const harp = shaped(harpBars, [[1, 8, 60], [9, 24, 64], [25, 29, 58], [30, 32, 76], [36, 37, 50]]);
 const pad = shaped(padBars, [[5, 24, 64], [25, 29, 61], [30, 31, 93], [33, 35, 67], [36, 37, 54]]);
 // Soft timpani only at the climaxes, so the Techno remix gets a beat there too.
-const drumBars = rep(R, 37);
+const drumBars = repeatBar(R, 37);
 drumBars[15] = 'k/4. r/4. r/4. r/4.';
 drumBars[23] = 'k/4. r/4. r/4. r/4.';
 drumBars[29] = 'k/4. r/4. k/4. r/4.';
@@ -178,8 +170,7 @@ const SECTIONS = new Map([
   [17, 'The second theme'], [21, 'The theme'], [25, 'Coda'], [30, 'The climax'], [32, 'Cadenza'],
   [36, 'The last chords'],
 ]);
-const at = new Map([...SECTIONS].map(([n, text]) => [n - 1, text]));
-const block = (pickup, bars) => writeBlock(bars, at, { first: pickup });
+const block = (pickup, bars) => writeBlock(bars, barMarks(SECTIONS), { first: pickup });
 
 const text = `# Nocturne in E-flat, Op. 9 No. 2 by Frédéric Chopin (1832), arranged by Claude and SZ for the
 # Orchestral style. Chopin's notes bar for bar: violins on the right hand, cellos and piano on the left.
@@ -215,5 +206,5 @@ ${block('r/8', cellos)}
 track drums role=drums vol=0.6
 ${block('r/8', drums)}
 `;
-writeFileSync(join(out, 'nocturne.song'), text);
+saveSong(out, 'nocturne.song', text);
 console.log(`wrote ${out}/nocturne.song (${RH.length} bars and a pickup)`);

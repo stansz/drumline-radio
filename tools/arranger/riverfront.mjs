@@ -6,16 +6,14 @@
 // surfaces over the pad and chords, a build, two drops, a stripped break, a second build, the final
 // drop with the hook over everything, and an outro that cadences on F minor.
 //   node tools/arranger/riverfront.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { barLength, FLATS, noteName, sectionBuilder, writeBlock } from './lib.mjs';
+import {
+  barLength, chordText, FLATS, noteName, outDir, R, repeatBar, saveSong, sectionBuilder, times,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // Flat names, so every note reads in F minor.
 const nm = (n) => noteName(n, FLATS);
-const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // The chords. The pad sits low-mid, the stabs above it, the counter-line above those, and the sub
 // bass under the kick. Each chord keeps one pitch set everywhere, so nothing ever clashes: the
@@ -76,7 +74,7 @@ const m3 = (c, v) => {
 // The stabs: three syncopated patterns, every hit nudged late and a little uneven in level.
 const stab = (c, v0, kind) => {
   const v = Math.min(121, v0 + 10); // lifted so the chords aren't buried under the counter-line
-  const N = chordOf(CH[c].stab);
+  const N = chordText(CH[c].stab, nm);
   if (kind === 'A')
     return `r/8. ${N}/16+22:${v + 4} r/8 ${N}/8+16:${v - 4} r/8 ${N}/8+24:${v + 2} r/16 ${N}/16+18:${v - 6} r/8`;
   if (kind === 'B')
@@ -85,14 +83,14 @@ const stab = (c, v0, kind) => {
 };
 const stabBeat = (c, v0) => {
   const v = Math.min(121, v0 + 10);
-  const N = chordOf(CH[c].stab);
+  const N = chordText(CH[c].stab, nm);
   return `${N}/4:${v} ${N}/4:${v + 2} ${N}/4:${v + 4} ${N}/4:${v + 6}`;
 };
 
 // The pad: low triads (A), inversions above them (B), and open fifths for the breakdown (C).
-const pad = (set, c, v) => `${chordOf(CH[c][set])}/1:${v}`;
-const padHold = (set, c, v) => `${chordOf(CH[c][set])}/1:${v}~`; // tied over two bars
-const padRest = (set, c) => `${chordOf(CH[c][set])}/1`;
+const pad = (set, c, v) => `${chordText(CH[c][set], nm)}/1:${v}`;
+const padHold = (set, c, v) => `${chordText(CH[c][set], nm)}/1:${v}~`; // tied over two bars
+const padRest = (set, c) => `${chordText(CH[c][set], nm)}/1`;
 
 // The rolling sub bass: offbeat eighths, sixteenth rolls, rolls with an octave pop, and held roots.
 // Every root sits in the low sub octave (D-flat and E-flat too), so it hits deep under the kick.
@@ -156,186 +154,184 @@ const pRide = (v) => {
 };
 const pTom = (v) => `r/2 tl/8:${v + 6} tm/8:${v + 2} th/8:${v - 2} th/8:${v - 6}`;
 
-const R = 'R';
-const fill = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
 const keys = ['melody', 'stabs', 'pad', 'bass', 'drums', 'perc'];
-const { tracks, marks, section } = sectionBuilder(keys);
+const { tracks, section, block } = sectionBuilder(keys);
 
 // Intro: no kick. The pad swells in alone, then the counter-line enters over it with soft rims,
 // and a snare pickup leads into the kick.
 section('Intro: the pad, then the counter-line', 8, {
-  pad: fill(8, (i) => pad('padA', ch(i), 40 + 2 * i)),
-  melody: [...fill(4, () => R), ...fill(4, (i) => m2(ch(4 + i), 76))],
-  perc: [...fill(4, () => R), ...fill(4, (i) => pRim(54, i))],
-  drums: [...fill(7, () => R), 'r/2 r/4 s/8:70 s/8:84'],
+  pad: times(8, (i) => pad('padA', ch(i), 40 + 2 * i)),
+  melody: [...repeatBar(R, 4), ...times(4, (i) => m2(ch(4 + i), 76))],
+  perc: [...repeatBar(R, 4), ...times(4, (i) => pRim(54, i))],
+  drums: [...repeatBar(R, 7), 'r/2 r/4 s/8:70 s/8:84'],
 });
 
 // The groove: the kick and the rolling sub bass drop in together, under off-beat open hats.
 section('Groove: the kick and the sub bass drop in', 8, {
-  drums: fill(8, (i) => drumBar({ v: i < 4 ? 104 : 108, i, hats: 'off', claps: i >= 4, crash: i === 0 })),
-  bass: fill(8, (i) => b16(ch(8 + i), i < 4 ? 96 : 100, i)),
-  pad: fill(8, (i) => pad('padA', ch(8 + i), 56)),
-  melody: fill(8, (i) => m2(ch(8 + i), 82)),
-  perc: fill(8, (i) => pRim(60, i)),
+  drums: times(8, (i) => drumBar({ v: i < 4 ? 104 : 108, i, hats: 'off', claps: i >= 4, crash: i === 0 })),
+  bass: times(8, (i) => b16(ch(8 + i), i < 4 ? 96 : 100, i)),
+  pad: times(8, (i) => pad('padA', ch(8 + i), 56)),
+  melody: times(8, (i) => m2(ch(8 + i), 82)),
+  perc: times(8, (i) => pRim(60, i)),
 });
 
 // The stabs arrive, and the counter-line takes the cell.
 section('The stabs arrive', 8, {
-  drums: fill(8, (i) => drumBar({ v: 108, i, claps: true, open: i % 4 === 3, crash: i === 0 })),
-  bass: fill(8, (i) => b16(ch(16 + i), 104, i)),
-  stabs: fill(8, (i) => stab(ch(16 + i), 92, 'A')),
-  melody: fill(8, (i) => m1(ch(16 + i), 88)),
-  pad: fill(8, (i) => pad('padA', ch(16 + i), 54)),
-  perc: fill(8, (i) => pRim(68, i)),
+  drums: times(8, (i) => drumBar({ v: 108, i, claps: true, open: i % 4 === 3, crash: i === 0 })),
+  bass: times(8, (i) => b16(ch(16 + i), 104, i)),
+  stabs: times(8, (i) => stab(ch(16 + i), 92, 'A')),
+  melody: times(8, (i) => m1(ch(16 + i), 88)),
+  pad: times(8, (i) => pad('padA', ch(16 + i), 54)),
+  perc: times(8, (i) => pRim(68, i)),
 });
 
 // Sixteenth hats and a higher pad voicing open the counter-line up.
 section('The counter-line opens up', 8, {
-  drums: fill(8, (i) => drumBar({ v: 108, i, hats: '16', claps: true, open: i % 4 === 3, crash: i === 0 })),
-  bass: fill(8, (i) => b16(ch(24 + i), 106, i)),
-  stabs: fill(8, (i) => stab(ch(24 + i), 94, 'B')),
-  melody: [...fill(4, (i) => m1(ch(24 + i), 90)), ...fill(4, (i) => m2(ch(28 + i), 88))],
-  pad: fill(8, (i) => pad('padB', ch(24 + i), 56)),
-  perc: fill(8, (i) => pRim(70, i)),
+  drums: times(8, (i) => drumBar({ v: 108, i, hats: '16', claps: true, open: i % 4 === 3, crash: i === 0 })),
+  bass: times(8, (i) => b16(ch(24 + i), 106, i)),
+  stabs: times(8, (i) => stab(ch(24 + i), 94, 'B')),
+  melody: [...times(4, (i) => m1(ch(24 + i), 90)), ...times(4, (i) => m2(ch(28 + i), 88))],
+  pad: times(8, (i) => pad('padB', ch(24 + i), 56)),
+  perc: times(8, (i) => pRim(70, i)),
 });
 
 // The turn: space first, then lift, ending on a snare crescendo into the breakdown.
 section('Turn: space, then lift', 8, {
   drums: [
-    ...fill(4, (i) => drumBar({ v: 104, i, claps: true })),
-    ...fill(3, (i) => drumBar({ v: 110, i: i + 4, hats: '16', claps: true, open: true, crash: i === 0 })),
+    ...times(4, (i) => drumBar({ v: 104, i, claps: true })),
+    ...times(3, (i) => drumBar({ v: 110, i: i + 4, hats: '16', claps: true, open: true, crash: i === 0 })),
     roll8(104),
   ],
-  bass: [...fill(4, (i) => b16(ch(32 + i), 102, i)), ...fill(3, (i) => bpop(ch(36 + i), 108, i)), bhold(ch(39), 96)],
-  stabs: [...fill(4, (i) => stab(ch(32 + i), 90, 'A')), ...fill(4, (i) => stab(ch(36 + i), 96, 'B'))],
-  melody: [...fill(4, (i) => m2(ch(32 + i), 84)), ...fill(4, (i) => m3(ch(36 + i), 92))],
-  pad: fill(8, (i) => pad('padB', ch(32 + i), 56)),
-  perc: [...fill(7, (i) => pRim(70, i)), pTom(84)],
+  bass: [...times(4, (i) => b16(ch(32 + i), 102, i)), ...times(3, (i) => bpop(ch(36 + i), 108, i)), bhold(ch(39), 96)],
+  stabs: [...times(4, (i) => stab(ch(32 + i), 90, 'A')), ...times(4, (i) => stab(ch(36 + i), 96, 'B'))],
+  melody: [...times(4, (i) => m2(ch(32 + i), 84)), ...times(4, (i) => m3(ch(36 + i), 92))],
+  pad: times(8, (i) => pad('padB', ch(32 + i), 56)),
+  perc: [...times(7, (i) => pRim(70, i)), pTom(84)],
 });
 
 // Breakdown: the kick drops. The pad and the stabs carry, and the hook surfaces.
 section('Breakdown: the pad and chords carry', 8, {
-  drums: [...fill(7, () => R), 'r/2 r/4 s/8:80 s/8:92'],
-  pad: fill(8, (i) =>
+  drums: [...repeatBar(R, 7), 'r/2 r/4 s/8:80 s/8:92'],
+  pad: times(8, (i) =>
     i % 2 === 0 ? padHold('padC', ch(40 + i), 64) : padRest('padC', ch(40 + i)),
   ),
-  stabs: fill(8, (i) => stab(ch(40 + i), 76, 'C')),
-  melody: fill(8, (i) => (i % 2 === 0 ? HOOK : HOOK2)[ch(40 + i)](92)),
-  bass: [...fill(4, () => R), ...fill(4, (i) => bhold(ch(44 + i), 52))],
-  perc: [...fill(4, () => R), ...fill(4, (i) => pRim(56, i))],
+  stabs: times(8, (i) => stab(ch(40 + i), 76, 'C')),
+  melody: times(8, (i) => (i % 2 === 0 ? HOOK : HOOK2)[ch(40 + i)](92)),
+  bass: [...repeatBar(R, 4), ...times(4, (i) => bhold(ch(44 + i), 52))],
+  perc: [...repeatBar(R, 4), ...times(4, (i) => pRim(56, i))],
 });
 
 // The groove returns under the chords and grows back into the build.
 section('The groove returns', 8, {
   drums: [
-    ...fill(4, (i) => drumBar({ v: 96, i })),
-    ...fill(3, (i) => drumBar({ v: 106, i: i + 4, claps: true })),
+    ...times(4, (i) => drumBar({ v: 96, i })),
+    ...times(3, (i) => drumBar({ v: 106, i: i + 4, claps: true })),
     roll16(96),
   ],
-  bass: [...fill(4, (i) => b8(ch(48 + i), 88)), ...fill(4, (i) => b16(ch(52 + i), 98, i))],
-  stabs: fill(8, (i) => stab(ch(48 + i), 84, 'A')),
-  melody: [...fill(4, (i) => m2(ch(48 + i), 84)), ...fill(4, (i) => m1(ch(52 + i), 92))],
-  pad: fill(8, (i) => pad('padA', ch(48 + i), 56)),
-  perc: [...fill(2, () => R), ...fill(6, (i) => pRim(62, i))],
+  bass: [...times(4, (i) => b8(ch(48 + i), 88)), ...times(4, (i) => b16(ch(52 + i), 98, i))],
+  stabs: times(8, (i) => stab(ch(48 + i), 84, 'A')),
+  melody: [...times(4, (i) => m2(ch(48 + i), 84)), ...times(4, (i) => m1(ch(52 + i), 92))],
+  pad: times(8, (i) => pad('padA', ch(48 + i), 56)),
+  perc: [...repeatBar(R, 2), ...times(6, (i) => pRim(62, i))],
 });
 
 // Build: the kick pushes, the stabs hit the beats, and the snares roll.
 section('Build: the kick pushes', 8, {
   drums: [
-    ...fill(4, (i) => drumBar({ v: 110, i, claps: true, crash: i === 0 })),
-    ...fill(2, (i) => drumBar({ v: 112, i: i + 4, hats: '16', claps: true })),
+    ...times(4, (i) => drumBar({ v: 110, i, claps: true, crash: i === 0 })),
+    ...times(2, (i) => drumBar({ v: 112, i: i + 4, hats: '16', claps: true })),
     drumBar({ v: 112, i: 6, hats: '16', claps: true, open: true }),
     roll16(112),
   ],
-  bass: [...fill(6, (i) => b16(ch(56 + i), 106, i)), ...fill(2, (i) => bpop(ch(62 + i), 112, i))],
+  bass: [...times(6, (i) => b16(ch(56 + i), 106, i)), ...times(2, (i) => bpop(ch(62 + i), 112, i))],
   stabs: [
-    ...fill(4, (i) => stab(ch(56 + i), 96, 'B')),
-    ...fill(2, (i) => stab(ch(60 + i), 98, 'A')),
-    ...fill(2, (i) => stabBeat(ch(62 + i), 100)),
+    ...times(4, (i) => stab(ch(56 + i), 96, 'B')),
+    ...times(2, (i) => stab(ch(60 + i), 98, 'A')),
+    ...times(2, (i) => stabBeat(ch(62 + i), 100)),
   ],
-  melody: [...fill(4, (i) => m1(ch(56 + i), 94)), ...fill(4, (i) => m3(ch(60 + i), 98))],
-  pad: fill(8, (i) => pad('padB', ch(56 + i), 60)),
-  perc: [...fill(7, (i) => pRim(72, i)), pTom(88)],
+  melody: [...times(4, (i) => m1(ch(56 + i), 94)), ...times(4, (i) => m3(ch(60 + i), 98))],
+  pad: times(8, (i) => pad('padB', ch(56 + i), 60)),
+  perc: [...times(7, (i) => pRim(72, i)), pTom(88)],
 });
 
 // Drop: everything, the counter-line on top.
 section('Drop: everything', 16, {
-  drums: fill(16, (i) =>
+  drums: times(16, (i) =>
     drumBar({ v: 112, i, hats: i < 8 ? '8' : '16', claps: true, open: i % 4 === 3, crash: i % 8 === 0 }),
   ),
-  bass: [...fill(8, (i) => bpop(ch(64 + i), 112, i)), ...fill(8, (i) => b16(ch(72 + i), 110, i))],
-  stabs: [...fill(8, (i) => stab(ch(64 + i), 100, 'A')), ...fill(8, (i) => stab(ch(72 + i), 102, 'B'))],
-  melody: [...fill(8, (i) => m1(ch(64 + i), 96)), ...fill(8, (i) => m3(ch(72 + i), 98))],
-  pad: fill(16, (i) => pad('padB', ch(64 + i), 58)),
-  perc: fill(16, (i) => pRim(78, i)),
+  bass: [...times(8, (i) => bpop(ch(64 + i), 112, i)), ...times(8, (i) => b16(ch(72 + i), 110, i))],
+  stabs: [...times(8, (i) => stab(ch(64 + i), 100, 'A')), ...times(8, (i) => stab(ch(72 + i), 102, 'B'))],
+  melody: [...times(8, (i) => m1(ch(64 + i), 96)), ...times(8, (i) => m3(ch(72 + i), 98))],
+  pad: times(16, (i) => pad('padB', ch(64 + i), 58)),
+  perc: times(16, (i) => pRim(78, i)),
 });
 
 // Second half of the drop: sixteenth hats, ride ticks, and the counter-line rising.
 section('Drop: sixteenth hats', 16, {
-  drums: fill(16, (i) =>
+  drums: times(16, (i) =>
     drumBar({ v: 112 + (i >= 8 ? 2 : 0), i, hats: '16', claps: true, open: i % 4 === 3, crash: i % 8 === 0 }),
   ),
-  bass: fill(16, (i) => bpop(ch(80 + i), 114, i)),
-  stabs: [...fill(8, (i) => stab(ch(80 + i), 102, 'B')), ...fill(8, (i) => stab(ch(88 + i), 104, 'A'))],
-  melody: fill(16, (i) => {
+  bass: times(16, (i) => bpop(ch(80 + i), 114, i)),
+  stabs: [...times(8, (i) => stab(ch(80 + i), 102, 'B')), ...times(8, (i) => stab(ch(88 + i), 104, 'A'))],
+  melody: times(16, (i) => {
     const c = ch(80 + i);
     if (i % 8 === 4) return m2(c, 96);
     return i < 8 ? m1(c, 100) : m3(c, 100);
   }),
-  pad: fill(16, (i) => pad('padB', ch(80 + i), 58)),
-  perc: [...fill(8, (i) => pRim(80, i)), ...fill(8, () => pRide(74))],
+  pad: times(16, (i) => pad('padB', ch(80 + i), 58)),
+  perc: [...times(8, (i) => pRim(80, i)), ...times(8, () => pRide(74))],
 });
 
 // Stripped: kick, bass, and pad, with the counter-line breathing.
 section('Stripped: kick, bass, and pad', 8, {
-  drums: [...fill(4, (i) => drumBar({ v: 100, i })), ...fill(4, (i) => drumBar({ v: 106, i: i + 4, claps: true }))],
-  bass: [...fill(4, (i) => b8(ch(96 + i), 92)), ...fill(4, (i) => b16(ch(100 + i), 100, i))],
-  stabs: [...fill(4, () => R), ...fill(4, (i) => stab(ch(100 + i), 82, 'C'))],
-  melody: fill(8, (i) => m2(ch(96 + i), 84)),
-  pad: fill(8, (i) => pad('padA', ch(96 + i), 54)),
-  perc: [...fill(4, () => R), ...fill(4, (i) => pRim(66, i))],
+  drums: [...times(4, (i) => drumBar({ v: 100, i })), ...times(4, (i) => drumBar({ v: 106, i: i + 4, claps: true }))],
+  bass: [...times(4, (i) => b8(ch(96 + i), 92)), ...times(4, (i) => b16(ch(100 + i), 100, i))],
+  stabs: [...repeatBar(R, 4), ...times(4, (i) => stab(ch(100 + i), 82, 'C'))],
+  melody: times(8, (i) => m2(ch(96 + i), 84)),
+  pad: times(8, (i) => pad('padA', ch(96 + i), 54)),
+  perc: [...repeatBar(R, 4), ...times(4, (i) => pRim(66, i))],
 });
 
 // Build: second wind.
 section('Build: second wind', 8, {
   drums: [
-    ...fill(4, (i) => drumBar({ v: 110, i, claps: true, crash: i === 0 })),
-    ...fill(2, (i) => drumBar({ v: 112, i: i + 4, hats: '16', claps: true })),
+    ...times(4, (i) => drumBar({ v: 110, i, claps: true, crash: i === 0 })),
+    ...times(2, (i) => drumBar({ v: 112, i: i + 4, hats: '16', claps: true })),
     drumBar({ v: 112, i: 6, hats: '16', claps: true, open: true }),
     roll16(116),
   ],
-  bass: [...fill(6, (i) => b16(ch(104 + i), 108, i)), ...fill(2, (i) => bpop(ch(110 + i), 114, i))],
-  stabs: [...fill(4, (i) => stab(ch(104 + i), 98, 'A')), ...fill(4, (i) => stab(ch(108 + i), 100, 'B'))],
-  melody: [...fill(4, (i) => m1(ch(104 + i), 96)), ...fill(4, (i) => m3(ch(108 + i), 100))],
-  pad: fill(8, (i) => pad('padB', ch(104 + i), 60)),
-  perc: [...fill(7, (i) => pRim(74, i)), pTom(92)],
+  bass: [...times(6, (i) => b16(ch(104 + i), 108, i)), ...times(2, (i) => bpop(ch(110 + i), 114, i))],
+  stabs: [...times(4, (i) => stab(ch(104 + i), 98, 'A')), ...times(4, (i) => stab(ch(108 + i), 100, 'B'))],
+  melody: [...times(4, (i) => m1(ch(104 + i), 96)), ...times(4, (i) => m3(ch(108 + i), 100))],
+  pad: times(8, (i) => pad('padB', ch(104 + i), 60)),
+  perc: [...times(7, (i) => pRim(74, i)), pTom(92)],
 });
 
 // Final drop: the hook over everything.
 section('Final drop: the hook over everything', 16, {
-  drums: fill(16, (i) =>
+  drums: times(16, (i) =>
     drumBar({ v: 116, i, hats: i < 8 ? '8' : '16', claps: true, open: i % 4 === 3, crash: i % 8 === 0 }),
   ),
-  bass: fill(16, (i) => bpop(ch(112 + i), 116, i)),
-  stabs: [...fill(8, (i) => stab(ch(112 + i), 104, 'B')), ...fill(8, (i) => stab(ch(120 + i), 106, 'A'))],
-  melody: [...fill(8, (i) => m1(ch(112 + i), 102)), ...fill(8, (i) => (i % 2 === 0 ? HOOK : HOOK2)[ch(120 + i)](106))],
-  pad: fill(16, (i) => pad('padB', ch(112 + i), 62)),
-  perc: fill(16, (i) => pRim(82, i)),
+  bass: times(16, (i) => bpop(ch(112 + i), 116, i)),
+  stabs: [...times(8, (i) => stab(ch(112 + i), 104, 'B')), ...times(8, (i) => stab(ch(120 + i), 106, 'A'))],
+  melody: [...times(8, (i) => m1(ch(112 + i), 102)), ...times(8, (i) => (i % 2 === 0 ? HOOK : HOOK2)[ch(120 + i)](106))],
+  pad: times(16, (i) => pad('padB', ch(112 + i), 62)),
+  perc: times(16, (i) => pRim(82, i)),
 });
 
 // Outro: the layers leave one by one and the song cadences on F minor.
 section('Outro', 8, {
   drums: [
-    ...fill(4, (i) => drumBar({ v: 106, i, claps: true, crash: i === 0 })),
-    ...fill(2, (i) => drumBar({ v: 100, i: i + 4 })),
+    ...times(4, (i) => drumBar({ v: 106, i, claps: true, crash: i === 0 })),
+    ...times(2, (i) => drumBar({ v: 100, i: i + 4 })),
     kickOnly(96, 6),
     '[k cr]/4:112 r/2.',
   ],
-  bass: [...fill(4, (i) => b16(ch(128 + i), 100, i)), ...fill(2, (i) => b8(ch(132 + i), 90)), bhold(ch(134), 84), bhold(ch(135), 80)],
-  stabs: [...fill(2, (i) => stab(ch(128 + i), 92, 'A')), ...fill(2, (i) => stab(ch(130 + i), 84, 'C')), ...fill(4, () => R)],
-  melody: [...fill(4, (i) => m2(ch(128 + i), 86)), R, R, 'C5/1:76~', 'C5/1'],
-  pad: fill(8, (i) => pad('padA', ch(128 + i), 54)),
-  perc: [...fill(4, (i) => pRim(66, i)), ...fill(4, () => R)],
+  bass: [...times(4, (i) => b16(ch(128 + i), 100, i)), ...times(2, (i) => b8(ch(132 + i), 90)), bhold(ch(134), 84), bhold(ch(135), 80)],
+  stabs: [...times(2, (i) => stab(ch(128 + i), 92, 'A')), ...times(2, (i) => stab(ch(130 + i), 84, 'C')), ...repeatBar(R, 4)],
+  melody: [...times(4, (i) => m2(ch(128 + i), 86)), R, R, 'C5/1:76~', 'C5/1'],
+  pad: times(8, (i) => pad('padA', ch(128 + i), 54)),
+  perc: [...times(4, (i) => pRim(66, i)), ...repeatBar(R, 4)],
 });
 
 // Every bar must be exactly one 4/4 bar (3840 ticks). Durations are written out in full above; the
@@ -348,8 +344,6 @@ for (const key of keys) {
 }
 
 const total = tracks.melody.length;
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `# Riverfront, by MiMo v2.6 Pro and SZ. An original for the Techno style: warm chord stabs, a dark
 # evolving pad, a hypnotic counter-line, and a rolling sub bass under a four-on-the-floor kit at 124
 # BPM in F minor. Built section by section over 136 bars: an intro with no kick (the pad, then the
@@ -386,5 +380,5 @@ ${block('drums')}
 track perc role=drums vol=1 pan=0.25
 ${block('perc')}
 `;
-writeFileSync(join(out, 'riverfront.song'), text);
+saveSong(out, 'riverfront.song', text);
 console.log(`wrote ${out}/riverfront.song (${total} bars)`);

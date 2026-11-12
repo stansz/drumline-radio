@@ -42,11 +42,13 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   keeps the change; `tests/drift.test.ts`
   fails when a generated song in `src/songs/` doesn't match its generator. Browser checks run Edge
   muted.
-- Song generators in `tools/arranger/` import their plumbing from `tools/arranger/lib.mjs`
-  (the bar writer, bar-length check, duration text and splitting, note naming, offset text,
-  velocity clamp and section builder) instead of copying it. Only plumbing goes in `lib.mjs`:
-  melodies, chords, voicings, grooves and velocities stay in each song's own script, so songs
-  don't start to sound alike.
+- Song generators in `tools/arranger/` take all their
+  plumbing from `tools/arranger/lib.mjs` (see `tools/README.md`) and never define their own
+  copy. A new generator starts from `lib.mjs`, not from another song's script. When a helper
+  that turns music into song text is needed by a second generator, it moves into `lib.mjs` in
+  the same change. Only plumbing goes in `lib.mjs`: melodies, chords, voicings, grooves,
+  drum and stab patterns, velocities, velocity caps and note spelling stay in each song's own
+  script, so songs don't start to sound alike.
 - Start your own dev or preview server on a free port, note its process ID, and stop it as soon as
   your check is done, including its child processes (on Windows, `taskkill /F /T /PID <pid>`).
   Never leave one running when you finish. Don't reuse or stop a server you didn't start; if you

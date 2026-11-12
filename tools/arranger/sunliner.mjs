@@ -10,16 +10,15 @@
 // root and fifth, the choirs and stabs spell the triads in the middle, the arp climbs the chord, and
 // the bass bounces its root in octaves.
 //   node tools/arranger/sunliner.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { clampVelocity, noteName, offsetText, SHARPS, writeBlock } from './lib.mjs';
+import {
+  chordText, clampVelocity, formHeader, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  sectionBuilder, SHARPS,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // ---------------------------------------------------------------- pitches and the chord table
 const nm = (n) => noteName(n, SHARPS);
-const off = offsetText;
 const vel = (v) => clampVelocity(v, 126);
 
 // One row per chord: the bass root (octave 1) and the voicings every part plays over it. The choirs
@@ -60,15 +59,13 @@ const FORM = [
   { name: 'Outro: the tag, the saw answer, one last E', bars: 'E B C#m A E B A E' },
 ];
 
-const CHORDS = FORM.flatMap((section) => section.bars.split(' '));
+const { chords: CHORDS, starts, chordRange, chordLines, formLines } = formHeader(FORM);
 const TOTAL = CHORDS.length; // 120 bars = 4:04 at 118 BPM
 const chordAt = (bar) => CH[CHORDS[bar - 1]];
-const chordRange = (from, count) => CHORDS.slice(from - 1, from - 1 + count);
-const starts = FORM.map((_, index) => 1 + FORM.slice(0, index).reduce((sum, s) => sum + s.bars.split(' ').length, 0));
 
 // ---------------------------------------------------------------- note and bar helpers
-const n = (pitch, dur, v = 100, at = 0, dv = 0) => `${nm(pitch)}/${dur}${off(at)}:${vel(v + dv)}`;
-const chd = (pitches, dur, v, at = 0) => `[${pitches.map(nm).join(' ')}]/${dur}${off(at)}:${vel(v)}`;
+const n = (pitch, dur, v = 100, at = 0, dv = 0) => `${nm(pitch)}/${dur}${offsetText(at)}:${vel(v + dv)}`;
+const chd = (pitches, dur, v, at = 0) => `${chordText(pitches, nm)}/${dur}${offsetText(at)}:${vel(v)}`;
 
 // A melody bar from [pitch, duration, offset, velocity delta] entries. Pitches are MIDI numbers so
 // the last chorus can be the same line transposed by a whole step.
@@ -268,21 +265,12 @@ const drums = {
 };
 
 // ---------------------------------------------------------------- the arrangement
-const tracks = { vox: [], saw: [], aah: [], ooh: [], pad: [], stabs: [], arp: [], bass: [], drums: [] };
-const marks = [];
-const push = (name, { bars, ...parts }) => {
-  marks.push([tracks.vox.length, name]);
-  for (const key of Object.keys(tracks)) {
-    const list = parts[key] ?? [];
-    for (let i = 0; i < bars; i++) tracks[key].push(list[i] ?? 'R');
-  }
-};
-const rest = (count) => Array.from({ length: count }, () => 'R');
+const keys = ['vox', 'saw', 'aah', 'ooh', 'pad', 'stabs', 'arp', 'bass', 'drums'];
+const { tracks, section, block } = sectionBuilder(keys);
 
 // --- 1-8: intro. Drums and bass, then the arp; the pad swells in at bar 5 and the saw picks up
 // into the verse.
-push('Intro: drums and bass, then the arp', {
-  bars: 8,
+section('Intro: drums and bass, then the arp', 8, {
   drums: [drums.introA(96), drums.introA(100), drums.introB(104), drums.introB(108),
     drums.introB(110), drums.introB(112), drums.introB(113), drums.chorus(114)],
   bass: chordRange(1, 8).map((c, i) => bassBar(c, { v: 100 + i * 2, fill: i === 7 })),
@@ -296,8 +284,7 @@ push('Intro: drums and bass, then the arp', {
 
 // --- 9-24: verse 1. The verse phrase, the ooh choir swelling under it, stabs on the second and
 // fourth off-beats, the arp in eighths, and the saw in the two two-bar gaps.
-push('Verse 1: the ooh choir swells under the phrase', {
-  bars: 16,
+section('Verse 1: the ooh choir swells under the phrase', 16, {
   vox: [...verseBars(94), ...verseBars(96)],
   saw: [null, null, null, null, ...answered('verseA', 88), null, null,
     null, null, null, null, ...answered('verseB', 90), null, null],
@@ -314,8 +301,7 @@ push('Verse 1: the ooh choir swells under the phrase', {
 
 // --- 25-32: pre-chorus. The pad swells in, the arp turns to sixteenths, the stabs hit every
 // off-beat, and a roll builds under the last two bars.
-push('Pre-chorus 1: Em-F#m-G-A climbing, the pad swells in', {
-  bars: 8,
+section('Pre-chorus 1: Em-F#m-G-A climbing, the pad swells in', 8, {
   vox: PRE.map((bar, i) => line(bar, 98 + (i >= 4 ? 2 : 0))),
   aah: chordRange(25, 8).map((c, i) => choirBar('aah', c, 62 + i * 2)),
   ooh: chordRange(25, 8).map((c, i) => choirBar('ooh', c, 60 + i * 2)),
@@ -334,8 +320,7 @@ const chorusSaw = (v, up = 0, pair = 'A') => {
   const [first, second] = pair === 'A' ? ['chorusA', 'chorusB'] : ['chorusC', 'chorusD'];
   return [null, null, null, ...answered(first, v, up), null, null, null, ...answered(second, v + 2, up)];
 };
-push('Chorus 1: the vox hook, the aah choir, the saw answering', {
-  bars: 16,
+section('Chorus 1: the vox hook, the aah choir, the saw answering', 16, {
   vox: [...chorusVox(100), ...chorusVox(102)],
   saw: [...chorusSaw(90, 0, 'A'), ...chorusSaw(92, 0, 'B')],
   aah: chordRange(33, 16).map((c, i) => choirBar('aah', c, 78 + Math.min(10, i))),
@@ -349,8 +334,7 @@ push('Chorus 1: the vox hook, the aah choir, the saw answering', {
 });
 
 // --- 49-56: verse 2. The same verse with the arp in sixteenths and a little more lift.
-push('Verse 2: the arp turns to sixteenths, the hook comes back', {
-  bars: 8,
+section('Verse 2: the arp turns to sixteenths, the hook comes back', 8, {
   vox: verseBars(96),
   saw: [null, null, null, null, ...answered('verseA', 90), null, null],
   ooh: chordRange(49, 8).map((c, i) => choirBar('ooh', c, 74 + i)),
@@ -363,8 +347,7 @@ push('Verse 2: the arp turns to sixteenths, the hook comes back', {
 });
 
 // --- 57-64: pre-chorus 2, the same climb with the choirs already open.
-push('Pre-chorus 2: the same climb, louder', {
-  bars: 8,
+section('Pre-chorus 2: the same climb, louder', 8, {
   vox: PRE.map((bar) => line(bar, 100)),
   aah: chordRange(57, 8).map((c, i) => choirBar('aah', c, 72 + i * 2)),
   ooh: chordRange(57, 8).map((c, i) => choirBar('ooh', c, 66 + i * 2)),
@@ -378,8 +361,7 @@ push('Pre-chorus 2: the same climb, louder', {
 
 // --- 65-80: chorus 2, the hook with the ooh choir under the aah and the saw's second pair of
 // answers.
-push('Chorus 2: the hook again, the ooh choir under it', {
-  bars: 16,
+section('Chorus 2: the hook again, the ooh choir under it', 16, {
   vox: [...chorusVox(102), ...chorusVox(104)],
   saw: [...chorusSaw(92, 0, 'B'), ...chorusSaw(94, 0, 'A')],
   aah: chordRange(65, 16).map((c, i) => choirBar('aah', c, 82 + Math.min(8, i))),
@@ -394,8 +376,7 @@ push('Chorus 2: the hook again, the ooh choir under it', {
 
 // --- 81-88: breakdown. The kick and bass drop; the pad holds two-bar chords, both choirs swell
 // under the half-time hook, and rolls on the last two bars hand over to the build.
-push('Breakdown: the kick drops, choirs and pad under the slow hook', {
-  bars: 8,
+section('Breakdown: the kick drops, choirs and pad under the slow hook', 8, {
   vox: BREAK.map((bar) => (bar ? line(bar, 88) : 'R')),
   saw: [null, null, null, null, null, null, null, ...answered('breakdown', 90)],
   aah: chordRange(81, 8).map((c, i) => choirBar('aah', c, 84 + i)),
@@ -404,17 +385,16 @@ push('Breakdown: the kick drops, choirs and pad under the slow hook', {
   stabs: chordRange(81, 8).map((c, i) => (i % 2 === 0 ? chd(CH[c].stab, '1', 74 + i) : 'R')),
   // the arp comes back in the breakdown's second half, eighths turning to sixteenths as the roll
   // climbs, so the build has something to land on
-  arp: [...rest(4), arpBar(CHORDS[84], 72, [0, 1, 2, 1], '8'), arpBar(CHORDS[85], 76, [0, 1, 2, 1], '8'),
+  arp: [...repeatBar(R, 4), arpBar(CHORDS[84], 72, [0, 1, 2, 1], '8'), arpBar(CHORDS[85], 76, [0, 1, 2, 1], '8'),
     arpBar(CHORDS[86], 80, [0, 1, 2, 3]), arpBar(CHORDS[87], 84, [0, 1, 2, 3])],
-  bass: rest(8),
+  bass: repeatBar(R, 8),
   drums: [drums.crash(96), drums.breakdown(78), drums.breakdown(80), drums.breakdown(82),
     drums.breakdown(84), drums.breakdown(86), drums.roll(76, 30), drums.roll(86, 34)],
 });
 
 // --- 89-96: build. The kick and bass return, the arp in sixteenths, the harmony climbs to B, and
 // the last bar is a tom fill into the new key.
-push('Build: the kick returns and the harmony climbs to B, the dominant of E', {
-  bars: 8,
+section('Build: the kick returns and the harmony climbs to B, the dominant of E', 8, {
   vox: BUILD.map((bar, i) => line(bar, 96 + (i >= 4 ? 4 : 0))),
   saw: [null, null, null, null, null, null, ...answered('buildA', 92), ...answered('buildB', 94)],
   aah: chordRange(89, 8).map((c, i) => choirBar('aah', c, 74 + i * 3)),
@@ -429,8 +409,7 @@ push('Build: the kick returns and the harmony climbs to B, the dominant of E', {
 
 // --- 97-112: last chorus, the hook up a whole step in E major, the choirs open, the bass driving,
 // the saw answering above it all.
-push('Last chorus: the whole hook up a whole step in E major', {
-  bars: 16,
+section('Last chorus: the whole hook up a whole step in E major', 16, {
   vox: [...chorusVox(106, 2), ...chorusVox(108, 2)],
   saw: [...chorusSaw(94, 2, 'A'), ...chorusSaw(96, 2, 'B')],
   aah: chordRange(97, 16).map((c, i) => choirBar('aah', c, 86 + Math.min(8, i))),
@@ -444,8 +423,7 @@ push('Last chorus: the whole hook up a whole step in E major', {
 });
 
 // --- 113-120: outro. The hook's tag, the saw's last answer, the choirs holding E, one final hit.
-push('Outro: the tag, the saw answer, one last E', {
-  bars: 8,
+section('Outro: the tag, the saw answer, one last E', 8, {
   vox: OUTRO.map((bar) => (bar ? line(bar, 100) : 'R')),
   saw: [null, null, null, null, ...answered('outroA', 94), ...answered('outroB', 94), null, null],
   aah: chordRange(113, 8).map((c, i) => choirBar('aah', c, 84 - i * 2)),
@@ -475,13 +453,6 @@ const HEADER_NOTE = `# Sunliner, by Arena Agent and SZ. An original italo-disco 
 # is I-iii-vi-IV | I-V-IV-V (the iii under the hook's held E and C# keeps it off the I-V-vi-IV), the
 # build ends on B, the dominant of E, and the last chorus and outro are in E. Every pitched part
 # follows it bar by bar.`;
-
-const chordLines = FORM.map((section, index) =>
-  `${index === 0 ? '# chords:' : `# chords @${starts[index]}:`} ${section.bars}`);
-const formLines = FORM.map((section, index) => {
-  const end = starts[index] + section.bars.split(' ').length - 1;
-  return `# ${starts[index]}-${end}: ${section.name}`;
-});
 
 const FEEL = `# Human feel: the hook's phrase starts lean in twelve ticks, its inner pushes come a touch early,
 # and its long notes settle late; the stabs land twelve to twenty-two ticks late and uneven; the open
@@ -514,8 +485,6 @@ const TRACKS = [
   ['drums', 'track drums role=drums vol=0.85 vol.altrock=0.38 vol.orchestral=0.54 pan=0'],
 ];
 
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `${HEADER_NOTE}
 #
 ${chordLines.join('\n')}
@@ -529,5 +498,5 @@ ${HEADER.join('\n')}
 ${TRACKS.map(([key, head]) => `${head}\n${block(key)}`).join('\n\n')}
 `;
 
-writeFileSync(join(out, 'sunliner.song'), text);
+saveSong(out, 'sunliner.song', text);
 console.log(`wrote ${out}/sunliner.song (${TOTAL} bars)`);

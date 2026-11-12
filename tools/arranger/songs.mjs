@@ -3,12 +3,10 @@
 //   node tools/arranger/songs.mjs [outDir] [song-id ...]
 // Für Elise, Greensleeves, Mountain King, Swan Lake, and the originals have their own scripts;
 // Valkyries is hand-written.
-import { mkdirSync } from 'node:fs';
 import { arrange, head } from './arranger.mjs';
 import { ABOUT } from './about.mjs';
 
 const [out = 'src/songs', ...only] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
 let written = 0;
 const A = (spec) => {
   const id = spec.file.replace(/\.song$/, '');

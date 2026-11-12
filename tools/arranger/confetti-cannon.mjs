@@ -5,15 +5,13 @@
 // off-beats, off-beat stabs, a dark pad, and a chopped wordless vocal (inst=vox-lead) that answers
 // in the riff's hole. This script lays the parts out over 152 bars.
 //   node tools/arranger/confetti-cannon.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { clampVelocity, noteName, SHARPS, writeBlock } from './lib.mjs';
+import {
+  chordText, clampVelocity, noteName, outDir, saveSong, SHARPS, writeBlock,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 const nm = (n) => noteName(n, SHARPS);
-const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // A fixed pseudo-random stream per track, so the "human" velocities and offsets are uneven but the
 // script always writes the same file.
@@ -173,7 +171,7 @@ const stabBars = () => {
     if (!plan) return Array(8).fill('R');
     const [kind, v] = plan;
     return prog.map((c, i) => {
-      const s = chordOf(CH[c].stab);
+      const s = chordText(CH[c].stab, nm);
       const hit = (d, a = 0) => `${s}${d}'+${r(12, 22)}:${clampVelocity(v + a + r(-7, 6))}`;
       if (kind === 'soft') return `r/8 ${hit('/8')} r/2 r/8 ${hit('/8', -6)}`;
       if (kind === 'busy' || i % 2 === 1) {
@@ -198,7 +196,7 @@ const padBars = () =>
     return prog.map((c, i) => {
       const held = i % 2 === 0 && prog[i + 1] === c;
       const tied = i % 2 === 1 && prog[i - 1] === c;
-      return `${tied ? '' : `v=${v} `}${chordOf(CH[c].pad)}/1${held ? '~' : ''}`;
+      return `${tied ? '' : `v=${v} `}${chordText(CH[c].pad, nm)}/1${held ? '~' : ''}`;
     });
   });
 
@@ -399,5 +397,5 @@ ${block(drumBars())}
 track claps role=drums inst=electro-kit vol=1 pan=0.12
 ${block(clapBars())}
 `;
-writeFileSync(join(out, 'confetti-cannon.song'), text);
+saveSong(out, 'confetti-cannon.song', text);
 console.log(`wrote ${out}/confetti-cannon.song (${total} bars)`);

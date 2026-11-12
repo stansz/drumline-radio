@@ -1,10 +1,16 @@
-// Plumbing shared by the song generators: writing a track's bars as song-file text, and measuring
-// a bar's length in ticks. This module must never hold musical choices - pitches, chords,
-// voicings, rhythms, grooves, patterns, velocities, swing amounts. Those stay in each song's own
-// script, so a new song starts from a blank musical slate and songs never start to sound alike
-// through this file.
+// Plumbing shared by the song generators: writing a track's bars as song-file text, measuring a
+// bar's length in ticks, naming and transposing notes, reading chord symbols, and moving bars
+// around. This module must never hold musical choices - pitches, chord progressions, voicings,
+// rhythms, grooves, patterns, velocities, swing amounts. Those stay in each song's own script, so a
+// new song starts from a blank musical slate and songs never start to sound alike through this file.
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
-const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
+// A rest bar.
+export const R = 'R';
+
+// The length of each note value in ticks, 4/4 at 3840 ticks a bar.
+export const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
 
 // Returns the bars as song-file lines. `first`, when given, is written on its own line ahead of
 // them (a pickup bar). `marks` is an array of [barIndex, text] pairs or a Map of the same; each
@@ -91,6 +97,96 @@ export function noteName(midi, names = SHARPS) {
   return `${names[((midi % 12) + 12) % 12]}${Math.floor(midi / 12) - 1}`;
 }
 
+// The MIDI number of a note name like C4, C#4, Db4 or C-1.
+export function noteMidi(name) {
+  const m = /^([A-G])(#|b)?(-?\d)$/.exec(name);
+  if (!m) throw new Error(`bad note ${name}`);
+  const letter = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 }[m[1]];
+  const accidental = m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0;
+  return (Number(m[3]) + 1) * 12 + letter + accidental;
+}
+
+// A pitch class by name, sharps and flats as alternate spellings.
+export const PITCH_CLASS = { C: 0, 'C#': 1, Db: 1, D: 2, 'D#': 3, Eb: 3, E: 4, F: 5,
+  'F#': 6, Gb: 6, G: 7, 'G#': 8, Ab: 8, A: 9, 'A#': 10, Bb: 10, B: 11 };
+
+// The intervals above the root that each chord quality adds, in semitones.
+export const CHORD_QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10],
+  m7: [0, 3, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
+
+// A chord symbol as { pc (root pitch class), iv (intervals), bass (slash bass pitch class) }.
+export function parseChord(symbol, shift = 0) {
+  const m = /^([A-G](?:#|b)?)(maj7|m7|m|7|dim)?(?:\/([A-G](?:#|b)?))?$/.exec(symbol);
+  if (!m) throw new Error(`bad chord ${symbol}`);
+  const mod12 = (x) => ((x % 12) + 12) % 12;
+  const pc = mod12(PITCH_CLASS[m[1]] + shift);
+  const iv = CHORD_QUALITY[m[2] ?? ''];
+  const bass = m[3] ? mod12(PITCH_CLASS[m[3]] + shift) : pc;
+  return { pc, iv, bass };
+}
+
+// Pitches as a bracket chord text, spelled by `name`.
+export function chordText(pitches, name = noteName) {
+  return `[${pitches.map(name).join(' ')}]`;
+}
+
+// A bar's note text moved by `by` semitones, spelled by `name`.
+export function transpose(text, by, name = noteName) {
+  if (by === 0) return text;
+  return text.replace(/\b[A-G](?:#|b)?\d\b/g, (match) => name(noteMidi(match) + by));
+}
+
+// `fn` called with each index from 0 to n - 1.
+export function times(n, fn) {
+  return Array.from({ length: n }, (_, i) => fn(i));
+}
+
+// The bar repeated n times.
+export function repeatBar(bar, n) {
+  return Array(n).fill(bar);
+}
+
+// Bars repeated n times, flattened.
+export function repeatBars(bars, n) {
+  return Array.from({ length: n }, () => bars).flat();
+}
+
+// n bars taken from `list`, starting over when it runs out.
+export function cycle(list, n) {
+  return Array.from({ length: n }, (_, i) => list[i % list.length]);
+}
+
+// Bars with `v=<vel> ` set on the first bar and on the first bar after a rest.
+export function entryVelocity(vel, bars, { afterRests = true } = {}) {
+  return bars.map((bar, i) => {
+    if (bar === null || bar === undefined || bar === R) return R;
+    const previous = bars[i - 1];
+    const afterRest = previous === null || previous === undefined || previous === R;
+    return i === 0 || (afterRests && afterRest) ? `v=${vel} ${bar}` : bar;
+  });
+}
+
+// The value of the last [start, value] entry whose start is at or before i.
+export function valueAt(table, i) {
+  return table.filter(([a]) => a <= i).pop()[1];
+}
+
+// A list of [1-based bar, text] pairs as a Map of [0-based bar, text] marks for writeBlock.
+export function barMarks(list) {
+  return new Map([...list].map(([bar, text]) => [bar - 1, text]));
+}
+
+// A bar of chord symbols as { c: parseChord(s), ticks } spans, one span per chord.
+export function chordSpans(text) {
+  const symbols = text.split(' ');
+  return symbols.map((s) => ({ c: parseChord(s), ticks: 3840 / symbols.length }));
+}
+
+// Each bar's chord spans passed to `fn(c, ticks)` and joined back into bar text.
+export function eachChord(texts, fn) {
+  return texts.map((t) => chordSpans(t).map(({ c, ticks }) => fn(c, ticks)).join(' '));
+}
+
 // A tick offset as note text: '' for none, '+12' later, '-6' earlier.
 export function offsetText(ticks) {
   if (!ticks) return '';
@@ -104,17 +200,54 @@ export function clampVelocity(v, max = 127) {
 
 // The tracks, bar marks and section writer shared by the generators that lay parts out section by
 // section. `keys` names the tracks; `section(name, n, parts)` adds n bars, resting where a part has
-// no bar.
-export function sectionBuilder(keys) {
+// no bar. A `label` names the mark from the section's 1-based start and end bars; `exact` requires
+// every part it is given to supply exactly n bars; `map` reworks each bar before it is stored.
+export function sectionBuilder(keys, { label, exact = false } = {}) {
   const tracks = Object.fromEntries(keys.map((k) => [k, []]));
   const marks = [];
-  function section(name, n, parts) {
-    marks.push([tracks[keys[0]].length, name]);
+  const sections = [];
+  function section(name, n, parts, { map } = {}) {
+    const start = tracks[keys[0]].length + 1;
+    const end = start + n - 1;
+    marks.push([start - 1, label ? label(name, start, end) : name]);
+    sections.push({ name, start, end });
     for (const key of keys) {
       const list = parts[key] ?? [];
       if (list.length > n) throw new Error(`${name}: ${key} has ${list.length} bars, more than ${n}`);
-      for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? 'R');
+      if (exact && parts[key] !== undefined && list.length !== n) throw new Error(`${name}: ${key} has ${list.length} bars`);
+      for (let i = 0; i < n; i += 1) {
+        const bar = list[i] ?? R;
+        tracks[key].push(map ? map(bar, key) : bar);
+      }
     }
   }
-  return { tracks, marks, section };
+  return { tracks, marks, sections, section, block: (key, options) => writeBlock(tracks[key], marks, options) };
+}
+
+// The chords, section starts, chord-range lookup and `# chords:`/`# <start>-<end>:` header lines
+// for a form of { name, bars } entries, each bars string a bar of space-separated chord names.
+export function formHeader(form) {
+  const chords = form.flatMap((section) => section.bars.split(' '));
+  const starts = form.map((_, index) =>
+    1 + form.slice(0, index).reduce((sum, section) => sum + section.bars.split(' ').length, 0));
+  const chordRange = (from, count) => chords.slice(from - 1, from - 1 + count);
+  const chordLines = form.map((section, index) =>
+    `${index === 0 ? '# chords:' : `# chords @${starts[index]}:`} ${section.bars}`);
+  const formLines = form.map((section, index) => {
+    const end = starts[index] + section.bars.split(' ').length - 1;
+    return `# ${starts[index]}-${end}: ${section.name}`;
+  });
+  return { chords, starts, chordRange, chordLines, formLines };
+}
+
+// The generator's output folder: the first argument, or `fallback` (the app's songs folder).
+export function outDir(fallback = 'src/songs') {
+  return process.argv[2] ?? fallback;
+}
+
+// Writes a song file under out, making the folder first, and returns the path written.
+export function saveSong(out, file, text) {
+  mkdirSync(out, { recursive: true });
+  writeFileSync(join(out, file), text);
+  return join(out, file);
 }

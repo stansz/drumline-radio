@@ -9,20 +9,19 @@
 // This script lays every part out bar by bar. The harmony is one map (FORM below, mirrored in the
 // song's `# chords:` lines), one chord a bar, and every pitched part follows it.
 //   node tools/arranger/velvet-freeway.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { clampVelocity, noteName, offsetText, SHARPS, writeBlock } from './lib.mjs';
+import {
+  chordText, clampVelocity, formHeader, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  sectionBuilder, SHARPS,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // ---------------------------------------------------------------- pitches and the chord table
 const nm = (n) => noteName(n, SHARPS);
-const off = offsetText;
 const vel = (v) => clampVelocity(v, 126);
 
-const n = (pitch, dur, v = 100, at = 0) => `${nm(pitch)}/${dur}${off(at)}:${vel(v)}`;
-const chd = (pitches, dur, v, at = 0) => `[${pitches.map(nm).join(' ')}]/${dur}${off(at)}:${vel(v)}`;
+const n = (pitch, dur, v = 100, at = 0) => `${nm(pitch)}/${dur}${offsetText(at)}:${vel(v)}`;
+const chd = (pitches, dur, v, at = 0) => `${chordText(pitches, nm)}/${dur}${offsetText(at)}:${vel(v)}`;
 
 // One row per chord: the bass root, the pad's root and fifth (the rest of the pad's chord is built
 // from the chord's name by padVoicing), the stab's triad in the middle (G3-E4), and the arp's four
@@ -69,14 +68,11 @@ const FORM = [
   { name: 'Outro: the motif in A, a snare roll, and one last hit on A', bars: 'A F#m9 Dmaj9 A' },
 ];
 
-const CHORDS = FORM.flatMap((section) => section.bars.split(' '));
+const { chords: CHORDS, starts, chordRange, chordLines, formLines } = formHeader(FORM);
 for (const name of CHORDS) {
   if (!CH[name]) throw new Error(`no voicing for chord '${name}'`);
 }
 const TOTAL = CHORDS.length; // 112 bars = about 4:18 at 104 BPM
-const starts = FORM.map((_, index) =>
-  1 + FORM.slice(0, index).reduce((sum, section) => sum + section.bars.split(' ').length, 0));
-const chordRange = (from, count) => CHORDS.slice(from - 1, from - 1 + count);
 
 // ---------------------------------------------------------------- the melody
 // A line from [pitch, duration, offset, velocity delta]. A null pitch is a rest. The first note of a
@@ -289,22 +285,13 @@ const drums = {
 };
 
 // ---------------------------------------------------------------- the arrangement
-const tracks = { lead: [], answer: [], pad: [], choir: [], stabs: [], arp: [], bass: [], drums: [] };
-const marks = [];
-const push = (name, { bars, ...parts }) => {
-  marks.push([tracks.lead.length, name]);
-  for (const key of Object.keys(tracks)) {
-    const list = parts[key] ?? [];
-    for (let i = 0; i < bars; i++) tracks[key].push(list[i] ?? 'R');
-  }
-};
-const rest = (count) => Array.from({ length: count }, () => 'R');
+const keys = ['lead', 'answer', 'pad', 'choir', 'stabs', 'arp', 'bass', 'drums'];
+const { tracks, section, block } = sectionBuilder(keys);
 const chordBars = (from, count, make) => chordRange(from, count).map(make);
 
 // --- 1-8: intro. Pad and arp alone, then hats and clap, then the groove; the lead quotes the hook's
 // first two bars at bar 5 and breaks off at 7.
-push('Intro: the pad and the arp, then the lead quotes the hook and breaks off', {
-  bars: 8,
+section('Intro: the pad and the arp, then the lead quotes the hook and breaks off', 8, {
   lead: [null, null, null, null, hookBar(HOOK[0], 92), hookBar(HOOK[1], 94),
     line([[71, '8', 12], [74, '8', -4], [71, '8', 0], [74, '8', -2], [null, '2']], 92), null],
   answer: [null, null, null, null, null, null, null, answerBar('intro', 82)],
@@ -312,15 +299,14 @@ push('Intro: the pad and the arp, then the lead quotes the hook and breaks off',
   stabs: [null, null, null, null, null, null,
     stabBar(CHORDS[6], [[3, -6]], 68), stabBar(CHORDS[7], [[3, -4], [5, -8]], 72)],
   arp: chordBars(1, 8, (c, i) => arpBar(c, i < 4 ? 66 + i * 4 : 78, i < 4 ? '8' : '16')),
-  bass: [...rest(2), ...chordBars(3, 6, (c, i) => bassBar(c, { v: 74 + i * 2, fill: i === 5 }))],
+  bass: [...repeatBar(R, 2), ...chordBars(3, 6, (c, i) => bassBar(c, { v: 74 + i * 2, fill: i === 5 }))],
   drums: [null, null, drums.lift(92), drums.lift(96), drums.crash(112), drums.verse(98),
     drums.verse(100), drums.fill(102)],
 });
 
 // --- 9-24: verse 1. The verse tune with the square answering at the phrase ends, the pad holding the
 // chord, light stabs on the "and"s of 2 and 3, and the arp turning to sixteenths in the second half.
-push('Verse 1: the cell low in the voice, the square answering at the phrase ends', {
-  bars: 16,
+section('Verse 1: the cell low in the voice, the square answering at the phrase ends', 16, {
   lead: verseBars(0, 16, 96),
   answer: [null, null, null, answerBar('verseA', 80, 'r/2.'), null, null, null, answerBar('verseB', 82, 'r/2.'),
     null, null, null, answerBar('verseA', 82, 'r/2.'), null, null, null, answerBar('verseB', 84, 'r/2.')],
@@ -333,8 +319,7 @@ push('Verse 1: the cell low in the voice, the square answering at the phrase end
 
 // --- 25-32: pre-chorus 1. The line climbs Am-Bm-C-D, the arp goes to sixteenths, the bass drives and
 // the last two bars roll into the chorus.
-push('Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths', {
-  bars: 8,
+section('Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths', 8, {
   lead: preBars(96).map((bar, i) => (i >= 4 ? bar : bar)),
   answer: [null, null, null, null, null, null,
     line(PRE[6].map(([pitch, dur, at, dv = 0]) => [pitch - 12, dur, at, dv]), 84),
@@ -349,8 +334,7 @@ push('Pre-chorus 1: Am-Bm-C-D climbing, the arp into sixteenths', {
 
 // --- 33-48: chorus 1. The hook twice, the square answering in the gap at bar 40, the stabs pushing
 // around the snare, the bass rolling, and a crash on each eight.
-push('Chorus 1: the hook, the stabs pushing around the snare, the square in the gap', {
-  bars: 16,
+section('Chorus 1: the hook, the stabs pushing around the snare, the square in the gap', 16, {
   lead: [...HOOK.map((bar) => hookBar(bar, 100)), ...HOOK.slice(0, 4).map((bar) => hookBar(bar, 102)),
     ...TURN.map((bar, i) => hookBar(bar, 102 + i))],
   answer: [null, null, null, null, null, null, null, answerBar('chorus', 86),
@@ -365,8 +349,7 @@ push('Chorus 1: the hook, the stabs pushing around the snare, the square in the 
 
 // --- 49-56: verse 2. The first two phrases again, the arp driving in sixteenths throughout and the
 // square answering at every phrase end.
-push('Verse 2: the second verse, the arp driving in sixteenths', {
-  bars: 8,
+section('Verse 2: the second verse, the arp driving in sixteenths', 8, {
   lead: verseBars(0, 8, 98),
   answer: [null, null, null, answerBar('verseA', 84, 'r/2.'), null, null, null, answerBar('verseB', 86, 'r/2.')],
   pad: chordBars(49, 8, (c, i) => padBar(c, 66 + i)),
@@ -377,8 +360,7 @@ push('Verse 2: the second verse, the arp driving in sixteenths', {
 });
 
 // --- 57-64: pre-chorus 2, the same climb a little louder, the roll longer.
-push('Pre-chorus 2: the same climb, louder, into a roll', {
-  bars: 8,
+section('Pre-chorus 2: the same climb, louder, into a roll', 8, {
   lead: preBars(100),
   answer: [null, null, null, null, null, null,
     line(PRE[6].map(([pitch, dur, at, dv = 0]) => [pitch - 12, dur, at, dv]), 88),
@@ -392,8 +374,7 @@ push('Pre-chorus 2: the same climb, louder, into a roll', {
 });
 
 // --- 65-80: chorus 2, the hook with the pad and arp wider and a tom fill into the bridge.
-push('Chorus 2: the hook again, the pad and arp wider', {
-  bars: 16,
+section('Chorus 2: the hook again, the pad and arp wider', 16, {
   lead: [...HOOK.map((bar) => hookBar(bar, 102)), ...HOOK.slice(0, 4).map((bar) => hookBar(bar, 102)),
     ...TURN.map((bar, i) => hookBar(bar, 104 + i))],
   answer: [null, null, null, null, null, null, null, answerBar('chorus', 88),
@@ -408,24 +389,22 @@ push('Chorus 2: the hook again, the pad and arp wider', {
 
 // --- 81-84: bridge. The kick and arp drop out, the pad opens and the choir enters, and the square
 // lead walks the two-note cell up C-D-Em.
-push('Bridge: the kick drops, the square walks the cell up C-D-Em', {
-  bars: 4,
-  lead: rest(4),
+section('Bridge: the kick drops, the square walks the cell up C-D-Em', 4, {
+  lead: repeatBar(R, 4),
   answer: BRIDGE.map((bar, i) => line(bar, 88 + i)),
   pad: chordBars(81, 4, (c, i) => padBar(c, 84 + i * 2)),
   choir: chordBars(81, 4, (c, i) => choirBar(c, 58 + i * 3)),
   stabs: chordBars(81, 4, (c, i) => stabBar(c, [[3, -6]], 70 + i * 2)),
-  arp: rest(4),
+  arp: repeatBar(R, 4),
   bass: chordBars(81, 4, (c, i) => bassBar(c, { v: 84, pattern: 'hold' })),
   drums: [drums.crash(104), drums.bridge(84), drums.bridge(86), drums.roll(90, 24)],
 });
 
 // --- 85-92: solo. The saw lead takes the cell through the chords, a run over the IV, and a bend into
 // the new key; the kick and arp return.
-push('Solo: the cell in sixteenths, climbing to E major, the dominant of A', {
-  bars: 8,
+section('Solo: the cell in sixteenths, climbing to E major, the dominant of A', 8, {
   lead: [...SOLO.map((bar, i) => line(bar, 100 + i)), SOLO_BEND],
-  answer: rest(8),
+  answer: repeatBar(R, 8),
   pad: chordBars(85, 8, (c, i) => padBar(c, 78 + i)),
   choir: chordBars(85, 8, (c, i) => choirBar(c, 66 + i * 2)),
   stabs: chordBars(85, 8, (c, i) => stabBar(c, i % 2 === 0 ? PUSH : PUSH_ON, 84 + i * 2)),
@@ -437,8 +416,7 @@ push('Solo: the cell in sixteenths, climbing to E major, the dominant of A', {
 
 // --- 93-108: last chorus. The whole hook up a whole step in A major with the choir underneath, the
 // square doubling the tag an octave down, and the biggest drums in the song.
-push('Last chorus: the hook up a whole step in A major, the choir underneath', {
-  bars: 16,
+section('Last chorus: the hook up a whole step in A major, the choir underneath', 16, {
   lead: [...HOOK.map((bar) => hookBar(bar, 106, 2)), ...HOOK.slice(0, 4).map((bar) => hookBar(bar, 106, 2)),
     ...TURN.map((bar, i) => hookBar(bar, 108, 2))],
   answer: [null, null, null, null, null, null, null,
@@ -457,10 +435,9 @@ push('Last chorus: the hook up a whole step in A major, the choir underneath', {
 
 // --- 109-112: outro. The motif in A, the drums thinning to a snare roll, and everything hits the
 // last A together on the downbeat and lets it ring out.
-push('Outro: the motif in A, a snare roll, and one last hit on A', {
-  bars: 4,
+section('Outro: the motif in A, a snare roll, and one last hit on A', 4, {
   lead: OUTRO.map((bar, i) => line(bar, 100 - i * 2)),
-  answer: rest(4),
+  answer: repeatBar(R, 4),
   pad: chordBars(109, 4, (c, i) => (i === 3 ? `${chd(padVoicing(c), '2', 84)} r/2` : padBar(c, 78 - i * 2))),
   choir: chordBars(109, 4, (c, i) => (i === 3 ? `${chd(CH[c].stab, '2', 82)} r/2` : choirBar(c, 80 - i * 3))),
   stabs: [stabBar(CHORDS[108], PUSH, 84), stabBar(CHORDS[109], [[3, -4]], 80), stabBar(CHORDS[110], [[3, -6]], 78), stabBar(CHORDS[111], [[0, 4]], 92)],
@@ -488,13 +465,6 @@ const HEADER_NOTE = `# Velvet Freeway, by Arena Agent, Claude and SZ. An origina
 # I-V-vi-IV | I-V-IV-V, the bridge walks C-D-Em-Em7, the solo climbs C-D-Em-Em9 | C-D7-D-E and ends
 # on the dominant of A, and the last chorus and outro are in A. Every pitched part follows it bar by
 # bar.`;
-
-const chordLines = FORM.map((section, index) =>
-  `${index === 0 ? '# chords:' : `# chords @${starts[index]}:`} ${section.bars}`);
-const formLines = FORM.map((section, index) => {
-  const end = starts[index] + section.bars.split(' ').length - 1;
-  return `# ${starts[index]}-${end}: ${section.name}`;
-});
 
 const FEEL = `# Human feel: the lead's phrase starts lean in twelve ticks, its inner pushes come two to four
 # ticks early, and its held notes settle eight to twelve late; the stabs land twelve to twenty-two
@@ -527,8 +497,6 @@ const TRACKS = [
   ['drums', 'track drums role=drums vol=0.85 vol.altrock=0.4 vol.orchestral=0.55 pan=0'],
 ];
 
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `${HEADER_NOTE}
 #
 ${chordLines.join('\n')}
@@ -543,5 +511,5 @@ ${HEADER}
 ${TRACKS.map(([key, head]) => `${head}\n${block(key)}`).join('\n\n')}
 `;
 
-writeFileSync(join(out, 'velvet-freeway.song'), text);
+saveSong(out, 'velvet-freeway.song', text);
 console.log(`wrote ${out}/velvet-freeway.song (${TOTAL} bars)`);

@@ -4,15 +4,13 @@
 // to a bent high E, and the fire dies back to a lone cello. Every melody and riff is written here;
 // nothing is borrowed.
 //   node tools/arranger/the-silent-keep.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { barLength, MIXED, noteName, writeBlock } from './lib.mjs';
+import {
+  barLength, chordText, MIXED, noteName, outDir, R, saveSong, sectionBuilder,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 const nm = (n) => noteName(n, MIXED);
-const chordName = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // Each chord keeps one voicing everywhere. The bass sits low; the power chords are low-mid; the
 // walls, pads and piano stay out of the lead's way; the clean arpeggio is written an octave above
@@ -59,9 +57,9 @@ function humanize(bar, { vel = 100, off = 0, pattern = [0], offPattern = null } 
 }
 
 // Harmony and accompaniment helpers -----------------------------------------------------------
-const power = (c) => chordName(CH[c].power);
+const power = (c) => chordText(CH[c].power, nm);
 const hold = (c, time, v, which = 'pad') =>
-  `${chordName(CH[c][which])}${time === '6/8' ? '/2.' : '/1'}:${v}`;
+  `${chordText(CH[c][which], nm)}${time === '6/8' ? '/2.' : '/1'}:${v}`;
 
 function cleanBar(c, v, i = 0) {
   const raw = CH[c].clean.map((n) => `${nm(n)}/8`).join(' ');
@@ -73,8 +71,8 @@ function cleanBar(c, v, i = 0) {
 }
 
 function pianoBar(c, time, v, kind = 'half') {
-  const low = chordName(CH[c].pianoLow);
-  const chord = chordName(CH[c].pianoChord);
+  const low = chordText(CH[c].pianoLow, nm);
+  const chord = chordText(CH[c].pianoChord, nm);
   if (time === '6/8') return `${low}/4.+8:${v} ${chord}/4.+14:${v - 4}`;
   if (kind === 'quarter') return `${low}/4:${v} ${chord}/4+12:${v - 4} ${low}/4:${v - 2} ${chord}/4+16:${v - 6}`;
   return `${low}/2:${v} ${chord}/2+14:${v - 4}`;
@@ -319,34 +317,15 @@ const SOLO_ANSWERS = {
 };
 
 // ---------------------------------------------------------------------------------------------
-const tracks = {
-  clean: [],
-  lead: [],
-  harmony: [],
-  cello: [],
-  piano: [],
-  strings: [],
-  chugs: [],
-  wall: [],
-  bass: [],
-  drums: [],
-  cymbals: [],
-};
-const marks = [];
-const form = [];
+const keys = ['clean', 'lead', 'harmony', 'cello', 'piano', 'strings', 'chugs', 'wall', 'bass', 'drums', 'cymbals'];
+const builder = sectionBuilder(keys, { label: (name, start, end) => `${name} (bars ${start}-${end})` });
+const { tracks, block } = builder;
+const form = builder.sections;
 const times = [];
-const R = 'R';
 
 function section(name, n, time, parts) {
-  const start = tracks.lead.length + 1;
-  marks.push([tracks.lead.length, `${name} (bars ${start}-${start + n - 1})`]);
-  form.push([name, start, start + n - 1]);
   for (let i = 0; i < n; i++) times.push(time);
-  for (const key of Object.keys(tracks)) {
-    const bars = parts[key] ?? [];
-    if (bars.length > n) throw new Error(`${name}: ${key} has ${bars.length} bars, more than ${n}`);
-    for (let i = 0; i < n; i++) tracks[key].push(bars[i] ?? R);
-  }
+  builder.section(name, n, parts);
 }
 
 const theme = (bars, v, off) => bars.map((bar, i) => humanize(bar, { vel: v + (i >= 8 ? 3 : 0), off, pattern: [3, -3, 2, -4, 4, -2, 1, -5] }));
@@ -641,8 +620,6 @@ for (const key of Object.keys(tracks)) {
 const total = tracks.lead.length;
 if (total !== 194) throw new Error(`expected 194 bars, got ${total}`);
 
-const block = (key) => writeBlock(tracks[key], marks);
-
 const HEADERS = {
   clean: 'track clean role=arp inst=bank:clean-electric vol=0.8 pan=0.2',
   lead: 'track lead role=lead inst=guitar vol=1 pan=-0.15',
@@ -670,7 +647,7 @@ const chordsComments = [
   '# The snare drags 12-18 ticks, guitar chugs trail the kick by 10-16, and the solo runs sit',
   '# slightly ahead of the beat while its bends lean back. The Phrygian F is a deliberate colour.',
 ];
-const formComments = form.map(([name, start, end]) => `# Form ${start}-${end}: ${name}`);
+const formComments = form.map(({ name, start, end }) => `# Form ${start}-${end}: ${name}`);
 
 const text = [
   '# The Silent Keep, by DeepSeek V4 Flash & SZ. An original cinematic heavy-metal epic in E',
@@ -702,5 +679,5 @@ const text = [
   '',
 ].join('\n');
 
-writeFileSync(join(out, 'the-silent-keep.song'), text);
+saveSong(out, 'the-silent-keep.song', text);
 console.log(`wrote ${out}/the-silent-keep.song (${total} bars)`);

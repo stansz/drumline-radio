@@ -3,12 +3,11 @@
 // a breakdown with the hook, the drop, a stripped break with an answering hook, a build, a long
 // second drop with an arpeggio on top, and the outro.
 //   node tools/arranger/night-shift.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { MIXED, noteName, sectionBuilder, writeBlock } from './lib.mjs';
+import {
+  cycle, entryVelocity, MIXED, noteName, outDir, repeatBar, saveSong, sectionBuilder,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // The 8-bar loop: D minor for four bars, B-flat for two, C for two.
 const LOOP = ['Dm', 'Dm', 'Dm', 'Dm', 'Bb', 'Bb', 'C', 'C'];
@@ -35,7 +34,6 @@ const nm = (n) => noteName(n, MIXED);
 const loop = (n, from = 0) => Array.from({ length: n }, (_, i) => LOOP[(from + i) % 8]);
 // The hook runs over 4 bars, so its chords go Dm, Bb, C, Dm.
 const HOOK_CHORDS = ['Dm', 'Bb', 'C', 'Dm'];
-const cyc = (list, n) => Array.from({ length: n }, (_, i) => list[i % list.length]);
 const T = {
   acid: (c) => ACID[c],
   off8: (c) => Array(4).fill(`r/8 ${nm(ROOT[c])}/8`).join(' '),
@@ -46,7 +44,6 @@ const T = {
   pad: (c) => `${PAD[c]}/1`,
   arp: (c) => Array.from({ length: 16 }, (_, i) => `${nm(ARP[c][[0, 2, 1, 3][i % 4]] + (i >= 8 ? 12 : 0))}/16`).join(' '),
 };
-const each = (chords, fn) => chords.map(fn);
 const DRUMS = {
   four: 'k/4 k k k',
   hats: 'k/8 h k h k h k oh',
@@ -61,78 +58,73 @@ const drumsWithCrash = (n) => Array.from({ length: n }, (_, i) => (i % 8 === 0 ?
 const rollIn = ['v=70 s/4 s s s', 'v=82 s/8 s s s s s s s', `v=94 ${DRUMS.snare16}`, 'v=106 s/16 s s s s s s s r/2'];
 
 const keys = ['acid', 'hook', 'answer', 'arp', 'stabs', 'pad', 'bass', 'drums', 'perc'];
-const { tracks, marks, section } = sectionBuilder(keys);
-const R = 'R';
-const rep = (bar, n) => Array(n).fill(bar);
-const v = (vel, bars) => bars.map((b, i) => (b === R || b === null ? R : i === 0 || bars[i - 1] === R || bars[i - 1] === null ? `v=${vel} ${b}` : b));
+const { tracks, section, block } = sectionBuilder(keys);
 
 section('Intro: kick, then hats', 8, {
-  drums: v(100, [...rep(DRUMS.four, 4), ...rep(DRUMS.hats, 4)]),
+  drums: entryVelocity(100, [...repeatBar(DRUMS.four, 4), ...repeatBar(DRUMS.hats, 4)]),
 });
 section('The bass comes in', 8, {
-  bass: v(96, each(loop(8), T.off8)),
-  drums: v(104, rep(DRUMS.hats, 8)),
-  perc: v(66, rep(PERC, 8)),
+  bass: entryVelocity(96, loop(8).map(T.off8)),
+  drums: entryVelocity(104, repeatBar(DRUMS.hats, 8)),
+  perc: entryVelocity(66, repeatBar(PERC, 8)),
 });
 section('The acid line', 16, {
-  acid: v(96, each(loop(16), T.acid)),
-  pad: [...rep(null, 8), ...v(56, each(loop(8), T.pad))],
-  bass: v(100, each(loop(16), T.off8)),
-  drums: v(108, drumsWithCrash(16)),
-  perc: v(70, rep(PERC, 16)),
+  acid: entryVelocity(96, loop(16).map(T.acid)),
+  pad: [...repeatBar(null, 8), ...entryVelocity(56, loop(8).map(T.pad))],
+  bass: entryVelocity(100, loop(16).map(T.off8)),
+  drums: entryVelocity(108, drumsWithCrash(16)),
+  perc: entryVelocity(70, repeatBar(PERC, 16)),
 });
 section('Breakdown: the hook appears', 16, {
-  hook: v(88, cyc(HOOK, 16)),
-  stabs: v(92, each(cyc(HOOK_CHORDS, 16), T.stabs)),
-  pad: v(64, each(cyc(HOOK_CHORDS, 16), T.pad)),
-  bass: [...rep(null, 8), ...v(84, each(cyc(HOOK_CHORDS, 8), T.hold))],
-  drums: [...rep(null, 12), ...rollIn],
+  hook: entryVelocity(88, cycle(HOOK, 16)),
+  stabs: entryVelocity(92, cycle(HOOK_CHORDS, 16).map(T.stabs)),
+  pad: entryVelocity(64, cycle(HOOK_CHORDS, 16).map(T.pad)),
+  bass: [...repeatBar(null, 8), ...entryVelocity(84, cycle(HOOK_CHORDS, 8).map(T.hold))],
+  drums: [...repeatBar(null, 12), ...rollIn],
 });
 section('Drop: the hook over everything', 16, {
-  acid: v(100, each(cyc(HOOK_CHORDS, 16), T.acid)),
-  hook: v(96, cyc(HOOK, 16)),
-  stabs: v(100, each(cyc(HOOK_CHORDS, 16), T.stabs)),
-  pad: v(60, each(cyc(HOOK_CHORDS, 16), T.pad)),
-  bass: v(112, each(cyc(HOOK_CHORDS, 16), T.rollPop)),
-  drums: v(112, drumsWithCrash(16)),
-  perc: v(76, rep(PERC, 16)),
+  acid: entryVelocity(100, cycle(HOOK_CHORDS, 16).map(T.acid)),
+  hook: entryVelocity(96, cycle(HOOK, 16)),
+  stabs: entryVelocity(100, cycle(HOOK_CHORDS, 16).map(T.stabs)),
+  pad: entryVelocity(60, cycle(HOOK_CHORDS, 16).map(T.pad)),
+  bass: entryVelocity(112, cycle(HOOK_CHORDS, 16).map(T.rollPop)),
+  drums: entryVelocity(112, drumsWithCrash(16)),
+  perc: entryVelocity(76, repeatBar(PERC, 16)),
 });
 section('Stripped: acid, pad, and an answering hook', 8, {
-  acid: v(80, each(cyc(HOOK_CHORDS, 8), T.acid)),
-  answer: v(86, cyc(ANSWER, 8)),
-  pad: v(62, each(cyc(HOOK_CHORDS, 8), T.pad)),
-  bass: v(88, each(cyc(HOOK_CHORDS, 8), T.hold)),
-  perc: v(66, rep(PERC, 8)),
+  acid: entryVelocity(80, cycle(HOOK_CHORDS, 8).map(T.acid)),
+  answer: entryVelocity(86, cycle(ANSWER, 8)),
+  pad: entryVelocity(62, cycle(HOOK_CHORDS, 8).map(T.pad)),
+  bass: entryVelocity(88, cycle(HOOK_CHORDS, 8).map(T.hold)),
+  perc: entryVelocity(66, repeatBar(PERC, 8)),
 });
 section('Build: the kick returns, the arp joins', 8, {
-  acid: v(92, each(cyc(HOOK_CHORDS, 8), T.acid)),
-  arp: v(56, each(cyc(HOOK_CHORDS, 8), T.arp)),
-  answer: v(90, cyc(ANSWER, 8)),
-  pad: v(64, each(cyc(HOOK_CHORDS, 8), T.pad)),
-  bass: v(104, [...each(cyc(HOOK_CHORDS, 7), T.roll), null]),
-  drums: v(108, [...rep(DRUMS.hats, 4), ...rollIn]),
+  acid: entryVelocity(92, cycle(HOOK_CHORDS, 8).map(T.acid)),
+  arp: entryVelocity(56, cycle(HOOK_CHORDS, 8).map(T.arp)),
+  answer: entryVelocity(90, cycle(ANSWER, 8)),
+  pad: entryVelocity(64, cycle(HOOK_CHORDS, 8).map(T.pad)),
+  bass: entryVelocity(104, [...cycle(HOOK_CHORDS, 7).map(T.roll), null]),
+  drums: entryVelocity(108, [...repeatBar(DRUMS.hats, 4), ...rollIn]),
 });
 section('Second drop: everything', 24, {
-  acid: v(104, each(cyc(HOOK_CHORDS, 24), T.acid)),
-  hook: v(98, [...cyc(HOOK, 8), ...rep(null, 8), ...cyc(HOOK, 8)]),
-  answer: v(94, [...rep(null, 8), ...cyc(ANSWER, 8), ...rep(null, 8)]),
-  arp: v(62, each(cyc(HOOK_CHORDS, 24), T.arp)),
-  stabs: v(102, each(cyc(HOOK_CHORDS, 24), T.stabs)),
-  pad: v(62, each(cyc(HOOK_CHORDS, 24), T.pad)),
-  bass: v(114, each(cyc(HOOK_CHORDS, 24), T.rollPop)),
-  drums: v(114, drumsWithCrash(24)),
-  perc: v(80, rep(PERC, 24)),
+  acid: entryVelocity(104, cycle(HOOK_CHORDS, 24).map(T.acid)),
+  hook: entryVelocity(98, [...cycle(HOOK, 8), ...repeatBar(null, 8), ...cycle(HOOK, 8)]),
+  answer: entryVelocity(94, [...repeatBar(null, 8), ...cycle(ANSWER, 8), ...repeatBar(null, 8)]),
+  arp: entryVelocity(62, cycle(HOOK_CHORDS, 24).map(T.arp)),
+  stabs: entryVelocity(102, cycle(HOOK_CHORDS, 24).map(T.stabs)),
+  pad: entryVelocity(62, cycle(HOOK_CHORDS, 24).map(T.pad)),
+  bass: entryVelocity(114, cycle(HOOK_CHORDS, 24).map(T.rollPop)),
+  drums: entryVelocity(114, drumsWithCrash(24)),
+  perc: entryVelocity(80, repeatBar(PERC, 24)),
 });
 section('Outro', 8, {
-  acid: v(84, each(loop(4), T.acid)),
-  bass: v(100, [...each(loop(6), T.off8)]),
-  drums: v(104, [...rep(DRUMS.full, 4), ...rep(DRUMS.hats, 2), DRUMS.four, DRUMS.end]),
-  perc: v(66, rep(PERC, 4)),
+  acid: entryVelocity(84, loop(4).map(T.acid)),
+  bass: entryVelocity(100, [...loop(6).map(T.off8)]),
+  drums: entryVelocity(104, [...repeatBar(DRUMS.full, 4), ...repeatBar(DRUMS.hats, 2), DRUMS.four, DRUMS.end]),
+  perc: entryVelocity(66, repeatBar(PERC, 4)),
 });
 
 const total = tracks.acid.length;
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `# Night Shift, by Claude and SZ. An original for the Techno style: an acid line, a hook that arrives
 # in the breakdown, an answering hook, and two drops.
 title: Night Shift
@@ -172,5 +164,5 @@ ${block('drums')}
 track perc role=drums vol=0.45 pan=0.2
 ${block('perc')}
 `;
-writeFileSync(join(out, 'night-shift.song'), text);
+saveSong(out, 'night-shift.song', text);
 console.log(`wrote ${out}/night-shift.song (${total} bars)`);

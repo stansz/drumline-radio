@@ -1,16 +1,13 @@
 // Writes a piano piece converted from a score (see tools/midi/midi2song.mjs) as a .song file. Each
 // part is a list of voices, each voice a list of bars (bar 1 first); every voice becomes a track.
 // Used by moonlight.mjs and clair-de-lune.mjs.
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
+import { saveSong, writeBlock } from './lib.mjs';
 
 /**
  * spec: { file, head (header lines, no tracks), directives (tempo lines or ''), sections (Map of
  * bar number -> comment), parts: [{ id, role, vol, pan?, vel, voices: [[bar, ...], ...] }] }
  */
 export function writePianoPiece(out, spec) {
-  mkdirSync(out, { recursive: true });
   const tracks = [];
   for (const part of spec.parts) {
     part.voices.forEach((bars, i) => {
@@ -20,7 +17,7 @@ export function writePianoPiece(out, spec) {
     });
   }
   const directives = spec.directives ? `\n${spec.directives}\n` : '';
-  writeFileSync(join(out, spec.file), `${spec.head.trim()}\n${directives}\n${tracks.join('\n\n')}\n`);
+  saveSong(out, spec.file, `${spec.head.trim()}\n${directives}\n${tracks.join('\n\n')}\n`);
   return tracks.length;
 }
 

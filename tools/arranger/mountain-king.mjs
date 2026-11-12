@@ -4,12 +4,11 @@
 // hand. Each 8-bar phrase is moved by whole octaves where it would leave the lead's range, so the tune
 // starts higher than Grieg's low bassoon register. It speeds up from 100 to 210, as he asks.
 //   node tools/arranger/mountain-king.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import {
+  barMarks, MIXED, noteMidi, noteName, outDir, saveSong, transpose, valueAt, writeBlock,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
 
 // The voices as converted, bar 1 first.
 const TOP = [
@@ -283,15 +282,9 @@ const LOW = [
  "[B0 B1]/8.~ [B0 B1]/32 r/32 [B2 D3 F#3 B3]/8 r/2 r/8"
 ];
 
-const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const midi = (n) => {
-  const m = /^([A-G])(#|b)?(-?\d)$/.exec(n);
-  return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
-};
 const nm = (n) => noteName(n, MIXED);
 const NOTE = /\b[A-G](#|b)?-?\d\b/g;
-const shift = (bar, by) => (bar === 'R' || by === 0 ? bar : bar.replace(NOTE, (n) => nm(midi(n) + by)));
-const pitches = (bar) => (bar.match(NOTE) ?? []).map(midi);
+const pitches = (bar) => (bar.match(NOTE) ?? []).map(noteMidi);
 const BARS = TOP.length;
 
 // One octave shift per 8-bar phrase (bar 1 on its own), chosen so the lead stays in C3-C7.
@@ -307,12 +300,12 @@ for (const [a, b] of phrases) {
   }
   for (let n = a; n <= b; n++) shiftOf[n] = by;
 }
-const lead = TOP.map((bar, i) => shift(bar, shiftOf[i + 1]));
+const lead = TOP.map((bar, i) => transpose(bar, shiftOf[i + 1], nm));
 // The second voice moves with the lead, then into the harmony's range note by note if needed.
-const fit = (bar, low, high) => bar.replace(NOTE, (n) => { let m = midi(n); while (m < low) m += 12; while (m > high) m -= 12; return nm(m); });
-const harmony = SECOND.map((bar, i) => fit(shift(bar, shiftOf[i + 1]), 48, 96));
+const fit = (bar, low, high) => bar.replace(NOTE, (n) => { let m = noteMidi(n); while (m < low) m += 12; while (m > high) m -= 12; return nm(m); });
+const harmony = SECOND.map((bar, i) => fit(transpose(bar, shiftOf[i + 1], nm), 48, 96));
 // The bass keeps the lowest note of each left-hand chord, raised an octave below C1.
-const bass = LOW.map((bar) => (bar === 'R' ? bar : bar.replace(/\[([^\]]+)\]/g, (_, ch) => ch.split(' ').sort((x, y) => midi(x) - midi(y))[0]))).map((bar) => fit(bar, 24, 60));
+const bass = LOW.map((bar) => (bar === 'R' ? bar : bar.replace(/\[([^\]]+)\]/g, (_, ch) => ch.split(' ').sort((x, y) => noteMidi(x) - noteMidi(y))[0]))).map((bar) => fit(bar, 24, 60));
 
 // The march gets busier as it speeds up; a snare roll leads into the last chords.
 const drumAt = (n) => {
@@ -328,18 +321,16 @@ const drums = Array.from({ length: BARS }, (_, i) => drumAt(i + 1));
 const SECTIONS = new Map([[1, 'The tune creeps in'], [18, 'Again, the march begins'], [26, 'Higher'],
   [50, 'Faster (più vivo)'], [86, 'The last chords']]);
 const DYN = [[1, 70], [18, 80], [26, 88], [42, 92], [50, 100], [66, 110], [86, 118]];
-const velAt = (n) => DYN.filter(([a]) => a <= n).pop()[1];
-const at = new Map([...SECTIONS].map(([n, text]) => [n - 1, text]));
 const velBars = (bars, sub) => {
   let last = null;
   return bars.map((bar, i) => {
-    const vel = velAt(i + 1) - sub;
+    const vel = valueAt(DYN, i + 1) - sub;
     const text = bar !== 'R' && vel !== last ? `v=${vel} ${bar}` : bar;
     if (bar !== 'R') last = vel;
     return text;
   });
 };
-const block = (bars, sub = 0) => writeBlock(velBars(bars, sub), at);
+const block = (bars, sub = 0) => writeBlock(velBars(bars, sub), barMarks(SECTIONS));
 
 const text = `# In the Hall of the Mountain King by Edvard Grieg, arranged by Claude and SZ for the Chiptune style.
 # Grieg's notes from his piano version, speeding up from start to finish.
@@ -370,5 +361,5 @@ ${block(bass, 6)}
 track drums role=drums vol=0.7
 ${block(drums, 10)}
 `;
-writeFileSync(join(out, 'mountain-king.song'), text);
+saveSong(out, 'mountain-king.song', text);
 console.log(`wrote ${out}/mountain-king.song (${BARS} bars)`);

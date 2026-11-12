@@ -21,19 +21,20 @@
 //   Human feel on top of the swing is small on purpose, so the shuffle stays locked: the vocal sits
 //   +4 to +12 ticks behind, the stabs +8 to +16, the claps +6 to +12, and velocities vary.
 //   node tools/arranger/night-bus-home.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { barLength, clampVelocity, durationText, offsetText, sectionBuilder, splitDuration, writeBlock } from './lib.mjs';
+import {
+  barLength, clampVelocity, durationText, FLATS, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  sectionBuilder, splitDuration, times, transpose,
+} from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-mkdirSync(out, { recursive: true });
+const out = outDir();
+
+// Flat spellings, so every note reads in the song's key.
+const nm = (n) => noteName(n, FLATS);
 
 // The one swing every part shares: a note that starts on the second or fourth sixteenth of a beat
 // lands this many ticks late (a sixteenth is 240 ticks, so 64 is about 63% swing).
 const SWING = 64;
 const swingAt = (slot) => (slot % 2 === 1 ? SWING : 0);
-
-const shiftOf = offsetText;
 
 // --- pitched bars -----------------------------------------------------------
 // A bar is a list of [units, token, velocityDelta]; units are sixteenths and must sum to 16. `r` is
@@ -58,7 +59,7 @@ function seq(hits, base, drift = [0]) {
       const cont = token.startsWith('=');
       const tie = token.endsWith('~') ? '~' : '';
       const core = token.replace(/^=|~$/g, '');
-      const head = cont ? '' : `${shiftOf(swingAt(slot) + drift[n % drift.length])}:${clampVelocity(base + dv)}`;
+      const head = cont ? '' : `${offsetText(swingAt(slot) + drift[n % drift.length])}:${clampVelocity(base + dv)}`;
       if (!cont) n += 1;
       if (core.includes('>')) {
         const [from, to] = core.split('>');
@@ -150,7 +151,7 @@ function grid(hits, vel) {
     // A merged hit takes the latest offset, except that a kick keeps the grid.
     const kick = hitsAt.find((h) => h[4].includes('k'));
     const off = (kick ? kick[3] : Math.max(...hitsAt.map((h) => h[3]))) + swingAt(i);
-    toks.push(`${name}${durationText(span * 240)}${shiftOf(off)}:${clampVelocity(vel + dv)}`);
+    toks.push(`${name}${durationText(span * 240)}${offsetText(off)}:${clampVelocity(vel + dv)}`);
   }
   return toks.join(' ');
 }
@@ -236,7 +237,7 @@ function buildBar(i, vel, phase) {
 // garage bounce.
 const ROOTS = { Bbm: 'Bb1', Gbmaj: 'Gb1', Dbmaj: 'Db2', Ab: 'Ab1', Ab9: 'Ab1', Absus: 'Ab1' };
 const FIFTHS = { Bbm: 'F2', Gbmaj: 'Db2', Dbmaj: 'Ab2', Ab: 'Eb2', Ab9: 'Eb2', Absus: 'Eb2' };
-const up = (p) => `${p.slice(0, -1)}${Number(p.slice(-1)) + 1}`;
+
 const BASS_O = [0, 4, 2, 6, 3, 5];
 // `two`: under the 2-step kick (beat 1 and slot 10), the bass fills the skipped beat 3 and comes
 // back on the swung sixteenth after the second kick.
@@ -245,7 +246,7 @@ const BASS_O = [0, 4, 2, 6, 3, 5];
 function bassBar(chord, vel, { feel = 'two', drop = false } = {}) {
   const r = ROOTS[chord];
   const f = FIFTHS[chord];
-  const o = up(r);
+  const o = transpose(r, 12, nm);
   let hits;
   if (feel === 'light') hits = [[8, r, 0], [3, 'r'], [2, f, -10], [3, 'r']];
   else if (feel === 'four')
@@ -372,8 +373,6 @@ function chopBar(chord, vel, shape) {
 }
 
 // --- sections ---------------------------------------------------------------
-const R = 'R';
-const bars = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
 const LOOP = ['Bbm', 'Gbmaj', 'Dbmaj', 'Ab'];
 // Two bars to a chord, so the half-time melody keeps its harmony. The pre-chorus climbs through
 // four of them and hangs on Absus4 into the hook.
@@ -382,7 +381,7 @@ const loop = (i) => LOOP[Math.floor(i / 2) % 4];
 const stabFig = (i) => (i % 2 ? STABS.B : STABS.A);
 
 const keys = ['lead', 'chops', 'keys', 'pad', 'bass', 'drums'];
-const { tracks, marks, section } = sectionBuilder(keys);
+const { tracks, section, block } = sectionBuilder(keys);
 // The vocal builds through the song: it starts as single eighth-note hits that punctuate the groove,
 // and each section lets the notes ring a little longer (`hold`, in sixteenths): hits, dotted eighth,
 // quarter, dotted, half, long, full. The last chorus's second half and the outro sing every note at
@@ -399,79 +398,79 @@ const hookChops = (i, vel, busy = false) =>
 // 1. Bars 1-8. Intro: 2-step drums build up, then the stabs and bass, with the vocal chops teasing
 // the hook. The vocal stays out.
 section('Intro', 8, {
-  drums: [...bars(4, (i) => twoStep(i, 88, { clap: i >= 2, ghosts: false })), ...bars(3, (i) => twoStep(i + 4, 94)), twoStep(7, 96, { fill: true })],
-  pad: bars(8, (i) => padBar(loop(i), 66 + 2 * i)),
-  bass: [...bars(4, () => R), ...bars(4, (i) => bassBar(loop(i + 4), 76, { feel: 'light' }))],
-  keys: [...bars(4, () => R), ...bars(4, (i) => stabBar(loop(i + 4), i, 82, STABS.sparse))],
-  chops: bars(8, (i) => (i % 2 === 1 ? chopBar(loop(i), 72 + 2 * i, 'full') : R)),
+  drums: [...times(4, (i) => twoStep(i, 88, { clap: i >= 2, ghosts: false })), ...times(3, (i) => twoStep(i + 4, 94)), twoStep(7, 96, { fill: true })],
+  pad: times(8, (i) => padBar(loop(i), 66 + 2 * i)),
+  bass: [...repeatBar(R, 4), ...times(4, (i) => bassBar(loop(i + 4), 76, { feel: 'light' }))],
+  keys: [...repeatBar(R, 4), ...times(4, (i) => stabBar(loop(i + 4), i, 82, STABS.sparse))],
+  chops: times(8, (i) => (i % 2 === 1 ? chopBar(loop(i), 72 + 2 * i, 'full') : R)),
 });
 
 // 2. Bars 9-24. Verse 1: the vocal's own tune over the 2-step, with the chops out of its way.
 section('Verse 1', 16, {
   lead: lead(VERSE, 96, HOLD.hits),
-  drums: bars(16, (i) => twoStep(i, 98, { fill: i % 8 === 7 })),
-  bass: bars(16, (i) => bassBar(loop(i), 80, { drop: i % 8 === 7 })),
-  keys: bars(16, (i) => stabBar(loop(i), i, 84, i % 4 === 3 ? STABS.lift : stabFig(i))),
-  pad: bars(16, (i) => padBar(loop(i), 74)),
+  drums: times(16, (i) => twoStep(i, 98, { fill: i % 8 === 7 })),
+  bass: times(16, (i) => bassBar(loop(i), 80, { drop: i % 8 === 7 })),
+  keys: times(16, (i) => stabBar(loop(i), i, 84, i % 4 === 3 ? STABS.lift : stabFig(i))),
+  pad: times(16, (i) => padBar(loop(i), 74)),
 });
 
 // 3. Bars 25-32. Pre-chorus 1: the vocal climbs over the 2-step, the stabs thicken, and the last
 // bars roll into the hook.
 section('Pre-chorus 1', 8, {
   lead: lead(PRE_HALF, 96, HOLD.hits),
-  drums: [...bars(6, (i) => twoStep(i, 100)), buildBar(6, 102, 1), buildBar(7, 104, 3)],
-  bass: bars(8, (i) => bassBar(PRE_CHORDS[i], 84, { drop: i === 3 })),
-  keys: bars(8, (i) => stabBar(PRE_CHORDS[i], i, 88, stabFig(i))),
-  pad: bars(8, (i) => padBar(PRE_CHORDS[i], 76)),
+  drums: [...times(6, (i) => twoStep(i, 100)), buildBar(6, 102, 1), buildBar(7, 104, 3)],
+  bass: times(8, (i) => bassBar(PRE_CHORDS[i], 84, { drop: i === 3 })),
+  keys: times(8, (i) => stabBar(PRE_CHORDS[i], i, 88, stabFig(i))),
+  pad: times(8, (i) => padBar(PRE_CHORDS[i], 76)),
 });
 
 // 4. Bars 33-48. Chorus 1: the hook once, in half time, over 4x4 speed-garage drums and the
 // pumping bass; the chop riff's tail answers in every bar the vocal leaves empty.
 section('Chorus 1', 16, {
   lead: lead(HOOK, 104, HOLD.hits),
-  drums: bars(16, (i) => fourFour(i, 104, { fill: i % 8 === 7, crash: i === 0 })),
-  bass: bars(16, (i) => bassBar(loop(i), 88, { feel: 'four', drop: i % 4 === 3 })),
-  keys: bars(16, (i) => stabBar(loop(i), i, 92, stabFig(i))),
-  pad: bars(16, (i) => padBar(loop(i), 78)),
-  chops: bars(16, (i) => (i % 2 === 1 ? chopBar(loop(i), 80, 'tail') : hookChops(i, 84))),
+  drums: times(16, (i) => fourFour(i, 104, { fill: i % 8 === 7, crash: i === 0 })),
+  bass: times(16, (i) => bassBar(loop(i), 88, { feel: 'four', drop: i % 4 === 3 })),
+  keys: times(16, (i) => stabBar(loop(i), i, 92, stabFig(i))),
+  pad: times(16, (i) => padBar(loop(i), 78)),
+  chops: times(16, (i) => (i % 2 === 1 ? chopBar(loop(i), 80, 'tail') : hookChops(i, 84))),
 });
 
 // 5. Bars 49-64. Verse 2: back to the 2-step, a little hotter.
 section('Verse 2', 16, {
   lead: lead(VERSE, 100, HOLD.dottedEighth),
-  drums: bars(16, (i) => twoStep(i, 100, { fill: i % 8 === 7 })),
-  bass: bars(16, (i) => bassBar(loop(i), 82, { drop: i % 4 === 3 })),
-  keys: bars(16, (i) => stabBar(loop(i), i, 88, stabFig(i))),
-  pad: bars(16, (i) => padBar(loop(i), 76)),
+  drums: times(16, (i) => twoStep(i, 100, { fill: i % 8 === 7 })),
+  bass: times(16, (i) => bassBar(loop(i), 82, { drop: i % 4 === 3 })),
+  keys: times(16, (i) => stabBar(loop(i), i, 88, stabFig(i))),
+  pad: times(16, (i) => padBar(loop(i), 76)),
 });
 
 // 6. Bars 65-72. Pre-chorus 2: the same climb, a touch hotter.
 section('Pre-chorus 2', 8, {
   lead: lead(PRE_HALF, 100, HOLD.quarter),
-  drums: [...bars(6, (i) => twoStep(i, 102)), buildBar(6, 104, 1), buildBar(7, 106, 3)],
-  bass: bars(8, (i) => bassBar(PRE_CHORDS[i], 86, { drop: i === 3 })),
-  keys: bars(8, (i) => stabBar(PRE_CHORDS[i], i, 92, stabFig(i))),
-  pad: bars(8, (i) => padBar(PRE_CHORDS[i], 78)),
+  drums: [...times(6, (i) => twoStep(i, 102)), buildBar(6, 104, 1), buildBar(7, 106, 3)],
+  bass: times(8, (i) => bassBar(PRE_CHORDS[i], 86, { drop: i === 3 })),
+  keys: times(8, (i) => stabBar(PRE_CHORDS[i], i, 92, stabFig(i))),
+  pad: times(8, (i) => padBar(PRE_CHORDS[i], 78)),
 });
 
 // 7. Bars 73-88. Chorus 2: the hook again, a little hotter.
 section('Chorus 2', 16, {
   lead: lead(HOOK, 107, HOLD.dotted),
-  drums: bars(16, (i) => fourFour(i, 106, { fill: i % 8 === 7, crash: i === 0 })),
-  bass: bars(16, (i) => bassBar(loop(i), 90, { feel: 'four', drop: i % 4 === 3 })),
-  keys: bars(16, (i) => stabBar(loop(i), i, 94, stabFig(i))),
-  pad: bars(16, (i) => padBar(loop(i), 80)),
-  chops: bars(16, (i) => hookChops(i, 86)),
+  drums: times(16, (i) => fourFour(i, 106, { fill: i % 8 === 7, crash: i === 0 })),
+  bass: times(16, (i) => bassBar(loop(i), 90, { feel: 'four', drop: i % 4 === 3 })),
+  keys: times(16, (i) => stabBar(loop(i), i, 94, stabFig(i))),
+  pad: times(16, (i) => padBar(loop(i), 80)),
+  chops: times(16, (i) => hookChops(i, 86)),
 });
 
 // 8. Bars 89-96. Breakdown: the kick drops out and the vocal sings the hook bare over the pad, the
 // stabs, the chops and soft hats; the bass slides back under the second half.
 section('Breakdown', 8, {
   lead: [...lead(HOOK.slice(0, 3), 80, HOLD.half), R, R],
-  drums: [...bars(4, (i) => twoStep(i, 74, { kick: false, clap: i % 2 === 1, ghosts: false })), ...bars(3, (i) => twoStep(i, 82, { kick: false })), twoStep(7, 92, { kick: false, fill: true })],
-  bass: [R, R, ...bars(4, (i) => bassBar(loop(i + 2), 62 + 2 * i, { feel: 'light' })), ...bars(2, (i) => bassBar(loop(i + 6), 74))],
-  keys: bars(8, (i) => stabBar(loop(i), i, 78, i < 4 ? STABS.sparse : stabFig(i))),
-  pad: bars(8, (i) => padBar(loop(i), 82)),
+  drums: [...times(4, (i) => twoStep(i, 74, { kick: false, clap: i % 2 === 1, ghosts: false })), ...times(3, (i) => twoStep(i, 82, { kick: false })), twoStep(7, 92, { kick: false, fill: true })],
+  bass: [R, R, ...times(4, (i) => bassBar(loop(i + 2), 62 + 2 * i, { feel: 'light' })), ...times(2, (i) => bassBar(loop(i + 6), 74))],
+  keys: times(8, (i) => stabBar(loop(i), i, 78, i < 4 ? STABS.sparse : stabFig(i))),
+  pad: times(8, (i) => padBar(loop(i), 82)),
   chops: [R, R, R, R, R, R, chopBar(loop(6), 76, 'full'), chopBar(loop(7), 80, 'full')],
 });
 
@@ -479,13 +478,13 @@ section('Breakdown', 8, {
 // the high Eb into the drop.
 section('Build', 8, {
   lead: [
-    ...bars(4, () => R),
+    ...repeatBar(R, 4),
     ...lead([[[3, 'r'], [2, 'Ab5', -6], [3, 'Bb5', -4], [3, 'C6', 0], [5, 'Db6', 2]], [[8, 'Eb6', 4], [8, 'r']]], 104, HOLD.long),
   ],
-  drums: [...bars(4, (i) => buildBar(i, 96, 0)), buildBar(4, 100, 0), buildBar(5, 100, 1), buildBar(6, 104, 2), buildBar(7, 108, 3)],
-  bass: [...bars(4, (i) => bassBar(loop(i), 70, { feel: 'light' })), ...bars(4, (i) => bassBar(loop(i + 4), 80, { drop: i === 3 }))],
-  keys: bars(8, (i) => stabBar(loop(i), i, 84 + 2 * i, stabFig(i))),
-  pad: bars(8, (i) => padBar(loop(i), 80)),
+  drums: [...times(4, (i) => buildBar(i, 96, 0)), buildBar(4, 100, 0), buildBar(5, 100, 1), buildBar(6, 104, 2), buildBar(7, 108, 3)],
+  bass: [...times(4, (i) => bassBar(loop(i), 70, { feel: 'light' })), ...times(4, (i) => bassBar(loop(i + 4), 80, { drop: i === 3 }))],
+  keys: times(8, (i) => stabBar(loop(i), i, 84 + 2 * i, stabFig(i))),
+  pad: times(8, (i) => padBar(loop(i), 80)),
   chops: [chopBar(loop(0), 76, 'full'), R, chopBar(loop(2), 80, 'full'), R],
 });
 
@@ -493,26 +492,26 @@ section('Build', 8, {
 // 4x4, with the chop riff's tail in the bars the vocal leaves empty.
 section('Final chorus', 16, {
   lead: [...lead(HOOK.slice(0, 4), 110, HOLD.long), ...lead(HOOK.slice(4), 112)],
-  drums: bars(16, (i) => (i < 8 ? twoStep(i, 108, { fill: i === 7, crash: i === 0 }) : fourFour(i, 108, { fill: i === 15, crash: i === 8 }))),
-  bass: bars(16, (i) => bassBar(loop(i), 92, { feel: i < 8 ? 'two' : 'four', drop: i % 4 === 3 })),
-  keys: bars(16, (i) => stabBar(loop(i), i, 96, stabFig(i))),
-  pad: bars(16, (i) => padBar(loop(i), 82)),
-  chops: bars(16, (i) => hookChops(i, 88, i >= 8)),
+  drums: times(16, (i) => (i < 8 ? twoStep(i, 108, { fill: i === 7, crash: i === 0 }) : fourFour(i, 108, { fill: i === 15, crash: i === 8 }))),
+  bass: times(16, (i) => bassBar(loop(i), 92, { feel: i < 8 ? 'two' : 'four', drop: i % 4 === 3 })),
+  keys: times(16, (i) => stabBar(loop(i), i, 96, stabFig(i))),
+  pad: times(16, (i) => padBar(loop(i), 82)),
+  chops: times(16, (i) => hookChops(i, 88, i >= 8)),
 });
 
 // 11. Bars 121-128. Outro for the mixer: the vocal takes the hook's first phrase once more, then
 // the layers leave one by one until only the 2-step kick and hats are left.
 section('Outro', 8, {
-  lead: [...lead(HOOK.slice(0, 2), 84), ...bars(4, () => R)],
+  lead: [...lead(HOOK.slice(0, 2), 84), ...repeatBar(R, 4)],
   drums: [
-    ...bars(4, (i) => twoStep(i, 102)),
-    ...bars(2, (i) => twoStep(i + 4, 96, { ghosts: false })),
+    ...times(4, (i) => twoStep(i, 102)),
+    ...times(2, (i) => twoStep(i + 4, 96, { ghosts: false })),
     twoStep(6, 90, { clap: false, ghosts: false }),
     grid([[0, 1, 0, 0, '[k cr]'], [10, 1, -6, 0, 'k'], [2, 1, -10, 2, 'h'], [3, 1, -30, 2, 'h'], [6, 1, -12, 4, 'h']], 88),
   ],
-  bass: [...bars(4, (i) => bassBar(loop(i), 76, { drop: i === 3 })), ...bars(3, (i) => bassBar(loop(i + 4), 66 - 4 * i, { feel: 'light' })), R],
-  keys: [...bars(4, (i) => stabBar(loop(i), i, 88, stabFig(i))), ...bars(2, (i) => stabBar(loop(i + 4), i, 80, STABS.sparse)), R, R],
-  pad: bars(8, (i) => padBar(loop(i), 78 - 2 * (i > 5 ? i - 5 : 0))),
+  bass: [...times(4, (i) => bassBar(loop(i), 76, { drop: i === 3 })), ...times(3, (i) => bassBar(loop(i + 4), 66 - 4 * i, { feel: 'light' })), R],
+  keys: [...times(4, (i) => stabBar(loop(i), i, 88, stabFig(i))), ...times(2, (i) => stabBar(loop(i + 4), i, 80, STABS.sparse)), R, R],
+  pad: times(8, (i) => padBar(loop(i), 78 - 2 * (i > 5 ? i - 5 : 0))),
   chops: [R, R, R, R, chopBar(loop(4), 74, 'full'), R, chopBar(loop(6), 68, 'full'), R],
 });
 
@@ -527,8 +526,6 @@ for (const key of keys) {
 }
 
 const total = tracks.lead.length;
-const block = (key) => writeBlock(tracks[key], marks);
-
 const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio
 # style at 132 BPM in Bb minor: a wordless vocal hook someone can hum after one listen - a pickup,
 # a peak, a fall that lands early, and a breath - sung in half time, starting as single short hits
@@ -582,5 +579,5 @@ track drums role=drums inst=909-kit vol=0.85
 ${block('drums')}
 
 `;
-writeFileSync(join(out, 'night-bus-home.song'), text);
+saveSong(out, 'night-bus-home.song', text);
 console.log(`wrote ${out}/night-bus-home.song (${total} bars)`);

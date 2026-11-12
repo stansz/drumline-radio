@@ -2,18 +2,15 @@
 // The melodies are composed bar by bar here, not borrowed or randomly generated. Shared choruses
 // come from one score; the chord map supplies every accompaniment's pitches.
 //   node tools/arranger/exit-sign.mjs [outDir]
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
+import { outDir, repeatBars, saveSong, sectionBuilder } from './lib.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
-const repeat = (bars, times) => Array.from({ length: times }, () => bars).flat();
+const out = outDir();
 
 // Each section's harmony has a single source. A twelve-bar chorus has an answering middle phrase
 // and a closing Em-C-D-G turnaround, rather than running the same four chords throughout.
 const PROGRESSIONS = {
   intro: ['G', 'C', 'D', 'G'],
-  verse: repeat(['Em', 'C', 'G', 'D', 'Em', 'C', 'Am', 'D'], 2),
+  verse: repeatBars(['Em', 'C', 'G', 'D', 'Em', 'C', 'Am', 'D'], 2),
   pre: ['Am', 'C', 'Em', 'D', 'Am', 'C', 'D', 'D'],
   chorus: ['G', 'C', 'Em', 'D', 'G', 'Am', 'C', 'D', 'Em', 'C', 'D', 'G'],
   bridge: ['C', 'C', 'Am', 'Am', 'Em', 'Em', 'D', 'D'],
@@ -136,8 +133,12 @@ const DRUMS = {
   bridgeFill: 'k/4:98 r/4 th/8:96 tm/8:104 tl/16:108 tl/16:114 s/8+12:120',
 };
 
-const tracks = { melody: [], rhythm: [], wall: [], clean: [], bass: [], drums: [], cymbals: [] };
-const marks = [];
+const keys = ['melody', 'rhythm', 'wall', 'clean', 'bass', 'drums', 'cymbals'];
+const builder = sectionBuilder(keys, {
+  label: (name, start, end) => `${name} (bars ${start}-${end})`,
+  exact: true,
+});
+const { tracks, block } = builder;
 const form = [];
 const velocity = (value, bar) => bar === 'R' ? bar : `v=${value} ${bar}`;
 
@@ -178,15 +179,10 @@ function hats(level, ride = false, open = false, crash = false) {
 }
 
 function section(name, progression, parts) {
-  const start = tracks.melody.length + 1;
   const chords = PROGRESSIONS[progression];
-  marks.push([start - 1, `${name} (bars ${start}-${start + chords.length - 1})`]);
+  const start = tracks.melody.length + 1;
   form.push([name, progression, start, start + chords.length - 1]);
-  for (const id of Object.keys(tracks)) {
-    const bars = parts[id] ?? chords.map(() => 'R');
-    if (bars.length !== chords.length) throw new Error(`${name}: ${id} has ${bars.length} bars`);
-    tracks[id].push(...bars);
-  }
+  builder.section(name, chords.length, parts);
 }
 
 section('Intro: clean strings, then the band counts itself in', 'intro', {
@@ -287,10 +283,6 @@ const HEADERS = {
   cymbals: 'track cymbals role=drums vol=0.95 pan=-0.12',
 };
 
-function block(id) {
-  return writeBlock(tracks[id], marks);
-}
-
 const total = tracks.melody.length;
 const chordComments = Object.entries(PROGRESSIONS).map(([name, chords]) => `# Chords ${name}: ${chords.join(' | ')}`);
 const formComments = form.map(([name, progression, start, end]) => `# Form ${start}-${end}: ${progression} - ${name}`);
@@ -318,6 +310,5 @@ const text = [
   '',
 ].join('\n');
 
-mkdirSync(out, { recursive: true });
-writeFileSync(join(out, 'exit-sign.song'), text);
+saveSong(out, 'exit-sign.song', text);
 console.log(`wrote ${out}/exit-sign.song (${total} bars, ${(total * 240 / 152).toFixed(2)} seconds)`);

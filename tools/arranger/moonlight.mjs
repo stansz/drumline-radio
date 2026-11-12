@@ -4,9 +4,10 @@
 // hand's octaves, and a soft warm bass doubles the low notes. Notes outside a part's range moved by
 // an octave.
 //   node tools/arranger/moonlight.mjs [outDir]
+import { outDir } from './lib.mjs';
 import { writePianoPiece } from './piano-piece.mjs';
 
-const [out = 'src/songs'] = process.argv.slice(2);
+const out = outDir();
 
 // The converted parts: each a list of voices, each voice a list of bars from bar 1.
 const PARTS = {
