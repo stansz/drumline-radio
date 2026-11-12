@@ -4,6 +4,7 @@
 //   node tools/arranger/ivory-and-ash.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -245,19 +246,7 @@ const HEADER = [
   ['drums', 'track drums role=drums vol=0.75'],
   ['cym', 'track cymbals role=drums vol=0.45'],
 ];
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Ivory and Ash, by Claude and SZ. A cinematic prog-rock piece: a Romantic piano and a soaring
 # blues guitar trade phrases, building through two crescendos to a fragile piano reprise.

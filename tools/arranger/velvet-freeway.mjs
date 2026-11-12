@@ -11,6 +11,7 @@
 //   node tools/arranger/velvet-freeway.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -527,25 +528,7 @@ const TRACKS = [
   ['drums', 'track drums role=drums vol=0.85 vol.altrock=0.4 vol.orchestral=0.55 pan=0'],
 ];
 
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => {
-    if (row.length) lines.push(`| ${row.join(' | ')} |`);
-    row = [];
-  };
-  tracks[key].forEach((bar, index) => {
-    if (at.has(index)) {
-      flush();
-      lines.push(`# ${at.get(index)}`);
-    }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `${HEADER_NOTE}
 #

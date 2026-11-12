@@ -2,6 +2,7 @@
 // named bass lines and drum grooves. Used by songs.mjs; see tools/README.md.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
@@ -123,19 +124,7 @@ function groove(name, ts, level) {
  * share this tail.
  */
 function writeSong(out, spec, { T, comment, tracks, style, ts }) {
-  const block = (key) => {
-    const lines = [];
-    const marks = new Map(comment[key].map(([i, c]) => [i, c]));
-    let row = [];
-    const flush = () => { if (row.length) lines.push('| ' + row.join(' | ') + ' |'); row = []; };
-    T[key].forEach((bar, i) => {
-      if (marks.has(i)) { flush(); lines.push(`# ${marks.get(i)}`); }
-      row.push(bar);
-      if (row.length === 4) flush();
-    });
-    flush();
-    return lines.join('\n');
-  };
+  const block = (key) => writeBlock(T[key], comment[key]);
   const hidden = spec.hidden ? 'hidden: true\n' : '';
   const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
   const text = `${spec.head.trim()}\n${hidden}style: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +

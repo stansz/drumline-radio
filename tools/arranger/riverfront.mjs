@@ -8,6 +8,7 @@
 //   node tools/arranger/riverfront.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { barLength, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -349,47 +350,15 @@ section('Outro', 8, {
 
 // Every bar must be exactly one 4/4 bar (3840 ticks). Durations are written out in full above; the
 // checker here just makes sure of the arithmetic before the song file is written.
-const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
-const barTicks = (bar) => {
-  if (bar === R) return 3840;
-  let sum = 0;
-  const tokens = bar.match(/\[[^\]]*\][^\s]*|[^\s]+/g) ?? [];
-  for (const token of tokens) {
-    const m = token.match(/\/(\d+)(\.\.|\.|t)?/);
-    if (!m) throw new Error(`no duration in token ${token}`);
-    const base = TICKS[Number(m[1])];
-    const mul = m[2] === '..' ? 1.75 : m[2] === '.' ? 1.5 : m[2] === 't' ? 2 / 3 : 1;
-    sum += base * mul;
-  }
-  return sum;
-};
 for (const key of keys) {
   tracks[key].forEach((bar, i) => {
-    const got = barTicks(bar);
+    const got = barLength(bar);
     if (got !== 3840) throw new Error(`track ${key} bar ${i + 1} is ${got} ticks: ${bar}`);
   });
 }
 
 const total = tracks.melody.length;
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => {
-    if (row.length) lines.push(`| ${row.join(' | ')} |`);
-    row = [];
-  };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) {
-      flush();
-      lines.push(`# ${at.get(i)}`);
-    }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Riverfront, by MiMo v2.6 Pro and SZ. An original for the Techno style: warm chord stabs, a dark
 # evolving pad, a hypnotic counter-line, and a rolling sub bass under a four-on-the-floor kit at 124

@@ -5,6 +5,7 @@
 //   node tools/arranger/swan-lake.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -136,19 +137,7 @@ section('The swan theme, one last time', [...THEME_B.slice(0, 7), 'end'], {
 });
 
 const total = tracks.oboe.length;
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Swan Lake, arranged by Claude and SZ for the Orchestral style: the Scène from Act II, with the
 # oboe's swan theme bar for bar, the theme for full orchestra, the lament, and a last fortissimo.

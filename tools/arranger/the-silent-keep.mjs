@@ -6,6 +6,7 @@
 //   node tools/arranger/the-silent-keep.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { barLength, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -630,25 +631,10 @@ tracks.strings = tracks.strings.map((bar) =>
 );
 
 // Validate every bar before writing, so a bad duration fails loudly.
-const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
-const barTicks = (bar, time) => {
-  const want = (Number(time.split('/')[0]) * 3840) / Number(time.split('/')[1]);
-  if (bar === 'R' || bar === null) return want;
-  let sum = 0;
-  const tokens = bar.match(/\[[^\]]*\][^\s]*|[^\s]+/g) ?? [];
-  for (const token of tokens) {
-    const m = token.match(/\/(\d+)(\.\.|\.|t)?/);
-    if (!m) throw new Error(`no duration in token ${token}`);
-    const base = TICKS[Number(m[1])];
-    const mul = m[2] === '..' ? 1.75 : m[2] === '.' ? 1.5 : m[2] === 't' ? 2 / 3 : 1;
-    sum += Math.round(base * mul);
-  }
-  return sum;
-};
 for (const key of Object.keys(tracks)) {
   tracks[key].forEach((bar, i) => {
     const want = (Number(times[i].split('/')[0]) * 3840) / Number(times[i].split('/')[1]);
-    const got = barTicks(bar, times[i]);
+    const got = barLength(bar, want);
     if (got !== want) throw new Error(`track ${key} bar ${i + 1} (${times[i]}) is ${got} ticks, expected ${want}: ${bar}`);
   });
 }
@@ -656,25 +642,7 @@ for (const key of Object.keys(tracks)) {
 const total = tracks.lead.length;
 if (total !== 194) throw new Error(`expected 194 bars, got ${total}`);
 
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => {
-    if (row.length) lines.push(`| ${row.join(' | ')} |`);
-    row = [];
-  };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) {
-      flush();
-      lines.push(`# ${at.get(i)}`);
-    }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const HEADERS = {
   clean: 'track clean role=arp inst=bank:clean-electric vol=0.8 pan=0.2',

@@ -1,92 +1,107 @@
 ## Goal
-Three small changes. (A) Night Bus Home: verse 2's vocal rings for a dotted eighth (between verse 1's
-eighth-note hits and pre-chorus 2's quarters); in chorus 1 the chop riff's tail answers in the bars
-the vocal leaves empty; the bass comes down 1 dB so `npm run balance` stops flagging it. (B) `npm run
-balance` flags a buried pad or chords part even when it is too quiet to count as playing.
+Move the song generators' copied plumbing into one shared module, `tools/arranger/lib.mjs`: the
+function that writes a track's bars as song-file text, and the bar-length check. Every generated song
+stays byte-identical (`tests/drift.test.ts` proves it). The module holds plumbing only: no pitches,
+chords, voicings, rhythms, grooves or other musical choices, so songs never start to sound alike
+through it.
 
 ## Files to touch
+- `tools/arranger/lib.mjs` (new)
+- `tools/arranger/arranger.mjs`
+- `tools/arranger/greensleeves.mjs`
+- `tools/arranger/fur-elise.mjs`
+- `tools/arranger/fathom.mjs`
+- `tools/arranger/mountain-king.mjs`
+- `tools/arranger/ivory-and-ash.mjs`
+- `tools/arranger/last-stop.mjs`
+- `tools/arranger/nocturne.mjs`
+- `tools/arranger/night-shift.mjs`
 - `tools/arranger/night-bus-home.mjs`
-- `src/songs/night-bus-home.song` (regenerated only, never hand-edited)
-- `tools/browser/balance.mjs`
-- `tools/README.md` (the `**balance:**` bullet only)
+- `tools/arranger/save-point.mjs`
+- `tools/arranger/sunliner.mjs`
+- `tools/arranger/riverfront.mjs`
+- `tools/arranger/swan-lake.mjs`
+- `tools/arranger/the-silent-keep.mjs`
+- `tools/arranger/velvet-freeway.mjs`
+- `tools/README.md` (the `## Arranger` section only)
 - `.handoff/report.md` (new)
 
 ## Steps
-1. Run `npm ci`.
-2. Do workstreams A and B (see **Parallel work**).
-3. Run every **Acceptance** command and write `.handoff/report.md`.
+1. Run `npm ci`, then `npx vitest run tests/drift.test.ts` and confirm it passes before any edit.
+2. Create `tools/arranger/lib.mjs` with a header comment saying it holds plumbing shared by the
+   generators and must never hold musical choices (pitches, chords, voicings, rhythms, grooves,
+   patterns, velocities, swing amounts); those stay in each song's own script. It has no imports
+   and exports exactly these two functions:
+   - `writeBlock(bars, marks = [], { perRow = 4, first = null } = {})`: returns the track's bars as
+     song-file lines joined with `\n`. If `first` is not null, the first line is `| ${first} |`.
+     `marks` is an array of `[barIndex, text]` pairs or a `Map` of the same; before the bar at a
+     marked index, the pending row is flushed and the line `# ${text}` is written. Bars are written
+     `perRow` to a line as `| a | b | c | d |`; a short last row is written as it is. This is the
+     same behaviour as the existing `block` functions listed in step 3.
+   - `barLength(bar, wholeBar = 3840)`: the length in ticks of one bar string. `'R'` and `null`
+     return `wholeBar`. Otherwise split the bar into tokens with
+     `bar.match(/\[[^\]]*\][^\s]*|[^\s]+/g) ?? []`; each token must contain a duration matching
+     `/\/(\d+)(\.\.|\.|t)?/` (throw `no duration in token ${token}` if not); its ticks are
+     `{1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60}[n]` times 1.75 for `..`, 1.5 for
+     `.`, 2/3 for `t`, else 1, each token rounded with `Math.round`; return the sum. Throw
+     `unknown duration /${n} in token ${token}` for a base not in the table.
+3. In each of these scripts, delete the local `block` function's body and make it a one-line call
+   to `writeBlock`, keeping the name `block` and its existing parameters and call sites, and import
+   `writeBlock` from `./lib.mjs`:
+   `arranger.mjs` (inside `arrange`/its function: `writeBlock(T[key], comment[key])`),
+   `greensleeves.mjs` (`writeBlock(parts[key], marks, { first: pick })`),
+   `fur-elise.mjs` (`writeBlock(tracks[key], SECTIONS, { perRow: 6, first: pickup })`),
+   `fathom.mjs`, `mountain-king.mjs`, `ivory-and-ash.mjs`, `last-stop.mjs`, `nocturne.mjs`,
+   `night-shift.mjs`, `night-bus-home.mjs`, `save-point.mjs`, `sunliner.mjs`, `riverfront.mjs`,
+   `swan-lake.mjs`, `the-silent-keep.mjs`, `velvet-freeway.mjs`. For the ones not given above, read
+   the local `block` and pass the same bars array, the same marks, and `perRow`/`first` only if the
+   local version differs from the defaults.
+4. In `fathom.mjs`, `night-bus-home.mjs`, `riverfront.mjs` and `the-silent-keep.mjs`, delete the
+   local `barTicks` bar-length function and any duration table used only by it (`TICKS`,
+   `DUR_TICKS`), import `barLength` from `./lib.mjs`, and call `barLength(bar)` where `barTicks(bar)`
+   was called (in `the-silent-keep.mjs`: `barLength(bar, (Number(times[i].split('/')[0]) * 3840) / Number(times[i].split('/')[1]))`,
+   or an equivalent local helper computing the whole-bar ticks from the time string). Keep each
+   script's own loop and error message around the call. Do not touch `arranger.mjs`'s `barTicks`,
+   which computes a time signature's ticks and is not a bar-length check.
+5. Do not change `confetti-cannon.mjs`; its writer has a different layout.
+6. In `tools/README.md`'s `## Arranger` section, add a short paragraph: `arranger/lib.mjs` holds
+   plumbing shared by the generators (`writeBlock`, `barLength`), and only plumbing: melodies,
+   chords, voicings, grooves and every other musical choice stay in each song's own script, so a
+   new song starts from a blank musical slate.
+7. Run every **Acceptance** command and write `.handoff/report.md`.
 
 ## Acceptance
+- `npx vitest run tests/drift.test.ts` exits 0.
 - `npm test` exits 0.
 - `npm run typecheck` exits 0.
-- `node tools/arranger/night-bus-home.mjs && git diff --stat -- src/songs/night-bus-home.song` prints a
-  non-empty stat, and running `node tools/arranger/night-bus-home.mjs` a second time leaves
-  `git diff --stat` unchanged.
-- `npm run -s check:songs | grep '^night-bus-home'` prints a line containing `0 clashes`.
-- `grep -c "lead(VERSE, 100, HOLD.dottedEighth)" tools/arranger/night-bus-home.mjs` prints 1.
-- `grep -c "track bass role=bass inst=synth-bass vol=0.67" src/songs/night-bus-home.song` prints 1.
-- `npm run balance -- night-bus-home` exits 0 and prints `No flags.`
-- `npm run balance -- velvet-freeway` exits 0 and prints `No flags.`
-- `sed 's/^track pad role=pad vol=0.9/track pad role=pad vol=0.05/' src/songs/velvet-freeway.song > /tmp/vf-quiet-pad.song && npm run balance -- /tmp/vf-quiet-pad.song`
-  prints at least one line containing `(pad) is` and `(loudness and peak)`.
-- `git diff --name-only` lists only files from **Files to touch**.
+- `grep -l "row.join" tools/arranger/*.mjs` prints exactly `tools/arranger/lib.mjs`.
+- `grep -l "no duration in token" tools/arranger/*.mjs` prints exactly `tools/arranger/lib.mjs`.
+- `grep -c "^import" tools/arranger/lib.mjs` prints `0`.
+- `grep -cE "\b[A-G][#b]?[0-9]\b" tools/arranger/lib.mjs` prints `0`.
+- `node -e "import('./tools/arranger/lib.mjs').then(m=>{console.log(m.barLength('C4/4 D4/8. E4/16 [C4 E4]/2'), m.barLength('R'), m.barLength('C4/8t C4/8t C4/8t r/2.'), m.writeBlock(['a','b','c','d','e'], [[4,'Two']], {first:'p'}))})"`
+  prints exactly these four lines: `3840 3840 3840 | p |`, `| a | b | c | d |`, `# Two`, `| e |`.
+- `git diff --name-only` lists only files from **Files to touch** (`lib.mjs` and `report.md` are
+  untracked).
 
 ## Parallel work
-Two workstreams; they share no files.
-
-**Workstream A: Night Bus Home.** Owns `tools/arranger/night-bus-home.mjs` and
-`src/songs/night-bus-home.song`.
-- A1. In the `HOLD` object, add `dottedEighth: 3,` between `hits: 2,` and `quarter: 4,`. In section
-  `Verse 2`, change `lead: lead(VERSE, 100, HOLD.quarter),` to
-  `lead: lead(VERSE, 100, HOLD.dottedEighth),`. Leave `Pre-chorus 2` on `HOLD.quarter`. Update the
-  comment above `HOLD` so it lists the steps in order: hits, dotted eighth, quarter, dotted, half,
-  long, full.
-- A2. In section `Chorus 1`, change `chops: bars(16, (i) => hookChops(i, 84)),` to
-  `chops: bars(16, (i) => (i % 2 === 1 ? chopBar(loop(i), 80, 'tail') : hookChops(i, 84))),`
-  and change that section's comment to say the chop riff's tail answers in every bar the vocal
-  leaves empty.
-- A3. In the track line template, change `track bass role=bass inst=synth-bass vol=0.75` to
-  `track bass role=bass inst=synth-bass vol=0.67`.
-- A4. Run `node tools/arranger/night-bus-home.mjs`.
-- Acceptance for A: `npx vitest run tests/drift.test.ts` exits 0, and
-  `npm run -s check:songs | grep '^night-bus-home'` contains `0 clashes`.
-
-**Workstream B: buried pads in `balance.mjs`.** Owns `tools/browser/balance.mjs` and
-`tools/README.md`.
-- B1. In `render()`, give each section its tick range: add `startTick: first.startTick` and
-  `endTick: last.startTick + last.ticks` to each object pushed into `sections`.
-- B2. In `render()`, in the per-track, per-section result, add
-  `plays: t.notes.some((n) => n.tick < s.endTick && n.tick + n.ticks > s.startTick)`, so each
-  section result is `{ loud, peak, low, plays }`. Rename the `levels = tracks.map((t, i) => ...)`
-  callback's parameter if needed so `t` is the parsed track.
-- B3. In `report()`, the pad/chords check loops over
-  `tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => (x.t.role === 'pad' || x.t.role === 'chords') && x.l.plays)`
-  instead of `[...at('pad'), ...at('chords')]`, with a one-line comment: a buried pad can sit under
-  the playing threshold, so it is checked whenever it has notes in the section. Everything else in
-  the check stays as it is.
-- B4. In `tools/README.md`'s `**balance:**` bullet, add one sentence: a pad or chords part is
-  checked in every section where it has notes, even when it is too quiet to count as playing.
-- Acceptance for B: `node --check tools/browser/balance.mjs` exits 0, and the buried-pad command in
-  **Acceptance** prints a `(pad) is ... (loudness and peak)` line.
-
-**Integration (the lead):** after both workstreams finish, run the full **Acceptance** list.
+None — do it sequentially.
 
 ## Constraints
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`. Temporary files in
   `/tmp` and installing dependencies are fine.
-- Never hand-edit `src/songs/night-bus-home.song`; only regenerate it.
-- Run only one `npm run balance` at a time.
+- Do not change any file in `src/songs/`. Every generator's output must stay byte-identical; if
+  `tests/drift.test.ts` fails after a script is changed, fix that script, never a song file.
+- No browser is needed; do not run `npm run balance` or other browser checks.
 
 ## Out of scope
-- Any other song, any other generator, any test file.
-- Changing the balance thresholds (`PAD_GAP`, `ARP_GAP`, `BASS_OVER`, `KICK_OVER`) or the arp check.
-- `docs/` and `README.md`.
+- Moving any musical helper (`seq`, `grid`, `bassBar`, `stabBar`, `groove`, voicing tables, swing,
+  hold or gesture code) into `lib.mjs`.
+- `confetti-cannon.mjs`, `songs.mjs`, `club.mjs`, `moonlight.mjs`, `clair-de-lune.mjs`,
+  `exit-sign.mjs`, and any test file.
+- Any change to `src/`.
 
 ## If blocked
-- If `npm run balance -- night-bus-home` still flags the bass after A3, stop and report its flag
-  lines; do not change the bass volume again.
-- If `npm run balance -- velvet-freeway` gets a new pad or chords flag after B3, stop and report the
-  flag lines.
-- If a balance run fails with a timeout error after its retries, report the error and continue with
-  the other Acceptance commands.
+- If a script's local `block` cannot be expressed with `writeBlock` and keep its output identical,
+  leave that script's `block` as it is and list it in the report.
+- If the drift test fails before any edit (step 1), stop and report.

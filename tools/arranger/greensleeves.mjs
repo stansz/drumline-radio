@@ -5,6 +5,7 @@
 //   node tools/arranger/greensleeves.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -169,19 +170,7 @@ section('Verse 4: the flute again, slowing to the end', 16, {
 
 const total = parts.flute.length;
 const pickup = (voice, by) => shift(V[voice][0], by);
-const block = (key, pick) => {
-  const lines = [`| ${pick} |`];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  parts[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key, pick) => writeBlock(parts[key], marks, { first: pick });
 
 const text = `# Greensleeves, arranged by Claude and SZ for the Orchestral style from a four-part setting of the
 # traditional tune: four verses, passing the melody between flute and violins.

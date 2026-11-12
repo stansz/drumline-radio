@@ -6,6 +6,7 @@
 //   node tools/arranger/fur-elise.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -292,18 +293,7 @@ ORDER.forEach((n, i) => {
   push('keys', high, i);
 });
 
-const block = (key, pickup) => {
-  const lines = [`| ${pickup} |`];
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (SECTIONS.has(i)) { flush(); lines.push(`# ${SECTIONS.get(i)}`); }
-    row.push(bar);
-    if (row.length === 6) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key, pickup) => writeBlock(tracks[key], SECTIONS, { perRow: 6, first: pickup });
 const total = ORDER.length;
 
 const text = `# Für Elise by Ludwig van Beethoven, arranged by Claude and SZ for the Synthwave style. Beethoven's

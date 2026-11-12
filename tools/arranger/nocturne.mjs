@@ -7,6 +7,7 @@
 //   node tools/arranger/nocturne.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -178,18 +179,8 @@ const SECTIONS = new Map([
   [17, 'The second theme'], [21, 'The theme'], [25, 'Coda'], [30, 'The climax'], [32, 'Cadenza'],
   [36, 'The last chords'],
 ]);
-const block = (pickup, bars) => {
-  const lines = [`| ${pickup} |`];
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  bars.forEach((bar, i) => {
-    if (SECTIONS.has(i + 1)) { flush(); lines.push(`# ${SECTIONS.get(i + 1)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const at = new Map([...SECTIONS].map(([n, text]) => [n - 1, text]));
+const block = (pickup, bars) => writeBlock(bars, at, { first: pickup });
 
 const text = `# Nocturne in E-flat, Op. 9 No. 2 by Frédéric Chopin (1832), arranged by Claude and SZ for the
 # Orchestral style. Chopin's notes bar for bar: violins on the right hand, cellos and piano on the left.
