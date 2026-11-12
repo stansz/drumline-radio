@@ -5,14 +5,15 @@
 //   node tools/arranger/club.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
+const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const PC = { C: 0, 'C#': 1, Db: 1, D: 2, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
 const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
-const nm = (n) => noteName(n, MIXED);
+const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
 const midi = (n) => {
   const m = /^([A-G](?:#|b)?)(\d)$/.exec(n);
   return (Number(m[2]) + 1) * 12 + PC[m[1]];

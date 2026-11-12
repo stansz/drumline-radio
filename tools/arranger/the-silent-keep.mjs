@@ -6,12 +6,13 @@
 //   node tools/arranger/the-silent-keep.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, MIXED, noteName, writeBlock } from './lib.mjs';
+import { barLength, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-const nm = (n) => noteName(n, MIXED);
+const NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+const nm = (n) => `${NAMES[((n % 12) + 12) % 12]}${Math.floor(n / 12) - 1}`;
 const chordName = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // Each chord keeps one voicing everywhere. The bass sits low; the power chords are low-mid; the

@@ -4,7 +4,7 @@
 //   node tools/arranger/last-stop.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { sectionBuilder, writeBlock } from './lib.mjs';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -40,8 +40,15 @@ const VERSE = ['r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12', 'Db4/4.+12 C4/8+12 Bb3/4
 const HOOK = ['F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12', 'Db4/4+12 Bb3/4+12 r/2',
   'F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12', 'C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4'];
 
-const keys = ['lead', 'keys', 'drums'];
-const { tracks, marks, section } = sectionBuilder(keys);
+const tracks = { lead: [], keys: [], drums: [] };
+const marks = [];
+// Adds a section of n bars; each part is a list of bars (null or missing for rests).
+function section(name, n, parts) {
+  marks.push([tracks.lead.length, name]);
+  for (const key of Object.keys(tracks)) {
+    for (let b = 0; b < n; b++) tracks[key].push(parts[key]?.[b] ?? 'R');
+  }
+}
 const v = (vel, bars) => bars.map((bar, i) => (bar === null ? null : i === 0 ? `v=${vel} ${bar}` : bar));
 const loop = (bars, times) => Array.from({ length: times }, () => bars).flat();
 

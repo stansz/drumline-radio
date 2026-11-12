@@ -5,7 +5,7 @@
 //   node tools/arranger/greensleeves.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -91,11 +91,12 @@ const V = {
 };
 
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const midi = (n) => {
   const m = /^([A-G])(#|b)?(\d)$/.exec(n);
   return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
 };
-const nm = (n) => noteName(n, MIXED);
+const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
 const shift = (bar, by) => (bar === 'R' ? bar : bar.replace(/\b[A-G](#|b)?\d\b/g, (n) => nm(midi(n) + by)));
 const R = 'R';
 const ends = (bar) => bar.replace(/ r\/8$/, '').replace(/\/4\. ([A-G][#b]?\d)\/4$/, '/4. $1/4.'); // last bar: hold the final chord

@@ -13,15 +13,16 @@
 //   node tools/arranger/fathom.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, clampVelocity, FLATS, noteName, offsetText, sectionBuilder, writeBlock } from './lib.mjs';
+import { barLength, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
 // Flat spellings, so every note reads in G minor.
-const nm = (n) => noteName(n, FLATS);
+const FLAT = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+const nm = (n) => `${FLAT[n % 12]}${Math.floor(n / 12) - 1}`;
 const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
-const clamp = clampVelocity;
+const clamp = (x) => Math.max(1, Math.min(127, Math.round(x)));
 
 // The one chord, voiced eight ways. Nothing here is a half step from the pad or the sub, so the
 // song has no clashes by construction.
@@ -68,7 +69,7 @@ function grid(token, hits, vel) {
       continue;
     }
     const [, span, dv, off, name] = hit;
-    const shift = offsetText(off);
+    const shift = off ? `${off > 0 ? '+' : ''}${off}` : '';
     // the floor keeps a fading echo a ghost rather than a silence
     toks.push(`${name ?? token}${DUR[span]}${shift}:${Math.max(18, clamp(vel + dv))}`);
   }
@@ -167,7 +168,16 @@ const R = 'R';
 const bars = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
 
 const keys = ['stabs', 'echo', 'hang', 'sub', 'drums', 'hats', 'dub'];
-const { tracks, marks, section } = sectionBuilder(keys);
+const tracks = Object.fromEntries(keys.map((k) => [k, []]));
+const marks = [];
+function section(name, n, parts) {
+  marks.push([tracks.stabs.length, name]);
+  for (const key of keys) {
+    const list = parts[key] ?? [];
+    if (list.length > n) throw new Error(`${name}: ${key} has ${list.length} bars, more than ${n}`);
+    for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? R);
+  }
+}
 
 // 1. Bars 1-16. Nothing but the chord at first: one stab, its fading repeats. Then the hiss of
 // hats, the sub drone and the pad swell come under it. No kick.
@@ -335,7 +345,7 @@ section('The stab alone', 8, {
 // The stabs are the star but peaked 12-16 dB under the kick, so their velocities are lifted here
 // (with the echo layer's volume, and the drums and sub lowered, in the track headers below).
 tracks.stabs = tracks.stabs.map((bar) =>
-  bar.replace(/:(\d+)/g, (_, v) => `:${clampVelocity(Number(v) * 1.25)}`),
+  bar.replace(/:(\d+)/g, (_, v) => `:${Math.min(127, Math.round(Number(v) * 1.25))}`),
 );
 
 // --- checks -----------------------------------------------------------------

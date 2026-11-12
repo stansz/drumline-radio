@@ -11,15 +11,16 @@
 //   node tools/arranger/velvet-freeway.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { clampVelocity, noteName, offsetText, SHARPS, writeBlock } from './lib.mjs';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
 // ---------------------------------------------------------------- pitches and the chord table
-const nm = (n) => noteName(n, SHARPS);
-const off = offsetText;
-const vel = (v) => clampVelocity(v, 126);
+const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+const nm = (n) => `${SHARP[((n % 12) + 12) % 12]}${Math.floor(n / 12) - 1}`;
+const off = (n) => (n === 0 ? '' : n > 0 ? `+${n}` : String(n));
+const vel = (v) => Math.max(1, Math.min(126, Math.round(v)));
 
 const n = (pitch, dur, v = 100, at = 0) => `${nm(pitch)}/${dur}${off(at)}:${vel(v)}`;
 const chd = (pitches, dur, v, at = 0) => `[${pitches.map(nm).join(' ')}]/${dur}${off(at)}:${vel(v)}`;

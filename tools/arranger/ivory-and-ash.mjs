@@ -4,14 +4,15 @@
 //   node tools/arranger/ivory-and-ash.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MIXED, noteName, sectionBuilder, writeBlock } from './lib.mjs';
+import { writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
+const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const PC = { C: 0, 'C#': 1, Db: 1, D: 2, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
 const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
-const nm = (n) => noteName(n, MIXED);
+const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
 const DUR = { 3840: '/1', 2880: '/2.', 1920: '/2', 1440: '/4.', 960: '/4', 480: '/8', 240: '/16' };
 
 // 'Cm', 'Abmaj7', 'G7', 'Ddim', 'Cm/Bb' -> { pc, iv, bass }
@@ -140,9 +141,17 @@ const GUITAR_SOLO = [
   'F6/4. Eb6/8 D6/4 Ab5/4', 'B5/8^ C6/8^ B5/4 D6/4 F6/4', 'Eb6/8^ F6/8^ G6/2.~', 'G6/2. r/4',
 ];
 
+const tracks = { guitar: [], piano: [], keys: [], cello: [], strings: [], synth: [], arp: [], bass: [], drums: [], cym: [] };
+const marks = [];
 const R = 'R';
-const keys = ['guitar', 'piano', 'keys', 'cello', 'strings', 'synth', 'arp', 'bass', 'drums', 'cym'];
-const { tracks, marks, section } = sectionBuilder(keys);
+// Adds a section: each part is a list of bars (or null for rests).
+function section(name, n, parts) {
+  marks.push([tracks.guitar.length, name]);
+  for (const key of Object.keys(tracks)) {
+    const bars = parts[key];
+    for (let b = 0; b < n; b++) tracks[key].push(bars?.[b] ?? R);
+  }
+}
 const v = (vel, bars) => bars.map((bar, i) => (bar === null || bar === R ? R : i === 0 || (bars[i - 1] ?? R) === R ? `v=${vel} ${bar}` : bar));
 const rep = (bar, n) => Array(n).fill(bar);
 const pick = (list, idx) => list.map((bar, i) => (idx.includes(i) ? bar : null));
