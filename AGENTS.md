@@ -48,6 +48,9 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   find one left running, tell the user.
 - A song is hidden with a `hidden: true` header, set in its recipe when it has one. Hidden songs
   are still parsed and checked, but they stay out of the library.
+- Each song generator in `tools/arranger/` is deliberately self-contained, so a song can be changed
+  without touching any other. Small helpers repeated between generators (bar writing, note naming,
+  durations and the like) are intentional, not a flaw; don't propose consolidating them into shared code.
 - The arranger is a starting point, not a rule. Fit each song's form, grooves, and textures to its
   genre and mood (`arrangeForm()` for verse/chorus/breakdown shape). Hand-write a song when the
   arranger can't express it, and extend the arranger with opt-in options when it falls short.
