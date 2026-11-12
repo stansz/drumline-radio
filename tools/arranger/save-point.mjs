@@ -4,13 +4,13 @@
 //   node tools/arranger/save-point.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { noteName, SHARPS, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const PC = { C: 0, 'C#': 1, D: 2, 'D#': 3, E: 4, F: 5, 'F#': 6, G: 7, 'G#': 8, A: 9, 'A#': 10, B: 11 };
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, SHARPS);
 const midi = (n) => { const m = /^([A-G]#?)(\d)$/.exec(n); return (Number(m[2]) + 1) * 12 + PC[m[1]]; };
 const up = (bar, by) => (by === 0 || bar === 'R' ? bar : bar.replace(/\b[A-G]#?\d\b/g, (n) => nm(midi(n) + by)));
 const chord = (sym) => {
@@ -115,19 +115,7 @@ section('Outro', 4, {
 }, 2);
 
 const total = tracks.lead.length;
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Save Point, by Claude and SZ. An original for the Chiptune style: two themes, a quiet save-room
 # interlude, an adventure section, and everything again up a step.

@@ -5,6 +5,7 @@
 //   node tools/arranger/night-shift.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { MIXED, noteName, sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -30,8 +31,7 @@ const ANSWER = [
   'G5/8. E5/16 r/8 C5/8 r/8 D5/8 E5/4', 'F5/4 E5/4 D5/2',
 ];
 
-const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, MIXED);
 const loop = (n, from = 0) => Array.from({ length: n }, (_, i) => LOOP[(from + i) % 8]);
 // The hook runs over 4 bars, so its chords go Dm, Bb, C, Dm.
 const HOOK_CHORDS = ['Dm', 'Bb', 'C', 'Dm'];
@@ -61,19 +61,10 @@ const drumsWithCrash = (n) => Array.from({ length: n }, (_, i) => (i % 8 === 0 ?
 const rollIn = ['v=70 s/4 s s s', 'v=82 s/8 s s s s s s s', `v=94 ${DRUMS.snare16}`, 'v=106 s/16 s s s s s s s r/2'];
 
 const keys = ['acid', 'hook', 'answer', 'arp', 'stabs', 'pad', 'bass', 'drums', 'perc'];
-const tracks = Object.fromEntries(keys.map((k) => [k, []]));
-const marks = [];
+const { tracks, marks, section } = sectionBuilder(keys);
 const R = 'R';
 const rep = (bar, n) => Array(n).fill(bar);
 const v = (vel, bars) => bars.map((b, i) => (b === R || b === null ? R : i === 0 || bars[i - 1] === R || bars[i - 1] === null ? `v=${vel} ${b}` : b));
-function section(name, n, parts) {
-  marks.push([tracks.acid.length, name]);
-  for (const key of keys) {
-    const bars = parts[key] ?? [];
-    if (bars.length > n) throw new Error(`${name}: ${key} has ${bars.length} bars`);
-    for (let i = 0; i < n; i++) tracks[key].push(bars[i] ?? R);
-  }
-}
 
 section('Intro: kick, then hats', 8, {
   drums: v(100, [...rep(DRUMS.four, 4), ...rep(DRUMS.hats, 4)]),
@@ -140,19 +131,7 @@ section('Outro', 8, {
 });
 
 const total = tracks.acid.length;
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Night Shift, by Claude and SZ. An original for the Techno style: an acid line, a hook that arrives
 # in the breakdown, an answering hook, and two drops.

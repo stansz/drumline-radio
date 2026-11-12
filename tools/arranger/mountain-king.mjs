@@ -6,6 +6,7 @@
 //   node tools/arranger/mountain-king.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { MIXED, noteName, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -283,12 +284,11 @@ const LOW = [
 ];
 
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const midi = (n) => {
   const m = /^([A-G])(#|b)?(-?\d)$/.exec(n);
   return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
 };
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, MIXED);
 const NOTE = /\b[A-G](#|b)?-?\d\b/g;
 const shift = (bar, by) => (bar === 'R' || by === 0 ? bar : bar.replace(NOTE, (n) => nm(midi(n) + by)));
 const pitches = (bar) => (bar.match(NOTE) ?? []).map(midi);
@@ -329,22 +329,17 @@ const SECTIONS = new Map([[1, 'The tune creeps in'], [18, 'Again, the march begi
   [50, 'Faster (più vivo)'], [86, 'The last chords']]);
 const DYN = [[1, 70], [18, 80], [26, 88], [42, 92], [50, 100], [66, 110], [86, 118]];
 const velAt = (n) => DYN.filter(([a]) => a <= n).pop()[1];
-const block = (bars, sub = 0) => {
-  const lines = [];
-  let row = [];
+const at = new Map([...SECTIONS].map(([n, text]) => [n - 1, text]));
+const velBars = (bars, sub) => {
   let last = null;
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  bars.forEach((bar, i) => {
-    const n = i + 1;
-    if (SECTIONS.has(n)) { flush(); lines.push(`# ${SECTIONS.get(n)}`); }
-    const vel = velAt(n) - sub;
-    row.push(bar !== 'R' && vel !== last ? `v=${vel} ${bar}` : bar);
+  return bars.map((bar, i) => {
+    const vel = velAt(i + 1) - sub;
+    const text = bar !== 'R' && vel !== last ? `v=${vel} ${bar}` : bar;
     if (bar !== 'R') last = vel;
-    if (row.length === 4) flush();
+    return text;
   });
-  flush();
-  return lines.join('\n');
 };
+const block = (bars, sub = 0) => writeBlock(velBars(bars, sub), at);
 
 const text = `# In the Hall of the Mountain King by Edvard Grieg, arranged by Claude and SZ for the Chiptune style.
 # Grieg's notes from his piano version, speeding up from start to finish.

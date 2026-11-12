@@ -13,15 +13,14 @@
 //   node tools/arranger/fathom.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { barLength, clampVelocity, durationText, FLATS, noteName, offsetText, sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
 // Flat spellings, so every note reads in G minor.
-const FLAT = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-const nm = (n) => `${FLAT[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, FLATS);
 const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
-const clamp = (x) => Math.max(1, Math.min(127, Math.round(x)));
 
 // The one chord, voiced eight ways. Nothing here is a half step from the pad or the sub, so the
 // song has no clashes by construction.
@@ -46,8 +45,6 @@ const D2 = nm(38); // its fifth, 73 Hz
 // --- the sixteenth grid -----------------------------------------------------
 // Every bar is built on sixteen slots (a sixteenth each, 240 ticks), so the arithmetic always lands
 // on 3840 ticks. A hit is [slot, spanInSixteenths, levelDelta, offsetTicks, token].
-const DUR = { 1: '/16', 2: '/8', 4: '/4', 8: '/2', 16: '/1' };
-
 function grid(token, hits, vel) {
   const at = new Map();
   const used = new Set();
@@ -68,9 +65,9 @@ function grid(token, hits, vel) {
       continue;
     }
     const [, span, dv, off, name] = hit;
-    const shift = off ? `${off > 0 ? '+' : ''}${off}` : '';
+    const shift = offsetText(off);
     // the floor keeps a fading echo a ghost rather than a silence
-    toks.push(`${name ?? token}${DUR[span]}${shift}:${Math.max(18, clamp(vel + dv))}`);
+    toks.push(`${name ?? token}${durationText(span * 240)}${shift}:${Math.max(18, clampVelocity(vel + dv))}`);
   }
   return toks.join(' ');
 }
@@ -145,14 +142,14 @@ function swell(voice, vel, n) {
   const out = [];
   for (let i = 0; i < n; i += 1) {
     const w = vel + SHAPE[i % 4] - Math.floor(i / 4) * 2;
-    out.push(i % 2 === 0 ? `${voice}/1:${clamp(w)}~` : `${voice}/1:${clamp(w - 4)}`);
+    out.push(i % 2 === 0 ? `${voice}/1:${clampVelocity(w)}~` : `${voice}/1:${clampVelocity(w - 4)}`);
   }
   return out;
 }
 // n bars tied into one long note: the pad, or the sub, hangs for the whole span.
 function tiedBars(voice, vel, n) {
   const out = [];
-  for (let i = 0; i < n; i += 1) out.push(i === n - 1 ? `${voice}/1:${clamp(vel)}` : `${voice}/1:${clamp(vel)}~`);
+  for (let i = 0; i < n; i += 1) out.push(i === n - 1 ? `${voice}/1:${clampVelocity(vel)}` : `${voice}/1:${clampVelocity(vel)}~`);
   return out;
 }
 
@@ -167,16 +164,7 @@ const R = 'R';
 const bars = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
 
 const keys = ['stabs', 'echo', 'hang', 'sub', 'drums', 'hats', 'dub'];
-const tracks = Object.fromEntries(keys.map((k) => [k, []]));
-const marks = [];
-function section(name, n, parts) {
-  marks.push([tracks.stabs.length, name]);
-  for (const key of keys) {
-    const list = parts[key] ?? [];
-    if (list.length > n) throw new Error(`${name}: ${key} has ${list.length} bars, more than ${n}`);
-    for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? R);
-  }
-}
+const { tracks, marks, section } = sectionBuilder(keys);
 
 // 1. Bars 1-16. Nothing but the chord at first: one stab, its fading repeats. Then the hiss of
 // hats, the sub drone and the pad swell come under it. No kick.
@@ -344,53 +332,21 @@ section('The stab alone', 8, {
 // The stabs are the star but peaked 12-16 dB under the kick, so their velocities are lifted here
 // (with the echo layer's volume, and the drums and sub lowered, in the track headers below).
 tracks.stabs = tracks.stabs.map((bar) =>
-  bar.replace(/:(\d+)/g, (_, v) => `:${Math.min(127, Math.round(Number(v) * 1.25))}`),
+  bar.replace(/:(\d+)/g, (_, v) => `:${clampVelocity(Number(v) * 1.25)}`),
 );
 
 // --- checks -----------------------------------------------------------------
 // Every bar must be exactly one 4/4 bar (3840 ticks). The grid builder guarantees it; this reads
 // the finished strings again so a hand-written bar can't slip past.
-const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240, 32: 120, 64: 60 };
-const barTicks = (bar) => {
-  if (bar === R) return 3840;
-  let sum = 0;
-  const tokens = bar.match(/\[[^\]]*\][^\s]*|[^\s]+/g) ?? [];
-  for (const token of tokens) {
-    const m = token.match(/\/(\d+)(\.\.|\.|t)?/);
-    if (!m) throw new Error(`no duration in token ${token}`);
-    const base = TICKS[Number(m[1])];
-    const mul = m[2] === '..' ? 1.75 : m[2] === '.' ? 1.5 : m[2] === 't' ? 2 / 3 : 1;
-    sum += base * mul;
-  }
-  return sum;
-};
 for (const key of keys) {
   tracks[key].forEach((bar, i) => {
-    const got = barTicks(bar);
+    const got = barLength(bar);
     if (got !== 3840) throw new Error(`track ${key} bar ${i + 1} is ${got} ticks: ${bar}`);
   });
 }
 
 const total = tracks.stabs.length;
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => {
-    if (row.length) lines.push(`| ${row.join(' | ')} |`);
-    row = [];
-  };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) {
-      flush();
-      lines.push(`# ${at.get(i)}`);
-    }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Fathom, by Qwen3.8 Flash and SZ. An original dub techno piece for the Techno style: one G minor
 # chord stab, echoing and smearing, over a deep rumbling sub, a soft hiss of hats, and a lot of

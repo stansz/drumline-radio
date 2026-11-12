@@ -11,15 +11,15 @@
 //   node tools/arranger/velvet-freeway.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { clampVelocity, noteName, offsetText, SHARPS, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
 // ---------------------------------------------------------------- pitches and the chord table
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-const nm = (n) => `${SHARP[((n % 12) + 12) % 12]}${Math.floor(n / 12) - 1}`;
-const off = (n) => (n === 0 ? '' : n > 0 ? `+${n}` : String(n));
-const vel = (v) => Math.max(1, Math.min(126, Math.round(v)));
+const nm = (n) => noteName(n, SHARPS);
+const off = offsetText;
+const vel = (v) => clampVelocity(v, 126);
 
 const n = (pitch, dur, v = 100, at = 0) => `${nm(pitch)}/${dur}${off(at)}:${vel(v)}`;
 const chd = (pitches, dur, v, at = 0) => `[${pitches.map(nm).join(' ')}]/${dur}${off(at)}:${vel(v)}`;
@@ -527,25 +527,7 @@ const TRACKS = [
   ['drums', 'track drums role=drums vol=0.85 vol.altrock=0.4 vol.orchestral=0.55 pan=0'],
 ];
 
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => {
-    if (row.length) lines.push(`| ${row.join(' | ')} |`);
-    row = [];
-  };
-  tracks[key].forEach((bar, index) => {
-    if (at.has(index)) {
-      flush();
-      lines.push(`# ${at.get(index)}`);
-    }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `${HEADER_NOTE}
 #

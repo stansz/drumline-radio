@@ -5,14 +5,14 @@
 //   node tools/arranger/swan-lake.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { noteName, SHARPS, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const PC = { C: 0, 'C#': 1, D: 2, 'D#': 3, E: 4, F: 5, 'F#': 6, G: 7, 'G#': 8, A: 9, 'A#': 10, B: 11 };
 const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10] };
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, SHARPS);
 const chord = (sym) => {
   const m = /^([A-G]#?)(m|7)?$/.exec(sym);
   return { pc: PC[m[1]], iv: QUALITY[m[2] ?? ''] };
@@ -136,19 +136,7 @@ section('The swan theme, one last time', [...THEME_B.slice(0, 7), 'end'], {
 });
 
 const total = tracks.oboe.length;
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Swan Lake, arranged by Claude and SZ for the Orchestral style: the Scène from Act II, with the
 # oboe's swan theme bar for bar, the theme for full orchestra, the lament, and a last fortissimo.

@@ -2,14 +2,14 @@
 // named bass lines and drum grooves. Used by songs.mjs; see tools/README.md.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { durationText, noteName, SHARPS, writeBlock } from './lib.mjs';
 
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
 export const midi = (n) => {
   const m = /^([A-G])(#|b)?(\d)$/.exec(n);
   return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
 };
-export const nm = (n) => SHARP[((n % 12) + 12) % 12] + (Math.floor(n / 12) - 1);
+export const nm = (n) => noteName(n, SHARPS);
 const tr = (bar, s) => (s === 0 ? bar : bar.replace(/\b([A-G])(#|b)?(\d)\b/g, (x) => nm(midi(x) + s)));
 const notesIn = (bar) => (bar.match(/\b[A-G](#|b)?\d\b/g) ?? []).map(midi);
 
@@ -20,11 +20,7 @@ function chord(sym, shift = 0) {
   const pc = (LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0) + shift + 24) % 12;
   return { pc, iv: QUALITY[m[3] ?? ''] };
 }
-const DUR = { 3840: '/1', 2880: '/2.', 1920: '/2', 1440: '/4.', 960: '/4', 720: '/8.', 480: '/8', 240: '/16' };
-const dur = (t) => {
-  if (!DUR[t]) throw new Error('no duration for ' + t);
-  return DUR[t];
-};
+const dur = durationText;
 const barTicks = ([n, d]) => (n * 3840) / d;
 
 function padSpan(c, ticks, voices = 3) {
@@ -123,19 +119,7 @@ function groove(name, ts, level) {
  * share this tail.
  */
 function writeSong(out, spec, { T, comment, tracks, style, ts }) {
-  const block = (key) => {
-    const lines = [];
-    const marks = new Map(comment[key].map(([i, c]) => [i, c]));
-    let row = [];
-    const flush = () => { if (row.length) lines.push('| ' + row.join(' | ') + ' |'); row = []; };
-    T[key].forEach((bar, i) => {
-      if (marks.has(i)) { flush(); lines.push(`# ${marks.get(i)}`); }
-      row.push(bar);
-      if (row.length === 4) flush();
-    });
-    flush();
-    return lines.join('\n');
-  };
+  const block = (key) => writeBlock(T[key], comment[key]);
   const hidden = spec.hidden ? 'hidden: true\n' : '';
   const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
   const text = `${spec.head.trim()}\n${hidden}style: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +

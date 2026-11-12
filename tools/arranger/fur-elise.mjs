@@ -6,6 +6,7 @@
 //   node tools/arranger/fur-elise.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { MIXED, noteName, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -227,12 +228,11 @@ const LH = {
 };
 
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const midi = (n) => {
   const m = /^([A-G])(#|b)?(\d)$/.exec(n);
   return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
 };
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, MIXED);
 const shift = (bar, by) => bar.replace(/\b[A-G](#|b)?\d\b/g, (n) => nm(midi(n) + by));
 
 // The first ending: the closing A with the pickup that starts the repeat.
@@ -292,18 +292,7 @@ ORDER.forEach((n, i) => {
   push('keys', high, i);
 });
 
-const block = (key, pickup) => {
-  const lines = [`| ${pickup} |`];
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (SECTIONS.has(i)) { flush(); lines.push(`# ${SECTIONS.get(i)}`); }
-    row.push(bar);
-    if (row.length === 6) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key, pickup) => writeBlock(tracks[key], SECTIONS, { perRow: 6, first: pickup });
 const total = ORDER.length;
 
 const text = `# Für Elise by Ludwig van Beethoven, arranged by Claude and SZ for the Synthwave style. Beethoven's

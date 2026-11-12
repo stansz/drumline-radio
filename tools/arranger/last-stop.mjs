@@ -4,6 +4,7 @@
 //   node tools/arranger/last-stop.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -39,15 +40,8 @@ const VERSE = ['r/4 Ab3/8+12 C4/8+12 Eb4/4+12 C4/4+12', 'Db4/4.+12 C4/8+12 Bb3/4
 const HOOK = ['F4/8+12 Eb4/8+12 C4/4+12 r/8 F4/8+12 Eb4/8+12 C4/8+12', 'Db4/4+12 Bb3/4+12 r/2',
   'F4/8+12 Eb4/8+12 Db4/4+12 r/8 F4/8+12 Eb4/8+12 Db4/8+12', 'C4/4+12 Bb3/8+12 G3/8+12 Eb3/4+12 r/4'];
 
-const tracks = { lead: [], keys: [], drums: [] };
-const marks = [];
-// Adds a section of n bars; each part is a list of bars (null or missing for rests).
-function section(name, n, parts) {
-  marks.push([tracks.lead.length, name]);
-  for (const key of Object.keys(tracks)) {
-    for (let b = 0; b < n; b++) tracks[key].push(parts[key]?.[b] ?? 'R');
-  }
-}
+const keys = ['lead', 'keys', 'drums'];
+const { tracks, marks, section } = sectionBuilder(keys);
 const v = (vel, bars) => bars.map((bar, i) => (bar === null ? null : i === 0 ? `v=${vel} ${bar}` : bar));
 const loop = (bars, times) => Array.from({ length: times }, () => bars).flat();
 
@@ -93,19 +87,7 @@ const HEADER = [
   ['keys', 'track keys role=chords vol=0.9 pan=-0.15'],
   ['drums', 'track drums role=drums vol=0.9'],
 ];
-const block = (key) => {
-  const lines = [];
-  const at = new Map(marks);
-  let row = [];
-  const flush = () => { if (row.length) lines.push(`| ${row.join(' | ')} |`); row = []; };
-  tracks[key].forEach((bar, i) => {
-    if (at.has(i)) { flush(); lines.push(`# ${at.get(i)}`); }
-    row.push(bar);
-    if (row.length === 4) flush();
-  });
-  flush();
-  return lines.join('\n');
-};
+const block = (key) => writeBlock(tracks[key], marks);
 
 const text = `# Last Stop, by Claude and SZ. Slow lo-fi hip-hop: one minor loop like a sampled record, chopped
 # keys, a lazy kick and rim click, and an upright bass playing short phrases.

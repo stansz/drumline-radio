@@ -7,12 +7,12 @@
 //   node tools/arranger/confetti-cannon.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { clampVelocity, noteName, SHARPS, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-const NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-const nm = (n) => `${NAMES[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, SHARPS);
 const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // A fixed pseudo-random stream per track, so the "human" velocities and offsets are uneven but the
@@ -24,7 +24,6 @@ const stream = (seed) => {
     return lo + Math.floor((s / 2147483648) * (hi - lo + 1));
   };
 };
-const clamp = (v) => Math.max(1, Math.min(127, Math.round(v)));
 
 // The chords. Each has the riff's root (all four sit inside C3-G3, so the riff stays a bass riff),
 // its third and "colour" step (the 6th on a major chord, the 7th on E minor), a stab voicing just
@@ -70,20 +69,20 @@ const total = FORM.length * 8;
 const call = (c, v, r, up = 0) => {
   const { root: o, third, colour } = CH[c];
   const steps = [[o, '/8.', 8], [o, '/16', -8], [o + third, '/8', 0], [o + 7, '/8.', 4], [o + colour, '/8.', 12], [o + 7, '/8', -2], [o + third, '/16', -8], [o + 2, '/16', -4]];
-  return steps.map(([n, d, a]) => `${nm(n + up)}${d}:${clamp(v + a + r(-3, 3))}`).join(' ');
+  return steps.map(([n, d, a]) => `${nm(n + up)}${d}:${clampVelocity(v + a + r(-3, 3))}`).join(' ');
 };
 const answer = (c, v, r, up = 0) => {
   const { root: o, third, colour } = CH[c];
   const head = [[o + 7, '/8.', 8], [o + 7, '/16', -8], [o + colour, '/8', 0], [o + 12, '/8', 12]];
   const tail = [[o + 12, '/16', 4], [o + colour, '/16', -6], [o + 7, '/8', 0], [o + third, '/8', -6]];
-  const say = (list) => list.map(([n, d, a]) => `${nm(n + up)}${d}:${clamp(v + a + r(-3, 3))}`).join(' ');
+  const say = (list) => list.map(([n, d, a]) => `${nm(n + up)}${d}:${clampVelocity(v + a + r(-3, 3))}`).join(' ');
   return `${say(head)} r/8 ${say(tail)}`;
 };
 const climb = (c, v, r) => {
   const { root: o, third, colour } = CH[c];
   const steps = [[o + 7, '/8.', 4], [o + 7, '/16', -8], [o + colour, '/8', 0], [o + 12, '/8', 4], [o + 14, '/16', 0], [o + 12 + third, '/16', 3],
     [o + 19, '/16', 6], [o + 12 + colour, '/16', 9], [o + 24, '/8', 12], [o + 24, '/8', 14]];
-  return steps.map(([n, d, a]) => `${nm(n)}${d}:${clamp(v + a + r(-2, 2))}`).join(' ');
+  return steps.map(([n, d, a]) => `${nm(n)}${d}:${clampVelocity(v + a + r(-2, 2))}`).join(' ');
 };
 
 // Each section's riff: 'full' (call and answer), 'calls' (the call, then a bar's rest), 'build' (the
@@ -143,18 +142,18 @@ const voxBars = () => {
     // up = 24 puts the sung tune an octave above the riff in the file; the writer drops it one.
     const full = VOX_FULL[name];
     if (full) {
-      return prog.map((c, i) => (i % 2 === 0 ? call : answer)(c, clamp(full[0] + ((full[1] - full[0]) * i) / 7), r, 24));
+      return prog.map((c, i) => (i % 2 === 0 ? call : answer)(c, clampVelocity(full[0] + ((full[1] - full[0]) * i) / 7), r, 24));
     }
     const sung = VOX_CALL[name];
     if (sung) {
-      return prog.map((c, i) => (i % 2 === 0 ? call(c, clamp(sung[0] + ((sung[1] - sung[0]) * i) / 7), r, 24) : 'R'));
+      return prog.map((c, i) => (i % 2 === 0 ? call(c, clampVelocity(sung[0] + ((sung[1] - sung[0]) * i) / 7), r, 24) : 'R'));
     }
     const v = VOX_CHOP[name];
     if (!v) return Array(8).fill('R');
     return prog.map((c, i) => {
       const [x, y, z] = CH[c].vox;
-      if (i % 2 === 0) return `r/2. ${nm(x)}/8+${r(8, 14)}:${clamp(v - 10 + r(-3, 3))} ${nm(y)}/8+${r(6, 12)}:${clamp(v - 4 + r(-3, 3))}`;
-      return `${nm(z)}/4+${r(8, 14)}:${clamp(v + 8 + r(-2, 2))} r/8 ${nm(y)}/8+${r(8, 14)}:${clamp(v - 6 + r(-3, 3))} ${nm(x)}/8.+${r(6, 12)}:${clamp(v + r(-3, 3))} r/16 r/4`;
+      if (i % 2 === 0) return `r/2. ${nm(x)}/8+${r(8, 14)}:${clampVelocity(v - 10 + r(-3, 3))} ${nm(y)}/8+${r(6, 12)}:${clampVelocity(v - 4 + r(-3, 3))}`;
+      return `${nm(z)}/4+${r(8, 14)}:${clampVelocity(v + 8 + r(-2, 2))} r/8 ${nm(y)}/8+${r(8, 14)}:${clampVelocity(v - 6 + r(-3, 3))} ${nm(x)}/8.+${r(6, 12)}:${clampVelocity(v + r(-3, 3))} r/16 r/4`;
     });
   });
 };
@@ -175,10 +174,10 @@ const stabBars = () => {
     const [kind, v] = plan;
     return prog.map((c, i) => {
       const s = chordOf(CH[c].stab);
-      const hit = (d, a = 0) => `${s}${d}'+${r(12, 22)}:${clamp(v + a + r(-7, 6))}`;
+      const hit = (d, a = 0) => `${s}${d}'+${r(12, 22)}:${clampVelocity(v + a + r(-7, 6))}`;
       if (kind === 'soft') return `r/8 ${hit('/8')} r/2 r/8 ${hit('/8', -6)}`;
       if (kind === 'busy' || i % 2 === 1) {
-        return `r/8 ${hit('/8')} r/8 ${hit('/8', -4)} r/8 ${s}/16'+${r(8, 14)}:${clamp(v - 8 + r(-5, 5))} ${s}/16'+${r(10, 18)}:${clamp(v + 4 + r(-4, 4))} r/8 ${hit('/8', 2)}`;
+        return `r/8 ${hit('/8')} r/8 ${hit('/8', -4)} r/8 ${s}/16'+${r(8, 14)}:${clampVelocity(v - 8 + r(-5, 5))} ${s}/16'+${r(10, 18)}:${clampVelocity(v + 4 + r(-4, 4))} r/8 ${hit('/8', 2)}`;
       }
       return `r/8 ${hit('/8')} r/8 ${hit('/8', -5)} r/8 ${hit('/8', 2)} r/8 ${hit('/8', -3)}`;
     });
@@ -223,11 +222,11 @@ const subBars = () => {
       if (name === 'outro2' && i >= 4) return 'R';
       if (kind === 'held') return i % 2 === 0 ? `v=${v} ${nm(n)}/1~` : `${nm(n)}/1`;
       if (kind === 'roll') {
-        return [0, 1, 2, 3].map((b) => `r/16 ${nm(n)}/16:${clamp(v - 14 + r(-3, 3))} ${nm(n)}/16:${clamp(v + r(-3, 3))} ${nm(b === 3 && i % 2 === 1 ? n + 12 : n)}/16:${clamp(v - 8 + r(-3, 3))}`).join(' ');
+        return [0, 1, 2, 3].map((b) => `r/16 ${nm(n)}/16:${clampVelocity(v - 14 + r(-3, 3))} ${nm(n)}/16:${clampVelocity(v + r(-3, 3))} ${nm(b === 3 && i % 2 === 1 ? n + 12 : n)}/16:${clampVelocity(v - 8 + r(-3, 3))}`).join(' ');
       }
-      const off = () => `r/8 ${nm(n)}/8:${clamp(v + r(-4, 4))}`;
+      const off = () => `r/8 ${nm(n)}/8:${clampVelocity(v + r(-4, 4))}`;
       if (i % 2 === 1 && name !== 'intro2' && name !== 'outro2') {
-        return `${off()} ${off()} ${off()} r/8 ${nm(n)}/16:${clamp(v + r(-3, 3))} ${nm(n + 12)}/16:${clamp(v - 10 + r(-3, 3))}`;
+        return `${off()} ${off()} ${off()} r/8 ${nm(n)}/16:${clampVelocity(v + r(-3, 3))} ${nm(n + 12)}/16:${clampVelocity(v - 10 + r(-3, 3))}`;
       }
       return `${off()} ${off()} ${off()} ${off()}`;
     });
@@ -244,7 +243,7 @@ const riserBars = () =>
     if (!notes) return Array(8).fill('R');
     return notes.map((n, i) => {
       const count = i === 7 ? 12 : 16;
-      const run = Array.from({ length: count }, (_, k) => `${nm(n)}/16':${clamp(52 + ((i * 16 + k) * 70) / 127 + (k % 4 === 0 ? 6 : 0))}`).join(' ');
+      const run = Array.from({ length: count }, (_, k) => `${nm(n)}/16':${clampVelocity(52 + ((i * 16 + k) * 70) / 127 + (k % 4 === 0 ? 6 : 0))}`).join(' ');
       return i === 7 ? `${run} r/4` : run;
     });
   });
@@ -262,7 +261,7 @@ const FILL = new Set(['intro1', 'tease2', 'groove1', 'groove2', 'drop1a', 'drop1
 
 const drumBars = () => {
   const r = stream(29);
-  const kick = () => clamp(110 + r(-2, 2));
+  const kick = () => clampVelocity(110 + r(-2, 2));
   return FORM.flatMap(([name]) => {
     const kind = DRUMS[name];
     return Array.from({ length: 8 }, (_, i) => {
@@ -272,21 +271,21 @@ const drumBars = () => {
         const k16 = b === 0 ? first('/16') : `k/16:${kick()}`;
         if (kind === 'none') return 'r/4';
         // 'pulse': the kick on 1 and 3 under the sung tune; hats on the off-beats of 2 and 4 later.
-        if (kind === 'pulse') return b % 2 === 0 ? `k/4:${kick()}` : (i < 4 ? 'r/4' : `r/8 h/8+${r(6, 12)}:${clamp(58 + r(-8, 8))}`);
-        if (kind === 'intro') return i < 4 ? `k/4:${kick()}` : `${k8} h/8+${r(6, 12)}:${clamp(62 + r(-8, 8))}`;
-        if (kind === 'offhat') return name === 'intro2' && i >= 4 ? `${k8} oh/8+${r(8, 14)}:${clamp(72 + r(-7, 7))}` : `${k8} h/8+${r(6, 12)}:${clamp(66 + r(-8, 8))}`;
-        if (kind === 'open') return `${k8} oh/8+${r(8, 14)}:${clamp(78 + r(-7, 7))}`;
-        if (kind === 'hats') return `r/8 h/8+${r(8, 14)}:${clamp(56 + i * 3 + r(-6, 6))}`;
-        if (kind === 'tick') return i < 4 ? 'r/4' : `r/8 h/8+${r(8, 14)}:${clamp(50 + i * 3 + r(-6, 6))}`;
+        if (kind === 'pulse') return b % 2 === 0 ? `k/4:${kick()}` : (i < 4 ? 'r/4' : `r/8 h/8+${r(6, 12)}:${clampVelocity(58 + r(-8, 8))}`);
+        if (kind === 'intro') return i < 4 ? `k/4:${kick()}` : `${k8} h/8+${r(6, 12)}:${clampVelocity(62 + r(-8, 8))}`;
+        if (kind === 'offhat') return name === 'intro2' && i >= 4 ? `${k8} oh/8+${r(8, 14)}:${clampVelocity(72 + r(-7, 7))}` : `${k8} h/8+${r(6, 12)}:${clampVelocity(66 + r(-8, 8))}`;
+        if (kind === 'open') return `${k8} oh/8+${r(8, 14)}:${clampVelocity(78 + r(-7, 7))}`;
+        if (kind === 'hats') return `r/8 h/8+${r(8, 14)}:${clampVelocity(56 + i * 3 + r(-6, 6))}`;
+        if (kind === 'tick') return i < 4 ? 'r/4' : `r/8 h/8+${r(8, 14)}:${clampVelocity(50 + i * 3 + r(-6, 6))}`;
         if (kind === 'build') {
           // The kick comes back halfway through the build and stops a beat before the drop.
           if (i < 4 || (i === 7 && b === 3)) return 'r/4';
-          return `k/4:${clamp(92 + (i - 4) * 6 + r(-2, 2))}`;
+          return `k/4:${clampVelocity(92 + (i - 4) * 6 + r(-2, 2))}`;
         }
         const top = kind === 'ride' && b % 2 === 0 ? `[k rd]/16:${kick()}` : k16;
-        return `${b === 0 && i === 0 && CRASH.has(name) ? k16 : top} h/16:${clamp(50 + r(-6, 6))} oh/16+${r(8, 14)}:${clamp(86 + r(-7, 7))} h/16+${r(12, 20)}:${clamp(60 + r(-7, 7))}`;
+        return `${b === 0 && i === 0 && CRASH.has(name) ? k16 : top} h/16:${clampVelocity(50 + r(-6, 6))} oh/16+${r(8, 14)}:${clampVelocity(86 + r(-7, 7))} h/16+${r(12, 20)}:${clampVelocity(60 + r(-7, 7))}`;
       });
-      if (FILL.has(name) && i === 7) beats[3] = `k/16:${kick()} s/16:${clamp(80 + r(-4, 4))} s/16+8:${clamp(94 + r(-4, 4))} s/16:${clamp(108 + r(-3, 3))}`;
+      if (FILL.has(name) && i === 7) beats[3] = `k/16:${kick()} s/16:${clampVelocity(80 + r(-4, 4))} s/16+8:${clampVelocity(94 + r(-4, 4))} s/16:${clampVelocity(108 + r(-3, 3))}`;
       if (name === 'outro2' && i === 7) return `k/4:${kick()} k/4:${kick()} k/4:${kick()} k/4:${kick()}`;
       return beats.every((b) => b === 'r/4') ? 'R' : beats.join(' ');
     });
@@ -307,7 +306,7 @@ const clapBars = () => {
       return rate.map((n, i) => {
         const count = i === 7 ? (n * 3) / 4 : n;
         const bar = Array.from({ length: count }, (_, j) => {
-          const v = clamp(54 + (k++ * 58) / hits + r(-3, 3));
+          const v = clampVelocity(54 + (k++ * 58) / hits + r(-3, 3));
           const onBeat = (j * 4) % n === 0;
           const drum = onBeat && i >= 4 ? '[s cl]' : 's';
           return `${drum}/${n}${onBeat || n > 8 ? '' : `+${r(4, 10)}`}:${v}`;
@@ -315,13 +314,13 @@ const clapBars = () => {
         return i === 7 ? `${bar} r/4` : bar;
       });
     }
-    if (name === 'break1b') return Array.from({ length: 8 }, (_, i) => (i < 4 ? 'R' : `r/2. cl/4+${r(10, 16)}:${clamp(58 + i * 4)}`));
+    if (name === 'break1b') return Array.from({ length: 8 }, (_, i) => (i < 4 ? 'R' : `r/2. cl/4+${r(10, 16)}:${clampVelocity(58 + i * 4)}`));
     const v = CLAPS[name];
     if (!v) return Array(8).fill('R');
     const lift = name.startsWith('finalB');
     return Array.from({ length: 8 }, (_, i) => {
-      const cl = (a = 0) => `cl/4+${r(8, 16)}:${clamp(v + a + r(-5, 5))}`;
-      if (lift && i % 2 === 1) return `r/4 ${cl()} r/4 cl/8.+${r(8, 16)}:${clamp(v + 2 + r(-4, 4))} cl/16+${r(4, 10)}:${clamp(v - 28 + r(-4, 4))}`;
+      const cl = (a = 0) => `cl/4+${r(8, 16)}:${clampVelocity(v + a + r(-5, 5))}`;
+      if (lift && i % 2 === 1) return `r/4 ${cl()} r/4 cl/8.+${r(8, 16)}:${clampVelocity(v + 2 + r(-4, 4))} cl/16+${r(4, 10)}:${clampVelocity(v - 28 + r(-4, 4))}`;
       return `r/4 ${cl(-2)} r/4 ${cl(2)}`;
     });
   });
@@ -329,16 +328,8 @@ const clapBars = () => {
 
 // --- Writing the file -----------------------------------------------------------------------------
 // One comment per section, then its eight bars, two to a line.
-const block = (bars) => {
-  const lines = [];
-  FORM.forEach(([, , about], s) => {
-    lines.push(`# ${s * 8 + 1}-${s * 8 + 8}: ${about}`);
-    const eight = bars.slice(s * 8, s * 8 + 8);
-    if (eight.every((b) => b === 'R')) lines.push('| R*8 |');
-    else for (let i = 0; i < 8; i += 2) lines.push(`| ${eight[i]} | ${eight[i + 1]} |`);
-  });
-  return lines.join('\n');
-};
+const marks = FORM.map(([, , about], s) => [s * 8, `${s * 8 + 1}-${s * 8 + 8}: ${about}`]);
+const block = (bars) => writeBlock(bars, marks, { perRow: 2, collapseRests: true });
 
 // The chord map for the checker: one line per change of progression. The answer bars are named by
 // the colour the riff and the vocal add there (the 6th, or the 7th on E minor).
