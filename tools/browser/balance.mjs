@@ -153,6 +153,7 @@ function render(base, style) {
       for (let i = 0; i < song.bars.length; i += ${perSection}) {
         const first = song.bars[i], last = song.bars[Math.min(i + ${perSection}, song.bars.length) - 1];
         sections.push({ from: first.number, to: last.number,
+          startTick: first.startTick, endTick: last.startTick + last.ticks,
           start: tickToSeconds(song, first.startTick), end: tickToSeconds(song, last.startTick + last.ticks) });
       }
       const levels = tracks.map((t, i) => {
@@ -164,7 +165,8 @@ function render(base, style) {
           for (let n = a; n < b; n += 1) { const v = data[n]; sq += v * v; if (Math.abs(v) > pk) pk = Math.abs(v); if (low) lsq += low[n] * low[n]; }
           const len = Math.max(1, b - a);
           const loud = sq > 0 ? -0.691 + 10 * Math.log10(sq / len) : -120;
-          return { loud, peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null };
+          return { loud, peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null,
+            plays: t.notes.some((n) => n.tick < s.endTick && n.tick + n.ticks > s.startTick) };
         });
       });
       return { style, home: song.meta.style, tracks: tracks.map((t) => ({ id: t.id, role: t.role, vol: t.styleVol?.[style] ?? t.vol })), sections, levels };
@@ -232,7 +234,8 @@ function report(result) {
       if (lead && lead.l.loud > -45) {
         // Sparse parts (stabs, a chopped hook) read low by loudness, so a part is buried only when it
         // is more than PAD_GAP dB under on both loudness and peak.
-        for (const x of [...at('pad'), ...at('chords')]) {
+        // A buried pad can sit under the playing threshold, so it is checked whenever it has notes in the section.
+        for (const x of tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => (x.t.role === 'pad' || x.t.role === 'chords') && x.l.plays)) {
           const gap = Math.min(lead.l.loud - x.l.loud, lead.l.peak - x.l.peak);
           if (gap > PAD_GAP) {
             flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (loudness and peak)`);

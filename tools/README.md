@@ -310,6 +310,8 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   chords part more than 11 dB under the lead (on both loudness and peak), an arp peaking more than
   8 dB under the lead's peak, a bass more than 3 dB louder than the lead, and a bass low end more
   than 1 dB louder than the kick's, then stops the server and browser.
+  A pad or chords part is checked in every section where it has notes, even when it is too quiet to
+  count as playing.
   It skips the bass-over-lead check when the lead is effectively silent in a section, so a resting
   intro or bridge does not produce a false "bass over lead" flag.
   Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB

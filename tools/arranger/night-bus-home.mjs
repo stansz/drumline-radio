@@ -401,9 +401,10 @@ function section(name, n, parts) {
   }
 }
 // The vocal builds through the song: it starts as single eighth-note hits that punctuate the groove,
-// and each section lets the notes ring a little longer (`hold`, in sixteenths), until the last
-// chorus's second half and the outro sing every note at full length with its scoops and falls.
-const HOLD = { hits: 2, quarter: 4, dotted: 6, half: 8, long: 12, full: Infinity };
+// and each section lets the notes ring a little longer (`hold`, in sixteenths): hits, dotted eighth,
+// quarter, dotted, half, long, full. The last chorus's second half and the outro sing every note at
+// full length with its scoops and falls.
+const HOLD = { hits: 2, dottedEighth: 3, quarter: 4, dotted: 6, half: 8, long: 12, full: Infinity };
 const lead = (rows, base, hold = HOLD.full) => rows.flatMap((bar) => stretch(bar, hold)).map((bar) => seq(bar, base, LEAD_O));
 // The pre-chorus in half time keeps its four rising steps, the last one reaching the high Eb.
 const PRE_HALF = [PRE[0], PRE[1], PRE[2], PRE[6]];
@@ -442,19 +443,19 @@ section('Pre-chorus 1', 8, {
 });
 
 // 4. Bars 33-48. Chorus 1: the hook once, in half time, over 4x4 speed-garage drums and the
-// pumping bass.
+// pumping bass; the chop riff's tail answers in every bar the vocal leaves empty.
 section('Chorus 1', 16, {
   lead: lead(HOOK, 104, HOLD.hits),
   drums: bars(16, (i) => fourFour(i, 104, { fill: i % 8 === 7, crash: i === 0 })),
   bass: bars(16, (i) => bassBar(loop(i), 88, { feel: 'four', drop: i % 4 === 3 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 92, stabFig(i))),
   pad: bars(16, (i) => padBar(loop(i), 78)),
-  chops: bars(16, (i) => hookChops(i, 84)),
+  chops: bars(16, (i) => (i % 2 === 1 ? chopBar(loop(i), 80, 'tail') : hookChops(i, 84))),
 });
 
 // 5. Bars 49-64. Verse 2: back to the 2-step, a little hotter.
 section('Verse 2', 16, {
-  lead: lead(VERSE, 100, HOLD.quarter),
+  lead: lead(VERSE, 100, HOLD.dottedEighth),
   drums: bars(16, (i) => twoStep(i, 100, { fill: i % 8 === 7 })),
   bass: bars(16, (i) => bassBar(loop(i), 82, { drop: i % 4 === 3 })),
   keys: bars(16, (i) => stabBar(loop(i), i, 88, stabFig(i))),
@@ -621,7 +622,7 @@ ${block('keys')}
 track pad role=pad inst=warm-pad vol=0.75
 ${block('pad')}
 
-track bass role=bass inst=synth-bass vol=0.75
+track bass role=bass inst=synth-bass vol=0.67
 ${block('bass')}
 
 track drums role=drums inst=909-kit vol=0.85
