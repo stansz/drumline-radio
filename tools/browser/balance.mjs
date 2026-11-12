@@ -1,15 +1,16 @@
 // Balance: renders a whole song offline through the real engine and prints each track's level in
 // every section, so a buried or overpowering part shows up without seeking or timing. One command:
 // it starts its own Vite server on a free port, renders in headless Edge, and stops both when done.
-// For each track and section it prints RMS / peak in dB, plus the level below 150 Hz for the bass and
-// drums, then flags common problems: a pad or chords part more than 10 dB under the lead (on both
-// RMS and peak, since sparse parts read low by RMS), an arp
-// peaking more than 8 dB under the lead's peak, a bass louder than the lead, and a bass whose low
-// end is louder than the kick's. Under the flags it suggests a `vol=` for each flagged track that
-// clears its worst flag (track volume is linear gain, so the step is exact unless it would pass 1);
-// in a remix it suggests `vol.<style>=`, which changes the track in that style only. When a track's
-// flags are confined to fewer than half the sections it plays in, it names those bars and says to
-// change the track's velocities there instead of its volume.
+// For each track and section it prints K-weighted loudness / peak in dB, plus the plain RMS level
+// below 150 Hz for the bass and drums, then flags common problems: a pad or chords part more than
+// PAD_GAP dB under the lead (on both loudness and peak, since sparse parts read low by loudness), an
+// arp peaking more than ARP_GAP dB under the lead's peak, a bass more than BASS_OVER dB louder than
+// the lead, and a bass whose low end is KICK_OVER dB louder than the kick's. Under the flags it
+// suggests a `vol=` for each flagged track that clears its worst flag (track volume is linear gain,
+// so the step is exact unless it would pass 1); in a remix it suggests `vol.<style>=`, which changes
+// the track in that style only. When a track's flags are confined to fewer than half the sections it
+// plays in, it names those bars and says to change the track's velocities there instead of its
+// volume.
 // The style `all` renders the song in every style in one run.
 //   npm run balance -- <song name or path> [style or all] [bars per section, default 8]
 //   npm run balance -- wayfarers-rest
@@ -40,19 +41,50 @@ const server = await createServer({
   logLevel: 'error',
   server: { port: 0, strictPort: false },
 });
+// A browser can hang mid-render (a crashed network thread never answers), so each render gets a
+// deadline: BALANCE_TIMEOUT seconds, default 180, about three times a five-minute song's render. On a
+// timeout or a browser error the browser is stopped and the render starts again in a fresh one, up
+// to BALANCE_TRIES times in all (default 3), so one hang costs minutes instead of stalling the check.
+const TIMEOUT_MS = (Number(process.env.BALANCE_TIMEOUT) || 180) * 1000;
+const TRIES = Math.max(1, Number(process.env.BALANCE_TRIES) || 3);
 let page;
-try {
-  await server.listen();
-  const url = server.resolvedUrls.local[0];
+let url;
+const fresh = async () => {
+  await page?.close().catch(() => {});
   page = await openEdge();
   await page.goto(url, 2500);
+};
+const withDeadline = (promise, what) => {
+  let timer;
+  const deadline = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`${what} took over ${TIMEOUT_MS / 1000} s`)), TIMEOUT_MS);
+  });
+  return Promise.race([promise, deadline]).finally(() => clearTimeout(timer));
+};
+const attempt = async (what, run) => {
+  for (let tries = 1; ; tries += 1) {
+    try {
+      if (!page) await fresh();
+      return await withDeadline(run(), what);
+    } catch (error) {
+      await page?.close().catch(() => {});
+      page = undefined;
+      if (tries >= TRIES) throw error;
+      console.error(`balance: ${error.message}; retrying in a fresh browser (${tries + 1} of ${TRIES})`);
+    }
+  }
+};
+try {
+  await server.listen();
+  url = server.resolvedUrls.local[0];
   const base = new URL(url).pathname;
   const styles = style === 'all'
-    ? await page.ev(`import(${JSON.stringify(base + 'src/music/roles.ts')}).then((m) => [...m.STYLES])`)
+    ? await attempt('listing the styles', () =>
+      page.ev(`import(${JSON.stringify(base + 'src/music/roles.ts')}).then((m) => [...m.STYLES])`))
     : [style];
   for (const [n, one] of styles.entries()) {
     if (n > 0) console.log('\n' + '-'.repeat(60) + '\n');
-    report(await page.ev(render(base, one)));
+    report(await attempt(`rendering ${one || 'the home style'}`, () => page.ev(render(base, one))));
   }
 } finally {
   await page?.close();
@@ -88,7 +120,22 @@ function render(base, style) {
       BaseAudioContext.prototype.createStereoPanner = original;
       const taps = panners.slice(-tracks.length);
       const merger = ctx.createChannelMerger(channels);
-      taps.forEach((p, i) => p.connect(merger, 0, i + 2));
+      // Each track's tap is K-weighted before its own merger channel: the two BS.1770 filters, a
+      // +4 dB shelf above about 1.7 kHz and a gentle high-pass below 40 Hz, so the numbers follow
+      // what a listener hears. The low-band chain below keeps the unfiltered tap, still plain RMS.
+      taps.forEach((p, i) => {
+        const shelf = ctx.createBiquadFilter();
+        shelf.type = 'highshelf';
+        shelf.frequency.value = 1681.97;
+        shelf.gain.value = 4.0;
+        const high = ctx.createBiquadFilter();
+        high.type = 'highpass';
+        high.frequency.value = 38.13;
+        high.Q.value = 0.5;
+        p.connect(shelf);
+        shelf.connect(high);
+        high.connect(merger, 0, i + 2);
+      });
       const lowChannel = new Map();
       lowTracks.forEach((i, k) => {
         const filter = ctx.createBiquadFilter();
@@ -116,7 +163,8 @@ function render(base, style) {
           let sq = 0, pk = 0, lsq = 0;
           for (let n = a; n < b; n += 1) { const v = data[n]; sq += v * v; if (Math.abs(v) > pk) pk = Math.abs(v); if (low) lsq += low[n] * low[n]; }
           const len = Math.max(1, b - a);
-          return { rms: db(Math.sqrt(sq / len)), peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null };
+          const loud = sq > 0 ? -0.691 + 10 * Math.log10(sq / len) : -120;
+          return { loud, peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null };
         });
       });
       return { style, home: song.meta.style, tracks: tracks.map((t) => ({ id: t.id, role: t.role, vol: t.styleVol?.[style] ?? t.vol })), sections, levels };
@@ -130,10 +178,22 @@ function report(result) {
     process.exitCode = 1;
   } else {
     const { tracks, sections, levels } = result;
+    // A pad or chords part more than this many dB under the lead on both loudness and peak is
+    // buried; tuned against the six reference songs.
+    const PAD_GAP = 11;
+    // An arp's peak more than this many dB under the lead's peak is buried; tuned against the six
+    // reference songs.
+    const ARP_GAP = 8;
+    // A bass more than this many dB louder than the lead is too loud; tuned against the six
+    // reference songs.
+    const BASS_OVER = 3;
+    // A bass low end more than this many dB over the kick's low end is too loud; tuned against the
+    // six reference songs and left as it was.
+    const KICK_OVER = 1;
     const SILENT = -70;
     const fmt = (v) => (v <= SILENT ? '   —' : String(Math.round(v)).padStart(4));
     const time = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-    console.log(`${basename(path)} in ${result.style}: RMS / peak dB per section${tracks.some((t) => t.role === 'bass' || t.role === 'drums') ? ', low = below 150 Hz' : ''}\n`);
+    console.log(`${basename(path)} in ${result.style}: K-weighted loudness (LUFS-style) / K-weighted peak dB per section${tracks.some((t) => t.role === 'bass' || t.role === 'drums') ? ', low = plain RMS below 150 Hz' : ''}\n`);
     const cols = tracks.map((t) => (t.role === 'bass' || t.role === 'drums' ? `${t.id} (low)` : t.id));
     const widths = tracks.map((t, i) => Math.max(cols[i].length, t.role === 'bass' || t.role === 'drums' ? 15 : 9) + 2);
     console.log('bars       time  ' + cols.map((c, i) => c.padStart(widths[i])).join(''));
@@ -153,8 +213,8 @@ function report(result) {
     sections.forEach((s, j) => {
       const cells = tracks.map((t, i) => {
         const l = levels[i][j];
-        if (l.rms <= SILENT) return '—'.padStart(widths[i]);
-        const main = `${fmt(l.rms).trim()}/${fmt(l.peak).trim()}`;
+        if (l.loud <= SILENT) return '—'.padStart(widths[i]);
+        const main = `${fmt(l.loud).trim()}/${fmt(l.peak).trim()}`;
         return (l.low !== null ? `${main} (${fmt(l.low).trim()})` : main).padStart(widths[i]);
       });
       console.log(`${String(s.from).padStart(3)}-${String(s.to).padEnd(4)} ${time(s.start).padStart(6)}  ${cells.join('')}`);
@@ -162,46 +222,47 @@ function report(result) {
       // A part counts as playing in a section only when it is clearly there, not a stray tail: above
       // -55 dB and within 25 dB of the section's loudest track.
       const PLAYING = -55;
-      const loudest = Math.max(...tracks.map((t, i) => levels[i][j].rms));
-      const present = (l) => l.rms > Math.max(PLAYING, loudest - 25);
+      const loudest = Math.max(...tracks.map((t, i) => levels[i][j].loud));
+      const present = (l) => l.loud > Math.max(PLAYING, loudest - 25);
       const at = (role) => tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === role && present(x.l));
-      const lead = at('lead').sort((a, b) => b.l.rms - a.l.rms)[0];
+      const lead = at('lead').sort((a, b) => b.l.loud - a.l.loud)[0];
       const where = `bars ${s.from}-${s.to}`;
       // A lead under -45 dB is effectively silent here; comparing the bass to it only reports a
       // false "bass over lead" in an intro, bridge, or outro where the lead is meant to rest.
-      if (lead && lead.l.rms > -45) {
-        // Sparse parts (stabs, a chopped hook) read low by RMS, so a part is buried only when it is
-        // more than 10 dB under on both RMS and peak.
+      if (lead && lead.l.loud > -45) {
+        // Sparse parts (stabs, a chopped hook) read low by loudness, so a part is buried only when it
+        // is more than PAD_GAP dB under on both loudness and peak.
         for (const x of [...at('pad'), ...at('chords')]) {
-          const gap = Math.min(lead.l.rms - x.l.rms, lead.l.peak - x.l.peak);
-          if (gap > 10) {
-            flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (RMS and peak)`);
-            need(x.i, j, gap - 10 + MARGIN);
+          const gap = Math.min(lead.l.loud - x.l.loud, lead.l.peak - x.l.peak);
+          if (gap > PAD_GAP) {
+            flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (loudness and peak)`);
+            need(x.i, j, gap - PAD_GAP + MARGIN);
           }
         }
-        // An arp is short plucks, so its RMS reads low; compare peaks.
-        // A buried arp's RMS can sit under the playing threshold, so find it by its peak.
+        // An arp is short plucks, so its loudness reads low; compare peaks.
+        // A buried arp's loudness can sit under the playing threshold, so find it by its peak.
         const arps = tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === 'arp' && x.l.peak > -45);
         for (const x of arps) {
           const gap = lead.l.peak - x.l.peak;
-          if (gap > 8) {
+          if (gap > ARP_GAP) {
             flags.push(`${where}: ${x.t.id} (arp) peaks ${Math.round(gap)} dB under ${lead.t.id}`);
-            need(x.i, j, gap - 8 + MARGIN);
+            need(x.i, j, gap - ARP_GAP + MARGIN);
           }
         }
         for (const x of at('bass')) {
-          if (x.l.rms > lead.l.rms) {
-            flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(x.l.rms - lead.l.rms)} dB over ${lead.t.id}`);
-            need(x.i, j, -(x.l.rms - lead.l.rms + MARGIN));
+          const over = x.l.loud - lead.l.loud;
+          if (over > BASS_OVER) {
+            flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(over)} dB over ${lead.t.id}`);
+            need(x.i, j, -(over - BASS_OVER + MARGIN));
           }
         }
       }
       // Only a kit with a real low end (a kick playing through the section) is compared with the bass.
       const drums = at('drums').filter((x) => x.l.low > -45).sort((a, b) => b.l.low - a.l.low)[0];
       for (const x of at('bass')) {
-        if (drums && x.l.low > drums.l.low + 1) {
+        if (drums && x.l.low > drums.l.low + KICK_OVER) {
           flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
-          need(x.i, j, -(x.l.low - drums.l.low - 1 + MARGIN));
+          need(x.i, j, -(x.l.low - drums.l.low - KICK_OVER + MARGIN));
         }
       }
     });
@@ -218,7 +279,7 @@ function report(result) {
         const t = tracks[i];
         // The sections the track plays in, and the sections it got a flag in. When the flags sit in
         // fewer than half of them, the fix is those sections' velocities, not the whole track's volume.
-        const plays = levels[i].filter((l) => l.rms > -55).length;
+        const plays = levels[i].filter((l) => l.loud > -55).length;
         const flagged = flaggedIn.get(i) ?? [];
         if (flagged.length > 0 && flagged.length * 2 < plays) {
           const bars = flagged.map((j) => `${sections[j].from}-${sections[j].to}`).join(', ');
@@ -231,6 +292,6 @@ function report(result) {
         console.log(`  ${t.id}: ${key}=${t.vol} -> ${key}=${Math.min(top, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
       }
     }
-    console.log('\nFor a sparse part (stabs, hits), compare peaks: RMS reads low when most of a section is silent.');
+    console.log('\nFor a sparse part (stabs, hits), compare peaks: loudness reads low when most of a section is silent.');
   }
 }

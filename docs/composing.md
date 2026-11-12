@@ -118,13 +118,14 @@ depends on it.
 3. Before committing a new song, run `SIBLINGS=<style> npm run check:songs` and make sure it isn't
    a twin of another song in its style (same key, tempo, kit and bass).
 4. Check the balance with `npm run balance -- <song>` (see [tools/README.md](../tools/README.md)).
-   It renders the whole song offline in under a minute, prints every track's level in each
-   8-bar section, and flags a pad or chords part more than 10 dB under the lead, an arp peaking more
-   than 8 dB under the lead, a bass louder than the lead, and a bass whose low end is louder than the kick's. It also suggests a `vol=`
+   It renders the whole song offline in under a minute, prints every track's K-weighted loudness in
+   each 8-bar section, and flags a pad or chords part more than 11 dB under the lead, an arp peaking
+   more than 8 dB under the lead, a bass more than 3 dB louder than the lead, and a bass whose low
+   end is more than 1 dB louder than the kick's. It also suggests a `vol=`
    for each flagged track; set it and run again. Fix every flag or say why it
    stays. It starts and stops its own server, so there is nothing to clean up. The lead should be on
-   top: in Shortwave's hook it sits at −30 dB
-   with the keys at −36 and the drums at −33. Nothing should be buried 15 dB under the rest. Keep
+   top: in Velvet Freeway's bars 33-40 it sits at −29 dB
+   with the stabs at −41 and the drums at −27. Nothing should be buried 15 dB under the rest. Keep
    the bass under the kick: Porch Light's and Riverfront's first versions had the bass nearly as
    loud as the drums, which sounds boomy and hides the chords. The bass and drums columns show the
    level below 150 Hz in brackets; the bass's low level should sit a few dB under the drums' low level. For

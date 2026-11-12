@@ -67,5 +67,5 @@ The first three are small; the two decks are a real project.
 - **Safe-notes helper for composers:** list the notes that fit each chord of a song's `# chords:`
   map, so model-written songs clash less.
 - **Older songs' mixes:** `npm run balance` still flags Ivory and Ash, Exit Sign,
-  Save Point, The Silent Keep, Night Shift and Shortwave's pluck.
+  Save Point, The Silent Keep, Night Shift and Shortwave.
 - **Instrument page link:** link the instrument page (`instruments.html`) from the ⓘ panel.

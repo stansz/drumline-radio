@@ -304,9 +304,12 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   path, then optionally a style, or `all` for every style in one run, and the bars per section,
   default 8) starts its own Vite server on a
   free port, renders the whole song offline in headless Edge or Chromium/Chrome through the real engine with each
-  track tapped separately, prints every track's RMS / peak per section (and the level below 150 Hz
-  for bass and drums), flags a pad or chords part more than 10 dB under the lead, an arp peaking
-  more than 8 dB under the lead, a bass louder than the lead, and a bass low end louder than the kick's, then stops the server and browser.
+  track tapped separately, prints every track's K-weighted loudness (the BS.1770 filters behind LUFS:
+  a gentle high-pass that discounts deep bass and a +4 dB shelf above about 1.7 kHz) and K-weighted
+  peak per section (and the level below 150 Hz for bass and drums, still plain RMS), flags a pad or
+  chords part more than 11 dB under the lead (on both loudness and peak), an arp peaking more than
+  8 dB under the lead's peak, a bass more than 3 dB louder than the lead, and a bass low end more
+  than 1 dB louder than the kick's, then stops the server and browser.
   It skips the bass-over-lead check when the lead is effectively silent in a section, so a resting
   intro or bridge does not produce a false "bass over lead" flag.
   Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB
@@ -314,6 +317,9 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   track's flags are confined to fewer than half the sections it plays in, it names those bars and
   says to change its velocities there instead of its volume. About 45 seconds for a 4-minute song; no seeking, so held notes are measured too.
   Set `BALANCE_STRICT=1` to make any flag exit nonzero.
+  Each render has a deadline (`BALANCE_TIMEOUT`, in seconds, default 180): if the browser hangs or
+  fails, it is stopped and the render starts again in a fresh one, up to `BALANCE_TRIES` times in all
+  (default 3), so a hung browser costs minutes instead of stalling the check.
 - **tracks:** plays one song live from a point (0–1 of the way through) and prints each track's level,
   to find a part that is buried or too loud: `node tools/browser/tracks.mjs "Underpass" 0.4
   lead,harmony,hook,sequencer,ostinato,brass,bass,drums` (track names in the song file's order).
