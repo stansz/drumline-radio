@@ -4,7 +4,7 @@
 //   node tools/arranger/ivory-and-ash.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MIXED, noteName, sectionBuilder, writeBlock } from './lib.mjs';
+import { durationText, fillUnits, MIXED, noteName, sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -12,7 +12,6 @@ mkdirSync(out, { recursive: true });
 const PC = { C: 0, 'C#': 1, Db: 1, D: 2, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
 const QUALITY = { '': [0, 4, 7], m: [0, 3, 7], '7': [0, 4, 7, 10], maj7: [0, 4, 7, 11], dim: [0, 3, 6] };
 const nm = (n) => noteName(n, MIXED);
-const DUR = { 3840: '/1', 2880: '/2.', 1920: '/2', 1440: '/4.', 960: '/4', 480: '/8', 240: '/16' };
 
 // 'Cm', 'Abmaj7', 'G7', 'Ddim', 'Cm/Bb' -> { pc, iv, bass }
 function chord(sym) {
@@ -25,7 +24,6 @@ function chord(sym) {
 // One bar of chords ('Ddim G7') -> [{ c, ticks }]
 const spans = (bar) => bar.split(' ').map((s) => ({ c: chord(s), ticks: 3840 / bar.split(' ').length }));
 const each = (bars, fn) => bars.map((bar) => spans(bar).map(({ c, ticks }) => fn(c, ticks)).join(' '));
-const fillU = (ticks, unit, fn) => Array.from({ length: ticks / unit }, (_, i) => fn(i, DUR[unit])).join(' ');
 
 // Micro-timing (ticks, 960 per quarter). Moves each note's start, never its written length.
 // The first note of a tie or bend chain owns the offset, so continuations (even across a bar line)
@@ -61,18 +59,18 @@ const T = {
   arp8: (c, t) => {
     const b = arpBase(c);
     const seq = [0, 7, 12, 12 + c.iv[1], 19, 12 + c.iv[1], 12, 7].map((i) => b + i);
-    return fillU(t, 480, (i, d) => `${nm(seq[i % 8])}${d}${i % 2 ? '+8' : ''}`);
+    return fillUnits(t, 480, (i, d) => `${nm(seq[i % 8])}${d}${i % 2 ? '+8' : ''}`);
   },
   // piano sweep in sixteenths across two octaves, up and back, off-beats a hair late
   arp16: (c, t) => {
     const b = arpBase(c);
     const up = [0, 7, 12, 12 + c.iv[1], 19, 24, 24 + c.iv[1], 31];
     const seq = [...up, ...up.slice().reverse()].map((i) => b + i);
-    return fillU(t, 240, (i, d) => `${nm(seq[i % 16])}${d}${i % 2 ? '+6' : ''}`);
+    return fillUnits(t, 240, (i, d) => `${nm(seq[i % 16])}${d}${i % 2 ? '+6' : ''}`);
   },
-  chord: (c, t) => `[${nm(low(c))} ${triad(c).map(nm).join(' ')}]${DUR[t]}`,
-  pad: (c, t) => `[${c.iv.map((i) => nm(48 + c.pc + i - (c.pc >= 8 ? 12 : 0))).join(' ')}]${DUR[t]}`,
-  hold: (c, t) => `${nm(bassNote(c))}${DUR[t]}`,
+  chord: (c, t) => `[${nm(low(c))} ${triad(c).map(nm).join(' ')}]${durationText(t)}`,
+  pad: (c, t) => `[${c.iv.map((i) => nm(48 + c.pc + i - (c.pc >= 8 ? 12 : 0))).join(' ')}]${durationText(t)}`,
+  hold: (c, t) => `${nm(bassNote(c))}${durationText(t)}`,
   halves: (c, t) => t === 3840 ? `${nm(bassNote(c))}/2 ${nm(bassNote(c))}/4 ${nm(bassNote(c) + 7)}/4` : `${nm(bassNote(c))}/2`,
   rock: (c, t) => {
     const r = bassNote(c);
@@ -81,7 +79,7 @@ const T = {
   // analog synth arpeggio, sixteenths, high
   synth16: (c, t) => {
     const tones = [...triad(c, 60), 72 + c.pc];
-    return fillU(t, 240, (i, d) => `${nm(tones[[0, 2, 1, 3][i % 4]])}${d}`);
+    return fillUnits(t, 240, (i, d) => `${nm(tones[[0, 2, 1, 3][i % 4]])}${d}`);
   },
 };
 
@@ -92,7 +90,7 @@ function counterLine(bars, start = 55) {
     const pool = [];
     for (let n = 48; n <= 67; n++) if (c.iv.includes((((n - c.pc) % 12) + 12) % 12)) pool.push(n);
     prev = pool.reduce((best, n) => (Math.abs(n - prev) < Math.abs(best - prev) ? n : best), pool[0]);
-    return `${nm(prev)}${DUR[t]}`;
+    return `${nm(prev)}${durationText(t)}`;
   });
 }
 

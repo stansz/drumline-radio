@@ -5,7 +5,7 @@
 //   node tools/arranger/club.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MIXED, noteName, writeBlock } from './lib.mjs';
+import { durationText, fillUnits, MIXED, noteName, splitDuration, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -17,7 +17,6 @@ const midi = (n) => {
   const m = /^([A-G](?:#|b)?)(\d)$/.exec(n);
   return (Number(m[2]) + 1) * 12 + PC[m[1]];
 };
-const DUR = { 3840: '/1', 2880: '/2.', 1920: '/2', 1440: '/4.', 960: '/4', 720: '/8.', 480: '/8', 240: '/16' };
 const BAR = 3840;
 
 // 'Cm', 'Abmaj7', 'G7', 'Ddim', 'Cm/Bb' -> { pc, iv, bass }
@@ -28,18 +27,17 @@ function chord(sym) {
   const pc = PC[m[1]];
   return { pc, iv: QUALITY[m[2] ?? ''], bass: slash ? PC[slash] : pc };
 }
-const fillU = (ticks, unit, fn) => Array.from({ length: ticks / unit }, (_, i) => fn(i, DUR[unit])).join(' ');
 const bassNote = (c) => (c.bass >= 8 ? 24 + c.bass : 36 + c.bass); // Ab1-G2
 const stabChord = (c) => `[${c.iv.slice(0, 3).map((i) => nm(60 + c.pc + i - (c.pc >= 7 ? 12 : 0))).join(' ')}]`;
 
 // Textures, each filling one bar of a single chord.
 const T = {
   // offbeat eighths, the intro bass
-  off8: (c) => fillU(BAR, 960, () => `r/8 ${nm(bassNote(c))}/8`),
+  off8: (c) => fillUnits(BAR, 960, () => `r/8 ${nm(bassNote(c))}/8`),
   // the rolling bass: silent on the kick, three sixteenths after it
-  roll: (c) => fillU(BAR, 960, () => { const r = nm(bassNote(c)); return `r/16 ${r}/16 ${r}/16 ${r}/16`; }),
+  roll: (c) => fillUnits(BAR, 960, () => { const r = nm(bassNote(c)); return `r/16 ${r}/16 ${r}/16 ${r}/16`; }),
   // rolling with an octave pop on the third sixteenth
-  rollPop: (c) => fillU(BAR, 960, () => { const r = bassNote(c); return `r/16 ${nm(r)}/16 ${nm(r + 12)}/16 ${nm(r)}/16`; }),
+  rollPop: (c) => fillUnits(BAR, 960, () => { const r = bassNote(c); return `r/16 ${nm(r)}/16 ${nm(r + 12)}/16 ${nm(r)}/16`; }),
   hold: (c) => `${nm(bassNote(c))}/1`,
   // a syncopated acid riff around the root, an octave above the sub
   riff: (c) => {
@@ -53,14 +51,14 @@ const T = {
   pad: (c) => `[${c.iv.map((i) => nm(48 + c.pc + i - (c.pc >= 8 ? 12 : 0))).join(' ')}]/1`,
   arp16: (c) => {
     const tones = [...c.iv.slice(0, 3).map((i) => 60 + c.pc + i), 72 + c.pc];
-    return fillU(BAR, 240, (i, d) => `${nm(tones[[0, 2, 1, 3, 2, 1, 3, 0][i % 8]])}${d}`);
+    return fillUnits(BAR, 240, (i, d) => `${nm(tones[[0, 2, 1, 3, 2, 1, 3, 0][i % 8]])}${d}`);
   },
   // piano sweep in sixteenths, up and back
   sweep: (c) => {
     const b = 48 + c.pc;
     const up = [0, 7, 12, 12 + c.iv[1], 19, 24, 24 + c.iv[1], 31];
     const seq = [...up, ...up.slice().reverse()].map((i) => b + i);
-    return fillU(BAR, 240, (i, d) => `${nm(seq[i % 16])}${d}`);
+    return fillUnits(BAR, 240, (i, d) => `${nm(seq[i % 16])}${d}`);
   },
 };
 // Bars of chord symbols (one chord per bar here) through a texture.
@@ -77,8 +75,8 @@ const PERC = {
   tick: 'r/8 h/8 r/8 h/8 r/8 h/8 r/8 h/8',
   groove: 'r/8 rim/16 r/16 r/8 rim/8 r/16 tm/16 r/8 rim/8 r/8',
   // a four-bar snare roll that speeds up into the drop
-  roll: ['v=60 s/4 s/4 s/4 s/4', 'v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8', `v=88 ${fillU(BAR, 240, () => 's/16')}`,
-    `v=104 ${fillU(1920, 240, () => 's/16')} r/2`],
+  roll: ['v=60 s/4 s/4 s/4 s/4', 'v=74 s/8 s/8 s/8 s/8 s/8 s/8 s/8 s/8', `v=88 ${fillUnits(BAR, 240, () => 's/16')}`,
+    `v=104 ${fillUnits(1920, 240, () => 's/16')} r/2`],
 };
 
 const R = 'R';
@@ -253,15 +251,8 @@ time: 4/4`, s, [
 // Ivory and Ash (128 Mix): C minor, 128 BPM. The melodies come from ivory-and-ash.mjs.
 
 const TICKS = { 1: 3840, 2: 1920, 4: 960, 8: 480, 16: 240 };
-const SPLIT = [3840, 2880, 1920, 1440, 960, 720, 480, 240];
-const pieces = (t) => {
-  const outList = [];
-  for (const d of SPLIT) while (t >= d) { outList.push(DUR[d]); t -= d; }
-  if (t) throw new Error(`cannot write ${t} ticks`);
-  return outList;
-};
-// One bar of melody -> two bars with every duration doubled; notes crossing the bar line are tied.
-function stretch(bar) {
+// One bar of song text -> two bars with every duration doubled; notes crossing the bar line are tied.
+function stretchText(bar) {
   if (bar === null) return [null, null];
   const bars = [[], []];
   let pos = 0;
@@ -277,7 +268,7 @@ function stretch(bar) {
       const where = Math.floor(pos / BAR);
       left -= seg;
       pos += seg;
-      const ps = pieces(seg);
+      const ps = splitDuration(seg, [3840, 2880, 1920, 1440, 960, 720, 480, 240]);
       ps.forEach((d, i) => {
         const end = left === 0 && i === ps.length - 1;
         const mark = m[1] === 'r' ? '' : end ? (m[4] ?? '') : '~';
@@ -288,7 +279,7 @@ function stretch(bar) {
   if (pos !== 2 * BAR) throw new Error(`stretch: ${bar} is not one bar`);
   return bars.map((b) => b.join(' '));
 }
-const stretchAll = (bars) => bars.flatMap(stretch);
+const stretchAll = (bars) => bars.flatMap(stretchText);
 // Chord bars -> two bars each; a bar with two chords gives one bar to each.
 const stretchChords = (bars) => bars.flatMap((bar) => { const c = bar.split(' '); return c.length === 2 ? c : [c[0], c[0]]; });
 

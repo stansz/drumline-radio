@@ -53,6 +53,34 @@ export function barLength(bar, wholeBar = 3840) {
   return sum;
 }
 
+// The durations a length can be written as song-file text, longest first.
+export const DURATIONS = [
+  [3840, '/1'], [2880, '/2.'], [1920, '/2'], [1680, '/4..'], [1440, '/4.'], [960, '/4'],
+  [720, '/8.'], [480, '/8'], [240, '/16'], [120, '/32'],
+];
+
+// The text of the single duration with exactly this many ticks.
+export function durationText(ticks) {
+  const found = DURATIONS.find(([t]) => t === ticks);
+  if (!found) throw new Error('no duration for ' + ticks);
+  return found[1];
+}
+
+// A length as the shortest list of duration texts that add up to it, largest size first.
+// `sizes` is which of the durations may be used, in ticks.
+export function splitDuration(ticks, sizes = DURATIONS.map(([t]) => t)) {
+  const out = [];
+  let rest = ticks;
+  for (const size of sizes) while (rest >= size) { out.push(durationText(size)); rest -= size; }
+  if (rest) throw new Error(`cannot write ${rest} ticks`);
+  return out;
+}
+
+// A span as repeated notes: `fn` gets the index and the unit's duration text.
+export function fillUnits(ticks, unit, fn) {
+  return Array.from({ length: ticks / unit }, (_, i) => fn(i, durationText(unit))).join(' ');
+}
+
 // Note spellings, chosen per song: sharps, flats, or the mixed spellings most of them use.
 export const SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 export const FLATS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];

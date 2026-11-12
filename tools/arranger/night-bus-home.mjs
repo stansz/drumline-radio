@@ -23,7 +23,7 @@
 //   node tools/arranger/night-bus-home.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, clampVelocity, offsetText, sectionBuilder, writeBlock } from './lib.mjs';
+import { barLength, clampVelocity, durationText, offsetText, sectionBuilder, splitDuration, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -46,14 +46,7 @@ const shiftOf = offsetText;
 // Each note gets the swing for the slot it starts on plus a small drift from `drift`, read in turn;
 // a continuation keeps the note's start, so it gets neither. A length with no single duration is
 // written as tied notes.
-const TICK_DURS = [[3840, '/1'], [2880, '/2.'], [1920, '/2'], [1680, '/4..'], [1440, '/4.'], [960, '/4'], [720, '/8.'], [480, '/8'], [240, '/16'], [120, '/32']];
-const durs = (ticks) => {
-  const out = [];
-  for (const [n, d] of TICK_DURS) while (ticks >= n) { out.push(d); ticks -= n; }
-  if (ticks) throw new Error('a length is not a whole number of 32nds');
-  return out;
-};
-const chain = (pitch, ticks, head = '') => durs(ticks).map((d, i) => `${pitch}${d}${i === 0 ? head : ''}`).join('~ ');
+const chain = (pitch, ticks, head = '') => splitDuration(ticks).map((d, i) => `${pitch}${d}${i === 0 ? head : ''}`).join('~ ');
 function seq(hits, base, drift = [0]) {
   const toks = [];
   let slot = 0;
@@ -61,7 +54,7 @@ function seq(hits, base, drift = [0]) {
   for (const [units, token, dv = 0] of hits) {
     const ticks = units * 240;
     if (token === 'r') {
-      toks.push(...durs(ticks).map((d) => `r${d}`));
+      toks.push(...splitDuration(ticks).map((d) => `r${d}`));
     } else {
       const cont = token.startsWith('=');
       const tie = token.endsWith('~') ? '~' : '';
@@ -126,7 +119,6 @@ function stretch(bar, hold = Infinity) {
 // --- drum and stab grid -----------------------------------------------------
 // Every bar is sixteen slots. A hit is [slot, spanInSixteenths, levelDelta, offsetTicks, name];
 // hits at the same slot and span merge into one chord token like [k cl]. The swing is added here.
-const DUR = { 1: '/16', 2: '/8', 3: '/8.', 4: '/4', 8: '/2', 16: '/1' };
 function grid(hits, vel) {
   const at = new Map();
   const used = new Set();
@@ -159,7 +151,7 @@ function grid(hits, vel) {
     // A merged hit takes the latest offset, except that a kick keeps the grid.
     const kick = hitsAt.find((h) => h[4].includes('k'));
     const off = (kick ? kick[3] : Math.max(...hitsAt.map((h) => h[3]))) + swingAt(i);
-    toks.push(`${name}${DUR[span]}${shiftOf(off)}:${clamp(vel + dv)}`);
+    toks.push(`${name}${durationText(span * 240)}${shiftOf(off)}:${clamp(vel + dv)}`);
   }
   return toks.join(' ');
 }

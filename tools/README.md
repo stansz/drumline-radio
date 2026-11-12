@@ -67,8 +67,9 @@ generated song by hand.
 it. A recipe with `hidden: true` gets a `hidden: true` header, which keeps its song out of the
 library while it is still parsed and checked.
 
-`arranger/lib.mjs` holds plumbing shared by the generators (`writeBlock`, `barLength`, `noteName`
-with `SHARPS`/`FLATS`/`MIXED`, `offsetText`, `clampVelocity`, `sectionBuilder`), and only
+`arranger/lib.mjs` holds plumbing shared by the generators (`writeBlock`, `barLength`,
+`durationText`, `splitDuration`, `fillUnits` and `DURATIONS`, `noteName` with
+`SHARPS`/`FLATS`/`MIXED`, `offsetText`, `clampVelocity`, `sectionBuilder`), and only
 plumbing: melodies, chords, voicings, grooves and every other musical choice stay in each song's
 own script, so a new song starts from a blank musical slate. `writeBlock` takes `perRow`, `first`
 (a pickup line) and `collapseRests` (a marked section of only rests is written as one `R*n` line).

@@ -2,7 +2,7 @@
 // named bass lines and drum grooves. Used by songs.mjs; see tools/README.md.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { noteName, SHARPS, writeBlock } from './lib.mjs';
+import { durationText, noteName, SHARPS, writeBlock } from './lib.mjs';
 
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
 export const midi = (n) => {
@@ -20,11 +20,7 @@ function chord(sym, shift = 0) {
   const pc = (LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0) + shift + 24) % 12;
   return { pc, iv: QUALITY[m[3] ?? ''] };
 }
-const DUR = { 3840: '/1', 2880: '/2.', 1920: '/2', 1440: '/4.', 960: '/4', 720: '/8.', 480: '/8', 240: '/16' };
-const dur = (t) => {
-  if (!DUR[t]) throw new Error('no duration for ' + t);
-  return DUR[t];
-};
+const dur = durationText;
 const barTicks = ([n, d]) => (n * 3840) / d;
 
 function padSpan(c, ticks, voices = 3) {
