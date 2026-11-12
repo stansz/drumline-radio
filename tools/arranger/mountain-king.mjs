@@ -6,7 +6,7 @@
 //   node tools/arranger/mountain-king.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
+import { MIXED, noteName, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -284,12 +284,11 @@ const LOW = [
 ];
 
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-const SHARP = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const midi = (n) => {
   const m = /^([A-G])(#|b)?(-?\d)$/.exec(n);
   return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
 };
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, MIXED);
 const NOTE = /\b[A-G](#|b)?-?\d\b/g;
 const shift = (bar, by) => (bar === 'R' || by === 0 ? bar : bar.replace(NOTE, (n) => nm(midi(n) + by)));
 const pitches = (bar) => (bar.match(NOTE) ?? []).map(midi);

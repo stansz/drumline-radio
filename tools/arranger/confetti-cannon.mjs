@@ -7,12 +7,12 @@
 //   node tools/arranger/confetti-cannon.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { clampVelocity, noteName, SHARPS } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-const NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-const nm = (n) => `${NAMES[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, SHARPS);
 const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // A fixed pseudo-random stream per track, so the "human" velocities and offsets are uneven but the
@@ -24,7 +24,7 @@ const stream = (seed) => {
     return lo + Math.floor((s / 2147483648) * (hi - lo + 1));
   };
 };
-const clamp = (v) => Math.max(1, Math.min(127, Math.round(v)));
+const clamp = clampVelocity;
 
 // The chords. Each has the riff's root (all four sit inside C3-G3, so the riff stays a bass riff),
 // its third and "colour" step (the 6th on a major chord, the 7th on E minor), a stab voicing just

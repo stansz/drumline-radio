@@ -12,16 +12,15 @@
 //   node tools/arranger/sunliner.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
+import { clampVelocity, noteName, offsetText, SHARPS, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
 // ---------------------------------------------------------------- pitches and the chord table
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-const nm = (n) => `${SHARP[((n % 12) + 12) % 12]}${Math.floor(n / 12) - 1}`;
-const off = (n) => (n === 0 ? '' : n > 0 ? `+${n}` : String(n));
-const vel = (v) => Math.max(1, Math.min(126, Math.round(v)));
+const nm = (n) => noteName(n, SHARPS);
+const off = offsetText;
+const vel = (v) => clampVelocity(v, 126);
 
 // One row per chord: the bass root (octave 1) and the voicings every part plays over it. The choirs
 // and stabs sit in the middle (F#3-E4), the pad below them holding only a root and a fifth, so a

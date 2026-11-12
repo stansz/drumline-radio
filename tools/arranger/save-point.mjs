@@ -4,14 +4,13 @@
 //   node tools/arranger/save-point.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
+import { noteName, SHARPS, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const PC = { C: 0, 'C#': 1, D: 2, 'D#': 3, E: 4, F: 5, 'F#': 6, G: 7, 'G#': 8, A: 9, 'A#': 10, B: 11 };
-const nm = (n) => `${SHARP[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, SHARPS);
 const midi = (n) => { const m = /^([A-G]#?)(\d)$/.exec(n); return (Number(m[2]) + 1) * 12 + PC[m[1]]; };
 const up = (bar, by) => (by === 0 || bar === 'R' ? bar : bar.replace(/\b[A-G]#?\d\b/g, (n) => nm(midi(n) + by)));
 const chord = (sym) => {

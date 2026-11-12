@@ -8,14 +8,13 @@
 //   node tools/arranger/riverfront.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, writeBlock } from './lib.mjs';
+import { barLength, FLATS, noteName, sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
 
 // Flat names, so every note reads in F minor.
-const FLAT = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-const nm = (n) => `${FLAT[n % 12]}${Math.floor(n / 12) - 1}`;
+const nm = (n) => noteName(n, FLATS);
 const chordOf = (notes) => `[${notes.map(nm).join(' ')}]`;
 
 // The chords. The pad sits low-mid, the stabs above it, the counter-line above those, and the sub
@@ -160,16 +159,7 @@ const pTom = (v) => `r/2 tl/8:${v + 6} tm/8:${v + 2} th/8:${v - 2} th/8:${v - 6}
 const R = 'R';
 const fill = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
 const keys = ['melody', 'stabs', 'pad', 'bass', 'drums', 'perc'];
-const tracks = Object.fromEntries(keys.map((k) => [k, []]));
-const marks = [];
-function section(name, n, parts) {
-  marks.push([tracks.melody.length, name]);
-  for (const key of keys) {
-    const bars = parts[key] ?? [];
-    if (bars.length > n) throw new Error(`${name}: ${key} has ${bars.length} bars, more than ${n}`);
-    for (let i = 0; i < n; i++) tracks[key].push(bars[i] ?? R);
-  }
-}
+const { tracks, marks, section } = sectionBuilder(keys);
 
 // Intro: no kick. The pad swells in alone, then the counter-line enters over it with soft rims,
 // and a snare pickup leads into the kick.

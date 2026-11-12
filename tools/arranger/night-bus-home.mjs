@@ -23,7 +23,7 @@
 //   node tools/arranger/night-bus-home.mjs [outDir]
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { barLength, writeBlock } from './lib.mjs';
+import { barLength, clampVelocity, offsetText, sectionBuilder, writeBlock } from './lib.mjs';
 
 const [out = 'src/songs'] = process.argv.slice(2);
 mkdirSync(out, { recursive: true });
@@ -33,8 +33,8 @@ mkdirSync(out, { recursive: true });
 const SWING = 64;
 const swingAt = (slot) => (slot % 2 === 1 ? SWING : 0);
 
-const clamp = (x) => Math.max(1, Math.min(127, Math.round(x)));
-const shiftOf = (off) => (off ? `${off > 0 ? '+' : ''}${off}` : '');
+const clamp = clampVelocity;
+const shiftOf = offsetText;
 
 // --- pitched bars -----------------------------------------------------------
 // A bar is a list of [units, token, velocityDelta]; units are sixteenths and must sum to 16. `r` is
@@ -391,16 +391,7 @@ const loop = (i) => LOOP[Math.floor(i / 2) % 4];
 const stabFig = (i) => (i % 2 ? STABS.B : STABS.A);
 
 const keys = ['lead', 'chops', 'keys', 'pad', 'bass', 'drums'];
-const tracks = Object.fromEntries(keys.map((k) => [k, []]));
-const marks = [];
-function section(name, n, parts) {
-  marks.push([tracks.lead.length, name]);
-  for (const key of keys) {
-    const list = parts[key] ?? [];
-    if (list.length > n) throw new Error(`${name}: ${key} has ${list.length} bars, more than ${n}`);
-    for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? R);
-  }
-}
+const { tracks, marks, section } = sectionBuilder(keys);
 // The vocal builds through the song: it starts as single eighth-note hits that punctuate the groove,
 // and each section lets the notes ring a little longer (`hold`, in sixteenths): hits, dotted eighth,
 // quarter, dotted, half, long, full. The last chorus's second half and the outro sing every note at

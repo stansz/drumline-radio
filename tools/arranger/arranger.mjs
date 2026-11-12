@@ -2,15 +2,14 @@
 // named bass lines and drum grooves. Used by songs.mjs; see tools/README.md.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { writeBlock } from './lib.mjs';
+import { noteName, SHARPS, writeBlock } from './lib.mjs';
 
-const SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const LETTER = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
 export const midi = (n) => {
   const m = /^([A-G])(#|b)?(\d)$/.exec(n);
   return (Number(m[3]) + 1) * 12 + LETTER[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
 };
-export const nm = (n) => SHARP[((n % 12) + 12) % 12] + (Math.floor(n / 12) - 1);
+export const nm = (n) => noteName(n, SHARPS);
 const tr = (bar, s) => (s === 0 ? bar : bar.replace(/\b([A-G])(#|b)?(\d)\b/g, (x) => nm(midi(x) + s)));
 const notesIn = (bar) => (bar.match(/\b[A-G](#|b)?\d\b/g) ?? []).map(midi);
 

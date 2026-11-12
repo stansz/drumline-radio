@@ -39,3 +39,41 @@ export function barLength(bar, wholeBar = 3840) {
   }
   return sum;
 }
+
+// Note spellings, chosen per song: sharps, flats, or the mixed spellings most of them use.
+export const SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+export const FLATS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+export const MIXED = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+
+// A MIDI number as a note name with an octave, spelled from `names`.
+export function noteName(midi, names = SHARPS) {
+  return `${names[((midi % 12) + 12) % 12]}${Math.floor(midi / 12) - 1}`;
+}
+
+// A tick offset as note text: '' for none, '+12' later, '-6' earlier.
+export function offsetText(ticks) {
+  if (!ticks) return '';
+  return ticks > 0 ? `+${ticks}` : String(ticks);
+}
+
+// A velocity rounded into 1..max.
+export function clampVelocity(v, max = 127) {
+  return Math.max(1, Math.min(max, Math.round(v)));
+}
+
+// The tracks, bar marks and section writer shared by the generators that lay parts out section by
+// section. `keys` names the tracks; `section(name, n, parts)` adds n bars, resting where a part has
+// no bar.
+export function sectionBuilder(keys) {
+  const tracks = Object.fromEntries(keys.map((k) => [k, []]));
+  const marks = [];
+  function section(name, n, parts) {
+    marks.push([tracks[keys[0]].length, name]);
+    for (const key of keys) {
+      const list = parts[key] ?? [];
+      if (list.length > n) throw new Error(`${name}: ${key} has ${list.length} bars, more than ${n}`);
+      for (let i = 0; i < n; i += 1) tracks[key].push(list[i] ?? 'R');
+    }
+  }
+  return { tracks, marks, section };
+}
