@@ -1,0 +1,590 @@
+# The Black Coach, an original orchestral scherzo in G minor by Arena Agent & SZ.
+# Form: timpani-and-pizzicato intro - scherzo A (horns) - scherzo A (violins) - development in
+# fragments - trio in B-flat (flute) - a quiet build on the ostinato - the scherzo in tutti - a coda
+# that accelerates. 3/4 at 144 BPM, 168 bars, about three and a half minutes.
+#
+# The ostinato is the whole piece: the pizzicato plays six eighths a bar (root, root, fifth, root,
+# third, fifth) with the downbeat accented and no two beats at the same weight, and the timpani
+# answers it on beats 1 and 3, rolling into every section change. The horns state theme A over that
+# grid, the violins take it an octave up, and the development breaks it into three-note fragments
+# handed from the violins to the horns to the flute to the cellos, with whole bars of silence
+# between them. The trio moves to B-flat: the pizzicato stops dead, the flute sings over an open
+# string pad, a slow cello and rolled harp chords, and the timpani drops to a whisper. Then the
+# ostinato returns quietly and climbs back into G minor for the tutti reprise and the accelerando.
+#
+# Borrowed from the bank, both through this style: the pizzicato strings ('pizzicato') for the
+# ostinato, and the glockenspiel for the holes in the hocket and the last bar. No oboe, no bells.
+#
+# Built by its own generator, tools/arranger/the-black-coach.mjs, from tools/arranger/lib.mjs:
+# the harmony, the theme, the figures, the voicings, the velocities and the microtiming all live there.
+#
+# Human feel: the first note of a horn or flute bar always leans in +10 to +16 ticks (never early,
+# so it can never sound under the bar before it) and the inner notes sway -11 to +16; the pizzicato
+# stays on the grid but its six eighths never land at the same velocity twice; the timpani rolls
+# into every section change; nothing swings.
+#
+# chords: Gm Gm Eb Eb Cm Cm D7 D7
+# chords @9: Gm Gm Eb Eb Cm Cmadd9 D7 D7 Gm Gm Cm Cm Ab Eb D7 Gm
+# chords @25: Gm Gm Eb Eb Cm Cmadd9 D7 D7 Gm Gm Cm Cm Ab Eb D7 Gm
+# chords @41: Gm Gm Eb Eb Cm Cm D7 D7
+# chords @49: Cm Cm Gm Gm Ab Ab D7 D7
+# chords @57: Eb Eb F F D7 D7 Gm Gm
+# chords @65: Gm Gm Cm Cm F F F7 F7
+# chords @73: Bb F6 Gm Eb Bb F Eb F7 Bb F Gm Eb Cm Eb F7 Bb
+# chords @89: Dm Dm Gm Gm Eb Eb Cm F7 Bb F6 Gm Eb Cm Eb F7 Bb
+# chords @105: Gm Gm Eb Eb Cm Cm D7 D7 Gm Gm Cm Cm Eb Eb D7 D7
+# chords @121: Gm Gm Eb Eb Cm Cmadd9 D7 D7 Gm Gm Cm Cm Ab Eb D7 Gm
+# chords @137: Eb Eb F F D7 D7 Eb Eb
+# chords @145: Cm Cm Eb Eb F F D7 D7
+# chords @153: Gm Gm D7 D7 Cm Cm Eb Eb F F D7 D7 Gm Gm D7 Gm
+#
+# Form:
+# 1-8: Intro: timpani and pizzicato, a roll into the theme
+# 9-24: Scherzo A1: the horns state the theme, the violins answer in its gaps
+# 25-40: Scherzo A2: the violins take the theme over, an octave up, the horns calling
+# 41-48: Development: the theme in three-note fragments, violins answering the horns
+# 49-56: Development: stretto, two bars each for violins, horns, flute and cellos
+# 57-64: Development: silence and sudden accents, the glockenspiel in the holes
+# 65-72: Development: a build on the ostinato, the horns holding F into the trio
+# 73-88: Trio: the flute sings in B-flat over sustained strings and soft harp
+# 89-104: Trio: the middle darkens, the violins join on long notes
+# 105-120: Build: quiet on the ostinato, a bar at a time, back into G minor
+# 121-136: Scherzo reprise: the violins take the theme, the horns stabbing under them
+# 137-144: Scherzo reprise: a rising sequence, the whole orchestra in fragments
+# 145-152: Scherzo reprise: the build into the coda
+# 153-168: Coda: accelerando, the fragments closing on one last hit
+#
+title: The Black Coach
+composer: Arena Agent & SZ
+year: 2026
+source: original
+category: originals
+style: orchestral
+key: G minor to B-flat major
+tempo: 144
+time: 3/4
+about: An orchestral scherzo, a night chase in G minor at 144 BPM in 3/4: a pizzicato ostinato and a timpani pulse under a horn theme, the violins taking it an octave up, a development that hacks the theme into fragments across the orchestra, a lyrical trio in B-flat for solo flute over sustained strings and harp, and a coda that accelerates into one last hit.
+
+@bars 153-168 tempo=148..186
+
+track violins role=lead inst=strings vol=1 pan=-0.25
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| R | R | R | r/4 Bb5/8:98 Eb6/8:104 Bb5/4:100 |
+| R | R | R | r/4 A5/8:98 F#5/8:104 D5/4:102 |
+| R | R | R | r/4 G5/8:98 C6/8:104 G5/4:102 |
+| R | R | R | r/4 G5/8:104 D5/8:100 r/4 |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| G5/4+16:117 Bb5/8-11:104 D6/8+4:106 Bb5/4+16:110 | F6/8+10:111 D6/8-5:106 Bb5/8-11:102 D6/8+4:104 D6/4+16:114 | Eb6/4+12:121 Bb5/8-9:102 G5/8-5:104 Eb6/4-11:114 | F6/8+14:109 Eb6/8+7:104 D6/8-9:106 Eb6/8-5:102 Bb5/4-11:112 |
+| G5/4+16:119 C6/8+12:106 Eb6/8+7:102 C6/4-9:112 | D6/8+10:113 C6/8+13:102 G5/8+12:104 C6/8+7:106 D6/4-9:110 | D6/4+12:117 C6/8+16:104 A5/8+13:106 D6/4+12:110 | A5/8+14:111 A5/8+4:106 A5/8+16:102 A5/8+13:104 D6/4+12:114 |
+| D5/8+10:115 G5/8+13:110 Bb5/8+12:106 D6/8+7:108 Bb5/4-9:118 | C6/8+12:117 Bb5/8+16:106 A5/8+13:108 G5/8+12:110 D6/4+7:114 | Eb6/4+14:121 D6/8+4:108 C6/8+16:110 G5/4+13:114 | C6/8+16:115 D6/8-11:110 Eb6/8+4:106 F6/8+16:108 Eb6/4+13:118 |
+| Ab5/4+10:125 C6/8-5:106 Eb6/8-11:108 C6/4+4:118 | Bb5/4+12:121 G5/8-9:108 Eb6/8-5:110 Bb5/4-11:114 | D6/4+14:123 C6/8+7:110 A5/8-9:106 F#5/4-5:116 | G5/2+16:123 r/4 |
+# Development: the theme in three-note fragments, violins answering the horns
+| R | D6/8:100 Bb5/8:104 G5/2:102 | R | Eb6/8:102 Bb5/8:104 G5/2:104 |
+| R | C6/8:100 G5/8:104 G5/2:102 | R | A5/8:102 F#5/8:104 D5/2:106 |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| C6/8:104 G5/8:106 Eb5/8:108 G5/8:106 C6/4:108 | Eb6/4:110 C6/8:106 G5/8:104 C6/4:108 | R | R |
+| R | R | R | R |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| Eb6/4:108 r/2 | R | r/4 C6/4:110 r/4 | R |
+| R | r/4 D6/4:108 r/4 | [G5 D6]/4:116 r/2 | R |
+# Development: a build on the ostinato, the horns holding F into the trio
+| G4/8+10:98 Bb4/8+4:92 D5/8+12:92 G5/8-5:92 Bb5/8+16:92 D6/8+7:92 | D6/4+10:102 Bb5/8+12:96 G5/8-5:96 D5/4+16:96 | C5/8+10:106 Eb5/8-5:100 G5/8+16:100 C6/8+7:100 Eb6/8-11:100 C6/8+13:100 | Eb6/4+10:110 C6/8+16:104 G5/8+7:104 Eb5/4-11:104 |
+| F5/8+10:114 A5/8+7:108 C6/8-11:108 F6/8+13:108 C6/8-9:108 A5/8+4:108 | F6/4+10:118 C6/8-11:112 A5/8+13:112 F5/4-9:112 | C6/4+10:122 Eb6/8+13:116 C6/8-9:116 A5/4+4:116 | F6/8+10:126 F6/8-9:120 F6/4+4:120 F6/4+12:120 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Trio: the middle darkens, the violins join on long notes
+| D6/2.:70 | A5/2.:72 | Bb5/2.:74 | G5/2.:72 |
+| Eb6/2.:76 | Bb5/2.:74 | C6/2.:78 | C6/2.:80 |
+| R | R | R | R |
+| R | R | R | R |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| R | R | R | R |
+| G5/8:62 G5/8:56 G5/8:62 G5/8:56 G5/8:62 G5/8:56 | G5/8:69 G5/8:63 G5/8:69 G5/8:63 G5/8:69 G5/8:63 | G5/8:74 G5/8:68 G5/8:74 G5/8:68 G5/8:74 G5/8:68 | G5/8:81 G5/8:75 G5/8:81 G5/8:75 G5/8:81 G5/8:75 |
+| A5/8:84 A5/8:78 A5/8:84 A5/8:78 A5/8:84 A5/8:78 | A5/8:92 A5/8:86 A5/8:92 A5/8:86 A5/8:92 A5/8:86 | A5/8:98 A5/8:92 A5/8:98 A5/8:92 A5/8:98 A5/8:92 | A5/8:106 A5/8:100 A5/8:106 A5/8:100 A5/8:106 A5/8:100 |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| G5/4+10:126 Bb5/8-5:110 D6/8-11:112 Bb5/4+4:122 | F6/8+12:117 D6/8-9:112 Bb5/8-5:114 D6/8-11:110 D6/4+4:120 | Eb6/4+14:126 Bb5/8+7:114 G5/8-9:110 Eb6/4-5:120 | F6/8+16:121 Eb6/8+12:110 D6/8+7:112 Eb6/8-9:114 Bb5/4-5:118 |
+| G5/4+10:125 C6/8+13:112 Eb6/8+12:114 C6/4+7:118 | D6/8+12:119 C6/8+16:114 G5/8+13:110 C6/8+12:112 D6/4+7:122 | D6/4+14:126 C6/8+4:110 A5/8+16:112 D6/4+13:122 | A5/8+16:117 A5/8-11:112 A5/8+4:114 A5/8+16:110 D6/4+13:120 |
+| D5/8+12:115 G5/8+16:110 Bb5/8+13:112 D6/8+12:108 Bb5/4+7:118 | C6/8+14:117 Bb5/8+4:112 A5/8+16:108 G5/8+13:110 D6/4+12:120 | Eb6/4+16:126 D6/8-11:108 C6/8+4:110 G5/4+16:120 | C6/8+10:115 D6/8-5:110 Eb6/8-11:112 F6/8+4:108 Eb6/4+16:118 |
+| Ab5/4+12:125 C6/8-9:112 Eb6/8-5:108 C6/4-11:118 | Bb5/4+14:126 G5/8+7:108 Eb6/8-9:110 Bb5/4-5:120 | D6/4+16:123 C6/8+12:110 A5/8+7:112 F#5/4-9:116 | G5/2+10:123 r/4 |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| Eb5/8:106 G5/8:108 Bb5/8:110 Eb6/8:108 Bb5/4:110 | Bb5/8:108 G5/8:106 Eb5/8:108 G5/8:108 Bb5/4:110 | F5/8:108 A5/8:110 C6/8:112 A5/8:110 F5/4:112 | C6/4:114 A5/8:110 F5/8:108 A5/4:112 |
+| D5/8:110 F#5/8:112 A5/8:114 D6/8:112 A5/4:114 | D6/4:116 C6/8:112 A5/8:110 F#5/4:112 | Eb5/8:112 G5/8:114 Bb5/8:116 Eb6/8:114 Bb5/4:116 | Eb6/4:118 Bb5/8:114 G5/8:112 Eb5/4:114 |
+# Scherzo reprise: the build into the coda
+| C5/8:106 Eb5/8:108 G5/8:110 C6/8:110 Eb6/8:112 C6/8:110 | Eb6/4:114 C6/8:110 G5/8:108 C6/4:112 | Eb5/8:108 G5/8:110 Bb5/8:112 Eb6/8:112 G6/8:114 Eb6/8:112 | G6/4:116 Eb6/8:112 Bb5/8:110 Eb6/4:114 |
+| F5/8:110 A5/8:112 C6/8:114 F6/8:114 C6/8:116 A5/8:114 | F6/4:118 C6/8:114 A5/8:112 C6/4:116 | D5/8:112 F#5/8:114 A5/8:116 D6/8:116 A5/8:118 F#5/8:116 | D6/2:120 r/4 |
+# Coda: accelerando, the fragments closing on one last hit
+| [G5 D6]/4:118 r/2 | R | r/4 D6/8:118 Bb5/8:116 A5/4:118 | R |
+| C6/8:112 G5/8:114 C6/8:116 Eb6/8:114 C6/4:116 | Eb6/4:118 C6/8:114 G5/8:112 C6/4:116 | Eb5/8:114 G5/8:116 Bb5/8:118 Eb6/8:116 Bb5/4:118 | Eb6/2:120 r/4 |
+| F5/8:116 A5/8:118 C6/8:120 F6/8:118 C6/4:120 | F6/4:122 C6/8:118 A5/8:116 C6/4:120 | D5/8:118 F#5/8:120 A5/8:122 D6/8:120 A5/4:122 | D6/4:124 A5/8:120 F#5/8:118 D6/4:122 |
+| [G5 D6]/4:120 r/4 [G5 D6]/8:114 r/8 | [G5 D6]/4:122 r/4 [G5 D6]/8:116 r/8 | [A5 D6]/4:124 r/4 [A5 D6]/8:118 r/8 | [G5 D6 G6]/2.:126 |
+
+track horns role=lead2 inst=brass vol=0.78 pan=-0.12
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| G4/4+12:111 Bb4/8+16:98 D5/8+13:94 Bb4/4+12:104 | F5/8+14:105 D5/8+4:94 Bb4/8+16:96 D5/8+13:98 D5/4+12:102 | Eb5/4+16:109 Bb4/8-11:96 G4/8+4:98 Eb5/4+16:102 | F5/8+10:103 Eb5/8-5:98 D5/8-11:94 Eb5/8+4:96 Bb4/4+16:106 |
+| G4/4+12:113 C5/8-9:94 Eb5/8-5:96 C5/4-11:106 | D5/8+14:101 C5/8+7:96 G4/8-9:98 C5/8-5:94 D5/4-11:104 | D5/4+16:111 C5/8+12:98 A4/8+7:94 D5/4-9:104 | A4/8+10:105 A4/8+13:94 A4/8+12:96 A4/8+7:98 D5/4-9:102 |
+| D4/8+14:111 G4/8+7:100 Bb4/8-9:102 D5/8-5:104 Bb4/4-11:108 | C5/8+16:107 Bb4/8+12:102 A4/8+7:104 G4/8-9:100 D5/4-5:110 | Eb5/4+10:117 D5/8+13:104 C5/8+12:100 G4/4+7:110 | C5/8+12:111 D5/8+16:100 Eb5/8+13:102 F5/8+12:104 Eb5/4+7:108 |
+| Ab4/4+14:115 C5/8+4:102 Eb5/8+16:104 C5/4+13:108 | Bb4/4+16:117 G4/8-11:104 Eb5/8+4:100 Bb4/4+16:110 | D5/4+10:119 C5/8-5:100 A4/8-11:102 F#4/4+4:112 | G4/2+12:113 r/4 |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| r/4 r/4 [D4 G4 Bb4]/8:102 r/8 | r/4 r/4 [D4 G4 Bb4]/8:105 r/8 | r/4 r/4 [Eb4 G4 Bb4]/8:108 r/8 | r/4 r/4 [Eb4 G4 Bb4]/8:102 r/8 |
+| r/4 r/4 [C4 Eb4 G4]/8:105 r/8 | r/4 r/4 [C4 Eb4 G4]/8:108 r/8 | r/4 r/4 [D4 F#4 A4]/8:102 r/8 | r/4 r/4 [D4 F#4 A4]/8:105 r/8 |
+| D4/8+12:113 G4/8-9:102 Bb4/8-5:104 D5/8-11:106 Bb4/4+4:110 | C5/8+14:109 Bb4/8+7:104 A4/8-9:106 G4/8-5:102 D5/4-11:112 | Eb5/4+16:119 D5/8+12:106 C5/8+7:102 G4/4-9:112 | C5/8+10:113 D5/8+13:102 Eb5/8+12:104 F5/8+7:106 Eb5/4-9:110 |
+| Ab4/4+12:117 C5/8+16:104 Eb5/8+13:106 C5/4+12:110 | Bb4/4+14:119 G4/8+4:106 Eb5/8+16:102 Bb4/4+13:112 | D5/4+16:121 C5/8-11:102 A4/8+4:104 F#4/4+16:114 | G4/2+10:115 r/4 |
+# Development: the theme in three-note fragments, violins answering the horns
+| r/4 Bb4/8:100 D5/8:104 Bb4/4:102 | R | r/4 Bb4/8:102 Eb5/8:106 Bb4/4:104 | R |
+| r/4 C5/8:102 Eb5/8:106 C5/4:104 | R | r/4 A4/8:102 F#4/8:106 A4/4:104 | R |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| R | R | G4/8:104 Bb4/8:106 D5/8:108 Bb4/8:106 G4/4:108 | D5/4:110 Bb4/8:106 G4/8:104 Bb4/4:108 |
+| R | R | R | R |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| R | [Eb4 G4 Bb4]/4:110 r/2 | R | [F4 A4 C5]/4:108 r/2 |
+| r/4 [D4 F#4 A4]/4:108 r/4 | R | [D4 G4 Bb4]/4:116 r/8 [D4 G4 Bb4]/8:104 r/4 | R |
+# Development: a build on the ostinato, the horns holding F into the trio
+| R | R | R | R |
+| F5/2.:88 | F5/2.:96 | F5/2.:106 | F5/2.:116 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Trio: the middle darkens, the violins join on long notes
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| G3/2.:66 | Bb3/2.:70 | C4/2.:72 | D4/2.:74 |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| R | R | F#4/2.:70 | F#4/2.:76 |
+| r/4 D4/8:84 F4/8:88 Bb4/4:92 | r/4 D4/8:90 F4/8:94 Bb4/4:98 | C5/2.:100 | C5/2.:104 |
+| G4/2.:108 | G4/2.:112 | r/4 F#4/8:114 A4/8:116 D5/4:118 | D5/2.:120 |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| r/4 r/4 [D4 G4 Bb4]/8:112 r/8 | r/4 r/4 [D4 G4 Bb4]/8:115 r/8 | r/4 r/4 [Eb4 G4 Bb4]/8:118 r/8 | r/4 r/4 [Eb4 G4 Bb4]/8:112 r/8 |
+| r/4 r/4 [C4 Eb4 G4]/8:115 r/8 | r/4 r/4 [C4 Eb4 G4]/8:118 r/8 | r/4 r/4 [D4 F#4 A4]/8:112 r/8 | r/4 r/4 [D4 F#4 A4]/8:115 r/8 |
+| D4/8+14:115 G4/8+7:110 Bb4/8-9:106 D5/8-5:108 Bb4/4-11:118 | C5/8+16:117 Bb4/8+12:106 A4/8+7:108 G4/8-9:110 D5/4-5:114 | Eb5/4+10:121 D5/8+13:108 C5/8+12:110 G4/4+7:114 | C5/8+12:115 D5/8+16:110 Eb5/8+13:106 F5/8+12:108 Eb5/4+7:118 |
+| Ab4/4+14:125 C5/8+4:106 Eb5/8+16:108 C5/4+13:118 | Bb4/4+16:121 G4/8-11:108 Eb5/8+4:110 Bb4/4+16:114 | D5/4+10:123 C5/8-5:110 A4/8-11:106 F#4/4+4:116 | G4/2+12:123 r/4 |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| [Eb4 G4 Bb4]/4:112 r/4 [Eb4 G4 Bb4]/8:104 r/8 | r/4 [Eb4 G4 Bb4]/4:108 r/4 | [F4 A4 C5]/4:112 r/4 [F4 A4 C5]/8:106 r/8 | r/4 [F4 A4 C5]/4:110 r/4 |
+| [D4 F#4 A4]/4:114 r/4 [D4 F#4 A4]/8:108 r/8 | [D4 F#4 A4]/4:116 r/4 [D4 F#4 A4]/8:110 r/8 | [Eb4 G4 Bb4]/4:114 r/4 [Eb4 G4 Bb4]/8:108 r/8 | [Eb4 G4 Bb4]/4:116 r/4 [Eb4 G4 Bb4]/8:112 r/8 |
+# Scherzo reprise: the build into the coda
+| C4/2.:104 | Eb4/2.:108 | Eb4/2.:110 | G4/2.:112 |
+| F4/2.:114 | C5/2.:116 | F#4/2.:118 | D5/2.:120 |
+# Coda: accelerando, the fragments closing on one last hit
+| R | [D4 G4 Bb4]/4:116 r/2 | R | r/4 [D4 F#4 A4]/4:118 r/4 |
+| [C4 Eb4 G4]/4:114 r/4 [C4 Eb4 G4]/8:108 r/8 | r/4 [C4 Eb4 G4]/4:112 r/4 | [Eb4 G4 Bb4]/4:116 r/4 [Eb4 G4 Bb4]/8:110 r/8 | r/4 [Eb4 G4 Bb4]/4:114 r/4 |
+| [F4 A4 C5]/4:118 r/4 [F4 A4 C5]/8:112 r/8 | r/4 [F4 A4 C5]/4:116 r/4 | [D4 F#4 A4]/4:120 r/4 [D4 F#4 A4]/8:114 r/8 | r/4 [D4 F#4 A4]/4:118 r/4 |
+| [D4 G4 Bb4]/4:120 r/4 [D4 G4 Bb4]/8:114 r/8 | [D4 G4 Bb4]/4:122 r/4 [D4 G4 Bb4]/8:116 r/8 | [D4 F#4 A4]/4:124 r/4 [D4 F#4 A4]/8:118 r/8 | [D4 G4 Bb4]/2.:126 |
+
+track flute role=counter vol=0.72 pan=0.26
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Development: the theme in three-note fragments, violins answering the horns
+| R | R | R | R |
+| R | R | R | R |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| R | R | R | R |
+| Ab5/8:100 C6/8:104 Eb6/8:106 C6/8:104 Ab5/4:106 | Eb6/4:108 C6/8:104 Ab5/8:102 C6/4:106 | R | R |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| R | R | R | R |
+| R | R | R | R |
+# Development: a build on the ostinato, the horns holding F into the trio
+| R | R | R | R |
+| R | R | R | R |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| F5/4+14:87 D5/8+4:74 F5/8+16:76 Bb5/4+13:80 | A5/4+16:89 G5/8-11:76 F5/8+4:72 D5/4+16:82 | D5/4+10:91 F5/8-5:72 D5/8-11:74 G5/4+4:84 | Eb5/4+12:87 G5/8-9:74 Bb5/8-5:76 G5/4-11:80 |
+| F5/4+14:89 Bb5/8+7:76 G5/8-9:72 D5/4-5:82 | A5/4+16:91 C6/8+12:72 A5/8+7:74 F5/4-9:84 | Eb5/4+10:87 Bb5/8+13:74 G5/8+12:76 Eb5/4+7:80 | A5/4+12:89 G5/8+16:76 F5/8+13:72 Eb5/4+12:82 |
+| D5/4+14:91 F5/8+4:72 G5/8+16:74 Bb5/4+13:84 | C6/4+16:87 A5/8-11:74 G5/8+4:76 F5/4+16:80 | G5/4+10:89 F5/8-5:76 D5/8-11:72 G5/4+4:82 | Bb5/4+12:91 G5/8-9:72 Eb5/8-5:74 G5/4-11:84 |
+| G5/4+14:87 Eb5/8+7:74 C5/8-9:76 Eb5/4-5:80 | G5/4+16:89 Bb5/8+12:76 Eb5/8+7:72 Bb5/4-9:82 | A5/4+10:91 C6/8+13:72 A5/8+12:74 Eb5/4+7:84 | F5/2+12:85 r/4 |
+# Trio: the middle darkens, the violins join on long notes
+| F5/4+16:93 D5/8+12:80 C5/8+7:76 D5/4-9:86 | A4/4+10:95 C5/8+13:76 D5/8+12:78 F5/4+7:88 | D5/4+12:91 G5/8+16:78 F5/8+13:80 D5/4+12:84 | Bb4/4+14:93 D5/8+4:80 F5/8+16:76 G5/4+13:86 |
+| Eb5/4+16:95 G5/8-11:76 Bb5/8+4:78 Eb5/4+16:88 | G5/4+10:91 Eb5/8-5:78 G5/8-11:80 Bb5/4+4:84 | G5/4+12:93 Eb5/8-9:80 C5/8-5:76 Eb5/4-11:86 | A5/4+14:95 G5/8+7:76 F5/8-9:78 C6/4-5:88 |
+| F5/4+16:91 Bb5/8+12:78 G5/8+7:80 D5/4-9:84 | A5/4+10:93 G5/8+13:80 F5/8+12:76 D5/4+7:86 | D5/4+12:95 F5/8+16:76 G5/8+13:78 D5/4+12:88 | Eb5/4+14:91 G5/8+4:78 Bb5/8+16:80 G5/4+13:84 |
+| C5/4+16:93 Eb5/8-11:80 G5/8+4:76 Eb5/4+16:86 | Bb5/4+10:95 G5/8-5:76 Eb5/8-11:78 Bb5/4+4:88 | A5/4+12:91 C6/8-9:78 A5/8-5:80 Eb5/4-11:84 | F5/2.+14:89 |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: the build into the coda
+| R | R | R | R |
+| R | R | R | R |
+# Coda: accelerando, the fragments closing on one last hit
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+
+track pizzicato role=arp inst=pizzicato vol=0.95 pan=0.2
+# Intro: timpani and pizzicato, a roll into the theme
+| G3/4:96 r/4 D4/8:88 G3/8:92 | G3/8:83 G3/8:70 D4/8:80 G3/8:65 Bb3/8:76 D4/8:69 | Eb3/8:86 Eb3/8:72 Bb3/8:80 Eb3/8:68 G3/8:78 Bb3/8:69 | Eb3/8:89 Eb3/8:72 Bb3/8:83 Eb3/8:71 G3/8:78 Bb3/8:71 |
+| C3/8:91 C3/8:76 G3/8:87 C3/8:72 Eb3/8:83 G3/8:76 | C3/8:94 C3/8:79 G3/8:87 C3/8:74 Eb3/8:86 G3/8:75 | D3/8:97 D3/8:79 A3/8:90 D3/8:77 F#3/8:85 A3/8:78 | D3/8:100 D3/8:84 A3/8:93 D3/8:79 F#3/8:91 A3/8:80 |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| G3/8:91 G3/8:76 D4/8:87 G3/8:72 Bb3/8:83 D4/8:76 | G3/8:94 G3/8:79 D4/8:87 G3/8:74 Bb3/8:86 D4/8:75 | Eb3/8:97 Eb3/8:79 Bb3/8:90 Eb3/8:77 G3/8:85 Bb3/8:78 | Eb3/8:97 Eb3/8:81 Bb3/8:93 Eb3/8:76 G3/8:88 Bb3/8:80 |
+| C3/8:92 C3/8:77 G3/8:85 C3/8:73 Eb3/8:84 G3/8:74 | C3/8:95 C3/8:77 G3/8:88 C3/8:75 Eb3/8:84 G3/8:76 | D3/8:95 D3/8:80 A3/8:91 D3/8:75 F#3/8:86 A3/8:79 | D3/8:98 D3/8:82 A3/8:91 D3/8:77 F#3/8:89 A3/8:78 |
+| G3/8:93 G3/8:75 D4/8:86 G3/8:74 Bb3/8:82 D4/8:75 | G3/8:93 G3/8:78 D4/8:89 G3/8:73 Bb3/8:85 D4/8:77 | C3/8:96 C3/8:81 G3/8:89 C3/8:76 Eb3/8:87 G3/8:77 | C3/8:99 C3/8:80 G3/8:92 C3/8:78 Eb3/8:87 G3/8:79 |
+| Ab3/8:91 Ab3/8:76 Eb4/8:87 Ab3/8:72 C4/8:83 Eb4/8:76 | Eb3/8:94 Eb3/8:79 Bb3/8:87 Eb3/8:74 G3/8:86 Bb3/8:75 | D3/8:97 D3/8:79 A3/8:90 D3/8:77 F#3/8:85 A3/8:78 | G3/8:97 G3/8:81 D4/8:93 G3/8:76 Bb3/8:88 D4/8:80 |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| G3/8:95 G3/8:80 D4/8:91 G3/8:75 Bb3/8:86 D4/8:79 | G3/8:98 G3/8:82 D4/8:91 G3/8:77 Bb3/8:89 D4/8:78 | Eb3/8:101 Eb3/8:82 Bb3/8:94 Eb3/8:80 G3/8:89 Bb3/8:81 | Eb3/8:101 Eb3/8:85 Bb3/8:97 Eb3/8:80 G3/8:92 Bb3/8:84 |
+| C3/8:96 C3/8:81 G3/8:89 C3/8:76 Eb3/8:87 G3/8:77 | C3/8:99 C3/8:80 G3/8:92 C3/8:78 Eb3/8:87 G3/8:79 | D3/8:99 D3/8:83 A3/8:95 D3/8:78 F#3/8:90 A3/8:82 | D3/8:102 D3/8:86 A3/8:95 D3/8:81 F#3/8:93 A3/8:82 |
+| G3/8:97 G3/8:79 D4/8:90 G3/8:77 Bb3/8:85 D4/8:78 | G3/8:97 G3/8:81 D4/8:93 G3/8:76 Bb3/8:88 D4/8:80 | C3/8:100 C3/8:84 G3/8:93 C3/8:79 Eb3/8:91 G3/8:80 | C3/8:103 C3/8:84 G3/8:96 C3/8:82 Eb3/8:91 G3/8:83 |
+| Ab3/8:95 Ab3/8:80 Eb4/8:91 Ab3/8:75 C4/8:86 Eb4/8:79 | Eb3/8:98 Eb3/8:82 Bb3/8:91 Eb3/8:77 G3/8:89 Bb3/8:78 | D3/8:101 D3/8:82 A3/8:94 D3/8:80 F#3/8:89 A3/8:81 | G3/8:101 G3/8:85 D4/8:97 G3/8:80 Bb3/8:92 D4/8:84 |
+# Development: the theme in three-note fragments, violins answering the horns
+| G3/8:87 G3/8:73 D4/8:84 G3/8:69 Bb3/8:79 D4/8:72 | G3/8:90 G3/8:76 D4/8:84 G3/8:71 Bb3/8:82 D4/8:72 | Eb3/8:93 Eb3/8:75 Bb3/8:86 Eb3/8:74 G3/8:82 Bb3/8:75 | Eb3/8:93 Eb3/8:78 Bb3/8:89 Eb3/8:73 G3/8:85 Bb3/8:77 |
+| C3/8:88 C3/8:74 G3/8:82 C3/8:70 Eb3/8:80 G3/8:70 | C3/8:91 C3/8:74 G3/8:85 C3/8:72 Eb3/8:80 G3/8:73 | D3/8:91 D3/8:76 A3/8:87 D3/8:72 F#3/8:83 A3/8:76 | D3/8:94 D3/8:79 A3/8:87 D3/8:74 F#3/8:86 A3/8:75 |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| C3/4:92 r/2 | C3/8:92 C3/8:77 G3/8:85 C3/8:73 Eb3/8:84 G3/8:74 | G3/4:94 r/2 | G3/8:95 G3/8:77 D4/8:88 G3/8:75 Bb3/8:84 D4/8:76 |
+| Ab3/4:96 r/2 | Ab3/8:96 Ab3/8:81 Eb4/8:89 Ab3/8:76 C4/8:87 Eb4/8:77 | D3/8:97 D3/8:79 A3/8:90 D3/8:77 F#3/8:85 A3/8:78 | D3/8:99 D3/8:83 A3/8:95 D3/8:78 F#3/8:90 A3/8:82 |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| R | R | R | F3/8:98 F3/8:82 C4/8:91 F3/8:77 A3/8:89 C4/8:78 |
+| R | R | G3/8:105 G3/8:85 D4/8:98 G3/8:83 Bb3/8:93 D4/8:84 | G3/8:95 G3/8:80 D4/8:91 G3/8:75 Bb3/8:86 D4/8:79 |
+# Development: a build on the ostinato, the horns holding F into the trio
+| G3/8:83 G3/8:70 D4/8:80 G3/8:65 Bb3/8:76 D4/8:69 | G3/8:88 G3/8:74 D4/8:82 G3/8:70 Bb3/8:80 D4/8:70 | C3/8:93 C3/8:75 G3/8:86 C3/8:74 Eb3/8:82 G3/8:75 | C3/8:95 C3/8:80 G3/8:91 C3/8:75 Eb3/8:86 G3/8:79 |
+| F3/8:100 F3/8:84 C4/8:93 F3/8:79 A3/8:91 C4/8:80 | F3/8:105 F3/8:85 C4/8:98 F3/8:83 A3/8:93 C4/8:84 | F3/8:107 F3/8:90 C4/8:103 F3/8:84 A3/8:97 Eb4/8:88 | F3/8:112 F3/8:94 C4/8:104 F3/8:88 A3/8:102 Eb4/8:90 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Trio: the middle darkens, the violins join on long notes
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| G3/4:58 r/4 D4/8:50 G3/8:54 | G3/4:62 r/4 D4/8:54 G3/8:58 | Eb3/4:66 r/4 Bb3/8:58 Eb3/8:62 | Eb3/4:70 r/4 Bb3/8:62 Eb3/8:66 |
+| C3/4:74 r/4 G3/8:66 C3/8:70 | C3/4:78 r/4 G3/8:70 C3/8:74 | D3/4:82 r/4 A3/8:74 D3/8:78 | D3/4:86 r/4 A3/8:78 D3/8:82 |
+| G3/8:79 G3/8:66 D4/8:76 G3/8:62 Bb3/8:72 D4/8:66 | G3/8:83 G3/8:70 D4/8:77 G3/8:66 Bb3/8:76 D4/8:66 | C3/8:87 C3/8:70 G3/8:81 C3/8:69 Eb3/8:76 G3/8:70 | C3/8:88 C3/8:74 G3/8:85 C3/8:69 Eb3/8:80 G3/8:73 |
+| Eb3/8:92 Eb3/8:77 Bb3/8:85 Eb3/8:73 G3/8:84 Bb3/8:74 | Eb3/8:96 Eb3/8:78 Bb3/8:89 Eb3/8:76 G3/8:85 Bb3/8:77 | D3/8:97 D3/8:81 A3/8:93 D3/8:76 F#3/8:88 A3/8:80 | D3/8:101 D3/8:85 A3/8:94 D3/8:80 F#3/8:92 A3/8:81 |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| G3/8:103 G3/8:86 D4/8:99 G3/8:81 Bb3/8:94 D4/8:85 | G3/8:106 G3/8:89 D4/8:99 G3/8:84 Bb3/8:96 D4/8:85 | Eb3/8:109 Eb3/8:89 Bb3/8:102 Eb3/8:86 G3/8:96 Bb3/8:87 | Eb3/8:109 Eb3/8:91 Bb3/8:104 Eb3/8:86 G3/8:99 Bb3/8:90 |
+| C3/8:104 C3/8:87 G3/8:97 C3/8:82 Eb3/8:95 G3/8:83 | C3/8:107 C3/8:87 G3/8:100 C3/8:85 Eb3/8:94 G3/8:86 | D3/8:107 D3/8:90 A3/8:103 D3/8:84 F#3/8:97 A3/8:88 | D3/8:110 D3/8:92 A3/8:102 D3/8:87 F#3/8:100 A3/8:88 |
+| G3/8:105 G3/8:85 D4/8:98 G3/8:83 Bb3/8:93 D4/8:84 | G3/8:105 G3/8:88 D4/8:101 G3/8:83 Bb3/8:95 D4/8:87 | C3/8:108 C3/8:91 G3/8:101 C3/8:85 Eb3/8:98 G3/8:86 | C3/8:111 C3/8:90 G3/8:103 C3/8:88 Eb3/8:98 G3/8:89 |
+| Ab3/8:103 Ab3/8:86 Eb4/8:99 Ab3/8:81 C4/8:94 Eb4/8:85 | Eb3/8:106 Eb3/8:89 Bb3/8:99 Eb3/8:84 G3/8:96 Bb3/8:85 | D3/8:109 D3/8:89 A3/8:102 D3/8:86 F#3/8:96 A3/8:87 | G3/8:109 G3/8:91 D4/8:104 G3/8:86 Bb3/8:99 D4/8:90 |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| Eb3/8:105 Eb3/8:88 Bb3/8:101 Eb3/8:83 G3/8:95 Bb3/8:87 | Eb3/8:108 Eb3/8:91 Bb3/8:101 Eb3/8:85 G3/8:98 Bb3/8:86 | F3/8:111 F3/8:90 C4/8:103 F3/8:88 A3/8:98 C4/8:89 | F3/8:111 F3/8:93 C4/8:106 F3/8:87 A3/8:101 C4/8:92 |
+| D3/8:106 D3/8:89 A3/8:99 D3/8:84 F#3/8:96 A3/8:85 | D3/8:109 D3/8:89 A3/8:102 D3/8:86 F#3/8:96 A3/8:87 | Eb3/8:109 Eb3/8:91 Bb3/8:104 Eb3/8:86 G3/8:99 Bb3/8:90 | Eb3/8:112 Eb3/8:94 Bb3/8:104 Eb3/8:88 G3/8:102 Bb3/8:90 |
+# Scherzo reprise: the build into the coda
+| C3/8:107 C3/8:90 G3/8:103 C3/8:84 Eb3/8:97 G3/8:88 | C3/8:110 C3/8:92 G3/8:102 C3/8:87 Eb3/8:100 G3/8:88 | Eb3/8:113 Eb3/8:92 Bb3/8:105 Eb3/8:89 G3/8:100 Bb3/8:91 | Eb3/8:113 Eb3/8:95 Bb3/8:108 Eb3/8:89 G3/8:103 Bb3/8:93 |
+| F3/8:108 F3/8:91 C4/8:101 F3/8:85 A3/8:98 C4/8:86 | F3/8:111 F3/8:90 C4/8:103 F3/8:88 A3/8:98 C4/8:89 | D3/8:111 D3/8:93 A3/8:106 D3/8:87 F#3/8:101 A3/8:92 | D3/8:114 D3/8:96 A3/8:106 D3/8:90 F#3/8:104 A3/8:91 |
+# Coda: accelerando, the fragments closing on one last hit
+| G3/4:110 r/2 | R | D3/4:112 r/2 | R |
+| C3/8:109 C3/8:91 G3/8:104 C3/8:86 Eb3/8:99 G3/8:90 | C3/8:112 C3/8:94 G3/8:104 C3/8:88 Eb3/8:102 G3/8:90 | Eb3/8:115 Eb3/8:94 Bb3/8:107 Eb3/8:91 G3/8:102 Bb3/8:92 | Eb3/8:115 Eb3/8:96 Bb3/8:110 Eb3/8:91 G3/8:104 Bb3/8:95 |
+| F3/8:113 F3/8:95 C4/8:108 F3/8:89 A3/8:103 C4/8:93 | F3/8:116 F3/8:97 C4/8:108 F3/8:92 A3/8:105 C4/8:93 | D3/8:119 D3/8:97 A3/8:111 D3/8:94 F#3/8:105 A3/8:96 | D3/8:119 D3/8:100 A3/8:114 D3/8:94 F#3/8:108 A3/8:98 |
+| G3/8:116 G3/8:97 D4/8:108 G3/8:92 Bb3/8:105 D4/8:93 | G3/8:117 G3/8:95 D4/8:109 G3/8:93 Bb3/8:103 D4/8:94 | D3/8:117 D3/8:98 A3/8:112 D3/8:92 F#3/8:106 A3/8:97 | [G3 G3 D4 G3 Bb3 D4]/2.:122 |
+
+track harp role=chords vol=0.5 pan=0.32
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| [C3 G3 C4 Eb4]/2.:54 | [C3 G3 C4 Eb4]/2.:56 | [D3 A3 C4 F#4]/2.:58 | [D3 A3 C4 F#4]/2.:60 |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Development: the theme in three-note fragments, violins answering the horns
+| R | R | R | R |
+| R | R | R | R |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| R | R | R | R |
+| R | R | R | R |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| R | R | R | R |
+| R | R | R | R |
+# Development: a build on the ostinato, the horns holding F into the trio
+| R | R | R | R |
+| R | R | R | R |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| [Bb3 F4 Bb4 D5]/4.:54 [Bb4 F5 Bb5]/4.:48 | [F3 C4 F4 A4]/4.:56 [F4 C5 F5 A5]/4.:50 | [G3 D4 Bb4 D5]/4.:58 [G4 D5 Bb5]/4.:52 | [Eb3 Bb3 Eb4 G4]/4.:60 [Eb4 Bb4 Eb5 G5]/4.:54 |
+| [Bb3 F4 Bb4 D5]/4.:54 [Bb4 F5 Bb5]/4.:48 | [F3 C4 F4 A4]/4.:56 [F4 C5 F5 A5]/4.:50 | [Eb3 Bb3 Eb4 G4]/4.:58 [Eb4 Bb4 Eb5 G5]/4.:52 | [F3 C4 Eb4 A4]/4.:60 [F4 C5 Eb5 A5]/4.:54 |
+| [Bb3 F4 Bb4 D5]/4.:54 [Bb4 F5 Bb5]/4.:48 | [F3 C4 F4 A4]/4.:56 [F4 C5 F5 A5]/4.:50 | [G3 D4 Bb4 D5]/4.:58 [G4 D5 Bb5]/4.:52 | [Eb3 Bb3 Eb4 G4]/4.:60 [Eb4 Bb4 Eb5 G5]/4.:54 |
+| [C3 G3 C4 Eb4]/4.:54 [C4 G4 C5 Eb5]/4.:48 | [Eb3 Bb3 Eb4 G4]/4.:56 [Eb4 Bb4 Eb5 G5]/4.:50 | [F3 C4 Eb4 A4]/4.:58 [F4 C5 Eb5 A5]/4.:52 | [Bb3 F4 Bb4 D5]/4.:60 [Bb4 F5 Bb5]/4.:54 |
+# Trio: the middle darkens, the violins join on long notes
+| [D3 A3 D4 F4]/4.:58 [D4 A4 D5 F5]/4.:52 | [D3 A3 D4 F4]/4.:61 [D4 A4 D5 F5]/4.:55 | [G3 D4 Bb4 D5]/4.:64 [G4 D5 Bb5]/4.:58 | [G3 D4 Bb4 D5]/4.:67 [G4 D5 Bb5]/4.:61 |
+| [Eb3 Bb3 Eb4 G4]/4.:58 [Eb4 Bb4 Eb5 G5]/4.:52 | [Eb3 Bb3 Eb4 G4]/4.:61 [Eb4 Bb4 Eb5 G5]/4.:55 | [C3 G3 C4 Eb4]/4.:64 [C4 G4 C5 Eb5]/4.:58 | [F3 C4 Eb4 A4]/4.:67 [F4 C5 Eb5 A5]/4.:61 |
+| [Bb3 F4 Bb4 D5]/4.:58 [Bb4 F5 Bb5]/4.:52 | [F3 C4 F4 A4]/4.:61 [F4 C5 F5 A5]/4.:55 | [G3 D4 Bb4 D5]/4.:64 [G4 D5 Bb5]/4.:58 | [Eb3 Bb3 Eb4 G4]/4.:67 [Eb4 Bb4 Eb5 G5]/4.:61 |
+| [C3 G3 C4 Eb4]/4.:58 [C4 G4 C5 Eb5]/4.:52 | [Eb3 Bb3 Eb4 G4]/4.:61 [Eb4 Bb4 Eb5 G5]/4.:55 | [F3 C4 Eb4 A4]/4.:64 [F4 C5 Eb5 A5]/4.:58 | [Bb3 F4 Bb4 D5]/4.:67 [Bb4 F5 Bb5]/4.:61 |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: the build into the coda
+| R | R | R | R |
+| R | R | R | R |
+# Coda: accelerando, the fragments closing on one last hit
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | [G3 D4 Bb4 D5]/2.:96 |
+
+track glockenspiel role=arp vol=0.58 pan=0.42
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Development: the theme in three-note fragments, violins answering the horns
+| R | R | R | R |
+| R | R | R | R |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| R | R | R | R |
+| R | R | R | R |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| R | r/4 Bb6/8:96 Eb6/8:92 r/4 | r/2 F6/8:98 r/8 | R |
+| R | r/4 r/8 A6/8:100 r/4 | R | G5/8:104 D6/8:100 G6/8:96 Bb6/8:94 G6/4:98 |
+# Development: a build on the ostinato, the horns holding F into the trio
+| R | R | R | R |
+| R | R | r/4 F6/8:104 Bb6/8:100 G6/8:96 r/8 | G6/8:108 Bb6/8:104 C7/8:100 Bb6/8:98 A6/4:104 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Trio: the middle darkens, the violins join on long notes
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| R | R | R | R |
+| R | R | R | R |
+# Scherzo reprise: the build into the coda
+| R | R | R | R |
+| R | R | R | R |
+# Coda: accelerando, the fragments closing on one last hit
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| r/4 G6/8:112 D6/8:108 r/4 | G6/8:114 C7/8:110 G6/8:108 D6/8:106 G6/4:110 | A6/8:112 F6/8:108 D6/8:106 A5/8:104 D6/4:114 | [D6 G6]/2.:116 |
+
+track strings role=pad vol=0.82 pan=0.08
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| [C4 Eb4 G4]/2.:58 | [C4 Eb4 G4]/2.:58 | [D3 A3 C4]/2.:62 | [D3 A3 C4]/2.:64 |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| [G3 D4 Bb4]/2.:72 | [G3 D4 Bb4]/2.:74 | [Eb3 Bb3 G4]/2.:76 | [Eb3 Bb3 G4]/2.:78 |
+| [C4 Eb4 G4]/2.:72 | [C4 Eb4 G4]/2.:74 | [D3 A3 C4]/2.:76 | [D3 A3 C4]/2.:78 |
+| [G3 D4 Bb4]/2.:72 | [G3 D4 Bb4]/2.:74 | [C4 Eb4 G4]/2.:76 | [C4 Eb4 G4]/2.:78 |
+| [Ab3 C4 Eb4]/2.:72 | [Eb3 Bb3 G4]/2.:74 | [D3 A3 C4]/2.:76 | [G3 D4 Bb4]/2.:78 |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| [G3 D4 Bb4]/2.:82 | [G3 D4 Bb4]/2.:84 | [Eb3 Bb3 G4]/2.:86 | [Eb3 Bb3 G4]/2.:88 |
+| [C4 Eb4 G4]/2.:82 | [C4 Eb4 G4]/2.:84 | [D3 A3 C4]/2.:86 | [D3 A3 C4]/2.:88 |
+| [G3 D4 Bb4]/2.:82 | [G3 D4 Bb4]/2.:84 | [C4 Eb4 G4]/2.:86 | [C4 Eb4 G4]/2.:88 |
+| [Ab3 C4 Eb4]/2.:82 | [Eb3 Bb3 G4]/2.:84 | [D3 A3 C4]/2.:86 | [G3 D4 Bb4]/2.:88 |
+# Development: the theme in three-note fragments, violins answering the horns
+| [G3 D4 Bb4]/2.:76 | [G3 D4 Bb4]/2.:78 | [Eb3 Bb3 G4]/2.:80 | [Eb3 Bb3 G4]/2.:82 |
+| [C4 Eb4 G4]/2.:76 | [C4 Eb4 G4]/2.:78 | [D3 A3 C4]/2.:80 | [D3 A3 C4]/2.:82 |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| [C4 Eb4 G4]/2.:76 | [C4 Eb4 G4]/2.:78 | [G3 D4 Bb4]/2.:80 | [G3 D4 Bb4]/2.:82 |
+| [Ab3 C4 Eb4]/2.:76 | [Ab3 C4 Eb4]/2.:78 | [D3 A3 C4]/2.:80 | [D3 A3 C4]/2.:82 |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| [Eb3 Bb3 G4]/2.:74 | [Eb3 Bb3 G4]/2.:76 | [F3 C4 A4]/2.:78 | [F3 C4 A4]/2.:80 |
+| [D3 A3 C4]/2.:74 | [D3 A3 C4]/2.:76 | [G3 D4 Bb4]/2.:78 | [G3 D4 Bb4]/2.:80 |
+# Development: a build on the ostinato, the horns holding F into the trio
+| [G3 D4 Bb4]/2.:78 | [G3 D4 Bb4]/2.:80 | [C4 Eb4 G4]/2.:82 | [C4 Eb4 G4]/2.:84 |
+| [F3 C4 A4]/2.:78 | [F3 C4 A4]/2.:80 | [F3 C4 Eb4]/2.:82 | [F3 C4 Eb4]/2.:84 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| [Bb3 D4 F4]/2.:60 | [F3 C4 A4]/2.:62 | [G3 D4 Bb4]/2.:64 | [Eb3 Bb3 G4]/2.:66 |
+| [Bb3 D4 F4]/2.:60 | [F3 C4 A4]/2.:62 | [Eb3 Bb3 G4]/2.:64 | [F3 C4 Eb4]/2.:66 |
+| [Bb3 D4 F4]/2.:60 | [F3 C4 A4]/2.:62 | [G3 D4 Bb4]/2.:64 | [Eb3 Bb3 G4]/2.:66 |
+| [C4 Eb4 G4]/2.:60 | [Eb3 Bb3 G4]/2.:62 | [F3 C4 Eb4]/2.:64 | [Bb3 D4 F4]/2.:66 |
+# Trio: the middle darkens, the violins join on long notes
+| [D3 F3 A3]/2.:66 | [D3 F3 A3]/2.:68 | [G3 D4 Bb4]/2.:70 | [G3 D4 Bb4]/2.:72 |
+| [Eb3 Bb3 G4]/2.:66 | [Eb3 Bb3 G4]/2.:68 | [C4 Eb4 G4]/2.:70 | [F3 C4 Eb4]/2.:72 |
+| [Bb3 D4 F4]/2.:66 | [F3 C4 A4]/2.:68 | [G3 D4 Bb4]/2.:70 | [Eb3 Bb3 G4]/2.:72 |
+| [C4 Eb4 G4]/2.:66 | [Eb3 Bb3 G4]/2.:68 | [F3 C4 Eb4]/2.:70 | [Bb3 D4 F4]/2.:72 |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| [C4 Eb4 G4]/2.:62 | [C4 Eb4 G4]/2.:64 | [D3 A3 C4]/2.:66 | [D3 A3 C4]/2.:68 |
+| [G3 D4 Bb4]/2.:62 | [G3 D4 Bb4]/2.:64 | [C4 Eb4 G4]/2.:66 | [C4 Eb4 G4]/2.:68 |
+| [Eb3 Bb3 G4]/2.:62 | [Eb3 Bb3 G4]/2.:64 | [D3 A3 C4]/2.:66 | [D3 A3 C4]/2.:68 |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| [G3 D4 Bb4]/2.:88 | [G3 D4 Bb4]/2.:90 | [Eb3 Bb3 G4]/2.:92 | [Eb3 Bb3 G4]/2.:94 |
+| [C4 Eb4 G4]/2.:88 | [C4 Eb4 G4]/2.:90 | [D3 A3 C4]/2.:92 | [D3 A3 C4]/2.:94 |
+| [G3 D4 Bb4]/2.:88 | [G3 D4 Bb4]/2.:90 | [C4 Eb4 G4]/2.:92 | [C4 Eb4 G4]/2.:94 |
+| [Ab3 C4 Eb4]/2.:88 | [Eb3 Bb3 G4]/2.:90 | [D3 A3 C4]/2.:92 | [G3 D4 Bb4]/2.:94 |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| [Eb3 Bb3 G4]/2.:90 | [Eb3 Bb3 G4]/2.:92 | [F3 C4 A4]/2.:94 | [F3 C4 A4]/2.:96 |
+| [D3 A3 C4]/2.:90 | [D3 A3 C4]/2.:92 | [Eb3 Bb3 G4]/2.:94 | [Eb3 Bb3 G4]/2.:96 |
+# Scherzo reprise: the build into the coda
+| [C4 Eb4 G4]/2.:90 | [C4 Eb4 G4]/2.:92 | [Eb3 Bb3 G4]/2.:94 | [Eb3 Bb3 G4]/2.:96 |
+| [F3 C4 A4]/2.:90 | [F3 C4 A4]/2.:92 | [D3 A3 C4]/2.:94 | [D3 A3 C4]/2.:96 |
+# Coda: accelerando, the fragments closing on one last hit
+| [G3 D4 Bb4]/2.:88 | [G3 D4 Bb4]/2.:90 | [D3 A3 C4]/2.:92 | [D3 A3 C4]/2.:94 |
+| [C4 Eb4 G4]/2.:88 | [C4 Eb4 G4]/2.:90 | [Eb3 Bb3 G4]/2.:92 | [Eb3 Bb3 G4]/2.:94 |
+| [F3 C4 A4]/2.:88 | [F3 C4 A4]/2.:90 | [D3 A3 C4]/2.:92 | [D3 A3 C4]/2.:94 |
+| [G3 D4 Bb4]/2.:88 | [G3 D4 Bb4]/2.:90 | [D3 A3 C4]/2.:92 | [G3 D4 Bb4]/2.:94 |
+
+track cellos role=bass vol=0.5 pan=0
+# Intro: timpani and pizzicato, a roll into the theme
+| R | R | R | R |
+| C2/2.:74 | C2/2.:74 | D2/2.:78 | D2/2.:80 |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| G2/4:54 D3/8:51 G2/8:48 Bb2/4:45 | G2/4:57 D3/8:54 G2/8:51 Bb2/4:48 | Eb2/4:60 Bb2/8:57 Eb2/8:54 G2/4:51 | Eb2/4:63 Bb2/8:60 Eb2/8:57 G2/4:54 |
+| C2/4:54 G2/8:51 C2/8:48 Eb2/4:45 | C2/4:57 G2/8:54 C2/8:51 Eb2/4:48 | D2/4:60 A2/8:57 D2/8:54 C3/4:51 | D2/4:63 A2/8:60 D2/8:57 C3/4:54 |
+| G2/4:54 D3/8:51 G2/8:48 Bb2/4:45 | G2/4:57 D3/8:54 G2/8:51 Bb2/4:48 | C2/4:60 G2/8:57 C2/8:54 Eb2/4:51 | C2/4:63 G2/8:60 C2/8:57 Eb2/4:54 |
+| Ab2/4:54 Eb3/8:51 Ab2/8:48 C3/4:45 | Eb2/4:57 Bb2/8:54 Eb2/8:51 G2/4:48 | D2/4:60 A2/8:57 D2/8:54 C3/4:51 | G2/4:63 D3/8:60 G2/8:57 Bb2/4:54 |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| G2/8:88 G2/8:77 D3/8:82 G2/8:73 Bb2/8:79 D3/8:76 | G2/8:92 G2/8:78 D3/8:86 G2/8:75 Bb2/8:83 D3/8:77 | Eb2/8:94 Eb2/8:82 Bb2/8:87 Eb2/8:78 G2/8:85 Bb2/8:81 | Eb2/8:98 Eb2/8:83 Bb2/8:91 Eb2/8:80 G2/8:88 Bb2/8:82 |
+| C2/8:88 C2/8:77 G2/8:82 C2/8:73 Eb2/8:79 G2/8:76 | C2/8:92 C2/8:78 G2/8:86 C2/8:75 Eb2/8:83 G2/8:77 | D2/8:94 D2/8:82 A2/8:87 D2/8:78 C3/8:85 A2/8:81 | D2/8:98 D2/8:83 A2/8:91 D2/8:80 C3/8:88 A2/8:82 |
+| G2/8:88 G2/8:77 D3/8:82 G2/8:73 Bb2/8:79 D3/8:76 | G2/8:92 G2/8:78 D3/8:86 G2/8:75 Bb2/8:83 D3/8:77 | C2/8:94 C2/8:82 G2/8:87 C2/8:78 Eb2/8:85 G2/8:81 | C2/8:98 C2/8:83 G2/8:91 C2/8:80 Eb2/8:88 G2/8:82 |
+| Ab2/8:88 Ab2/8:77 Eb3/8:82 Ab2/8:73 C3/8:79 Eb3/8:76 | Eb2/8:92 Eb2/8:78 Bb2/8:86 Eb2/8:75 G2/8:83 Bb2/8:77 | D2/8:94 D2/8:82 A2/8:87 D2/8:78 C3/8:85 A2/8:81 | G2/8:98 G2/8:83 D3/8:91 G2/8:80 Bb2/8:88 D3/8:82 |
+# Development: the theme in three-note fragments, violins answering the horns
+| G2/8:88 G2/8:77 D3/8:82 G2/8:73 Bb2/8:79 D3/8:76 | G2/8:91 G2/8:77 D3/8:85 G2/8:74 Bb2/8:82 D3/8:77 | Eb2/8:92 Eb2/8:80 Bb2/8:86 Eb2/8:76 G2/8:83 Bb2/8:79 | Eb2/8:95 Eb2/8:81 Bb2/8:88 Eb2/8:77 G2/8:86 Bb2/8:80 |
+| C2/8:88 C2/8:77 G2/8:82 C2/8:73 Eb2/8:79 G2/8:76 | C2/8:91 C2/8:77 G2/8:85 C2/8:74 Eb2/8:82 G2/8:77 | D2/8:92 D2/8:80 A2/8:86 D2/8:76 C3/8:83 A2/8:79 | D2/8:95 D2/8:81 A2/8:88 D2/8:77 C3/8:86 A2/8:80 |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| C2/8:83 C2/8:71 G2/8:77 C2/8:67 Eb2/8:75 G2/8:70 | C2/8:82 C2/8:72 G2/8:76 C2/8:68 Eb2/8:74 G2/8:71 | G2/8:85 G2/8:72 D3/8:79 G2/8:69 Bb2/8:77 D3/8:71 | G2/8:84 G2/8:73 D3/8:78 G2/8:70 Bb2/8:76 D3/8:72 |
+| Ab2/8:87 Ab2/8:74 Eb3/8:81 Ab2/8:71 C3/8:78 Eb3/8:73 | Ab2/8:86 Ab2/8:75 Eb3/8:80 Ab2/8:72 C3/8:77 Eb3/8:74 | D3/8:86 F#3/8:88 A3/8:90 F#3/8:88 D3/4:90 | A3/4:92 F#3/8:88 D3/8:86 F#3/4:90 |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| Eb2/2.:92 | Eb2/2.:88 | F2/2.:92 | F2/8:100 F2/8:96 A2/8:100 C3/8:102 F2/4:104 |
+| D2/8:106 D2/8:100 A2/2:104 | R | R | R |
+# Development: a build on the ostinato, the horns holding F into the trio
+| G2/8:92 G2/8:80 D3/8:86 G2/8:76 Bb2/8:83 D3/8:79 | G2/8:96 G2/8:82 D3/8:89 G2/8:78 Bb2/8:87 D3/8:81 | C2/8:98 C2/8:85 G2/8:91 C2/8:81 Eb2/8:88 G2/8:84 | C2/8:102 C2/8:87 G2/8:95 C2/8:83 Eb2/8:92 G2/8:86 |
+| F2/8:104 F2/8:90 C3/8:97 F2/8:86 A2/8:94 C3/8:89 | F2/8:108 F2/8:92 C3/8:101 F2/8:88 A2/8:97 C3/8:91 | F2/8:110 F2/8:96 C3/8:102 F2/8:91 Eb2/8:99 C3/8:95 | F2/8:114 F2/8:97 C3/8:106 F2/8:93 Eb2/8:103 C3/8:96 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| Bb3/2:74 F3/4:68 | F3/2:76 C3/4:70 | G3/2:78 D3/4:72 | Eb3/2:80 Bb2/4:74 |
+| Bb3/2:74 F3/4:68 | F3/2:76 C3/4:70 | Eb3/2:78 Bb2/4:72 | F3/2:80 C3/4:74 |
+| Bb3/2:74 F3/4:68 | F3/2:76 C3/4:70 | G3/2:78 D3/4:72 | Eb3/2:80 Bb2/4:74 |
+| C3/2:74 G2/4:68 | Eb3/2:76 Bb2/4:70 | F3/2:78 C3/4:72 | Bb3/2:80 F3/4:74 |
+# Trio: the middle darkens, the violins join on long notes
+| D3/2:78 A2/4:72 | D3/2:80 A2/4:74 | G3/2:82 D3/4:76 | G3/2:84 D3/4:78 |
+| Eb3/2:78 Bb2/4:72 | Eb3/2:80 Bb2/4:74 | C3/2:82 G2/4:76 | F3/2:84 C3/4:78 |
+| Bb3/2:78 F3/4:72 | F3/2:80 C3/4:74 | G3/2:82 D3/4:76 | Eb3/2:84 Bb2/4:78 |
+| C3/2:78 G2/4:72 | Eb3/2:80 Bb2/4:74 | F3/2:82 C3/4:76 | Bb3/2:84 F3/4:78 |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| R | R | R | R |
+| C2/4:60 G2/8:57 C2/8:54 Eb2/4:51 | C2/4:63 G2/8:60 C2/8:57 Eb2/4:54 | D2/4:66 A2/8:63 D2/8:60 C3/4:57 | D2/4:69 A2/8:66 D2/8:63 C3/4:60 |
+| G2/4:72 D3/8:69 G2/8:66 Bb2/4:63 | G2/4:75 D3/8:72 G2/8:69 Bb2/4:66 | C2/4:78 G2/8:75 C2/8:72 Eb2/4:69 | C2/4:81 G2/8:78 C2/8:75 Eb2/4:72 |
+| Eb2/4:84 Bb2/8:81 Eb2/8:78 G2/4:75 | Eb2/4:87 Bb2/8:84 Eb2/8:81 G2/4:78 | D2/4:90 A2/8:87 D2/8:84 C3/4:81 | D2/4:93 A2/8:90 D2/8:87 C3/4:84 |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| G2/8:104 G2/8:90 D3/8:97 G2/8:86 Bb2/8:94 D3/8:89 | G2/8:108 G2/8:92 D3/8:101 G2/8:88 Bb2/8:97 D3/8:91 | Eb2/8:110 Eb2/8:96 Bb2/8:102 Eb2/8:91 G2/8:99 Bb2/8:95 | Eb2/8:114 Eb2/8:97 Bb2/8:106 Eb2/8:93 G2/8:103 Bb2/8:96 |
+| C2/8:104 C2/8:90 G2/8:97 C2/8:86 Eb2/8:94 G2/8:89 | C2/8:108 C2/8:92 G2/8:101 C2/8:88 Eb2/8:97 G2/8:91 | D2/8:110 D2/8:96 A2/8:102 D2/8:91 C3/8:99 A2/8:95 | D2/8:114 D2/8:97 A2/8:106 D2/8:93 C3/8:103 A2/8:96 |
+| G2/8:104 G2/8:90 D3/8:97 G2/8:86 Bb2/8:94 D3/8:89 | G2/8:108 G2/8:92 D3/8:101 G2/8:88 Bb2/8:97 D3/8:91 | C2/8:110 C2/8:96 G2/8:102 C2/8:91 Eb2/8:99 G2/8:95 | C2/8:114 C2/8:97 G2/8:106 C2/8:93 Eb2/8:103 G2/8:96 |
+| Ab2/8:104 Ab2/8:90 Eb3/8:97 Ab2/8:86 C3/8:94 Eb3/8:89 | Eb2/8:108 Eb2/8:92 Bb2/8:101 Eb2/8:88 G2/8:97 Bb2/8:91 | D2/8:110 D2/8:96 A2/8:102 D2/8:91 C3/8:99 A2/8:95 | G2/8:114 G2/8:97 D3/8:106 G2/8:93 Bb2/8:103 D3/8:96 |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| Eb2/8:106 Eb2/8:92 Bb2/8:99 Eb2/8:88 G2/8:95 Bb2/8:91 | Eb2/8:110 Eb2/8:94 Bb2/8:102 Eb2/8:89 G2/8:99 Bb2/8:93 | F2/8:112 F2/8:97 C3/8:104 F2/8:93 A2/8:101 C3/8:96 | F2/8:116 F2/8:99 C3/8:108 F2/8:94 A2/8:105 C3/8:98 |
+| D2/8:106 D2/8:92 A2/8:99 D2/8:88 C3/8:95 A2/8:91 | D2/8:110 D2/8:94 A2/8:102 D2/8:89 C3/8:99 A2/8:93 | Eb2/8:112 Eb2/8:97 Bb2/8:104 Eb2/8:93 G2/8:101 Bb2/8:96 | Eb2/8:116 Eb2/8:99 Bb2/8:108 Eb2/8:94 G2/8:105 Bb2/8:98 |
+# Scherzo reprise: the build into the coda
+| C2/8:108 C2/8:94 G2/8:100 C2/8:90 Eb2/8:97 G2/8:93 | C2/8:111 C2/8:95 G2/8:103 C2/8:90 Eb2/8:100 G2/8:94 | Eb2/8:112 Eb2/8:97 Bb2/8:104 Eb2/8:93 G2/8:101 Bb2/8:96 | Eb2/8:115 Eb2/8:98 Bb2/8:107 Eb2/8:93 G2/8:104 Bb2/8:97 |
+| F2/8:116 F2/8:101 C3/8:108 F2/8:96 A2/8:104 C3/8:100 | F2/8:119 F2/8:101 C3/8:111 F2/8:97 A2/8:107 C3/8:100 | D2/8:120 D2/8:104 A2/8:112 D2/8:99 C3/8:108 A2/8:103 | D2/8:123 D2/8:105 A2/8:114 D2/8:100 C3/8:111 A2/8:104 |
+# Coda: accelerando, the fragments closing on one last hit
+| G2/2.:110 | G2/8:106 G2/8:102 D3/8:106 G2/8:108 Bb2/4:110 | D2/2.:112 | D2/8:108 D2/8:104 A2/8:108 D2/8:110 C3/4:112 |
+| C2/8:110 C2/8:96 G2/8:102 C2/8:91 Eb2/8:99 G2/8:95 | C2/8:113 C2/8:96 G2/8:105 C2/8:92 Eb2/8:102 G2/8:95 | Eb2/8:114 Eb2/8:99 Bb2/8:106 Eb2/8:94 G2/8:103 Bb2/8:98 | Eb2/8:117 Eb2/8:100 Bb2/8:109 Eb2/8:95 G2/8:105 Bb2/8:99 |
+| F2/8:118 F2/8:102 C3/8:110 F2/8:98 A2/8:106 C3/8:101 | F2/8:121 F2/8:103 C3/8:113 F2/8:98 A2/8:109 C3/8:102 | D2/8:122 D2/8:106 A2/8:113 D2/8:101 C3/8:110 A2/8:105 | D2/8:125 D2/8:107 A2/8:116 D2/8:102 C3/8:113 A2/8:105 |
+| G2/2.:120 | G2/2.:120 | D2/2.:122 | G2/2.:126 |
+
+track timpani role=drums vol=0.46 pan=-0.15
+# Intro: timpani and pizzicato, a roll into the theme
+| [k cr]/4:104 r/4 k/4:95 | k/4:90 r/4 k/4:83 | k/4:92 r/4 k/4:85 | k/4:88 r/4 k/4:81 |
+| k/4:94 r/4 k/4:87 | k/4:90 r/4 k/4:83 | k/8:84 k/8:90 k/8:95 k/8:101 k/8:106 k/8:112 | k/8:92 k/8:97 k/8:102 k/8:108 k/8:113 k/8:118 |
+# Scherzo A1: the horns state the theme, the violins answer in its gaps
+| [k cr]/4:112 r/4 k/4:103 | k/4:96 r/4 k/4:89 | k/4:98 r/4 k/4:91 | k/4:94 r/4 k/4:87 |
+| k/4:100 r/4 k/4:93 | k/4:96 r/4 k/4:89 | k/4:104 tl/8:94 tm/8:99 th/8:103 s/8:104 | k/8:92 k/8:97 k/8:102 k/8:106 k/8:111 k/8:116 |
+| k/4:104 r/4 k/4:97 | k/4:98 r/4 k/4:91 | k/4:100 r/4 k/4:93 | k/4:96 r/4 k/4:89 |
+| k/4:102 r/4 k/4:95 | k/4:100 r/4 k/4:93 | k/4:108 tl/8:98 tm/8:103 th/8:107 s/8:108 | k/8:96 k/8:101 k/8:106 k/8:110 k/8:115 k/8:120 |
+# Scherzo A2: the violins take the theme over, an octave up, the horns calling
+| [k cr]/4:116 r/4 k/4:107 | k/4:102 r/4 k/4:95 | k/4:104 r/4 k/4:97 | k/4:100 r/4 k/4:93 |
+| k/4:106 r/4 k/4:99 | k/4:102 r/4 k/4:95 | k/4:110 tl/8:100 tm/8:105 th/8:109 s/8:110 | k/8:100 k/8:104 k/8:108 k/8:112 k/8:116 k/8:120 |
+| k/4:108 r/4 k/4:101 | k/4:104 r/4 k/4:97 | k/4:106 r/4 k/4:99 | k/4:102 r/4 k/4:95 |
+| k/4:108 r/4 k/4:101 | k/4:106 r/4 k/4:99 | k/4:112 tl/8:102 tm/8:107 th/8:111 s/8:112 | k/8:100 k/8:104 k/8:109 k/8:113 k/8:118 k/8:122 |
+# Development: the theme in three-note fragments, violins answering the horns
+| [k cr]/4:118 r/4 k/4:109 | k/4:96 r/4 k/4:89 | k/4:108 tl/8:98 tm/8:103 th/8:107 s/8:108 | k/4:98 r/4 k/4:91 |
+| [k cr]/4:116 r/4 k/4:107 | k/4:100 r/4 k/4:93 | k/4:110 tl/8:100 tm/8:105 th/8:109 s/8:110 | k/8:104 k/8:107 k/8:110 k/8:114 k/8:117 k/8:120 |
+# Development: stretto, two bars each for violins, horns, flute and cellos
+| k/4:96 r/4 k/4:89 | k/4:110 tl/8:100 tm/8:105 th/8:109 s/8:110 | k/4:98 r/4 k/4:91 | k/4:112 tl/8:102 tm/8:107 th/8:111 s/8:112 |
+| k/4:100 r/4 k/4:93 | k/4:114 tl/8:104 tm/8:109 th/8:113 s/8:114 | k/8:104 k/8:107 k/8:110 k/8:112 k/8:115 k/8:118 | k/8:112 k/8:114 k/8:117 k/8:119 k/8:122 k/8:124 |
+# Development: silence and sudden accents, the glockenspiel in the holes
+| [k cr]/4:116 r/4 k/4:107 | r/4 k/4:112 r/4 | [k cr]/4:112 r/4 k/4:103 | k/4:114 tl/8:104 tm/8:109 th/8:113 s/8:114 |
+| k/4:104 r/4 k/4:97 | r/4 [k cr]/4:118 r/4 | [k cr]/4:120 r/4 k/4:111 | k/8:96 k/8:102 k/8:108 k/8:114 k/8:120 k/8:126 |
+# Development: a build on the ostinato, the horns holding F into the trio
+| k/4:88 r/4 k/4:81 | k/4:92 r/4 k/4:85 | k/4:96 r/4 k/4:89 | k/4:100 r/4 k/4:93 |
+| k/4:104 r/4 k/4:97 | k/4:108 r/4 k/4:101 | k/8:104 k/8:107 k/8:110 k/8:112 k/8:115 k/8:118 | k/8:112 k/8:115 k/8:118 k/8:120 k/8:123 k/8:126 |
+# Trio: the flute sings in B-flat over sustained strings and soft harp
+| k/4:70 r/2 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 |
+| k/4:70 r/2 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 |
+| k/4:70 r/2 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 |
+| k/4:70 r/2 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 | r/4 k/4:60 r/4 |
+# Trio: the middle darkens, the violins join on long notes
+| k/4:68 r/2 | k/4:68 r/2 | k/4:72 r/4 k/4:66 | k/4:68 r/2 |
+| k/4:68 r/2 | k/4:68 r/2 | k/4:72 r/4 k/4:66 | k/4:68 r/2 |
+| k/4:68 r/2 | k/4:68 r/2 | k/4:72 r/4 k/4:66 | k/4:68 r/2 |
+| k/4:68 r/2 | k/4:68 r/2 | k/4:72 r/4 k/4:66 | k/4:68 r/2 |
+# Build: quiet on the ostinato, a bar at a time, back into G minor
+| k/4:52 r/4 k/4:45 | k/4:55 r/4 k/4:48 | k/4:58 r/4 k/4:51 | k/4:61 r/4 k/4:54 |
+| k/4:64 r/4 k/4:57 | k/4:67 r/4 k/4:60 | k/4:70 r/4 k/4:63 | k/4:73 r/4 k/4:66 |
+| k/4:76 r/4 k/4:69 | k/4:79 r/4 k/4:72 | k/4:82 r/4 k/4:75 | k/4:85 r/4 k/4:78 |
+| k/4:88 r/4 k/4:81 | k/4:91 r/4 k/4:84 | k/4:100 tl/8:90 tm/8:95 th/8:99 s/8:100 | k/8:96 k/8:102 k/8:107 k/8:113 k/8:118 k/8:124 |
+# Scherzo reprise: the violins take the theme, the horns stabbing under them
+| [k cr]/4:122 r/4 k/4:113 | k/4:108 r/4 k/4:101 | k/4:110 r/4 k/4:103 | k/4:106 r/4 k/4:99 |
+| k/4:112 r/4 k/4:105 | k/4:108 r/4 k/4:101 | k/4:116 tl/8:106 tm/8:111 th/8:115 s/8:116 | k/8:108 k/8:111 k/8:114 k/8:118 k/8:121 k/8:124 |
+| [k cr]/4:120 r/4 k/4:111 | k/4:110 r/4 k/4:103 | k/4:112 r/4 k/4:105 | k/4:108 r/4 k/4:101 |
+| k/4:114 r/4 k/4:107 | k/4:112 r/4 k/4:105 | k/4:118 tl/8:108 tm/8:113 th/8:117 s/8:118 | k/8:112 k/8:115 k/8:118 k/8:120 k/8:123 k/8:126 |
+# Scherzo reprise: a rising sequence, the whole orchestra in fragments
+| [k cr]/4:124 r/4 k/4:115 | k/4:118 tl/8:108 tm/8:113 th/8:117 s/8:118 | k/4:112 r/4 k/4:105 | k/4:120 tl/8:110 tm/8:115 th/8:119 s/8:120 |
+| [k cr]/4:124 r/4 k/4:115 | k/4:118 tl/8:108 tm/8:113 th/8:117 s/8:118 | k/4:114 r/4 k/4:107 | k/8:112 k/8:115 k/8:118 k/8:120 k/8:123 k/8:126 |
+# Scherzo reprise: the build into the coda
+| [k cr]/4:124 r/4 k/4:115 | k/4:120 tl/8:110 tm/8:115 th/8:119 s/8:120 | k/4:114 r/4 k/4:107 | k/4:122 tl/8:112 tm/8:117 th/8:121 s/8:122 |
+| [k cr]/4:124 r/4 k/4:115 | k/4:120 tl/8:110 tm/8:115 th/8:119 s/8:120 | k/8:112 k/8:114 k/8:117 k/8:119 k/8:122 k/8:124 | k/8:118 k/8:120 k/8:121 k/8:123 k/8:124 k/8:126 |
+# Coda: accelerando, the fragments closing on one last hit
+| [k cr]/4:122 r/4 k/4:113 | r/4 k/4:116 r/4 | [k cr]/4:120 r/4 k/4:111 | r/4 [k cr]/4:118 r/4 |
+| k/4:112 r/4 k/4:105 | k/4:113 r/4 k/4:106 | k/4:114 r/4 k/4:107 | k/4:116 tl/8:106 tm/8:111 th/8:115 s/8:116 |
+| k/4:116 r/4 k/4:109 | k/4:117 r/4 k/4:110 | k/4:118 r/4 k/4:111 | k/4:116 tl/8:106 tm/8:111 th/8:115 s/8:116 |
+| [k cr]/4:126 r/4 k/4:117 | [k cr]/4:126 r/4 k/4:117 | k/8:100 k/8:105 k/8:110 k/8:116 k/8:121 k/8:126 | [k cr]/2.:126 |

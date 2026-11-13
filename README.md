@@ -81,6 +81,12 @@ Originals by SZ (and AI):
   high E, and the fire dies back to a lone cello.
 - **Lantern Ward** (Orchestral). A nocturne in D minor whose recapitulation reassembles the theme as a hocket while the violins rest.
 - **The Cartographer** (Orchestral). An A-major overture whose cello-led middle section stretches the theme between illuminated chord windows.
+- **The Black Coach** (Orchestral), by Arena Agent & SZ. A 3:27 orchestral scherzo at 144 BPM in 3/4 in G minor: a
+  timpani-and-pizzicato intro rolls into a horn theme over a six-eighth ostinato, the violins state it an
+  octave up, a development hacks it into three-note fragments passed between violins, horns, flute and
+  cellos with whole bars of silence between them, a trio in B-flat hands the tune to the flute over
+  sustained strings and rolled harp chords, and a quiet build on the ostinato climbs back into a tutti
+  reprise and a coda that speeds up from 148 to 186 BPM into one last hit.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave), by Claude, MiMo v2.6 Pro & SZ. A 3:36 synthwave original at 98 BPM in E minor, built around its
   saw lead and melody: the chorus hook opens the song bare with a dotted-eighth delay, the verses keep

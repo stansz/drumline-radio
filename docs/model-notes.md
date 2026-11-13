@@ -16,6 +16,7 @@ than guessing.
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
 | Sunliner | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
+| The Black Coach | Orchestral | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
 | Velvet Freeway | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
@@ -34,6 +35,40 @@ Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### The Black Coach — Arena Agent (2026-11-12)
+
+- **Brief:** a driving orchestral scherzo, urgent and a little dark, 144 BPM in 3/4 in G minor,
+  about 3:30, with pizzicato and timpani driving a relentless ostinato, horns and low strings on the
+  theme, the violins taking the second statement, the flute leading a trio in the relative major,
+  harp and glockenspiel only as colour, no oboe and no tubular bells, human microtiming, separated
+  registers, and a fix for every balance flag.
+- **What it wrote:** 3:27 over 168 bars: timpani-and-pizzicato intro, theme A on the horns, theme A
+  an octave up on the violins, a 32-bar development that breaks the tune into three-note fragments
+  passed from violins to horns to flute to cellos (with whole bars of silence and a hocket where the
+  glockenspiel answers in the holes), a 32-bar trio in B-flat for solo flute over a sustained pad, a
+  slow cello and rolled harp chords, a 16-bar quiet build on the ostinato, the scherzo in tutti, and
+  a coda ramping 148 to 186 BPM into one hit of G minor. It is a generator,
+  `tools/arranger/the-black-coach.mjs`, added to `tests/drift.test.ts`.
+- **Followed well:** 0 clashes and 0 off-chord notes, both on the first full run and after the
+  rewrite; a key, tempo, metre, form and drum voice (timpani only, no kick-based kit feel) unlike
+  Cartographer and Lantern Ward; the trio really does silence the ostinato; every `balance` flag was
+  fixed rather than argued with.
+- **Credit:** the harness exposes only its own name, Arena Agent (Arena's Agent Mode). The run does
+  not disclose which model was behind it, so no model id is claimed and the price fields stay "—".
+- **Tool notes:** the balance check models the mix by role, but a classical scherzo hands its theme
+  to `lead2` for sixteen bars while `lead` is deliberately silent, so the bass is measured against a
+  nearly empty violin part and gets flagged "bass over lead". The fix that keeps the music intact is
+  lowering those bars' velocities (which the tool suggests), but the report would be clearer if a
+  flag said which part is actually carrying the melody. Register, not loudness, also decided the
+  cello voicing: keeping the trio's cellos in a tenor register above 150 Hz and letting the timpani
+  own the low band is what finally cleared the bass-versus-kick check.
+- **Ideas for the process:** a `--dry` mode for `balance` that prints the last table without a
+  browser; a per-section "who is the lead" override in a song (a `lead@73-88=horns` style hint) so
+  role-based level rules can follow the score; a bar-length assertion helper in `lib.mjs` for songs
+  in metres other than 4/4 (every bar here is 2880 ticks, and a 960-tick slip is otherwise only
+  caught by the parser); and a `check:songs` report of each section's tessitura, which is how a
+  register collision between the pad and the violins shows up before it is heard.
 
 ### Velvet Freeway — Arena Agent (2026-11-10)
 

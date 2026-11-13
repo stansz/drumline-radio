@@ -31,6 +31,7 @@ const SCRIPT = [
   'tools/arranger/confetti-cannon.mjs',
   'tools/arranger/velvet-freeway.mjs',
   'tools/arranger/night-bus-home.mjs',
+  'tools/arranger/the-black-coach.mjs',
 ];
 
 describe('the song generators', () => {

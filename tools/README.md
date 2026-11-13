@@ -172,7 +172,11 @@ save-room interlude, an adventure section, all again up a step).
 Sunliner has its own script (`arranger/sunliner.mjs`: italo-disco with choirs, stabs and a
 four-on-the-floor kit), as do Confetti Cannon (`arranger/confetti-cannon.mjs`: peak-time
 electro-house) and Velvet Freeway (`arranger/velvet-freeway.mjs`: the 104 BPM sunset-cruise
-synthwave song). Each is in `tests/drift.test.ts`.
+synthwave song). The Black Coach has one too: `arranger/the-black-coach.mjs` states the 3/4 chords once, derives
+every voicing (the pizzicato ostinato, the pad spread, the harp rolls, the horn and brass stabs,
+the cello figures) from a small table keyed by chord symbol, and builds the 168 bars out of
+sections that name what they are - intro, two statements of the theme, four development sections,
+the trio, the build, the tutti reprise and the coda. Each is in `tests/drift.test.ts`.
 
 ```bash
 node tools/arranger/club.mjs tmp/club
