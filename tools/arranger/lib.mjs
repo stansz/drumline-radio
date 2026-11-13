@@ -193,6 +193,12 @@ export function offsetText(ticks) {
   return ticks > 0 ? `+${ticks}` : String(ticks);
 }
 
+// A note, chord or drum hit as song text: `name/dur`, then the offset, then `:vel`. The song picks
+// the name (its spelling, or a bracket chord) and the velocity (its own cap).
+export function noteText(name, dur, vel, off = 0) {
+  return `${name}/${dur}${offsetText(off)}:${vel}`;
+}
+
 // A velocity rounded into 1..max.
 export function clampVelocity(v, max = 127) {
   return Math.max(1, Math.min(max, Math.round(v)));

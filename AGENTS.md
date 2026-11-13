@@ -46,7 +46,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   plumbing from `tools/arranger/lib.mjs` (see `tools/README.md`) and never define their own
   copy. A new generator starts from `lib.mjs`, not from another song's script. When a helper
   that turns music into song text is needed by a second generator, it moves into `lib.mjs` in
-  the same change. Only plumbing goes in `lib.mjs`: melodies, chords, voicings, grooves,
+  the same change; `npm run check:generators` lists copies (a report, never a failure). Only
+  plumbing goes in `lib.mjs`: melodies, chords, voicings, grooves,
   drum and stab patterns, velocities, velocity caps and note spelling stay in each song's own
   script, so songs don't start to sound alike.
 - Start your own dev or preview server on a free port, note its process ID, and stop it as soon as

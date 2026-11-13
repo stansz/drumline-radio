@@ -10,7 +10,7 @@
 // song's `# chords:` lines), one chord a bar, and every pitched part follows it.
 //   node tools/arranger/velvet-freeway.mjs [outDir]
 import {
-  chordText, clampVelocity, formHeader, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  chordText, clampVelocity, formHeader, noteName, noteText, outDir, R, repeatBar, saveSong,
   sectionBuilder, SHARPS,
 } from './lib.mjs';
 
@@ -20,8 +20,8 @@ const out = outDir();
 const nm = (n) => noteName(n, SHARPS);
 const vel = (v) => clampVelocity(v, 126);
 
-const n = (pitch, dur, v = 100, at = 0) => `${nm(pitch)}/${dur}${offsetText(at)}:${vel(v)}`;
-const chd = (pitches, dur, v, at = 0) => `${chordText(pitches, nm)}/${dur}${offsetText(at)}:${vel(v)}`;
+const n = (pitch, dur, v = 100, at = 0) => noteText(nm(pitch), dur, vel(v), at);
+const chd = (pitches, dur, v, at = 0) => noteText(chordText(pitches, nm), dur, vel(v), at);
 
 // One row per chord: the bass root, the pad's root and fifth (the rest of the pad's chord is built
 // from the chord's name by padVoicing), the stab's triad in the middle (G3-E4), and the arp's four

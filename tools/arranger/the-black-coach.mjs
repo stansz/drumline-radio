@@ -9,7 +9,7 @@
 // theme, the ostinato figures, the voicings, the velocities, the microtiming - is written here.
 //   node tools/arranger/the-black-coach.mjs [outDir]
 import {
-  barLength, chordText, clampVelocity, formHeader, noteName, offsetText, outDir, R, saveSong,
+  barLength, chordText, clampVelocity, formHeader, noteName, noteText, outDir, R, repeatBar, saveSong,
   sectionBuilder, MIXED,
 } from './lib.mjs';
 
@@ -18,10 +18,10 @@ const out = outDir();
 
 const nm = (midi) => noteName(midi, MIXED);
 const vel = (v) => clampVelocity(v, 126);
-const note = (pitch, dur, v, at = 0) => `${nm(pitch)}/${dur}${offsetText(at)}:${vel(v)}`;
-const hit = (pitches, dur, v, at = 0) => `${chordText(pitches, nm)}/${dur}${offsetText(at)}:${vel(v)}`;
+const note = (pitch, dur, v, at = 0) => noteText(nm(pitch), dur, vel(v), at);
+const hit = (pitches, dur, v, at = 0) => noteText(chordText(pitches, nm), dur, vel(v), at);
 const rest = (dur) => `r/${dur}`;
-const drum = (name, dur, v, at = 0) => `${name}/${dur}${offsetText(at)}:${vel(v)}`;
+const drum = (name, dur, v, at = 0) => noteText(name, dur, vel(v), at);
 
 // ------------------------------------------------------------------ the chords and their voicings
 // One row per chord the song uses. `root` is the cello's low note and `drive`/`space` the two bass
@@ -209,14 +209,13 @@ const TRIO_B = [
 // ------------------------------------------------------------------------------------ assemble
 const KEYS = ['violins', 'horns', 'flute', 'pizz', 'harp', 'glock', 'pad', 'cellos', 'timpani'];
 const b = sectionBuilder(KEYS);
-const rep = (bar, n) => Array(n).fill(bar);
 
 // --- 1-8: intro. Timpani and pizzicato alone; the low strings and the pad creep in at bar 5.
 b.section(PLAN[0].name, 8, {
-  violins: rep(R, 8),
-  horns: rep(R, 8),
-  flute: rep(R, 8),
-  glock: rep(R, 8),
+  violins: repeatBar(R, 8),
+  horns: repeatBar(R, 8),
+  flute: repeatBar(R, 8),
+  glock: repeatBar(R, 8),
   pizz: [
     pizzSparse('Gm', 96), pizzBar('Gm', 84), pizzBar('Eb', 86, 1), pizzBar('Eb', 88, 2),
     pizzBar('Cm', 92), pizzBar('Cm', 94, 1), pizzBar('D7', 96, 2), pizzBar('D7', 100, 1),
@@ -244,10 +243,10 @@ const ostinato = (from, count, v) => Array.from({ length: count }, (_, i) => piz
 b.section(PLAN[1].name, 16, {
   violins: A1_ANSWERS,
   horns: [...melody(THEME_A, 96, 1), ...melody(THEME_B, 102, 2)],
-  flute: rep(R, 16),
+  flute: repeatBar(R, 16),
   pizz: ostinato(9, 16, 92),
-  harp: rep(R, 16),
-  glock: rep(R, 16),
+  harp: repeatBar(R, 16),
+  glock: repeatBar(R, 16),
   pad: padline(9, 16, 72),
   cellos: bassline(9, 16, 54),
   timpani: [
@@ -263,10 +262,10 @@ const hornCalls = (from, count, v) => Array.from({ length: count }, (_, i) =>
 b.section(PLAN[2].name, 16, {
   violins: [...melody(THEME_A, 104, 3, 12), ...melody(THEME_B, 108, 4, 12)],
   horns: [...hornCalls(25, 8, 102), ...melody(THEME_B, 104, 5)],
-  flute: rep(R, 16),
+  flute: repeatBar(R, 16),
   pizz: ostinato(25, 16, 96),
-  harp: rep(R, 16),
-  glock: rep(R, 16),
+  harp: repeatBar(R, 16),
+  glock: repeatBar(R, 16),
   pad: padline(25, 16, 82),
   cellos: Array.from({ length: 16 }, (_, i) => celloDrive(at(25 + i), 88 + (i % 4) * 3, i)),
   timpani: [
@@ -286,10 +285,10 @@ b.section(PLAN[3].name, 8, {
     `${rest('4')} ${note(70, '8', 102)} ${note(75, '8', 106)} ${note(70, '4', 104)}`, R,
     `${rest('4')} ${note(72, '8', 102)} ${note(75, '8', 106)} ${note(72, '4', 104)}`, R,
     `${rest('4')} ${note(69, '8', 102)} ${note(66, '8', 106)} ${note(69, '4', 104)}`, R],
-  flute: rep(R, 8),
+  flute: repeatBar(R, 8),
   pizz: ostinato(41, 8, 88),
-  harp: rep(R, 8),
-  glock: rep(R, 8),
+  harp: repeatBar(R, 8),
+  glock: repeatBar(R, 8),
   pad: padline(41, 8, 76),
   cellos: Array.from({ length: 8 }, (_, i) => celloDrive(at(41 + i), 88 + (i % 4) * 2, i)),
   timpani: [tCrash(118), tPulse(96), tFill(108), tPulse(98), tCrash(116), tPulse(100), tFill(110), tRoll(104, 120)],
@@ -308,8 +307,8 @@ b.section(PLAN[4].name, 8, {
     `${note(87, '4', 108)} ${note(84, '8', 104)} ${note(80, '8', 102)} ${note(84, '4', 106)}`, R, R],
   pizz: [pizzStub('Cm', 92), pizzBar('Cm', 92, 1), pizzStub('Gm', 94), pizzBar('Gm', 94, 2),
     pizzStub('Ab', 96), pizzBar('Ab', 96, 1), pizzBar('D7', 96, 2), pizzBar('D7', 100, 3)],
-  harp: rep(R, 8),
-  glock: rep(R, 8),
+  harp: repeatBar(R, 8),
+  glock: repeatBar(R, 8),
   pad: padline(49, 8, 76),
   cellos: [celloDrive('Cm', 82, 1), celloDrive('Cm', 82, 2), celloDrive('Gm', 84, 1), celloDrive('Gm', 84, 2),
     celloDrive('Ab', 86, 1), celloDrive('Ab', 86, 2),
@@ -325,9 +324,9 @@ b.section(PLAN[5].name, 8, {
     R, `${rest('4')} ${note(86, '4', 108)} ${rest('4')}`, `${hit([79, 86], '4', 116)} ${rest('2')}`, R],
   horns: [R, `${hit([63, 67, 70], '4', 110)} ${rest('2')}`, R, `${hit([65, 69, 72], '4', 108)} ${rest('2')}`,
     `${rest('4')} ${hit([62, 66, 69], '4', 108)} ${rest('4')}`, R, `${hit([62, 67, 70], '4', 116)} ${rest('8')} ${hit([62, 67, 70], '8', 104)} ${rest('4')}`, R],
-  flute: rep(R, 8),
+  flute: repeatBar(R, 8),
   pizz: [R, R, R, pizzBar('F', 98, 1), R, R, pizzBar('Gm', 104, 2), pizzBar('Gm', 96, 3)],
-  harp: rep(R, 8),
+  harp: repeatBar(R, 8),
   glock: [R, `${rest('4')} ${note(94, '8', 96)} ${note(87, '8', 92)} ${rest('4')}`,
     `${rest('2')} ${note(89, '8', 98)} ${rest('8')}`, R, R,
     `${rest('4')} ${rest('8')} ${note(93, '8', 100)} ${rest('4')}`, R,
@@ -351,9 +350,9 @@ const climbDur = [['8', '8', '8', '8', '8', '8'], ['4', '8', '8', '4'], ['8', '8
 b.section(PLAN[6].name, 8, {
   violins: climb.map((bar, bi) => bar.map((pitch, i) => note(pitch, climbDur[bi][i], 92 + bi * 4 + (i === 0 ? 6 : 0), i === 0 ? 10 : SWAY[(bi + i) % SWAY.length])).join(' ')),
   horns: [R, R, R, R, `${note(77, '2.', 88)}`, `${note(77, '2.', 96)}`, `${note(77, '2.', 106)}`, `${note(77, '2.', 116)}`],
-  flute: rep(R, 8),
+  flute: repeatBar(R, 8),
   pizz: ostinato(65, 8, 84).map((bar, i) => pizzBar(at(65 + i), 84 + i * 4, i)),
-  harp: rep(R, 8),
+  harp: repeatBar(R, 8),
   glock: [R, R, R, R, R, R, `${rest('4')} ${note(89, '8', 104)} ${note(94, '8', 100)} ${note(91, '8', 96)} ${rest('8')}`,
     `${note(91, '8', 108)} ${note(94, '8', 104)} ${note(96, '8', 100)} ${note(94, '8', 98)} ${note(93, '4', 104)}`],
   pad: padline(65, 8, 78),
@@ -364,12 +363,12 @@ b.section(PLAN[6].name, 8, {
 // --- 73-88: the trio. Flute over a sustained pad, a slow cello, soft harp and a whisper of
 // timpani; the pizzicato drops out completely, which is the whole point of arriving here.
 b.section(PLAN[7].name, 16, {
-  violins: rep(R, 16),
-  horns: rep(R, 16),
+  violins: repeatBar(R, 16),
+  horns: repeatBar(R, 16),
   flute: melody(TRIO_A, 74, 6),
-  pizz: rep(R, 16),
+  pizz: repeatBar(R, 16),
   harp: Array.from({ length: 16 }, (_, i) => harpBar(at(73 + i), 54 + (i % 4) * 2)),
-  glock: rep(R, 16),
+  glock: repeatBar(R, 16),
   pad: padline(73, 16, 60),
   cellos: Array.from({ length: 16 }, (_, i) => celloLong(at(73 + i), 74 + (i % 4) * 2)),
   timpani: Array.from({ length: 16 }, (_, i) => (i % 4 === 0 ? `${drum('k', '4', 70)} ${rest('2')}` : `${rest('4')} ${drum('k', '4', 60)} ${rest('4')}`)),
@@ -382,12 +381,12 @@ const TRIO_SUSTAIN = [
   `${note(87, '2.', 76)}`, `${note(82, '2.', 74)}`, `${note(84, '2.', 78)}`, `${note(84, '2.', 80)}`,
 ];
 b.section(PLAN[8].name, 16, {
-  violins: [...TRIO_SUSTAIN, ...rep(R, 8)],
-  horns: [...rep(R, 12), `${note(55, '2.', 66)}`, `${note(58, '2.', 70)}`, `${note(60, '2.', 72)}`, `${note(62, '2.', 74)}`],
+  violins: [...TRIO_SUSTAIN, ...repeatBar(R, 8)],
+  horns: [...repeatBar(R, 12), `${note(55, '2.', 66)}`, `${note(58, '2.', 70)}`, `${note(60, '2.', 72)}`, `${note(62, '2.', 74)}`],
   flute: melody(TRIO_B, 78, 7),
-  pizz: rep(R, 16),
+  pizz: repeatBar(R, 16),
   harp: Array.from({ length: 16 }, (_, i) => harpBar(at(89 + i), 58 + (i % 4) * 3)),
-  glock: rep(R, 16),
+  glock: repeatBar(R, 16),
   pad: padline(89, 16, 66),
   cellos: Array.from({ length: 16 }, (_, i) => celloLong(at(89 + i), 78 + (i % 4) * 2)),
   timpani: Array.from({ length: 16 }, (_, i) => (i % 4 === 2 ? `${drum('k', '4', 72)} ${rest('4')} ${drum('k', '4', 66)}` : `${drum('k', '4', 68)} ${rest('2')}`)),
@@ -401,21 +400,21 @@ const pedalLadder = (from, count, pitch, v0, step) =>
     return Array.from({ length: 6 }, (_, j) => note(pitch, '8', v - (j % 2 ? 6 : 0) + (i % 2))).join(' ');
   });
 b.section(PLAN[9].name, 16, {
-  violins: [...rep(R, 8), ...pedalLadder(113, 4, 79, 62, 6), ...pedalLadder(117, 4, 81, 84, 7)],
-  horns: [...rep(R, 6), `${note(66, '2.', 70)}`, `${note(66, '2.', 76)}`,
+  violins: [...repeatBar(R, 8), ...pedalLadder(113, 4, 79, 62, 6), ...pedalLadder(117, 4, 81, 84, 7)],
+  horns: [...repeatBar(R, 6), `${note(66, '2.', 70)}`, `${note(66, '2.', 76)}`,
     `${rest('4')} ${note(62, '8', 84)} ${note(65, '8', 88)} ${note(70, '4', 92)}`,
     `${rest('4')} ${note(62, '8', 90)} ${note(65, '8', 94)} ${note(70, '4', 98)}`,
     `${note(72, '2.', 100)}`, `${note(72, '2.', 104)}`,
     `${note(67, '2.', 108)}`, `${note(67, '2.', 112)}`,
     `${rest('4')} ${note(66, '8', 114)} ${note(69, '8', 116)} ${note(74, '4', 118)}`,
     `${note(74, '2.', 120)}`],
-  flute: rep(R, 16),
+  flute: repeatBar(R, 16),
   pizz: [...Array.from({ length: 8 }, (_, i) => pizzSparse(at(105 + i), 58 + i * 4)),
     ...Array.from({ length: 8 }, (_, i) => pizzBar(at(113 + i), 80 + i * 3, i))],
-  harp: rep(R, 16),
-  glock: rep(R, 16),
-  pad: [...rep(R, 4), ...padline(109, 12, 62)],
-  cellos: [...rep(R, 4), ...Array.from({ length: 12 }, (_, i) => celloSpace(at(109 + i), 60 + i * 3))],
+  harp: repeatBar(R, 16),
+  glock: repeatBar(R, 16),
+  pad: [...repeatBar(R, 4), ...padline(109, 12, 62)],
+  cellos: [...repeatBar(R, 4), ...Array.from({ length: 12 }, (_, i) => celloSpace(at(109 + i), 60 + i * 3))],
   timpani: [...Array.from({ length: 14 }, (_, i) => tPulse(52 + i * 3)), tFill(100), tRoll(96, 124)],
 });
 
@@ -424,10 +423,10 @@ b.section(PLAN[9].name, 16, {
 b.section(PLAN[10].name, 16, {
   violins: [...melody(THEME_A, 112, 8, 12), ...melody(THEME_B, 110, 9, 12)],
   horns: [...hornCalls(121, 8, 112), ...melody(THEME_B, 108, 10)],
-  flute: rep(R, 16),
+  flute: repeatBar(R, 16),
   pizz: ostinato(121, 16, 104),
-  harp: rep(R, 16),
-  glock: rep(R, 16),
+  harp: repeatBar(R, 16),
+  glock: repeatBar(R, 16),
   pad: padline(121, 16, 88),
   cellos: Array.from({ length: 16 }, (_, i) => celloDrive(at(121 + i), 104 + (i % 4) * 3, i)),
   timpani: [
@@ -458,10 +457,10 @@ b.section(PLAN[11].name, 8, {
     `${hit([62, 66, 69], '4', 116)} ${rest('4')} ${hit([62, 66, 69], '8', 110)} ${rest('8')}`,
     `${hit([63, 67, 70], '4', 114)} ${rest('4')} ${hit([63, 67, 70], '8', 108)} ${rest('8')}`,
     `${hit([63, 67, 70], '4', 116)} ${rest('4')} ${hit([63, 67, 70], '8', 112)} ${rest('8')}`],
-  flute: rep(R, 8),
+  flute: repeatBar(R, 8),
   pizz: ostinato(137, 8, 106),
-  harp: rep(R, 8),
-  glock: rep(R, 8),
+  harp: repeatBar(R, 8),
+  glock: repeatBar(R, 8),
   pad: padline(137, 8, 90),
   cellos: Array.from({ length: 8 }, (_, i) => celloDrive(at(137 + i), 106 + (i % 4) * 3, i)),
   timpani: [tCrash(124), tFill(118), tPulse(112), tFill(120), tCrash(124), tFill(118), tPulse(114), tRoll(112, 126)],
@@ -482,10 +481,10 @@ b.section(PLAN[12].name, 8, {
   violins: RISE,
   horns: [`${note(60, '2.', 104)}`, `${note(63, '2.', 108)}`, `${note(63, '2.', 110)}`, `${note(67, '2.', 112)}`,
     `${note(65, '2.', 114)}`, `${note(72, '2.', 116)}`, `${note(66, '2.', 118)}`, `${note(74, '2.', 120)}`],
-  flute: rep(R, 8),
+  flute: repeatBar(R, 8),
   pizz: ostinato(145, 8, 108),
-  harp: rep(R, 8),
-  glock: rep(R, 8),
+  harp: repeatBar(R, 8),
+  glock: repeatBar(R, 8),
   pad: padline(145, 8, 90),
   cellos: Array.from({ length: 8 }, (_, i) => celloDrive(at(145 + i), 108 + i * 2, i)),
   timpani: [tCrash(124), tFill(120), tPulse(114), tFill(122), tCrash(124), tFill(120), tRoll(112, 124), tRoll(118, 126)],
@@ -520,13 +519,13 @@ b.section(PLAN[13].name, 16, {
     `${hit([62, 67, 70], '4', 122)} ${rest('4')} ${hit([62, 67, 70], '8', 116)} ${rest('8')}`,
     `${hit([62, 66, 69], '4', 124)} ${rest('4')} ${hit([62, 66, 69], '8', 118)} ${rest('8')}`,
     `${hit([62, 67, 70], '2.', 126)}`],
-  flute: rep(R, 16),
+  flute: repeatBar(R, 16),
   pizz: [pizzStub('Gm', 110), R, pizzStub('D7', 112), R,
     ...ostinato(157, 4, 110),
     ...ostinato(161, 4, 114),
     pizzBar('Gm', 116, 1), pizzBar('Gm', 116, 2), pizzBar('D7', 118, 3), hit(voicing('Gm').pizz, '2.', 122)],
-  harp: [...rep(R, 15), harpHit('Gm', 96)],
-  glock: [...rep(R, 12), `${rest('4')} ${note(91, '8', 112)} ${note(86, '8', 108)} ${rest('4')}`,
+  harp: [...repeatBar(R, 15), harpHit('Gm', 96)],
+  glock: [...repeatBar(R, 12), `${rest('4')} ${note(91, '8', 112)} ${note(86, '8', 108)} ${rest('4')}`,
     `${note(91, '8', 114)} ${note(96, '8', 110)} ${note(91, '8', 108)} ${note(86, '8', 106)} ${note(91, '4', 110)}`,
     `${note(93, '8', 112)} ${note(89, '8', 108)} ${note(86, '8', 106)} ${note(81, '8', 104)} ${note(86, '4', 114)}`,
     `${hit([86, 91], '2.', 116)}`],

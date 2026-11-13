@@ -45,7 +45,8 @@ Rules:
 - Build it the way docs/composing.md's "Pick how to build it" says: by default as its own
   script, tools/arranger/<song>.mjs, started from tools/arranger/lib.mjs (never from another
   song's script) and added to tests/drift.test.ts. Every musical choice goes in your script.
-  Say which way you built it, and why if it is not a script.
+  Say which way you built it, and why if it is not a script. For a script, run
+  npm run check:generators and fix every copy of lib.mjs plumbing it lists.
 - Add the song to README.md.
 - Don't change shared code (styles, instruments, engine, arranger). The one exception is
   tools/arranger/lib.mjs: a plumbing helper your script needs that another script already has

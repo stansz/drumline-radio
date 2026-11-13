@@ -194,6 +194,7 @@ npm test
 npm run typecheck
 npm run build
 npm run check:songs
+npm run check:generators
 npm run balance -- <song>
 ```
 

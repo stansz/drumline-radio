@@ -6,7 +6,7 @@ Dev scripts for making songs and checking the app. None of this ships in the sit
 |---|---|
 | `arranger/` | Builds full `.song` files from a melody plus chords |
 | `midi/` | Converts a score's MIDI file into song bars (`midi2song.mjs`) |
-| `check/` | Parses every song and reports note clashes |
+| `check/` | Parses every song and reports note clashes; reports plumbing the generators copy |
 | `analysis/` | Reports one song's density, register, dynamics and energy; reads a reference MIDI's groove |
 | `browser/` | Checks the running app in headless Edge (or Chromium/Chrome on Linux): layout, loudness, per-track levels, patch levels, patch timbre, late notes, offline, screenshots |
 | `icons/` | Draws the app icon and renders its PNG sizes |
@@ -74,7 +74,7 @@ song starts from a blank musical slate. Its exports, by group:
 - text: `writeBlock` (which takes `perRow`, `first` for a pickup line, and `collapseRests`, so a
   marked section of only rests is written as one `R*n` line), `barLength`, `TICKS`, `DURATIONS`,
   `durationText`, `splitDuration`, `fillUnits`, `noteName` with `SHARPS`/`FLATS`/`MIXED`,
-  `noteMidi`, `chordText`, `transpose`, `offsetText`, `clampVelocity`.
+  `noteMidi`, `chordText`, `transpose`, `offsetText`, `noteText`, `clampVelocity`.
 - chords: `PITCH_CLASS`, `CHORD_QUALITY`, `parseChord`, `chordSpans`, `eachChord`.
 - bars: `R`, `times`, `repeatBar`, `repeatBars`, `cycle`, `entryVelocity`, `valueAt`, `barMarks`.
 - layout: `sectionBuilder` (with `label`, `exact`, and a section's `map` and `block`, plus the
@@ -270,6 +270,22 @@ It reports the bar count, each MIDI track's register, velocity spread and how ma
 then the groove itself: the median position of off-16th notes (50% is straight, about 67% is a 2:1
 swing), the share of main/accent/ghost velocities, and for percussion tracks a sixteenth-by-sixteenth
 hit grid with a row per drum. Copy those numbers into a `.song` instead of guessing at the feel.
+
+## Generator check
+
+```bash
+npm run check:generators
+```
+
+`tools/check/generators.mjs` reads every script in `arranger/` and lists, with file and line, any
+function that has the name of a `lib.mjs` export, any function that copies a `lib.mjs` function,
+and any helper that two or more generators define the same way. It compares parsed code with
+comments, formatting and parameter names removed, so a renamed copy is still found; a helper
+rewritten another way is not. A one-line setting that only calls a `lib.mjs` function (a song's
+`nm` spelling or `vel` cap) is not a copy. Helpers that look alike on purpose because they are
+musical choices go in its `ALIKE` list with the reason. Like the clash count, it is a report: it
+always exits 0. Fix what it lists by importing from `lib.mjs` or moving the plumbing there, then
+check that every song still regenerates byte-identical (`npm test` runs the drift test).
 
 ## Browser checks
 

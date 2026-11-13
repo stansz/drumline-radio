@@ -96,7 +96,7 @@ const RH = [
 // Splits the left hand into the cellos' bass notes, the piano's chords, and a pad chord per beat.
 const lowBass = (n) => (noteMidi(n) >= 48 ? nm(noteMidi(n) - 12) : n); // keep the bass at B2 or lower
 const notes = (ev) => ev.split('.');
-const chordText = (ev) => (notes(ev).length > 1 ? `[${notes(ev).join(' ')}]` : ev);
+const eventText = (ev) => (notes(ev).length > 1 ? `[${notes(ev).join(' ')}]` : ev);
 function splitBar(bar) {
   const evs = bar.split(' ');
   const cellos = [];
@@ -107,13 +107,13 @@ function splitBar(bar) {
     const [first, ...rest] = group;
     if (notes(first).length === 1) {
       cellos.push(`${lowBass(first)}/4.`);
-      harp.push('r/8', ...rest.map((e) => `${chordText(e)}/8`));
+      harp.push('r/8', ...rest.map((e) => `${eventText(e)}/8`));
     } else {
       cellos.push('r/4.');
-      harp.push(...group.map((e) => `${chordText(e)}/8`));
+      harp.push(...group.map((e) => `${eventText(e)}/8`));
     }
     const held = group[2];
-    pad.push(notes(held).length > 1 ? `${chordText(held)}/4.` : 'r/4.');
+    pad.push(notes(held).length > 1 ? `${eventText(held)}/4.` : 'r/4.');
   }
   return { cellos: cellos.join(' '), harp: harp.join(' '), pad: pad.join(' ') };
 }

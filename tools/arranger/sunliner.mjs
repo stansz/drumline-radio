@@ -11,7 +11,7 @@
 // the bass bounces its root in octaves.
 //   node tools/arranger/sunliner.mjs [outDir]
 import {
-  chordText, clampVelocity, formHeader, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  chordText, clampVelocity, formHeader, noteName, noteText, outDir, R, repeatBar, saveSong,
   sectionBuilder, SHARPS,
 } from './lib.mjs';
 
@@ -64,8 +64,8 @@ const TOTAL = CHORDS.length; // 120 bars = 4:04 at 118 BPM
 const chordAt = (bar) => CH[CHORDS[bar - 1]];
 
 // ---------------------------------------------------------------- note and bar helpers
-const n = (pitch, dur, v = 100, at = 0, dv = 0) => `${nm(pitch)}/${dur}${offsetText(at)}:${vel(v + dv)}`;
-const chd = (pitches, dur, v, at = 0) => `${chordText(pitches, nm)}/${dur}${offsetText(at)}:${vel(v)}`;
+const n = (pitch, dur, v = 100, at = 0, dv = 0) => noteText(nm(pitch), dur, vel(v + dv), at);
+const chd = (pitches, dur, v, at = 0) => noteText(chordText(pitches, nm), dur, vel(v), at);
 
 // A melody bar from [pitch, duration, offset, velocity delta] entries. Pitches are MIDI numbers so
 // the last chorus can be the same line transposed by a whole step.

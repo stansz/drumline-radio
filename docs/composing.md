@@ -40,6 +40,7 @@ list and take the first that fits.
      never copy one as a starting point; that is how one song's hook and groove end up in the next.
    - If your script needs a plumbing helper that another script already has, move it into
      `lib.mjs` in the same change, as AGENTS.md says. Never move musical choices there.
+     `npm run check:generators` lists any helper you copied (see "Before committing").
    - Add the script to `tests/drift.test.ts` and give it a paragraph in `tools/README.md`. Edit
      the script and regenerate, never the generated `.song` file.
 2. **A recipe for the shared arranger,** in `tools/arranger/songs.mjs`. Only for a public-domain
@@ -164,8 +165,12 @@ depends on it.
    12-16 dB by peak). Wayfarer's Rest's first version had its arp, the part that drives the song,
    23 dB under the lead, and its bass louder than the lead. When it says a track is flagged only in
    some bars, change the velocities there instead of the track's `vol=`.
-5. Add the song to the originals list in `README.md`.
-6. The user listens and decides; a passing check is not the same as sounding good.
+5. For a song built by a script, `npm run check:generators` lists any plumbing it copies instead
+   of importing from `lib.mjs`. Fix each one, or for a musical helper that matches another song's
+   on purpose, add it to the check's `ALIKE` list and say why. It is a report and never fails, but
+   a song shouldn't add to it.
+6. Add the song to the originals list in `README.md`.
+7. The user listens and decides; a passing check is not the same as sounding good.
 
 ## Credits
 
