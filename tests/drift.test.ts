@@ -32,6 +32,7 @@ const SCRIPT = [
   'tools/arranger/velvet-freeway.mjs',
   'tools/arranger/night-bus-home.mjs',
   'tools/arranger/the-black-coach.mjs',
+  'tools/arranger/the-gilded-hour.mjs',
 ];
 
 describe('the song generators', () => {

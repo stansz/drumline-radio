@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| The Gilded Hour | Orchestral | DeepSeek | — | — | None (0 clashes, 0 off-chord; a mix round fixed the few balance flags) |
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
 | Sunliner | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
@@ -35,6 +36,42 @@ Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### The Gilded Hour — DeepSeek (2026-11-13)
+
+- **Brief:** a slow, bittersweet orchestral concert waltz (a valse lente), 4-5 minutes, 88 BPM in
+  3/4, A-flat major with a middle section in F minor: low strings on beat one and harp or pizzicato
+  on beats two and three with a Viennese lilt, a string theme answered by the horns, a flute second
+  theme, a string pad, an optional soft choir lift and the glockenspiel only as colour, no oboe or
+  tubular bells, human microtiming and uneven velocities, and clearly different from The
+  Cartographer, Lantern Ward and The Black Coach.
+- **What it wrote:** 4:41 over 136 bars: an eight-bar intro that sets the pulse, theme A on the
+  strings, theme A again with the horns answering in its rests, a lighter theme B for the flute over
+  pizzicato, a 16-bar middle in F minor, a 16-bar build that turns the middle back to the major,
+  theme A in full with the choir under its extension, and a 20-bar coda that ritards from 88 to
+  64 BPM onto a soft A-flat. It is a generator, `tools/arranger/the-gilded-hour.mjs`, added to
+  `tests/drift.test.ts`.
+- **Followed well:** 0 clashes and 0 off-chord notes, both on the first full run and after the mix
+  changes; a key, tempo, metre and string-led texture unlike the three orchestral siblings; a
+  two-bar breath at the end of theme A and another before the middle, plus the coda ramp; the horns
+  enter through the theme's rests instead of doubling it, and the choir and glockenspiel stay
+  colour. The first `npm run balance` found only level problems (the glockenspiel and choir under
+  the lead, the pizzicato under it in one section); raising those parts cleared them and the second
+  run printed `No flags.`
+- **Credit:** the harness exposes only `deepseek-flash`, and this run had no model list to name its
+  version from, so the credit is the family name, DeepSeek, and the exact version is unknown. The
+  app shows the family either way.
+- **Tool notes:** the balance check's arp rule compares a sparse colour instrument's peak with the
+  lead's, so a glockenspiel meant to be "only a touch of colour" has to be raised almost to the
+  lead's peak to clear it, which then reads louder than a soft intro's first string call by
+  loudness. A glockenspiel note that rings out across a section boundary is also counted in the
+  next section's peak, so a note written in the B section can flag the F-minor middle. Both are
+  measured, not heard; a "colour" exemption or a peak window that starts with the note would fit
+  the brief better.
+- **Ideas for the process:** a per-track balance opt-out (or a softer threshold) for instruments the
+  brief calls colour; a balance row for the section's loudest track so a quiet intro is not judged
+  by a deliberately soft lead; and a check that a waltz's second and third beats actually carry the
+  micro-offsets it claims, since that lilt is the whole brief and no checker sees it.
 
 ### The Black Coach — Arena Agent (2026-11-12)
 

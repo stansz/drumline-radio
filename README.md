@@ -87,6 +87,12 @@ Originals by SZ (and AI):
   cellos with whole bars of silence between them, a trio in B-flat hands the tune to the flute over
   sustained strings and rolled harp chords, and a quiet build on the ostinato climbs back into a tutti
   reprise and a coda that speeds up from 148 to 186 BPM into one last hit.
+- **The Gilded Hour** (Orchestral), by DeepSeek & SZ. A 4:41 slow concert waltz (valse lente) at
+  88 BPM in 3/4 in A-flat major: low strings and the harp keep the waltz pulse with a Viennese lilt,
+  the strings sing theme A and the horns answer in its rests, the flute takes a lighter theme B, a
+  dark middle section in F minor turns back to the major in a 16-bar build, theme A returns in full
+  with a soft wordless choir under its last phrase, and a coda ritards from 88 to 64 BPM onto a soft
+  final chord. Built by `tools/arranger/the-gilded-hour.mjs`.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave), by Claude, MiMo v2.6 Pro & SZ. A 3:36 synthwave original at 98 BPM in E minor, built around its
   saw lead and melody: the chorus hook opens the song bare with a dotted-eighth delay, the verses keep
