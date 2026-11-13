@@ -72,7 +72,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - `npm run check:songs` reports half-step clashes between every pitched part and the pad or bass.
   The count is a report, not a failure. Aim for 0 in a new song and explain any that stay; older
   songs' counts are a record, not a to-do list. Songs with `# chords:` lines also get an off-chord
-  count, which is a report too.
+  count, which is a report too. A deliberate clash or off-chord note can be explained in the song
+  with an `# ok @<bar> <track> <note>: <reason>` line, which makes the checker count it as explained.
 - Don't put `share` (or other social-button words) in element ids or classes: content blockers such
   as uBlock Origin hide them, which hid the Share buttons in Firefox.
 - Wrap every `localStorage` call in `try`/`catch`, and make the app work without it. Keys start

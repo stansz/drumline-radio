@@ -64,6 +64,10 @@ built, and why if it is not a script.
   `npm run check:songs` then also counts long on-beat notes outside the bar's chord ("off-chord").
   Like clashes, that is a report: a held 9th or a suspension is fine if the chord symbol says so
   (`Dm9`, `Asus4`) or the commit explains it.
+- **Bar lengths outside 4/4.** A whole note is 3840 ticks, so a bar of time `n/d` is `3840 * n / d`
+  ticks. A 3/4 bar is 2880 ticks, filled by `/2.` (a dotted half), while `/2` is only two beats. A
+  6/8 bar is also 2880 ticks, felt as two dotted quarters (`/4.` each), and 12/8 is 5760. In a
+  script, pass `barTicks` to `sectionBuilder` so a wrong-length bar fails with its bar number.
 - **Repeated sections are copies.** In a hand-written song, a change to the hook has to be made in
   every copy of it. That is the main reason a song with repeats is built as a script (see
   "Pick how to build it").
@@ -144,9 +148,12 @@ depends on it.
 1. `npm test` passes. Never change notes just to make a test pass. For a song built by a script,
    that includes `tests/drift.test.ts`, which fails when the `.song` file doesn't match its script.
 2. `CHECK_DETAIL=1 npm run check:songs` lists every half-step clash between a pitched part (leads,
-   counter-lines, arpeggios, chords) and the pad or bass. Fix each one, or say in the commit why it
-   stays (a short passing note or a deliberate suspension is fine). A song with ten clashes is not
-   ready.
+   counter-lines, arpeggios, chords) and the pad or bass. Fix each one, or explain it in the song:
+   `# ok @<bar> <track> <note>: <reason>` on its own line marks a deliberate clash or off-chord note
+   as explained, so it no longer counts against the song (a short passing note or a deliberate
+   suspension is fine; the commit is no longer the only place to say why). One line explains every
+   clash and off-chord note of that pitch on that track in that bar, so a held note that clashes with
+   both the pad and the bass needs one line. A song with ten clashes is not ready.
 3. Before committing a new song, run `SIBLINGS=<style> npm run check:songs` and make sure it isn't
    a twin of another song in its style (same key, tempo, kit and bass).
 4. Check the balance with `npm run balance -- <song>` (see [tools/README.md](../tools/README.md)).

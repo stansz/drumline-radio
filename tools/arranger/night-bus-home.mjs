@@ -22,7 +22,7 @@
 //   +4 to +12 ticks behind, the stabs +8 to +16, the claps +6 to +12, and velocities vary.
 //   node tools/arranger/night-bus-home.mjs [outDir]
 import {
-  barLength, clampVelocity, durationText, FLATS, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  clampVelocity, durationText, FLATS, noteName, offsetText, outDir, R, repeatBar, saveSong,
   sectionBuilder, splitDuration, times, transpose,
 } from './lib.mjs';
 
@@ -381,7 +381,7 @@ const loop = (i) => LOOP[Math.floor(i / 2) % 4];
 const stabFig = (i) => (i % 2 ? STABS.B : STABS.A);
 
 const keys = ['lead', 'chops', 'keys', 'pad', 'bass', 'drums'];
-const { tracks, section, block } = sectionBuilder(keys);
+const { tracks, section, block } = sectionBuilder(keys, { barTicks: 3840 });
 // The vocal builds through the song: it starts as single eighth-note hits that punctuate the groove,
 // and each section lets the notes ring a little longer (`hold`, in sixteenths): hits, dotted eighth,
 // quarter, dotted, half, long, full. The last chorus's second half and the outro sing every note at
@@ -514,16 +514,6 @@ section('Outro', 8, {
   pad: times(8, (i) => padBar(loop(i), 78 - 2 * (i > 5 ? i - 5 : 0))),
   chops: [R, R, R, R, chopBar(loop(4), 74, 'full'), R, chopBar(loop(6), 68, 'full'), R],
 });
-
-// --- checks -----------------------------------------------------------------
-// Every bar must be exactly one 4/4 bar (3840 ticks). The builders guarantee it; this reads the
-// finished strings again so a hand-written bar can't slip past.
-for (const key of keys) {
-  tracks[key].forEach((bar, i) => {
-    const got = barLength(bar);
-    if (got !== 3840) throw new Error(`track ${key} bar ${i + 1} is ${got} ticks: ${bar}`);
-  });
-}
 
 const total = tracks.lead.length;
 const text = `# Night Bus Home, by MiMo v2.6 Pro, Claude and SZ. An original UK garage track for the Studio

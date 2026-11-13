@@ -8,6 +8,14 @@ once.
 Lines may end in `\n` or `\r\n`. A `#` at the start of a line or after whitespace begins a comment
 that runs to the end of the line. Blank lines are ignored.
 
+One comment has a meaning to the checker: a line `# ok @<bar> <track> <note>: <reason>` explains a
+deliberate half-step clash or off-chord note. `<bar>` is a bar number, `<track>` a track id, `<note>`
+a note name with an optional `#` or `b` (`D5`, `Eb4`, `F#3`), compared by pitch. Every clash or
+off-chord note in that bar, track and pitch counts as explained instead of as a problem, so one line
+covers a held note that clashes with both the pad and the bass; the rest of the line is the reason.
+`npm run check:songs` prints explained counts separately and lists an `# ok` line that matches nothing
+as unused. See [composing.md](composing.md#before-committing) for when to use one.
+
 ## The header
 
 The header is a list of `key: value` lines before the first `track` line. Both sides are trimmed.

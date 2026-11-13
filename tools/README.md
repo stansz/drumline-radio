@@ -77,8 +77,9 @@ song starts from a blank musical slate. Its exports, by group:
   `noteMidi`, `chordText`, `transpose`, `offsetText`, `noteText`, `clampVelocity`.
 - chords: `PITCH_CLASS`, `CHORD_QUALITY`, `parseChord`, `chordSpans`, `eachChord`.
 - bars: `R`, `times`, `repeatBar`, `repeatBars`, `cycle`, `entryVelocity`, `valueAt`, `barMarks`.
-- layout: `sectionBuilder` (with `label`, `exact`, and a section's `map` and `block`, plus the
-  `sections` list) and `formHeader`.
+- layout: `sectionBuilder` (with `label`, `exact`, `barTicks` — the length every stored non-rest
+  bar must be, which throws with the bar's number when wrong — and a section's own `barTicks`,
+  `map` and `block`, plus the `sections` list) and `formHeader`.
 - files: `outDir`, `saveSong`.
 
 Ride of the Valkyries and Midnight Arcade are hand-written. Edit their `.song` files directly.
@@ -238,7 +239,13 @@ also lists each song's length and any long note in a pitched part (every track e
 and drums) a semitone away from the pad or bass under them. That count is a report, not a failure:
 passing notes and a maj7 against its root are fine, but a new spike is worth a listen. Each clash
 line names its track, and the summary breaks the count down by track. Set `CHECK_DETAIL=1` to list
-every clash with its time, the track, note, and its length, and the pad or bass note under it. Songs
+every clash with its time, the track, note, and its length, and the pad or bass note under it. A
+deliberate clash or off-chord note can be explained in the song with a `# ok @<bar> <track> <note>:
+<reason>` comment line on its own line: every note whose bar, track id and pitch match one counts as
+explained (one line covers a held note that clashes with both the pad and the bass), printed as
+`(+N explained)` on the song's line instead of as a problem, and listed with its `ok: <reason>` in
+detail. With `CHECK_DETAIL=1`, an `# ok` line that matches nothing is listed as
+`unused ok @<bar> <track> <note>`. Explained and unused lines never fail the check. Songs
 that declare their progression in `# chords:` comment lines (one symbol per bar, cycling;
 `# chords @N:` changes from bar N, `-` is no chord) also get an off-chord count: long notes that
 start on a beat with a pitch outside the bar's chord. The supported qualities are major, `m`,

@@ -7,7 +7,7 @@
 // drop with the hook over everything, and an outro that cadences on F minor.
 //   node tools/arranger/riverfront.mjs [outDir]
 import {
-  barLength, chordText, FLATS, noteName, outDir, R, repeatBar, saveSong, sectionBuilder, times,
+  chordText, FLATS, noteName, outDir, R, repeatBar, saveSong, sectionBuilder, times,
 } from './lib.mjs';
 
 const out = outDir();
@@ -155,7 +155,7 @@ const pRide = (v) => {
 const pTom = (v) => `r/2 tl/8:${v + 6} tm/8:${v + 2} th/8:${v - 2} th/8:${v - 6}`;
 
 const keys = ['melody', 'stabs', 'pad', 'bass', 'drums', 'perc'];
-const { tracks, section, block } = sectionBuilder(keys);
+const { tracks, section, block } = sectionBuilder(keys, { barTicks: 3840 });
 
 // Intro: no kick. The pad swells in alone, then the counter-line enters over it with soft rims,
 // and a snare pickup leads into the kick.
@@ -333,15 +333,6 @@ section('Outro', 8, {
   pad: times(8, (i) => pad('padA', ch(128 + i), 54)),
   perc: [...times(4, (i) => pRim(66, i)), ...repeatBar(R, 4)],
 });
-
-// Every bar must be exactly one 4/4 bar (3840 ticks). Durations are written out in full above; the
-// checker here just makes sure of the arithmetic before the song file is written.
-for (const key of keys) {
-  tracks[key].forEach((bar, i) => {
-    const got = barLength(bar);
-    if (got !== 3840) throw new Error(`track ${key} bar ${i + 1} is ${got} ticks: ${bar}`);
-  });
-}
 
 const total = tracks.melody.length;
 const text = `# Riverfront, by MiMo v2.6 Pro and SZ. An original for the Techno style: warm chord stabs, a dark

@@ -9,7 +9,7 @@
 // theme, the ostinato figures, the voicings, the velocities, the microtiming - is written here.
 //   node tools/arranger/the-black-coach.mjs [outDir]
 import {
-  barLength, chordText, clampVelocity, formHeader, noteName, noteText, outDir, R, repeatBar, saveSong,
+  chordText, clampVelocity, formHeader, noteName, noteText, outDir, R, repeatBar, saveSong,
   sectionBuilder, MIXED,
 } from './lib.mjs';
 
@@ -208,7 +208,7 @@ const TRIO_B = [
 
 // ------------------------------------------------------------------------------------ assemble
 const KEYS = ['violins', 'horns', 'flute', 'pizz', 'harp', 'glock', 'pad', 'cellos', 'timpani'];
-const b = sectionBuilder(KEYS);
+const b = sectionBuilder(KEYS, { barTicks: BAR });
 
 // --- 1-8: intro. Timpani and pizzicato alone; the low strings and the pad creep in at bar 5.
 b.section(PLAN[0].name, 8, {
@@ -597,16 +597,6 @@ const TRACKS = [
   ['cellos', 'track cellos role=bass vol=0.5 pan=0'],
   ['timpani', 'track timpani role=drums vol=0.46 pan=-0.15'],
 ];
-
-// Every bar has to fill exactly one 3/4 bar, or the parser would reject the file and a wrong note
-// count would hide behind it.
-for (const key of KEYS) {
-  b.tracks[key].forEach((bar, index) => {
-    if (bar === R) return;
-    const ticks = barLength(bar, BAR);
-    if (ticks !== BAR) throw new Error(`${key}, bar ${index + 1}: ${ticks} ticks instead of ${BAR}: ${bar}`);
-  });
-}
 
 const text = `${HEADER_NOTE}
 #

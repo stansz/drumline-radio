@@ -12,7 +12,7 @@
 //   the echo layer), pad -> Dark pad, bass -> Sub bass, drums -> 909 kit. No inst= needed.
 //   node tools/arranger/fathom.mjs [outDir]
 import {
-  barLength, chordText, clampVelocity, durationText, FLATS, noteName, offsetText, outDir, R, repeatBar, saveSong,
+  chordText, clampVelocity, durationText, FLATS, noteName, offsetText, outDir, R, repeatBar, saveSong,
   sectionBuilder, times,
 } from './lib.mjs';
 
@@ -161,7 +161,7 @@ const bRoll = (i, vel, root = G1) =>
   grid(root, [0, 2, 4, 6, 8, 10, 12, 14].map((s, j) => [s, 1, [-2, -10, -4, -12, -1, -9, -3, -11][(j + i) % 8], (j % 2) * 5]), vel);
 
 const keys = ['stabs', 'echo', 'hang', 'sub', 'drums', 'hats', 'dub'];
-const { tracks, section, block } = sectionBuilder(keys);
+const { tracks, section, block } = sectionBuilder(keys, { barTicks: 3840 });
 
 // 1. Bars 1-16. Nothing but the chord at first: one stab, its fading repeats. Then the hiss of
 // hats, the sub drone and the pad swell come under it. No kick.
@@ -331,16 +331,6 @@ section('The stab alone', 8, {
 tracks.stabs = tracks.stabs.map((bar) =>
   bar.replace(/:(\d+)/g, (_, v) => `:${clampVelocity(Number(v) * 1.25)}`),
 );
-
-// --- checks -----------------------------------------------------------------
-// Every bar must be exactly one 4/4 bar (3840 ticks). The grid builder guarantees it; this reads
-// the finished strings again so a hand-written bar can't slip past.
-for (const key of keys) {
-  tracks[key].forEach((bar, i) => {
-    const got = barLength(bar);
-    if (got !== 3840) throw new Error(`track ${key} bar ${i + 1} is ${got} ticks: ${bar}`);
-  });
-}
 
 const total = tracks.stabs.length;
 const text = `# Fathom, by Qwen3.8 Flash and SZ. An original dub techno piece for the Techno style: one G minor

@@ -5,6 +5,8 @@
 // A song may declare its chord progression in `# chords:` comment lines (one symbol per bar,
 // cycling, `# chords @N:` to change from bar N); the checker then also counts long on-beat notes
 // outside the bar's chord ("off-chord"). That count is a report too, not a failure.
+// A song can explain a deliberate clash or off-chord note with a `# ok @<bar> <track> <note>: <reason>`
+// comment line on its own line, anywhere in the file; a matching one counts as explained.
 //   npm run check:songs                      (checks src/songs)
 //   CHECK_DIR=out npm run check:songs        (checks another folder, e.g. arranger output)
 //   SONG=wayfarers-rest npm run check:songs  (checks one song by name, file name, or path)
@@ -15,8 +17,9 @@ import { expect, it } from 'vitest';
 import { STYLE_DEFS, resolvePatch, withBankInstruments } from '../../src/audio/styles';
 import { chordTones, parseChordMap } from '../../src/music/chords';
 import type { ChordMap } from '../../src/music/chords';
+import { parsePitch } from '../../src/music/pitch';
 import { parseSong, TICKS_PER_WHOLE } from '../../src/music/song';
-import { buildTimeline, tickToSeconds } from '../../src/music/timing';
+import { barAt, buildTimeline, secondsToTick, tickToSeconds } from '../../src/music/timing';
 
 const DIR = process.env.CHECK_DIR ?? 'src/songs';
 // SONG narrows the check to one song. A name or file name is looked up in DIR; a path brings its
@@ -32,6 +35,20 @@ const SIBLINGS = process.env.SIBLINGS;
 const siblingRows: string[] = [];
 const NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 const noteName = (n: number) => `${NAMES[n % 12]}${Math.floor(n / 12) - 1}`;
+// A song explains a deliberate clash or off-chord note with `# ok @<bar> <track> <note>: <reason>`,
+// on its own line anywhere in the file. A counted note whose bar, track id and pitch match one of
+// these lines counts as explained instead; the line is then no longer "unused".
+const OK_LINE = /^#\s*ok\s+@(\d+)\s+(\S+)\s+([A-G](?:#|b)?[0-8])\s*:\s*(.*)$/gm;
+interface OkLine { bar: number; track: string; note: string; midi: number; reason: string; used: boolean; }
+function parseOkLines(text: string): OkLine[] {
+  return [...text.matchAll(OK_LINE)].flatMap((match) => {
+    const midi = parsePitch(match[3]);
+    return midi === null ? [] : [{
+      bar: Number(match[1]), track: match[2], note: match[3], midi,
+      reason: match[4].trim(), used: false,
+    }];
+  });
+}
 
 it(`songs in ${FOLDER} parse; clash report`, () => {
   const lines: string[] = [];
@@ -58,6 +75,13 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     }
     const song = result.song;
     const timeline = buildTimeline(song);
+    const okLines = parseOkLines(text);
+    // A matching `# ok` line explains every counted note in its bar, on its track, at its pitch.
+    const explain = (bar: number, track: number, pitch: number): OkLine | undefined => {
+      const found = okLines.find((ok) => ok.bar === bar && ok.track === song.tracks[track].id && ok.midi === pitch);
+      if (found) found.used = true;
+      return found;
+    };
     // Every pitched part except the pad and bass: any track whose role is not pad, bass, or drums
     // (lead, lead2, counter, arp, chords, and the melody track whatever its role).
     const checked = new Set(
@@ -70,6 +94,7 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     const details: string[] = [];
     const perTrack = new Map<number, number>();
     let clashes = 0;
+    let explainedClashes = 0;
     for (const note of timeline.notes) {
       if (!checked.has(note.track) || note.duration < MIN_SECONDS) continue;
       for (const other of timeline.notes) {
@@ -78,12 +103,18 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
         for (const a of note.pitches) {
           for (const b of other.pitches) {
             if ((((a - b) % 12) + 12) % 12 !== 1) continue;
-            clashes += 1;
-            perTrack.set(note.track, (perTrack.get(note.track) ?? 0) + 1);
-            if (where.length < 3) where.push(`${note.start.toFixed(1)}s`);
+            const bar = barAt(song, secondsToTick(song, note.start)).number;
+            const ok = explain(bar, note.track, a);
+            if (ok) {
+              explainedClashes += 1;
+            } else {
+              clashes += 1;
+              perTrack.set(note.track, (perTrack.get(note.track) ?? 0) + 1);
+              if (where.length < 3) where.push(`${note.start.toFixed(1)}s`);
+            }
             if (DETAIL) {
               details.push(
-                `  ${note.start.toFixed(1)}s ${song.tracks[note.track].id} ${noteName(a)} (${note.duration.toFixed(2)}s) over ${song.tracks[other.track].id} ${noteName(b)}`,
+                `  ${note.start.toFixed(1)}s ${song.tracks[note.track].id} ${noteName(a)} (${note.duration.toFixed(2)}s) over ${song.tracks[other.track].id} ${noteName(b)}${ok ? ` ok: ${ok.reason}` : ''}`,
               );
             }
           }
@@ -101,6 +132,7 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     const offDetails: string[] = [];
     const offPerTrack = new Map<number, number>();
     let offChord = 0;
+    let explainedOff = 0;
     if (chordMap) {
       for (let trackIndex = 0; trackIndex < song.tracks.length; trackIndex++) {
         const track = song.tracks[trackIndex];
@@ -126,12 +158,16 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
             (pitch) => !tones.includes(((pitch % 12) + 12) % 12),
           );
           if (offending === undefined) continue;
-          offChord += 1;
-          offPerTrack.set(trackIndex, (offPerTrack.get(trackIndex) ?? 0) + 1);
+          const ok = explain(bar.number, trackIndex, offending);
+          if (ok) explainedOff += 1;
+          else {
+            offChord += 1;
+            offPerTrack.set(trackIndex, (offPerTrack.get(trackIndex) ?? 0) + 1);
+          }
           if (DETAIL) {
             const start = tickToSeconds(song, note.tick);
             offDetails.push(
-              `  off-chord bar ${bar.number} (${chord}) ${track.id} ${noteName(offending)} (${length.toFixed(2)}s) at ${start.toFixed(1)}s`,
+              `  off-chord bar ${bar.number} (${chord}) ${track.id} ${noteName(offending)} (${length.toFixed(2)}s) at ${start.toFixed(1)}s${ok ? ` ok: ${ok.reason}` : ''}`,
             );
           }
         }
@@ -152,12 +188,14 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     const breakdown = [...perTrack.entries()]
       .sort(([x], [y]) => x - y)
       .map(([track, count]) => `${song.tracks[track].id} ${count}`);
-    const clashText = breakdown.length ? `${clashes} clashes [${breakdown.join(', ')}]` : `${clashes} clashes`;
+    const clashCount = `${clashes} clashes${explainedClashes ? ` (+${explainedClashes} explained)` : ''}`;
+    const clashText = breakdown.length ? `${clashCount} [${breakdown.join(', ')}]` : clashCount;
     const offBreakdown = [...offPerTrack.entries()]
       .sort(([x], [y]) => x - y)
       .map(([track, count]) => `${song.tracks[track].id} ${count}`);
+    const offCount = `${offChord} off-chord${explainedOff ? ` (+${explainedOff} explained)` : ''}`;
     const offText = chordMap
-      ? ` · ${offChord} off-chord${offBreakdown.length ? ` [${offBreakdown.join(', ')}]` : ''}`
+      ? ` · ${offCount}${offBreakdown.length ? ` [${offBreakdown.join(', ')}]` : ''}`
       : '';
     const errorText = chordError ? ` CHORD MAP ERROR ${chordError}` : '';
     lines.push(
@@ -165,6 +203,11 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
     );
     lines.push(...details);
     lines.push(...offDetails);
+    if (DETAIL) {
+      for (const ok of okLines) {
+        if (!ok.used) lines.push(`  unused ok @${ok.bar} ${ok.track} ${ok.note}`);
+      }
+    }
   }
   if (SIBLINGS) {
     lines.push('');

@@ -5,7 +5,7 @@
 // nothing is borrowed.
 //   node tools/arranger/the-silent-keep.mjs [outDir]
 import {
-  barLength, chordText, MIXED, noteName, outDir, R, saveSong, sectionBuilder,
+  chordText, MIXED, noteName, outDir, R, saveSong, sectionBuilder,
 } from './lib.mjs';
 
 const out = outDir();
@@ -321,11 +321,10 @@ const keys = ['clean', 'lead', 'harmony', 'cello', 'piano', 'strings', 'chugs', 
 const builder = sectionBuilder(keys, { label: (name, start, end) => `${name} (bars ${start}-${end})` });
 const { tracks, block } = builder;
 const form = builder.sections;
-const times = [];
 
 function section(name, n, time, parts) {
-  for (let i = 0; i < n; i++) times.push(time);
-  builder.section(name, n, parts);
+  const [num, den] = time.split('/').map(Number);
+  builder.section(name, n, parts, { barTicks: (num * 3840) / den });
 }
 
 const theme = (bars, v, off) => bars.map((bar, i) => humanize(bar, { vel: v + (i >= 8 ? 3 : 0), off, pattern: [3, -3, 2, -4, 4, -2, 1, -5] }));
@@ -607,15 +606,6 @@ section('Outro: the last E minor chord', 2, '4/4', {
 tracks.strings = tracks.strings.map((bar) =>
   bar.replace(/:(\d+)/g, (_, v) => `:${Math.min(110, Math.round(Number(v) * 1.6))}`),
 );
-
-// Validate every bar before writing, so a bad duration fails loudly.
-for (const key of Object.keys(tracks)) {
-  tracks[key].forEach((bar, i) => {
-    const want = (Number(times[i].split('/')[0]) * 3840) / Number(times[i].split('/')[1]);
-    const got = barLength(bar, want);
-    if (got !== want) throw new Error(`track ${key} bar ${i + 1} (${times[i]}) is ${got} ticks, expected ${want}: ${bar}`);
-  });
-}
 
 const total = tracks.lead.length;
 if (total !== 194) throw new Error(`expected 194 bars, got ${total}`);

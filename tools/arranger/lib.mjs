@@ -42,12 +42,14 @@ export function writeBlock(bars, marks = [], { perRow = 4, first = null, collaps
   return lines.join('\n');
 }
 
-// The length in ticks of one bar string. 'R' and null count as a whole bar.
+// The length in ticks of one bar string. 'R' and null count as a whole bar; velocity markings do
+// not add length.
 export function barLength(bar, wholeBar = 3840) {
   if (bar === 'R' || bar === null) return wholeBar;
   let sum = 0;
   const tokens = bar.match(/\[[^\]]*\][^\s]*|[^\s]+/g) ?? [];
   for (const token of tokens) {
+    if (/^v=\d+$/.test(token)) continue;
     const m = token.match(/\/(\d+)(\.\.|\.|t)?/);
     if (!m) throw new Error(`no duration in token ${token}`);
     const n = Number(m[1]);
@@ -208,13 +210,16 @@ export function clampVelocity(v, max = 127) {
 // section. `keys` names the tracks; `section(name, n, parts)` adds n bars, resting where a part has
 // no bar. A `label` names the mark from the section's 1-based start and end bars; `exact` requires
 // every part it is given to supply exactly n bars; `map` reworks each bar before it is stored.
-export function sectionBuilder(keys, { label, exact = false } = {}) {
+// `barTicks`, given to the builder or to one section, makes every stored non-rest bar that many
+// ticks or the section throws with the bar's number; without it no bar length is checked.
+export function sectionBuilder(keys, { label, exact = false, barTicks } = {}) {
   const tracks = Object.fromEntries(keys.map((k) => [k, []]));
   const marks = [];
   const sections = [];
-  function section(name, n, parts, { map } = {}) {
+  function section(name, n, parts, { map, barTicks: sectionBarTicks } = {}) {
     const start = tracks[keys[0]].length + 1;
     const end = start + n - 1;
+    const want = sectionBarTicks ?? barTicks;
     marks.push([start - 1, label ? label(name, start, end) : name]);
     sections.push({ name, start, end });
     for (const key of keys) {
@@ -222,8 +227,12 @@ export function sectionBuilder(keys, { label, exact = false } = {}) {
       if (list.length > n) throw new Error(`${name}: ${key} has ${list.length} bars, more than ${n}`);
       if (exact && parts[key] !== undefined && list.length !== n) throw new Error(`${name}: ${key} has ${list.length} bars`);
       for (let i = 0; i < n; i += 1) {
-        const bar = list[i] ?? R;
-        tracks[key].push(map ? map(bar, key) : bar);
+        const bar = map ? map(list[i] ?? R, key) : list[i] ?? R;
+        if (want !== undefined && bar !== R) {
+          const got = barLength(bar, want);
+          if (got !== want) throw new Error(`${name}: ${key} bar ${start + i} is ${got} ticks, not ${want}: ${bar}`);
+        }
+        tracks[key].push(bar);
       }
     }
   }
