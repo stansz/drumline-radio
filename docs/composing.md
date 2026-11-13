@@ -17,10 +17,40 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
   Shortwave first came out with Third Rail's key, tempo, 64-bar form, boom-bap drums and nearly the
   same hook chords, and had to be reworked. Two songs in one style should not be twins.
 - **Pick a form that fits the idea,** not a default verse/hook/verse/hook. A song can be a loop
-  (Last Stop), a club track with drops (Night Shift), or a classical form (Lantern Ward). Hand-write
-  it, or use the arranger and `arrangeForm()`; see [tools/README.md](../tools/README.md).
+  (Last Stop), a club track with drops (Night Shift), or a classical form (Lantern Ward). Then pick
+  how to build it (below).
 - **The user's taste so far:** simpler and grittier over jazzy in Lo-fi; character over realism;
   bass parts that still hit hard when the song is remixed into Techno.
+
+## Pick how to build it
+
+A song is built one of three ways. Which one is a practical choice, not a musical one: all three
+produce the same kind of `.song` file, and every musical decision is yours in each. Go down this
+list and take the first that fits.
+
+1. **Its own script (the default).** Write `tools/arranger/<song>.mjs`, a script that writes
+   `src/songs/<song>.song`. Use it for every new song unless 2 or 3 below clearly fits better. A
+   script states the chords once, builds each repeated section from one definition, and can be
+   reworked later by changing one line instead of every copy. Half the originals are built this
+   way (Night Shift, Riverfront, Sunliner, Velvet Freeway, Night Bus Home and more).
+   - Start the file from `tools/arranger/lib.mjs`, which does the plumbing: note names, chord
+     symbols, writing bars and sections, saving the file. `tools/README.md` lists what it has.
+   - Write every musical choice fresh in your script: melody, chords, voicings, grooves, drum and
+     stab patterns, velocities. Read two or three existing scripts to see how one is laid out, but
+     never copy one as a starting point; that is how one song's hook and groove end up in the next.
+   - If your script needs a plumbing helper that another script already has, move it into
+     `lib.mjs` in the same change, as AGENTS.md says. Never move musical choices there.
+   - Add the script to `tests/drift.test.ts` and give it a paragraph in `tools/README.md`. Edit
+     the script and regenerate, never the generated `.song` file.
+2. **A recipe for the shared arranger,** in `tools/arranger/songs.mjs`. Only for a public-domain
+   tune whose melody, chords and form the arranger already handles, like the carols and most of the
+   classics. `arrangeForm()` adds verse/chorus/breakdown shape; see
+   [tools/README.md](../tools/README.md).
+3. **A hand-written `.song` file.** Only when a script would be overkill: a short or
+   through-composed piece with no repeated sections.
+
+Say in the song's first comment and in its [model-notes.md](model-notes.md) entry which way it was
+built, and why if it is not a script.
 
 ## Writing the parts
 
@@ -34,8 +64,8 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
   Like clashes, that is a report: a held 9th or a suspension is fine if the chord symbol says so
   (`Dm9`, `Asus4`) or the commit explains it.
 - **Repeated sections are copies.** In a hand-written song, a change to the hook has to be made in
-  every copy of it. When a song has many repeats and will keep changing, write it as a script in
-  `tools/arranger/` (like `last-stop.mjs`) and add it to `tests/drift.test.ts`.
+  every copy of it. That is the main reason a song with repeats is built as a script (see
+  "Pick how to build it").
 - **Give each part its own register and rhythm.** Lead on top, chords in the middle, bass at the
   bottom; a counter-line answers the lead in its gaps instead of doubling it.
 - **Use micro-timing for feel, sparingly** (see [song-format.md](song-format.md#micro-timing)).
@@ -110,7 +140,8 @@ depends on it.
 
 ## Before committing
 
-1. `npm test` passes. Never change notes just to make a test pass.
+1. `npm test` passes. Never change notes just to make a test pass. For a song built by a script,
+   that includes `tests/drift.test.ts`, which fails when the `.song` file doesn't match its script.
 2. `CHECK_DETAIL=1 npm run check:songs` lists every half-step clash between a pitched part (leads,
    counter-lines, arpeggios, chords) and the pad or bass. Fix each one, or say in the commit why it
    stays (a short passing note or a deliberate suspension is fine). A song with ten clashes is not

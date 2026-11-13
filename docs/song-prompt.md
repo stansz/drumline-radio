@@ -42,10 +42,15 @@ Rules:
 - Credit yourself by your own model name in the composer field, the file's first comment,
   and the README entry (for example "<your name> & SZ"). If you are not sure of your exact
   model name, say so instead of guessing.
-- Add the song to README.md. If a script in tools/arranger/ generates the song, add it to
-  tests/drift.test.ts.
-- Don't change shared code (styles, instruments, engine, arranger). If you add a test for
-  this song, it must check only this song's own notes, form, and header.
+- Build it the way docs/composing.md's "Pick how to build it" says: by default as its own
+  script, tools/arranger/<song>.mjs, started from tools/arranger/lib.mjs (never from another
+  song's script) and added to tests/drift.test.ts. Every musical choice goes in your script.
+  Say which way you built it, and why if it is not a script.
+- Add the song to README.md.
+- Don't change shared code (styles, instruments, engine, arranger). The one exception is
+  tools/arranger/lib.mjs: a plumbing helper your script needs that another script already has
+  moves there, never a musical choice. If you add a test for this song, it must check only this
+  song's own notes, form, and header.
 - Run npm test and npm run check:songs; both must pass. Aim for 0 clashes; explain any that
   remain as deliberate (a passing note, a suspension, a jazz voicing). Check the balance with
   npm run balance -- <song> (one command, the whole song, no server to manage) and fix every

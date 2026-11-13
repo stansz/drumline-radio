@@ -56,8 +56,10 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
 - A song is hidden with a `hidden: true` header, set in its recipe when it has one. Hidden songs
   are still parsed and checked, but they stay out of the library.
 - The arranger is a starting point, not a rule. Fit each song's form, grooves, and textures to its
-  genre and mood (`arrangeForm()` for verse/chorus/breakdown shape). Hand-write a song when the
-  arranger can't express it, and extend the arranger with opt-in options when it falls short.
+  genre and mood (`arrangeForm()` for verse/chorus/breakdown shape). A new song is built as its own
+  script in `tools/arranger/` by default, as a recipe or a hand-written file only when
+  [docs/composing.md](docs/composing.md) ("Pick how to build it") says so. Extend the arranger
+  with opt-in options when it falls short.
 - Songs are public-domain melodies (composer long dead and published before 1930, or traditional)
   arranged by SZ and AI, or their own originals. Never add copyrighted songs. Credit every
   public-domain piece in `README.md`.
