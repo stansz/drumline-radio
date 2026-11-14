@@ -179,11 +179,12 @@ the cello figures) from a small table keyed by chord symbol, and builds the 168 
 sections that name what they are - intro, two statements of the theme, four development sections,
 the trio, the build, the tutti reprise and the coda. Each is in `tests/drift.test.ts`.
 
-The Gilded Hour has its own script, `arranger/the-gilded-hour.mjs`: a slow orchestral concert waltz
-(a valse lente) in A-flat major at 88 BPM in 3/4. Its 136 bars come from one line of chord symbols
-per section; from each bar's chord the script derives the low strings' root, the pad's open
-root-fifth-octave, the rolled harp chords and the pizzicato's third and fifth, while the themes, the
-horn answer and the Viennese lilt are written by hand.
+The Gilded Hour has its own script, `arranger/the-gilded-hour.mjs`: a slow salon waltz
+(a valse lente) in A-flat major at 88 BPM in 3/4, for piano, solo cello, string pad, choir and
+plucked double bass. Its 136 bars come from one line of chord symbols per section; from each bar's
+chord the script derives the double bass's root, the pad's open root-fifth-octave, the piano's
+left-hand triads low on beat two and an octave up on beat three, and the voices' chord tones, while
+the stepwise themes, the cello's answers and the Viennese lilt are written by hand.
 
 ```bash
 node tools/arranger/the-gilded-hour.mjs tmp/waltz
@@ -261,7 +262,9 @@ that declare their progression in `# chords:` comment lines (one symbol per bar,
 start on a beat with a pitch outside the bar's chord. The supported qualities are major, `m`,
 `dim`, `aug`, `sus2`, `sus4`/`sus`, `7`, `maj7`, `m7`, `m7b5`, `dim7`, `6`, `m6`, `add9`, `madd9`,
 `9`, `m9`, and `maj9`, with an optional `/` bass note. That count is a report too. `SIBLINGS=techno
-npm run check:songs` lists each song in a style with its key, tempo, bars, length, kit and bass.
+npm run check:songs` lists each song in a style with its key, tempo, bars, length, kit, bass, its
+lead instrument and every part it uses (`lead:` and the deduplicated `parts:` patch names), so a new
+song can be kept from taking the same lineup.
 
 ## Song report
 

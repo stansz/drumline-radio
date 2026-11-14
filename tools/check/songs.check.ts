@@ -30,7 +30,8 @@ const NAME = SONG ? basename(SONG).replace(/\.song$/, '') : null;
 const MIN_SECONDS = 0.3;
 // CHECK_DETAIL=1 lists every clash: time, track, note, its length, and the pad or bass note under it.
 const DETAIL = Boolean(process.env.CHECK_DETAIL);
-// SIBLINGS=<style> adds a report of every song in that style: key, tempo, bars, length, kit and bass.
+// SIBLINGS=<style> adds a report of every song in that style: key, tempo, bars, length, kit, bass,
+// lead instrument and every part it uses (the resolved patch names, without duplicates).
 const SIBLINGS = process.env.SIBLINGS;
 const siblingRows: string[] = [];
 const NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
@@ -181,8 +182,13 @@ it(`songs in ${FOLDER} parse; clash report`, () => {
         const k = withBank.tracks.findIndex((t) => t.role === role);
         return k < 0 ? '—' : resolvePatch(STYLE_DEFS[SIBLINGS], withBank.tracks[k]).name;
       };
+      const firstLead = withBank.tracks.find((t) => t.role === 'lead');
+      const leadName = firstLead ? resolvePatch(STYLE_DEFS[SIBLINGS], firstLead).name : '—';
+      const parts = [...new Set(withBank.tracks.map(
+        (t) => resolvePatch(STYLE_DEFS[SIBLINGS], t).name,
+      ))].join(', ');
       siblingRows.push(
-        `${file.padEnd(30)} ${song.meta.key.padEnd(5)} ${`${song.meta.tempo} BPM`.padEnd(8)} ${String(song.bars.length).padStart(4)}  ${mins.padStart(5)}  kit: ${patchName('drums').padEnd(18)}  bass: ${patchName('bass').padEnd(18)}${song.meta.hidden ? '  hidden' : ''}`,
+        `${file.padEnd(30)} ${song.meta.key.padEnd(5)} ${`${song.meta.tempo} BPM`.padEnd(8)} ${String(song.bars.length).padStart(4)}  ${mins.padStart(5)}  kit: ${patchName('drums').padEnd(18)}  bass: ${patchName('bass').padEnd(18)}  lead: ${leadName.padEnd(18)}  parts: ${parts}${song.meta.hidden ? '  hidden' : ''}`,
       );
     }
     const breakdown = [...perTrack.entries()]

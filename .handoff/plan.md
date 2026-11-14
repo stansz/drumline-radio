@@ -1,114 +1,137 @@
 ## Goal
 
-Compose and add one new original song to Drumline Radio: a slow, bittersweet orchestral concert
-waltz (valse lente), 4 to 5 minutes long, built by its own generator script on
-`tools/arranger/lib.mjs`, passing every check below. You are the composer: every musical choice
-is yours, within the brief.
+Two changes, done in order:
+
+A. Re-orchestrate The Gilded Hour (`tools/arranger/the-gilded-hour.mjs`) so it stops sounding like
+   the other Orchestral originals, which all use strings lead, horns, harp, string pad, cellos,
+   bells or glockenspiel and timpani. It becomes a piano-led salon waltz with a solo cello, and its
+   two themes become mostly stepwise. Form, key, tempo, harmony and tempo ramps stay.
+
+B. Make that kind of sameness visible before a song is written: `SIBLINGS=<style> npm run
+   check:songs` also lists each song's lead instrument and its parts, and `docs/composing.md` and
+   `docs/song-prompt.md` ask for a lineup, form shape and melodic motion that differ from the
+   style's existing songs.
 
 ## Files to touch
 
-- `tools/arranger/<slug>.mjs` (new; `<slug>` is your song's title in kebab case)
-- `src/songs/<slug>.song` (new; written only by running your script, never by hand)
-- `tests/drift.test.ts` (add your script to `SCRIPT`)
-- `README.md` (the originals list)
-- `tools/README.md` (a short paragraph on your script, next to the other own-script songs)
-- `docs/model-notes.md` (an entry for this song, in the form of the existing entries)
-- `tools/arranger/lib.mjs` only if step 4's plumbing rule requires it
+- `tools/arranger/the-gilded-hour.mjs`
+- `src/songs/the-gilded-hour.song` (only by running the script)
+- `tools/check/songs.check.ts`
+- `docs/composing.md`, `docs/song-prompt.md`
+- `README.md`, `tools/README.md`, `docs/model-notes.md`
 - `.handoff/report.md`
 
 ## Steps
 
 1. Run `npm ci`. Create the browser wrapper the balance check needs as root:
    `printf '#!/bin/sh\nexec /usr/lib64/chromium-browser/chromium-browser --no-sandbox "$@"\n' > /tmp/chromium-nosandbox && chmod +x /tmp/chromium-nosandbox`.
-   Every `npm run balance` below runs as `EDGE_PATH=/tmp/chromium-nosandbox npm run balance -- <slug>`.
+   Balance runs as `EDGE_PATH=/tmp/chromium-nosandbox npm run balance -- the-gilded-hour`.
 
-2. Read, in full: `AGENTS.md`, `docs/composing.md` (including "Pick how to build it" and "Before
-   committing"), `docs/song-format.md`, `docs/sound.md` (the Orchestral section and the instrument
-   bank), `tools/README.md` (the `lib.mjs` list and the generator check), and
-   `src/audio/instruments.ts` (the comment on each instrument). Read two existing scripts for layout
-   only, for example `tools/arranger/the-black-coach.mjs` and `tools/arranger/riverfront.mjs`; do not
-   copy code or musical material from them.
+2. Before changing anything, save `SONG=src/songs/the-gilded-hour.song npm run report:song` to
+   `/tmp/report-before.txt` and `EDGE_PATH=/tmp/chromium-nosandbox npm run balance -- the-gilded-hour`
+   to `/tmp/balance-before.txt`.
 
-3. The brief:
-   - A slow, bittersweet orchestral concert waltz, a valse lente: wistful rather than ballroom,
-     in the spirit of the slower waltzes of Tchaikovsky or Khachaturian. That is a reference for
-     style and feel only; the melody, harmony and every figure are your own original material.
-   - `style: orchestral`, `category: originals`, `time: 3/4`, tempo 88, `key: A-flat major` with a
-     middle section in F minor. Length 4:00 to 5:00 (about 135 to 160 bars at 88).
-   - The waltz pulse: low strings (`role=bass`) on beat 1, harp (`role=chords`) or pizzicato
-     (`inst=pizzicato`) on beats 2 and 3. Give it the Viennese lilt: beat 2 slightly early
-     (a small negative tick offset) and beat 3 on time or slightly late, varied, not constant.
-   - The strings (`role=lead`) carry the main waltz theme; the horns (`role=lead2`) answer it with a
-     counter-melody; the concert flute (`role=counter`) takes the second theme. A string pad
-     (`role=pad`) under it all. Optionally one soft choir lift near the end (`inst=bank:choir-ooh`);
-     glockenspiel (`role=arp`) only as a touch of colour. No oboe, no tubular bells.
-   - Form: a short intro that sets up the pulse; waltz theme A on the strings; theme A again,
-     fuller, with the horns answering; a contrasting, lighter theme B on the flute; a darker middle
-     section in F minor; a slow build back; theme A in full; a coda that slows with tempo ramps
-     (`@bars <from>-<to> tempo=88..<lower>`) and ends on a soft final chord. Change something every
-     8 or 16 bars. Use the tempo ramps sparingly elsewhere too (a breath at the end of a long
-     phrase is fine).
-   - Make it feel human: uneven velocities, small microtiming on the melody and the horns, phrasing
-     that swells and falls. Keep registers apart: low strings low, harp and pad in the middle, horns
-     middle-upper, strings and flute on top. The lead sits on top; the bass never louder than the
-     lead; the pad and harp audible, not buried.
-   - The Orchestral style already has The Cartographer (A major, 96 BPM, 4/4 overture), Lantern Ward
-     (D minor, 76 BPM, 6/8 nocturne, oboe-led) and The Black Coach (G minor, 144 BPM, 3/4 scherzo).
-     This song must sound clearly different from all three: slow, lyrical, major-key, string-led.
+### A. The Gilded Hour
 
-4. Build it as its own script, `tools/arranger/<slug>.mjs`:
-   - Start the file from `tools/arranger/lib.mjs` (import what you need; it does note names,
-     chord symbols, bars, sections, note text and saving). Every musical choice is written fresh in
-     your script.
-   - Use `sectionBuilder(keys, { barTicks: 2880 })` so every 3/4 bar is checked.
-   - Write the chords once, and put `# chords:` lines in the song header (`formHeader` can build
-     them), so `check:songs` counts off-chord notes.
-   - Start the song file with a comment saying what the song is, who wrote it and how it is built,
-     and give it an `about:` line.
-   - If your script needs a plumbing helper that another script already has, move it into
-     `lib.mjs` in this change (never a musical choice), and keep every other song byte-identical.
-   - Run it with `node tools/arranger/<slug>.mjs` to write `src/songs/<slug>.song`. Add the script
-     to `SCRIPT` in `tests/drift.test.ts`.
+3. Read `AGENTS.md`, `docs/composing.md`, `docs/song-format.md`, the Orchestral and Cinematic
+   sections of `docs/sound.md`, and the comments on these bank instruments in
+   `src/audio/instruments.ts`: `grand-piano`, `cello`, `string-section`, `string-bass`, `music-box`,
+   `choir-ooh`.
 
-5. Credit: `composer:` is your own model name and SZ, e.g. `DeepSeek V4 & SZ`, the same names in
-   the file's first comment, the README entry and the model-notes entry. If you do not know your
-   exact model name, write `DeepSeek & SZ` and say in the report that the exact version is unknown;
-   never guess a version.
+4. Keep: the 136-bar form and its section names, `key: A-flat major` with the F minor middle,
+   `tempo: 88`, `time: 3/4`, the chord of every bar (the `# chords:` lines), every `@bars` tempo
+   ramp, the title, `composer: DeepSeek & SZ` and the `about:` line's facts that stay true.
 
-6. Checks, fixing the song (in your script, then regenerate) until all pass:
-   - `npm test` passes.
-   - `CHECK_DETAIL=1 SONG=<slug> npm run check:songs`: aim for 0 clashes and 0 off-chord. Fix each
-     one, or, for a deliberate one (a suspension, an appoggiatura), explain it in the song with an
-     `# ok @<bar> <track> <note>: <reason>` line written by your script.
-   - `SIBLINGS=orchestral npm run check:songs`: not a twin of the three songs above.
-   - `npm run check:generators` prints `No copies found.`
-   - `npm run balance -- <slug>` (with the `EDGE_PATH` from step 1) prints `No flags.` Fix flags as
-     `docs/composing.md` step 4 says (track `vol=`, or velocities for a flag in only some bars).
-     Run renders one at a time.
+5. The new lineup, exactly these tracks in this order, and no others (the song's `style:` stays
+   `orchestral`; `inst=bank:` keeps each sound in every remix):
+   - `track piano role=lead inst=bank:grand-piano`: the right hand, which sings both themes as a
+     single melodic line (no chords in this track).
+   - `track waltz role=chords inst=bank:grand-piano`: the piano's left-hand chords on beats 2 and 3
+     of every waltz bar, keeping the Viennese lilt the song has now (beat 2 early by a varied small
+     negative offset, beat 3 on time or a little late).
+   - `track cello role=lead2 inst=bank:cello`: the solo cello. It answers the piano in theme A's
+     rests, takes theme B (bars 41-60) with the piano accompanying, and carries the F minor middle
+     (bars 61-76).
+   - `track strings role=pad inst=bank:string-section`: sustained chords, resting in at least the
+     intro's first 4 bars and in theme B, so it is not under the whole song.
+   - `track choir role=pad inst=bank:choir-ooh`: the one soft lift near the end, where it is now.
+   - `track musicbox role=counter inst=bank:music-box`: a few notes of colour in the intro and the
+     coda only.
+   - `track bass role=bass inst=bank:string-bass`: the plucked double bass on beat 1 of every waltz
+     bar (the "oom"), resting where the texture thins.
+   Remove the violins, horns, flute, harp, pizzicato, glockenspiel and timpani tracks and the
+   `vol@` ramps that belonged to them.
 
-7. Docs: the README entry (a few lines on the song, in the style of its neighbours), a
-   `tools/README.md` paragraph on the script, and a `docs/model-notes.md` entry saying how it was
-   built and what the checks printed.
+6. Rewrite theme A and theme B so they are mostly stepwise and singable: neighbouring melody notes
+   a second apart most of the time, leaps kept for the high point of a phrase and its turn. Keep
+   each phrase's length, its cadence points and the chord of every bar. Keep the melody in the
+   piano's singing register (about C4-C6). The cello's lines follow the same principle.
 
-8. In `.handoff/report.md`, besides the usual: the title, slug, length, bar count, the form as a
-   table of bar ranges, the final output of `SONG=<slug> npm run check:songs` and of the balance
-   check, and anything you would improve in the tooling or docs.
+7. Mix it: run the balance check and fix every flag through the tracks' `vol=` and velocities, as
+   `docs/composing.md` step 4 says. Do not raise the music box above "colour"; its role is `counter`
+   so the arp rule does not apply to it.
+
+8. Update the song file's first comment (how it is built and orchestrated), the README entry, the
+   `tools/README.md` paragraph about the script, and add a dated "Reworked" note to The Gilded
+   Hour's entry in `docs/model-notes.md`: re-orchestrated for piano, cello and strings and the
+   themes made stepwise, because it sounded like the other Orchestral originals.
+
+### B. Make sameness visible
+
+9. `tools/check/songs.check.ts`, the `SIBLINGS` report: after the existing kit and bass columns,
+   add `lead: <name>` (the resolved patch name of the first `lead` track, `—` when there is none)
+   and `parts: <names>` (the resolved patch names of every track, in track order, without
+   duplicates, joined with `, `), resolved with the same `resolvePatch` call the kit and bass
+   columns use. Update the comment that describes the report. Nothing else in the check changes.
+
+10. `docs/composing.md`, "Before writing": change the "make the new one different on paper" bullet
+    so it lists key, tempo, form, drum feel, the lead instrument and the lineup, the build-up shape
+    (the order in which parts enter and the sections grow), and the melody's motion (the share of
+    steps and leaps that `npm run report:song` prints). Add that a style's role defaults give every
+    song in it the same sound, so a new song picks at least its lead and one other main part from
+    outside what its style-mates use (`SIBLINGS=<style> npm run check:songs` lists them), with
+    `inst=` or `inst=bank:`. Add that a singable melody is mostly stepwise, with leaps for emphasis,
+    and that melodies built from chord tones come out leap-heavy and sound alike.
+
+11. `docs/song-prompt.md`: in the brief, change the instruments line to
+    `- <Lead instrument and lineup, chosen to differ from the existing songs in this style: run
+    SIBLINGS=<style> npm run check:songs and name what they use>.` and add after the form line
+    `- <How the form builds, different from the existing songs in this style>.` In the
+    "Before filling it in" paragraph, replace the grep command with
+    `SIBLINGS=<style> npm run check:songs`, which lists the style's songs with key, tempo, kit,
+    bass, lead and parts.
+
+12. `tools/README.md`, the song-check section: describe the new `lead:` and `parts:` columns.
+
+13. Save `SONG=src/songs/the-gilded-hour.song npm run report:song` to `/tmp/report-after.txt`.
 
 ## Acceptance
 
-With `S=$(git status --porcelain src/songs | sed -n 's|^?? src/songs/\(.*\)\.song$|\1|p')`:
-
-- `echo "$S" | wc -w` prints `1` (exactly one new song file).
-- `test -f tools/arranger/$S.mjs && grep -q "tools/arranger/$S.mjs" tests/drift.test.ts && echo ok` prints `ok`.
-- `npm test` exits 0 (includes the drift test for every generator, yours included).
+- `npm test` exits 0 (the drift test includes `the-gilded-hour.mjs`).
 - `npm run typecheck` exits 0.
-- `SONG=$S npm run check:songs` exits 0; its line for the song shows `0 clashes` and `0 off-chord`
-  (explained ones in `(+N explained)` are fine), a length from `4:00` to `5:00`.
-- `grep -E "^(style|time|key|tempo|category):" src/songs/$S.song` prints `style: orchestral`,
-  `time: 3/4`, `key: A-flat major` (or `Ab major`), `tempo: 88`, `category: originals`.
+- `grep -E "^track" src/songs/the-gilded-hour.song | awk '{print $2, $3, $4}'` prints exactly:
+  `piano role=lead inst=bank:grand-piano`, `waltz role=chords inst=bank:grand-piano`,
+  `cello role=lead2 inst=bank:cello`, `strings role=pad inst=bank:string-section`,
+  `choir role=pad inst=bank:choir-ooh`, `musicbox role=counter inst=bank:music-box`,
+  `bass role=bass inst=bank:string-bass`, in that order.
+- `grep -E "^(key|tempo|time|style|composer):" src/songs/the-gilded-hour.song` prints
+  `composer: DeepSeek & SZ`, `style: orchestral`, `key: A-flat major`, `tempo: 88`, `time: 3/4`.
+- `grep "^# chords" src/songs/the-gilded-hour.song` prints the same lines as
+  `git show HEAD:src/songs/the-gilded-hour.song | grep "^# chords"`.
+- `grep "^@bars" src/songs/the-gilded-hour.song` prints the same lines as
+  `git show HEAD:src/songs/the-gilded-hour.song | grep "^@bars"`.
+- `SONG=the-gilded-hour npm run check:songs` exits 0 and its song line shows `0 clashes` and
+  `0 off-chord` (explained ones are fine) and a length within 5 seconds of `4:41`.
+- `SONG=src/songs/the-gilded-hour.song npm run report:song` prints a `melody:` line whose
+  `steps` is at least `50%`.
 - `npm run check:generators` prints `No copies found.`
-- `EDGE_PATH=/tmp/chromium-nosandbox npm run balance -- $S` prints `No flags.`
-- `git status --porcelain src/ | grep -v "src/songs/$S.song"` prints nothing.
+- `EDGE_PATH=/tmp/chromium-nosandbox npm run balance -- the-gilded-hour` prints `No flags.`
+- `SIBLINGS=orchestral npm run check:songs` prints a row for each Orchestral song containing
+  `lead:` and `parts:`, and The Gilded Hour's `parts:` contains no harp, glockenspiel, timpani or
+  brass patch name.
+- `npm run check:songs` exits 0 and its per-song lines for every song other than The Gilded Hour
+  are identical to the lines it printed before your changes.
+- `git status --porcelain src/ | grep -v the-gilded-hour.song` prints nothing.
 
 ## Parallel work
 
@@ -118,22 +141,22 @@ None — do it sequentially.
 
 - Do not commit, push, or switch branches.
 - Do not touch files outside **Files to touch** except `.handoff/report.md`.
-- Never edit `src/songs/<slug>.song` by hand; change the script and regenerate.
-- Don't change shared code (styles, instruments, engine, the arranger, the checkers). The one
-  exception is `lib.mjs` under step 4's rule.
-- Original melody only, nothing copyrighted or quoted from an existing piece.
-- Run balance renders one at a time (the VM has 2 GB of RAM). Temporary files go under `/tmp`.
-- Stop any server or browser you start.
+- Never edit `src/songs/the-gilded-hour.song` by hand; change the script and regenerate.
+- Don't change shared code: styles, instruments, engine, `lib.mjs`, the balance check, or any
+  other song or script.
+- Run balance renders one at a time. Temporary files go under `/tmp`. Stop any server or browser
+  you start.
 
 ## Out of scope
 
-- Changing any other song, its script or its notes.
-- A test file of its own for this song.
-- Changes to the checkers, the balance thresholds or the style definitions.
+- Re-orchestrating The Cartographer, Lantern Ward or The Black Coach.
+- A melodic-motion column or flag in `check:songs`.
+- Changing Orchestral's role defaults in `src/audio/styles.ts`.
 
 ## If blocked
 
-If the balance check keeps flagging a part after three rounds of changes, stop changing it and
-report the flag with the table rows. If a render fails three times, report it and finish the rest.
-If something in the song format cannot express part of the brief, write the nearest thing it can
-and say what you changed in the report.
+If a balance flag will not clear after three rounds of changes, stop, keep the best version, and
+report the flag with its table rows. If a bank instrument named above does not exist or cannot
+play its part, report it before substituting anything. If keeping a phrase's chords makes a
+stepwise line impossible in a bar, keep the chord and allow the leap there, and say where in the
+report.

@@ -8,14 +8,22 @@ To ask another model for a song, fill in the template in [song-prompt.md](song-p
 ## Before writing
 
 - **Listen to (read) the songs in the same style first,** and make the new one different on paper:
-  key, tempo, form, and drum feel. Print the originals' basics with:
+  key, tempo, form, drum feel, the lead instrument and the lineup, the build-up shape (the order in
+  which parts enter and the sections grow), and the melody's motion (the share of steps and leaps
+  that `npm run report:song` prints). Print the originals' basics with:
 
   ```bash
   grep -l "^category: originals" src/songs/*.song | xargs grep -E "^(style|key|tempo):"
   ```
 
   Shortwave first came out with Third Rail's key, tempo, 64-bar form, boom-bap drums and nearly the
-  same hook chords, and had to be reworked. Two songs in one style should not be twins.
+  same hook chords, and had to be reworked. Two songs in one style should not be twins. A style's
+  role defaults give every song in it the same sound, so a new song picks at least its lead and one
+  other main part from outside what its style-mates use: run `SIBLINGS=<style> npm run check:songs`
+  to see each song's kit, bass, lead and parts, then choose with `inst=` or `inst=bank:`.
+- **A singable melody is mostly stepwise,** with a leap saved for emphasis (a phrase's high point,
+  or its turn). Melodies built from chord tones alone come out leap-heavy and sound alike; let
+  passing notes on the off-beats carry the line between the chord tones.
 - **Pick a form that fits the idea,** not a default verse/hook/verse/hook. A song can be a loop
   (Last Stop), a club track with drops (Night Shift), or a classical form (Lantern Ward). Then pick
   how to build it (below).

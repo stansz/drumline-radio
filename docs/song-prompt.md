@@ -8,8 +8,11 @@ Before filling it in, list the originals that are already in the style, so the b
 away from them:
 
 ```bash
-grep -l "^category: originals" src/songs/*.song | xargs grep -E "^(title|style|key|tempo):"
+SIBLINGS=<style> npm run check:songs
 ```
+
+It lists the style's songs with their key, tempo, bars, length, kit, bass, lead instrument and
+parts, so the brief can name a lineup, a form shape and a melodic motion that differ.
 
 ## The prompt
 
@@ -22,12 +25,14 @@ docs/song-format.md, and docs/sound.md (the <Style> section and the instrument b
 Brief:
 - <Genre and feel in one line, with one or two reference artists, e.g. "melodic Detroit-style
   deep techno, not acid">.
-- <Instruments and texture: what carries the song, what sits under it>.
+- <Lead instrument and lineup, chosen to differ from the existing songs in this style: run
+  SIBLINGS=<style> npm run check:songs and name what they use>.
 - <Tempo> BPM, in <key>, about <length>.
 - <Existing songs in this style> already exist. Make this one sound clearly different from
   them: <what to avoid, e.g. "less squelch, more chords and space">.
 - <Form, e.g. "intro, verse, chorus, verse, chorus, bridge, last chorus, outro" or "DJ form
   with a breakdown and drops">. Change something every 8 or 16 bars.
+- <How the form builds, different from the existing songs in this style>.
 - Make it feel human: small microtiming offsets (+N/-N ticks) on <which parts>, uneven
   velocities, and <swing or feel notes, if any>.
 - Keep registers apart so parts don't fight: <bass low, chords mid, lead above, or the

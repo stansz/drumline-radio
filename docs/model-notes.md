@@ -58,6 +58,14 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
   colour. The first `npm run balance` found only level problems (the glockenspiel and choir under
   the lead, the pizzicato under it in one section); raising those parts cleared them and the second
   run printed `No flags.`
+- **Reworked (2026-11-14):** re-orchestrated for piano, cello and strings and its themes made
+  stepwise, because it sounded like the other Orchestral originals. The strings, horns, flute, harp,
+  pizzicato, glockenspiel and timpani are gone: a piano sings the theme over its own left-hand chords
+  and a plucked double bass keeps the downbeat, a solo cello answers in the theme's rests, takes
+  theme B and carries the F minor middle, a string pad and one soft choir lift sit under the last
+  statement, and the music box is a touch of colour in the intro and coda. The form, key, tempo,
+  harmony and tempo ramps are unchanged. Both themes are now mostly stepwise (the report reads 69%
+  steps, up from 24%) and the mix needed no balance flags.
 - **Credit:** the harness exposes only `deepseek-flash`, and this run had no model list to name its
   version from, so the credit is the family name, DeepSeek, and the exact version is unknown. The
   app shows the family either way.
