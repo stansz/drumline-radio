@@ -23,7 +23,7 @@ There are no recordings. Each song is a small text score, and the browser's buil
 | `src/ui/` | Everything on screen: the dial, the score view, meters, buttons, CSS |
 | `src/pwa/` | Offline support: the service worker template and the build step that lists every file to cache |
 | `tests/` | Vitest tests for the parts that don't need a browser |
-| `tools/` | Dev scripts: the song arranger, the song checker, browser checks, the icon maker. See [tools/README.md](../tools/README.md) |
+| `tools/` | Dev scripts: the song arranger and the songs' own generator scripts (`tools/arranger/`, with their shared plumbing in `lib.mjs`), the song and generator checks, the balance check, browser checks, the icon maker. See [tools/README.md](../tools/README.md) |
 | `docs/` | This file, the song format, and the sound engine |
 
 ### `src/music/`: the score side
@@ -79,6 +79,57 @@ Each style picks its own instrument for each role (lead = Saw lead in Synthwave,
 Orchestral, Acid in Techno...). Pressing a style button swaps the whole set: the notes already booked
 ahead are cancelled and booked again with the new patches, so the change is instant.
 
+## Where songs come from
+
+Every song ends up as a `.song` file in `src/songs/`, and the app only ever reads that file. There
+are three ways to make one ([composing.md](composing.md#pick-how-to-build-it) says which to pick):
+
+```
+own script      tools/arranger/<song>.mjs ─┐   (default for new songs; uses lib.mjs)
+recipe          tools/arranger/songs.mjs ──┼──► src/songs/<song>.song ──► the app
+                  (via arranger.mjs)       │
+hand-written    typed straight into ───────┘
+                  the .song file
+```
+
+- **Own script.** A Node script that writes one song. It holds that song's music (melody, chords,
+  parts, form) and builds the file with the shared helpers in `tools/arranger/lib.mjs`.
+- **Recipe.** A short entry in `songs.mjs` (a public-domain melody, its chords and a form) that
+  `arranger.mjs` turns into a full arrangement.
+- **Hand-written.** The `.song` file is the source; there is no script behind it.
+
+`tests/drift.test.ts` reruns every script and recipe and fails if its output differs from the file
+in `src/songs/` by a single byte, so a generated song can only change by changing its script.
+
+## What is fixed and what is creative
+
+Each step is either **deterministic**, code that turns the same input into the same output every
+time, or **creative**, choices a person or a composing model makes for one song.
+
+| Part | Kind | What it means |
+|---|---|---|
+| The music: melody, chords, voicings, rhythms, grooves, form | creative | Chosen for each song, in its script, recipe or `.song` file |
+| Instrumentation: which roles a song uses and any `inst=` picks | creative | Chosen per song; the role defaults alone make songs in a style sound alike |
+| Feel and mix: velocities, micro-timing, tempo ramps, track `vol=` | creative | Chosen per song, guided by the checks below |
+| A song's own script, as a program | deterministic | No randomness: running it again writes the identical file (the drift test holds it to that) |
+| `lib.mjs` | deterministic | Plumbing only: note names, chord symbols, writing bars and sections, saving the file. It must never hold a musical choice |
+| `arranger.mjs` | deterministic, with shared defaults | Turns a recipe into a song the same way every time. Its accompaniment patterns (`walk`, `oompah`, `waltz`, ...) are a musical vocabulary every recipe song shares on purpose |
+| Parser, timing, roles, styles, instrument bank | deterministic | The same file and style always give the same notes, timing and patches |
+| Playback (engine and voices) | deterministic notes, small random noise | Notes and timing are exact; drums, reverb tails, crackle and air use random noise, so two renders differ slightly in level (about 1 dB in the balance table) |
+
+## The checks: gates and reports
+
+A **gate** fails and blocks the GitHub deploy; a **report** prints what it finds and never fails,
+because judging it is creative. The user listening is the last check for every song.
+
+| Check | Kind | What it looks at |
+|---|---|---|
+| `npm test` (with the drift test), `npm run typecheck` | gate | Every song parses, every bar adds up, every generated song matches its script, the code type-checks |
+| `npm run check:songs` | gate for parse errors, report for the rest | Half-step clashes and off-chord notes (a song can explain a deliberate one with `# ok`); `SIBLINGS=<style>` lists a style's songs with key, tempo, kit, bass, lead and parts |
+| `npm run check:generators` | report | Plumbing a script copied instead of importing from `lib.mjs` |
+| `npm run balance -- <song>` | report | Each track's K-weighted loudness per section, and flags for parts buried or too loud |
+| `npm run report:song` | report | Density, register, velocity spread, and how much the melody moves by step or by leap |
+
 ## Writing a song (one-minute version)
 
 ```
@@ -111,6 +162,8 @@ track lead role=lead
 | Run it locally | `npm run dev` |
 | Check everything | `npm test` and `npm run typecheck` |
 | Check the songs | `npm run check:songs` |
+| Check a generator script | `npm run check:generators` |
+| Check a song's mix | `npm run balance -- <song>` |
 | Publish | push to `main`. GitHub Pages and Cloudflare Pages both rebuild; a failing test or song check blocks the GitHub deploy |
 
 Every deploy changes the cache version. An open copy checks for a newer build each time it opens or
