@@ -127,7 +127,7 @@ because judging it is creative. The user listening is the last check for every s
 | `npm test` (with the drift test), `npm run typecheck` | gate | Every song parses, every bar adds up, every generated song matches its script, the code type-checks |
 | `npm run check:songs` | gate for parse errors, report for the rest | Half-step clashes and off-chord notes (a song can explain a deliberate one with `# ok`); `SIBLINGS=<style>` lists a style's songs with key, tempo, kit, bass, lead and parts |
 | `npm run check:generators` | report | Plumbing a script copied instead of importing from `lib.mjs` |
-| `npm run balance -- <song>` | report | Each track's gated playing loudness and peak per section, and flags for a supporting part buried under or louder than the lead |
+| `npm run balance -- <song>` | report | Each track's K-weighted loudness per section, and flags for parts buried or too loud |
 | `npm run report:song` | report | Density, register, velocity spread, and how much the melody moves by step or by leap |
 
 ## Writing a song (one-minute version)
