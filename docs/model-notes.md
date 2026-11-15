@@ -13,11 +13,11 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| The Gilded Hour | Orchestral | DeepSeek | — | — | None (0 clashes, 0 off-chord; a mix round fixed the few balance flags) |
+| The Gilded Hour | Orchestral | DeepSeek | — | — | Re-orchestrated and themes made stepwise after listening (it sounded like the other Orchestral originals) |
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
 | Sunliner | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
-| The Black Coach | Orchestral | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
+| The Black Coach | Orchestral | Arena Agent | — | free | Plumbing cleanup (a copied helper; its note-text builders moved into `lib.mjs`) |
 | Velvet Freeway | Synthwave | Arena Agent | — | free | None (it fixed its own mix with `npm run balance`) |
 | Signal Fire | Techno | MiniMax M3.1 Flash | — | about $0.40 | None (it fixed its own mix with `npm run balance`) |
 | Dusk Over Dunmere | Chiptune | MiMo v2.6 Pro | $0.3263 / $0.6525 | about $0.20 | None (it caught its own loud bass with `npm run balance`) |
@@ -66,6 +66,16 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
   statement, and the music box is a touch of colour in the intro and coda. The form, key, tempo,
   harmony and tempo ramps are unchanged. Both themes are now mostly stepwise (the report reads 69%
   steps, up from 24%) and the mix needed no balance flags.
+- **Verdict (2026-11-14):** a dependable craftsman. It followed the brief to the letter, fixed its
+  own off-chord notes and balance flags, credited itself without guessing a version, wrote clean,
+  reproducible code on `lib.mjs` with no copies, and twice pointed out a mistake in the brief (a
+  wrong bar-count range, then a contradiction about who plays theme B) instead of guessing. The
+  first version was generic, though: leap-heavy chord-tone themes (66% leaps) and the style's stock
+  lineup, which the brief had restated; a glockenspiel turned up to full to satisfy the arp rule
+  rather than questioned against "only a touch of colour"; and section names kept after they
+  stopped being true. The rework, from a more specific brief, is what gave it its own sound. The
+  user found the result better and decent rather than memorable. With this model the brief does
+  much of the musical work.
 - **Credit:** the harness exposes only `deepseek-flash`, and this run had no model list to name its
   version from, so the credit is the family name, DeepSeek, and the exact version is unknown. The
   app shows the family either way.
@@ -99,6 +109,14 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
   rewrite; a key, tempo, metre, form and drum voice (timpani only, no kick-based kit feel) unlike
   Cartographer and Lantern Ward; the trio really does silence the ostinato; every `balance` flag was
   fixed rather than argued with.
+- **Verdict (2026-11-14):** the more ambitious composer of the two orchestral runs: a development
+  that breaks the theme into fragments with whole bars of silence and a hocket, a trio that stops
+  the ostinato dead, and an accelerating coda. It also gave the most useful tooling feedback of any
+  run so far; three of its eight suggestions were built (`barTicks` in `sectionBuilder`, `# ok`
+  lines in `check:songs`, and the 3/4 and 6/8 notes in `composing.md`), and its lead/`lead2` balance
+  idea was tried and dropped because it flagged sound mixes. It needed more cleanup on the rules
+  afterwards: a copy of `repeatBar`, and note-text builders that became `noteText` in `lib.mjs`. It
+  kept the style's stock lineup, so it shares its sound with the other Orchestral originals.
 - **Credit:** the harness exposes only its own name, Arena Agent (Arena's Agent Mode). The run does
   not disclose which model was behind it, so no model id is claimed and the price fields stay "—".
 - **Tool notes:** the balance check models the mix by role, but a classical scherzo hands its theme
