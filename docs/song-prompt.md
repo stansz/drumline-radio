@@ -64,7 +64,8 @@ Rules:
 - Run npm test and npm run check:songs; both must pass. Aim for 0 clashes; explain any that
   remain as deliberate (a passing note, a suspension, a jazz voicing). Check the balance with
   npm run balance -- <song> (one command, the whole song, no server to manage) and fix every
-  flag it prints, as docs/composing.md describes.
+  flag it prints, as docs/composing.md describes, or explain a deliberate one with a
+  `# balance-ok` line.
 - Start your own dev or preview server for browser checks, and stop it (with its child
   processes) when you're done.
 ```

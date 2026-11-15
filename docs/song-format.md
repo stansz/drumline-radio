@@ -8,13 +8,24 @@ once.
 Lines may end in `\n` or `\r\n`. A `#` at the start of a line or after whitespace begins a comment
 that runs to the end of the line. Blank lines are ignored.
 
-One comment has a meaning to the checker: a line `# ok @<bar> <track> <note>: <reason>` explains a
+One comment has a meaning to the clash checker: a line `# ok @<bar> <track> <note>: <reason>` explains a
 deliberate half-step clash or off-chord note. `<bar>` is a bar number, `<track>` a track id, `<note>`
 a note name with an optional `#` or `b` (`D5`, `Eb4`, `F#3`), compared by pitch. Every clash or
 off-chord note in that bar, track and pitch counts as explained instead of as a problem, so one line
 covers a held note that clashes with both the pad and the bass; the rest of the line is the reason.
 `npm run check:songs` prints explained counts separately and lists an `# ok` line that matches nothing
 as unused. See [composing.md](composing.md#before-committing) for when to use one.
+
+Another comment explains a balance flag to `npm run balance -- <song>`: a line
+`# balance-ok @<from>-<to> <track>: <reason>` covers the bars from `<from>` to `<to>` of that track,
+`# balance-ok @<bar> <track>: <reason>` covers just that one bar, and `# balance-ok <track>:
+<reason>` (no `@`) covers the whole song. `<track>` is a track id, compared exactly. Any flag for
+that track in a section whose bars overlap the line's range — buried under the lead, too loud over
+it, or one of the bass rules — is printed under `Explained (balance-ok):` with the reason instead of
+under `Flags:`, does not count against `BALANCE_STRICT`, and asks for no volume change. Use it for
+a deliberate mix choice the check cannot hear, such as a part the brief wants soft:
+`# balance-ok @33-40 stabs: a touch of colour under the lead`. See
+[composing.md](composing.md#before-committing) for when to use one.
 
 ## The header
 

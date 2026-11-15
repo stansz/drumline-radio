@@ -74,6 +74,8 @@ Commands: `npm run dev`, `npm test`, `npm run test:sandbox`, `npm run typecheck`
   songs' counts are a record, not a to-do list. Songs with `# chords:` lines also get an off-chord
   count, which is a report too. A deliberate clash or off-chord note can be explained in the song
   with an `# ok @<bar> <track> <note>: <reason>` line, which makes the checker count it as explained.
+- `npm run balance` flags any supporting part buried under or louder than the lead by playing
+  loudness; a deliberate one is explained with a `# balance-ok @<from>-<to> <track>: <reason>` line.
 - Don't put `share` (or other social-button words) in element ids or classes: content blockers such
   as uBlock Origin hide them, which hid the Share buttons in Firefox.
 - Wrap every `localStorage` call in `try`/`catch`, and make the app work without it. Keys start
