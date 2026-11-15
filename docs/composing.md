@@ -165,21 +165,34 @@ depends on it.
 3. Before committing a new song, run `SIBLINGS=<style> npm run check:songs` and make sure it isn't
    a twin of another song in its style (same key, tempo, kit and bass).
 4. Check the balance with `npm run balance -- <song>` (see [tools/README.md](../tools/README.md)).
-   It renders the whole song offline in under a minute, prints every track's K-weighted loudness in
-   each 8-bar section, and flags a pad or chords part more than 11 dB under the lead, an arp peaking
-   more than 8 dB under the lead, a bass more than 3 dB louder than the lead, and a bass whose low
-   end is more than 1 dB louder than the kick's. It also suggests a `vol=`
-   for each flagged track; set it and run again. Fix every flag or say why it
-   stays. It starts and stops its own server, so there is nothing to clean up. The lead should be on
-   top: in Velvet Freeway's bars 33-40 it sits at −29 dB
-   with the stabs at −41 and the drums at −27. Nothing should be buried 15 dB under the rest. Keep
-   the bass under the kick: Porch Light's and Riverfront's first versions had the bass nearly as
-   loud as the drums, which sounds boomy and hides the chords. The bass and drums columns show the
-   level below 150 Hz in brackets; the bass's low level should sit a few dB under the drums' low level. For
-   sparse parts like dub stabs, compare peaks, not RMS (Fathom's stabs read 20 dB down by RMS but
-   12-16 dB by peak). Wayfarer's Rest's first version had its arp, the part that drives the song,
-   23 dB under the lead, and its bass louder than the lead. When it says a track is flagged only in
-   some bars, change the velocities there instead of the track's `vol=`.
+   It renders the whole song offline in under a minute and prints each track's **playing loudness**
+   in each 8-bar section: BS.1770-4 gated loudness over the K-weighted signal (400 ms blocks every
+   100 ms, absolute and relative gates), so the silence between notes cannot drag a sparse part
+   down. The first number in a cell answers how loud that part sounds while it plays; the second is
+   its K-weighted peak, and the bracket behind the bass and drums cells is the plain RMS level
+   below 150 Hz. The lead of a section is the loudest present lead-role track, and every pad,
+   chords, arp, counter and lead2 part with notes in the section is compared with it **both ways**:
+   more than a role's limit under the lead while playing is buried (counter 7 LU, lead2 12, pad
+   18, chords 19, arp 25), and more than 4 LU over it is too loud. The limits differ because the
+   ear does: a bright arp or stab sits in its own range and cuts through far under the lead, while a
+   counter-line shares the lead's range and is masked much sooner (First Flight's pizzicato, 15-19
+   LU under its brass, was heard as too quiet). It also flags a bass more than 3 dB louder
+   than the lead and a bass whose low end is more than 1 dB louder than the kick's, and it suggests
+   a `vol=` for each flagged track; set it and run again. Fix every flag, or explain a deliberate
+   one in the song itself with `# balance-ok @<from>-<to> <track>: <reason>` (`@<bar>` for one bar,
+   no `@` for the whole song): that flag is then printed under `Explained (balance-ok):` with its
+   reason instead of under `Flags:` and asks for no change. Use it for a part the brief wants soft,
+   for instance a touch of colour under the lead, so the check still reports the gap and the song
+   says why it is right. It starts and stops its own server, so there is nothing to clean up. The
+   lead should be on top: in Velvet Freeway's bars 33-40 it plays at −29 LU with the stabs at −41
+   (11.5 LU under, well inside the 19 for chords), the pad at −33, the arp at −35, and the drums at
+   −27. Nothing should sit buried under the rest while it plays. Keep the bass under the kick:
+   Porch Light's and Riverfront's first versions had the bass nearly as loud as the drums, which
+   sounds boomy and hides the chords. The bass and drums columns show the level below 150 Hz in
+   brackets; the bass's low level should sit a few dB under the drums' low level. Wayfarer's Rest's
+   first version had its arp, the part that drives the song, 23 dB under the lead, and its bass
+   louder than the lead. When it says a track is flagged only in some bars, change the velocities
+   there instead of the track's `vol=`.
 5. For a song built by a script, `npm run check:generators` lists any plumbing it copies instead
    of importing from `lib.mjs`. Fix each one, or for a musical helper that matches another song's
    on purpose, add it to the check's `ALIKE` list and say why. It is a report and never fails, but

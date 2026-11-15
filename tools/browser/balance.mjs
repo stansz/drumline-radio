@@ -1,11 +1,22 @@
-// Balance: renders a whole song offline through the real engine and prints each track's level in
-// every section, so a buried or overpowering part shows up without seeking or timing. One command:
-// it starts its own Vite server on a free port, renders in headless Edge, and stops both when done.
-// For each track and section it prints K-weighted loudness / peak in dB, plus the plain RMS level
-// below 150 Hz for the bass and drums, then flags common problems: a pad or chords part more than
-// PAD_GAP dB under the lead (on both loudness and peak, since sparse parts read low by loudness), an
-// arp peaking more than ARP_GAP dB under the lead's peak, a bass more than BASS_OVER dB louder than
-// the lead, and a bass whose low end is KICK_OVER dB louder than the kick's. Under the flags it
+// Balance: renders a whole song offline through the real engine and prints each track's playing
+// loudness in every section, so a buried or overpowering part shows up without seeking or timing.
+// One command: it starts its own Vite server on a free port, renders in headless Edge, and stops
+// both when done. Playing loudness is BS.1770-4 gated loudness over the K-weighted signal (400 ms
+// blocks, absolute and relative gates, so the silence between notes does not drag a sparse part
+// down; it answers how loud a part sounds while it plays). The table prints it over each track's
+// K-weighted peak per section, plus the plain RMS level below 150 Hz for the bass and drums.
+// The lead of a section is the loudest present lead-role track by playing loudness. Every pad,
+// chords, arp, counter and lead2 part with notes in the section is compared with it both ways:
+// more than UNDER[role] LU under the lead while playing is buried, more than OVER LU over it is too
+// loud (both rules wait for a lead loud enough to matter), and each flag feeds the volume
+// suggestion. The bass rules are unchanged: a bass more than BASS_OVER dB louder than the lead,
+// and a bass whose low end is KICK_OVER dB louder than the kick's.
+// A deliberate exception is written in the song itself as `# balance-ok @<from>-<to> <track>:
+// <reason>` (bars from-to; `@<bar>` for one bar; no `@` for the whole song). Such a flag is printed
+// under `Explained (balance-ok):` with its reason, not under `Flags:`, it does not count against
+// BALANCE_STRICT, and it gets no volume suggestion. With BALANCE_GAPS=1 in the environment the
+// check also prints one `gap ...` line per supporting track per section where the supporting rule
+// ran, for tuning UNDER and OVER. Under the flags it
 // suggests a `vol=` for each flagged track that clears its worst flag (track volume is linear gain,
 // so the step is exact unless it would pass 1); in a remix it suggests `vol.<style>=`, which changes
 // the track in that style only. When a track's flags are confined to fewer than half the sections it
@@ -20,6 +31,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 import { createServer } from 'vite';
 import { openEdge } from './cdp.mjs';
+import { gatedLoudness } from './gated-loudness.mjs';
 
 const [arg, style = '', perArg = '8'] = process.argv.slice(2);
 if (!arg) {
@@ -149,6 +161,7 @@ function render(base, style) {
       const buffer = await ctx.startRendering();
 
       const db = (v) => (v > 1e-7 ? 20 * Math.log10(v) : -120);
+      ${gatedLoudness.toString()}
       const sections = [];
       for (let i = 0; i < song.bars.length; i += ${perSection}) {
         const first = song.bars[i], last = song.bars[Math.min(i + ${perSection}, song.bars.length) - 1];
@@ -165,7 +178,8 @@ function render(base, style) {
           for (let n = a; n < b; n += 1) { const v = data[n]; sq += v * v; if (Math.abs(v) > pk) pk = Math.abs(v); if (low) lsq += low[n] * low[n]; }
           const len = Math.max(1, b - a);
           const loud = sq > 0 ? -0.691 + 10 * Math.log10(sq / len) : -120;
-          return { loud, peak: db(pk), low: low ? db(Math.sqrt(lsq / len)) : null,
+          return { loud, play: gatedLoudness(data, a, b, rate), peak: db(pk),
+            low: low ? db(Math.sqrt(lsq / len)) : null,
             plays: t.notes.some((n) => n.tick < s.endTick && n.tick + n.ticks > s.startTick) };
         });
       });
@@ -180,12 +194,21 @@ function report(result) {
     process.exitCode = 1;
   } else {
     const { tracks, sections, levels } = result;
-    // A pad or chords part more than this many dB under the lead on both loudness and peak is
-    // buried; tuned against the six reference songs.
-    const PAD_GAP = 11;
-    // An arp's peak more than this many dB under the lead's peak is buried; tuned against the six
-    // reference songs.
-    const ARP_GAP = 8;
+    // A supporting part more than this many LU under the lead while it plays is buried. Each role's
+    // limit is one LU above the largest gap that role shows across nine songs whose mixes were
+    // accepted by ear (starlight-drive, sunliner, velvet-freeway, signal-fire, dusk-over-dunmere,
+    // the-black-coach, the-gilded-hour, night-shift, save-point): ceil(M) + 1, at least 6. Roles
+    // differ by ear, not only by meter: a bright arp or a stab sits in its own range and cuts
+    // through far under the lead (save-point's arp, 23.5 LU), while a counter-line shares the
+    // lead's range and is masked much sooner (the largest accepted, night-shift's hook, is 5.2 LU;
+    // first-flight's pizzicato at 15-19 LU under its brass was heard as too quiet). M was pad 16.8,
+    // chords 18.0, arp 23.5, counter 5.2, lead2 10.7. A role with no data gets 12.
+    const UNDER = { pad: 18, chords: 19, arp: 25, counter: 7, lead2: 12 };
+    // A supporting part more than this many LU over the lead while it plays is too loud. Over the
+    // same nine songs the largest overshoot was 6.5 LU (the-black-coach's counter flute, bars
+    // 73-80), so the limit is capped at 4 and that flute is flagged: a supporting part should not
+    // outplay the lead.
+    const OVER = 4;
     // A bass more than this many dB louder than the lead is too loud; tuned against the six
     // reference songs.
     const BASS_OVER = 3;
@@ -195,11 +218,32 @@ function report(result) {
     const SILENT = -70;
     const fmt = (v) => (v <= SILENT ? '   —' : String(Math.round(v)).padStart(4));
     const time = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-    console.log(`${basename(path)} in ${result.style}: K-weighted loudness (LUFS-style) / K-weighted peak dB per section${tracks.some((t) => t.role === 'bass' || t.role === 'drums') ? ', low = plain RMS below 150 Hz' : ''}\n`);
+    // `# balance-ok @<from>-<to> <track>: <reason>` in the song text explains flags for that track
+    // in the named bars (`@<bar>` for one bar, no `@` for the whole song).
+    const okRanges = new Map();
+    for (const m of text.matchAll(/^#\s*balance-ok\s+(?:@(\d+)(?:-(\d+))?\s+)?([A-Za-z0-9_-]+):\s*(\S.*)$/gm)) {
+      const from = m[1] ? Number(m[1]) : -Infinity;
+      const to = m[1] ? Number(m[2] || m[1]) : Infinity;
+      const list = okRanges.get(m[3]) || [];
+      list.push({ from, to, reason: m[4] });
+      okRanges.set(m[3], list);
+    }
+    const explain = (id, from, to) => {
+      for (const r of okRanges.get(id) || []) if (from <= r.to && to >= r.from) return r.reason;
+      return null;
+    };
+    console.log(`${basename(path)} in ${result.style}: playing loudness (BS.1770 gated, LUFS-style) / K-weighted peak dB per section${tracks.some((t) => t.role === 'bass' || t.role === 'drums') ? ', low = plain RMS below 150 Hz' : ''}\n`);
     const cols = tracks.map((t) => (t.role === 'bass' || t.role === 'drums' ? `${t.id} (low)` : t.id));
     const widths = tracks.map((t, i) => Math.max(cols[i].length, t.role === 'bass' || t.role === 'drums' ? 15 : 9) + 2);
     console.log('bars       time  ' + cols.map((c, i) => c.padStart(widths[i])).join(''));
     const flags = [];
+    // Flags the song explains with `# balance-ok`, kept with their reason.
+    const explained = [];
+    // One `gap ...` line per supporting track per section where the supporting rule ran.
+    const gaps = [];
+    // The supporting roles compared with the lead both ways.
+    const SUPPORT = new Set(['pad', 'chords', 'arp', 'counter', 'lead2']);
+    const GAPS = process.env.BALANCE_GAPS === '1';
     // The dB change each flagged track needs to clear its worst flag, with a 2 dB margin.
     const MARGIN = 2;
     const needs = new Map();
@@ -212,11 +256,18 @@ function report(result) {
       if (flagged === undefined) flaggedIn.set(i, [j]);
       else if (!flagged.includes(j)) flagged.push(j);
     };
+    // One flag, from any rule. When the song's `# balance-ok` lines cover that track in those bars,
+    // the flag goes to `explained` with its reason instead: no volume change, no strict failure.
+    const flag = (message, id, from, to, apply) => {
+      const reason = explain(id, from, to);
+      if (reason !== null) explained.push({ message, reason });
+      else { flags.push(message); apply(); }
+    };
     sections.forEach((s, j) => {
       const cells = tracks.map((t, i) => {
         const l = levels[i][j];
-        if (l.loud <= SILENT) return '—'.padStart(widths[i]);
-        const main = `${fmt(l.loud).trim()}/${fmt(l.peak).trim()}`;
+        if (l.play <= SILENT) return '—'.padStart(widths[i]);
+        const main = `${fmt(l.play).trim()}/${fmt(l.peak).trim()}`;
         return (l.low !== null ? `${main} (${fmt(l.low).trim()})` : main).padStart(widths[i]);
       });
       console.log(`${String(s.from).padStart(3)}-${String(s.to).padEnd(4)} ${time(s.start).padStart(6)}  ${cells.join('')}`);
@@ -227,36 +278,36 @@ function report(result) {
       const loudest = Math.max(...tracks.map((t, i) => levels[i][j].loud));
       const present = (l) => l.loud > Math.max(PLAYING, loudest - 25);
       const at = (role) => tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === role && present(x.l));
-      const lead = at('lead').sort((a, b) => b.l.loud - a.l.loud)[0];
+      const lead = at('lead').sort((a, b) => b.l.play - a.l.play)[0];
       const where = `bars ${s.from}-${s.to}`;
       // A lead under -45 dB is effectively silent here; comparing the bass to it only reports a
       // false "bass over lead" in an intro, bridge, or outro where the lead is meant to rest.
       if (lead && lead.l.loud > -45) {
-        // Sparse parts (stabs, a chopped hook) read low by loudness, so a part is buried only when it
-        // is more than PAD_GAP dB under on both loudness and peak.
-        // A buried pad can sit under the playing threshold, so it is checked whenever it has notes in the section.
-        for (const x of tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => (x.t.role === 'pad' || x.t.role === 'chords') && x.l.plays)) {
-          const gap = Math.min(lead.l.loud - x.l.loud, lead.l.peak - x.l.peak);
-          if (gap > PAD_GAP) {
-            flags.push(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(gap)} dB under ${lead.t.id} (loudness and peak)`);
-            need(x.i, j, gap - PAD_GAP + MARGIN);
-          }
-        }
-        // An arp is short plucks, so its loudness reads low; compare peaks.
-        // A buried arp's loudness can sit under the playing threshold, so find it by its peak.
-        const arps = tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => x.t.role === 'arp' && x.l.peak > -45);
-        for (const x of arps) {
-          const gap = lead.l.peak - x.l.peak;
-          if (gap > ARP_GAP) {
-            flags.push(`${where}: ${x.t.id} (arp) peaks ${Math.round(gap)} dB under ${lead.t.id}`);
-            need(x.i, j, gap - ARP_GAP + MARGIN);
-          }
-        }
         for (const x of at('bass')) {
           const over = x.l.loud - lead.l.loud;
           if (over > BASS_OVER) {
-            flags.push(`${where}: ${x.t.id} (bass) is ${Math.round(over)} dB over ${lead.t.id}`);
-            need(x.i, j, -(over - BASS_OVER + MARGIN));
+            flag(`${where}: ${x.t.id} (bass) is ${Math.round(over)} dB over ${lead.t.id}`,
+              x.t.id, s.from, s.to, () => need(x.i, j, -(over - BASS_OVER + MARGIN)));
+          }
+        }
+      }
+      // Every supporting part with notes in the section is compared with the lead's playing
+      // loudness both ways: buried more than UNDER[role] LU under, or too loud more than OVER LU
+      // over. Playing loudness ignores the silence between notes, so a sparse part is judged by how
+      // loud it is while it plays, in both directions.
+      if (lead && lead.l.play > -45) {
+        for (const x of tracks.map((t, i) => ({ t, i, l: levels[i][j] })).filter((x) => SUPPORT.has(x.t.role) && x.l.plays)) {
+          const under = lead.l.play - x.l.play;
+          if (GAPS) gaps.push(`gap ${x.t.role} ${x.t.id} bars ${s.from}-${s.to} under ${under.toFixed(1)}`);
+          const allow = UNDER[x.t.role] ?? 12;
+          if (under > allow) {
+            flag(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(under)} LU under ${lead.t.id} while playing`,
+              x.t.id, s.from, s.to, () => need(x.i, j, under - allow + MARGIN));
+          }
+          const over = x.l.play - lead.l.play;
+          if (over > OVER) {
+            flag(`${where}: ${x.t.id} (${x.t.role}) is ${Math.round(over)} LU over ${lead.t.id} while playing`,
+              x.t.id, s.from, s.to, () => need(x.i, j, -(over - OVER + MARGIN)));
           }
         }
       }
@@ -264,12 +315,16 @@ function report(result) {
       const drums = at('drums').filter((x) => x.l.low > -45).sort((a, b) => b.l.low - a.l.low)[0];
       for (const x of at('bass')) {
         if (drums && x.l.low > drums.l.low + KICK_OVER) {
-          flags.push(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`);
-          need(x.i, j, -(x.l.low - drums.l.low - KICK_OVER + MARGIN));
+          flag(`${where}: ${x.t.id} low end is ${Math.round(x.l.low - drums.l.low)} dB over ${drums.t.id}'s (the kick)`,
+            x.t.id, s.from, s.to, () => need(x.i, j, -(x.l.low - drums.l.low - KICK_OVER + MARGIN)));
         }
       }
     });
+    if (gaps.length > 0) console.log('\n' + gaps.join('\n'));
     console.log(flags.length ? `\nFlags:\n  ${flags.join('\n  ')}` : '\nNo flags.');
+    if (explained.length > 0) {
+      console.log(`\nExplained (balance-ok):\n  ${explained.map((f) => `${f.message}\n    ${f.reason}`).join('\n  ')}`);
+    }
     if (STRICT && flags.length > 0) process.exitCode = 1;
     if (needs.size > 0) {
       // A raise in one section can make the part too loud in another, so run again after a change.
@@ -295,6 +350,5 @@ function report(result) {
         console.log(`  ${t.id}: ${key}=${t.vol} -> ${key}=${Math.min(top, want).toFixed(2)} (${sign}${dB.toFixed(1)} dB)${note}`);
       }
     }
-    console.log('\nFor a sparse part (stabs, hits), compare peaks: loudness reads low when most of a section is silent.');
   }
 }

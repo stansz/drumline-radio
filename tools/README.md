@@ -370,14 +370,32 @@ node tools/browser/shot.mjs http://localhost:4173/drumline-radio/ 412 760 tmp/ph
   path, then optionally a style, or `all` for every style in one run, and the bars per section,
   default 8) starts its own Vite server on a
   free port, renders the whole song offline in headless Edge or Chromium/Chrome through the real engine with each
-  track tapped separately, prints every track's K-weighted loudness (the BS.1770 filters behind LUFS:
-  a gentle high-pass that discounts deep bass and a +4 dB shelf above about 1.7 kHz) and K-weighted
-  peak per section (and the level below 150 Hz for bass and drums, still plain RMS), flags a pad or
-  chords part more than 11 dB under the lead (on both loudness and peak), an arp peaking more than
-  8 dB under the lead's peak, a bass more than 3 dB louder than the lead, and a bass low end more
-  than 1 dB louder than the kick's, then stops the server and browser.
-  A pad or chords part is checked in every section where it has notes, even when it is too quiet to
+  track tapped separately, and prints every track's **playing loudness** per section: BS.1770-4
+  gated loudness over the K-weighted signal (the BS.1770 filters behind LUFS, a gentle high-pass
+  that discounts deep bass and a +4 dB shelf above about 1.7 kHz, then 400 ms blocks starting every
+  100 ms with the −70 LUFS absolute gate and the 10 LU relative gate), so the silence between notes
+  cannot bury a sparse part. Each cell is `<playing loudness>/<K-weighted peak>` (and the plain RMS
+  level below 150 Hz in brackets for bass and drums); `—` means the track's playing loudness there
+  is at or below −70. The lead of a section is the loudest present lead-role track by playing
+  loudness, and every pad, chords, arp, counter and lead2 part with notes in the section is
+  compared with it both ways: buried more than `UNDER[role]` LU under it while playing (counter
+  7, lead2 12, pad 18, chords 19, arp 25: one LU above the largest gap each role shows in an
+  accepted mix, since a bright arp cuts through far under the lead while a counter-line in the
+  lead's range is masked much sooner), or too loud more than `OVER` LU over it (4). Both were
+  tuned with `BALANCE_GAPS=1` over the nine reference songs whose mixes were accepted after
+  balancing (starlight-drive, sunliner, velvet-freeway, signal-fire, dusk-over-dunmere,
+  the-black-coach, the-gilded-hour, night-shift, save-point). It still flags a bass more than 3 dB
+  louder than the lead and a bass low end more than 1 dB louder than the kick's, then stops the
+  server and browser.
+  A supporting part is checked in every section where it has notes, even when it is too quiet to
   count as playing.
+  A deliberate exception belongs in the song: `# balance-ok @<from>-<to> <track>: <reason>` (or
+  `@<bar>` for one bar, or no `@` for the whole song) prints that flag under
+  `Explained (balance-ok):` with its reason instead of under `Flags:`, does not count against
+  `BALANCE_STRICT`, and gets no volume suggestion.
+  With `BALANCE_GAPS=1` it prints one `gap <role> <track> bars <a>-<b> under <LU>` line per
+  supporting track per section where the supporting rule ran, which is how the numbers above were
+  tuned.
   It skips the bass-over-lead check when the lead is effectively silent in a section, so a resting
   intro or bridge does not produce a false "bass over lead" flag.
   Under the flags it suggests a `vol=` for each flagged track that clears its worst flag with 2 dB
