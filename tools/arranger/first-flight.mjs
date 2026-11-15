@@ -176,14 +176,11 @@ const PIZZ_CELLS = [
   (t) => [t[0], t[2], null, t[1], t[0], t[2], null, t[2]],
   (t) => [t[0], null, t[1], t[2], t[1], null, t[0], t[1]],
 ];
-// The pizzicato's level lift, added to every pluck. The first version sat 15-19 LU under the brass
-// while playing and was heard as buried; the balance check's counter rule wants it within 7 LU.
-const PIZZ_LIFT = 30;
 const pizzBar = (chord, v, seed) =>
   PIZZ_CELLS[seed % PIZZ_CELLS.length](tonesFrom(chord, 62))
     .map((pitch, i) => (pitch === null
       ? 'r/8'
-      : n(pitch, '8', v + PIZZ_LIFT + ((seed + i) % 3) * 4 - 4, i === 0 ? 11 : i % 2 ? -6 : 5)))
+      : n(pitch, '8', v + ((seed + i) % 3) * 4 - 4, i === 0 ? 11 : i % 2 ? -6 : 5)))
     .join(' ');
 
 // The bells: a fleck at a turn of the story, written as melody events.
@@ -514,8 +511,6 @@ const FORM_NOTE = `# First Flight, an original film cue by MiMo V2.6 Flash & SZ.
 const TEXT = [
   FORM_NOTE,
   '#',
-  '# balance-ok pizz: sparkle, level with the ostinato; any closer to the brass crowds the theme',
-  '#',
   ...HEAD.chordLines,
   '#',
   '# Form:',
@@ -542,7 +537,7 @@ const TRACKS = [
   ['choir', 'track choir role=pad inst=bank:choir-aah vol=0.85 pan=0.14 vol@41-48=0.8..1 '
     + 'vol@65-80=0.7..1 vol@97-104=1..0.75'],
   ['pad', 'track pad role=pad inst=synth-pad vol=1 pan=-0.16 vol@97-104=1..0.7'],
-  ['pizz', 'track pizz role=counter inst=bank:pizzicato vol=1 pan=0.32'],
+  ['pizz', 'track pizz role=counter inst=bank:pizzicato vol=0.7 pan=0.32'],
   ['bells', 'track bells role=counter inst=bank:fm-bells vol=0.6 pan=-0.34'],
   ['ost', 'track ost role=arp inst=analog-synth vol=1 pan=0.2'],
   ['bass', 'track bass role=bass inst=warm-bass vol=0.28 pan=0'],

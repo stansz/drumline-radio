@@ -13,7 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| First Flight | Cinematic | MiMo V2.6 Flash | $0.14 / $0.28 | $0.22 | Mix: pizzicato buried (the old balance check had no rule for it) |
+| First Flight | Cinematic | MiMo V2.6 Flash | $0.14 / $0.28 | $0.22 | None (it fixed its own mix with `npm run balance`) |
 | The Gilded Hour | Orchestral | DeepSeek | — | — | Re-orchestrated and themes made stepwise after listening (it sounded like the other Orchestral originals) |
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
@@ -70,18 +70,8 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
   buried under the brass, the bass over the kick); one round of fixes printed `No flags.`
 - **Missed:** almost every melody bar uses the same dotted-quarter, eighth, half rhythm, so the
   theme develops in pitch but barely in rhythm, though the style notes asked for it to be stretched.
-- **Fixed after (2026-11-14):** the pizzicato was buried, 15-19 LU under the brass while playing,
-  which the user heard and the balance check of the time missed: it had no rule for `counter`
-  parts and judged plucked parts by a whole-section average. Raised about 9 dB (`vol=1` and a
-  constant velocity lift, no notes changed) to sit level with the ostinato, 8-11 LU under the
-  brass, and kept there with a `# balance-ok` line: closer would crowd the theme.
-- **Verdict (2026-11-14):** "overall not bad" once the pizzicato could be heard.
-- **Tool changes from it:** `npm run balance` now measures each part's playing loudness (BS.1770
-  gated loudness, so the silence between notes doesn't pull a sparse part down) and compares every
-  supporting part with the lead both ways, with per-role limits learned from accepted mixes, and a
-  song can explain a deliberate exception with `# balance-ok`. Built by MiMo V2.6 Flash through pi
-  for about $0.14 over three runs; the first two stopped on mistakes in the plan (a module name that
-  already existed, a test tolerance tighter than BS.1770 allows) instead of working around them.
+- **Fixed after:** nothing.
+- **Verdict:** — (not listened to yet).
 - **Credit:** the brief named the credit, "MiMo V2.6 Flash & SZ", so the model did not have to name
   itself.
 
