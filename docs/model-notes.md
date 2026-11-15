@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| First Flight | Cinematic | MiMo V2.6 Flash | $0.14 / $0.28 | $0.22 | None (it fixed its own mix with `npm run balance`) |
 | The Gilded Hour | Orchestral | DeepSeek | — | — | Re-orchestrated and themes made stepwise after listening (it sounded like the other Orchestral originals) |
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
 | Starlight Drive | Synthwave | Ling 3.1 Flash | $0.045 / $0.135 | about $2 | None (it fixed its own mix with `npm run balance`) |
@@ -36,6 +37,43 @@ Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### First Flight — MiMo V2.6 Flash (2026-11-14)
+
+- **Brief:** a bright, soaring film cue about a first flight (John Powell or Joe Hisaishi, not a
+  dark trailer or a ballad), 3:30-4:00 at 112 BPM in D major: an FM-brass theme with an aah choir
+  doubling its long notes, an analog-synth ostinato on the grid, pizzicato and FM bells for
+  sparkle, a pad and bass that rest, and the kit only for swells, hits and rolls; no vox lead (the
+  Cinematic style plays it as the overdriven guitar), no lead guitar, and the piano, cello and
+  strings out. Form: a sparse opening, the ostinato and a quiet theme, a lift, a pull-back that is
+  the quietest moment since the opening, a long build, the climax, and an outro on an open chord.
+  With the Cinematic style notes from [song-prompt.md](song-prompt.md).
+- **How it ran:** Claude Code wrote the plan and pi ran it on OpenRouter inside a microVM (pi-vm),
+  thinking set to low: 55 model calls in about 36 minutes, 8.7M of 9.7M input tokens served from
+  the prompt cache. Three calls missed the cache because OpenRouter moved the model between upstream
+  providers mid-run; they were 70% of the fresh input and about half the cost. pi-vm has pinned one
+  provider per run since.
+- **What it wrote:** 3:43 over 104 bars, a change every 8: bells and pizzicato hinting the motif
+  (A4-D5-E5, up a fourth and a step), the ostinato and the brass breathing it, the theme quietly,
+  the theme again with the bells in its rests, a lift as the pad and bass join, an A pedal under
+  `D/A`, `Bm7/A` and `Gadd9` with the choir, a pull-back to bells, pizzicato and two brass bars over
+  a borrowed C major, a build on the ostinato and a rising `Em-F#m7-G6-A` sequence, a roll with the
+  ostinato in sixteenths, the theme in full on brass and choir, the theme answered higher to C#6,
+  and an `Asus4-D` close onto an open D. It is a generator, `tools/arranger/first-flight.mjs`, added
+  to `tests/drift.test.ts`.
+- **Followed well:** the plan came first, in its report and the song's first comment, as the style
+  notes ask; 0 clashes and 0 off-chord notes with no `# ok` lines; 65% steps on the melody; a lineup
+  no other Cinematic song uses (`lead: FM brass`, no guitar, piano, cello or strings); the pad and
+  bass rest through the opening and the pull-back; the ostinato stays on the grid while the brass,
+  choir and kit lean late. It found its own copied helper with `npm run check:generators` and
+  rewrote it instead of touching `lib.mjs`. The first balance run printed 11 flags (the ostinato
+  buried under the brass, the bass over the kick); one round of fixes printed `No flags.`
+- **Missed:** almost every melody bar uses the same dotted-quarter, eighth, half rhythm, so the
+  theme develops in pitch but barely in rhythm, though the style notes asked for it to be stretched.
+- **Fixed after:** nothing.
+- **Verdict:** — (not listened to yet).
+- **Credit:** the brief named the credit, "MiMo V2.6 Flash & SZ", so the model did not have to name
+  itself.
 
 ### The Gilded Hour — DeepSeek (2026-11-13)
 

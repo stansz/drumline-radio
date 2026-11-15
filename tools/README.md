@@ -222,6 +222,18 @@ runs, a twin-guitar reprise, and a clean outro, all following one harmonic map.
 node tools/arranger/the-silent-keep.mjs tmp/epic
 ```
 
+First Flight has its own script, `arranger/first-flight.mjs`: a 104-bar bright film cue in D major
+at 112 BPM, built from one chord symbol a bar. From each bar's chord the script derives the glass
+pad's open root-fifth-octave, the warm bass's root, the analog-synth ostinato's figure (root, fifth,
+octave, and the chord's colour tone in eighths or sixteenths) and the pizzicato's off-beat eighths,
+while the FM-brass theme, its lift, the pedal on A, the pull-back, the build, the climax and the
+outro are written out by hand; the aah choir holds one chord tone a bar under the big statements,
+and the kit only hits, fills and rolls at the turns of the story.
+
+```bash
+node tools/arranger/first-flight.mjs tmp/cine
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,

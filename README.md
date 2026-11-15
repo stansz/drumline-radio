@@ -169,6 +169,14 @@ Originals by SZ (and AI):
 - **Save Point** (Chiptune)
 - **Shortwave** (Lo-fi)
 - **Third Rail** (Lo-fi)
+- **First Flight** (Cinematic), by MiMo V2.6 Flash & SZ. A 3:43 bright film cue at 112 BPM in D
+  major, from an uncertain ground-level start to a first flight seen from above. It opens on bells
+  and pizzicato hinting a three-note motif (A4-D5-E5), lets an analog-synth ostinato in under a
+  quiet FM-brass statement of the theme, lifts when the glass pad, the warm bass and an aah choir
+  join over a pedal on A, and breaks down to bells, pizzicato and two quiet brass bars over a
+  borrowed C major. The ostinato and the bass rebuild under a rising sequence while the kit rolls,
+  the theme lands in full on brass and choir at the climax and answers itself higher up to C#6, and
+  the outro settles onto one held, open D. Built by `tools/arranger/first-flight.mjs`.
 - **Underpass** (Synthwave). Hidden for now, with Midnight Underpass, a medley of it and Midnight
   Arcade.
 - **Wayfarer's Rest** (Chiptune), by Gemini 3.8 Flash & SZ. A 3:19 wistful fantasy RPG theme at 88 BPM in 3/4: a singing pulse lead over rolling pulse-arp broken chords in D Dorian, a walking triangle bass, an answering square counter-melody, a warm major-key lift in F, a quiet bridge, a final heroic statement up a step in E minor, and an outro that winds down to the lone arp.

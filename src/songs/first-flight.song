@@ -1,0 +1,378 @@
+# First Flight, an original film cue by MiMo V2.6 Flash & SZ. A bright, soaring
+# cue for the Cinematic style: 112 BPM in D major, 104 bars, 3:43, from an uncertain ground-level
+# start to a first flight seen from above. It opens almost empty - bells and pizzicato hint the
+# motif A4-D5-E5, up a fourth and one step - then the analog-synth ostinato starts, the FM brass
+# states the theme quietly, pad, bass and the aah choir join for the lift over a pedal on A, and the
+# pull-back drops everything but bells, pizzicato and two quiet brass bars over a borrowed C major.
+# The build climbs back on the ostinato with the kit rolling, the climax states the theme in full on
+# brass and choir over everything, and the outro settles onto one held, open D.
+#
+# Lineup: brass (lead, bank:fm-brass) carries the theme; choir (pad, bank:choir-aah) doubles its
+# long notes as one held tone a bar and swells under the big statements; pad (synth-pad, the
+# style's glass pad) holds open fifths; pizzicato (counter, bank:pizzicato) and FM bells (counter,
+# bank:fm-bells) sparkle above the middle; the analog-synth ostinato (arp) drives on the grid with
+# no offsets; the warm bass sits under the kick; the studio kit plays hits, tom answers, fills and
+# rolls at the turns of the story, never a groove. No wordless vocal lead (Cinematic would play it
+# as the overdriven lead guitar), no lead guitar, no piano, no cello, no string section.
+#
+# The form, one change every eight bars: 1-8 bells and pizzicato alone; 9-16 the ostinato starts and
+# the brass breathes the motif; 17-24 the theme, quietly; 25-32 the theme again with the bells
+# answering in its rests; 33-40 the lift, pad and bass joining; 41-48 the A pedal under D/A, Bm7/A
+# and Gadd9 with the choir; 49-56 the pull-back over C major, the quietest since the opening; 57-64
+# the build on the ostinato and the bass; 65-72 a rising sequence; 73-80 the roll into the climax;
+# 81-88 the theme in full; 89-96 the theme answered higher; 97-104 the outro on one open chord.
+#
+# The harmony is written once below, one chord symbol a bar, and every pitched part follows it. The
+# long notes all sit on their bar's chord and the passing notes are eighths off the beat, so the
+# parts agree without the tune being flattened; the pad plays open fifths to leave the melody its
+# colour tones. Feel: the brass, the choir, the pizzicato and every drum hit lean in late and never
+# early, their velocities are uneven and swell across phrases and sections; the ostinato stays tight
+# on the grid, so the drive never wobbles.
+#
+# Built by its own generator, tools/arranger/first-flight.mjs, from tools/arranger/lib.mjs: the
+# form, the theme and its developments, the voicings, the figures, the velocities and the
+# microtiming all live there.
+#
+# chords: D Bm G6 A D Bm Em A
+# chords @9: D Bm G6 A Dadd9 Bm G6 A
+# chords @17: Dadd9 Bm G6 A Dadd9 F#m7 G6 A
+# chords @25: Dadd9 Bm G6 A Dadd9 F#m7 G6 A
+# chords @33: Bm G6 Dadd9 A Bm G6 Em A
+# chords @41: D/A Bm7/A Gadd9 A Bm G6 A A
+# chords @49: D D C C G6 G6 A A
+# chords @57: Bm G6 Dadd9 A Bm G6 Dadd9 A
+# chords @65: Em F#m7 G6 A Em F#m7 G6 A
+# chords @73: G6 A Bm Dadd9 G6 A Asus4 A
+# chords @81: Dadd9 Bm G6 A Dadd9 F#m7 G6 A
+# chords @89: Dadd9 Bm G6 A Em F#m7 G6 A
+# chords @97: Dadd9 G6 Dadd9 Bm G6 A Asus4 D
+#
+# Form:
+# 1-8: Opening: bells and pizzicato, the motif in the air
+# 9-16: The ostinato starts, the brass breathes the motif
+# 17-24: The theme on the brass, quietly
+# 25-32: The theme again, the bells answering in its rests
+# 33-40: Lift: the pad and the bass join, the theme rises
+# 41-48: A pedal on A under moving chords, the choir enters
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+# 57-64: Build: the ostinato returns with the bass
+# 65-72: Build: a rising sequence, the pad and choir back
+# 73-80: The roll into the climax
+# 81-88: Climax: the theme in full
+# 89-96: Climax: the theme answered higher
+# 97-104: Outro: settling on one open chord
+#
+title: First Flight
+composer: MiMo V2.6 Flash & SZ
+year: 2026
+source: original
+category: originals
+style: cinematic
+key: D major
+tempo: 112
+time: 4/4
+about: A bright, soaring film cue in D major at 112 BPM: bells and pizzicato hint the motif over an almost empty opening, an analog-synth ostinato starts and the brass states the theme quietly, pad, bass and a choir lift it over a pedal on A, a quiet break turns to C major before the kit rolls into the climax, where the theme lands in full on brass and choir and settles onto one held, open D.
+
+track brass role=lead inst=bank:fm-brass vol=1 pan=-0.08 vol@97-104=0.9..0.75
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R*8 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| R | R | R | R |
+| A4/4+17:92 D5/4-9:83 E5/2+9:96 | R | B4/4+23:88 D5/4+9:94 E5/2+15:92 | R |
+# 17-24: The theme on the brass, quietly
+| A4/4+14:91 D5/4+15:97 E5/2+12:95 | F#5/4.+21:98 E5/8+6:84 D5/2-7:101 | E5/4.+11:103 D5/8+12:89 B4/2-9:91 | C#5/4.+25:94 B4/8-7:95 A4/2-5:97 |
+| A4/4+17:98 D5/4-9:89 E5/4+9:99 F#5/4+15:94 | A5/4.+13:105 F#5/8-5:91 E5/2+18:93 | G5/4.+23:95 F#5/8+9:96 E5/2+15:98 | C#5/4.+16:101 B4/8+18:87 A4/2+6:104 |
+# 25-32: The theme again, the bells answering in its rests
+| A4/4+21:100 D5/4+18:91 E5/2+6:104 | F#5/4.+11:107 E5/8+15:93 D5/2+12:95 | E5/4.+25:97 D5/8+6:98 B4/2-7:100 | C#5/4.+17:103 B4/8+12:89 A4/2-9:106 |
+| A4/4+13:107 D5/4-7:98 E5/4-5:93 F#5/4+18:103 | A5/4.+23:99 F#5/8-9:100 E5/2+9:102 | G5/4.+16:104 F#5/8-5:90 E5/2+18:107 | C#5/4+14:109 E5/8+9:96 A5/2+15:98 r/8 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| F#5/4.+14:98 E5/8+15:99 D5/2+12:101 | G5/4.+21:104 F#5/8+6:90 E5/2-7:107 | F#5/4.+11:109 E5/8+12:95 D5/2-9:97 | E5/4.+25:100 D5/8-7:101 C#5/2-5:103 |
+| D5/4.+17:105 E5/8-9:91 F#5/2+9:108 | B5/4.+13:111 A5/8-5:97 G5/2+18:99 | G5/4.+23:101 F#5/8+9:102 E5/2+15:104 | E5/4.+16:107 D5/8+18:93 C#5/2+6:110 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| F#5/4.+21:107 E5/8+18:93 D5/2+6:110 | D5/4.+11:113 E5/8+15:99 F#5/2+12:101 | G5/4.+25:103 A5/8+6:104 B5/2-7:106 | A5/4.+17:109 G5/8+12:95 E5/2-9:112 |
+| F#5/4.+13:114 E5/8-7:100 D5/2-5:102 | E5/4.+23:105 D5/8-9:106 B4/2+9:108 | C#5/4.+16:110 B4/8-5:96 A4/2+18:113 | E5/4.+14:116 C#5/8+9:102 A4/2+15:104 |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| R | R | E5/4.+17:79 D5/8+15:65 C5/2+12:82 | r/4 E5/4+23:74 G5/2-7:72 |
+| R | R | R | R |
+# 57-64: Build: the ostinato returns with the bass
+| R | R | R | R |
+| F#5/4.+17:97 E5/8-9:83 D5/2+9:100 | E5/4.+13:103 D5/8-5:89 B4/2+18:91 | D5/4+23:92 E5/4+9:98 F#5/4+15:93 A5/4+12:88 | A5/4.+16:99 G5/8+18:85 E5/2+6:102 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| G5/4.+14:96 F#5/8+15:97 E5/2+12:99 | A5/4.+21:102 F#5/8+6:88 E5/2-7:105 | B5/4.+11:108 A5/8+12:94 G5/2-9:96 | E5/4.+25:99 F#5/8-7:100 A5/2-5:102 |
+| B5/4.+17:105 A5/8-9:91 G5/2+9:108 | A5/4.+13:111 G5/8-5:97 F#5/2+18:99 | G5/4.+23:102 A5/8+9:103 B5/2+15:105 | A5/4.+16:108 B5/8+18:94 A5/2+6:111 |
+# 73-80: The roll into the climax
+| R | R | D5/4.+25:101 E5/8+6:102 F#5/2-7:104 | F#5/4.+17:107 G5/8+12:93 A5/2-9:110 |
+| B5/4.+13:112 A5/8-7:98 G5/2-5:100 | A5/4.+23:103 G5/8-9:104 E5/2+9:106 | E5/4.+16:108 D5/8-5:94 A4/2+18:111 | E5/4.+14:114 C#5/8+9:100 r/2 |
+# 81-88: Climax: the theme in full
+| A4/4+14:109 D5/4+15:115 E5/2+12:113 | F#5/4.+21:116 E5/8+6:102 D5/2-7:119 | E5/4.+11:121 D5/8+12:107 B4/2-9:109 | C#5/4.+25:112 B4/8-7:113 A4/2-5:115 |
+| A4/4+17:116 D5/4-9:107 E5/4+9:117 F#5/4+15:112 | A5/4.+13:122 F#5/8-5:109 E5/2+18:111 | G5/4.+23:113 F#5/8+9:114 E5/2+15:116 | C#5/4.+16:119 B4/8+18:105 A4/2+6:122 |
+# 89-96: Climax: the theme answered higher
+| A4/4+21:116 D5/4+18:107 E5/2+6:120 | F#5/4.+11:122 E5/8+15:109 D5/2+12:111 | E5/4.+25:113 F#5/8+6:114 G5/2-7:116 | A5/4.+17:119 G5/8+12:105 E5/2-9:122 |
+| G5/4.+13:122 A5/8-7:110 B5/2-5:112 | C#6/4.+23:115 A5/8-9:116 F#5/2+9:118 | B5/4.+16:120 A5/8-5:106 G5/2+18:122 | A5/4.+14:122 G5/8+9:112 E5/2+15:114 |
+# 97-104: Outro: settling on one open chord
+| F#5/4.+11:110 E5/8+9:96 D5/2+15:98 | E5/4.+25:99 D5/8+18:100 B4/2+6:102 | F#5/4.+17:103 E5/8+15:89 D5/2+12:106 | B4/4.+13:107 D5/8+6:93 F#5/2-7:95 |
+| E5/4.+23:96 D5/8+12:97 B4/2-9:99 | C#5/4.+16:100 B4/8-7:86 A4/2-5:103 | D5/4.+14:104 E5/8-9:90 D5/2+9:92 | D5/1+21:97 |
+
+track choir role=pad inst=bank:choir-aah vol=0.85 pan=0.14 vol@41-48=0.8..1 vol@65-80=0.7..1 vol@97-104=1..0.75
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R*8 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| R*8 |
+# 17-24: The theme on the brass, quietly
+| R*8 |
+# 25-32: The theme again, the bells answering in its rests
+| R*8 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| R*8 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| D5/1+12:79~ | D5/1:86~ | D5/1:93 | C#5/1+8:100 |
+| D5/1+12:86 | B4/1+16:96 | C#5/1+20:97 | A4/1+8:107 |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| R*8 |
+# 57-64: Build: the ostinato returns with the bass
+| R*8 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| B4/1+16:75 | C#5/1+20:85 | D5/1+8:95 | E5/1+12:96 |
+| G5/1+16:82 | F#5/1+20:92 | G5/1+8:93 | E5/1+12:103 |
+# 73-80: The roll into the climax
+| D5/1+20:77 | C#5/1+8:87 | D5/1+12:97 | F#5/1+16:98 |
+| G5/1+20:84 | E5/1+8:94~ | E5/1:95~ | E5/1:102 |
+# 81-88: Climax: the theme in full
+| D5/1+8:83~ | D5/1:90~ | D5/1:97 | C#5/1+20:104 |
+| D5/1+8:90 | C#5/1+12:100 | D5/1+16:101 | C#5/1+20:111 |
+# 89-96: Climax: the theme answered higher
+| D5/1+12:85~ | D5/1:92~ | D5/1:99 | E5/1+8:106 |
+| G5/1+12:92 | F#5/1+16:102 | G5/1+20:103 | E5/1+8:113 |
+# 97-104: Outro: settling on one open chord
+| D5/1+16:81~ | D5/1:86~ | D5/1:91~ | D5/1:96 |
+| B4/1+16:80 | C#5/1+20:88 | D5/1+8:87 | A4/1+12:95 |
+
+track pad role=pad inst=synth-pad vol=1 pan=-0.16 vol@97-104=1..0.7
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R*8 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| R*8 |
+# 17-24: The theme on the brass, quietly
+| R*8 |
+# 25-32: The theme again, the bells answering in its rests
+| R*8 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| [B2 F#3 B3]/1+10:87 | [G2 D3 G3]/1+10:93 | [D3 A3 D4]/1+10:99 | [A2 E3 A3]/1+10:105 |
+| [B2 F#3 B3]/1+10:87 | [G2 D3 G3]/1+10:93 | [E3 B3 E4]/1+10:99 | [A2 E3 A3]/1+10:105 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| [D3 A3 D4]/1+10:89 | [B2 F#3 B3]/1+10:95 | [G2 D3 G3]/1+10:101 | [A2 E3 A3]/1+10:107 |
+| [B2 F#3 B3]/1+10:89 | [G2 D3 G3]/1+10:95 | [A2 E3 A3]/1+10:101 | [A2 E3 A3]/1+10:107 |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| R*8 |
+# 57-64: Build: the ostinato returns with the bass
+| R*8 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| [E3 B3 E4]/1+10:89 | [F#2 C#3 F#3]/1+10:95 | [G2 D3 G3]/1+10:101 | [A2 E3 A3]/1+10:107 |
+| [E3 B3 E4]/1+10:89 | [F#2 C#3 F#3]/1+10:95 | [G2 D3 G3]/1+10:101 | [A2 E3 A3]/1+10:107 |
+# 73-80: The roll into the climax
+| [G2 D3 G3]/1+10:91 | [A2 E3 A3]/1+10:97 | [B2 F#3 B3]/1+10:103 | [D3 A3 D4]/1+10:109 |
+| [G2 D3 G3]/1+10:91 | [A2 E3 A3]/1+10:97 | [A2 E3 A3]/1+10:103 | [A2 E3 A3]/1+10:109 |
+# 81-88: Climax: the theme in full
+| [D3 A3 D4]/1+10:95 | [B2 F#3 B3]/1+10:101 | [G2 D3 G3]/1+10:107 | [A2 E3 A3]/1+10:113 |
+| [D3 A3 D4]/1+10:95 | [F#2 C#3 F#3]/1+10:101 | [G2 D3 G3]/1+10:107 | [A2 E3 A3]/1+10:113 |
+# 89-96: Climax: the theme answered higher
+| [D3 A3 D4]/1+10:95 | [B2 F#3 B3]/1+10:101 | [G2 D3 G3]/1+10:107 | [A2 E3 A3]/1+10:113 |
+| [E3 B3 E4]/1+10:95 | [F#2 C#3 F#3]/1+10:101 | [G2 D3 G3]/1+10:107 | [A2 E3 A3]/1+10:113 |
+# 97-104: Outro: settling on one open chord
+| [D3 A3 D4]/1+10:93 | [G2 D3 G3]/1+10:99 | [D3 A3 D4]/1+10:105 | [B2 F#3 B3]/1+10:111 |
+| [G2 D3 G3]/1+10:93 | [A2 E3 A3]/1+10:99 | [A2 E3 A3]/1+10:105 | [D3 A3 D4]/1+10:111 |
+
+track pizz role=counter inst=bank:pizzicato vol=0.7 pan=0.32
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R | R | r/8 D4/8-6:62 E4/8+5:66 G4/8-6:58 r/8 G4/8-6:66 E4/8+5:58 D4/8-6:62 | A4/8+11:63 r/8 C#5/8+5:59 E4/8-6:63 A4/8+5:67 r/8 C#5/8+5:63 A4/8-6:67 |
+| D4/8+11:68 A4/8-6:60 r/8 F#4/8-6:68 D4/8+5:60 A4/8-6:64 r/8 A4/8-6:60 | D4/8+11:61 r/8 F#4/8+5:69 B4/8-6:61 F#4/8+5:65 r/8 D4/8+5:61 F#4/8-6:65 | r/8 E4/8-6:70 G4/8+5:62 B4/8-6:66 r/8 B4/8-6:62 G4/8+5:66 E4/8-6:70 | A4/8+11:71 r/8 C#5/8+5:67 E4/8-6:71 A4/8+5:63 r/8 C#5/8+5:71 A4/8-6:63 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| F#4/8+11:60 r/8 A4/8+5:56 D4/8-6:60 F#4/8+5:64 r/8 A4/8+5:60 F#4/8-6:64 | D4/8+11:65 B4/8-6:57 r/8 F#4/8-6:65 D4/8+5:57 B4/8-6:61 r/8 B4/8-6:57 | D4/8+11:58 r/8 E4/8+5:66 G4/8-6:58 E4/8+5:62 r/8 D4/8+5:58 E4/8-6:62 | r/8 E4/8-6:67 A4/8+5:59 C#5/8-6:63 r/8 C#5/8-6:59 A4/8+5:63 E4/8-6:67 |
+| E4/8+11:68 r/8 F#4/8+5:64 D4/8-6:68 E4/8+5:60 r/8 F#4/8+5:68 E4/8-6:60 | D4/8+11:61 B4/8-6:65 r/8 F#4/8-6:61 D4/8+5:65 B4/8-6:69 r/8 B4/8-6:65 | D4/8+11:66 r/8 E4/8+5:62 G4/8-6:66 E4/8+5:70 r/8 D4/8+5:66 E4/8-6:70 | r/8 E4/8-6:63 A4/8+5:67 C#5/8-6:71 r/8 C#5/8-6:67 A4/8+5:71 E4/8-6:63 |
+# 17-24: The theme on the brass, quietly
+| D4/8+11:68 F#4/8-6:60 r/8 E4/8-6:68 D4/8+5:60 F#4/8-6:64 r/8 F#4/8-6:60 | D4/8+11:60 r/8 F#4/8+5:68 B4/8-6:60 F#4/8+5:64 r/8 D4/8+5:60 F#4/8-6:64 | r/8 D4/8-6:68 E4/8+5:60 G4/8-6:64 r/8 G4/8-6:60 E4/8+5:64 D4/8-6:68 | A4/8+11:68 r/8 C#5/8+5:64 E4/8-6:68 A4/8+5:60 r/8 C#5/8+5:68 A4/8-6:60 |
+| D4/8+11:60 F#4/8-6:64 r/8 E4/8-6:60 D4/8+5:64 F#4/8-6:68 r/8 F#4/8-6:64 | E4/8+11:64 r/8 F#4/8+5:60 A4/8-6:64 F#4/8+5:68 r/8 E4/8+5:64 F#4/8-6:68 | r/8 D4/8-6:60 E4/8+5:64 G4/8-6:68 r/8 G4/8-6:64 E4/8+5:68 D4/8-6:60 | A4/8+11:60 r/8 C#5/8+5:68 E4/8-6:60 A4/8+5:64 r/8 C#5/8+5:60 A4/8-6:64 |
+# 25-32: The theme again, the bells answering in its rests
+| D4/8+11:62 r/8 E4/8+5:70 F#4/8-6:62 E4/8+5:66 r/8 D4/8+5:62 E4/8-6:66 | r/8 D4/8-6:70 F#4/8+5:62 B4/8-6:66 r/8 B4/8-6:62 F#4/8+5:66 D4/8-6:70 | E4/8+11:70 r/8 G4/8+5:66 D4/8-6:70 E4/8+5:62 r/8 G4/8+5:70 E4/8-6:62 | E4/8+11:62 C#5/8-6:66 r/8 A4/8-6:62 E4/8+5:66 C#5/8-6:70 r/8 C#5/8-6:66 |
+| D4/8+11:66 r/8 E4/8+5:62 F#4/8-6:66 E4/8+5:70 r/8 D4/8+5:66 E4/8-6:70 | r/8 E4/8-6:62 F#4/8+5:66 A4/8-6:70 r/8 A4/8-6:66 F#4/8+5:70 E4/8-6:62 | E4/8+11:62 r/8 G4/8+5:70 D4/8-6:62 E4/8+5:66 r/8 G4/8+5:62 E4/8-6:66 | E4/8+11:66 C#5/8-6:70 r/8 A4/8-6:66 E4/8+5:70 C#5/8-6:62 r/8 C#5/8-6:70 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| r/8 D4/8-6:70 F#4/8+5:74 B4/8-6:66 r/8 B4/8-6:74 F#4/8+5:66 D4/8-6:70 | E4/8+11:70 r/8 G4/8+5:66 D4/8-6:70 E4/8+5:74 r/8 G4/8+5:70 E4/8-6:74 | D4/8+11:74 F#4/8-6:66 r/8 E4/8-6:74 D4/8+5:66 F#4/8-6:70 r/8 F#4/8-6:66 | E4/8+11:66 r/8 A4/8+5:74 C#5/8-6:66 A4/8+5:70 r/8 E4/8+5:66 A4/8-6:70 |
+| r/8 D4/8-6:74 F#4/8+5:66 B4/8-6:70 r/8 B4/8-6:66 F#4/8+5:70 D4/8-6:74 | E4/8+11:74 r/8 G4/8+5:70 D4/8-6:74 E4/8+5:66 r/8 G4/8+5:74 E4/8-6:66 | E4/8+11:66 B4/8-6:70 r/8 G4/8-6:66 E4/8+5:70 B4/8-6:74 r/8 B4/8-6:70 | E4/8+11:70 r/8 A4/8+5:66 C#5/8-6:70 A4/8+5:74 r/8 E4/8+5:70 A4/8-6:74 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| F#4/8+11:72 r/8 A4/8+5:68 D4/8-6:72 F#4/8+5:76 r/8 A4/8+5:72 F#4/8-6:76 | D4/8+11:76 A4/8-6:68 r/8 F#4/8-6:76 D4/8+5:68 A4/8-6:72 r/8 A4/8-6:68 | D4/8+11:68 r/8 G4/8+5:76 A4/8-6:68 G4/8+5:72 r/8 D4/8+5:68 G4/8-6:72 | r/8 E4/8-6:76 A4/8+5:68 C#5/8-6:72 r/8 C#5/8-6:68 A4/8+5:72 E4/8-6:76 |
+| F#4/8+11:76 r/8 B4/8+5:72 D4/8-6:76 F#4/8+5:68 r/8 B4/8+5:76 F#4/8-6:68 | D4/8+11:68 G4/8-6:72 r/8 E4/8-6:68 D4/8+5:72 G4/8-6:76 r/8 G4/8-6:72 | E4/8+11:72 r/8 A4/8+5:68 C#5/8-6:72 A4/8+5:76 r/8 E4/8+5:72 A4/8-6:76 | r/8 E4/8-6:68 A4/8+5:72 C#5/8-6:76 r/8 C#5/8-6:72 A4/8+5:76 E4/8-6:68 |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| D4/8+11:62 A4/8-6:54 r/8 F#4/8-6:62 D4/8+5:54 A4/8-6:58 r/8 A4/8-6:54 | D4/8+11:55 r/8 F#4/8+5:63 A4/8-6:55 F#4/8+5:59 r/8 D4/8+5:55 F#4/8-6:59 | r/8 E4/8-6:64 G4/8+5:56 C5/8-6:60 r/8 C5/8-6:56 G4/8+5:60 E4/8-6:64 | G4/8+11:65 r/8 C5/8+5:61 E4/8-6:65 G4/8+5:57 r/8 C5/8+5:65 G4/8-6:57 |
+| D4/8+11:58 G4/8-6:62 r/8 E4/8-6:58 D4/8+5:62 G4/8-6:66 r/8 G4/8-6:62 | D4/8+11:63 r/8 E4/8+5:59 G4/8-6:63 E4/8+5:67 r/8 D4/8+5:63 E4/8-6:67 | r/8 E4/8-6:60 A4/8+5:64 C#5/8-6:68 r/8 C#5/8-6:64 A4/8+5:68 E4/8-6:60 | A4/8+11:61 r/8 C#5/8+5:69 E4/8-6:61 A4/8+5:65 r/8 C#5/8+5:61 A4/8-6:65 |
+# 57-64: Build: the ostinato returns with the bass
+| r/8 D4/8-6:66 F#4/8+5:70 B4/8-6:62 r/8 B4/8-6:70 F#4/8+5:62 D4/8-6:66 | E4/8+11:66 r/8 G4/8+5:62 D4/8-6:66 E4/8+5:70 r/8 G4/8+5:66 E4/8-6:70 | D4/8+11:70 F#4/8-6:62 r/8 E4/8-6:70 D4/8+5:62 F#4/8-6:66 r/8 F#4/8-6:62 | E4/8+11:62 r/8 A4/8+5:70 C#5/8-6:62 A4/8+5:66 r/8 E4/8+5:62 A4/8-6:66 |
+| r/8 D4/8-6:70 F#4/8+5:62 B4/8-6:66 r/8 B4/8-6:62 F#4/8+5:66 D4/8-6:70 | E4/8+11:70 r/8 G4/8+5:66 D4/8-6:70 E4/8+5:62 r/8 G4/8+5:70 E4/8-6:62 | D4/8+11:62 F#4/8-6:66 r/8 E4/8-6:62 D4/8+5:66 F#4/8-6:70 r/8 F#4/8-6:66 | E4/8+11:66 r/8 A4/8+5:62 C#5/8-6:66 A4/8+5:70 r/8 E4/8+5:66 A4/8-6:70 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| G4/8+11:72 r/8 B4/8+5:68 E4/8-6:72 G4/8+5:76 r/8 B4/8+5:72 G4/8-6:76 | E4/8+11:76 A4/8-6:68 r/8 F#4/8-6:76 E4/8+5:68 A4/8-6:72 r/8 A4/8-6:68 | D4/8+11:68 r/8 E4/8+5:76 G4/8-6:68 E4/8+5:72 r/8 D4/8+5:68 E4/8-6:72 | r/8 E4/8-6:76 A4/8+5:68 C#5/8-6:72 r/8 C#5/8-6:68 A4/8+5:72 E4/8-6:76 |
+| G4/8+11:76 r/8 B4/8+5:72 E4/8-6:76 G4/8+5:68 r/8 B4/8+5:76 G4/8-6:68 | E4/8+11:68 A4/8-6:72 r/8 F#4/8-6:68 E4/8+5:72 A4/8-6:76 r/8 A4/8-6:72 | D4/8+11:72 r/8 E4/8+5:68 G4/8-6:72 E4/8+5:76 r/8 D4/8+5:72 E4/8-6:76 | r/8 E4/8-6:68 A4/8+5:72 C#5/8-6:76 r/8 C#5/8-6:72 A4/8+5:76 E4/8-6:68 |
+# 73-80: The roll into the climax
+| D4/8+11:72 r/8 E4/8+5:80 G4/8-6:72 E4/8+5:76 r/8 D4/8+5:72 E4/8-6:76 | r/8 E4/8-6:80 A4/8+5:72 C#5/8-6:76 r/8 C#5/8-6:72 A4/8+5:76 E4/8-6:80 | F#4/8+11:80 r/8 B4/8+5:76 D4/8-6:80 F#4/8+5:72 r/8 B4/8+5:80 F#4/8-6:72 | D4/8+11:72 F#4/8-6:76 r/8 E4/8-6:72 D4/8+5:76 F#4/8-6:80 r/8 F#4/8-6:76 |
+| D4/8+11:76 r/8 E4/8+5:72 G4/8-6:76 E4/8+5:80 r/8 D4/8+5:76 E4/8-6:80 | r/8 E4/8-6:72 A4/8+5:76 C#5/8-6:80 r/8 C#5/8-6:76 A4/8+5:80 E4/8-6:72 | E4/8+11:72 r/8 A4/8+5:80 D4/8-6:72 E4/8+5:76 r/8 A4/8+5:72 E4/8-6:76 | E4/8+11:76 C#5/8-6:80 r/8 A4/8-6:76 E4/8+5:80 C#5/8-6:72 r/8 C#5/8-6:80 |
+# 81-88: Climax: the theme in full
+| r/8 D4/8-6:80 E4/8+5:84 F#4/8-6:76 r/8 F#4/8-6:84 E4/8+5:76 D4/8-6:80 | F#4/8+11:80 r/8 B4/8+5:76 D4/8-6:80 F#4/8+5:84 r/8 B4/8+5:80 F#4/8-6:84 | D4/8+11:84 G4/8-6:76 r/8 E4/8-6:84 D4/8+5:76 G4/8-6:80 r/8 G4/8-6:76 | E4/8+11:76 r/8 A4/8+5:84 C#5/8-6:76 A4/8+5:80 r/8 E4/8+5:76 A4/8-6:80 |
+| r/8 D4/8-6:84 E4/8+5:76 F#4/8-6:80 r/8 F#4/8-6:76 E4/8+5:80 D4/8-6:84 | F#4/8+11:84 r/8 A4/8+5:80 E4/8-6:84 F#4/8+5:76 r/8 A4/8+5:84 F#4/8-6:76 | D4/8+11:76 G4/8-6:80 r/8 E4/8-6:76 D4/8+5:80 G4/8-6:84 r/8 G4/8-6:80 | E4/8+11:80 r/8 A4/8+5:76 C#5/8-6:80 A4/8+5:84 r/8 E4/8+5:80 A4/8-6:84 |
+# 89-96: Climax: the theme answered higher
+| E4/8+11:82 r/8 F#4/8+5:78 D4/8-6:82 E4/8+5:86 r/8 F#4/8+5:82 E4/8-6:86 | D4/8+11:86 B4/8-6:78 r/8 F#4/8-6:86 D4/8+5:78 B4/8-6:82 r/8 B4/8-6:78 | D4/8+11:78 r/8 E4/8+5:86 G4/8-6:78 E4/8+5:82 r/8 D4/8+5:78 E4/8-6:82 | r/8 E4/8-6:86 A4/8+5:78 C#5/8-6:82 r/8 C#5/8-6:78 A4/8+5:82 E4/8-6:86 |
+| G4/8+11:86 r/8 B4/8+5:82 E4/8-6:86 G4/8+5:78 r/8 B4/8+5:86 G4/8-6:78 | E4/8+11:78 A4/8-6:82 r/8 F#4/8-6:78 E4/8+5:82 A4/8-6:86 r/8 A4/8-6:82 | D4/8+11:82 r/8 E4/8+5:78 G4/8-6:82 E4/8+5:86 r/8 D4/8+5:82 E4/8-6:86 | r/8 E4/8-6:78 A4/8+5:82 C#5/8-6:86 r/8 C#5/8-6:82 A4/8+5:86 E4/8-6:78 |
+# 97-104: Outro: settling on one open chord
+| r/8 D4/8-6:70 E4/8+5:74 F#4/8-6:66 r/8 F#4/8-6:74 E4/8+5:66 D4/8-6:70 | E4/8+11:66 r/8 G4/8+5:62 D4/8-6:66 E4/8+5:70 r/8 G4/8+5:66 E4/8-6:70 | D4/8+11:66 F#4/8-6:58 r/8 E4/8-6:66 D4/8+5:58 F#4/8-6:62 r/8 F#4/8-6:58 | D4/8+11:54 r/8 F#4/8+5:62 B4/8-6:54 F#4/8+5:58 r/8 D4/8+5:54 F#4/8-6:58 |
+| r/8 D4/8-6:58 E4/8+5:50 G4/8-6:54 r/8 G4/8-6:50 E4/8+5:54 D4/8-6:58 | R | R | R |
+
+track bells role=counter inst=bank:fm-bells vol=0.6 pan=-0.34
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| r/2 A5/4+21:99 D6/4+12:94 | E6/8+21:94 D6/8+6:85 r/2 F#6/4-5:94 | R | R |
+| r/2 A5/8+13:85 D6/4.+9:100 | E6/8+13:99 D6/8-5:90 r/2 F#6/4+6:99 | E5/8+23:89 G5/8+9:95 B5/4+15:94 r/2 | C#6/8+16:94 B5/8+18:85 A5/4+6:99 r/2 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| r/4 A5/4+21:95 D6/2+12:93 | R | R | R |
+| R | R | R | r/2 C#6/4+14:85 A5/4+6:95 |
+# 17-24: The theme on the brass, quietly
+| r/2 D6/8+21:89 A5/4.+12:89 | R | R | R |
+| r/4 A5/4+13:83 D6/2+9:96 | R | R | R |
+# 25-32: The theme again, the bells answering in its rests
+| R | r/4 r/4 D6/8+25:91 F#6/8-5:86 E6/8+18:81 D6/8+6:91 | R | r/4 r/4 C#6/8+13:86 A5/8+18:81 E6/8+6:91 C#6/8-7:86 |
+| R | r/4 r/4 F#6/8+16:81 E6/8+6:91 C#6/8-7:86 A5/8-5:81 | R | R |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| r/2 D6/4+21:99 F#6/4+12:94 | R | R | R |
+| r/2 D6/4+13:89 F#6/4+9:99 | R | R | R |
+# 41-48: A pedal on A under moving chords, the choir enters
+| r/2 A5/4+21:97 D6/4+12:92 | R | R | R |
+| r/2 B5/4+13:87 D6/4+9:97 | R | R | R |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| r/2 A5/4+21:87 D6/4+12:82 | E6/8+21:82 D6/8+6:73 r/2 F#6/4-5:82 | r/2 G5/4+25:82 C6/4-9:77 | R |
+| r/4 B5/4+13:77 D6/2+9:90 | R | r/2 C#6/4+16:87 A5/4+15:82 | R |
+# 57-64: Build: the ostinato returns with the bass
+| r/2 D6/4+21:93 F#6/4+12:88 | R | R | R |
+| R | R | r/2 A5/4+16:93 D6/4+15:88 | R |
+# 65-72: Build: a rising sequence, the pad and choir back
+| r/2 B5/4+21:95 E6/4+12:90 | R | r/2 B5/4+25:90 D6/4-9:85 | R |
+| r/2 G5/4+13:85 B5/4+9:95 | R | R | R |
+# 73-80: The roll into the climax
+| r/2 B5/4+21:97 D6/4+12:92 | R | R | R |
+| r/2 B5/4+13:87 D6/4+9:97 | R | R | R |
+# 81-88: Climax: the theme in full
+| r/2 D6/4+21:101 F#6/4+12:96 | R | R | R |
+| r/2 A5/4+13:91 D6/4+9:101 | R | R | R |
+# 89-96: Climax: the theme answered higher
+| r/2 D6/4+21:101 F#6/4+12:96 | R | R | R |
+| r/2 B5/4+13:91 E6/4+9:101 | r/2 A5/4+23:96 C#6/4+18:91 | R | R |
+# 97-104: Outro: settling on one open chord
+| r/2 F#6/4+21:97 D6/4+12:92 | R | R | R |
+| r/4 B5/4+13:87 D6/2+9:100 | R | R | D6/4+16:96 r/4 r/2 |
+
+track ost role=arp inst=analog-synth vol=1 pan=0.2
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R*8 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| D3/8:84 A3/8:83 D4/8:90 A3/8:80 D3/8:87 A3/8:86 D4/8:84 A3/8:83 | B2/8:87 F#3/8:86 B3/8:84 F#3/8:83 B2/8:90 F#3/8:80 B3/8:87 F#3/8:86 | G3/8:90 D4/8:80 G4/8:87 D4/8:86 G3/8:84 D4/8:83 G4/8:90 D4/8:80 | A3/8:84 E4/8:83 A4/8:90 E4/8:80 A3/8:87 E4/8:86 A4/8:84 E4/8:83 |
+| D3/8:87 A3/8:86 D4/8:84 A3/8:83 D3/8:90 A3/8:80 D4/8:87 A3/8:86 | B2/8:90 F#3/8:80 B3/8:87 F#3/8:86 B2/8:84 F#3/8:83 B3/8:90 F#3/8:80 | G3/8:84 D4/8:83 G4/8:90 D4/8:80 G3/8:87 D4/8:86 G4/8:84 D4/8:83 | A3/8:87 E4/8:86 A4/8:84 E4/8:83 A3/8:90 E4/8:80 A4/8:87 E4/8:86 |
+# 17-24: The theme on the brass, quietly
+| D3/8:98 A3/8:97 D4/8:104 A3/8:94 D3/8:101 A3/8:100 D4/8:98 A3/8:97 | B2/8:101 F#3/8:100 B3/8:98 F#3/8:97 B2/8:104 F#3/8:94 B3/8:101 F#3/8:100 | G3/8:104 D4/8:94 G4/8:101 D4/8:100 G3/8:98 D4/8:97 G4/8:104 D4/8:94 | A3/8:98 E4/8:97 A4/8:104 E4/8:94 A3/8:101 E4/8:100 A4/8:98 E4/8:97 |
+| D3/8:101 A3/8:100 D4/8:98 A3/8:97 D3/8:104 A3/8:94 D4/8:101 A3/8:100 | F#3/8:104 C#4/8:94 F#4/8:101 C#4/8:100 F#3/8:98 C#4/8:97 F#4/8:104 C#4/8:94 | G3/8:98 D4/8:97 G4/8:104 D4/8:94 G3/8:101 D4/8:100 G4/8:98 D4/8:97 | A3/8:101 E4/8:100 A4/8:98 E4/8:97 A3/8:104 E4/8:94 A4/8:101 E4/8:100 |
+# 25-32: The theme again, the bells answering in its rests
+| D3/8:106 A3/8:96 D4/8:103 A3/8:102 D3/8:100 A3/8:99 D4/8:106 A3/8:96 | B2/8:100 F#3/8:99 B3/8:106 F#3/8:96 B2/8:103 F#3/8:102 B3/8:100 F#3/8:99 | G3/8:103 D4/8:102 G4/8:100 D4/8:99 G3/8:106 D4/8:96 G4/8:103 D4/8:102 | A3/8:106 E4/8:96 A4/8:103 E4/8:102 A3/8:100 E4/8:99 A4/8:106 E4/8:96 |
+| D3/8:100 A3/8:99 D4/8:106 A3/8:96 D3/8:103 A3/8:102 D4/8:100 A3/8:99 | F#3/8:103 C#4/8:102 F#4/8:100 C#4/8:99 F#3/8:106 C#4/8:96 F#4/8:103 C#4/8:102 | G3/8:106 D4/8:96 G4/8:103 D4/8:102 G3/8:100 D4/8:99 G4/8:106 D4/8:96 | A3/8:100 E4/8:99 A4/8:106 E4/8:96 A3/8:103 E4/8:102 A4/8:100 E4/8:99 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| B2/8:104 F#3/8:103 B3/8:110 F#3/8:100 D3/8:107 F#3/8:106 B3/8:104 F#3/8:103 | G3/8:107 D4/8:106 G4/8:104 D4/8:103 B3/8:110 D4/8:100 G4/8:107 D4/8:106 | D3/8:110 A3/8:100 D4/8:107 A3/8:106 E3/8:104 A3/8:103 D4/8:110 A3/8:100 | A3/8:104 E4/8:103 A4/8:110 E4/8:100 C#4/8:107 E4/8:106 A4/8:104 E4/8:103 |
+| B2/8:107 F#3/8:106 B3/8:104 F#3/8:103 D3/8:110 F#3/8:100 B3/8:107 F#3/8:106 | G3/8:110 D4/8:100 G4/8:107 D4/8:106 B3/8:104 D4/8:103 G4/8:110 D4/8:100 | E3/8:104 B3/8:103 E4/8:110 B3/8:100 G3/8:107 B3/8:106 E4/8:104 B3/8:103 | A3/8:107 E4/8:106 A4/8:104 E4/8:103 C#4/8:110 E4/8:100 A4/8:107 E4/8:106 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| D3/8:112 A3/8:102 D4/8:109 A3/8:108 F#3/8:106 A3/8:105 D4/8:112 A3/8:102 | B2/8:106 F#3/8:105 B3/8:112 F#3/8:102 D3/8:109 F#3/8:108 B3/8:106 F#3/8:105 | G3/8:109 D4/8:108 G4/8:106 D4/8:105 A3/8:112 D4/8:102 G4/8:109 D4/8:108 | A3/8:112 E4/8:102 A4/8:109 E4/8:108 C#4/8:106 E4/8:105 A4/8:112 E4/8:102 |
+| B2/8:106 F#3/8:105 B3/8:112 F#3/8:102 D3/8:109 F#3/8:108 B3/8:106 F#3/8:105 | G3/8:109 D4/8:108 G4/8:106 D4/8:105 B3/8:112 D4/8:102 G4/8:109 D4/8:108 | R | R |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| R*8 |
+# 57-64: Build: the ostinato returns with the bass
+| B2/8:98 F#3/8:97 B3/8:104 F#3/8:94 B2/8:101 F#3/8:100 B3/8:98 F#3/8:97 | G3/8:102 D4/8:101 G4/8:99 D4/8:98 G3/8:105 D4/8:95 G4/8:102 D4/8:101 | D3/8:106 A3/8:96 D4/8:103 A3/8:102 D3/8:100 A3/8:99 D4/8:106 A3/8:96 | A3/8:101 E4/8:100 A4/8:107 E4/8:97 A3/8:104 E4/8:103 A4/8:101 E4/8:100 |
+| B2/8:105 F#3/8:104 B3/8:102 F#3/8:101 B2/8:108 F#3/8:98 B3/8:105 F#3/8:104 | G3/8:109 D4/8:99 G4/8:106 D4/8:105 G3/8:103 D4/8:102 G4/8:109 D4/8:99 | D3/8:104 A3/8:103 D4/8:110 A3/8:100 D3/8:107 A3/8:106 D4/8:104 A3/8:103 | A3/8:108 E4/8:107 A4/8:105 E4/8:104 A3/8:111 E4/8:101 A4/8:108 E4/8:107 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| E3/8:106 B3/8:105 E4/8:112 B3/8:102 G3/8:109 B3/8:108 E4/8:106 B3/8:105 | F#3/8:109 C#4/8:108 F#4/8:106 C#4/8:105 A3/8:112 C#4/8:102 F#4/8:109 C#4/8:108 | G3/8:112 D4/8:102 G4/8:109 D4/8:108 B3/8:106 D4/8:105 G4/8:112 D4/8:102 | A3/8:106 E4/8:105 A4/8:112 E4/8:102 C#4/8:109 E4/8:108 A4/8:106 E4/8:105 |
+| E3/8:109 B3/8:108 E4/8:106 B3/8:105 G3/8:112 B3/8:102 E4/8:109 B3/8:108 | F#3/8:112 C#4/8:102 F#4/8:109 C#4/8:108 A3/8:106 C#4/8:105 F#4/8:112 C#4/8:102 | G3/8:106 D4/8:105 G4/8:112 D4/8:102 B3/8:109 D4/8:108 G4/8:106 D4/8:105 | A3/8:109 E4/8:108 A4/8:106 E4/8:105 C#4/8:112 E4/8:102 A4/8:109 E4/8:108 |
+# 73-80: The roll into the climax
+| G3/16:106 D4/16:105 G4/16:112 D4/16:102 B3/16:109 D4/16:108 G4/16:106 D4/16:105 G4/16:112 D4/16:102 G3/16:109 D4/16:108 B3/16:106 D4/16:105 G4/16:112 D4/16:102 | A3/16:110 E4/16:109 A4/16:107 E4/16:106 C#4/16:113 E4/16:103 A4/16:110 E4/16:109 A4/16:107 E4/16:106 A3/16:113 E4/16:103 C#4/16:110 E4/16:109 A4/16:107 E4/16:106 | B2/16:114 F#3/16:104 B3/16:111 F#3/16:110 D3/16:108 F#3/16:107 B3/16:114 F#3/16:104 B3/16:111 F#3/16:110 B2/16:108 F#3/16:107 D3/16:114 F#3/16:104 B3/16:111 F#3/16:110 | D3/16:109 A3/16:108 D4/16:115 A3/16:105 E3/16:112 A3/16:111 D4/16:109 A3/16:108 D4/16:115 A3/16:105 D3/16:112 A3/16:111 E3/16:109 A3/16:108 D4/16:115 A3/16:105 |
+| G3/16:113 D4/16:112 G4/16:110 D4/16:109 B3/16:116 D4/16:106 G4/16:113 D4/16:112 G4/16:110 D4/16:109 G3/16:116 D4/16:106 B3/16:113 D4/16:112 G4/16:110 D4/16:109 | A3/16:117 E4/16:107 A4/16:114 E4/16:113 C#4/16:111 E4/16:110 A4/16:117 E4/16:107 A4/16:114 E4/16:113 A3/16:111 E4/16:110 C#4/16:117 E4/16:107 A4/16:114 E4/16:113 | A3/16:112 E4/16:111 A4/16:118 E4/16:108 D4/16:115 E4/16:114 A4/16:112 E4/16:111 A4/16:118 E4/16:108 A3/16:115 E4/16:114 D4/16:112 E4/16:111 A4/16:118 E4/16:108 | A3/16:116 E4/16:115 A4/16:113 E4/16:112 C#4/16:119 E4/16:109 A4/16:116 E4/16:115 A4/16:113 E4/16:112 A3/16:119 E4/16:109 C#4/16:116 E4/16:115 A4/16:113 E4/16:112 |
+# 81-88: Climax: the theme in full
+| D3/16:110 A3/16:109 D4/16:116 A3/16:106 E3/16:113 A3/16:112 D4/16:110 A3/16:109 D4/16:116 A3/16:106 D3/16:113 A3/16:112 E3/16:110 A3/16:109 D4/16:116 A3/16:106 | B2/16:113 F#3/16:112 B3/16:110 F#3/16:109 D3/16:116 F#3/16:106 B3/16:113 F#3/16:112 B3/16:110 F#3/16:109 B2/16:116 F#3/16:106 D3/16:113 F#3/16:112 B3/16:110 F#3/16:109 | G3/16:116 D4/16:106 G4/16:113 D4/16:112 B3/16:110 D4/16:109 G4/16:116 D4/16:106 G4/16:113 D4/16:112 G3/16:110 D4/16:109 B3/16:116 D4/16:106 G4/16:113 D4/16:112 | A3/16:110 E4/16:109 A4/16:116 E4/16:106 C#4/16:113 E4/16:112 A4/16:110 E4/16:109 A4/16:116 E4/16:106 A3/16:113 E4/16:112 C#4/16:110 E4/16:109 A4/16:116 E4/16:106 |
+| D3/16:113 A3/16:112 D4/16:110 A3/16:109 E3/16:116 A3/16:106 D4/16:113 A3/16:112 D4/16:110 A3/16:109 D3/16:116 A3/16:106 E3/16:113 A3/16:112 D4/16:110 A3/16:109 | F#3/16:116 C#4/16:106 F#4/16:113 C#4/16:112 A3/16:110 C#4/16:109 F#4/16:116 C#4/16:106 F#4/16:113 C#4/16:112 F#3/16:110 C#4/16:109 A3/16:116 C#4/16:106 F#4/16:113 C#4/16:112 | G3/16:110 D4/16:109 G4/16:116 D4/16:106 B3/16:113 D4/16:112 G4/16:110 D4/16:109 G4/16:116 D4/16:106 G3/16:113 D4/16:112 B3/16:110 D4/16:109 G4/16:116 D4/16:106 | A3/16:113 E4/16:112 A4/16:110 E4/16:109 C#4/16:116 E4/16:106 A4/16:113 E4/16:112 A4/16:110 E4/16:109 A3/16:116 E4/16:106 C#4/16:113 E4/16:112 A4/16:110 E4/16:109 |
+# 89-96: Climax: the theme answered higher
+| D3/16:118 A3/16:108 D4/16:115 A3/16:114 E3/16:112 A3/16:111 D4/16:118 A3/16:108 D4/16:115 A3/16:114 D3/16:112 A3/16:111 E3/16:118 A3/16:108 D4/16:115 A3/16:114 | B2/16:112 F#3/16:111 B3/16:118 F#3/16:108 D3/16:115 F#3/16:114 B3/16:112 F#3/16:111 B3/16:118 F#3/16:108 B2/16:115 F#3/16:114 D3/16:112 F#3/16:111 B3/16:118 F#3/16:108 | G3/16:115 D4/16:114 G4/16:112 D4/16:111 B3/16:118 D4/16:108 G4/16:115 D4/16:114 G4/16:112 D4/16:111 G3/16:118 D4/16:108 B3/16:115 D4/16:114 G4/16:112 D4/16:111 | A3/16:118 E4/16:108 A4/16:115 E4/16:114 C#4/16:112 E4/16:111 A4/16:118 E4/16:108 A4/16:115 E4/16:114 A3/16:112 E4/16:111 C#4/16:118 E4/16:108 A4/16:115 E4/16:114 |
+| E3/16:112 B3/16:111 E4/16:118 B3/16:108 G3/16:115 B3/16:114 E4/16:112 B3/16:111 E4/16:118 B3/16:108 E3/16:115 B3/16:114 G3/16:112 B3/16:111 E4/16:118 B3/16:108 | F#3/16:115 C#4/16:114 F#4/16:112 C#4/16:111 A3/16:118 C#4/16:108 F#4/16:115 C#4/16:114 F#4/16:112 C#4/16:111 F#3/16:118 C#4/16:108 A3/16:115 C#4/16:114 F#4/16:112 C#4/16:111 | G3/16:118 D4/16:108 G4/16:115 D4/16:114 B3/16:112 D4/16:111 G4/16:118 D4/16:108 G4/16:115 D4/16:114 G3/16:112 D4/16:111 B3/16:118 D4/16:108 G4/16:115 D4/16:114 | A3/16:112 E4/16:111 A4/16:118 E4/16:108 C#4/16:115 E4/16:114 A4/16:112 E4/16:111 A4/16:118 E4/16:108 A3/16:115 E4/16:114 C#4/16:112 E4/16:111 A4/16:118 E4/16:108 |
+# 97-104: Outro: settling on one open chord
+| D3/8:96 A3/8:95 D4/8:102 A3/8:92 E3/8:99 A3/8:98 D4/8:96 A3/8:95 | G3/8:98 D4/8:97 G4/8:95 D4/8:94 B3/8:101 D4/8:91 G4/8:98 D4/8:97 | D3/8:100 A3/8:90 D4/8:97 A3/8:96 E3/8:94 A3/8:93 D4/8:100 A3/8:90 | B2/8:93 F#3/8:92 B3/8:99 F#3/8:89 D3/8:96 F#3/8:95 B3/8:93 F#3/8:92 |
+| G3/8:95 D4/8:94 G4/8:92 D4/8:91 B3/8:98 D4/8:88 G4/8:95 D4/8:94 | A3/8:97 E4/8:87 A4/8:94 E4/8:93 C#4/8:91 E4/8:90 A4/8:97 E4/8:87 | R | R |
+
+track bass role=bass inst=warm-bass vol=0.28 pan=0
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R*8 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| R*8 |
+# 17-24: The theme on the brass, quietly
+| R*8 |
+# 25-32: The theme again, the bells answering in its rests
+| R*8 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| B1/1+12:83 | G2/1+12:89 | D2/1+12:95 | A2/1+12:101 |
+| B1/1+12:83 | G2/1+12:89 | E2/1+12:95 | A2/1+12:101 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| A2/1+12:85 | A2/1+12:91 | A2/1+12:97 | A2/1+12:103 |
+| B1/1+12:85 | G2/1+12:91 | A2/1+12:97 | A2/1+12:103 |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| R*8 |
+# 57-64: Build: the ostinato returns with the bass
+| B1/2+12:75 B1/2+8:70 | G2/2+12:81 G2/2+8:76 | D2/2+12:87 D2/2+8:82 | A2/2+12:93 A2/2+8:88 |
+| B1/2+12:75 B1/2+8:70 | G2/2+12:81 G2/2+8:76 | D2/2+12:87 D2/2+8:82 | A2/2+12:93 A2/2+8:88 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| E2/2+12:79 E2/2+8:74 | F#2/2+12:85 F#2/2+8:80 | G2/2+12:91 G2/2+8:86 | A2/2+12:97 A2/2+8:92 |
+| E2/2+12:79 E2/2+8:74 | F#2/2+12:85 F#2/2+8:80 | G2/2+12:91 G2/2+8:86 | A2/2+12:97 A2/2+8:92 |
+# 73-80: The roll into the climax
+| G2/2+12:83 G2/2+8:78 | A2/2+12:89 A2/2+8:84 | B1/2+12:95 B1/2+8:90 | D2/2+12:101 D2/2+8:96 |
+| G2/2+12:83 G2/2+8:78 | A2/2+12:89 A2/2+8:84 | A2/2+12:95 A2/2+8:90 | A2/2+12:101 A2/2+8:96 |
+# 81-88: Climax: the theme in full
+| D2/2+12:87 D2/2+8:82 | B1/2+12:93 B1/2+8:88 | G2/2+12:99 G2/2+8:94 | A2/2+12:105 A2/2+8:100 |
+| D2/2+12:87 D2/2+8:82 | F#2/2+12:93 F#2/2+8:88 | G2/2+12:99 G2/2+8:94 | A2/2+12:105 A2/2+8:100 |
+# 89-96: Climax: the theme answered higher
+| D2/2+12:89 D2/2+8:84 | B1/2+12:95 B1/2+8:90 | G2/2+12:101 G2/2+8:96 | A2/2+12:107 A2/2+8:102 |
+| E2/2+12:89 E2/2+8:84 | F#2/2+12:95 F#2/2+8:90 | G2/2+12:101 G2/2+8:96 | A2/2+12:107 A2/2+8:102 |
+# 97-104: Outro: settling on one open chord
+| D2/1+12:75 | G2/1+12:81 | D2/1+12:87 | B1/1+12:93 |
+| G2/1+12:75 | A2/1+12:81 | A2/1+12:87 | D2/1+12:93 |
+
+track kit role=drums inst=studio-kit vol=0.85 pan=0
+# 1-8: Opening: bells and pizzicato, the motif in the air
+| R*8 |
+# 9-16: The ostinato starts, the brass breathes the motif
+| R*8 |
+# 17-24: The theme on the brass, quietly
+| R*8 |
+# 25-32: The theme again, the bells answering in its rests
+| R | R | R | R |
+| R | R | R | s/16+8:64 s/16+11:67 s/16+14:70 s/16+17:73 s/16+8:76 s/16+11:79 s/16+14:82 s/16+17:85 s/16+8:87 s/16+11:90 s/16+14:93 s/16+17:96 s/16+8:99 s/16+11:102 s/16+14:105 s/16+17:108 |
+# 33-40: Lift: the pad and the bass join, the theme rises
+| [k cr]/4+18:110 r/4 k/4+14:102 r/4 | R | k/4+16:106 r/4 tm/8+12:98 th/8+14:94 r/4 | R |
+| [k cr]/4+18:106 r/4 k/4+14:98 r/4 | R | k/4+16:106 r/4 tm/8+12:98 th/8+14:94 r/4 | tm/8+10:100 tm/8+12:103 th/8+14:106 th/8+16:109 s/8+18:111 s/8+20:113 s/8+22:115 s/8+24:117 |
+# 41-48: A pedal on A under moving chords, the choir enters
+| [k cr]/4+18:108 r/4 k/4+14:100 r/4 | R | k/4+16:104 r/4 tm/8+12:96 th/8+14:92 r/4 | R |
+| [k cr]/4+18:106 r/4 k/4+14:98 r/4 | R | k/4+16:104 r/4 r/2 | tm/8+10:100 tm/8+12:103 th/8+14:106 th/8+16:109 s/8+18:111 s/8+20:113 s/8+22:115 s/8+24:117 |
+# 49-56: Pull-back: the quietest since the opening, the turn to C
+| R | R | R | R |
+| R | R | R | s/16+8:48 s/16+11:51 s/16+14:54 s/16+17:57 s/16+8:60 s/16+11:63 s/16+14:66 s/16+17:69 s/16+8:71 s/16+11:74 s/16+14:77 s/16+17:80 s/16+8:83 s/16+11:86 s/16+14:89 s/16+17:92 |
+# 57-64: Build: the ostinato returns with the bass
+| k/4+16:96 r/4 r/2 | R | k/4+16:96 r/4 r/2 | R |
+| k/4+16:98 r/4 tm/8+12:90 th/8+14:86 r/4 | R | k/4+16:100 r/4 tm/8+12:92 th/8+14:88 r/4 | tm/8+10:96 tm/8+12:99 th/8+14:102 th/8+16:105 s/8+18:107 s/8+20:109 s/8+22:111 s/8+24:113 |
+# 65-72: Build: a rising sequence, the pad and choir back
+| [k cr]/4+18:104 r/4 k/4+14:96 r/4 | k/4+16:98 r/4 r/2 | [k cr]/4+18:104 r/4 k/4+14:96 r/4 | tm/8+10:96 tm/8+12:99 th/8+14:102 th/8+16:105 s/8+18:107 s/8+20:109 s/8+22:111 s/8+24:113 |
+| [k cr]/4+18:106 r/4 k/4+14:98 r/4 | k/4+16:100 r/4 r/2 | [k cr]/4+18:106 r/4 k/4+14:98 r/4 | s/16+8:76 s/16+11:78 s/16+14:81 s/16+17:83 s/16+8:86 s/16+11:88 s/16+14:90 s/16+17:93 s/16+8:95 s/16+11:98 s/16+14:100 s/16+17:102 s/16+8:105 s/16+11:107 s/16+14:110 s/16+17:112 |
+# 73-80: The roll into the climax
+| [k cr]/4+18:110 r/4 k/4+14:102 r/4 | k/4+16:100 r/4 tm/8+12:92 th/8+14:88 r/4 | [k cr]/4+18:110 r/4 k/4+14:102 r/4 | tm/8+10:100 tm/8+12:103 th/8+14:106 th/8+16:109 s/8+18:111 s/8+20:113 s/8+22:115 s/8+24:117 |
+| [k cr]/4+18:112 r/4 k/4+14:104 r/4 | tm/8+10:104 tm/8+12:107 th/8+14:110 th/8+16:113 s/8+18:115 s/8+20:117 s/8+22:119 s/8+24:121 | s/16+8:74 s/16+11:76 s/16+14:79 s/16+17:81 s/16+8:84 s/16+11:86 s/16+14:88 s/16+17:91 s/16+8:93 s/16+11:96 s/16+14:98 s/16+17:100 s/16+8:103 s/16+11:105 s/16+14:108 s/16+17:110 | s/16+8:86 s/16+11:88 s/16+14:91 s/16+17:93 s/16+8:95 s/16+11:97 s/16+14:100 s/16+17:102 s/16+8:104 s/16+11:106 s/16+14:109 s/16+17:111 s/16+8:113 s/16+11:115 s/16+14:118 s/16+17:120 |
+# 81-88: Climax: the theme in full
+| [k cr]/4+18:116 r/4 k/4+14:108 r/4 | k/4+16:100 r/4 r/2 | [k cr]/4+18:110 r/4 k/4+14:102 r/4 | tm/8+10:104 tm/8+12:107 th/8+14:110 th/8+16:113 s/8+18:115 s/8+20:117 s/8+22:119 s/8+24:121 |
+| [k cr]/4+18:114 r/4 k/4+14:106 r/4 | k/4+16:102 r/4 r/2 | [k cr]/4+18:110 r/4 k/4+14:102 r/4 | s/16+8:84 s/16+11:86 s/16+14:89 s/16+17:91 s/16+8:93 s/16+11:95 s/16+14:98 s/16+17:100 s/16+8:102 s/16+11:104 s/16+14:107 s/16+17:109 s/16+8:111 s/16+11:113 s/16+14:116 s/16+17:118 |
+# 89-96: Climax: the theme answered higher
+| [k cr]/4+18:118 r/4 k/4+14:110 r/4 | k/4+16:102 r/4 r/2 | [k cr]/4+18:112 r/4 k/4+14:104 r/4 | tm/8+10:106 tm/8+12:109 th/8+14:112 th/8+16:115 s/8+18:117 s/8+20:119 s/8+22:121 s/8+24:122 |
+| [k cr]/4+18:116 r/4 k/4+14:108 r/4 | k/4+16:102 r/4 r/2 | [k cr]/4+18:112 r/4 k/4+14:104 r/4 | s/16+8:88 s/16+11:90 s/16+14:92 s/16+17:94 s/16+8:97 s/16+11:99 s/16+14:101 s/16+17:103 s/16+8:105 s/16+11:107 s/16+14:109 s/16+17:111 s/16+8:114 s/16+11:116 s/16+14:118 s/16+17:120 |
+# 97-104: Outro: settling on one open chord
+| [k cr]/4+18:112 r/4 k/4+14:104 r/4 | k/4+16:104 r/4 r/2 | [k cr]/4+18:106 r/4 k/4+14:98 r/4 | k/4+16:100 r/4 tm/8+12:92 th/8+14:88 r/4 |
+| k/4+16:100 r/4 r/2 | R | s/16+8:54 s/16+11:57 s/16+14:60 s/16+17:62 s/16+8:65 s/16+11:68 s/16+14:71 s/16+17:74 s/16+8:76 s/16+11:79 s/16+14:82 s/16+17:85 s/16+8:88 s/16+11:90 s/16+14:93 s/16+17:96 | [k cr]/4+18:112 r/4 k/4+14:104 r/4 |
