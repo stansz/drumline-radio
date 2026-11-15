@@ -123,9 +123,11 @@ Style notes (Cinematic):
 - Lineup: SIBLINGS=cinematic npm run check:songs shows the Cinematic originals lead with the
   overdriven lead guitar over grand piano, solo cello and string section. Lead with something
   else, and take at least one other main part from outside that set, with inst= or inst=bank:
-  (for example vox-lead, choir-aah, fm-brass, synth-pad, music-box, nylon-guitar, fm-bells,
-  pizzicato, dark-pad, or an analog synth ostinato). Use the kit as part of the drama (hits,
-  rolls, silence), not as a steady beat throughout.
+  (for example fm-brass, choir-aah, synth-pad, music-box, nylon-guitar, fm-bells, pizzicato,
+  dark-pad, or an analog synth ostinato). Not vox-lead: Cinematic plays it as the overdriven
+  lead guitar (its bankSwaps in src/audio/styles.ts). The choirs swell slowly, so they suit long
+  notes better than a moving line. Use the kit as part of the drama (hits, rolls, silence), not
+  as a steady beat throughout.
 - Tempo and mood: not another slow minor ballad. Pick a cue type with its own pulse: a chase,
   a tension build, a sense of wonder or discovery, a march, a montage. Choose a tempo and key
   that fit it and differ from 66-70 BPM in C or E minor.
