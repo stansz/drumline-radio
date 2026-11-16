@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import fixture from './fixtures/features.song?raw';
 import { parseSong } from '../src/music/song';
-import { LIBRARY } from '../src/music/library';
 import type { Category, Song } from '../src/music/song';
 import type { StyleId } from '../src/music/roles';
 import {
@@ -292,18 +291,17 @@ describe('shownComposer', () => {
     expect(original('GPT-6.1-sol & SZ')).toBe('GPT & SZ');
     expect(original('MiMo v2.6 Pro & SZ')).toBe('MiMo & SZ');
     expect(original('MiniMax M3.1 Flash & SZ')).toBe('MiniMax & SZ');
-    expect(original('Tencent HY 4, Claude & SZ')).toBe('HY, Claude & SZ');
+    expect(original('Tencent HY 4, Claude & SZ')).toBe('Tencent HY, Claude & SZ');
     expect(original('GLM, Claude & SZ')).toBe('GLM, Claude & SZ');
   });
 
-  it('leaves public-domain composers and unknown names alone', () => {
+  it('leaves public-domain composers alone', () => {
     expect(shownComposer({ composer: 'Claude Debussy', source: 'public-domain' })).toBe('Claude Debussy');
-    expect(original('Someone New 2 & SZ')).toBe('Someone New 2 & SZ');
   });
 
-  it('shows no version numbers on any original in the library', () => {
-    for (const { song } of LIBRARY) {
-      if (song.meta.source === 'original') expect(shownComposer(song.meta), song.meta.title).not.toMatch(/\d/);
-    }
+  it('strips the version of a model it has never seen', () => {
+    expect(original('Mistral 3 Large & SZ')).toBe('Mistral & SZ');
+    expect(original('Inkling 1.2 & SZ')).toBe('Inkling & SZ');
+    expect(original('Someone New 2 & SZ')).toBe('Someone New & SZ');
   });
 });

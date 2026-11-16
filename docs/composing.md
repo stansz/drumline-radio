@@ -206,9 +206,10 @@ depends on it.
   name copied from another song: `Kimi & SZ` for a song Kimi wrote, or `GLM, Claude & SZ` when GLM
   wrote the first version and Claude reworked it. Most songs here say Claude because Claude wrote
   them; that is not a template.
-- Write the exact model (`Gemini 3.8 Flash & SZ`). The app shows only the family (`Gemini & SZ`),
-  using the list in `shownComposer()` in `src/ui/view.ts`. A new model family goes on that list;
-  `tests/view.test.ts` fails while any original's shown credit still has a version number.
+- Write the exact model (`Gemini 3.8 Flash & SZ`). The app shows only the family (`Gemini & SZ`):
+  it drops everything from the first token with a version number in it. That is a rule, not a list,
+  so a model released tomorrow needs no code change — and no test fails if you write one it has
+  never seen.
 - Public-domain pieces keep the real composer and add an arranger line in the same form, such as
   `arranger: Claude & SZ`.
 - Start the file with a comment that says what the song is, who wrote it (the same names as

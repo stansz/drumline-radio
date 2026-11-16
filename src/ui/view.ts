@@ -80,20 +80,25 @@ export function marqueeTiming(overflowPx: number): { shift: number; seconds: num
   };
 }
 
-// Model families named in originals' credits. The app shows the family, so "Gemini 3.8 Flash"
-// reads as "Gemini"; the song file keeps the exact model.
-const MODEL_FAMILIES = ['Claude', 'DeepSeek', 'Gemini', 'GLM', 'GPT', 'Grok', 'HY', 'Kimi', 'Ling', 'MiMo', 'MiniMax', 'Qwen'];
-const FAMILY_PATTERNS = MODEL_FAMILIES.map((family) => ({
-  family,
-  pattern: new RegExp(`(^|\\s)${family}(?![A-Za-z])`),
-}));
-
-/** The composer as the app shows it: an original's model names without versions. */
+/**
+ * The composer as the app shows it: an original's model names without versions.
+ *
+ * A version is anything from the first whitespace-separated token that contains a digit
+ * ("Gemini 3.8 Flash", "MiMo v2.6 Pro", "Kimi K2.5"), or a digit inside the first token
+ * ("Qwen3.8", "GPT-6.1-sol"). Everything before it is the family. Written as a rule rather
+ * than a list of known families, so a model released tomorrow needs no code change.
+ */
 export function shownComposer(meta: { composer: string; source: 'public-domain' | 'original' }): string {
   if (meta.source !== 'original') return meta.composer;
   return meta.composer
     .split(/(, | & )/)
-    .map((part) => FAMILY_PATTERNS.find(({ pattern }) => pattern.test(part))?.family ?? part)
+    .map((part) => {
+      const tokens = part.trim().split(/\s+/);
+      const first = tokens.findIndex((token) => /\d/.test(token));
+      if (first === -1) return part;
+      if (first === 0) return tokens[0].replace(/[-_]?v?\d.*$/i, '') || part;
+      return tokens.slice(0, first).join(' ');
+    })
     .join('');
 }
 
