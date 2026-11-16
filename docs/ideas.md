@@ -62,10 +62,39 @@ exports any song in any style for a normal DJ setup; a DJ mode inside the app wo
 
 The first three are small; the two decks are a real project.
 
+## Fix the mixes `npm run balance` flags
+
+A run of `npm run balance` over all 56 songs (November 2026) passed 21 and flagged 35. Listen to
+each flagged song before changing it: a flag is either a real mix problem (fix the track's
+`vol=`, in its generator too if the song is generated) or a deliberate choice (explain it with a
+`# balance-ok` line), and a few may be a track named for the wrong role.
+
+- **The bass rules (29 songs):** bass louder than the lead, or its low end over the kick. The
+  check flagged these before the playing-loudness rules too. Some suggestions look wrong (Can-Can:
+  turn the bass down 27 dB), so check the bass rule itself before changing songs for it. Flagged:
+  Can-Can, Canon in D, Cartographer, Eine Kleine Nachtmusik, Exit Sign, God Rest Ye, Good King
+  Wenceslas, Hark the Herald, Ivory and Ash (both), Jingle Bells, Joy to the World, Korobeiniki,
+  Lantern Ward, Midnight Underpass, Mountain King, Night Shift, Nocturne, O Christmas Tree, Ode
+  to Joy, Porch Light, Save Point, Shortwave, Silent Night, Swan Lake, Third Rail, Underpass,
+  Valkyries, When the Saints.
+- **The playing-loudness rules (16 songs), parts buried under the lead:**
+  - Ivory and Ash: strings, synth, cello, arp and piano under the guitar. The guitar is probably
+    too loud.
+  - The Silent Keep: the strings pad under the lead in 16 sections, the cello in 4.
+  - Midnight Arcade: echo, in 6 sections. Shortwave: sample, in 4. Exit Sign: clean, in 3.
+  - Eine Kleine Nachtmusik, God Rest Ye: harmony, in 1 section each.
+- **The playing-loudness rules, parts louder than the lead:**
+  - Valkyries: brass and winds over the strings.
+  - O Christmas Tree: melody and arp over the harmony track. The lead role may be on the wrong
+    track.
+  - The Black Coach: flute and horns over the violins.
+  - One section each: Confetti Cannon (pad), Hot Wire (vox), Midnight Underpass (hook), The
+    Gilded Hour (musicbox), Third Rail (keys), Underpass (hook).
+
+Start with The Silent Keep and Ivory and Ash, which have the most buried parts.
+
 ## Smaller ideas
 
 - **Safe-notes helper for composers:** list the notes that fit each chord of a song's `# chords:`
   map, so model-written songs clash less.
-- **Older songs' mixes:** `npm run balance` still flags Ivory and Ash, Exit Sign,
-  Save Point, The Silent Keep, Night Shift and Shortwave.
 - **Instrument page link:** link the instrument page (`instruments.html`) from the ⓘ panel.
