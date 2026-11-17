@@ -9,7 +9,7 @@
 // Copies are compared after removing comments and formatting and renaming parameters, so a
 // renamed copy is still found; a helper rewritten another way is not. A one-line setting that
 // only calls a lib.mjs function (each song's `nm` spelling, a `vel` cap) is not a copy.
-// It is a report, like the clash count in check:songs: it always exits 0 and never blocks a deploy.
+// Unlike the clash count in check:songs, copies fail the run: it exits 1 when anything is listed.
 import { readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -135,4 +135,8 @@ section('Same name as a lib.mjs export:', sameName);
 section('Copies of a lib.mjs function:', copies);
 section('The same helper in more than one generator (move plumbing into lib.mjs; list a shared musical choice in ALIKE):', shared);
 const total = sameName.length + copies.length + shared.length;
-console.log(total ? `\n${total} to fix or explain. This is a report; it does not fail.` : '\nNo copies found.');
+if (total) {
+  console.log(`\n${total} to fix or explain.`);
+  process.exit(1);
+}
+console.log('\nNo copies found.');

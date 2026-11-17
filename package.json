@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "test": "vitest run",
+    "test": "vitest run && node tools/check/generators.mjs",
     "test:sandbox": "node node_modules/vitest/vitest.mjs run --config vitest.sandbox.config.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "build": "npm run typecheck && vite build",
