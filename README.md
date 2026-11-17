@@ -168,6 +168,14 @@ Originals by SZ (and AI):
   that ritards down to the lone arp.
 - **Save Point** (Chiptune)
 - **Shortwave** (Lo-fi)
+- **Sleepwalk** (Lo-fi), by ERNIE 5.5 Flash & SZ. A 2:44 lo-fi waltz at 92 BPM in A-flat major: a
+  nylon guitar hums a short stepwise tune over a tape pad, a dusty kit drags a rim on beat three and
+  swings its hats, a warm bass leans on the downbeat with an occasional pickup, and a grand piano
+  rocks a soft broken waltz underneath. The intro is guitar and pad alone, the drums and bass enter
+  for the first statement, the piano joins the second, the middle turns to F minor with the kit down
+  to rim and hats, a breakdown leaves the guitar and a music box alone, and the last full statement
+  answers the guitar with the music box before the outro falls away to the guitar's last note over
+  A-flat. Built by `tools/arranger/sleepwalk.mjs`.
 - **Third Rail** (Lo-fi)
 - **First Flight** (Cinematic), by MiMo V2.6 Flash & SZ. A 3:43 bright film cue at 112 BPM in D
   major, from an uncertain ground-level start to a first flight seen from above. It opens on bells

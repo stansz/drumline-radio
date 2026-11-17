@@ -32,6 +32,7 @@ than guessing.
 | Lantern Ward | Orchestral | Tencent HY 4 (with Claude) | — | — | — |
 | Shortwave | Lo-fi | GLM (with Claude) | — | — | — |
 | Third Rail | Lo-fi | DeepSeek | — | — | — |
+| Sleepwalk | Lo-fi | ERNIE 5.5 Flash | — | — | None (it fixed its own mix with `npm run balance`) |
 
 Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
@@ -373,6 +374,29 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
 - **Tool changes from it:** Qwen pointed out that RMS reads sparse parts low, so
   `tools/browser/tracks.mjs` now prints each track's peak too. It also flagged that seeking into a
   held note gives silence (documented) and that there are only 6 lane colours for 7+ tracks.
+
+### Sleepwalk — ERNIE 5.5 Flash (2026-11-17)
+
+- **Brief:** a lo-fi waltz in A-flat major at 92 BPM, 3/4, about 2:45: a nylon-guitar lead on a short
+  stepwise motif, a sparse music-box counter in the second half, a grand piano playing a soft
+  broken waltz, a tape pad on root and fifth, a warm bass on the downbeat, and a dusty kit with a
+  kick on one, a dragged rim on three and swung hats (no boom-bap). The form: an intro of guitar and
+  pad, then drums and bass, then piano, an F-minor middle on rim and hats, a guitar-and-music-box
+  breakdown, a full statement with the music box answering, and an outro that falls away to the
+  guitar's last note over A-flat. The existing Lo-fi songs (Last Stop, Shortwave, Third Rail) are
+  all minor-key 4/4 boom-bap, so this one is the odd one out.
+- **What it wrote:** 84 bars, 2:44, six tracks. The eight-bar phrase is stated as a constant and
+  every part is derived from it, so the pad stays root-and-fifth, the piano's left hand plays the
+  root then the chord on beats two and three, and the bass takes each root with the chord's fifth as
+  an occasional beat-three pickup. The lead is 67% steps, 16% leaps, 17% repeats, with the leaps
+  kept for the high points and the turn.
+- **Fixed after:** the first mix had the warm bass 11 dB over the lead and its low end 7 dB over the
+  kick, and the music box 5-9 LU over the lead; `npm run balance` said so, and the bass, music box
+  and piano volumes came down until it printed no flags. The first draft's passing D-flat over F
+  minor 7 clashed with the pad's C (a minor ninth), so that passing note became D natural; the
+  bass's pickup on A-flat/E-flat was the fifth of the slash bass (B-flat, outside the chord), so the
+  pickup is now the fifth of the chord's root.
+- **Tool changes from it:** none.
 
 ### The Silent Keep — DeepSeek V4 Flash (2026-11-07)
 

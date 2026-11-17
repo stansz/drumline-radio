@@ -190,6 +190,19 @@ the stepwise themes, the cello's answers and the Viennese lilt are written by ha
 node tools/arranger/the-gilded-hour.mjs tmp/waltz
 ```
 
+Sleepwalk has its own script, `arranger/sleepwalk.mjs`: a 92 BPM lo-fi waltz in A-flat major at
+2:44. One eight-bar phrase (A-flat, D-flat, A-flat, F minor 7, D-flat, the borrowed D-flat minor,
+A-flat over E-flat, a half cadence on E-flat) is the tune, and from each bar's chord the script
+gets the pad's open root and fifth, the bass's root and its pickup, the piano's broken waltz and the
+music box's high answers. The form is guitar-and-pad intro, two statements with drums and bass, a
+statement with the piano, an F-minor middle on rim and hats, a guitar-and-music-box breakdown, a
+full statement with the music box answering the guitar's gaps, and an outro whose parts fall away
+one by one to the guitar's last A-flat.
+
+```bash
+node tools/arranger/sleepwalk.mjs tmp/lofi
+```
+
 ```bash
 node tools/arranger/club.mjs tmp/club
 ```

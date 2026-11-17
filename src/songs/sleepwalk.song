@@ -1,0 +1,226 @@
+# Sleepwalk, an original lo-fi waltz in A-flat major by ERNIE 5.5 Flash & SZ. A sleepy
+# 3/4 lullaby at 92 BPM, like a late-night record played on a warped turntable: a nylon guitar
+# sings a short stepwise motif over a tape pad, the dusty kit drags a rim on the three, a warm bass
+# leans on the downbeat, and a grand piano plays a soft broken waltz under it all. The middle turns
+# to F minor, the second half answers the guitar with a sparse music box, and the outro falls away
+# to the guitar's last note over A-flat. 84 bars, about two minutes forty-five.
+#
+# The harmony is written once below, one chord symbol a bar, and every part is derived from it: the
+# pad holds an open root and fifth, the bass takes each root (with the chord's fifth as a pickup),
+# the piano plays the root then the chord on beats two and three, and the music box picks high chord
+# tones. The melodies are mostly stepwise, with the leap kept for a phrase's high point and its
+# turn, and their on-beat notes are chord tones, so the parts agree without the tune being
+# flattened.
+#
+# Built by its own generator, tools/arranger/sleepwalk.mjs, from tools/arranger/lib.mjs: the form,
+# the themes, the voicings, the figures, the velocities and the microtiming all live there. The
+# guitar leans 12 to 20 ticks behind the beat, a different amount in each phrase; the rim drags 16
+# to 24 ticks; and the hats' off-beats lean back for the swing.
+#
+# chords: Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb
+# chords @9: Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb
+# chords @25: Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb
+# chords @33: Fm Bbm7 Fm Dbmaj7 Ab Eb C7 C Fm Bbm7 Fm Dbmaj7 Ab Eb C7 C
+# chords @49: Dbmaj7 Dbmaj7 Ab Ab Fm7 Fm7 Eb Eb
+# chords @57: Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb
+# chords @73: Ab Dbmaj7 Ab Fm7 Dbmaj7 Dbm Ab/Eb Eb Ab Dbmaj7 Ab/Eb Ab
+#
+# Form:
+# 1-8: Intro: the guitar and the tape pad
+# 9-24: A: the drums and the warm bass enter
+# 25-32: A': the grand piano enters
+# 33-48: B: F minor, the kit on rim and hats
+# 49-56: Breakdown: the guitar and the music box
+# 57-72: A'': full, the music box answers
+# 73-84: Outro: the parts fall away
+#
+title: Sleepwalk
+composer: ERNIE 5.5 Flash & SZ
+year: 2026
+source: original
+category: originals
+style: lofi
+key: A-flat major
+tempo: 92
+time: 3/4
+about: A sleepy lo-fi waltz in A-flat major: a nylon guitar hums a short stepwise tune over a warped tape pad, a dusty kit drags a rim on beat three, a warm bass leans on the downbeat and a grand piano rocks a soft broken waltz underneath. The middle turns to F minor, a music box answers in the second half, and the outro falls away to the guitar's last note over A-flat.
+
+track lead role=lead inst=bank:nylon-guitar vol=1 vol.lofi=1.3 pan=-0.12
+# 1-8: Intro: the guitar and the tape pad
+| Ab5/8+15:78 Bb5/8+5:84 C6/2-4:76 | r/2. | Ab5/8+17:70 Bb5/8+7:82 C6/2-2:91 | C6/2.+15:84 |
+| Ab5/8+16:81 Bb5/8+9:74 C6/2:88 | Ab5/8+17:85 G5/8:71 E5/2+5:81 | Eb5/8+15:78 Db5/8+5:84 C5/2-4:76 | Eb5/2.+16:69 |
+# 9-24: A: the drums and the warm bass enter
+| Ab5/8+12:84 Bb5/8+5:90 C6/2-4:82 | C6/8+13:79 Bb5/8-4:93 Ab5/2+7:79 | Ab5/8+14:76 Bb5/8+7:88 C6/2-2:97 | C6/8+12:94 D6/8-2:75 Eb6/2+9:90 |
+| C6/8+13:87 Bb5/8+9:80 Ab5/2:94 | Ab5/8+14:91 G5/8:77 E5/2+5:87 | Eb5/8+12:84 Db5/8+5:90 C5/2-4:82 | Eb5/2.+13:75 |
+| Ab5/8+18:86 Bb5/8+5:92 C6/2-4:84 | C6/8+19:81 Bb5/8-4:95 Ab5/2+7:81 | Ab5/8+20:78 Bb5/8+7:90 C6/2-2:99 | C6/8+18:96 D6/8-2:77 Eb6/2+9:92 |
+| C6/8+19:89 Bb5/8+9:82 Ab5/2:96 | Ab5/8+20:93 G5/8:79 E5/2+5:89 | Eb5/8+18:86 Db5/8+5:92 C5/2-4:84 | G5/2.+19:77 |
+# 25-32: A': the grand piano enters
+| Ab5/8+14:86 Bb5/8+5:92 C6/2-4:84 | C6/8+15:81 Bb5/8-4:95 Ab5/2+7:81 | Ab5/8+16:78 Bb5/8+7:90 C6/2-2:99 | C6/8+14:96 D6/8-2:77 Eb6/2+9:92 |
+| C6/8+15:89 Bb5/8+9:82 Ab5/2:96 | Ab5/8+16:93 G5/8:79 E5/2+5:89 | Eb5/8+14:86 Db5/8+5:92 C5/2-4:84 | Eb5/2.+15:77 |
+# 33-48: B: F minor, the kit on rim and hats
+| F5/8+13:82 G5/8+5:88 Ab5/2-4:80 | Ab5/8+14:77 G5/8-4:91 F5/2+7:77 | F5/8+15:74 G5/8+7:86 Ab5/2-2:95 | Ab5/8+13:92 G5/8-2:73 F5/2+9:88 |
+| Ab5/8+14:85 Bb5/8+9:78 C6/2:92 | Bb5/8+15:89 Ab5/8:75 G5/2+5:85 | G5/8+13:82 F5/8+5:88 E5/2-4:80 | E5/2.+14:73 |
+| F5/8+18:84 G5/8+5:90 Ab5/2-4:82 | Ab5/8+19:79 Bb5/8-4:93 Db6/2+7:79 | C6/8+20:76 Bb5/8+7:88 Ab5/2-2:97 | Ab5/8+18:94 G5/8-2:75 F5/2+9:90 |
+| Ab5/8+19:87 Bb5/8+9:80 C6/2:94 | Bb5/8+20:91 Ab5/8:77 G5/2+5:87 | G5/8+18:84 F5/8+5:90 E5/2-4:82 | G5/2.+19:75 |
+# 49-56: Breakdown: the guitar and the music box
+| Ab5/8+16:76 Bb5/8+5:82 C6/4-4:71 r/4 | C6/4+17:71 r/2 | Ab5/8+18:68 Bb5/8+7:80 C6/4-2:86 r/4 | C6/4+16:86 r/2 |
+| Eb6/8+17:79 Db6/8+9:72 C6/4:83 r/4 | C6/4+18:83 r/2 | Bb5/8+16:76 Ab5/8+5:82 G5/2-4:74 | G5/2.+17:67 |
+# 57-72: A'': full, the music box answers
+| Ab5/8+12:88 Bb5/8+5:94 C6/4-4:83 r/4 | C6/8+13:83 Bb5/8-4:97 Ab5/4+7:80 r/4 | Ab5/8+14:80 Bb5/8+7:92 C6/4-2:98 r/4 | C6/8+12:98 D6/8-2:79 Eb6/2+9:94 |
+| C6/8+13:91 Bb5/8+9:84 Ab5/4:95 r/4 | Ab5/8+14:95 G5/8:81 E5/2+5:91 | Eb5/8+12:88 Db5/8+5:94 C5/4-4:83 r/4 | Eb5/2.+13:79 |
+| C6/8+17:90 Db6/8+5:96 Eb6/2-4:88 | Db6/8+18:86 C6/8-4:100 Ab5/2+7:86 | Ab5/8+19:83 Bb5/8+7:95 C6/2-2:104 | C6/8+17:102 D6/8-2:83 Eb6/2+9:98 |
+| Db6/8+18:95 C6/8+9:88 Ab5/2:102 | Ab5/8+19:100 G5/8:86 E5/2+5:96 | Eb5/8+17:94 Db5/8+5:100 C5/2-4:92 | G5/2.+18:85 |
+# 73-84: Outro: the parts fall away
+| Ab5/8+14:86 Bb5/8+5:92 C6/2-4:84 | C6/8+15:81 Bb5/8-4:95 Ab5/2+7:81 | Ab5/8+16:78 Bb5/8+7:90 C6/2-2:99 | C6/8+14:96 D6/8-2:77 Eb6/2+9:92 |
+| C6/8+15:89 Bb5/8+9:82 Ab5/2:96 | Ab5/8+16:93 G5/8:79 E5/2+5:89 | Eb5/8+14:86 Db5/8+5:92 C5/2-4:84 | Eb5/2.+15:77 |
+| Ab5/8+18:78 Bb5/8+5:84 C6/2-4:76 | C6/8+19:73 Bb5/8-4:87 Ab5/2+7:73 | Eb5/8+20:70 Db5/8+7:82 C5/2-2:91 | Ab5/2.+18:84 |
+
+track box role=counter inst=bank:music-box vol=0.55 pan=0.36
+# 1-8: Intro: the guitar and the tape pad
+| R | R | R | R |
+| R | R | R | R |
+# 9-24: A: the drums and the warm bass enter
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# 25-32: A': the grand piano enters
+| R | R | R | R |
+| R | R | R | R |
+# 33-48: B: F minor, the kit on rim and hats
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# 49-56: Breakdown: the guitar and the music box
+| r/2 F6/8+4:120 C6/8+10:98 | r/4 F6/4+6:114 r/4 | r/2 Eb6/8+5:108 C6/8+11:94 | r/4 Eb6/4+7:118 r/4 |
+| r/2 Eb6/8+4:112 C6/8+10:100 | r/4 F6/4+6:104 r/4 | r/2 Eb6/8+5:116 Bb5/8+11:96 | R |
+# 57-72: A'': full, the music box answers
+| r/2 Eb6/8+4:118 C6/8+10:96 | r/2 F6/8+5:110 C6/8+11:92 | r/2 Eb6/8+4:114 C6/8+10:100 | R |
+| r/2 F6/8+5:120 C6/8+11:94 | R | r/2 Eb6/8+4:106 C6/8+10:98 | R |
+| R | R | R | r/2 F6/4+6:112 |
+| R | r/2 E6/8+6:102 Db6/8+12:90 | R | r/2 Eb6/4+6:108 |
+# 73-84: Outro: the parts fall away
+| r/2 Eb6/8+4:116 C6/8+10:94 | R | r/2 Eb6/8+5:108 C6/8+11:98 | R |
+| R | R | R | R |
+| R | R | R | R |
+
+track piano role=chords inst=bank:grand-piano vol=0.78 pan=0.14
+# 1-8: Intro: the guitar and the tape pad
+| R | R | R | R |
+| R | R | R | R |
+# 9-24: A: the drums and the warm bass enter
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# 25-32: A': the grand piano enters
+| Ab3/4+3:76 [Ab3 C4 Eb4]/4+10:72 [Ab3 C4 Eb4]/4+14:68 | Db3/4+3:80 [Db3 F3 Ab3 C4]/4+10:76 [Db3 F3 Ab3 C4]/4+14:72 | Ab3/4+3:83 [Ab3 C4 Eb4]/4+10:79 [Ab3 C4 Eb4]/4+14:75 | F3/4+3:85 [F3 Ab3 C4 Eb4]/4+10:81 [F3 Ab3 C4 Eb4]/4+14:77 |
+| Db3/4+3:79 [Db3 F3 Ab3 C4]/4+10:75 [Db3 F3 Ab3 C4]/4+14:71 | Db3/4+3:82 [Db3 E3 Ab3]/4+10:78 [Db3 E3 Ab3]/4+14:74 | Ab3/4+3:86 [Ab3 C4 Eb4]/4+10:82 [Ab3 C4 Eb4]/4+14:78 | Eb3/4+3:69 [Eb3 G3 Bb3]/4+10:65 [Eb3 G3 Bb3]/4+14:61 |
+# 33-48: B: F minor, the kit on rim and hats
+| F3/4+3:74 [F3 Ab3 C4]/4+10:70 [F3 Ab3 C4]/4+14:66 | Bb3/4+3:78 [Bb3 Db4 F4 Ab4]/4+10:74 [Bb3 Db4 F4 Ab4]/4+14:70 | F3/4+3:81 [F3 Ab3 C4]/4+10:77 [F3 Ab3 C4]/4+14:73 | Db3/4+3:83 [Db3 F3 Ab3 C4]/4+10:79 [Db3 F3 Ab3 C4]/4+14:75 |
+| Ab3/4+3:77 [Ab3 C4 Eb4]/4+10:73 [Ab3 C4 Eb4]/4+14:69 | Eb3/4+3:80 [Eb3 G3 Bb3]/4+10:76 [Eb3 G3 Bb3]/4+14:72 | C3/4+3:84 [C3 E3 G3 Bb3]/4+10:80 [C3 E3 G3 Bb3]/4+14:76 | C3/4+3:67 [C3 E3 G3]/4+10:63 [C3 E3 G3]/4+14:59 |
+| F3/4+3:66 [F3 Ab3 C4]/4+10:62 [F3 Ab3 C4]/4+14:58 | Bb3/4+3:70 [Bb3 Db4 F4 Ab4]/4+10:66 [Bb3 Db4 F4 Ab4]/4+14:62 | F3/4+3:69 [F3 Ab3 C4]/4+10:65 [F3 Ab3 C4]/4+14:61 | Db3/4+3:65 [Db3 F3 Ab3 C4]/4+10:61 [Db3 F3 Ab3 C4]/4+14:57 |
+| Ab3/4+3:74 [Ab3 C4 Eb4]/4+10:70 [Ab3 C4 Eb4]/4+14:66 | Eb3/4+3:78 [Eb3 G3 Bb3]/4+10:74 [Eb3 G3 Bb3]/4+14:70 | C3/4+3:81 [C3 E3 G3 Bb3]/4+10:77 [C3 E3 G3 Bb3]/4+14:73 | C3/4+3:83 [C3 E3 G3]/4+10:79 [C3 E3 G3]/4+14:75 |
+# 49-56: Breakdown: the guitar and the music box
+| R | R | R | R |
+| R | R | R | R |
+# 57-72: A'': full, the music box answers
+| Ab3/4+3:80 [Ab3 C4 Eb4]/4+10:76 [Ab3 C4 Eb4]/4+14:72 | Db3/4+3:84 [Db3 F3 Ab3 C4]/4+10:80 [Db3 F3 Ab3 C4]/4+14:76 | Ab3/4+3:87 [Ab3 C4 Eb4]/4+10:83 [Ab3 C4 Eb4]/4+14:79 | F3/4+3:89 [F3 Ab3 C4 Eb4]/4+10:85 [F3 Ab3 C4 Eb4]/4+14:81 |
+| Db3/4+3:83 [Db3 F3 Ab3 C4]/4+10:79 [Db3 F3 Ab3 C4]/4+14:75 | Db3/4+3:86 [Db3 E3 Ab3]/4+10:82 [Db3 E3 Ab3]/4+14:78 | Ab3/4+3:90 [Ab3 C4 Eb4]/4+10:86 [Ab3 C4 Eb4]/4+14:82 | Eb3/4+3:73 [Eb3 G3 Bb3]/4+10:69 [Eb3 G3 Bb3]/4+14:65 |
+| Ab3/4+3:72 [Ab3 C4 Eb4]/4+10:68 [Ab3 C4 Eb4]/4+14:64 | Db3/4+3:76 [Db3 F3 Ab3 C4]/4+10:72 [Db3 F3 Ab3 C4]/4+14:68 | Ab3/4+3:75 [Ab3 C4 Eb4]/4+10:71 [Ab3 C4 Eb4]/4+14:67 | F3/4+3:71 [F3 Ab3 C4 Eb4]/4+10:67 [F3 Ab3 C4 Eb4]/4+14:63 |
+| Db3/4+3:80 [Db3 F3 Ab3 C4]/4+10:76 [Db3 F3 Ab3 C4]/4+14:72 | Db3/4+3:84 [Db3 E3 Ab3]/4+10:80 [Db3 E3 Ab3]/4+14:76 | Ab3/4+3:87 [Ab3 C4 Eb4]/4+10:83 [Ab3 C4 Eb4]/4+14:79 | Eb3/4+3:89 [Eb3 G3 Bb3]/4+10:85 [Eb3 G3 Bb3]/4+14:81 |
+# 73-84: Outro: the parts fall away
+| Ab3/4+3:76 [Ab3 C4 Eb4]/4+10:72 [Ab3 C4 Eb4]/4+14:68 | Db3/4+3:80 [Db3 F3 Ab3 C4]/4+10:76 [Db3 F3 Ab3 C4]/4+14:72 | Ab3/4+3:83 [Ab3 C4 Eb4]/4+10:79 [Ab3 C4 Eb4]/4+14:75 | F3/4+3:85 [F3 Ab3 C4 Eb4]/4+10:81 [F3 Ab3 C4 Eb4]/4+14:77 |
+| Db3/4+3:79 [Db3 F3 Ab3 C4]/4+10:75 [Db3 F3 Ab3 C4]/4+14:71 | Db3/4+3:82 [Db3 E3 Ab3]/4+10:78 [Db3 E3 Ab3]/4+14:74 | Ab3/4+3:86 [Ab3 C4 Eb4]/4+10:82 [Ab3 C4 Eb4]/4+14:78 | Eb3/4+3:69 [Eb3 G3 Bb3]/4+10:65 [Eb3 G3 Bb3]/4+14:61 |
+| R | R | R | R |
+
+track pad role=pad inst=tape-pad vol=1 pan=-0.04
+# 1-8: Intro: the guitar and the tape pad
+| [Ab3 Eb4]/2.+5:55 | [Db3 Ab3]/2.+5:46 | [Ab3 Eb4]/2.+5:50 | [F3 C4]/2.+5:51 |
+| [Db3 Ab3]/2.+5:47 | [Db3 Ab3]/2.+5:48 | [Ab3 Eb4]/2.+5:65 | [Eb3 Bb3]/2.+5:61 |
+# 9-24: A: the drums and the warm bass enter
+| [Ab3 Eb4]/2.+5:59 | [Db3 Ab3]/2.+5:50 | [Ab3 Eb4]/2.+5:54 | [F3 C4]/2.+5:55 |
+| [Db3 Ab3]/2.+5:51 | [Db3 Ab3]/2.+5:52 | [Ab3 Eb4]/2.+5:69 | [Eb3 Bb3]/2.+5:65 |
+| [Ab3 Eb4]/2.+5:62 | [Db3 Ab3]/2.+5:68 | [Ab3 Eb4]/2.+5:66 | [F3 C4]/2.+5:63 |
+| [Db3 Ab3]/2.+5:59 | [Db3 Ab3]/2.+5:50 | [Ab3 Eb4]/2.+5:54 | [Eb3 Bb3]/2.+5:55 |
+# 25-32: A': the grand piano enters
+| [Ab3 Eb4]/2.+5:61 | [Db3 Ab3]/2.+5:52 | [Ab3 Eb4]/2.+5:56 | [F3 C4]/2.+5:57 |
+| [Db3 Ab3]/2.+5:53 | [Db3 Ab3]/2.+5:54 | [Ab3 Eb4]/2.+5:71 | [Eb3 Bb3]/2.+5:67 |
+# 33-48: B: F minor, the kit on rim and hats
+| [F3 C4]/2.+5:59 | [Bb3 F4]/2.+5:50 | [F3 C4]/2.+5:54 | [Db3 Ab3]/2.+5:55 |
+| [Ab3 Eb4]/2.+5:51 | [Eb3 Bb3]/2.+5:52 | [C3 G3]/2.+5:69 | [C3 G3]/2.+5:65 |
+| [F3 C4]/2.+5:62 | [Bb3 F4]/2.+5:68 | [F3 C4]/2.+5:66 | [Db3 Ab3]/2.+5:63 |
+| [Ab3 Eb4]/2.+5:59 | [Eb3 Bb3]/2.+5:50 | [C3 G3]/2.+5:54 | [C3 G3]/2.+5:55 |
+# 49-56: Breakdown: the guitar and the music box
+| R | R | R | R |
+| R | R | R | R |
+# 57-72: A'': full, the music box answers
+| [Ab3 Eb4]/2.+5:63 | [Db3 Ab3]/2.+5:54 | [Ab3 Eb4]/2.+5:58 | [F3 C4]/2.+5:59 |
+| [Db3 Ab3]/2.+5:55 | [Db3 Ab3]/2.+5:56 | [Ab3 Eb4]/2.+5:73 | [Eb3 Bb3]/2.+5:69 |
+| [Ab3 Eb4]/2.+5:66 | [Db3 Ab3]/2.+5:72 | [Ab3 Eb4]/2.+5:70 | [F3 C4]/2.+5:67 |
+| [Db3 Ab3]/2.+5:63 | [Db3 Ab3]/2.+5:54 | [Ab3 Eb4]/2.+5:58 | [Eb3 Bb3]/2.+5:59 |
+# 73-84: Outro: the parts fall away
+| [Ab3 Eb4]/2.+5:61 | [Db3 Ab3]/2.+5:52 | [Ab3 Eb4]/2.+5:56 | [F3 C4]/2.+5:57 |
+| [Db3 Ab3]/2.+5:53 | [Db3 Ab3]/2.+5:54 | [Ab3 Eb4]/2.+5:71 | [Eb3 Bb3]/2.+5:67 |
+| [Ab3 Eb4]/2.+5:64 | [Db3 Ab3]/2.+5:70 | [Ab3 Eb4]/2.+5:68 | [Ab3 Eb4]/2.+5:65 |
+
+track bass role=bass inst=warm-bass vol=0.3 pan=0
+# 1-8: Intro: the guitar and the tape pad
+| R | R | R | R |
+| R | R | R | R |
+# 9-24: A: the drums and the warm bass enter
+| Ab2/4+6:84 r/2 | Db2/4+6:93 r/2 | Ab2/4+6:94 r/4 Eb2/4+4:88 | F2/4+6:80 r/2 |
+| Db2/4+6:84 r/2 | Db2/4+6:93 r/4 Ab2/4+4:87 | Eb2/4+6:94 r/2 | Eb2/4+6:80 r/2 |
+| Ab2/4+6:84 r/4 Eb2/4+4:78 | Db2/4+6:93 r/2 | Ab2/4+6:94 r/2 | F2/4+6:80 r/4 C3/4+4:74 |
+| Db2/4+6:84 r/2 | Db2/4+6:93 r/2 | Eb2/4+6:94 r/4 Eb2/4+4:88 | Eb2/4+6:80 r/2 |
+# 25-32: A': the grand piano enters
+| Ab2/4+6:84 r/2 | Db2/4+6:93 r/2 | Ab2/4+6:94 r/4 Eb2/4+4:88 | F2/4+6:80 r/2 |
+| Db2/4+6:84 r/2 | Db2/4+6:93 r/4 Ab2/4+4:87 | Eb2/4+6:94 r/2 | Eb2/4+6:80 r/2 |
+# 33-48: B: F minor, the kit on rim and hats
+| F2/4+6:82 r/2 | Bb2/4+6:91 r/2 | F2/4+6:92 r/4 C3/4+4:86 | Db2/4+6:78 r/2 |
+| Ab2/4+6:82 r/2 | Eb2/4+6:91 r/4 Bb2/4+4:85 | C2/4+6:92 r/2 | C2/4+6:78 r/2 |
+| F2/4+6:82 r/4 C3/4+4:76 | Bb2/4+6:91 r/2 | F2/4+6:92 r/2 | Db2/4+6:78 r/4 Ab2/4+4:72 |
+| Ab2/4+6:82 r/2 | Eb2/4+6:91 r/2 | C2/4+6:92 r/4 G2/4+4:86 | C2/4+6:78 r/2 |
+# 49-56: Breakdown: the guitar and the music box
+| R | R | R | R |
+| R | R | R | R |
+# 57-72: A'': full, the music box answers
+| Ab2/4+6:86 r/2 | Db2/4+6:95 r/2 | Ab2/4+6:96 r/4 Eb2/4+4:90 | F2/4+6:82 r/2 |
+| Db2/4+6:86 r/2 | Db2/4+6:95 r/4 Ab2/4+4:89 | Eb2/4+6:96 r/2 | Eb2/4+6:82 r/2 |
+| Ab2/4+6:86 r/4 Eb2/4+4:80 | Db2/4+6:95 r/2 | Ab2/4+6:96 r/2 | F2/4+6:82 r/4 C3/4+4:76 |
+| Db2/4+6:86 r/2 | Db2/4+6:95 r/2 | Eb2/4+6:96 r/4 Eb2/4+4:90 | Eb2/4+6:82 r/2 |
+# 73-84: Outro: the parts fall away
+| Ab2/4+6:82 r/2 | Db2/4+6:91 r/2 | Ab2/4+6:92 r/4 Eb2/4+4:86 | F2/4+6:78 r/2 |
+| Db2/4+6:82 r/2 | Db2/4+6:91 r/4 Ab2/4+4:85 | Eb2/4+6:92 r/2 | Eb2/4+6:78 r/2 |
+| Ab2/4+6:82 r/4 Eb2/4+4:76 | Db2/4+6:91 r/2 | R | R |
+
+track drums role=drums inst=dusty-kit vol=0.9 pan=0.02
+# 1-8: Intro: the guitar and the tape pad
+| R | R | R | R |
+| R | R | R | R |
+# 9-24: A: the drums and the warm bass enter
+| [k h]/8:92 [h]/8+58:62 [h]/8:74 [h]/8+61:60 [rim h]/8+16:86 [h]/8+64:58 | [k h]/8:92 [h]/8+61:62 [h]/8:74 [h]/8+64:60 [rim h]/8+19:86 [h]/8+67:58 | [k h]/8:92 [h]/8+64:62 [h]/8:74 [h]/8+67:60 [rim h]/8+22:86 [h]/8+70:58 | [k h]/8:92 [h]/8+67:62 [h]/8:74 [h]/8+70:60 [rim h]/8+16:86 [h]/8+73:58 |
+| [k h]/8:92 [h]/8+58:62 [h]/8:74 [h]/8+61:60 [rim h]/8+19:86 [h]/8+64:58 | [k h]/8:92 [h]/8+61:62 [h]/8:74 [h]/8+64:60 [rim h]/8+22:86 [h]/8+67:58 | [k h]/8:92 [h]/8+64:62 [h]/8:74 [h]/8+67:60 [rim h]/8+16:86 [h]/8+70:58 | [k h]/8:92 [h]/8+67:62 [h]/8:74 [h]/8+70:60 [rim h]/8+19:86 [h]/8+73:58 |
+| [k h]/8:92 [h]/8+58:62 [h]/8:74 [h]/8+61:60 [rim h]/8+22:86 [h]/8+64:58 | [k h]/8:92 [h]/8+61:62 [h]/8:74 [h]/8+64:60 [rim h]/8+16:86 [h]/8+67:58 | [k h]/8:92 [h]/8+64:62 [h]/8:74 [h]/8+67:60 [rim h]/8+19:86 [h]/8+70:58 | [k h]/8:92 [h]/8+67:62 [h]/8:74 [h]/8+70:60 [rim h]/8+22:86 [h]/8+73:58 |
+| [k h]/8:92 [h]/8+58:62 [h]/8:74 [h]/8+61:60 [rim h]/8+16:86 [h]/8+64:58 | [k h]/8:92 [h]/8+61:62 [h]/8:74 [h]/8+64:60 [rim h]/8+19:86 [h]/8+67:58 | [k h]/8:92 [h]/8+64:62 [h]/8:74 [h]/8+67:60 [rim h]/8+22:86 [h]/8+70:58 | [k h]/8:92 [h]/8+67:62 [h]/8:74 [h]/8+70:60 [s h]/8+16:78 [h]/8+73:58 |
+# 25-32: A': the grand piano enters
+| [k h]/8:94 [h]/8+58:64 [h]/8:76 [h]/8+61:62 [rim h]/8+16:88 [h]/8+64:60 | [k h]/8:94 [h]/8+61:64 [h]/8:76 [h]/8+64:62 [rim h]/8+19:88 [h]/8+67:60 | [k h]/8:94 [h]/8+64:64 [h]/8:76 [h]/8+67:62 [rim h]/8+22:88 [h]/8+70:60 | [k h]/8:94 [h]/8+67:64 [h]/8:76 [h]/8+70:62 [rim h]/8+16:88 [h]/8+73:60 |
+| [k h]/8:94 [h]/8+58:64 [h]/8:76 [h]/8+61:62 [rim h]/8+19:88 [h]/8+64:60 | [k h]/8:94 [h]/8+61:64 [h]/8:76 [h]/8+64:62 [rim h]/8+22:88 [h]/8+67:60 | [k h]/8:94 [h]/8+64:64 [h]/8:76 [h]/8+67:62 [rim h]/8+16:88 [h]/8+70:60 | [k h]/8:94 [h]/8+67:64 [h]/8:76 [h]/8+70:62 [s h]/8+19:80 [h]/8+73:60 |
+# 33-48: B: F minor, the kit on rim and hats
+| [h]/8:76 [h]/8+58:58 [h]/8:70 [h]/8+61:56 [rim h]/8+16:82 [h]/8+64:54 | [h]/8:76 [h]/8+61:58 [h]/8:70 [h]/8+64:56 [rim h]/8+19:82 [h]/8+67:54 | [h]/8:76 [h]/8+64:58 [h]/8:70 [h]/8+67:56 [rim h]/8+22:82 [h]/8+70:54 | [h]/8:76 [h]/8+67:58 [h]/8:70 [h]/8+70:56 [rim h]/8+16:82 [h]/8+73:54 |
+| [h]/8:76 [h]/8+58:58 [h]/8:70 [h]/8+61:56 [rim h]/8+19:82 [h]/8+64:54 | [h]/8:76 [h]/8+61:58 [h]/8:70 [h]/8+64:56 [rim h]/8+22:82 [h]/8+67:54 | [h]/8:76 [h]/8+64:58 [h]/8:70 [h]/8+67:56 [rim h]/8+16:82 [h]/8+70:54 | [h]/8:76 [h]/8+67:58 [h]/8:70 [h]/8+70:56 [rim h]/8+19:82 [h]/8+73:54 |
+| [h]/8:76 [h]/8+58:58 [h]/8:70 [h]/8+61:56 [rim h]/8+22:82 [h]/8+64:54 | [h]/8:76 [h]/8+61:58 [h]/8:70 [h]/8+64:56 [rim h]/8+16:82 [h]/8+67:54 | [h]/8:76 [h]/8+64:58 [h]/8:70 [h]/8+67:56 [rim h]/8+19:82 [h]/8+70:54 | [h]/8:76 [h]/8+67:58 [h]/8:70 [h]/8+70:56 [rim h]/8+22:82 [h]/8+73:54 |
+| [h]/8:76 [h]/8+58:58 [h]/8:70 [h]/8+61:56 [rim h]/8+16:82 [h]/8+64:54 | [h]/8:76 [h]/8+61:58 [h]/8:70 [h]/8+64:56 [rim h]/8+19:82 [h]/8+67:54 | [h]/8:76 [h]/8+64:58 [h]/8:70 [h]/8+67:56 [rim h]/8+22:82 [h]/8+70:54 | [h]/8:76 [h]/8+67:58 [h]/8:70 [h]/8+70:56 [s h]/8+16:74 [h]/8+73:54 |
+# 49-56: Breakdown: the guitar and the music box
+| R | R | R | R |
+| R | R | R | R |
+# 57-72: A'': full, the music box answers
+| [k h]/8:96 [h]/8+58:66 [h]/8:78 [h]/8+61:64 [rim h]/8+16:90 [h]/8+64:62 | [k h]/8:96 [h]/8+61:66 [h]/8:78 [h]/8+64:64 [rim h]/8+19:90 [h]/8+67:62 | [k h]/8:96 [h]/8+64:66 [h]/8:78 [h]/8+67:64 [rim h]/8+22:90 [h]/8+70:62 | [k h]/8:96 [h]/8+67:66 [h]/8:78 [h]/8+70:64 [rim h]/8+16:90 [h]/8+73:62 |
+| [k h]/8:96 [h]/8+58:66 [h]/8:78 [h]/8+61:64 [rim h]/8+19:90 [h]/8+64:62 | [k h]/8:96 [h]/8+61:66 [h]/8:78 [h]/8+64:64 [rim h]/8+22:90 [h]/8+67:62 | [k h]/8:96 [h]/8+64:66 [h]/8:78 [h]/8+67:64 [rim h]/8+16:90 [h]/8+70:62 | [k h]/8:96 [h]/8+67:66 [h]/8:78 [h]/8+70:64 [rim h]/8+19:90 [h]/8+73:62 |
+| [k h]/8:96 [h]/8+58:66 [h]/8:78 [h]/8+61:64 [rim h]/8+22:90 [h]/8+64:62 | [k h]/8:96 [h]/8+61:66 [h]/8:78 [h]/8+64:64 [rim h]/8+16:90 [h]/8+67:62 | [k h]/8:96 [h]/8+64:66 [h]/8:78 [h]/8+67:64 [rim h]/8+19:90 [h]/8+70:62 | [k h]/8:96 [h]/8+67:66 [h]/8:78 [h]/8+70:64 [rim h]/8+22:90 [h]/8+73:62 |
+| [k h]/8:96 [h]/8+58:66 [h]/8:78 [h]/8+61:64 [rim h]/8+16:90 [h]/8+64:62 | [k h]/8:96 [h]/8+61:66 [h]/8:78 [h]/8+64:64 [rim h]/8+19:90 [h]/8+67:62 | [k h]/8:96 [h]/8+64:66 [h]/8:78 [h]/8+67:64 [rim h]/8+22:90 [h]/8+70:62 | [k h]/8:96 [h]/8+67:66 [h]/8:78 [h]/8+70:64 [s h]/8+16:82 [h]/8+73:62 |
+# 73-84: Outro: the parts fall away
+| [k h]/8:90 [h]/8+58:60 [h]/8:72 [h]/8+61:58 [rim h]/8+16:84 [h]/8+64:56 | [k h]/8:90 [h]/8+61:60 [h]/8:72 [h]/8+64:58 [rim h]/8+19:84 [h]/8+67:56 | [k h]/8:90 [h]/8+64:60 [h]/8:72 [h]/8+67:58 [rim h]/8+22:84 [h]/8+70:56 | [k h]/8:90 [h]/8+67:60 [h]/8:72 [h]/8+70:58 [s h]/8+16:76 [h]/8+73:56 |
+| R | R | R | R |
+| R | R | R | R |

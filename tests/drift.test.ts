@@ -33,6 +33,7 @@ const SCRIPT = [
   'tools/arranger/night-bus-home.mjs',
   'tools/arranger/the-black-coach.mjs',
   'tools/arranger/the-gilded-hour.mjs',
+  'tools/arranger/sleepwalk.mjs',
   'tools/arranger/first-flight.mjs',
 ];
 
