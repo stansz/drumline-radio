@@ -234,6 +234,22 @@ and the kit only hits, fills and rolls at the turns of the story.
 node tools/arranger/first-flight.mjs tmp/cine
 ```
 
+Long Division has its own script (`arranger/long-division.mjs`): a pulse-ambient piece at 92 BPM
+in 5/4 in F# Dorian whose two plucked patterns phase against each other - the concert-harp cell is
+seven eighths long against the bar's ten, so its accent walks across the beat and meets it again
+every seven bars, while the nylon-guitar figure stays fixed on the grid. From one chord symbol
+every four bars it derives each chord's tape-pad voicing, bass root, guitar figure and harp cell,
+plus the two lists every phrase note is checked against as it is written: the notes that may start
+on a beat (chord tones) and the notes that may sound at all (a whole step clear of the pad and the
+bass), so the song comes out with no half-step clashes and no off-chord notes. Its 112 bars are 14
+eight-bar sections - one pattern alone, the layers building, the cello theme and the flute's
+answers, a bloom into D Lydian, a break without the beat, the theme in full, and a dissolve back to
+the one pattern it opened with.
+
+```bash
+node tools/arranger/long-division.mjs tmp/ld
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,

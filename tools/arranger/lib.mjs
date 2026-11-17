@@ -246,13 +246,15 @@ export function formHeader(form) {
   const starts = form.map((_, index) =>
     1 + form.slice(0, index).reduce((sum, section) => sum + section.bars.split(' ').length, 0));
   const chordRange = (from, count) => chords.slice(from - 1, from - 1 + count);
+  // The chord symbol of a 1-based bar, so a part can read its own bar's chord.
+  const at = (bar) => chords[bar - 1];
   const chordLines = form.map((section, index) =>
     `${index === 0 ? '# chords:' : `# chords @${starts[index]}:`} ${section.bars}`);
   const formLines = form.map((section, index) => {
     const end = starts[index] + section.bars.split(' ').length - 1;
     return `# ${starts[index]}-${end}: ${section.name}`;
   });
-  return { chords, starts, chordRange, chordLines, formLines };
+  return { chords, starts, chordRange, at, chordLines, formLines };
 }
 
 // The generator's output folder: the first argument, or `fallback` (the app's songs folder).

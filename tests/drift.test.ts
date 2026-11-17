@@ -34,6 +34,7 @@ const SCRIPT = [
   'tools/arranger/the-black-coach.mjs',
   'tools/arranger/the-gilded-hour.mjs',
   'tools/arranger/first-flight.mjs',
+  'tools/arranger/long-division.mjs',
 ];
 
 describe('the song generators', () => {

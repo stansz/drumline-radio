@@ -94,7 +94,7 @@ const FORM = [
 const HEAD = formHeader(FORM);
 const TOTAL = HEAD.chords.length;
 if (TOTAL !== 104) throw new Error(`the form is ${TOTAL} bars, wanted 104`);
-const at = (bar) => HEAD.chords.at(bar - 1);
+const at = HEAD.at;
 
 // ------------------------------------------------------------------------------------------ feel
 // A bar's first note leans in late, never early, so it can never sound under the chord before it;
