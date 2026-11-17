@@ -190,19 +190,6 @@ the stepwise themes, the cello's answers and the Viennese lilt are written by ha
 node tools/arranger/the-gilded-hour.mjs tmp/waltz
 ```
 
-Sleepwalk has its own script, `arranger/sleepwalk.mjs`: a 92 BPM lo-fi waltz in A-flat major at
-2:44. One eight-bar phrase (A-flat, D-flat, A-flat, F minor 7, D-flat, the borrowed D-flat minor,
-A-flat over E-flat, a half cadence on E-flat) is the tune, and from each bar's chord the script
-gets the pad's open root and fifth, the bass's root and its pickup, the piano's broken waltz and the
-music box's high answers. The form is guitar-and-pad intro, two statements with drums and bass, a
-statement with the piano, an F-minor middle on rim and hats, a guitar-and-music-box breakdown, a
-full statement with the music box answering the guitar's gaps, and an outro whose parts fall away
-one by one to the guitar's last A-flat.
-
-```bash
-node tools/arranger/sleepwalk.mjs tmp/lofi
-```
-
 ```bash
 node tools/arranger/club.mjs tmp/club
 ```
@@ -245,21 +232,6 @@ and the kit only hits, fills and rolls at the turns of the story.
 
 ```bash
 node tools/arranger/first-flight.mjs tmp/cine
-```
-
-Grey Coast has its own script, `arranger/grey-coast.mjs`: a 96-bar slow-tide ambient piece in Eb
-Lydian at 70 BPM, about 5:30. The story: a grey coast at first light, the tide coming in, a moment
-of warmth when the sun breaks through, and the water settling back to stillness. Lineup: wordless
-choir (bank:choir-ooh) sings the theme in long notes with slow vol@ swells; FM bells
-(bank:fm-bells) answer sparsely in the choir's rests; grand piano (bank:grand-piano) plays soft
-sustained voicings and single falling notes; dark pad (bank:dark-pad) holds open fifths; low strings
-(bank:low-strings) drone on an Eb pedal, moving to C pedal in the C minor turn; the style's dusty
-kit plays only a distant heartbeat kick in the climax section. The form has six 16-bar sections:
-first light (air, drone, piano only), choir states theme over pad, bells answer, C minor turn with
-heartbeat kick, sun breaks through (theme highest), settling to drone and last piano note.
-
-```bash
-node tools/arranger/grey-coast.mjs tmp/ambient
 ```
 
 ### Always room to change

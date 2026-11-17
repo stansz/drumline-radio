@@ -71,7 +71,6 @@ Originals by SZ (and AI):
 
 - **Pagoda Rain** (Ambient), by Claude & SZ. An 8:00 ambient piece at 64 BPM in D major, after the music in the Pagoda Garden toy: a washed pad and a soft sub changing chord every fifteen seconds, music-box notes picked from each chord, a slow Rhodes phrase and a rising glass pad in the middle, over the style's bed of air. Loops cleanly with repeat on.
 - **Temple Bells** (Ambient), by Claude & SZ. A 7:28 ambient piece at 60 BPM in A minor: a dark pad on Am9, Fmaj7, Cmaj7 and G6, music-box bells, a glass pad and a Rhodes in the middle, and the bed of air. Loops cleanly with repeat on.
-- **Grey Coast** (Ambient), by Nemotron 3 Ultra & SZ. A 5:30 slow-tide ambient piece at 70 BPM in Eb Lydian: a grey coast at first light, the tide coming in, a moment of warmth when the sun breaks through, and the water settling back to stillness. Wordless choir (choir-ooh) sings the Eb4-G4-A4-G4 motif in long notes with slow swells; FM bells (fm-bells) answer sparsely; grand piano (grand-piano) plays soft voicings and falling notes; dark pad (bank:dark-pad) holds open fifths; low strings (bank:low-strings) drone on an Eb pedal, moving to C pedal in the C minor turn; the style's dusty kit provides only a distant heartbeat kick in the climax. Six 16-bar sections: first light (air, drone, piano only), choir states theme, bells answer, C minor turn with heartbeat, sun breaks through (theme highest), settling to drone and last piano note. Built by `tools/arranger/grey-coast.mjs`.
 - **Exit Sign** (Alt rock), by GPT-6.1-sol & SZ. A 2:57 guitar-band original: palm-muted verses, a twelve-bar vocal-style hook, a half-time bridge, and a final double chorus.
 - **A Match in the Static** (Alt rock), by Arena Agent, Claude & SZ. A 3:44, 120 BPM E-minor stomp: eight solo shimmer-guitar bars grow into picked-bass verses with a quiet clean-electric melody and crunchy pre-choruses, then burst into a fuzz-hook/guitar-wall chorus; a quiet bridge rebuilds into a final double chorus and a ringing E-minor outro.
 - **Porch Light** (Alt rock), by Grok, Claude & SZ. A 4:40 slow, emo indie original at 72 BPM: a laid-back clean electric guitar lead, shimmering arpeggios, a Ben Folds-style piano, a borrowed minor iv in the hook, and a half-time bridge in a new key before the last chorus finally gets loud.
@@ -169,14 +168,6 @@ Originals by SZ (and AI):
   that ritards down to the lone arp.
 - **Save Point** (Chiptune)
 - **Shortwave** (Lo-fi)
-- **Sleepwalk** (Lo-fi), by ERNIE 5.5 Flash & SZ. A 2:44 lo-fi waltz at 92 BPM in A-flat major: a
-  nylon guitar hums a short stepwise tune over a tape pad, a dusty kit drags a rim on beat three and
-  swings its hats, a warm bass leans on the downbeat with an occasional pickup, and a grand piano
-  rocks a soft broken waltz underneath. The intro is guitar and pad alone, the drums and bass enter
-  for the first statement, the piano joins the second, the middle turns to F minor with the kit down
-  to rim and hats, a breakdown leaves the guitar and a music box alone, and the last full statement
-  answers the guitar with the music box before the outro falls away to the guitar's last note over
-  A-flat. Built by `tools/arranger/sleepwalk.mjs`.
 - **Third Rail** (Lo-fi)
 - **First Flight** (Cinematic), by MiMo V2.6 Flash & SZ. A 3:43 bright film cue at 112 BPM in D
   major, from an uncertain ground-level start to a first flight seen from above. It opens on bells
