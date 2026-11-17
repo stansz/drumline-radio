@@ -247,6 +247,21 @@ and the kit only hits, fills and rolls at the turns of the story.
 node tools/arranger/first-flight.mjs tmp/cine
 ```
 
+Grey Coast has its own script, `arranger/grey-coast.mjs`: a 96-bar slow-tide ambient piece in Eb
+Lydian at 70 BPM, about 5:30. The story: a grey coast at first light, the tide coming in, a moment
+of warmth when the sun breaks through, and the water settling back to stillness. Lineup: wordless
+choir (bank:choir-ooh) sings the theme in long notes with slow vol@ swells; FM bells
+(bank:fm-bells) answer sparsely in the choir's rests; grand piano (bank:grand-piano) plays soft
+sustained voicings and single falling notes; dark pad (bank:dark-pad) holds open fifths; low strings
+(bank:low-strings) drone on an Eb pedal, moving to C pedal in the C minor turn; the style's dusty
+kit plays only a distant heartbeat kick in the climax section. The form has six 16-bar sections:
+first light (air, drone, piano only), choir states theme over pad, bells answer, C minor turn with
+heartbeat kick, sun breaks through (theme highest), settling to drone and last piano note.
+
+```bash
+node tools/arranger/grey-coast.mjs tmp/ambient
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,

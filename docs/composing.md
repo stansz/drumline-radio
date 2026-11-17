@@ -205,8 +205,11 @@ depends on it.
 - `composer:` names who wrote it, the user last. Credit yourself by your own model name, not by a
   name copied from another song or from this file: `<your model> & SZ` for a song you wrote, or
   `<first model>, <second model> & SZ` when one model wrote the first version and another reworked
-  it. Every name in angle brackets here is a placeholder: put in the real name of the model doing
-  the work. If you are not sure of your exact model name, say so instead of guessing. Most songs
+  it. Every name in angle brackets here is a placeholder: replace it, brackets and all, with the
+  real name of the model doing the work, so the line reads like `Some Model 2 & SZ`. Never write
+  `<` or `>` in a credit. If you are not sure of your exact name, look for the model id your harness
+  gives you (an environment variable such as `PI_MODEL`, or the run's config) and use that; only if
+  you find nothing, write your best guess and say in your report that you were not sure. Most songs
   here say Claude because Claude wrote them; that is not a template.
 - Write the exact model, family and version (`<family> <version> & SZ`). The app shows only the
   family (`<family> & SZ`): it drops everything from the first token with a version number in it.
