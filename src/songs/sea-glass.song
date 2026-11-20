@@ -1,0 +1,383 @@
+# Sea Glass, by DeepSeek Flash & SZ. An original ambient piece for the Ambient
+# style: 72 BPM in 6/8 in E-flat Lydian, 160 bars, 6:40. A slow piano figure rocks on the 6/8
+# pulse over a choir pad and a low string bed, with glass bells, a high FM-bell drone and a soft
+# side-stick on the second pulse. The harmony is one chord every four bars: Ebmaj9 and F9 open it,
+# Gm9 and Cm9 answer, and the turn at 49 brings Bb6, and the open middle at 81 brings Dm7. The first theme enters at 17, the
+# bells answer at 33, the turn at 49 adds strings and the rim, the middle at 81 drops the bass and
+# the rim and leaves long gaps, the first theme returns at 97, rises an octave at 113, and the coda
+# at 145 lets go over eight bars of fade. The 6/8 lilt keeps a quiet clock, so it is calm without
+# becoming a lullaby.
+#
+# Lineup: piano (lead, grand-piano) carries the themes; glass bells (lead2, fm-bells) hold one high
+# chord tone per chord; glockenspiel (arp, bank:glockenspiel) plays three-note ripples; choir (pad,
+# choir-ooh) holds open fifths; warm strings (chords, bank:string-pad) join the turn and the full
+# statement; low strings (bass, low-strings) breathe root-to-fifth under each chord; dusty kit
+# (drums) is only the side stick. No music box, no FM Rhodes, no washed pad, no glass pad, no soft
+# sub.
+#
+# The chord table below is the only place the harmony is written. Every pitched part reads its
+# chord from it, and every long note is a chord tone, so the song has no off-chord notes. The pad
+# is written without thirds, so the piano's ninths and the Lydian A stay clear; the low strings
+# rest in the open section so the pad can be heard.
+#
+# Built by its own script, tools/arranger/sea-glass.mjs, from tools/arranger/lib.mjs: the chord
+# table, the three themes, the bell ripples, the rim, the velocities and the microtiming all live
+# there, and the song file is generated from it - never edited.
+#
+# chords: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @17: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @33: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @49: Bb6 Bb6 Bb6 Bb6 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @65: Bb6 Bb6 Bb6 Bb6 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @81: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 Dm7 Dm7 Dm7 Dm7 F9 F9 F9 F9 Cm9 Cm9 Cm9 Cm9
+# chords @97: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @113: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @129: Bb6 Bb6 Bb6 Bb6 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+# chords @145: Ebmaj9 Ebmaj9 Ebmaj9 Ebmaj9 F9 F9 F9 F9 Gm9 Gm9 Gm9 Gm9 Cm9 Cm9 Cm9 Cm9
+#
+# Form:
+# 1-16: First light: the pad, the low strings and a few high bells
+# 17-32: The piano enters with the first theme
+# 33-48: Glass bells answer the theme
+# 49-64: The turn: Bb6 and a new, brighter phrase
+# 65-80: The strings join under the turn
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+# 97-112: The first theme returns with the rim
+# 113-128: The theme an octave up, the strings underneath
+# 129-144: The turn returns, full
+# 145-160: Coda: the theme lets go and the pad fades
+#
+title: Sea Glass
+composer: DeepSeek Flash & SZ
+year: 2026
+source: original
+category: originals
+style: ambient
+key: E-flat Lydian
+tempo: 72
+time: 6/8
+about: A 6:40 ambient drift in 6/8 in E-flat Lydian: a slow piano theme over a choir pad and a low string bed, glass bells, a high FM-bell drone and a soft side stick. Calm and awake rather than sleepy, with an open middle and a gentle fade at the end.
+
+@bars 153-160 tempo=72..66
+
+track lead role=lead inst=grand-piano vol=0.78 pan=-0.08 vol@17-20=0..1
+# 1-16: First light: the pad, the low strings and a few high bells
+| R*16 |
+# 17-32: The piano enters with the first theme
+| G4/4+8:88 Bb4/8+3:74 Bb4/4.+12:82 | Bb4/4+6:84 G4/8+2:73 F4/4.+11:80 | Eb4/4.+9:86 F4/4+4:77 G4/8+13:81 | Eb4/2.+7:82 |
+| A4/4+10:90 C5/8+3:76 C5/4.+12:84 | C5/4+8:86 A4/8+2:75 G4/4.+13:81 | F4/4.+11:88 G4/4+6:78 A4/8+14:83 | F4/2.+8:84 |
+| Bb4/4+9:86 A4/8+3:74 A4/4.+12:82 | G4/4+7:84 D4/8+2:72 F4/4.+11:80 | G4/4.+10:86 A4/4+5:77 Bb4/8+14:81 | G4/2.+8:82 |
+| Eb4/4+9:86 G4/8+3:75 G4/4.+12:82 | Bb4/4+7:84 G4/8+2:74 Eb4/4.+11:80 | G4/4.+10:85 Eb4/4+5:76 D4/8+13:79 | C5/2.+8:82 |
+# 33-48: Glass bells answer the theme
+| G4/4+8:88 Bb4/8+3:74 Bb4/4.+12:82 | Bb4/4+6:84 G4/8+2:73 F4/4.+11:80 | Eb4/4.+9:86 F4/4+4:77 G4/8+13:81 | Eb4/2.+7:82 |
+| A4/4+10:90 C5/8+3:76 C5/4.+12:84 | C5/4+8:86 A4/8+2:75 G4/4.+13:81 | F4/4.+11:88 G4/4+6:78 A4/8+14:83 | F4/2.+8:84 |
+| Bb4/4+9:86 A4/8+3:74 A4/4.+12:82 | G4/4+7:84 D4/8+2:72 F4/4.+11:80 | G4/4.+10:86 A4/4+5:77 Bb4/8+14:81 | G4/2.+8:82 |
+| Eb4/4+9:86 G4/8+3:75 G4/4.+12:82 | Bb4/4+7:84 G4/8+2:74 Eb4/4.+11:80 | G4/4.+10:85 Eb4/4+5:76 D4/8+13:79 | C5/2.+8:82 |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| D5/4+9:88 F5/8+3:76 F5/4.+12:84 | G5/4+7:86 F5/8+2:75 D5/4.+11:82 | D5/4+10:84 Bb4/8+4:73 Bb4/4.+13:80 | Bb4/2.+8:82 |
+| C5/4+9:86 Eb5/8+3:75 Eb5/4.+12:82 | F5/4+7:88 Eb5/8+2:76 C5/4.+11:83 | C5/4.+10:86 A4/4+5:77 G4/8+14:81 | F4/2.+8:82 |
+| D5/4+9:87 F5/8+3:76 F5/4.+12:83 | G5/4+7:88 F5/8+2:77 D5/4.+11:84 | D5/4.+10:86 Bb4/4+5:76 A4/8+14:80 | G4/2.+8:82 |
+| G5/4+9:87 Eb5/8+3:76 Eb5/4.+12:83 | D5/4+7:85 C5/8+2:74 C5/4.+11:81 | Bb4/4.+10:85 G4/4+5:76 Eb4/8+13:80 | C5/2.+8:82 |
+# 65-80: The strings join under the turn
+| D5/4+9:88 F5/8+3:76 F5/4.+12:84 | G5/4+7:86 F5/8+2:75 D5/4.+11:82 | D5/4+10:84 Bb4/8+4:73 Bb4/4.+13:80 | Bb4/2.+8:82 |
+| C5/4+9:86 Eb5/8+3:75 Eb5/4.+12:82 | F5/4+7:88 Eb5/8+2:76 C5/4.+11:83 | C5/4.+10:86 A4/4+5:77 G4/8+14:81 | F4/2.+8:82 |
+| D5/4+9:87 F5/8+3:76 F5/4.+12:83 | G5/4+7:88 F5/8+2:77 D5/4.+11:84 | D5/4.+10:86 Bb4/4+5:76 A4/8+14:80 | G4/2.+8:82 |
+| G5/4+9:87 Eb5/8+3:76 Eb5/4.+12:83 | D5/4+7:85 C5/8+2:74 C5/4.+11:81 | Bb4/4.+10:85 G4/4+5:76 Eb4/8+13:80 | C5/2.+8:82 |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| G5/2.+10:80 | R | Bb4/4.+8:78 F5/4.+12:74 | R |
+| D5/2.+9:80 | R | F5/4.+7:78 A5/4.+11:75 | R |
+| A4/2.+10:80 | R | C5/4.+8:78 Eb5/4.+12:74 | R |
+| G4/2.+9:79 | R | Bb4/4.+7:77 C5/4.+11:75 | R |
+# 97-112: The first theme returns with the rim
+| G4/4+8:88 Bb4/8+3:74 Bb4/4.+12:82 | Bb4/4+6:84 G4/8+2:73 F4/4.+11:80 | Eb4/4.+9:86 F4/4+4:77 G4/8+13:81 | Eb4/2.+7:82 |
+| A4/4+10:90 C5/8+3:76 C5/4.+12:84 | C5/4+8:86 A4/8+2:75 G4/4.+13:81 | F4/4.+11:88 G4/4+6:78 A4/8+14:83 | F4/2.+8:84 |
+| Bb4/4+9:86 A4/8+3:74 A4/4.+12:82 | G4/4+7:84 D4/8+2:72 F4/4.+11:80 | G4/4.+10:86 A4/4+5:77 Bb4/8+14:81 | G4/2.+8:82 |
+| Eb4/4+9:86 G4/8+3:75 G4/4.+12:82 | Bb4/4+7:84 G4/8+2:74 Eb4/4.+11:80 | G4/4.+10:85 Eb4/4+5:76 D4/8+13:79 | C5/2.+8:82 |
+# 113-128: The theme an octave up, the strings underneath
+| G5/4+8:82 Bb5/8+3:68 Bb5/4.+12:76 | Bb5/4+6:78 G5/8+2:67 F5/4.+11:74 | Eb5/4.+9:80 F5/4+4:71 G5/8+13:75 | Eb5/2.+7:76 |
+| A5/4+10:84 C6/8+3:70 C6/4.+12:78 | C6/4+8:80 A5/8+2:69 G5/4.+13:75 | F5/4.+11:82 G5/4+6:72 A5/8+14:77 | F5/2.+8:78 |
+| Bb5/4+9:80 A5/8+3:68 A5/4.+12:76 | G5/4+7:78 D5/8+2:66 F5/4.+11:74 | G5/4.+10:80 A5/4+5:71 Bb5/8+14:75 | G5/2.+8:76 |
+| Eb5/4+9:80 G5/8+3:69 G5/4.+12:76 | Bb5/4+7:78 G5/8+2:68 Eb5/4.+11:74 | G5/4.+10:79 Eb5/4+5:70 D5/8+13:73 | C6/2.+8:76 |
+# 129-144: The turn returns, full
+| D5/4+9:88 F5/8+3:76 F5/4.+12:84 | G5/4+7:86 F5/8+2:75 D5/4.+11:82 | D5/4+10:84 Bb4/8+4:73 Bb4/4.+13:80 | Bb4/2.+8:82 |
+| C5/4+9:86 Eb5/8+3:75 Eb5/4.+12:82 | F5/4+7:88 Eb5/8+2:76 C5/4.+11:83 | C5/4.+10:86 A4/4+5:77 G4/8+14:81 | F4/2.+8:82 |
+| D5/4+9:87 F5/8+3:76 F5/4.+12:83 | G5/4+7:88 F5/8+2:77 D5/4.+11:84 | D5/4.+10:86 Bb4/4+5:76 A4/8+14:80 | G4/2.+8:82 |
+| G5/4+9:87 Eb5/8+3:76 Eb5/4.+12:83 | D5/4+7:85 C5/8+2:74 C5/4.+11:81 | Bb4/4.+10:85 G4/4+5:76 Eb4/8+13:80 | C5/2.+8:82 |
+# 145-160: Coda: the theme lets go and the pad fades
+| G4/4+8:88 Bb4/8+3:74 Bb4/4.+12:82 | Bb4/4+6:84 G4/8+2:73 F4/4.+11:80 | Eb4/4.+9:86 F4/4+4:77 G4/8+13:81 | Eb4/2.+7:82 |
+| A4/4+10:90 C5/8+3:76 C5/4.+12:84 | C5/4+8:86 A4/8+2:75 G4/4.+13:81 | F4/4.+11:88 G4/4+6:78 A4/8+14:83 | F4/2.+8:84 |
+| Bb4/4+9:86 A4/8+3:74 A4/4.+12:82 | G4/4+7:84 D4/8+2:72 F4/4.+11:80 | G4/4.+10:86 A4/4+5:77 Bb4/8+14:81 | G4/2.+8:82 |
+| Eb4/4+9:86 G4/8+3:75 G4/4.+12:82 | Bb4/4+7:84 G4/8+2:74 Eb4/4.+11:80 | G4/4.+10:85 Eb4/4+5:76 D4/8+13:79 | C5/2.+8:82 |
+
+track bells role=lead2 inst=fm-bells vol=0.34 pan=0.2 vol@33-36=0..1
+# 1-16: First light: the pad, the low strings and a few high bells
+| R*16 |
+# 17-32: The piano enters with the first theme
+| R*16 |
+# 33-48: Glass bells answer the theme
+| F5/2.+10:52 | R | R | R |
+| C6/2.+10:52 | R | R | R |
+| A5/2.+10:52 | R | R | R |
+| D6/2.+10:52 | R | R | R |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| G5/2.+10:52 | R | R | R |
+| C6/2.+10:52 | R | R | R |
+| A5/2.+10:52 | R | R | R |
+| D6/2.+10:52 | R | R | R |
+# 65-80: The strings join under the turn
+| G5/2.+10:54 | R | R | R |
+| C6/2.+10:54 | R | R | R |
+| A5/2.+10:54 | R | R | R |
+| D6/2.+10:54 | R | R | R |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| F5/2.+10:56 | R | R | R |
+| A5/2.+10:56 | R | R | R |
+| C6/2.+10:56 | R | R | R |
+| D6/2.+10:56 | R | R | R |
+# 97-112: The first theme returns with the rim
+| F5/2.+10:54 | R | R | R |
+| C6/2.+10:54 | R | R | R |
+| A5/2.+10:54 | R | R | R |
+| D6/2.+10:54 | R | R | R |
+# 113-128: The theme an octave up, the strings underneath
+| F5/2.+10:56 | R | R | R |
+| C6/2.+10:56 | R | R | R |
+| A5/2.+10:56 | R | R | R |
+| D6/2.+10:56 | R | R | R |
+# 129-144: The turn returns, full
+| G5/2.+10:54 | R | R | R |
+| C6/2.+10:54 | R | R | R |
+| A5/2.+10:54 | R | R | R |
+| D6/2.+10:54 | R | R | R |
+# 145-160: Coda: the theme lets go and the pad fades
+| F5/2.+10:54 | R | R | R |
+| C6/2.+10:54 | R | R | R |
+| A5/2.+10:54 | R | R | R |
+| D6/2.+10:54 | R | R | R |
+
+track arp role=arp inst=bank:glockenspiel vol=0.46 pan=0.3 vol@1-4=0..1 vol@157-160=1..0
+# 1-16: First light: the pad, the low strings and a few high bells
+| Bb4/8+4:58 Eb5/8+6:52 G5/8+8:62 r/4. | R | R | R |
+| C5/8+4:58 F5/8+6:52 A5/8+8:62 r/4. | R | R | R |
+| D5/8+4:58 G5/8+6:52 Bb5/8+8:62 r/4. | R | R | R |
+| C5/8+4:58 Eb5/8+6:52 G5/8+8:62 r/4. | R | R | R |
+# 17-32: The piano enters with the first theme
+| Bb4/8+4:58 Eb5/8+6:52 G5/8+8:62 r/4. | R | R | R |
+| C5/8+4:58 F5/8+6:52 A5/8+8:62 r/4. | R | R | R |
+| D5/8+4:58 G5/8+6:52 Bb5/8+8:62 r/4. | R | R | R |
+| C5/8+4:58 Eb5/8+6:52 G5/8+8:62 r/4. | R | R | R |
+# 33-48: Glass bells answer the theme
+| Bb4/8+4:62 Eb5/8+6:56 G5/8+8:66 r/4. | R | G5/8+2:55 Eb5/8+4:49 Bb4/8+6:59 r/4. | R |
+| C5/8+4:62 F5/8+6:56 A5/8+8:66 r/4. | R | A5/8+2:55 F5/8+4:49 C5/8+6:59 r/4. | R |
+| D5/8+4:62 G5/8+6:56 Bb5/8+8:66 r/4. | R | Bb5/8+2:55 G5/8+4:49 D5/8+6:59 r/4. | R |
+| C5/8+4:62 Eb5/8+6:56 G5/8+8:66 r/4. | R | G5/8+2:55 Eb5/8+4:49 C5/8+6:59 r/4. | R |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| D5/8+4:58 F5/8+6:52 G5/8+8:62 r/4. | R | R | R |
+| C5/8+4:58 F5/8+6:52 A5/8+8:62 r/4. | R | R | R |
+| D5/8+4:58 G5/8+6:52 Bb5/8+8:62 r/4. | R | R | R |
+| C5/8+4:58 Eb5/8+6:52 G5/8+8:62 r/4. | R | R | R |
+# 65-80: The strings join under the turn
+| D5/8+4:60 F5/8+6:54 G5/8+8:64 r/4. | R | G5/8+2:53 F5/8+4:47 D5/8+6:57 r/4. | R |
+| C5/8+4:60 F5/8+6:54 A5/8+8:64 r/4. | R | A5/8+2:53 F5/8+4:47 C5/8+6:57 r/4. | R |
+| D5/8+4:60 G5/8+6:54 Bb5/8+8:64 r/4. | R | Bb5/8+2:53 G5/8+4:47 D5/8+6:57 r/4. | R |
+| C5/8+4:60 Eb5/8+6:54 G5/8+8:64 r/4. | R | G5/8+2:53 Eb5/8+4:47 C5/8+6:57 r/4. | R |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| Bb4/8+4:60 Eb5/8+6:54 G5/8+8:64 r/4. | R | R | R |
+| D5/8+4:60 F5/8+6:54 A5/8+8:64 r/4. | R | R | R |
+| C5/8+4:60 F5/8+6:54 A5/8+8:64 r/4. | R | R | R |
+| C5/8+4:60 Eb5/8+6:54 G5/8+8:64 r/4. | R | R | R |
+# 97-112: The first theme returns with the rim
+| Bb4/8+4:62 Eb5/8+6:56 G5/8+8:66 r/4. | R | G5/8+2:55 Eb5/8+4:49 Bb4/8+6:59 r/4. | R |
+| C5/8+4:62 F5/8+6:56 A5/8+8:66 r/4. | R | A5/8+2:55 F5/8+4:49 C5/8+6:59 r/4. | R |
+| D5/8+4:62 G5/8+6:56 Bb5/8+8:66 r/4. | R | Bb5/8+2:55 G5/8+4:49 D5/8+6:59 r/4. | R |
+| C5/8+4:62 Eb5/8+6:56 G5/8+8:66 r/4. | R | G5/8+2:55 Eb5/8+4:49 C5/8+6:59 r/4. | R |
+# 113-128: The theme an octave up, the strings underneath
+| Bb4/8+4:64 Eb5/8+6:58 G5/8+8:68 r/4. | R | G5/8+2:57 Eb5/8+4:51 Bb4/8+6:61 r/4. | R |
+| C5/8+4:64 F5/8+6:58 A5/8+8:68 r/4. | R | A5/8+2:57 F5/8+4:51 C5/8+6:61 r/4. | R |
+| D5/8+4:64 G5/8+6:58 Bb5/8+8:68 r/4. | R | Bb5/8+2:57 G5/8+4:51 D5/8+6:61 r/4. | R |
+| C5/8+4:64 Eb5/8+6:58 G5/8+8:68 r/4. | R | G5/8+2:57 Eb5/8+4:51 C5/8+6:61 r/4. | R |
+# 129-144: The turn returns, full
+| D5/8+4:62 F5/8+6:56 G5/8+8:66 r/4. | R | G5/8+2:55 F5/8+4:49 D5/8+6:59 r/4. | R |
+| C5/8+4:62 F5/8+6:56 A5/8+8:66 r/4. | R | A5/8+2:55 F5/8+4:49 C5/8+6:59 r/4. | R |
+| D5/8+4:62 G5/8+6:56 Bb5/8+8:66 r/4. | R | Bb5/8+2:55 G5/8+4:49 D5/8+6:59 r/4. | R |
+| C5/8+4:62 Eb5/8+6:56 G5/8+8:66 r/4. | R | G5/8+2:55 Eb5/8+4:49 C5/8+6:59 r/4. | R |
+# 145-160: Coda: the theme lets go and the pad fades
+| Bb4/8+4:60 Eb5/8+6:54 G5/8+8:64 r/4. | R | R | R |
+| C5/8+4:60 F5/8+6:54 A5/8+8:64 r/4. | R | R | R |
+| D5/8+4:60 G5/8+6:54 Bb5/8+8:64 r/4. | R | R | R |
+| C5/8+4:60 Eb5/8+6:54 G5/8+8:64 r/4. | R | R | R |
+
+track pad role=pad inst=choir-ooh vol=0.56 pan=-0.18 vol@1-4=0..1 vol@157-160=1..0
+# 1-16: First light: the pad, the low strings and a few high bells
+| [Eb3 Bb3 Eb4]/2.+8:74~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [F3 C4 F4]/2.+8:74~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:74~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:74~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 17-32: The piano enters with the first theme
+| [Eb3 Bb3 Eb4]/2.+8:76~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [F3 C4 F4]/2.+8:76~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:76~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:76~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 33-48: Glass bells answer the theme
+| [Eb3 Bb3 Eb4]/2.+8:78~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [F3 C4 F4]/2.+8:78~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:78~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:78~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| [Bb3 F4 Bb4]/2.+8:78~ | [Bb3 F4 Bb4]/2.~ | [Bb3 F4 Bb4]/2.~ | [Bb3 F4 Bb4]/2. |
+| [F3 C4 F4]/2.+8:78~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:78~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:78~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 65-80: The strings join under the turn
+| [Bb3 F4 Bb4]/2.+8:80~ | [Bb3 F4 Bb4]/2.~ | [Bb3 F4 Bb4]/2.~ | [Bb3 F4 Bb4]/2. |
+| [F3 C4 F4]/2.+8:80~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:80~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:80~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| [Eb3 Bb3 Eb4]/2.+8:78~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [D3 A3 D4]/2.+8:78~ | [D3 A3 D4]/2.~ | [D3 A3 D4]/2.~ | [D3 A3 D4]/2. |
+| [F3 C4 F4]/2.+8:78~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [C3 G3 C4]/2.+8:78~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 97-112: The first theme returns with the rim
+| [Eb3 Bb3 Eb4]/2.+8:80~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [F3 C4 F4]/2.+8:80~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:80~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:80~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 113-128: The theme an octave up, the strings underneath
+| [Eb3 Bb3 Eb4]/2.+8:82~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [F3 C4 F4]/2.+8:82~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:82~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:82~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 129-144: The turn returns, full
+| [Bb3 F4 Bb4]/2.+8:80~ | [Bb3 F4 Bb4]/2.~ | [Bb3 F4 Bb4]/2.~ | [Bb3 F4 Bb4]/2. |
+| [F3 C4 F4]/2.+8:80~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:80~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:80~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+# 145-160: Coda: the theme lets go and the pad fades
+| [Eb3 Bb3 Eb4]/2.+8:78~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2.~ | [Eb3 Bb3 Eb4]/2. |
+| [F3 C4 F4]/2.+8:78~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2.~ | [F3 C4 F4]/2. |
+| [G3 D4 G4]/2.+8:78~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2.~ | [G3 D4 G4]/2. |
+| [C3 G3 C4]/2.+8:78~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2.~ | [C3 G3 C4]/2. |
+
+track chords role=chords inst=bank:string-pad vol=0.32 pan=0.12 vol@65-68=0..1 vol@145-160=1..0.7
+# 1-16: First light: the pad, the low strings and a few high bells
+| R*16 |
+# 17-32: The piano enters with the first theme
+| R*16 |
+# 33-48: Glass bells answer the theme
+| R*16 |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| R*16 |
+# 65-80: The strings join under the turn
+| [Bb4 D5 F5]/2.+12:56~ | [Bb4 D5 F5]/2.~ | [Bb4 D5 F5]/2.~ | [Bb4 D5 F5]/2. |
+| [F4 A4 C5]/2.+12:56~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2. |
+| [G4 Bb4 D5]/2.+12:56~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2. |
+| [C4 Eb4 G4]/2.+12:56~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2. |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| R*16 |
+# 97-112: The first theme returns with the rim
+| R*16 |
+# 113-128: The theme an octave up, the strings underneath
+| [Eb4 G4 Bb4]/2.+12:60~ | [Eb4 G4 Bb4]/2.~ | [Eb4 G4 Bb4]/2.~ | [Eb4 G4 Bb4]/2. |
+| [F4 A4 C5]/2.+12:60~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2. |
+| [G4 Bb4 D5]/2.+12:60~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2. |
+| [C4 Eb4 G4]/2.+12:60~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2. |
+# 129-144: The turn returns, full
+| [Bb4 D5 F5]/2.+12:58~ | [Bb4 D5 F5]/2.~ | [Bb4 D5 F5]/2.~ | [Bb4 D5 F5]/2. |
+| [F4 A4 C5]/2.+12:58~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2. |
+| [G4 Bb4 D5]/2.+12:58~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2. |
+| [C4 Eb4 G4]/2.+12:58~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2. |
+# 145-160: Coda: the theme lets go and the pad fades
+| [Eb4 G4 Bb4]/2.+12:56~ | [Eb4 G4 Bb4]/2.~ | [Eb4 G4 Bb4]/2.~ | [Eb4 G4 Bb4]/2. |
+| [F4 A4 C5]/2.+12:56~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2.~ | [F4 A4 C5]/2. |
+| [G4 Bb4 D5]/2.+12:56~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2.~ | [G4 Bb4 D5]/2. |
+| [C4 Eb4 G4]/2.+12:56~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2.~ | [C4 Eb4 G4]/2. |
+
+track bass role=bass inst=low-strings vol=0.36 pan=0 vol@1-4=0..1 vol@153-160=1..0
+# 1-16: First light: the pad, the low strings and a few high bells
+| Eb2/2.+12:65~ | Eb2/2. | Bb2/2.+9:62~ | Bb2/2. |
+| F2/2.+12:65~ | F2/2. | C3/2.+9:62~ | C3/2. |
+| G2/2.+12:65~ | G2/2. | D3/2.+9:62~ | D3/2. |
+| C2/2.+12:65~ | C2/2. | G2/2.+9:62~ | G2/2. |
+# 17-32: The piano enters with the first theme
+| Eb2/2.+12:67~ | Eb2/2. | Bb2/2.+9:64~ | Bb2/2. |
+| F2/2.+12:67~ | F2/2. | C3/2.+9:64~ | C3/2. |
+| G2/2.+12:67~ | G2/2. | D3/2.+9:64~ | D3/2. |
+| C2/2.+12:67~ | C2/2. | G2/2.+9:64~ | G2/2. |
+# 33-48: Glass bells answer the theme
+| Eb2/2.+12:69~ | Eb2/2. | Bb2/2.+9:66~ | Bb2/2. |
+| F2/2.+12:69~ | F2/2. | C3/2.+9:66~ | C3/2. |
+| G2/2.+12:69~ | G2/2. | D3/2.+9:66~ | D3/2. |
+| C2/2.+12:69~ | C2/2. | G2/2.+9:66~ | G2/2. |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| Bb2/2.+12:69~ | Bb2/2. | F3/2.+9:66~ | F3/2. |
+| F2/2.+12:69~ | F2/2. | C3/2.+9:66~ | C3/2. |
+| G2/2.+12:69~ | G2/2. | D3/2.+9:66~ | D3/2. |
+| C2/2.+12:69~ | C2/2. | G2/2.+9:66~ | G2/2. |
+# 65-80: The strings join under the turn
+| Bb2/2.+12:71~ | Bb2/2. | F3/2.+9:68~ | F3/2. |
+| F2/2.+12:71~ | F2/2. | C3/2.+9:68~ | C3/2. |
+| G2/2.+12:71~ | G2/2. | D3/2.+9:68~ | D3/2. |
+| C2/2.+12:71~ | C2/2. | G2/2.+9:68~ | G2/2. |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| R*16 |
+# 97-112: The first theme returns with the rim
+| Eb2/2.+12:71~ | Eb2/2. | Bb2/2.+9:68~ | Bb2/2. |
+| F2/2.+12:71~ | F2/2. | C3/2.+9:68~ | C3/2. |
+| G2/2.+12:71~ | G2/2. | D3/2.+9:68~ | D3/2. |
+| C2/2.+12:71~ | C2/2. | G2/2.+9:68~ | G2/2. |
+# 113-128: The theme an octave up, the strings underneath
+| Eb2/2.+12:73~ | Eb2/2. | Bb2/2.+9:70~ | Bb2/2. |
+| F2/2.+12:73~ | F2/2. | C3/2.+9:70~ | C3/2. |
+| G2/2.+12:73~ | G2/2. | D3/2.+9:70~ | D3/2. |
+| C2/2.+12:73~ | C2/2. | G2/2.+9:70~ | G2/2. |
+# 129-144: The turn returns, full
+| Bb2/2.+12:71~ | Bb2/2. | F3/2.+9:68~ | F3/2. |
+| F2/2.+12:71~ | F2/2. | C3/2.+9:68~ | C3/2. |
+| G2/2.+12:71~ | G2/2. | D3/2.+9:68~ | D3/2. |
+| C2/2.+12:71~ | C2/2. | G2/2.+9:68~ | G2/2. |
+# 145-160: Coda: the theme lets go and the pad fades
+| Eb2/2.+12:69~ | Eb2/2. | Bb2/2.+9:66~ | Bb2/2. |
+| F2/2.+12:69~ | F2/2. | C3/2.+9:66~ | C3/2. |
+| G2/2.+12:69~ | G2/2. | D3/2.+9:66~ | D3/2. |
+| C2/2.+12:69~ | C2/2. | G2/2.+9:66~ | G2/2. |
+
+track kit role=drums vol=0.4 pan=0.05
+# 1-16: First light: the pad, the low strings and a few high bells
+| R*16 |
+# 17-32: The piano enters with the first theme
+| R*16 |
+# 33-48: Glass bells answer the theme
+| R*16 |
+# 49-64: The turn: Bb6 and a new, brighter phrase
+| r/4. rim/8+6:39 r/4 | R | r/4. rim/8+8:41 r/4 | R |
+| r/4. rim/8+5:43 r/4 | R | r/4. rim/8+7:35 r/4 | R |
+| r/4. rim/8+6:37 r/4 | R | r/4. rim/8+8:39 r/4 | R |
+| r/4. rim/8+5:41 r/4 | R | r/4. rim/8+7:43 r/4 | R |
+# 65-80: The strings join under the turn
+| r/4. rim/8+6:37 r/4 | R | r/4. rim/8+8:39 r/4 | R |
+| r/4. rim/8+5:41 r/4 | R | r/4. rim/8+7:43 r/4 | R |
+| r/4. rim/8+6:45 r/4 | R | r/4. rim/8+8:37 r/4 | R |
+| r/4. rim/8+5:39 r/4 | R | r/4. rim/8+7:41 r/4 | R |
+# 81-96: Open water: the bass and the rim rest, the piano leaves space
+| R*16 |
+# 97-112: The first theme returns with the rim
+| r/4. rim/8+6:41 r/4 | r/4. rim/8+14:47 r/4 | r/4. rim/8+8:43 r/4 | r/4. rim/8+12:39 r/4 |
+| r/4. rim/8+5:45 r/4 | r/4. rim/8+9:41 r/4 | r/4. rim/8+7:47 r/4 | r/4. rim/8+10:43 r/4 |
+| r/4. rim/8+6:39 r/4 | r/4. rim/8+14:45 r/4 | r/4. rim/8+8:41 r/4 | r/4. rim/8+12:47 r/4 |
+| r/4. rim/8+5:43 r/4 | r/4. rim/8+9:39 r/4 | r/4. rim/8+7:45 r/4 | r/4. rim/8+10:41 r/4 |
+# 113-128: The theme an octave up, the strings underneath
+| r/4. rim/8+6:49 r/4 | r/4. rim/8+14:45 r/4 | r/4. rim/8+8:41 r/4 | r/4. rim/8+12:47 r/4 |
+| r/4. rim/8+5:43 r/4 | r/4. rim/8+9:49 r/4 | r/4. rim/8+7:45 r/4 | r/4. rim/8+10:41 r/4 |
+| r/4. rim/8+6:47 r/4 | r/4. rim/8+14:43 r/4 | r/4. rim/8+8:49 r/4 | r/4. rim/8+12:45 r/4 |
+| r/4. rim/8+5:41 r/4 | r/4. rim/8+9:47 r/4 | r/4. rim/8+7:43 r/4 | r/4. rim/8+10:49 r/4 |
+# 129-144: The turn returns, full
+| r/4. rim/8+6:43 r/4 | r/4. rim/8+14:39 r/4 | r/4. rim/8+8:45 r/4 | r/4. rim/8+12:41 r/4 |
+| r/4. rim/8+5:47 r/4 | r/4. rim/8+9:43 r/4 | r/4. rim/8+7:39 r/4 | r/4. rim/8+10:45 r/4 |
+| r/4. rim/8+6:41 r/4 | r/4. rim/8+14:47 r/4 | r/4. rim/8+8:43 r/4 | r/4. rim/8+12:39 r/4 |
+| r/4. rim/8+5:45 r/4 | r/4. rim/8+9:41 r/4 | r/4. rim/8+7:47 r/4 | r/4. rim/8+10:43 r/4 |
+# 145-160: Coda: the theme lets go and the pad fades
+| r/4. rim/8+6:37 r/4 | r/4. rim/8+14:43 r/4 | r/4. rim/8+8:39 r/4 | r/4. rim/8+12:45 r/4 |
+| r/4. rim/8+5:41 r/4 | r/4. rim/8+9:37 r/4 | r/4. rim/8+7:43 r/4 | r/4. rim/8+10:39 r/4 |
+| R | R | R | R |
+| R | R | R | R |
