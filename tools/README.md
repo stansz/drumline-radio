@@ -259,6 +259,19 @@ and a rimshot Dusty-kit backbeat, all on one shared 16th swing (about 58%).
 node tools/arranger/margin-notes.mjs tmp/mn
 ```
 
+Reading Room has its own script too (`arranger/reading-room.mjs`): an 8:00 beatless ambient
+piece at 66 BPM in Bb major, 132 bars. One chord span every 2-4 bars feeds the string-section
+swells (split into a low and a high track so a chord's entries land a few ticks apart), the
+soft sub's root, and the voicings that omit whichever tone would smear a half step into the
+next chord; the shimmer-guitar motif (three rising steps D-Eb-F with a different ending each
+time, written a sixteenth behind the beat), the aah choir's long notes in the middle third,
+the velocities, the microtiming and the vol@ fades are written by hand. The one chromatic
+move is the borrowed Ebm's Gb, falling from G in the same voice and resolving into an open Bb.
+
+```bash
+node tools/arranger/reading-room.mjs tmp/rr
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,

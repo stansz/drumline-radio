@@ -33,11 +33,46 @@ than guessing.
 | Lantern Ward | Orchestral | Tencent HY 4 (with Claude) | — | — | — |
 | Shortwave | Lo-fi | GLM (with Claude) | — | — | — |
 | Third Rail | Lo-fi | DeepSeek | — | — | — |
+| Reading Room | Ambient | Qwen 4-Max | — | — | None (it fixed its own mix and arc with `npm run balance` and an offline loudness render) |
 
 Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### Reading Room — Qwen 4-Max (2026-11-26)
+
+- **Brief:** calm beatless ambient to study to, in the spirit of Music for Airports and
+  Hammock: 66 BPM in 4/4 in Bb major, about 8:00 (132 bars), one long arc with no climax and
+  no drums. Lineup chosen to differ from Pagoda Rain, Temple Bells, Long Division and Sea
+  Glass: shimmer-guitar lead (single notes left to ring), string-section swells for chords,
+  a wordless aah choir on long notes in the middle third only, the style's soft sub entering
+  late and leaving early. Parts fade in and out with vol@ ramps over 4-8 bars; a motif of
+  three or four notes with a different ending each time and whole bars of silence between
+  phrases; one gentle turn (Bb-Gm-Eb-Ebm-Bb) as the only shadow; loops cleanly; the loudest
+  stretch within about 3 LU of the quietest.
+- **How it was built:** its own script, `tools/arranger/reading-room.mjs`, started from
+  `tools/arranger/lib.mjs` and added to `tests/drift.test.ts`, as the default in
+  docs/composing.md prescribes. The plan (lineup, motif, arc) went into the report and the
+  song's first comment before the notes.
+- **Followed well:** 0 clashes and 0 off-chord with no `# ok` lines; 83% steps on the melody;
+  the siblings row shows a lineup no other Ambient song uses (Shimmer guitar lead, String
+  section, Choir aah, no kit); the balance check printed no flags after one volume change
+  (the sub down from 0.35 to 0.1, it had measured louder than the strings) and one
+  `# balance-ok` for the choir's deliberate fade-in; the mix's gated loudness across the
+  body (bars 9-120) spans 3.0 LU, measured with an offline render through the real engine;
+  the fade-out mirrors the fade-in on the opening Bbadd9, so bar 132 leads into bar 1.
+- **Missed at first:** the off-chord report counted 42 guitar colour tones because
+  `note.tick` is the written tick (a `+N` offset does not move it), so on-beat 9ths and 11ths
+  counted even though they sounded late; fixed by writing every guitar entry a sixteenth
+  into its bar (plus its 8-20 tick lag), which is also the human feel the brief asked for.
+  The first arc measured 3.6 LU; keeping the full voicings to bar 120 and thinning only for
+  the final fade brought it to 3.0. The chord map was reworked on paper before generating:
+  Gm keeps no fifth before Eb, Dm no ninth before Gm, and the Bb after the shadow no fifth,
+  so no held note smears a half step into the next chord except the shadow's own G-Gb, which
+  moves in one voice.
+- **Credit:** `PI_MODEL` in the run environment read `qwen/qwen4-max`; it is written as
+  Qwen 4-Max (family Qwen, version 4-Max) so the app shows `Qwen & SZ`.
 
 ### Margin Notes — Muse Ember (2026-11-26)
 

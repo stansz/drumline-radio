@@ -36,6 +36,7 @@ const SCRIPT = [
   'tools/arranger/first-flight.mjs',
   'tools/arranger/long-division.mjs',
   'tools/arranger/margin-notes.mjs',
+  'tools/arranger/reading-room.mjs',
 ];
 
 describe('the song generators', () => {
