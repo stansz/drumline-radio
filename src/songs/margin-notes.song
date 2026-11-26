@@ -1,0 +1,323 @@
+# Margin Notes, by Muse Ember and SZ. A calm lo-fi study beat: a nylon guitar motif over
+# felt grand-piano chords in Eb major at 74 BPM, a muted trumpet answering in the B sections,
+# a rimshot Dusty-kit backbeat and a low string bass. Built by its own script,
+# tools/arranger/margin-notes.mjs, started from tools/arranger/lib.mjs.
+# Lineup: guitar (lead, nylon-guitar), piano (chords, grand-piano), trumpet (counter,
+# soft-lead, B sections only), pad (tape-pad, root and fifth, B sections only), bass
+# (bass, string-bass), drums (dusty-kit). Motif: G4/4 Bb4/8 C5/8 Bb4/2, developed
+# stepwise through phrase A and answered by the trumpet in B. Form: 1-4 intro (piano
+# alone), 5-12 A1 (guitar over piano), 13-20 A2 (rim kit and bass enter), 21-36 B
+# (through IV and the borrowed iv Abm, pad and trumpet in), 37-52 breakdown (kit and
+# bass out, piano and guitar trade phrases), 53-68 A again (piano voicing up),
+# 69-84 B again, 85-100 A once more (half-note bass at the end), 101-108 outro
+# (guitar and piano), 109-112 piano alone ending on Eb so the loop returns to bar 1.
+# chords: Ebmaj7 Cm7 Abmaj7 Bb7
+# chords @5: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @13: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @21: Ebmaj7 Ab Abm Ebmaj7 Fm7 Bb7 Ebmaj7 Bb7
+# chords @29: Ebmaj7 Ab Abm Ebmaj7 Cm7 Abm Bb7 Ebmaj7
+# chords @37: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @45: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @53: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @61: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @69: Ebmaj7 Ab Abm Ebmaj7 Fm7 Bb7 Ebmaj7 Bb7
+# chords @77: Ebmaj7 Ab Abm Ebmaj7 Cm7 Abm Bb7 Ebmaj7
+# chords @85: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @93: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @101: Ebmaj7 Cm7 Abmaj7 Bb7 Ebmaj7 Cm7 Fm7 Bb7
+# chords @109: Ebmaj7 Cm7 Abmaj7 Ebmaj7
+# 1-4: Intro: piano alone over the crackle
+# 5-12: A1: guitar over piano, no kit and no bass
+# 13-20: A2: the rim kit and the bass enter
+# 21-28: B1: through IV and the borrowed iv, the trumpet answers
+# 29-36: B2: the Abm turn again, the trumpet answers lower
+# 37-44: Breakdown 1: kit and bass out, guitar leads the trade
+# 45-52: Breakdown 2: piano leads the trade, the guitar answers in fragments
+# 53-60: A3 first half: kit and bass back, piano voicing up
+# 61-68: A3 second half: ghost hats join the rim groove
+# 69-76: B3 first half: pad and trumpet back
+# 77-84: B3 second half: the borrowed iv turn, trumpet lower
+# 85-92: A4 first half: the motif once more, sequenced up at the turn
+# 93-100: A4 second half: half-note bass, sparser kit
+# 101-108: Outro: guitar and piano only, thinning
+# 109-112: Outro ends as the intro began: piano alone, back to Eb
+title: Margin Notes
+composer: Muse Ember & SZ
+year: 2026
+source: original
+category: originals
+key: Eb major
+style: lofi
+tempo: 74
+time: 4/4
+about: A calm lo-fi study beat for a long stretch: a nylon guitar motif over felt piano chords, a muted trumpet answering in the middle, and a dusty rimshot backbeat that barely builds at all.
+
+track guitar role=lead inst=nylon-guitar vol=1 pan=-0.15
+# Intro: piano alone over the crackle (1-4)
+| R | R | R | R |
+# A1: guitar over piano, no kit and no bass (5-12)
+| G4/4+19:96 Bb4/8+11:96 C5/8+16:96 Bb4/2+19:96 | C5/4+18:80 Bb4/4+12:80 G4/8+18:80 Ab4/8+20:80 Bb4/4+12:80 | C5/2+16:92 Eb5/8+16:92 D5/8+19:92 C5/4+14:92 | D5/4+15:76 Bb4/8+20:76 C5/8+12:76 Ab4/4+15:76 Bb4/4+20:76 |
+| Bb4/2+11:88 D5/8+11:88 C5/8+16:88 Eb5/4+19:88 | Eb5/2+12:100 C5/4+12:100 Bb4/4+18:100 | Ab4/2+14:84 Eb5/8+14:84 D5/8+11:84 C5/4+16:84 | D5/2+20:96 Bb4/4+20:96 Ab4/4+15:96 |
+# A2: the rim kit and the bass enter (13-20)
+| G4/4+19:80 Bb4/8+11:80 C5/8+16:80 Bb4/2+19:80 | C5/4+18:92 Bb4/4+12:92 G4/8+18:92 Ab4/8+20:92 Bb4/4+12:92 | C5/2+16:76 Eb5/8+16:76 D5/8+19:76 C5/4+14:76 | D5/4+15:88 Bb4/8+20:88 C5/8+12:88 Ab4/4+15:88 Bb4/4+20:88 |
+| Bb4/2+11:100 D5/8+11:100 C5/8+16:100 Eb5/4+19:100 | Eb5/2+12:84 C5/4+12:84 Bb4/4+18:84 | Ab4/2+14:96 Eb5/8+14:96 D5/8+11:96 C5/4+16:96 | D5/2+20:80 Bb4/4+20:80 Ab4/4+15:80 |
+# B1: through IV and the borrowed iv, the trumpet answers (21-28)
+| G4/4+19:92 Bb4/8+11:92 C5/8+16:92 Bb4/2+19:92 | C5/4+18:76 Bb4/16+12:76 Ab4/8.+49:76 G4/16+18:76 Ab4/8.+57:76 C5/4+12:76 | R | R |
+| Ab4/2+11:84 Eb5/8+11:84 D5/8+16:84 C5/4+19:84 | D5/4+12:96 Bb4/8+18:96 C5/8+20:96 Ab4/4+12:96 Bb4/4+18:96 | R | R |
+# B2: the Abm turn again, the trumpet answers lower (29-36)
+| G4/4+19:76 Bb4/8+11:76 C5/8+16:76 Bb4/2+19:76 | C5/4+18:88 Bb4/16+12:88 Ab4/8.+49:88 G4/16+18:88 Ab4/8.+57:88 C5/4+12:88 | R | R |
+| C5/4+11:96 Bb4/4+19:96 G4/4+11:96 Bb4/4+19:96 | Eb5/8+12:80 Db5/8+15:80 B4/8+18:80 C5/8+20:80 Ab4/4+12:80 B4/4+18:80 | R | R |
+# Breakdown 1: kit and bass out, guitar leads the trade (37-44)
+| G4/4+19:88 Bb4/8+11:88 C5/8+16:88 Bb4/2+19:88 | C5/4+18:100 Bb4/4+12:100 G4/8+18:100 Ab4/8+20:100 Bb4/4+12:100 | C5/2+16:84 Eb5/8+16:84 D5/8+19:84 C5/4+14:84 | D5/4+15:96 Bb4/8+20:96 C5/8+12:96 Ab4/4+15:96 Bb4/4+20:96 |
+| Bb4/2+11:80 D5/8+11:80 C5/8+16:80 Eb5/4+19:80 | Eb5/2+12:92 C5/4+12:92 Bb4/4+18:92 | Ab4/2+14:76 Eb5/8+14:76 D5/8+11:76 C5/4+16:76 | D5/2+20:88 Bb4/4+20:88 Ab4/4+15:88 |
+# Breakdown 2: piano leads the trade, the guitar answers in fragments (45-52)
+| G4/4+19:100 Bb4/8+11:100 C5/8+16:100 Bb4/2+19:100 | R | C5/2+16:96 Eb5/8+16:96 D5/8+19:96 C5/4+14:96 | R |
+| Bb4/2+11:92 D5/8+11:92 C5/8+16:92 Eb5/4+19:92 | R | Ab4/2+14:88 Eb5/8+14:88 D5/8+11:88 C5/4+16:88 | R |
+# A3 first half: kit and bass back, piano voicing up (53-60)
+| G4/4+19:84 Bb4/8+11:84 C5/8+16:84 Bb4/2+19:84 | C5/4+18:96 Bb4/4+12:96 G4/8+18:96 Ab4/8+20:96 Bb4/4+12:96 | C5/2+16:80 Eb5/8+16:80 D5/8+19:80 C5/4+14:80 | D5/4+15:92 Bb4/8+20:92 C5/8+12:92 Ab4/4+15:92 Bb4/4+20:92 |
+| Bb4/2+11:76 D5/8+11:76 C5/8+16:76 Eb5/4+19:76 | Eb5/2+12:88 C5/4+12:88 Bb4/4+18:88 | Ab4/2+14:100 Eb5/8+14:100 D5/8+11:100 C5/4+16:100 | D5/2+20:84 Bb4/4+20:84 Ab4/4+15:84 |
+# A3 second half: ghost hats join the rim groove (61-68)
+| G4/4+19:96 Bb4/8+11:96 C5/8+16:96 Bb4/2+19:96 | C5/4+18:80 Bb4/4+12:80 G4/8+18:80 Ab4/8+20:80 Bb4/4+12:80 | C5/2+16:92 Eb5/8+16:92 D5/8+19:92 C5/4+14:92 | D5/4+15:76 Bb4/8+20:76 C5/8+12:76 Ab4/4+15:76 Bb4/4+20:76 |
+| Bb4/2+11:88 D5/8+11:88 C5/8+16:88 Eb5/4+19:88 | Eb5/2+12:100 C5/4+12:100 Bb4/4+18:100 | Ab4/2+14:84 Eb5/8+14:84 D5/8+11:84 C5/4+16:84 | D5/2+20:96 Bb4/4+20:96 Ab4/4+15:96 |
+# B3 first half: pad and trumpet back (69-76)
+| G4/4+19:80 Bb4/8+11:80 C5/8+16:80 Bb4/2+19:80 | C5/4+18:92 Bb4/16+12:92 Ab4/8.+49:92 G4/16+18:92 Ab4/8.+57:92 C5/4+12:92 | R | R |
+| Ab4/2+11:100 Eb5/8+11:100 D5/8+16:100 C5/4+19:100 | D5/4+12:84 Bb4/8+18:84 C5/8+20:84 Ab4/4+12:84 Bb4/4+18:84 | R | R |
+# B3 second half: the borrowed iv turn, trumpet lower (77-84)
+| G4/4+19:92 Bb4/8+11:92 C5/8+16:92 Bb4/2+19:92 | C5/4+18:76 Bb4/16+12:76 Ab4/8.+49:76 G4/16+18:76 Ab4/8.+57:76 C5/4+12:76 | R | R |
+| C5/4+11:84 Bb4/4+19:84 G4/4+11:84 Bb4/4+19:84 | Eb5/8+12:96 Db5/8+15:96 B4/8+18:96 C5/8+20:96 Ab4/4+12:96 B4/4+18:96 | R | R |
+# A4 first half: the motif once more, sequenced up at the turn (85-92)
+| G4/4+19:76 Bb4/8+11:76 C5/8+16:76 Bb4/2+19:76 | C5/4+18:88 Bb4/4+12:88 G4/8+18:88 Ab4/8+20:88 Bb4/4+12:88 | C5/2+16:100 Eb5/8+16:100 D5/8+19:100 C5/4+14:100 | D5/4+15:84 Bb4/8+20:84 C5/8+12:84 Ab4/4+15:84 Bb4/4+20:84 |
+| Bb4/2+11:96 D5/8+11:96 C5/8+16:96 Eb5/4+19:96 | Eb5/2+12:80 C5/4+12:80 Bb4/4+18:80 | Ab4/2+14:92 Eb5/8+14:92 D5/8+11:92 C5/4+16:92 | D5/2+20:76 Bb4/4+20:76 Ab4/4+15:76 |
+# A4 second half: half-note bass, sparser kit (93-100)
+| G4/4+19:88 Bb4/8+11:88 C5/8+16:88 Bb4/2+19:88 | C5/4+18:100 Bb4/4+12:100 G4/8+18:100 Ab4/8+20:100 Bb4/4+12:100 | C5/2+16:84 Eb5/8+16:84 D5/8+19:84 C5/4+14:84 | D5/4+15:96 Bb4/8+20:96 C5/8+12:96 Ab4/4+15:96 Bb4/4+20:96 |
+| Bb4/2+11:80 D5/8+11:80 C5/8+16:80 Eb5/4+19:80 | Eb5/2+12:92 C5/4+12:92 Bb4/4+18:92 | Ab4/2+14:76 Eb5/8+14:76 D5/8+11:76 C5/4+16:76 | D5/2+20:88 Bb4/4+20:88 Ab4/4+15:88 |
+# Outro: guitar and piano only, thinning (101-108)
+| G4/4+19:100 Bb4/8+11:100 C5/8+16:100 Bb4/2+19:100 | C5/4+18:84 Bb4/4+12:84 G4/8+18:84 Ab4/8+20:84 Bb4/4+12:84 | C5/2+16:96 Eb5/8+16:96 D5/8+19:96 C5/4+14:96 | D5/4+15:80 Bb4/8+20:80 C5/8+12:80 Ab4/4+15:80 Bb4/4+20:80 |
+| Bb4/2+11:92 D5/8+11:92 C5/8+16:92 Eb5/4+19:92 | Eb5/2+12:76 C5/4+12:76 Bb4/4+18:76 | Ab4/2+14:88 Eb5/8+14:88 D5/8+11:88 C5/4+16:88 | D5/2+20:100 Bb4/4+20:100 Ab4/4+15:100 |
+# Outro ends as the intro began: piano alone, back to Eb (109-112)
+| R | R | R | R |
+
+track piano role=chords inst=grand-piano vol=0.7 pan=0.2
+# Intro: piano alone over the crackle (1-4)
+| Eb3/16+14:62 G3/16+53:64 Bb3/16+16:66 D4/4+48:68 r/2 r/16 | C3/16+12:46 Eb3/16+52:48 G3/16+15:50 Bb3/4+54:52 r/2 r/16 | Ab3/16+11:58 C4/16+50:60 Eb4/16+14:62 G4/4+53:64 r/2 r/16 | Bb3/16+7:70 D4/16+49:72 F4/16+12:74 Ab4/4+52:76 r/2 r/16 |
+# A1: guitar over piano, no kit and no bass (5-12)
+| Eb3/16+10:62 G3/16+47:64 Bb3/16+13:66 D4/4+52:68 r/16 [Eb3 G3 Bb3 D4]/4+10:54 r/8. D4/16+50:44 | C3/16+12:74 Eb3/16+48:76 G3/16+9:78 Bb3/4+51:80 r/16 [C3 Eb3 G3 Bb3]/4+12:66 r/8. Bb3/16+56:56 | Ab3/16+18:58 C4/16+50:60 Eb4/16+10:62 G4/4+47:64 r/16 [Ab3 C4 Eb4 G4]/4+18:50 r/8. G4/16+55:40 | Bb3/16+17:70 D4/16+56:72 F4/16+12:74 Ab4/4+48:76 r/16 [Bb3 D4 F4 Ab4]/4+17:62 r/8. Ab4/16+54:52 |
+| Eb3/16+16:54 G3/16+55:56 Bb3/16+18:58 D4/4+50:60 r/16 [Eb3 G3 Bb3 D4]/4+16:46 r/8. D4/16+52:36 | C3/16+14:66 Eb3/16+54:68 G3/16+17:70 Bb3/4+56:72 r/16 [C3 Eb3 G3 Bb3]/4+14:58 r/8. Bb3/16+51:48 | F3/16+13:78 Ab3/16+52:80 C4/16+16:82 Eb4/4+55:84 r/16 [F3 Ab3 C4 Eb4]/4+13:70 r/8. Eb4/16+47:60 | Bb3/16+9:62 D4/16+51:64 F4/16+14:66 Ab4/4+54:68 r/16 [Bb3 D4 F4 Ab4]/4+9:54 r/8. Ab4/16+48:44 |
+# A2: the rim kit and the bass enter (13-20)
+| Eb3/16+10:84 G3/16+47:86 Bb3/16+13:88 D4/4+52:90 r/16 [Eb3 G3 Bb3 D4]/4+10:76 r/8. D4/16+50:66 | C3/16+12:68 Eb3/16+48:70 G3/16+9:72 Bb3/4+51:74 r/16 [C3 Eb3 G3 Bb3]/4+12:60 r/8. Bb3/16+56:50 | Ab3/16+18:80 C4/16+50:82 Eb4/16+10:84 G4/4+47:86 r/16 [Ab3 C4 Eb4 G4]/4+18:72 r/8. G4/16+55:62 | Bb3/16+17:64 D4/16+56:66 F4/16+12:68 Ab4/4+48:70 r/16 [Bb3 D4 F4 Ab4]/4+17:56 r/8. Ab4/16+54:46 |
+| Eb3/16+16:76 G3/16+55:78 Bb3/16+18:80 D4/4+50:82 r/16 [Eb3 G3 Bb3 D4]/4+16:68 r/8. D4/16+52:58 | C3/16+14:88 Eb3/16+54:90 G3/16+17:92 Bb3/4+56:94 r/16 [C3 Eb3 G3 Bb3]/4+14:80 r/8. Bb3/16+51:70 | F3/16+13:72 Ab3/16+52:74 C4/16+16:76 Eb4/4+55:78 r/16 [F3 Ab3 C4 Eb4]/4+13:64 r/8. Eb4/16+47:54 | Bb3/16+9:84 D4/16+51:86 F4/16+14:88 Ab4/4+54:90 r/16 [Bb3 D4 F4 Ab4]/4+9:76 r/8. Ab4/16+48:66 |
+# B1: through IV and the borrowed iv, the trumpet answers (21-28)
+| Eb3/16+10:68 G3/16+47:70 Bb3/16+13:72 D4/4+52:74 r/16 [Eb3 G3]/4+10:60 r/8. D4/16+50:50 | Ab3/16+12:80 C4/16+48:82 Eb4/4+9:84 r/8 [Ab3 C4]/4+12:72 r/8. Eb4/16+56:62 | Ab3/16+18:64 B3/16+50:66 Eb4/4+10:68 r/8 [Ab3 B3]/4+18:56 r/8. Eb4/16+55:46 | Eb3/16+17:76 G3/16+56:78 Bb3/16+12:80 D4/4+48:82 r/16 [Eb3 G3]/4+17:68 r/8. D4/16+54:58 |
+| F3/16+16:88 Ab3/16+55:90 C4/16+18:92 Eb4/4+50:94 r/16 [F3 Ab3]/4+16:80 r/8. Eb4/16+52:70 | Bb3/16+14:72 D4/16+54:74 F4/16+17:76 Ab4/4+56:78 r/16 [Bb3 D4]/4+14:64 r/8. Ab4/16+51:54 | Eb3/16+13:84 G3/16+52:86 Bb3/16+16:88 D4/4+55:90 r/16 [Eb3 G3]/4+13:76 r/8. D4/16+47:66 | Bb3/16+9:68 D4/16+51:70 F4/16+14:72 Ab4/4+54:74 r/16 [Bb3 D4]/4+9:60 r/8. Ab4/16+48:50 |
+# B2: the Abm turn again, the trumpet answers lower (29-36)
+| Eb3/16+10:80 G3/16+47:82 Bb3/16+13:84 D4/4+52:86 r/16 [Eb3 G3]/4+10:72 r/8. D4/16+50:62 | Ab3/16+12:64 C4/16+48:66 Eb4/4+9:68 r/8 [Ab3 C4]/4+12:56 r/8. Eb4/16+56:46 | Ab3/16+18:76 B3/16+50:78 Eb4/4+10:80 r/8 [Ab3 B3]/4+18:68 r/8. Eb4/16+55:58 | Eb3/16+17:88 G3/16+56:90 Bb3/16+12:92 D4/4+48:94 r/16 [Eb3 G3]/4+17:80 r/8. D4/16+54:70 |
+| C3/16+16:72 Eb3/16+55:74 G3/16+18:76 Bb3/4+50:78 r/16 [C3 Eb3]/4+16:64 r/8. Bb3/16+52:54 | Ab3/16+14:84 B3/16+54:86 Eb4/4+17:88 r/8 [Ab3 B3]/4+14:76 r/8. Eb4/16+51:66 | Bb3/16+13:68 D4/16+52:70 F4/16+16:72 Ab4/4+55:74 r/16 [Bb3 D4]/4+13:60 r/8. Ab4/16+47:50 | Eb3/16+9:80 G3/16+51:82 Bb3/16+14:84 D4/4+54:86 r/16 [Eb3 G3]/4+9:72 r/8. D4/16+48:62 |
+# Breakdown 1: kit and bass out, guitar leads the trade (37-44)
+| Eb3/16+10:54 G3/16+47:56 Bb3/16+13:58 D4/4+52:60 r/16 [Eb3 G3 Bb3 D4]/4+10:46 r/8. D4/16+50:36 | C3/16+12:66 Eb3/16+48:68 G3/16+9:70 Bb3/4+51:72 r/16 [C3 Eb3 G3 Bb3]/4+12:58 r/8. Bb3/16+56:48 | Ab3/16+18:78 C4/16+50:80 Eb4/16+10:82 G4/4+47:84 r/16 [Ab3 C4 Eb4 G4]/4+18:70 r/8. G4/16+55:60 | Bb3/16+17:62 D4/16+56:64 F4/16+12:66 Ab4/4+48:68 r/16 [Bb3 D4 F4 Ab4]/4+17:54 r/8. Ab4/16+54:44 |
+| Eb3/16+16:74 G3/16+55:76 Bb3/16+18:78 D4/4+50:80 r/16 [Eb3 G3 Bb3 D4]/4+16:66 r/8. D4/16+52:56 | C3/16+14:58 Eb3/16+54:60 G3/16+17:62 Bb3/4+56:64 r/16 [C3 Eb3 G3 Bb3]/4+14:50 r/8. Bb3/16+51:40 | F3/16+13:70 Ab3/16+52:72 C4/16+16:74 Eb4/4+55:76 r/16 [F3 Ab3 C4 Eb4]/4+13:62 r/8. Eb4/16+47:52 | Bb3/16+9:54 D4/16+51:56 F4/16+14:58 Ab4/4+54:60 r/16 [Bb3 D4 F4 Ab4]/4+9:46 r/8. Ab4/16+48:36 |
+# Breakdown 2: piano leads the trade, the guitar answers in fragments (45-52)
+| Eb3/16+10:74 G3/16+47:76 Bb3/16+13:78 D4/4+52:80 r/16 [Eb3 G3 Bb3 D4]/4+10:70 [Eb3 G3 Bb3 D4]/8+16:68 r/16 D4/16+50:56 | C3/16+12:86 Eb3/16+48:88 G3/16+9:90 Bb3/4+51:92 r/16 [C3 Eb3 G3 Bb3]/4+12:82 [C3 Eb3 G3 Bb3]/8+14:80 r/16 Bb3/16+56:68 | Ab3/16+18:70 C4/16+50:72 Eb4/16+10:74 G4/4+47:76 r/16 [Ab3 C4 Eb4 G4]/4+18:66 [Ab3 C4 Eb4 G4]/8+13:64 r/16 G4/16+55:52 | Bb3/16+17:82 D4/16+56:84 F4/16+12:86 Ab4/4+48:88 r/16 [Bb3 D4 F4 Ab4]/4+17:78 [Bb3 D4 F4 Ab4]/8+9:76 r/16 Ab4/16+54:64 |
+| Eb3/16+16:66 G3/16+55:68 Bb3/16+18:70 D4/4+50:72 r/16 [Eb3 G3 Bb3 D4]/4+16:62 [Eb3 G3 Bb3 D4]/8+10:60 r/16 D4/16+52:48 | C3/16+14:78 Eb3/16+54:80 G3/16+17:82 Bb3/4+56:84 r/16 [C3 Eb3 G3 Bb3]/4+14:74 [C3 Eb3 G3 Bb3]/8+12:72 r/16 Bb3/16+51:60 | F3/16+13:62 Ab3/16+52:64 C4/16+16:66 Eb4/4+55:68 r/16 [F3 Ab3 C4 Eb4]/4+13:58 [F3 Ab3 C4 Eb4]/8+18:56 r/16 Eb4/16+47:44 | Bb3/16+9:74 D4/16+51:76 F4/16+14:78 Ab4/4+54:80 r/16 [Bb3 D4 F4 Ab4]/4+9:70 [Bb3 D4 F4 Ab4]/8+17:68 r/16 Ab4/16+48:56 |
+# A3 first half: kit and bass back, piano voicing up (53-60)
+| Eb3/16+10:88 G3/16+47:90 Bb3/16+13:92 D4/16+52:94 Eb4/4+16:96 [Eb3 G3 Bb3 D4 Eb4]/4+10:80 r/8. Eb4/16+50:70 | C3/16+12:72 Eb3/16+48:74 G3/16+9:76 Bb3/16+51:78 C4/4+14:80 [C3 Eb3 G3 Bb3 C4]/4+12:64 r/8. C4/16+56:54 | Ab3/16+18:84 C4/16+50:86 Eb4/16+10:88 G4/16+47:90 Ab4/4+13:92 [Ab3 C4 Eb4 G4 Ab4]/4+18:76 r/8. Ab4/16+55:66 | Bb3/16+17:68 D4/16+56:70 F4/16+12:72 Ab4/16+48:74 Bb4/4+9:76 [Bb3 D4 F4 Ab4 Bb4]/4+17:60 r/8. Bb4/16+54:50 |
+| Eb3/16+16:80 G3/16+55:82 Bb3/16+18:84 D4/16+50:86 Eb4/4+10:88 [Eb3 G3 Bb3 D4 Eb4]/4+16:72 r/8. Eb4/16+52:62 | C3/16+14:64 Eb3/16+54:66 G3/16+17:68 Bb3/16+56:70 C4/4+12:72 [C3 Eb3 G3 Bb3 C4]/4+14:56 r/8. C4/16+51:46 | F3/16+13:76 Ab3/16+52:78 C4/16+16:80 Eb4/16+55:82 F4/4+18:84 [F3 Ab3 C4 Eb4 F4]/4+13:68 r/8. F4/16+47:58 | Bb3/16+9:88 D4/16+51:90 F4/16+14:92 Ab4/16+54:94 Bb4/4+17:96 [Bb3 D4 F4 Ab4 Bb4]/4+9:80 r/8. Bb4/16+48:70 |
+# A3 second half: ghost hats join the rim groove (61-68)
+| Eb3/16+10:72 G3/16+47:74 Bb3/16+13:76 D4/16+52:78 Eb4/4+16:80 [Eb3 G3 Bb3 D4 Eb4]/4+10:64 r/8. Eb4/16+50:54 | C3/16+12:84 Eb3/16+48:86 G3/16+9:88 Bb3/16+51:90 C4/4+14:92 [C3 Eb3 G3 Bb3 C4]/4+12:76 r/8. C4/16+56:66 | Ab3/16+18:68 C4/16+50:70 Eb4/16+10:72 G4/16+47:74 Ab4/4+13:76 [Ab3 C4 Eb4 G4 Ab4]/4+18:60 r/8. Ab4/16+55:50 | Bb3/16+17:80 D4/16+56:82 F4/16+12:84 Ab4/16+48:86 Bb4/4+9:88 [Bb3 D4 F4 Ab4 Bb4]/4+17:72 r/8. Bb4/16+54:62 |
+| Eb3/16+16:64 G3/16+55:66 Bb3/16+18:68 D4/16+50:70 Eb4/4+10:72 [Eb3 G3 Bb3 D4 Eb4]/4+16:56 r/8. Eb4/16+52:46 | C3/16+14:76 Eb3/16+54:78 G3/16+17:80 Bb3/16+56:82 C4/4+12:84 [C3 Eb3 G3 Bb3 C4]/4+14:68 r/8. C4/16+51:58 | F3/16+13:88 Ab3/16+52:90 C4/16+16:92 Eb4/16+55:94 F4/4+18:96 [F3 Ab3 C4 Eb4 F4]/4+13:80 r/8. F4/16+47:70 | Bb3/16+9:72 D4/16+51:74 F4/16+14:76 Ab4/16+54:78 Bb4/4+17:80 [Bb3 D4 F4 Ab4 Bb4]/4+9:64 r/8. Bb4/16+48:54 |
+# B3 first half: pad and trumpet back (69-76)
+| Eb3/16+10:84 G3/16+47:86 Bb3/16+13:88 D4/4+52:90 r/16 [Eb3 G3]/4+10:76 r/8. D4/16+50:66 | Ab3/16+12:68 C4/16+48:70 Eb4/4+9:72 r/8 [Ab3 C4]/4+12:60 r/8. Eb4/16+56:50 | Ab3/16+18:80 B3/16+50:82 Eb4/4+10:84 r/8 [Ab3 B3]/4+18:72 r/8. Eb4/16+55:62 | Eb3/16+17:64 G3/16+56:66 Bb3/16+12:68 D4/4+48:70 r/16 [Eb3 G3]/4+17:56 r/8. D4/16+54:46 |
+| F3/16+16:76 Ab3/16+55:78 C4/16+18:80 Eb4/4+50:82 r/16 [F3 Ab3]/4+16:68 r/8. Eb4/16+52:58 | Bb3/16+14:88 D4/16+54:90 F4/16+17:92 Ab4/4+56:94 r/16 [Bb3 D4]/4+14:80 r/8. Ab4/16+51:70 | Eb3/16+13:72 G3/16+52:74 Bb3/16+16:76 D4/4+55:78 r/16 [Eb3 G3]/4+13:64 r/8. D4/16+47:54 | Bb3/16+9:84 D4/16+51:86 F4/16+14:88 Ab4/4+54:90 r/16 [Bb3 D4]/4+9:76 r/8. Ab4/16+48:66 |
+# B3 second half: the borrowed iv turn, trumpet lower (77-84)
+| Eb3/16+10:68 G3/16+47:70 Bb3/16+13:72 D4/4+52:74 r/16 [Eb3 G3]/4+10:60 r/8. D4/16+50:50 | Ab3/16+12:80 C4/16+48:82 Eb4/4+9:84 r/8 [Ab3 C4]/4+12:72 r/8. Eb4/16+56:62 | Ab3/16+18:64 B3/16+50:66 Eb4/4+10:68 r/8 [Ab3 B3]/4+18:56 r/8. Eb4/16+55:46 | Eb3/16+17:76 G3/16+56:78 Bb3/16+12:80 D4/4+48:82 r/16 [Eb3 G3]/4+17:68 r/8. D4/16+54:58 |
+| C3/16+16:88 Eb3/16+55:90 G3/16+18:92 Bb3/4+50:94 r/16 [C3 Eb3]/4+16:80 r/8. Bb3/16+52:70 | Ab3/16+14:72 B3/16+54:74 Eb4/4+17:76 r/8 [Ab3 B3]/4+14:64 r/8. Eb4/16+51:54 | Bb3/16+13:84 D4/16+52:86 F4/16+16:88 Ab4/4+55:90 r/16 [Bb3 D4]/4+13:76 r/8. Ab4/16+47:66 | Eb3/16+9:68 G3/16+51:70 Bb3/16+14:72 D4/4+54:74 r/16 [Eb3 G3]/4+9:60 r/8. D4/16+48:50 |
+# A4 first half: the motif once more, sequenced up at the turn (85-92)
+| Eb3/16+10:80 G3/16+47:82 Bb3/16+13:84 D4/4+52:86 r/16 [Eb3 G3 Bb3 D4]/4+10:72 r/8. D4/16+50:62 | C3/16+12:64 Eb3/16+48:66 G3/16+9:68 Bb3/4+51:70 r/16 [C3 Eb3 G3 Bb3]/4+12:56 r/8. Bb3/16+56:46 | Ab3/16+18:76 C4/16+50:78 Eb4/16+10:80 G4/4+47:82 r/16 [Ab3 C4 Eb4 G4]/4+18:68 r/8. G4/16+55:58 | Bb3/16+17:88 D4/16+56:90 F4/16+12:92 Ab4/4+48:94 r/16 [Bb3 D4 F4 Ab4]/4+17:80 r/8. Ab4/16+54:70 |
+| Eb3/16+16:72 G3/16+55:74 Bb3/16+18:76 D4/4+50:78 r/16 [Eb3 G3 Bb3 D4]/4+16:64 r/8. D4/16+52:54 | C3/16+14:84 Eb3/16+54:86 G3/16+17:88 Bb3/4+56:90 r/16 [C3 Eb3 G3 Bb3]/4+14:76 r/8. Bb3/16+51:66 | F3/16+13:68 Ab3/16+52:70 C4/16+16:72 Eb4/4+55:74 r/16 [F3 Ab3 C4 Eb4]/4+13:60 r/8. Eb4/16+47:50 | Bb3/16+9:80 D4/16+51:82 F4/16+14:84 Ab4/4+54:86 r/16 [Bb3 D4 F4 Ab4]/4+9:72 r/8. Ab4/16+48:62 |
+# A4 second half: half-note bass, sparser kit (93-100)
+| Eb3/16+10:64 G3/16+47:66 Bb3/16+13:68 D4/4+52:70 r/16 [Eb3 G3 Bb3 D4]/4+10:56 r/8. D4/16+50:46 | C3/16+12:76 Eb3/16+48:78 G3/16+9:80 Bb3/4+51:82 r/16 [C3 Eb3 G3 Bb3]/4+12:68 r/8. Bb3/16+56:58 | Ab3/16+18:88 C4/16+50:90 Eb4/16+10:92 G4/4+47:94 r/16 [Ab3 C4 Eb4 G4]/4+18:80 r/8. G4/16+55:70 | Bb3/16+17:72 D4/16+56:74 F4/16+12:76 Ab4/4+48:78 r/16 [Bb3 D4 F4 Ab4]/4+17:64 r/8. Ab4/16+54:54 |
+| Eb3/16+16:84 G3/16+55:86 Bb3/16+18:88 D4/4+50:90 r/16 [Eb3 G3 Bb3 D4]/4+16:76 r/8. D4/16+52:66 | C3/16+14:68 Eb3/16+54:70 G3/16+17:72 Bb3/4+56:74 r/16 [C3 Eb3 G3 Bb3]/4+14:60 r/8. Bb3/16+51:50 | F3/16+13:80 Ab3/16+52:82 C4/16+16:84 Eb4/4+55:86 r/16 [F3 Ab3 C4 Eb4]/4+13:72 r/8. Eb4/16+47:62 | Bb3/16+9:64 D4/16+51:66 F4/16+14:68 Ab4/4+54:70 r/16 [Bb3 D4 F4 Ab4]/4+9:56 r/8. Ab4/16+48:46 |
+# Outro: guitar and piano only, thinning (101-108)
+| Eb3/16+10:66 G3/16+47:68 Bb3/16+13:70 D4/4+52:72 r/16 [Eb3 G3 Bb3 D4]/4+10:58 r/8. D4/16+50:48 | C3/16+12:78 Eb3/16+48:80 G3/16+9:82 Bb3/4+51:84 r/16 [C3 Eb3 G3 Bb3]/4+12:70 r/8. Bb3/16+56:60 | Ab3/16+18:62 C4/16+50:64 Eb4/16+10:66 G4/4+47:68 r/16 [Ab3 C4 Eb4 G4]/4+18:54 r/8. G4/16+55:44 | Bb3/16+17:74 D4/16+56:76 F4/16+12:78 Ab4/4+48:80 r/16 [Bb3 D4 F4 Ab4]/4+17:66 r/8. Ab4/16+54:56 |
+| Eb3/16+16:58 G3/16+55:60 Bb3/16+18:62 D4/4+50:64 r/16 [Eb3 G3 Bb3 D4]/4+16:50 r/8. D4/16+52:40 | C3/16+14:70 Eb3/16+54:72 G3/16+17:74 Bb3/4+56:76 r/16 [C3 Eb3 G3 Bb3]/4+14:62 r/8. Bb3/16+51:52 | F3/16+13:54 Ab3/16+52:56 C4/16+16:58 Eb4/4+55:60 r/16 [F3 Ab3 C4 Eb4]/4+13:46 r/8. Eb4/16+47:36 | Bb3/16+9:66 D4/16+51:68 F4/16+14:70 Ab4/4+54:72 r/16 [Bb3 D4 F4 Ab4]/4+9:58 r/8. Ab4/16+48:48 |
+# Outro ends as the intro began: piano alone, back to Eb (109-112)
+| Eb3/16+8:70 G3/16+45:72 Bb3/16+11:74 D4/4+50:76 r/2 r/16 | C3/16+10:54 Eb3/16+46:56 G3/16+7:58 Bb3/4+49:60 r/2 r/16 | Ab3/16+16:66 C4/16+48:68 Eb4/16+8:70 G4/4+45:72 r/2 r/16 | Eb3/16+15:50 G3/16+54:52 Bb3/16+10:54 D4/4+46:56 r/2 r/16 |
+
+track trumpet role=counter inst=soft-lead vol=1 pan=0.3
+# Intro: piano alone over the crackle (1-4)
+| R | R | R | R |
+# A1: guitar over piano, no kit and no bass (5-12)
+| R | R | R | R |
+| R | R | R | R |
+# A2: the rim kit and the bass enter (13-20)
+| R | R | R | R |
+| R | R | R | R |
+# B1: through IV and the borrowed iv, the trumpet answers (21-28)
+| R | R | Eb4/4+20:72 B3/4+14:72 Ab4/4+20:72 Eb4/4+14:72 | Eb4/4+18:84 G4/4+16:84 G4/8+18:84 F4/8+21:84 Eb4/4+16:84 |
+| R | R | Eb4/4+14:92 G4/4+20:92 G4/8+14:92 F4/8+17:92 Eb4/4+20:92 | F4/4+16:76 Ab4/4+18:76 F4/4+16:76 D4/4+18:76 |
+# B2: the Abm turn again, the trumpet answers lower (29-36)
+| R | R | Eb4/4+20:84 B3/4+14:84 Ab4/4+20:84 Eb4/4+14:84 | Eb4/4+18:68 G4/4+16:68 G4/8+18:68 F4/8+21:68 Eb4/4+16:68 |
+| R | R | F4/4+14:76 Ab4/4+20:76 F4/4+14:76 D4/4+20:76 | Eb4/4+16:88 G4/4+18:88 G4/8+16:88 F4/8+13:88 Eb4/4+18:88 |
+# Breakdown 1: kit and bass out, guitar leads the trade (37-44)
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown 2: piano leads the trade, the guitar answers in fragments (45-52)
+| R | R | R | R |
+| R | R | R | R |
+# A3 first half: kit and bass back, piano voicing up (53-60)
+| R | R | R | R |
+| R | R | R | R |
+# A3 second half: ghost hats join the rim groove (61-68)
+| R | R | R | R |
+| R | R | R | R |
+# B3 first half: pad and trumpet back (69-76)
+| R | R | Eb4/4+20:88 B3/4+14:88 Ab4/4+20:88 Eb4/4+14:88 | Eb4/4+18:72 G4/4+16:72 G4/8+18:72 F4/8+21:72 Eb4/4+16:72 |
+| R | R | Eb4/4+14:80 G4/4+20:80 G4/8+14:80 F4/8+17:80 Eb4/4+20:80 | F4/4+16:92 Ab4/4+18:92 F4/4+16:92 D4/4+18:92 |
+# B3 second half: the borrowed iv turn, trumpet lower (77-84)
+| R | R | Eb4/4+20:72 B3/4+14:72 Ab4/4+20:72 Eb4/4+14:72 | Eb4/4+18:84 G4/4+16:84 G4/8+18:84 F4/8+21:84 Eb4/4+16:84 |
+| R | R | F4/4+14:92 Ab4/4+20:92 F4/4+14:92 D4/4+20:92 | Eb4/4+16:76 G4/4+18:76 G4/8+16:76 F4/8+13:76 Eb4/4+18:76 |
+# A4 first half: the motif once more, sequenced up at the turn (85-92)
+| R | R | R | R |
+| R | R | R | R |
+# A4 second half: half-note bass, sparser kit (93-100)
+| R | R | R | R |
+| R | R | R | R |
+# Outro: guitar and piano only, thinning (101-108)
+| R | R | R | R |
+| R | R | R | R |
+# Outro ends as the intro began: piano alone, back to Eb (109-112)
+| R | R | R | R |
+
+track pad role=pad vol=1
+# Intro: piano alone over the crackle (1-4)
+| R | R | R | R |
+# A1: guitar over piano, no kit and no bass (5-12)
+| R | R | R | R |
+| R | R | R | R |
+# A2: the rim kit and the bass enter (13-20)
+| R | R | R | R |
+| R | R | R | R |
+# B1: through IV and the borrowed iv, the trumpet answers (21-28)
+| [Eb3 Bb3]/1+7:64 | [Ab3 Eb4]/1+8:48 | [Ab3 Eb4]/1+10:60 | [Eb3 Bb3]/1+16:44 |
+| [F3 C4]/1+15:56 | [Bb3 F4]/1+14:40 | [Eb3 Bb3]/1+12:52 | [Bb3 F4]/1+11:64 |
+# B2: the Abm turn again, the trumpet answers lower (29-36)
+| [Eb3 Bb3]/1+7:48 | [Ab3 Eb4]/1+8:60 | [Ab3 Eb4]/1+10:44 | [Eb3 Bb3]/1+16:56 |
+| [C3 G3]/1+15:40 | [Ab3 Eb4]/1+14:52 | [Bb3 F4]/1+12:64 | [Eb3 Bb3]/1+11:48 |
+# Breakdown 1: kit and bass out, guitar leads the trade (37-44)
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown 2: piano leads the trade, the guitar answers in fragments (45-52)
+| R | R | R | R |
+| R | R | R | R |
+# A3 first half: kit and bass back, piano voicing up (53-60)
+| R | R | R | R |
+| R | R | R | R |
+# A3 second half: ghost hats join the rim groove (61-68)
+| R | R | R | R |
+| R | R | R | R |
+# B3 first half: pad and trumpet back (69-76)
+| [Eb3 Bb3]/1+7:52 | [Ab3 Eb4]/1+8:64 | [Ab3 Eb4]/1+10:48 | [Eb3 Bb3]/1+16:60 |
+| [F3 C4]/1+15:44 | [Bb3 F4]/1+14:56 | [Eb3 Bb3]/1+12:40 | [Bb3 F4]/1+11:52 |
+# B3 second half: the borrowed iv turn, trumpet lower (77-84)
+| [Eb3 Bb3]/1+7:64 | [Ab3 Eb4]/1+8:48 | [Ab3 Eb4]/1+10:60 | [Eb3 Bb3]/1+16:44 |
+| [C3 G3]/1+15:56 | [Ab3 Eb4]/1+14:40 | [Bb3 F4]/1+12:52 | [Eb3 Bb3]/1+11:64 |
+# A4 first half: the motif once more, sequenced up at the turn (85-92)
+| R | R | R | R |
+| R | R | R | R |
+# A4 second half: half-note bass, sparser kit (93-100)
+| R | R | R | R |
+| R | R | R | R |
+# Outro: guitar and piano only, thinning (101-108)
+| R | R | R | R |
+| R | R | R | R |
+# Outro ends as the intro began: piano alone, back to Eb (109-112)
+| R | R | R | R |
+
+track bass role=bass inst=string-bass vol=0.38
+# Intro: piano alone over the crackle (1-4)
+| R | R | R | R |
+# A1: guitar over piano, no kit and no bass (5-12)
+| R | R | R | R |
+| R | R | R | R |
+# A2: the rim kit and the bass enter (13-20)
+| Eb3/2+10:62 Bb2/8+10:58 r/8 Eb3/8+8:54 Bb2/8+5:52 | C3/2+9:74 G2/8+9:70 r/8 C3/8+14:66 G2/8+6:64 | Ab3/2+5:58 Eb3/8+5:54 r/8 Ab3/8+13:50 Eb3/8+8:48 | Bb3/2+6:70 F3/8+6:66 r/8 Bb3/8+12:62 F3/8+14:60 |
+| Eb3/2+8:54 Bb2/8+8:50 r/8 Eb3/8+10:46 Bb2/8+13:44 | C3/2+14:66 G2/8+14:62 r/8 C3/8+9:58 G2/8+12:56 | F3/2+13:78 C3/8+13:74 r/8 F3/8+5:70 C3/8+10:68 | Bb3/2+12:62 F3/8+12:58 r/8 Bb3/8+6:54 F3/8+9:52 |
+# B1: through IV and the borrowed iv, the trumpet answers (21-28)
+| Eb3/2+10:74 Eb3/4+10:68 Bb2/4+8:70 | Ab3/2+9:58 Ab3/4+9:52 Eb3/4+14:54 | Ab3/2+5:70 Ab3/4+5:64 Eb3/4+13:66 | Eb3/2+6:54 Eb3/4+6:48 Bb2/4+12:50 |
+| F3/2+8:66 F3/4+8:60 C3/4+10:62 | Bb3/2+14:78 Bb3/4+14:72 F3/4+9:74 | Eb3/2+13:62 Eb3/4+13:56 Bb2/4+5:58 | Bb3/2+12:74 Bb3/4+12:68 F3/4+6:70 |
+# B2: the Abm turn again, the trumpet answers lower (29-36)
+| Eb3/2+10:58 Eb3/4+10:52 Bb2/4+8:54 | Ab3/2+9:70 Ab3/4+9:64 Eb3/4+14:66 | Ab3/2+5:54 Ab3/4+5:48 Eb3/4+13:50 | Eb3/2+6:66 Eb3/4+6:60 Bb2/4+12:62 |
+| C3/2+8:78 C3/4+8:72 G2/4+10:74 | Ab3/2+14:62 Ab3/4+14:56 Eb3/4+9:58 | Bb3/2+13:74 Bb3/4+13:68 F3/4+5:70 | Eb3/2+12:58 Eb3/4+12:52 Bb2/4+6:54 |
+# Breakdown 1: kit and bass out, guitar leads the trade (37-44)
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown 2: piano leads the trade, the guitar answers in fragments (45-52)
+| R | R | R | R |
+| R | R | R | R |
+# A3 first half: kit and bass back, piano voicing up (53-60)
+| Eb3/2+10:66 Bb2/8+10:62 r/8 Eb3/8+8:58 Bb2/8+5:56 | C3/2+9:78 G2/8+9:74 r/8 C3/8+14:70 G2/8+6:68 | Ab3/2+5:62 Eb3/8+5:58 r/8 Ab3/8+13:54 Eb3/8+8:52 | Bb3/2+6:74 F3/8+6:70 r/8 Bb3/8+12:66 F3/8+14:64 |
+| Eb3/2+8:58 Bb2/8+8:54 r/8 Eb3/8+10:50 Bb2/8+13:48 | C3/2+14:70 G2/8+14:66 r/8 C3/8+9:62 G2/8+12:60 | F3/2+13:54 C3/8+13:50 r/8 F3/8+5:46 C3/8+10:44 | Bb3/2+12:66 F3/8+12:62 r/8 Bb3/8+6:58 F3/8+9:56 |
+# A3 second half: ghost hats join the rim groove (61-68)
+| Eb3/2+10:78 Bb2/8+10:74 r/8 Eb3/8+8:70 Bb2/8+5:68 | C3/2+9:62 G2/8+9:58 r/8 C3/8+14:54 G2/8+6:52 | Ab3/2+5:74 Eb3/8+5:70 r/8 Ab3/8+13:66 Eb3/8+8:64 | Bb3/2+6:58 F3/8+6:54 r/8 Bb3/8+12:50 F3/8+14:48 |
+| Eb3/2+8:70 Bb2/8+8:66 r/8 Eb3/8+10:62 Bb2/8+13:60 | C3/2+14:54 G2/8+14:50 r/8 C3/8+9:46 G2/8+12:44 | F3/2+13:66 C3/8+13:62 r/8 F3/8+5:58 C3/8+10:56 | Bb3/2+12:78 F3/8+12:74 r/8 Bb3/8+6:70 F3/8+9:68 |
+# B3 first half: pad and trumpet back (69-76)
+| Eb3/2+10:62 Eb3/4+10:56 Bb2/4+8:58 | Ab3/2+9:74 Ab3/4+9:68 Eb3/4+14:70 | Ab3/2+5:58 Ab3/4+5:52 Eb3/4+13:54 | Eb3/2+6:70 Eb3/4+6:64 Bb2/4+12:66 |
+| F3/2+8:54 F3/4+8:48 C3/4+10:50 | Bb3/2+14:66 Bb3/4+14:60 F3/4+9:62 | Eb3/2+13:78 Eb3/4+13:72 Bb2/4+5:74 | Bb3/2+12:62 Bb3/4+12:56 F3/4+6:58 |
+# B3 second half: the borrowed iv turn, trumpet lower (77-84)
+| Eb3/2+10:74 Eb3/4+10:68 Bb2/4+8:70 | Ab3/2+9:58 Ab3/4+9:52 Eb3/4+14:54 | Ab3/2+5:70 Ab3/4+5:64 Eb3/4+13:66 | Eb3/2+6:54 Eb3/4+6:48 Bb2/4+12:50 |
+| C3/2+8:66 C3/4+8:60 G2/4+10:62 | Ab3/2+14:78 Ab3/4+14:72 Eb3/4+9:74 | Bb3/2+13:62 Bb3/4+13:56 F3/4+5:58 | Eb3/2+12:74 Eb3/4+12:68 Bb2/4+6:70 |
+# A4 first half: the motif once more, sequenced up at the turn (85-92)
+| Eb3/2+10:58 Bb2/8+10:54 r/8 Eb3/8+8:50 Bb2/8+5:48 | C3/2+9:70 G2/8+9:66 r/8 C3/8+14:62 G2/8+6:60 | Ab3/2+5:54 Eb3/8+5:50 r/8 Ab3/8+13:46 Eb3/8+8:44 | Bb3/2+6:66 F3/8+6:62 r/8 Bb3/8+12:58 F3/8+14:56 |
+| Eb3/2+8:78 Bb2/8+8:74 r/8 Eb3/8+10:70 Bb2/8+13:68 | C3/2+14:62 G2/8+14:58 r/8 C3/8+9:54 G2/8+12:52 | F3/2+13:74 C3/8+13:70 r/8 F3/8+5:66 C3/8+10:64 | Bb3/2+12:58 F3/8+12:54 r/8 Bb3/8+6:50 F3/8+9:48 |
+# A4 second half: half-note bass, sparser kit (93-100)
+| Eb3/2+10:70 Bb2/8+10:64 r/8 Eb3/4+8:62 | C3/2+9:54 G2/8+9:48 r/8 C3/4+14:46 | Ab3/2+5:66 Eb3/8+5:60 r/8 Ab3/4+13:58 | Bb3/2+6:78 F3/8+6:72 r/8 Bb3/4+12:70 |
+| Eb3/2+8:62 Bb2/8+8:56 r/8 Eb3/4+10:54 | C3/2+14:74 G2/8+14:68 r/8 C3/4+9:66 | F3/2+13:58 C3/8+13:52 r/8 F3/4+5:50 | Bb3/2+12:70 F3/8+12:64 r/8 Bb3/4+6:62 |
+# Outro: guitar and piano only, thinning (101-108)
+| R | R | R | R |
+| R | R | R | R |
+# Outro ends as the intro began: piano alone, back to Eb (109-112)
+| R | R | R | R |
+
+track drums role=drums vol=1
+# Intro: piano alone over the crackle (1-4)
+| R | R | R | R |
+# A1: guitar over piano, no kit and no bass (5-12)
+| R | R | R | R |
+| R | R | R | R |
+# A2: the rim kit and the bass enter (13-20)
+| [k h]/8+18:74 h/8+20:26 [rim h]/8+12:72 h/8+15:26 [k h]/8+18:72 h/8+20:26 [rim h]/8+12:72 h/8+15:26 | [k h]/8+16:86 h/8+19:38 [rim h]/8+14:84 h/8+11:38 [k h]/8+16:84 h/8+19:38 [rim h]/8+14:84 h/8+11:38 | [k h]/8+15:98 h/8+18:50 [rim h]/8+20:96 h/8+12:50 [k h]/8+15:96 h/8+18:50 [rim h]/8+20:96 h/8+12:50 | [k h]/8+11:82 h/8+16:34 [rim h]/8+19:80 h/8+14:34 [k h]/8+11:80 h/8+16:34 [rim h]/8+19:80 h/8+14:34 |
+| [k h]/8+12:94 h/8+15:46 [rim h]/8+18:92 h/16+20:46 h/16+52:38 [k h]/8+12:92 h/8+15:46 [rim h]/8+18:92 h/16+20:46 [h rim]/16+52:36 | [k h]/8+14:78 h/8+11:30 [rim h]/8+16:76 h/16+19:30 h/16+58:22 [k h]/8+14:76 h/8+11:30 [rim h]/8+16:76 h/16+19:30 [h rim]/16+58:20 | [k h]/8+20:90 h/8+12:42 [rim h]/8+15:88 h/16+18:42 h/16+57:34 [k h]/8+20:88 h/8+12:42 [rim h]/8+15:88 h/16+18:42 [h rim]/16+57:32 | [k h]/8+19:74 h/8+14:26 [rim h]/8+11:72 h/16+16:26 h/16+56:18 [k h]/8+19:72 h/8+14:26 [rim h]/8+11:72 h/16+16:26 [h rim]/16+56:16 |
+# B1: through IV and the borrowed iv, the trumpet answers (21-28)
+| [k h]/8+18:86 h/8+20:38 [s h]/8+12:84 h/8+15:38 [k h]/8+18:84 h/8+20:38 [s h]/8+12:84 h/8+15:38 | [k h]/8+16:98 h/8+19:50 [s h]/8+14:96 h/8+11:50 [k h]/8+16:96 h/8+19:50 [s h]/8+14:96 h/8+11:50 | [k h]/8+15:82 h/8+18:34 [s h]/8+20:80 h/8+12:34 [k h]/8+15:80 h/8+18:34 [s h]/8+20:80 h/8+12:34 | [k h]/8+11:94 h/8+16:46 [s h]/8+19:92 h/8+14:46 [k h]/8+11:92 h/8+16:46 [s h]/8+19:92 h/8+14:46 |
+| [k h]/8+12:78 h/8+15:30 [s h]/8+18:76 h/8+20:30 [k h]/8+12:76 [k h]/8+15:70 [s h]/8+18:76 h/8+20:30 | [k h]/8+14:90 h/8+11:42 [s h]/8+16:88 h/8+19:42 [k h]/8+14:88 [k h]/8+11:82 [s h]/8+16:88 h/8+19:42 | [k h]/8+20:74 h/8+12:26 [s h]/8+15:72 h/8+18:26 [k h]/8+20:72 [k h]/8+12:66 [s h]/8+15:72 h/8+18:26 | [k h]/8+19:86 h/8+14:38 [s h]/8+11:84 h/8+16:38 [k h]/8+19:84 [k h]/8+14:78 [s h]/8+11:84 h/8+16:38 |
+# B2: the Abm turn again, the trumpet answers lower (29-36)
+| [k h]/8+18:98 h/8+20:50 [s h]/8+12:96 h/8+15:50 [k h]/8+18:96 h/8+20:50 [s h]/8+12:96 h/8+15:50 | [k h]/8+16:82 h/8+19:34 [s h]/8+14:80 h/8+11:34 [k h]/8+16:80 h/8+19:34 [s h]/8+14:80 h/8+11:34 | [k h]/8+15:94 h/8+18:46 [s h]/8+20:92 h/8+12:46 [k h]/8+15:92 h/8+18:46 [s h]/8+20:92 h/8+12:46 | [k h]/8+11:78 h/8+16:30 [s h]/8+19:76 h/8+14:30 [k h]/8+11:76 h/8+16:30 [s h]/8+19:76 h/8+14:30 |
+| [k h]/8+12:90 h/8+15:42 [s h]/8+18:88 h/8+20:42 [k h]/8+12:88 [k h]/8+15:82 [s h]/8+18:88 h/8+20:42 | [k h]/8+14:74 h/8+11:26 [s h]/8+16:72 h/8+19:26 [k h]/8+14:72 [k h]/8+11:66 [s h]/8+16:72 h/8+19:26 | [k h]/8+20:86 h/8+12:38 [s h]/8+15:84 h/8+18:38 [k h]/8+20:84 [k h]/8+12:78 [s h]/8+15:84 h/8+18:38 | [k h]/8+19:98 h/8+14:50 [s h]/8+11:96 h/8+16:50 [k h]/8+19:96 [k h]/8+14:90 [s h]/8+11:96 h/8+16:50 |
+# Breakdown 1: kit and bass out, guitar leads the trade (37-44)
+| R | R | R | R |
+| R | R | R | R |
+# Breakdown 2: piano leads the trade, the guitar answers in fragments (45-52)
+| R | R | R | R |
+| R | R | R | R |
+# A3 first half: kit and bass back, piano voicing up (53-60)
+| [k h]/8+18:78 h/8+20:30 [rim h]/8+12:76 h/8+15:30 [k h]/8+18:76 h/8+20:30 [rim h]/8+12:76 h/8+15:30 | [k h]/8+16:90 h/8+19:42 [rim h]/8+14:88 h/8+11:42 [k h]/8+16:88 h/8+19:42 [rim h]/8+14:88 h/8+11:42 | [k h]/8+15:74 h/8+18:26 [rim h]/8+20:72 h/8+12:26 [k h]/8+15:72 h/8+18:26 [rim h]/8+20:72 h/8+12:26 | [k h]/8+11:86 h/8+16:38 [rim h]/8+19:84 h/8+14:38 [k h]/8+11:84 h/8+16:38 [rim h]/8+19:84 h/8+14:38 |
+| [k h]/8+12:98 h/8+15:50 [rim h]/8+18:96 h/16+20:50 h/16+52:42 [k h]/8+12:96 h/8+15:50 [rim h]/8+18:96 h/16+20:50 [h rim]/16+52:40 | [k h]/8+14:82 h/8+11:34 [rim h]/8+16:80 h/16+19:34 h/16+58:26 [k h]/8+14:80 h/8+11:34 [rim h]/8+16:80 h/16+19:34 [h rim]/16+58:24 | [k h]/8+20:94 h/8+12:46 [rim h]/8+15:92 h/16+18:46 h/16+57:38 [k h]/8+20:92 h/8+12:46 [rim h]/8+15:92 h/16+18:46 [h rim]/16+57:36 | [k h]/8+19:78 h/8+14:30 [rim h]/8+11:76 h/16+16:30 h/16+56:22 [k h]/8+19:76 h/8+14:30 [rim h]/8+11:76 h/16+16:30 [h rim]/16+56:20 |
+# A3 second half: ghost hats join the rim groove (61-68)
+| [k h]/8+18:90 h/8+20:42 [rim h]/8+12:88 h/16+15:42 h/16+54:34 [k h]/8+18:88 h/8+20:42 [rim h]/8+12:88 h/16+15:42 [h rim]/16+54:32 | [k h]/8+16:74 h/8+19:26 [rim h]/8+14:72 h/16+11:26 h/16+53:18 [k h]/8+16:72 h/8+19:26 [rim h]/8+14:72 h/16+11:26 [h rim]/16+53:16 | [k h]/8+15:86 h/8+18:38 [rim h]/8+20:84 h/16+12:38 h/16+49:30 [k h]/8+15:84 h/8+18:38 [rim h]/8+20:84 h/16+12:38 [h rim]/16+49:28 | [k h]/8+11:98 h/8+16:50 [rim h]/8+19:96 h/16+14:50 h/16+50:42 [k h]/8+11:96 h/8+16:50 [rim h]/8+19:96 h/16+14:50 [h rim]/16+50:40 |
+| [k h]/8+12:82 h/8+15:34 [rim h]/8+18:80 h/16+20:34 h/16+52:26 [k h]/8+12:80 h/8+15:34 [rim h]/8+18:80 h/16+20:34 [h rim]/16+52:24 | [k h]/8+14:94 h/8+11:46 [rim h]/8+16:92 h/16+19:46 h/16+58:38 [k h]/8+14:92 h/8+11:46 [rim h]/8+16:92 h/16+19:46 [h rim]/16+58:36 | [k h]/8+20:78 h/8+12:30 [rim h]/8+15:76 h/16+18:30 h/16+57:22 [k h]/8+20:76 h/8+12:30 [rim h]/8+15:76 h/16+18:30 [h rim]/16+57:20 | [k h]/8+19:90 h/8+14:42 [rim h]/8+11:88 h/16+16:42 h/16+56:34 [k h]/8+19:88 h/8+14:42 [rim h]/8+11:88 h/16+16:42 [h rim]/16+56:32 |
+# B3 first half: pad and trumpet back (69-76)
+| [k h]/8+18:74 h/8+20:26 [s h]/8+12:72 h/8+15:26 [k h]/8+18:72 h/8+20:26 [s h]/8+12:72 h/8+15:26 | [k h]/8+16:86 h/8+19:38 [s h]/8+14:84 h/8+11:38 [k h]/8+16:84 h/8+19:38 [s h]/8+14:84 h/8+11:38 | [k h]/8+15:98 h/8+18:50 [s h]/8+20:96 h/8+12:50 [k h]/8+15:96 h/8+18:50 [s h]/8+20:96 h/8+12:50 | [k h]/8+11:82 h/8+16:34 [s h]/8+19:80 h/8+14:34 [k h]/8+11:80 h/8+16:34 [s h]/8+19:80 h/8+14:34 |
+| [k h]/8+12:94 h/8+15:46 [s h]/8+18:92 h/8+20:46 [k h]/8+12:92 [k h]/8+15:86 [s h]/8+18:92 h/8+20:46 | [k h]/8+14:78 h/8+11:30 [s h]/8+16:76 h/8+19:30 [k h]/8+14:76 [k h]/8+11:70 [s h]/8+16:76 h/8+19:30 | [k h]/8+20:90 h/8+12:42 [s h]/8+15:88 h/8+18:42 [k h]/8+20:88 [k h]/8+12:82 [s h]/8+15:88 h/8+18:42 | [k h]/8+19:74 h/8+14:26 [s h]/8+11:72 h/8+16:26 [k h]/8+19:72 [k h]/8+14:66 [s h]/8+11:72 h/8+16:26 |
+# B3 second half: the borrowed iv turn, trumpet lower (77-84)
+| [k h]/8+18:86 h/8+20:38 [s h]/8+12:84 h/8+15:38 [k h]/8+18:84 h/8+20:38 [s h]/8+12:84 h/8+15:38 | [k h]/8+16:98 h/8+19:50 [s h]/8+14:96 h/8+11:50 [k h]/8+16:96 h/8+19:50 [s h]/8+14:96 h/8+11:50 | [k h]/8+15:82 h/8+18:34 [s h]/8+20:80 h/8+12:34 [k h]/8+15:80 h/8+18:34 [s h]/8+20:80 h/8+12:34 | [k h]/8+11:94 h/8+16:46 [s h]/8+19:92 h/8+14:46 [k h]/8+11:92 h/8+16:46 [s h]/8+19:92 h/8+14:46 |
+| [k h]/8+12:78 h/8+15:30 [s h]/8+18:76 h/8+20:30 [k h]/8+12:76 [k h]/8+15:70 [s h]/8+18:76 h/8+20:30 | [k h]/8+14:90 h/8+11:42 [s h]/8+16:88 h/8+19:42 [k h]/8+14:88 [k h]/8+11:82 [s h]/8+16:88 h/8+19:42 | [k h]/8+20:74 h/8+12:26 [s h]/8+15:72 h/8+18:26 [k h]/8+20:72 [k h]/8+12:66 [s h]/8+15:72 h/8+18:26 | [k h]/8+19:86 h/8+14:38 [s h]/8+11:84 h/8+16:38 [k h]/8+19:84 [k h]/8+14:78 [s h]/8+11:84 h/8+16:38 |
+# A4 first half: the motif once more, sequenced up at the turn (85-92)
+| [k h]/8+18:98 h/8+20:50 [rim h]/8+12:96 h/8+15:50 [k h]/8+18:96 h/8+20:50 [rim h]/8+12:96 h/8+15:50 | [k h]/8+16:82 h/8+19:34 [rim h]/8+14:80 h/8+11:34 [k h]/8+16:80 h/8+19:34 [rim h]/8+14:80 h/8+11:34 | [k h]/8+15:94 h/8+18:46 [rim h]/8+20:92 h/8+12:46 [k h]/8+15:92 h/8+18:46 [rim h]/8+20:92 h/8+12:46 | [k h]/8+11:78 h/8+16:30 [rim h]/8+19:76 h/8+14:30 [k h]/8+11:76 h/8+16:30 [rim h]/8+19:76 h/8+14:30 |
+| [k h]/8+12:90 h/8+15:42 [rim h]/8+18:88 h/16+20:42 h/16+52:34 [k h]/8+12:88 h/8+15:42 [rim h]/8+18:88 h/16+20:42 [h rim]/16+52:32 | [k h]/8+14:74 h/8+11:26 [rim h]/8+16:72 h/16+19:26 h/16+58:18 [k h]/8+14:72 h/8+11:26 [rim h]/8+16:72 h/16+19:26 [h rim]/16+58:16 | [k h]/8+20:86 h/8+12:38 [rim h]/8+15:84 h/16+18:38 h/16+57:30 [k h]/8+20:84 h/8+12:38 [rim h]/8+15:84 h/16+18:38 [h rim]/16+57:28 | [k h]/8+19:98 h/8+14:50 [rim h]/8+11:96 h/16+16:50 h/16+56:42 [k h]/8+19:96 h/8+14:50 [rim h]/8+11:96 h/16+16:50 [h rim]/16+56:40 |
+# A4 second half: half-note bass, sparser kit (93-100)
+| h/8+18:44 h/8+20:34 h/8+12:44 h/8+15:34 h/8+18:44 h/8+20:34 h/8+12:44 h/8+15:34 | h/8+16:56 h/8+19:46 h/8+14:56 h/8+11:46 h/8+16:56 h/8+19:46 h/8+14:56 h/8+11:46 | h/8+15:40 h/8+18:30 h/8+20:40 h/8+12:30 h/8+15:40 h/8+18:30 h/8+20:40 h/8+12:30 | h/8+11:52 h/8+16:42 h/8+19:52 h/8+14:42 h/8+11:52 h/8+16:42 h/8+19:52 h/8+14:42 |
+| h/8+12:36 h/8+15:26 h/8+18:36 h/8+20:26 h/8+12:36 h/8+15:26 h/8+18:36 h/8+20:26 | h/8+14:48 h/8+11:38 h/8+16:48 h/8+19:38 h/8+14:48 h/8+11:38 h/8+16:48 h/8+19:38 | h/8+20:60 h/8+12:50 h/8+15:60 h/8+18:50 h/8+20:60 h/8+12:50 h/8+15:60 h/8+18:50 | h/8+19:44 h/8+14:34 h/8+11:44 h/8+16:34 h/8+19:44 h/8+14:34 h/8+11:44 h/8+16:34 |
+# Outro: guitar and piano only, thinning (101-108)
+| R | R | R | R |
+| R | R | R | R |
+# Outro ends as the intro began: piano alone, back to Eb (109-112)
+| R | R | R | R |

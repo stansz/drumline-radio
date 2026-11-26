@@ -95,6 +95,7 @@ Originals by SZ (and AI):
   back to the major, theme A returns in full with a soft wordless choir under its last phrase, and a
   coda ritards from 88 to 64 BPM onto a soft final chord. Built by
   `tools/arranger/the-gilded-hour.mjs`.
+- **Margin Notes** (Lo-fi), by Muse Ember & SZ. A 6:03 lo-fi study beat at 74 BPM in Eb major: a nylon-guitar motif over felt grand-piano chords, a muted trumpet answering through the borrowed iv (Abm) in the B sections, a rimshot Dusty-kit backbeat and a low string bass. Built by `tools/arranger/margin-notes.mjs`.
 - **Last Stop** (Lo-fi)
 - **Midnight Arcade** (Synthwave), by Claude, MiMo v2.6 Pro & SZ. A 3:36 synthwave original at 98 BPM in E minor, built around its
   saw lead and melody: the chorus hook opens the song bare with a dotted-eighth delay, the verses keep

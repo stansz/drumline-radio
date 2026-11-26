@@ -13,6 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
+| Margin Notes | Lo-fi | Muse Ember | — | — | — |
 | First Flight | Cinematic | MiMo V2.6 Flash | $0.14 / $0.28 | $0.22 | Mix: pizzicato buried (the old balance check had no rule for it) |
 | The Gilded Hour | Orchestral | DeepSeek | — | — | Re-orchestrated and themes made stepwise after listening (it sounded like the other Orchestral originals) |
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
@@ -37,6 +38,30 @@ Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
 
 ## Entries
+
+### Margin Notes — Muse Ember (2026-11-26)
+
+- **Brief:** a calm lo-fi study beat in the spirit of Nujabes/Kupla but simpler and grittier,
+  not jazzy: 74 BPM in Eb major, about 6:00 (112 bars), major with only a borrowed iv (Abm)
+  as minor colour, more space and fewer notes than the other Lo-fi songs. Lineup chosen to
+  differ from Last Stop, Shortwave and Third Rail: nylon guitar lead, felt grand-piano
+  chords (not the FM Rhodes), the muted trumpet only as an answering counter in the B
+  sections, string bass, tape pad only in B, rimshot in place of the snare in A. Barely
+  builds; loops cleanly; microtiming and a soft 16th swing shared by every part.
+- **How it was built:** its own script, `tools/arranger/margin-notes.mjs`, started from
+  `tools/arranger/lib.mjs` and added to `tests/drift.test.ts`, as the default in
+  docs/composing.md prescribes.
+- **Followed well:** the plan (lineup, motif, form) was written in the report and the song's
+  first comment before the notes; 0 clashes and 0 off-chord; 61% steps on the melody;
+  siblings row shows a lineup no other Lo-fi song uses (Nylon guitar lead, String bass,
+  Muted trumpet counter); the balance check printed no flags after one round of volume
+  changes (piano and bass down); kit and bass rest in bars 1-12, 37-52 and 101-112.
+- **Missed at first:** the bass fifth sat above the bass role's top note, the Eb chord
+  symbol did not say maj7 (so its D counted as off-chord), and a passing Ab clashed with
+  the bass and pad fifths. Fixed in the script, not in the generated song.
+- **Credit:** `PI_MODEL` in the run environment read `meta/muse-ember`; the exact display
+  name was not certain, so it is written as Muse Ember and flagged here rather than guessed
+  at further.
 
 ### First Flight — MiMo V2.6 Flash (2026-11-14)
 

@@ -35,6 +35,7 @@ const SCRIPT = [
   'tools/arranger/the-gilded-hour.mjs',
   'tools/arranger/first-flight.mjs',
   'tools/arranger/long-division.mjs',
+  'tools/arranger/margin-notes.mjs',
 ];
 
 describe('the song generators', () => {

@@ -250,6 +250,15 @@ the one pattern it opened with.
 node tools/arranger/long-division.mjs tmp/ld
 ```
 
+Margin Notes has its own script (`arranger/margin-notes.mjs`): a 74 BPM lo-fi study beat in
+Eb major over 112 bars, with a nylon-guitar lead, a felt grand-piano (rolled bottom to top),
+the muted trumpet answering in the B sections, a tape pad on root and fifth, a string bass,
+and a rimshot Dusty-kit backbeat, all on one shared 16th swing (about 58%).
+
+```bash
+node tools/arranger/margin-notes.mjs tmp/mn
+```
+
 ### Always room to change
 
 The arranger is a starting point, not a rule. A good first draft comes from picking the form,
