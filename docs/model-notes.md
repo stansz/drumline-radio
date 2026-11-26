@@ -13,7 +13,7 @@ than guessing.
 
 | Song | Style | Model | Price in / out (per 1M) | Song cost | Fixes after |
 | --- | --- | --- | --- | --- | --- |
-| Margin Notes | Lo-fi | Muse Ember | — | — | — |
+| Margin Notes | Lo-fi | Muse Ember | — | — | Guitar raised an octave (it sounded inside the piano) and its phrase varied in the later A sections |
 | First Flight | Cinematic | MiMo V2.6 Flash | $0.14 / $0.28 | $0.22 | Mix: pizzicato buried (the old balance check had no rule for it) |
 | The Gilded Hour | Orchestral | DeepSeek | — | — | Re-orchestrated and themes made stepwise after listening (it sounded like the other Orchestral originals) |
 | Afterglow Avenue | Synthwave | DeepSeek V4.1 Flash | — | — | Arp and home-style kit reworked after listening (FM pluck, 909 kit) |
@@ -59,6 +59,14 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
 - **Missed at first:** the bass fifth sat above the bass role's top note, the Eb chord
   symbol did not say maj7 (so its D counted as off-chord), and a passing Ab clashed with
   the bass and pad fifths. Fixed in the script, not in the generated song.
+- **Fixed after review (by Claude):** `nylon-guitar` sounds an octave below the written
+  note, so the lead was heard at G3-Eb4, inside the piano's chords and under the trumpet; it
+  is now written an octave up (heard G4-G5), with its velocities up, the trumpet at vol=0.7
+  and the piano at vol=0.6. The same 8-bar phrase also played in all nine A sections; A3's
+  second half and A4's first half now sequence it up at the turn (the form already said so),
+  A4's second half stretches it to halves, and the outro thins it to fragments. Still
+  0 clashes, 0 off-chord and no balance flags. The report's "high register" flag reads the
+  written pitch, an octave above what you hear.
 - **Credit:** `PI_MODEL` in the run environment read `meta/muse-ember`; the exact display
   name was not certain, so it is written as Muse Ember and flagged here rather than guessed
   at further.

@@ -3,16 +3,23 @@
 //
 // STUDY PLAN (written before the notes, as the Lo-fi notes ask)
 // Lineup (track, role, instrument):
-//   guitar   role=lead    inst=nylon-guitar   the lead, written an octave above where it sounds
+//   guitar   role=lead    inst=nylon-guitar   the lead; the patch sounds an octave below the
+//                                               written note, so it is written G5-G6 to sound
+//                                               G4-G5, above the piano's top (Bb4)
 //   piano    role=chords  inst=grand-piano    soft felt-like chords, closed triads and plain 7ths
 //   trumpet  role=counter inst=soft-lead      the style's muted trumpet, answering only, in B
 //   pad      role=pad     (tape-pad)          root and fifth only, in B sections only
 //   bass     role=bass    inst=string-bass    low, under the kick, never louder than it
 //   drums    role=drums   (dusty-kit)         rimshot backbeat in A, snare in B, softer kit
 // Motif (guitar, 4 beats, mostly stepwise, long rests between phrases):
-//   G4/4  Bb4/8  C5/8  Bb4/2  - the whole tune is this cell repeated, sequenced and answered.
+//   G4/4  Bb4/8  C5/8  Bb4/2  (as heard) - the whole tune is this cell repeated, sequenced
+//   and answered. Pitches below are as heard.
 //   Phrase A (8 bars):  G Bb C Bb | C Bb G Ab Bb | C Eb5 D5 C | D Bb C Ab Bb |
 //                       Bb D C Eb5 | Eb5 C Bb | Ab Eb5 D5 C | D Bb Ab
+//   Phrase A' (A3 second half, A4 first half): bars 1-4 as A, then sequenced up at the turn
+//                       Eb5 D5 Eb5 G5 | G5 Eb5 C5 | F5 Eb5 D5 C5 | D5 Bb C5 Bb
+//   Phrase A'' (A4 second half): the same contour in halves and wholes, half the notes.
+//   Outro: A's first four bars, then fragments that thin to one Bb over the last Bb7.
 //   The trumpet answers it a third lower, in quarters, in the guitar's rests in B.
 // Form (bar ranges, what enters and leaves):
 //   1-4    Intro: piano alone (whole-bar rolled chords) over the style's crackle.
@@ -129,6 +136,7 @@ function renderBar(events, bar, baseVel, lean, { roll = 0, seed = 0 } = {}) {
 // ------------------------------------------------------------------------------ the motif
 // Phrase A as 16th-slot events [slot, pitch, len]. Every note that starts on a beat is a
 // chord tone of its bar; passing notes sit on off-beats. Mostly steps and repeats.
+// Pitches are as heard; guitarBarFrom writes them an octave up (see GUITAR_UP).
 const MOTIF_A = [
   [[0, 67, 4], [4, 70, 2], [6, 72, 2], [8, 70, 8]],
   [[0, 72, 4], [4, 70, 4], [8, 67, 2], [10, 68, 2], [12, 70, 4]],
@@ -138,6 +146,35 @@ const MOTIF_A = [
   [[0, 75, 8], [8, 72, 4], [12, 70, 4]],
   [[0, 68, 8], [8, 75, 2], [10, 74, 2], [12, 72, 4]],
   [[0, 74, 8], [8, 70, 4], [12, 68, 4]],
+];
+// Phrase A': the first half of A, then the motif sequenced up at the turn, climbing to G5
+// before it falls back to Bb. Beats still land on chord tones.
+const MOTIF_A_UP = [
+  ...MOTIF_A.slice(0, 4),
+  [[0, 75, 8], [8, 74, 2], [10, 75, 2], [12, 79, 4]],
+  [[0, 79, 8], [8, 75, 4], [12, 72, 4]],
+  [[0, 77, 8], [8, 75, 2], [10, 74, 2], [12, 72, 4]],
+  [[0, 74, 4], [4, 70, 2], [6, 72, 2], [8, 70, 8]],
+];
+// Phrase A'': A's contour stretched to halves and wholes, for the thinning A4 second half.
+const MOTIF_A_WIDE = [
+  [[0, 67, 8], [8, 70, 8]],
+  [[0, 72, 8], [8, 67, 8]],
+  [[0, 72, 12], [12, 75, 4]],
+  [[0, 74, 8], [8, 70, 8]],
+  [[0, 70, 16]],
+  [[0, 75, 8], [8, 72, 8]],
+  [[0, 68, 8], [8, 72, 8]],
+  [[0, 74, 8], [8, 70, 8]],
+];
+// Outro: A's first four bars, then fragments that thin to a lone Bb over the last Bb7,
+// left for the piano's Eb in bar 109 to answer.
+const MOTIF_OUTRO = [
+  ...MOTIF_A.slice(0, 4),
+  [[0, 70, 8], [8, 67, 8]],
+  [[0, 67, 16]],
+  [[0, 72, 8], [8, 68, 8]],
+  [[0, 70, 8]],
 ];
 // One guitar bar per chord, for the B sections (the guitar only plays the first two bars
 // of each four, the trumpet answers in the other two).
@@ -182,7 +219,10 @@ const pianoBar = (bar, kind) => {
     [15, chord[chord.length - 1], 1, -14],
   ], bar, kind === 'soft' ? 62 : 72, 12, { seed: 2 });
 };
-const guitarBarFrom = (bar, events) => renderBar(events.map(([s, p, l]) => [s, p, l, 0]), bar, 88, 14, { seed: 1 });
+// nylon-guitar sounds an octave below the written note, so every guitar pitch is written
+// 12 up to be heard where the tables above say, clear of the piano.
+const GUITAR_UP = 12;
+const guitarBarFrom = (bar, events) => renderBar(events.map(([s, p, l]) => [s, p + GUITAR_UP, l, 0]), bar, 100, 14, { seed: 1 });
 const trumpetBarFrom = (bar, events) => renderBar(events.map(([s, p, l]) => [s, p, l, 0]), bar, 80, 16, { seed: 4 });
 const padBar = (bar) => {
   const v = VOICE[chordAt(bar)];
@@ -296,7 +336,7 @@ section(FORM[7].name, 8, {
 });
 section(FORM[8].name, 8, {
   piano: barsRange(61, 8, (bar) => pianoBar(bar, 'high')),
-  guitar: barsRange(61, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A[i])),
+  guitar: barsRange(61, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A_UP[i])),
   bass: barsRange(61, 8, (bar) => bassBar(bar, 'pulse')),
   drums: barsRange(61, 8, (bar, i) => drumBar(bar, rimGroove(bar, true))),
 });
@@ -304,19 +344,19 @@ bSection(9, 69);
 bSection(10, 77);
 section(FORM[11].name, 8, {
   piano: barsRange(85, 8, (bar) => pianoBar(bar, 'base')),
-  guitar: barsRange(85, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A[i])),
+  guitar: barsRange(85, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A_UP[i])),
   bass: barsRange(85, 8, (bar) => bassBar(bar, 'pulse')),
   drums: barsRange(85, 8, (bar, i) => drumBar(bar, rimGroove(bar, i >= 4))),
 });
 section(FORM[12].name, 8, {
   piano: barsRange(93, 8, (bar) => pianoBar(bar, 'base')),
-  guitar: barsRange(93, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A[i])),
+  guitar: barsRange(93, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A_WIDE[i])),
   bass: barsRange(93, 8, (bar) => bassBar(bar, 'half')),
   drums: barsRange(93, 8, (bar) => drumBar(bar, hats(false))),
 });
 section(FORM[13].name, 8, {
   piano: barsRange(101, 8, (bar) => pianoBar(bar, 'soft')),
-  guitar: barsRange(101, 8, (bar, i) => guitarBarFrom(bar, MOTIF_A[i])),
+  guitar: barsRange(101, 8, (bar, i) => guitarBarFrom(bar, MOTIF_OUTRO[i])),
 });
 section(FORM[14].name, 4, {
   piano: barsRange(109, 4, (bar) => pianoBar(bar, 'whole')),
@@ -326,8 +366,8 @@ const total = tracks.guitar.length;
 if (total !== 112) throw new Error(`built ${total} bars, wanted 112`);
 const HEADER = [
   ['guitar', 'track guitar role=lead inst=nylon-guitar vol=1 pan=-0.15'],
-  ['piano', 'track piano role=chords inst=grand-piano vol=0.7 pan=0.2'],
-  ['trumpet', 'track trumpet role=counter inst=soft-lead vol=1 pan=0.3'],
+  ['piano', 'track piano role=chords inst=grand-piano vol=0.6 pan=0.2'],
+  ['trumpet', 'track trumpet role=counter inst=soft-lead vol=0.7 pan=0.3'],
   ['pad', 'track pad role=pad vol=1'],
   ['bass', 'track bass role=bass inst=string-bass vol=0.38'],
   ['drums', 'track drums role=drums vol=1'],
@@ -339,7 +379,9 @@ const text = `# Margin Notes, by Muse Ember and SZ. A calm lo-fi study beat: a n
 # Lineup: guitar (lead, nylon-guitar), piano (chords, grand-piano), trumpet (counter,
 # soft-lead, B sections only), pad (tape-pad, root and fifth, B sections only), bass
 # (bass, string-bass), drums (dusty-kit). Motif: G4/4 Bb4/8 C5/8 Bb4/2, developed
-# stepwise through phrase A and answered by the trumpet in B. Form: 1-4 intro (piano
+# stepwise through phrase A, sequenced up at the turn in the later A sections, stretched
+# to halves near the end and answered by the trumpet in B. The guitar is written an
+# octave up because the nylon-guitar patch sounds an octave below the written note. Form: 1-4 intro (piano
 # alone), 5-12 A1 (guitar over piano), 13-20 A2 (rim kit and bass enter), 21-36 B
 # (through IV and the borrowed iv Abm, pad and trumpet in), 37-52 breakdown (kit and
 # bass out, piano and guitar trade phrases), 53-68 A again (piano voicing up),
