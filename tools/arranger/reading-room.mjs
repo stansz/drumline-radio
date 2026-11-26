@@ -97,6 +97,12 @@ const FORM = PHASES.map(([a, b, name]) => ({
 }));
 const header = formHeader(FORM);
 
+// The whole piece played 6-10 dB under the other Ambient songs (Pagoda Rain, Temple Bells), and
+// the track volumes are already near 1, so every velocity but the sub's is lifted by the same factor:
+// velocity gain is (v/127)^1.6, so x1.7 is about +7 dB, with the balance between parts kept.
+const LIFT = 1.7;
+const lift = (vel) => Math.min(127, Math.round(vel * LIFT));
+
 // ---------------------------------------------------------------------------- the string swells
 // One tied note per voice per chord span. The low track enters on or a few ticks after the
 // beat, the high track 10-20 ticks later, so a chord blooms instead of landing. Velocities
@@ -111,7 +117,7 @@ const stringBars = (which) => {
     const pitches = voicingAt(a);
     const voices = which === 'low' ? pitches.slice(0, 2) : pitches.slice(2);
     if (!voices.length) return;
-    const vel = (which === 'low' ? LOW_VEL : HIGH_VEL)[i % 8];
+    const vel = lift((which === 'low' ? LOW_VEL : HIGH_VEL)[i % 8]);
     const off = (which === 'low' ? LOW_OFF : HIGH_OFF)[i % 6];
     const name = chordText(voices, nm);
     for (let bar = a; bar <= b; bar += 1) {
@@ -205,7 +211,7 @@ const guitarBars = () => {
     let used = 240;
     const tokens = ['r/16', ...notes.map(([midi, ticks, off, vel]) => {
       used += ticks;
-      return noteText(nm(midi), dur(ticks), vel, off);
+      return noteText(nm(midi), dur(ticks), lift(vel), off);
     })];
     if (used > 3840) throw new Error(`guitar bar ${bar} overflows`);
     for (const d of splitDuration(3840 - used)) tokens.push(`r${d}`);
@@ -231,7 +237,7 @@ const choirBars = () => {
     const name = nm(midi);
     const off = CHOIR_OFF[i % 6];
     for (let bar = a; bar <= b; bar += 1) {
-      bars[bar - 1] = bar === a ? noteText(name, '1', vel, off) + '~'
+      bars[bar - 1] = bar === a ? noteText(name, '1', lift(vel), off) + '~'
         : bar === b ? `${name}/1` : `${name}/1~`;
     }
   });
@@ -248,6 +254,8 @@ const subBars = () => {
   for (const [a, b, symbol] of SPANS) {
     if (a < 25 || b > 102) continue;
     const name = nm(ROOT[symbol]);
+    // Not lifted: the sub's balance is measured against the guitar's low end, and lifting it
+    // with the rest put it 3-5 dB over the guitar.
     const vel = SUB_VEL[i % 6];
     const off = SUB_OFF[i % 6];
     i += 1;

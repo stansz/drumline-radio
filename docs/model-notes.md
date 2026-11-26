@@ -33,7 +33,7 @@ than guessing.
 | Lantern Ward | Orchestral | Tencent HY 4 (with Claude) | — | — | — |
 | Shortwave | Lo-fi | GLM (with Claude) | — | — | — |
 | Third Rail | Lo-fi | DeepSeek | — | — | — |
-| Reading Room | Ambient | Qwen 4-Max | — | — | None (it fixed its own mix and arc with `npm run balance` and an offline loudness render) |
+| Reading Room | Ambient | Qwen 4-Max | $1.425 / $4.275 | $0.92 | Velocities lifted about 7 dB: the whole piece played 6-10 dB under the other Ambient songs |
 
 Claude's own originals (Night Shift, Save Point, Underpass, Ivory and Ash, Last
 Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by MiMo v2.6 Pro).
@@ -71,6 +71,13 @@ Stop) aren't listed, and neither is Midnight Arcade (Claude's first, reworked by
   Gm keeps no fifth before Eb, Dm no ninth before Gm, and the Bb after the shadow no fifth,
   so no held note smears a half step into the next chord except the shadow's own G-Gb, which
   moves in one voice.
+- **Fixed after review (by Claude):** the balance between parts was right, but the whole
+  piece played 6-10 dB quieter than Pagoda Rain and Temple Bells (`tools/browser/loudness.mjs`),
+  with the track volumes already near 1. Every velocity but the sub's is now lifted x1.7
+  (about +7 dB), which brings it level with them. Still 0 clashes, 0 off-chord, no balance
+  flags. Its fix for the off-chord count (every guitar note written a sixteenth late) works
+  around the check rather than explaining the colour tones with `# ok` lines; it is left as
+  it is because the late entries also suit the piece.
 - **Credit:** `PI_MODEL` in the run environment read `qwen/qwen4-max`; it is written as
   Qwen 4-Max (family Qwen, version 4-Max) so the app shows `Qwen & SZ`.
 
