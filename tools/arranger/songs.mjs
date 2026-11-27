@@ -1,4 +1,4 @@
-// The 15 carols and classics built by the arranger. Each recipe is a melody, chords, and the song's
+// The 19 carols and classics built by the arranger. Each recipe is a melody, chords, and the song's
 // own intro, bass line, and drum groove. Writes .song files to <outDir> (default: src/songs).
 //   node tools/arranger/songs.mjs [outDir] [song-id ...]
 // Für Elise, Greensleeves, Mountain King, Swan Lake, and the originals have their own scripts;
@@ -221,6 +221,70 @@ A({
   chords: ['C', 'C', 'C', 'C', 'G', 'G', 'C', 'C', 'F', 'F', 'C', 'C', 'F', 'F', 'C', 'C',
     'G', 'G7', 'C', 'C', 'C', 'G7', 'C', 'C'],
   ramp: [78, 60],
+});
+
+A({
+  file: 'o-come-all-ye-faithful.song', style: 'cinematic', time: [4, 4], tempo: 92, passes: 3, keyUp: 1,
+  intro: { type: 'pad', bars: 2 }, bass: 'held', drums: 'orch', padOpen: true,
+  head: head('O Come, All Ye Faithful', 'John Francis Wade', 'around 1743', 'G major', 'A piano and guitar statement over strings, then the whole hall joins; up a key at the end.', 'carols', 'DeepSeek Flash & SZ'),
+  pickup: 'r/2. G4/4',
+  melody: [
+    'G4/2 D4/4 G4/4', 'A4/2 D4/2', 'B4/4 A4/4 B4/4 C5/4', 'B4/2 A4/4 G4/4',
+    'G4/2 F4/4 E4/4', 'F4/4 G4/4 A4/4 B4/4', 'F4/2 E4/4. D4/8', 'D4/2. r/4',
+    'D5/2 C5/4 B4/4', 'C5/2 B4/2', 'A4/4 B4/4 G4/4 A4/4', 'F4/4. E4/8 D4/4 G4/4',
+    'G4/4 F4/4 G4/4 A4/4', 'G4/2 D4/4 B4/4', 'B4/4 A4/4 B4/4 C5/4', 'B4/2 A4/4 B4/4',
+    'C5/4 B4/4 A4/4 G4/4', 'F4/2 G4/4 C5/4', 'B4/2 A4/4. G4/8', 'G4/2. r/4',
+  ],
+  chords: ['G', 'D', 'G', 'G', 'C', 'G', 'G', 'D', 'G', 'G', 'G', 'G', 'G', 'D', 'G', 'G', 'C', 'F', 'G', 'G'],
+  final: 'G4/1', finalChord: 'G', parts: { lead: 'lead2', harm: 'lead' }, vols: { harm: 0.5, bass: 0.25 }, ramp: [92, 72],
+});
+
+A({
+  file: 'angels-we-have-heard-on-high.song', style: 'chiptune', time: [4, 4], tempo: 126, passes: 3, keyUp: 2,
+  intro: { type: 'tease', tease: [8, 9] }, bass: 'walk', drums: 'four',
+  head: head('Angels We Have Heard on High', 'Traditional (French)', 'traditional', 'F major', 'The Gloria refrain on the arp first, then three verses of pulse-wave carol; last verse up a step.', 'carols', 'DeepSeek Flash & SZ'),
+  melody: [
+    'A4/4 A4/4 A4/4 C5/4', 'C5/4. Bb4/8 A4/2', 'A4/4 G4/4 A4/4 C5/4', 'A4/4. G4/8 F4/2',
+    'A4/4 A4/4 A4/4 C5/4', 'C5/4. Bb4/8 A4/2', 'A4/4 G4/4 A4/4 C5/4', 'A4/4. G4/8 F4/2',
+    'C5/2 D5/8 C5/8 Bb4/8 A4/8', 'Bb4/2 C5/8 Bb4/8 A4/8 G4/8', 'A4/2 Bb4/8 A4/8 G4/8 F4/8',
+    'G4/4. C4/8 C4/2', 'F4/4 G4/4 A4/4 Bb4/4', 'A4/2 G4/2',
+    'C5/2 D5/8 C5/8 Bb4/8 A4/8', 'Bb4/2 C5/8 Bb4/8 A4/8 G4/8', 'A4/2 Bb4/8 A4/8 G4/8 F4/8',
+    'G4/4. C4/8 C4/2', 'F4/4 G4/4 A4/4 Bb4/4', 'A4/2 G4/2', 'F4/1',
+  ],
+  chords: ['F', 'C', 'F', 'F', 'F', 'C', 'F', 'F', 'F', 'C', 'F', 'C', 'Bb', 'C',
+    'F', 'C', 'F', 'C', 'Bb', 'C', 'F'],
+  finalChord: 'F',
+  vols: { lead: 0.95, harm: 0.6, bass: 0.18 },
+  balanceOk: ['@1-66 bass: the triangle bass is the chip mix\'s low end and holds the final cadence; the chip kick is a short noise click with almost no sub'],
+});
+
+A({
+  file: 'the-holly-and-the-ivy.song', style: 'lofi', time: [3, 4], tempo: 96, passes: 3, keyUp: 0,
+  intro: { type: 'bassriff', bars: 2 }, bass: 'waltz', drums: 'waltz',
+  head: head('The Holly and the Ivy', 'Traditional (English)', 'traditional', 'F major', 'A brushed waltz bass, Rhodes and muted trumpet, and a slow turn at the end.', 'carols', 'DeepSeek Flash & SZ'),
+  melody: [
+    'F4/4 F4/8 F4/8 F4/4', 'D5/4 C5/4 A4/4~', 'A4/8 F4/8 F4/8 F4/8 F4/4', 'D5/4 C5/2',
+    'C5/8 Bb4/8 A4/8 G4/8 F4/4', 'A4/8 A4/8 D4/8 D4/8 C4/4', 'F4/8 G4/8 A4/8 Bb4/8 A4/4', 'G4/4 F4/2',
+    'F4/4 F4/8 F4/8 F4/4', 'D5/4 C5/4 A4/4~', 'A4/8 F4/8 F4/8 F4/8 F4/4', 'D5/4 C5/2',
+    'C5/8 Bb4/8 A4/8 G4/8 F4/4', 'A4/4 D4/8 D4/8 C4/4', 'F4/8 G4/8 A4/8 Bb4/8 A4/4', 'G4/4 F4/2',
+  ],
+  chords: ['F', 'F', 'F', 'C', 'Bb', 'Dm', 'Bb', 'F', 'F', 'F', 'F', 'C', 'Bb', 'Dm', 'Bb', 'F'],
+  final: 'F4/2.', finalChord: 'F', parts: { lead: 'lead2', harm: 'lead' }, vols: { lead: 0.65, harm: 0.6, bass: 0.23 }, ramp: [96, 80],
+});
+
+A({
+  file: 'in-the-bleak-midwinter.song', style: 'ambient', time: [4, 4], tempo: 72, passes: 3, keyUp: 0,
+  intro: { type: 'pad', bars: 2 }, bass: 'held', drums: 'canon', arpUnit: 960, padOpen: true,
+  head: head('In the Bleak Midwinter', 'Gustav Holst', '1906', 'F major', 'A slow music-box carol over an open pad and a heartbeat kick, ending in a long fade.', 'carols', 'DeepSeek Flash & SZ'),
+  pickup: 'r/2. A4/4',
+  melody: [
+    'A4/4. Bb4/8 C5/4 A4/4', 'G4/4. G4/8 F4/2', 'G4/4 A4/4 G4/4. F4/8', 'G4/1',
+    'A4/4. Bb4/8 C5/4 A4/4', 'G4/4. G4/8 F4/4. F4/8', 'G4/4 A4/4 G4/4. F4/8', 'F4/1',
+    'Bb4/4. A4/8 Bb4/4 C5/4', 'D5/4. D5/8 A4/4. A4/8', 'C5/4 A4/4 G4/4 F4/4', 'E4/1',
+    'A4/4. Bb4/8 C5/4 A4/4', 'G4/2 F4/2', 'G4/4 A4/4 G4/4. F4/8', 'F4/2. r/4',
+  ],
+  chords: ['F', 'C', 'Dm', 'Dm', 'F', 'F', 'F', 'F', 'Bb', 'Dm', 'F', 'C', 'F', 'F', 'F', 'F'],
+  final: 'F4/1', finalChord: 'F', vols: { bass: 0.11 }, ramp: [72, 56],
 });
 
 console.log(`${written} songs written to ${out}`);

@@ -39,16 +39,20 @@ song, fill in the prompt template in [docs/song-prompt.md](docs/song-prompt.md).
 
 ## Songs
 
-Christmas carols, arranged by Claude and SZ:
+Christmas carols, arranged by Claude and SZ, and four more by DeepSeek Flash:
 
+- **Angels We Have Heard on High** (traditional French). Chiptune.
 - **Deck the Halls** (traditional Welsh). Synthwave.
 - **God Rest Ye Merry Gentlemen** (traditional English). Techno.
 - **Good King Wenceslas** (melody from *Piae Cantiones*, 1582). Chiptune.
 - **Hark! The Herald Angels Sing** (Felix Mendelssohn, 1840). Orchestral.
+- **In the Bleak Midwinter** (Gustav Holst, 1906). Ambient.
 - **Jingle Bells** (James Lord Pierpont, 1857). Chiptune.
 - **Joy to the World** (arranged by Lowell Mason, 1839). Orchestral.
 - **O Christmas Tree** (traditional German). Orchestral.
+- **O Come, All Ye Faithful** (John Francis Wade, around 1743). Cinematic.
 - **Silent Night** (Franz Xaver Gruber, 1818). Synthwave.
+- **The Holly and the Ivy** (traditional English). Lo-fi.
 - **We Wish You a Merry Christmas** (traditional English). Synthwave.
 
 Other public-domain melodies, arranged by Claude and SZ:

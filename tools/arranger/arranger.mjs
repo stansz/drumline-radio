@@ -8,8 +8,9 @@ export const nm = (n) => noteName(n, SHARPS);
 const notesIn = (bar) => (bar.match(/\b[A-G](#|b)?\d\b/g) ?? []).map(noteMidi);
 const barTicks = ([n, d]) => (n * 3840) / d;
 
-function padSpan(c, ticks, voices = 3) {
-  const notes = c.iv.slice(0, voices).map((i) => nm(48 + c.pc + i));
+function padSpan(c, ticks, voices = 3, open = false) {
+  const intervals = (open ? [0, 7, 12] : c.iv).slice(0, voices);
+  const notes = intervals.map((i) => nm(48 + c.pc + i));
   return `[${notes.join(' ')}]${durationText(ticks)}`;
 }
 function fill(ticks, unit, fn) {
@@ -107,7 +108,8 @@ function writeSong(out, spec, { T, comment, tracks, style, ts }) {
   const block = (key) => writeBlock(T[key], comment[key]);
   const hidden = spec.hidden ? 'hidden: true\n' : '';
   const ramp = spec.ramp ? `\n@bars ${T.lead.length - 3}-${T.lead.length} tempo=${spec.ramp[0]}..${spec.ramp[1]}\n` : '';
-  const text = `${spec.head.trim()}\n${hidden}style: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}\n` +
+  const ok = spec.balanceOk?.length ? `${spec.balanceOk.map((line) => `# balance-ok ${line}`).join('\n')}\n` : '';
+  const text = `${spec.head.trim()}\n${hidden}style: ${style}\ntempo: ${spec.tempo}\ntime: ${ts}\n${ramp}${ok}\n` +
     tracks.map(([h, k]) => `${h}\n${block(k)}`).join('\n\n') + '\n';
   saveSong(out, spec.file, text);
 }
@@ -115,7 +117,9 @@ function writeSong(out, spec, { T, comment, tracks, style, ts }) {
 /**
  * spec: { file, head, style, time, tempo, melody: [bars], chords: [bar chord strings], passes, keyUp,
  *   bass, drums (names above), intro: { type, bars, tease: [melody bar indices] },
- *   pickup, link, final, finalChord, ramp, parts, voices (pad voices), arpUnit }
+ *   pickup, link, final, finalChord, ramp, parts, vols (per-track volume overrides), voices (pad
+ *   voices), padOpen (root, fifth and octave instead of a third), arpUnit, balanceOk (lines to add
+ *   as `# balance-ok` comments) }
  * Intro types: 'tease' (arp previews the tune over the pad), 'pad' (pad alone), 'drums' (drums
  * alone), 'bassriff' (bass, then drums join), 'none', or 'vamp' (pad, bass and drums).
  */
@@ -139,7 +143,7 @@ export function arrange(out, spec) {
   };
   const accomp = (chordBar, shift, level, arpOn) => {
     const { cs, span } = spans(chordBar, shift);
-    T.pad.push(cs.map((c) => padSpan(c, span, voices)).join(' '));
+    T.pad.push(cs.map((c) => padSpan(c, span, voices, spec.padOpen)).join(' '));
     T.bass.push(cs.map((c) => bassSpan(spec.bass, c, span)).join(' '));
     T.arp.push(arpOn ? cs.map((c) => arpSpan(arpUnit, c, span)).join(' ') : 'R');
     T.drums.push(level === 0 ? 'R' : groove(spec.drums, ts, level));
@@ -154,7 +158,7 @@ export function arrange(out, spec) {
       const lastIntroBar = i === idx.length - 1;
       const half = i >= idx.length / 2;
       const t = intro.type;
-      T.pad.push(t === 'drums' || t === 'bassriff' ? 'R' : cs.map((c) => padSpan(c, span, voices)).join(' '));
+      T.pad.push(t === 'drums' || t === 'bassriff' ? 'R' : cs.map((c) => padSpan(c, span, voices, spec.padOpen)).join(' '));
       T.bass.push(t === 'vamp' || t === 'bassriff' ? cs.map((c) => bassSpan(spec.bass, c, span)).join(' ') : 'R');
       T.drums.push(t === 'vamp' || t === 'drums' || (t === 'bassriff' && half) ? groove(spec.drums, ts, 1) : 'R');
       T.arp.push(t === 'tease' ? spec.melody[b] : 'R');
@@ -190,28 +194,30 @@ export function arrange(out, spec) {
   T.lead.push('R');
   T.harm.push('R');
   T.arp.push('R');
-  T.pad.push(padSpan(endChord, BT, voices));
+  T.pad.push(padSpan(endChord, BT, voices, spec.padOpen));
   T.bass.push(`${nm(36 + endChord.pc)}${durationText(BT)}`);
   T.drums.push(`k${durationText(BT)}`);
   T.cym.push(`cr${durationText(BT)}`);
 
   const P = spec.parts;
+  const V = { lead: 0.8, harm: 0.45, arp: intro.type === 'tease' ? 0.4 : 0.35, pad: 0.45, bass: 0.75, drums: 0.8, cym: 0.5, ...spec.vols };
   const tracks = [
-    [`track melody role=${P?.lead ?? 'lead'} vol=0.8`, 'lead'],
-    [`track harmony role=${P?.harm ?? 'lead2'} vol=0.45`, 'harm'],
-    [`track arp role=arp vol=${intro.type === 'tease' ? '0.4' : '0.35'}`, 'arp'],
-    [`track pad role=${P?.pad ?? 'pad'} vol=0.45`, 'pad'],
-    [`track bass role=bass vol=0.75`, 'bass'],
-    [`track drums role=drums vol=0.8`, 'drums'],
-    [`track cymbals role=drums vol=0.5`, 'cym'],
+    [`track melody role=${P?.lead ?? 'lead'} vol=${V.lead}`, 'lead'],
+    [`track harmony role=${P?.harm ?? 'lead2'} vol=${V.harm}`, 'harm'],
+    [`track arp role=arp vol=${V.arp}`, 'arp'],
+    [`track pad role=${P?.pad ?? 'pad'} vol=${V.pad}`, 'pad'],
+    [`track bass role=bass vol=${V.bass}`, 'bass'],
+    [`track drums role=drums vol=${V.drums}`, 'drums'],
+    [`track cymbals role=drums vol=${V.cym}`, 'cym'],
   ];
   writeSong(out, spec, { T, comment, tracks, style, ts });
 }
 
-export const head = (title, composer, year, key, note, category) => `# ${title}, arranged by Claude and SZ. ${note}
+export const head = (title, composer, year, key, note, category, arranger = 'Claude & SZ') =>
+  `# ${title}, arranged by ${arranger.replace(/ & /g, ' and ')}. ${note}
 title: ${title}
 composer: ${composer}
-arranger: Claude & SZ
+arranger: ${arranger}
 year: ${year}
 source: public-domain
 category: ${category}

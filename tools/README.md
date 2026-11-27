@@ -39,8 +39,17 @@ that get fuller each time, and a held ending.
 - **Chords:** major, `m`, `7`, `m7`, `maj7`, and `dim`, for example `C`, `Am`, `G7`, `Bbmaj7`.
 
 The simple `arrange()` covers most carols and classics. `arranger/songs.mjs` holds the recipes for
-the 15 arranged carols and classics, and `arranger/about.mjs` holds the story for each public-domain
+the 19 arranged carols and classics, and `arranger/about.mjs` holds the story for each public-domain
 song.
+
+Recipe options beyond the melody, chords, style, tempo, time signature, passes, key change, intro,
+bass line, and drum groove:
+
+- `vols`: per-track volume overrides, keyed `lead`, `harm`, `arp`, `pad`, `bass`, `drums`, `cym`;
+- `padOpen`: voices the pad on the root, fifth and octave instead of a third, so a held colour tone
+  in the melody has room;
+- `balanceOk`: lines written into the song as `# balance-ok` comments, in the same form as the
+  balance check's explanations (see below).
 
 ```bash
 node tools/arranger/songs.mjs tmp/songs

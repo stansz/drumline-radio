@@ -1,0 +1,161 @@
+# The Holly and the Ivy, arranged by DeepSeek Flash and SZ. A brushed waltz bass, Rhodes and muted trumpet, and a slow turn at the end.
+title: The Holly and the Ivy
+composer: Traditional (English)
+arranger: DeepSeek Flash & SZ
+about: An English folk carol. The holly's white flowers, red berries and prickly leaves stand for the nativity, the drops of blood and the crown of thorns. Cecil Sharp collected the tune from singers in the early 1900s; the words were printed as a broadside by 1823.
+year: traditional
+source: public-domain
+category: carols
+key: F major
+style: lofi
+tempo: 96
+time: 3/4
+
+@bars 48-51 tempo=96..80
+
+track melody role=lead2 vol=0.65
+# Intro
+| R | R |
+# The tune
+| F4/4 F4/8 F4/8 F4/4 | D5/4 C5/4 A4/4~ | A4/8 F4/8 F4/8 F4/8 F4/4 | D5/4 C5/2 |
+| C5/8 Bb4/8 A4/8 G4/8 F4/4 | A4/8 A4/8 D4/8 D4/8 C4/4 | F4/8 G4/8 A4/8 Bb4/8 A4/4 | G4/4 F4/2 |
+| F4/4 F4/8 F4/8 F4/4 | D5/4 C5/4 A4/4~ | A4/8 F4/8 F4/8 F4/8 F4/4 | D5/4 C5/2 |
+| C5/8 Bb4/8 A4/8 G4/8 F4/4 | A4/4 D4/8 D4/8 C4/4 | F4/8 G4/8 A4/8 Bb4/8 A4/4 | G4/4 F4/2 |
+# Pass 2, fuller
+| F4/4 F4/8 F4/8 F4/4 | D5/4 C5/4 A4/4~ | A4/8 F4/8 F4/8 F4/8 F4/4 | D5/4 C5/2 |
+| C5/8 Bb4/8 A4/8 G4/8 F4/4 | A4/8 A4/8 D4/8 D4/8 C4/4 | F4/8 G4/8 A4/8 Bb4/8 A4/4 | G4/4 F4/2 |
+| F4/4 F4/8 F4/8 F4/4 | D5/4 C5/4 A4/4~ | A4/8 F4/8 F4/8 F4/8 F4/4 | D5/4 C5/2 |
+| C5/8 Bb4/8 A4/8 G4/8 F4/4 | A4/4 D4/8 D4/8 C4/4 | F4/8 G4/8 A4/8 Bb4/8 A4/4 | G4/4 F4/2 |
+# Pass 3, fuller
+| F4/4 F4/8 F4/8 F4/4 | D5/4 C5/4 A4/4~ | A4/8 F4/8 F4/8 F4/8 F4/4 | D5/4 C5/2 |
+| C5/8 Bb4/8 A4/8 G4/8 F4/4 | A4/8 A4/8 D4/8 D4/8 C4/4 | F4/8 G4/8 A4/8 Bb4/8 A4/4 | G4/4 F4/2 |
+| F4/4 F4/8 F4/8 F4/4 | D5/4 C5/4 A4/4~ | A4/8 F4/8 F4/8 F4/8 F4/4 | D5/4 C5/2 |
+| C5/8 Bb4/8 A4/8 G4/8 F4/4 | A4/4 D4/8 D4/8 C4/4 | F4/8 G4/8 A4/8 Bb4/8 A4/4 | F4/2. |
+# Ending
+| R |
+
+track harmony role=lead vol=0.6
+# Intro
+| R | R |
+# The tune
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 2, fuller
+| F5/4 F5/8 F5/8 F5/4 | D6/4 C6/4 A5/4~ | A5/8 F5/8 F5/8 F5/8 F5/4 | D6/4 C6/2 |
+| C6/8 A#5/8 A5/8 G5/8 F5/4 | A5/8 A5/8 D5/8 D5/8 C5/4 | F5/8 G5/8 A5/8 A#5/8 A5/4 | G5/4 F5/2 |
+| F5/4 F5/8 F5/8 F5/4 | D6/4 C6/4 A5/4~ | A5/8 F5/8 F5/8 F5/8 F5/4 | D6/4 C6/2 |
+| C6/8 A#5/8 A5/8 G5/8 F5/4 | A5/4 D5/8 D5/8 C5/4 | F5/8 G5/8 A5/8 A#5/8 A5/4 | G5/4 F5/2 |
+# Pass 3, fuller
+| F5/4 F5/8 F5/8 F5/4 | D6/4 C6/4 A5/4~ | A5/8 F5/8 F5/8 F5/8 F5/4 | D6/4 C6/2 |
+| C6/8 A#5/8 A5/8 G5/8 F5/4 | A5/8 A5/8 D5/8 D5/8 C5/4 | F5/8 G5/8 A5/8 A#5/8 A5/4 | G5/4 F5/2 |
+| F5/4 F5/8 F5/8 F5/4 | D6/4 C6/4 A5/4~ | A5/8 F5/8 F5/8 F5/8 F5/4 | D6/4 C6/2 |
+| C6/8 A#5/8 A5/8 G5/8 F5/4 | A5/4 D5/8 D5/8 C5/4 | F5/8 G5/8 A5/8 A#5/8 A5/4 | F5/2. |
+# Ending
+| R |
+
+track arp role=arp vol=0.35
+# Intro
+| R | R |
+# The tune
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 2, fuller
+| F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 |
+| A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 | A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 |
+| F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 |
+| A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 | A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 |
+# Pass 3, fuller
+| F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 |
+| A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 | A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 |
+| F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 | C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 C4/16 E4/16 G4/16 C5/16 G4/16 E4/16 |
+| A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 D4/16 F4/16 A4/16 D5/16 A4/16 F4/16 | A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 A#4/16 D5/16 F5/16 A#5/16 F5/16 D5/16 | F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 F4/16 A4/16 C5/16 F5/16 C5/16 A4/16 |
+# Ending
+| R |
+
+track pad role=pad vol=0.45
+# Intro
+| R | R |
+# The tune
+| [F3 A3 C4]/2. | [F3 A3 C4]/2. | [F3 A3 C4]/2. | [C3 E3 G3]/2. |
+| [A#3 D4 F4]/2. | [D3 F3 A3]/2. | [A#3 D4 F4]/2. | [F3 A3 C4]/2. |
+| [F3 A3 C4]/2. | [F3 A3 C4]/2. | [F3 A3 C4]/2. | [C3 E3 G3]/2. |
+| [A#3 D4 F4]/2. | [D3 F3 A3]/2. | [A#3 D4 F4]/2. | [F3 A3 C4]/2. |
+# Pass 2, fuller
+| [F3 A3 C4]/2. | [F3 A3 C4]/2. | [F3 A3 C4]/2. | [C3 E3 G3]/2. |
+| [A#3 D4 F4]/2. | [D3 F3 A3]/2. | [A#3 D4 F4]/2. | [F3 A3 C4]/2. |
+| [F3 A3 C4]/2. | [F3 A3 C4]/2. | [F3 A3 C4]/2. | [C3 E3 G3]/2. |
+| [A#3 D4 F4]/2. | [D3 F3 A3]/2. | [A#3 D4 F4]/2. | [F3 A3 C4]/2. |
+# Pass 3, fuller
+| [F3 A3 C4]/2. | [F3 A3 C4]/2. | [F3 A3 C4]/2. | [C3 E3 G3]/2. |
+| [A#3 D4 F4]/2. | [D3 F3 A3]/2. | [A#3 D4 F4]/2. | [F3 A3 C4]/2. |
+| [F3 A3 C4]/2. | [F3 A3 C4]/2. | [F3 A3 C4]/2. | [C3 E3 G3]/2. |
+| [A#3 D4 F4]/2. | [D3 F3 A3]/2. | [A#3 D4 F4]/2. | [F3 A3 C4]/2. |
+# Ending
+| [F3 A3 C4]/2. |
+
+track bass role=bass vol=0.23
+# Intro
+| A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+# The tune
+| F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | C2/4 r/4 G2/4 |
+| A#2/4 r/4 F3/4 | D2/4 r/4 A2/4 | A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+| F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | C2/4 r/4 G2/4 |
+| A#2/4 r/4 F3/4 | D2/4 r/4 A2/4 | A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+# Pass 2, fuller
+| F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | C2/4 r/4 G2/4 |
+| A#2/4 r/4 F3/4 | D2/4 r/4 A2/4 | A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+| F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | C2/4 r/4 G2/4 |
+| A#2/4 r/4 F3/4 | D2/4 r/4 A2/4 | A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+# Pass 3, fuller
+| F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | C2/4 r/4 G2/4 |
+| A#2/4 r/4 F3/4 | D2/4 r/4 A2/4 | A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+| F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | F2/4 r/4 C3/4 | C2/4 r/4 G2/4 |
+| A#2/4 r/4 F3/4 | D2/4 r/4 A2/4 | A#2/4 r/4 F3/4 | F2/4 r/4 C3/4 |
+# Ending
+| F2/2. |
+
+track drums role=drums vol=0.8
+# Intro
+| R | k/4 h/4 h/4 |
+# The tune
+| k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 |
+| k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 |
+| k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 |
+| k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 | k/4 h/4 h/4 |
+# Pass 2, fuller
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+# Pass 3, fuller
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+| k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 | k/4 [s h]/4 [s h]/4 |
+# Ending
+| k/2. |
+
+track cymbals role=drums vol=0.5
+# Intro
+| R | R |
+# The tune
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 2, fuller
+| cr/2. | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Pass 3, fuller
+| cr/2. | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+| R | R | R | R |
+# Ending
+| cr/2. |
